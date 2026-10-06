@@ -1,0 +1,38 @@
+{
+  "staged": [
+    {
+      "slug": "miami-fc-head-athletic-trainer-2192952",
+      "title": "Head Athletic Trainer",
+      "source": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/miami-fc-jobs/head-athletic-trainer-2192952",
+      "checkedAt": "2026-10-06T04:40:46.362Z",
+      "checks": [
+        "approved-organizer",
+        "matching-posting-id",
+        "exact-application-action",
+        "not-closed",
+        "current-metadata",
+        "florida-location",
+        "explicit-qualifications",
+        "decoded-existing-branding"
+      ]
+    },
+    {
+      "slug": "miami-fc-ticketing-intern-2183479",
+      "title": "Ticketing Intern",
+      "source": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/miami-fc-jobs/ticketing-intern-2183479",
+      "checkedAt": "2026-10-06T04:40:46.545Z",
+      "checks": [
+        "approved-organizer",
+        "matching-posting-id",
+        "exact-application-action",
+        "not-closed",
+        "current-metadata",
+        "florida-location",
+        "explicit-qualifications",
+        "decoded-existing-branding"
+      ]
+    }
+  ],
+  "readyForManualPublish": true,
+  "published": false
+}

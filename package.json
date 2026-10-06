@@ -19,7 +19,10 @@
     "review:published": "node scripts/review-published.mjs",
     "opportunities:daily": "node scripts/daily-opportunities.mjs",
     "opportunities:cleanup": "node scripts/daily-opportunities.mjs --apply-statuses",
-    "opportunities:stage": "node scripts/stage-opportunities.mjs"
+    "opportunities:stage": "node scripts/stage-opportunities.mjs",
+    "opportunities:prepare": "node scripts/prepare-opportunities.mjs",
+    "opportunities:automate": "node scripts/automate-opportunities.mjs",
+    "automation:status": "node scripts/check-automation-status.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",

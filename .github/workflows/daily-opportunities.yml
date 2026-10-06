@@ -6,8 +6,13 @@ on:
       - '.github/workflows/daily-opportunities.yml'
       - 'config/opportunity-workflow.json'
       - 'scripts/daily-opportunities.mjs'
+      - 'scripts/prepare-opportunities.mjs'
+      - 'scripts/automate-opportunities.mjs'
+      - 'scripts/source-parser.mjs'
+      - 'config/automated-organizers.json'
       - 'server/opportunity-policy.mjs'
       - 'server/offer-expiry.mjs'
+      - 'server/source-verification.mjs'
       - 'package*.json'
   schedule:
     # Both UTC hours cover 09:00 New York across daylight saving changes.
@@ -39,11 +44,15 @@ jobs:
       - if: steps.clock.outputs.run == 'true'
         run: npm ci
       - if: steps.clock.outputs.run == 'true'
-        run: node --test test/opportunity-policy.test.mjs
+        run: npm test
       - if: steps.clock.outputs.run == 'true'
         run: npx playwright install --with-deps chromium
       - if: steps.clock.outputs.run == 'true'
-        run: npm run opportunities:daily
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+          CANCHA_AUTOMATION_URL: ${{ vars.CANCHA_AUTOMATION_URL }}
+          CANCHA_AUTOMATION_INGEST_SECRET: ${{ secrets.CANCHA_AUTOMATION_INGEST_SECRET }}
+        run: npm run opportunities:automate
       - uses: actions/upload-artifact@v4
         if: steps.clock.outputs.run == 'true'
         with:
@@ -51,4 +60,6 @@ jobs:
           path: private-data/daily-opportunities/
           retention-days: 7
           if-no-files-found: error
-    # Discovery only. No Framer/Meta credentials, CMS edits, or publication.
+    # With a secure Framer key and private backup host, checked jobs enter
+    # unpublished Framer changes and Instagram drafts await owner review.
+    # No site publication and no Meta token in this workflow.

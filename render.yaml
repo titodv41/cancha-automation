@@ -1,0 +1,41 @@
+# Deployment preparation only. Starter service and persistent disk are paid.
+# Review Render's current price before creating any service.
+services:
+  - type: web
+    name: cancha-automation
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./server/Dockerfile
+    healthCheckPath: /health
+    autoDeployTrigger: 'off'
+    disk:
+      name: cancha-private-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: CANCHA_WEBHOOK_SECRET
+        generateValue: true
+      - key: CANCHA_ADMIN_PASSWORD
+        generateValue: true
+      - key: META_TOKEN_ENCRYPTION_KEY
+        generateValue: true
+      - key: CANCHA_AUTOMATION_INGEST_SECRET
+        generateValue: true
+      - key: CANCHA_STATUS_TOKEN
+        generateValue: true
+      - key: CANCHA_SUBMISSIONS_DB
+        value: /data/submissions.sqlite
+      - key: CANCHA_CONTENT_DB
+        value: /data/instagram.sqlite
+      - key: CANCHA_META_DB
+        value: /data/meta.sqlite
+      - key: ENABLE_INSTAGRAM_WORKER
+        value: '1'
+      - key: META_INSTAGRAM_ACCOUNT_TYPE
+        value: UNCONFIRMED
+      - key: META_APP_ID
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: META_GRAPH_VERSION
+        sync: false

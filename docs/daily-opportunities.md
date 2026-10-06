@@ -2,7 +2,15 @@
 
 Target: three quality additions per weekday, maximum five staged additions per New York calendar day. Fewer is acceptable when the evidence is weak. Start with Florida soccer and relevant soccer careers from existing organizer-linked sources. Broaden the source registry only after checking organizer identity and relevance.
 
-## What is implemented
+## Current automation upgrade
+
+The source-checking/staging pipeline and private review service are now implemented. See [exact activation steps](connect-meta-and-automation.md). With secure runner credentials and a deployed private backup/queue service, `npm run opportunities:automate` can create up to three supported, checked jobs as Active, non-Draft items in **unpublished** Framer changes. It does not mark them human Verified or publish the website. Unsupported or ambiguous leads remain manual-review exceptions. The daily cap is enforced using persistent technical CMS metadata, including stable source posting IDs.
+
+Snapshots must be acknowledged by encrypted private storage before unattended CMS writes. Instagram draft delivery is idempotent and occurs before staging so a delivery failure leaves opportunities eligible for retry. Draft delivery cannot schedule or approve a post. The private review dashboard checks official evidence at approval and again before publication.
+
+Two Miami FC listings were actually staged on October 6, bringing the collection to 83 records. Eight Instagram designs are Draft, zero scheduled. Twenty tests passed, and the Docker service passed health, protected login/status, draft seeding and mobile layout checks. Hosting, real Meta authorization and GitHub secret/URL configuration are still required.
+
+## Original discovery and manual staging interface
 
 - GitHub Actions discovery around **9 AM America/New_York, Monday–Friday**, with daylight-saving guards and manual **Run workflow**. GitHub may delay scheduled jobs; this is not an exact-time guarantee.
 - Source registry in `config/opportunity-workflow.json`: clubs, a camp organizer, and organizer-linked TeamWork job pages/boards. Sources are not a complete search of the web.
@@ -23,8 +31,8 @@ Target: three quality additions per weekday, maximum five staged additions per N
 
 The workflow has been pushed to `main`, and GitHub reports its state as **active**. Weekday discovery is configured; no automatic CMS publishing is enabled. Changes to discovery code/configuration also trigger a read-only validation run. In GitHub: **titodv41/cancha-automation → Actions → Cancha daily opportunity review → Run workflow**. Download **opportunity-review-[run id]** under that run's Artifacts. Reports contain publicly sourced leads, no private contacts. Artifacts are retained seven days and accessible under GitHub's repository/artifact permissions.
 
-This schedule does discovery only. CMS lifecycle changes and approved staging require a secure Framer key on the trusted staging environment. The existing Codex binding works; do not copy its proxy placeholder into GitHub. No Framer or Meta secret is required by this Actions job. There is no always-on editorial review service, automatic daily website publication or guaranteed three additions without review.
+Without the new secure settings this schedule does discovery and artifact preparation only. CMS lifecycle changes and approved staging require a secure Framer key on the trusted staging environment. The existing Codex binding works; do not copy its proxy placeholder into GitHub. A Framer key, private ingestion secret and host URL are required for unattended staging; a Meta publishing token is never required in GitHub. There is no always-on editorial review service, automatic daily website publication or guaranteed three additions without review.
 
 For local runs: Node 24, `npm ci`, `PLAYWRIGHT_BROWSERS_PATH=/tmp/cancha-browsers npx playwright install chromium`, then set that browser path for the daily command. The private review receiver and Instagram dispatch still require their separately documented hosted service.
 
-The first [GitHub execution](https://github.com/titodv41/cancha-automation/actions/runs/37413349782) completed successfully and produced its review artifact. Local verification passed all 12 tests; the remote job ran the two opportunity-policy tests and discovery without credentials. The first local CMS-connected scan found 20 leads from 12 HTTP-200 source pages, with zero lifecycle changes required; these leads were not verified, staged or published. The blank review template was correctly rejected by the live staging validator. No nonempty reviewed batch has been staged.
+The first [GitHub execution](https://github.com/titodv41/cancha-automation/actions/runs/37413349782) completed successfully and produced its review artifact. Local verification passed all 12 tests; the remote job ran the two opportunity-policy tests and discovery without credentials. The first local CMS-connected scan found 20 leads from 12 HTTP-200 source pages, with zero lifecycle changes required; these leads were not verified, staged or published. The blank review template was correctly rejected by the live staging validator. That describes the first discovery run; the two supported records above were staged afterward.

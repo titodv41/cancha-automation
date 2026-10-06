@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validateIntake} from '../server/intake-validation.mjs';
+const provider={'Provider Name':'Fixture only','Contact Name':'Fixture only','Contact Email':'fixture@example.invalid',Category:'Private Training',Location:'Fixture location',Delivery:'Remote',Languages:'English','Age Groups Served':'Adults',Qualifications:'Fixture only, not a real credential',Services:'Fixture only','Booking Link':'https://example.invalid',Permission:true,Status:'Approved'};
+test('provider and offer validation requires private contact, consent, valid links and disclosure',()=>{
+ const clean=validateIntake(provider,'provider');assert.equal(clean.Status,undefined);assert.equal(clean.Permission,true);
+ assert.throws(()=>validateIntake({...provider,Permission:false},'provider'));assert.throws(()=>validateIntake({...provider,Delivery:'unknown'},'provider'));assert.throws(()=>validateIntake({...provider,'Image URL':'http://example.invalid'},'provider'));
+ const offer={Company:'Fixture only','Contact Name':'Fixture only','Contact Email':'fixture@example.invalid','Offer Title':'Fixture only',Category:'Other',Terms:'Fixture only',Region:'Fixture only','Redemption Link':'https://example.invalid',Disclosure:'Sponsored',Permission:true};assert.equal(validateIntake(offer,'offer').Disclosure,'Sponsored');assert.throws(()=>validateIntake({...offer,Disclosure:''},'offer'));assert.throws(()=>validateIntake({...offer,'Expires On':'2026-02-30'},'offer'));
+});

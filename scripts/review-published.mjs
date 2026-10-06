@@ -1,0 +1,12 @@
+import {openBrowser} from './browser-session.mjs';import {writeFile} from 'node:fs/promises';
+const {browser,page}=await openBrowser({width:1200,height:900});const checks=[];
+const cards=()=>page.locator('a[href*="/opportunities/"]');
+async function wait(){await page.waitForTimeout(400)}
+try{
+ await page.goto('https://pioneering-friday-005497.framer.app/explore',{waitUntil:'networkidle'});checks.push({name:'current cards',count:await cards().count()});const search=page.locator('input').first(),clear=page.getByText('Clear Filters',{exact:true}),selects=page.locator('select');
+ await search.fill('Hollywood');await wait();checks.push({name:'search',count:await cards().count()});await search.fill('zz_no_match_123');await wait();checks.push({name:'empty',count:await cards().count(),messageVisible:await page.getByText('No opportunities match those filters yet. Try broadening your search.').isVisible()});await clear.click();await wait();
+ for(const[index,label]of [[0,'Tryout'],[1,'Tampa Bay'],[2,'Professional'],[3,'Adult']]){await selects.nth(index).selectOption({label});await wait();checks.push({name:'filter '+label,count:await cards().count()});await clear.click();await wait();checks.push({name:'clear after '+label,count:await cards().count(),query:await search.inputValue(),values:await selects.evaluateAll(xs=>xs.map(x=>x.value))});}
+ await selects.nth(0).selectOption({label:'Tryout'});await selects.nth(1).selectOption({label:'South Florida'});await wait();checks.push({name:'combined Tryout South Florida',count:await cards().count()});await clear.click();await wait();
+ const links=await cards().evaluateAll(xs=>xs.map(x=>x.href));for(const link of links){const response=await page.goto(link,{waitUntil:'networkidle'});const reg=page.getByText('View / Apply / Register',{exact:true});checks.push({name:'detail',url:link,httpStatus:response.status(),registrationHref:await reg.evaluate(el=>el.closest('a')?.href||null),brokenImages:await page.evaluate(()=>[...document.images].filter(x=>!x.complete||x.naturalWidth===0).length)});}
+ await page.setViewportSize({width:390,height:844});await page.goto('https://pioneering-friday-005497.framer.app/explore',{waitUntil:'networkidle'});checks.push({name:'mobile overflow',width:await page.evaluate(()=>document.documentElement.scrollWidth)});
+}finally{await writeFile('audit/published-functional-review.json',JSON.stringify(checks,null,2));console.log(JSON.stringify(checks));await browser.close();}

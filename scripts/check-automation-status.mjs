@@ -1,0 +1,5 @@
+import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
+if(!process.env.CANCHA_AUTOMATION_URL||!process.env.CANCHA_STATUS_TOKEN)throw Error('Configure the real service URL and secure read-only status binding');
+const url=new URL(process.env.CANCHA_AUTOMATION_URL);if(url.protocol!=='https:'||url.username||url.password)throw Error('Use the actual HTTPS service origin');
+const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
+try{const response=await fetch(new URL('/automation/status',url.origin),{dispatcher,redirect:'error',headers:{Authorization:'Bearer '+process.env.CANCHA_STATUS_TOKEN},signal:AbortSignal.timeout(20000)});if(!response.ok)throw Error('Private status access failed; check the secure binding');const status=await response.json();console.log(JSON.stringify(status,null,2));}catch{console.error('Unable to read private automation status. No credentials were printed.');process.exitCode=1;}finally{if(dispatcher)await dispatcher.close();}

@@ -1,0 +1,11 @@
+{
+  "dockerBuilt": true,
+  "health": true,
+  "adminLogin": true,
+  "privateStatus": true,
+  "seededDrafts": 8,
+  "metaConnected": false,
+  "scheduled": 0,
+  "fixtureOnly": true,
+  "mobileOverflow": false
+}

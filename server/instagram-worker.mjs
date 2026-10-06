@@ -1,0 +1,7 @@
+import {confirmOpportunitySource} from './opportunity-recheck.mjs';
+import {resolve} from 'node:path';import {openQueue,dispatchDue,metaPublisher} from './instagram-queue.mjs';import {openMetaVault} from './meta-vault.mjs';
+export function startInstagramWorker(env=process.env){
+ const db=openQueue(resolve(env.CANCHA_CONTENT_DB||'private-data/instagram.sqlite'));const vault=env.META_TOKEN_ENCRYPTION_KEY?openMetaVault(resolve(env.CANCHA_META_DB||'private-data/meta.sqlite'),env.META_TOKEN_ENCRYPTION_KEY):null;let active;
+ function tick(){if(active)return;active=(async()=>{const connection=vault?.read();if(!connection&&!env.META_PAGE_ACCESS_TOKEN)return;const publisher=metaPublisher({token:connection?()=>vault.read()?.pageToken:env.META_PAGE_ACCESS_TOKEN,accountId:connection?.accountId||env.META_INSTAGRAM_ACCOUNT_ID,version:connection?.version||env.META_GRAPH_VERSION,accountType:connection?.accountType||env.META_INSTAGRAM_ACCOUNT_TYPE});const results=await dispatchDue(db,publisher,{limit:1,verifySource:confirmOpportunitySource});if(results.length)console.log(JSON.stringify({instagram:results}));})().catch(()=>console.error('Instagram worker stopped this cycle; review the private queue')).finally(()=>{active=undefined;});}
+ const timer=setInterval(tick,60000);timer.unref();tick();return async()=>{clearInterval(timer);if(active)await active;db.close();vault?.close();};
+}

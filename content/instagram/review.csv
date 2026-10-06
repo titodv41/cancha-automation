@@ -1,0 +1,19 @@
+id,format,caption,altText,assetUrl,targetPath,status,scheduledAt,reviewNote
+cancha-introduction,feed,"Your next step in soccer can take more than one shape. Cancha brings opportunities and practical questions together so you can explore what fits your goals. Check the organizer’s current details before applying. Start with Explore through the link in our bio.
+
+#Cancha #SoccerCommunity #FloridaSoccer","Cancha introduction on a dark green background: Your next step starts here. Tryouts, training, college pathways and careers in soccer.",https://framerusercontent.com/images/r8EX4WUDsRQKNZzO7Dorp3uEk.jpg,/explore,Draft,,Confirm the Instagram bio links to Cancha before approving.
+registration-checklist,feed,"A working registration button does not always mean a confirmed place. Before committing, check the organizer’s current page, exact eligibility, full cost, remaining availability and next steps. Save the terms and your confirmation.
+
+Save this checklist for your next search.
+
+#Cancha #SoccerTryouts #SoccerParents","Five-question registration checklist in Cancha green and cream: current page, eligibility, cost, availability and next steps.",https://framerusercontent.com/images/RFfAmmZ1cQgXnzZFqkFsTvhfpY.jpg,/explore,Draft,,
+providers-coming-soon,feed,"We’re building Cancha’s provider directory for people looking for support in soccer, in Florida and online. No provider profiles are listed yet. Real submissions will be reviewed before appearing. Follow @wearecancha for the launch.
+
+#Cancha #SoccerCoaching #AthleteSupport",Provider directory announcement with the headline Support for your next step and a directory in development label.,https://framerusercontent.com/images/5ZuSIeOmGAdILsAljzOVXedglM.jpg,,Draft,,Keep the coming-soon wording until provider intake and directory are live.
+career-beyond-pitch,feed,"Your next role in soccer can be beyond the pitch. Read the responsibilities, required experience, location and schedule—not just the job title. Use your own work to show what you can contribute, and apply through the employer’s current posting.
+
+Explore current roles through the link in our bio.
+
+#Cancha #SportsCareers #SoccerJobs","Cancha career card: Soccer needs more than players. Communication, operations and fan experience.",https://framerusercontent.com/images/UYXRXhZWixzz1QkMXRppFtXtPlk.jpg,/explore,Draft,,
+community-question,story,What are you looking for next in soccer? Reply to this story—we want to hear what would help.,"Cancha question story asking whether your next step is a team, training, college soccer or a career in sport.",https://framerusercontent.com/images/UJHbiPQnXOp32T7hvEpl8O0Xf0.jpg,,Draft,,Interactive poll/question stickers need manual setup in Instagram; the API image does not add one.
+check-before-commit,story,Check the organizer’s current details before you commit.,"Cancha story checklist: confirm the date, read eligibility and ask about availability.",https://framerusercontent.com/images/Y7jNXEzzE6CUDjumXtzKRCOPAQ.jpg,/explore,Draft,,Add a link sticker manually if desired; automated story image publishing does not add a clickable link sticker.

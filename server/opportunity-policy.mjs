@@ -1,5 +1,6 @@
 import {dateInNewYork,expiredOffer} from './offer-expiry.mjs';
 export function canonicalUrl(input){const u=new URL(input);if(u.protocol!=='https:'||u.username||u.password)throw Error('Public HTTPS URL required');u.hash='';for(const key of [...u.searchParams.keys()])if(/^utm_|^(fbclid|gclid)$/i.test(key))u.searchParams.delete(key);u.searchParams.sort();u.pathname=u.pathname.replace(/\/$/,'')||'/';return u.href;}
+export function opportunityIdentity(input){const url=new URL(canonicalUrl(input));if(url.hostname.endsWith('teamworkonline.com')){const match=url.pathname.match(/-(\d+)$/)||url.pathname.match(/\/employment_opportunities\/(\d+)\//);if(match)return 'teamwork-posting:'+match[1];}return url.href;}
 export function lifecycle(item,now=new Date()){
  if(item.status!=='Active')return null;
  if(item.end){try{if(expiredOffer(item.end,now))return {status:'Expired',label:'Listed end date passed',verified:false,note:'The stored end date has passed. This listing is retained for its existing URL; organizer availability has not been reconfirmed.'};}catch{return {status:'Pending review',label:'Date needs review',verified:false,note:'The stored end date is invalid. Confirm with the organizer.'};}}
@@ -14,11 +15,13 @@ export function validateBatch(batch,existing,config,now=new Date()){
  const identity=x=>`${String(x.title||'').toLowerCase().replace(/[^a-z0-9]/g,'')}|${String(x.organization||'').toLowerCase().replace(/[^a-z0-9]/g,'')}`;
  const identities=new Set(existing.filter(x=>x.title&&x.organization).map(identity));
  const urls=new Set(existing.map(x=>x.registration).filter(Boolean).map(canonicalUrl)),slugs=new Set(existing.map(x=>x.slug));
+ const postingIds=new Set(existing.map(x=>x.registration).filter(Boolean).map(opportunityIdentity));
  for(const row of batch){
   for(const field of ['slug','title','organization','category','sport','city','region','state','level','ageGroup','gender','cost','shortDescription','fullDescription','registrationUrl','officialSourceUrl','eligibilityEvidence','availabilityEvidence','dateEvidence','imageUrl','imageRightsEvidence','imageContext','reviewer','reviewedAt','sourceCheckedAt'])if(typeof row[field]!=='string'||!row[field].trim())throw Error('Missing reviewed field: '+field);
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(row.slug)||slugs.has(row.slug))throw Error('Duplicate or invalid slug');slugs.add(row.slug);
   if(identities.has(identity(row)))throw Error('Possible duplicate title/organizer requires manual resolution');identities.add(identity(row));
   const url=canonicalUrl(row.registrationUrl);canonicalUrl(row.officialSourceUrl);canonicalUrl(row.imageUrl);if(urls.has(url))throw Error('Possible duplicate registration URL requires manual resolution');urls.add(url);
+  const posting=opportunityIdentity(row.registrationUrl);if(postingIds.has(posting))throw Error('Possible duplicate posting ID requires manual resolution');postingIds.add(posting);
   for(const field of ['reviewedAt','sourceCheckedAt']){const date=Date.parse(row[field]);if(!Number.isFinite(date)||date>now.getTime()||now.getTime()-date>config.maximumSourceAgeHours*3600000)throw Error('Review/evidence missing, future or stale');}
   if(row.openConfirmed!==true||row.imageApproved!==true||!['Badge','Photo'].includes(row.imageTreatment))throw Error('Open status and image treatment require review');
   if(!Number.isFinite(row.imageWidth)||!Number.isFinite(row.imageHeight)||row.imageWidth<=0||row.imageHeight<=0||(row.imageTreatment==='Photo'&&(row.imageWidth<1200||row.imageHeight<600)))throw Error('Image resolution needs review');

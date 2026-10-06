@@ -1,0 +1,21 @@
+{
+  "collectionCount": 83,
+  "status": "ready",
+  "errors": [],
+  "warnings": [],
+  "changes": [
+    {
+      "type": "CollectionItem",
+      "nodeId": "fiRNcfIy4",
+      "name": "opportunities/miami-fc-head-athletic-trainer-2192952",
+      "status": "added"
+    },
+    {
+      "type": "CollectionItem",
+      "nodeId": "vg9mTWjLf",
+      "name": "opportunities/miami-fc-ticketing-intern-2183479",
+      "status": "added"
+    }
+  ],
+  "published": false
+}

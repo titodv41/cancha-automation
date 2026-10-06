@@ -1,0 +1,40 @@
+[
+  {
+    "sourcePrefix": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/miami-fc-jobs/",
+    "organization": "Miami FC",
+    "organizationAliases": [
+      "Miami FC"
+    ],
+    "imageUrl": "https://framerusercontent.com/images/tl3r1BDApWbEC4Lfq8UwQsSqBWU.png",
+    "imageTreatment": "Badge",
+    "imageBackground": "Light",
+    "imageMaxWidth": 240,
+    "imageProvenance": "Existing Cancha CMS branding from digital-communications-intern; reused under the user\u2019s existing image instructions, not a new licensing claim."
+  },
+  {
+    "sourcePrefix": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/tampa-bay-sun-fc-jobs/",
+    "organization": "Tampa Bay Sun FC",
+    "organizationAliases": [
+      "Tampa Bay Sun FC"
+    ],
+    "imageUrl": "https://framerusercontent.com/images/dQa5guik0Vi0xweaOR46TQchb0.png",
+    "imageTreatment": "Badge",
+    "imageBackground": "Light",
+    "imageMaxWidth": 240,
+    "imageProvenance": "Existing Cancha CMS branding from soccer-operations-internship-equipment-(spring-2027); reused under the user\u2019s existing image instructions, not a new licensing claim."
+  },
+  {
+    "sourcePrefix": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/usl-league-office-jobs/",
+    "organization": "United Soccer League",
+    "organizationAliases": [
+      "USL",
+      "United Soccer League",
+      "United Soccer League (USL)"
+    ],
+    "imageUrl": "https://framerusercontent.com/images/KfHWSisZgr6x0GszaNCRCEnrZQ8.png",
+    "imageTreatment": "Badge",
+    "imageBackground": "Light",
+    "imageMaxWidth": 95,
+    "imageProvenance": "Existing Cancha CMS branding from safeguarding-compliance-specialist; reused under the user\u2019s existing image instructions, not a new licensing claim."
+  }
+]

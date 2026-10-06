@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {canonicalUrl,lifecycle,validateBatch} from '../server/opportunity-policy.mjs';
+import {canonicalUrl,lifecycle,validateBatch,opportunityIdentity} from '../server/opportunity-policy.mjs';
 const now=new Date('2026-10-06T14:00:00Z');
 test('closed lifecycle preserves expiry day, ignores nonactive records and rechecks stale sources',()=>{
  assert.equal(lifecycle({status:'Active',end:'2026-10-06',checkedOn:'2026-10-06'},now),null);
@@ -8,6 +8,7 @@ test('closed lifecycle preserves expiry day, ignores nonactive records and reche
  assert.equal(lifecycle({status:'Active',checkedOn:'2026-09-28'},now).status,'Pending review');
  assert.equal(lifecycle({status:'Active',end:'2026-02-30',checkedOn:'2026-10-06'},now).status,'Pending review');
  assert.equal(canonicalUrl('https://example.org/register?id=42&utm_source=ig#register'),'https://example.org/register?id=42');
+ assert.equal(opportunityIdentity('https://www.teamworkonline.com/soccer-jobs/team/new-title-123'),opportunityIdentity('https://www.teamworkonline.com/soccer-jobs/team/old-title-123'));
 });
 test('daily additions require current human evidence, rights, resolution and no duplicate routes',()=>{
  const row=Object.fromEntries(['slug','title','organization','category','sport','city','region','state','level','ageGroup','gender','cost','shortDescription','fullDescription','eligibilityEvidence','availabilityEvidence','dateEvidence','imageRightsEvidence','imageContext','reviewer'].map(x=>[x,x]));

@@ -1,0 +1,4 @@
+import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
+export function sourceSession(){const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
+ return {async html(url){const response=await fetch(url,{dispatcher,redirect:'manual',signal:AbortSignal.timeout(25000)});if(response.status!==200||!/text\/html/i.test(response.headers.get('content-type')||'')){await response.body?.cancel();throw Error('Source blocked, redirected or unavailable');}const reader=response.body.getReader(),chunks=[];let total=0;while(true){const r=await reader.read();if(r.done)break;total+=r.value.length;if(total>2_000_000){await reader.cancel();throw Error('Source exceeds size limit');}chunks.push(Buffer.from(r.value));}return Buffer.concat(chunks);},async close(){if(dispatcher)await dispatcher.close();}};
+}
