@@ -21,7 +21,7 @@ Target: three quality additions per weekday, maximum five staged additions per N
 
 ## Activation and where to see results
 
-The Actions workflow becomes scheduled only after it is on the repository's default branch and GitHub Actions is enabled. A branch push by itself does not activate it. In GitHub: **titodv41/cancha-automation → Actions → Cancha daily opportunity review → Run workflow**. Download **opportunity-review-[run id]** under that run's Artifacts. Reports contain publicly sourced leads, no private contacts. Artifacts are retained seven days and accessible under GitHub's repository/artifact permissions.
+The workflow has been pushed to `main`, and GitHub reports its state as **active**. Weekday discovery is configured; no automatic CMS publishing is enabled. Changes to discovery code/configuration also trigger a read-only validation run. In GitHub: **titodv41/cancha-automation → Actions → Cancha daily opportunity review → Run workflow**. Download **opportunity-review-[run id]** under that run's Artifacts. Reports contain publicly sourced leads, no private contacts. Artifacts are retained seven days and accessible under GitHub's repository/artifact permissions.
 
 This schedule does discovery only. CMS lifecycle changes and approved staging require a secure Framer key on the trusted staging environment. The existing Codex binding works; do not copy its proxy placeholder into GitHub. No Framer or Meta secret is required by this Actions job. There is no always-on editorial review service, automatic daily website publication or guaranteed three additions without review.
 

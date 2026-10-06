@@ -9,6 +9,9 @@
   "lifecycleChanges": 0,
   "statusesApplied": 0,
   "published": false,
-  "scheduledJobActive": false,
-  "candidateNote": "Leads only: not verified or added to CMS."
+  "scheduledJobActive": true,
+  "candidateNote": "Leads only: not verified or added to CMS.",
+  "githubWorkflowState": "active",
+  "remoteExecutionVerified": false,
+  "credentialFreeDiscoveryValidatedLocally": true
 }
