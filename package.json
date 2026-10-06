@@ -1,0 +1,33 @@
+{
+  "name": "cancha-automation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check:connection": "node scripts/check-connection.mjs",
+    "check:network": "node scripts/check-network.mjs",
+    "test": "node --test",
+    "start:submissions": "node server/submissions.mjs",
+    "render:instagram": "node scripts/render-instagram.mjs",
+    "content:import": "node scripts/instagram.mjs import content/instagram/drafts.json",
+    "content:list": "node scripts/instagram.mjs list",
+    "content:due": "node scripts/instagram.mjs due",
+    "offers:check": "node scripts/hide-expired-offers.mjs --dry-run",
+    "review:published": "node scripts/review-published.mjs",
+    "opportunities:daily": "node scripts/daily-opportunities.mjs",
+    "opportunities:cleanup": "node scripts/daily-opportunities.mjs --apply-statuses",
+    "opportunities:stage": "node scripts/stage-opportunities.mjs"
+  },
+  "dependencies": {
+    "framer-api": "5.1.0",
+    "https-proxy-agent": "9.1.0",
+    "ws": "8.22.0"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0",
+    "undici": "8.1.0"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "timezone": "America/New_York",
+  "targetPerWeekday": 3,
+  "maximumPerRun": 5,
+  "maximumSourceAgeHours": 72,
+  "publishAutomatically": false,
+  "sources": [
+    {
+      "id": "hollywood-fc-2026-27-supplemental-competitive-tryouts",
+      "url": "https://www.hollywoodfc.com/tryouts",
+      "enabled": true
+    },
+    {
+      "id": "soccer-operations-internship-equipment-(spring-2027)",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/tampa-bay-sun-fc-jobs/soccer-operations-internship-equipment-spring-2027-2188366",
+      "enabled": true
+    },
+    {
+      "id": "florida-southern-men-s-soccer-winter-id-camp-2027",
+      "url": "https://www.ahelitesoccercamps.com/content/id-camps/january-id-camp",
+      "enabled": true
+    },
+    {
+      "id": "digital-communications-intern",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/miami-fc-jobs/digital-communications-intern-2190665",
+      "enabled": true
+    },
+    {
+      "id": "safeguarding-compliance-specialist",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/usl-league-office-jobs/safeguarding-compliance-specialist-2189910",
+      "enabled": true
+    },
+    {
+      "id": "operations-manager-usl-league-two",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/usl-league-office-jobs/operations-manager-usl-league-two-2188730",
+      "enabled": true
+    },
+    {
+      "id": "fishhawk-premier-fc-2026-27-one-on-one-evaluations",
+      "url": "https://www.fishhawkpremierfc.com/1on1/",
+      "enabled": true
+    },
+    {
+      "id": "wec-premier-fc-2026-27-one-on-one-evaluations",
+      "url": "https://www.wecpremierfc.com/1on1/",
+      "enabled": true
+    },
+    {
+      "id": "ticketing-systems-and-partnerships-manager",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/usl-league-office-jobs/ticketing-systems-and-partnerships-manager-2191841",
+      "enabled": true
+    },
+    {
+      "id": "soccer-operations-internship-equipment-(spring-2027)-official-job-board",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/tampa-bay-sun-fc-jobs",
+      "enabled": true
+    },
+    {
+      "id": "digital-communications-intern-official-job-board",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/miami-fc-jobs",
+      "enabled": true
+    },
+    {
+      "id": "safeguarding-compliance-specialist-official-job-board",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/usl-league-office-jobs",
+      "enabled": true
+    }
+  ]
+}

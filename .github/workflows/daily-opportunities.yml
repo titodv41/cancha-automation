@@ -1,0 +1,46 @@
+name: Cancha daily opportunity review
+on:
+  workflow_dispatch:
+  schedule:
+    # Both UTC hours cover 09:00 New York across daylight saving changes.
+    - cron: '0 13,14 * * 1-5'
+permissions:
+  contents: read
+concurrency:
+  group: daily-opportunities
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - id: clock
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = workflow_dispatch ] || [ "$(TZ=America/New_York date +%H)" = 09 ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.clock.outputs.run == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.clock.outputs.run == 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - if: steps.clock.outputs.run == 'true'
+        run: npm ci
+      - if: steps.clock.outputs.run == 'true'
+        run: node --test test/opportunity-policy.test.mjs
+      - if: steps.clock.outputs.run == 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.clock.outputs.run == 'true'
+        run: npm run opportunities:daily
+      - uses: actions/upload-artifact@v4
+        if: steps.clock.outputs.run == 'true'
+        with:
+          name: opportunity-review-${{ github.run_id }}
+          path: private-data/daily-opportunities/
+          retention-days: 7
+          if-no-files-found: error
+    # Discovery only. No Framer/Meta credentials, CMS edits, or publication.

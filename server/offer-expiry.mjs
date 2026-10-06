@@ -1,0 +1,2 @@
+export function dateInNewYork(now=new Date()){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);}
+export function expiredOffer(date,now=new Date()){if(!date)return false;const value=String(date).slice(0,10);if(!/^\d{4}-\d{2}-\d{2}$/.test(value)||!Number.isFinite(Date.parse(value))||new Date(value).toISOString().slice(0,10)!==value)throw Error('Invalid offer expiry; review manually');return value<dateInNewYork(now);}

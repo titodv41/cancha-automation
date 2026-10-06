@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-06",
+  "cmsConnected": true,
+  "sourcesChecked": 12,
+  "sourceStatusCounts": {
+    "200": 12
+  },
+  "candidateLeads": 20,
+  "lifecycleChanges": 0,
+  "statusesApplied": 0,
+  "published": false,
+  "scheduledJobActive": false,
+  "candidateNote": "Leads only: not verified or added to CMS."
+}
