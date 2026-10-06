@@ -1,4 +1,6 @@
 {
+  "persistentDiskRestart": true,
+  "httpProcessUid": 1000,
   "dockerBuilt": true,
   "health": true,
   "adminLogin": true,
