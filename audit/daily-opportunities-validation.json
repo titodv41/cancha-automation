@@ -12,6 +12,11 @@
   "scheduledJobActive": true,
   "candidateNote": "Leads only: not verified or added to CMS.",
   "githubWorkflowState": "active",
-  "remoteExecutionVerified": false,
-  "credentialFreeDiscoveryValidatedLocally": true
+  "remoteExecutionVerified": true,
+  "credentialFreeDiscoveryValidatedLocally": true,
+  "githubRunUrl": "https://github.com/titodv41/cancha-automation/actions/runs/37413349782",
+  "githubRunConclusion": "success",
+  "artifacts": [
+    "opportunity-review-37413349782"
+  ]
 }
