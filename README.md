@@ -2,7 +2,7 @@
 
 Framer project **GU8EIeQXaRbty0S23thu**. Authenticated Server API access works in this Codex instance. The user published the earlier listing fixes; live browsing was verified. New Providers, Offers, Stories and navigation changes are saved in Framer's **unpublished draft**. This automation has not published the site or Instagram content.
 
-Start with [Meta and unattended automation setup](docs/connect-meta-and-automation.md): two new Miami FC listings are ready for the next website Publish, and eight Instagram designs remain unscheduled drafts. Twenty tests and a real Docker smoke check passed.
+Start with [Meta and unattended automation setup](docs/connect-meta-and-automation.md): two new Miami FC listings are ready for the next website Publish, and eight Instagram designs remain unscheduled drafts. Twenty-two tests and a real Docker smoke check passed.
 
 Read [the growth and Instagram report](docs/growth-and-instagram.md) for the latest work, desktop/mobile previews, account connection steps and blockers. Review [six Instagram designs and captions](content/instagram/review.md) and three articles in `content/stories/`. The earlier [change report](docs/change-report.md) preserves the listing audit. Read [private submission deployment instructions](docs/private-submissions.md) to deploy the prepared queue. The organization form is deliberately locked until that service is available.
 
@@ -17,7 +17,7 @@ npm test
 npm run check:connection
 ```
 
-Twenty tests cover the read-only connection contract, Instagram approval/dispatch safeguards, New York offer expiry, and the real private receiver: signed intake, mandatory Pending review, retries, duplicate flags, consent, validation, and absence of public queue/contact access. They do not replace Framer Preview checks. `check:connection` reads only project information and disconnects, checking Cancha's hashed project identity without printing credentials.
+Twenty-two tests cover the read-only connection contract, Instagram approval/dispatch safeguards, New York offer expiry, and the real private receiver: signed intake, mandatory Pending review, retries, duplicate flags, consent, validation, and absence of public queue/contact access. They do not replace Framer Preview checks. `check:connection` reads only project information and disconnects, checking Cancha's hashed project identity without printing credentials.
 
 The SDK captures global WebSocket at import time. `scripts/transport.mjs` installs a WebSocket adapter before the dynamic SDK import, preserving SDK authorization through the existing HTTPS proxy. TLS verification stays enabled and the WebSocket destination is limited to api.framer.com. `check:network` is optional: an unauthenticated probe is not an access check for the authenticated project.
 
