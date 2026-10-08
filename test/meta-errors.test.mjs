@@ -60,3 +60,22 @@ test('account failures distinguish missing grants from invisible Instagram witho
   });
  }
 });
+test('confirmed Cancha identity resolves an omitted Page field with Page-token reads and rejects another account ID',async()=>{
+ for(const sameId of [true,false])for(const pageField of [true,false]){
+  const authorization=createMetaAuthorization({...options,expectedPageId:'2',expectedAccountId:'3',fetchImpl:async(input,args)=>{
+   const url=new URL(input);
+   if(url.pathname.endsWith('/oauth/access_token'))return Response.json({access_token:'fixture-user-token'});
+   if(url.pathname.endsWith('/me/accounts'))return Response.json({data:[{id:'1',access_token:'fixture-other-token'},{id:'2',access_token:'fixture-cancha-token'}]});
+   assert.equal(args.headers.Authorization,'Bearer fixture-cancha-token');
+   if(url.pathname==='/v99.0/2')return Response.json({id:'2',...(pageField?{instagram_business_account:{id:sameId?'3':'4',username:'wearecancha'}}:{})});
+   if(url.pathname==='/v99.0/3')return Response.json({id:sameId?'3':'4',username:'wearecancha'});
+   throw Error('Unexpected fixture request');
+  }});
+  if(sameId){const connection=await authorization.exchange('fixture-code');assert.equal(connection.pageId,'2');assert.equal(connection.accountId,'3');}
+  else await assert.rejects(authorization.exchange('fixture-code'),error=>error instanceof MetaConnectionError);
+ }
+});
+test('confirmed Page must be authorized; another Page never supplies its token',async()=>{
+ const authorization=createMetaAuthorization({...options,expectedPageId:'2',expectedAccountId:'3',fetchImpl:async input=>new URL(input).pathname.endsWith('/oauth/access_token')?Response.json({access_token:'fixture-user-token'}):Response.json({data:[{id:'1',access_token:'fixture-other-token',instagram_business_account:{id:'3',username:'wearecancha'}}]})});
+ await assert.rejects(authorization.exchange('fixture-code'),error=>error.code==='META_EXPECTED_PAGE_NOT_VISIBLE');
+});

@@ -5,10 +5,10 @@ const digest=x=>createHash('sha256').update(x).digest();const equal=(a,b)=>timin
 export function ingestSignature(secret,timestamp,bytes){return 'sha256='+createHmac('sha256',secret).update(timestamp+'\n').update(bytes).digest('hex');}
 async function body(req,max=65536){let size=0;const chunks=[];for await(const chunk of req){size+=chunk.length;if(size>max)throw Error('Request too large');chunks.push(chunk);}return Buffer.concat(chunks);}
 function cookie(req,name){const raw=String(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith(name+'='));return raw?.slice(name.length+1)||'';}
-export function createAutomationConsole({baseUrl,password,encryptionKey,vaultPath,queuePath,appId,appSecret,version,loginConfigId,expectedPageId,accountType,ingestSecret,statusToken,reviewer='Cancha account owner',fetchImpl=fetch}){
+export function createAutomationConsole({baseUrl,password,encryptionKey,vaultPath,queuePath,appId,appSecret,version,loginConfigId,expectedPageId,expectedAccountId,accountType,ingestSecret,statusToken,reviewer='Cancha account owner',fetchImpl=fetch}){
  const base=new URL(baseUrl),origin=base.origin;if(base.protocol!=='https:'||base.username||base.password||base.pathname!=='/'||typeof password!=='string'||password.length<32)throw Error('Configure HTTPS service URL and secure administrator password');
  const vault=openMetaVault(vaultPath,encryptionKey),db=openQueue(queuePath);db.exec('CREATE TABLE IF NOT EXISTS ingest_receipts(hash TEXT PRIMARY KEY,created_at TEXT NOT NULL)');
- const authorization=appId&&appSecret&&version?createMetaAuthorization({appId,appSecret,version,baseUrl:origin,loginConfigId,expectedPageId,accountType,fetchImpl}):null;
+ const authorization=appId&&appSecret&&version?createMetaAuthorization({appId,appSecret,version,baseUrl:origin,loginConfigId,expectedPageId,expectedAccountId,accountType,fetchImpl}):null;
  const sessionsSecret=createHmac('sha256',password).update('cancha-admin-sessions').digest();
  function session(){const value=Buffer.from(JSON.stringify({expires:Date.now()+60*60000})).toString('base64url');return value+'.'+createHmac('sha256',sessionsSecret).update(value).digest('hex');}
  function authenticated(req){const value=cookie(req,'cancha_admin'),parts=value.split('.');if(parts.length!==2||!equal(parts[1],createHmac('sha256',sessionsSecret).update(parts[0]).digest('hex')))return false;try{return JSON.parse(Buffer.from(parts[0],'base64url')).expires>Date.now();}catch{return false;}}
