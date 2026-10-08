@@ -69,3 +69,11 @@ Validation: all **20 tests passed**, and the built Docker container passed healt
 Official references: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/content-publishing/ ; https://render.com/docs/blueprint-spec ; https://render.com/docs/environment-variables .
 
 The upgraded [GitHub run](https://github.com/titodv41/cancha-automation/actions/runs/37418473559) completed successfully and produced `opportunity-review-37418473559`. This verifies the remote job and artifact creation, not private-host deployment or real Meta authorization. The local no-credential pipeline prepared two checked records and two designs while applying zero CMS changes; it reported the missing runner key/private host explicitly. Source availability and supported evidence can vary by runner, so daily additions are a quality target, not a guaranteed quota.
+
+## Login repair: Origin rejected
+
+The original dashboard used `Referrer-Policy: no-referrer`. Chromium sends `Origin: null` on its form POST under that policy, so the correctly strict origin guard rejected even a valid login. This was reproduced on the deployed sign-in page with an intercepted request: no password was sent. The response now uses `strict-origin`, preserving the expected form origin while restricting referrer details. Null and foreign origins still receive 403.
+
+The isolated browser regression uses temporary credentials and databases, checks successful form login and Secure/HttpOnly/SameSite cookies, and confirms foreign/null requests remain rejected. Run `PLAYWRIGHT_BROWSERS_PATH=/tmp/cancha-browsers node scripts/check-admin-login.mjs` after installing Chromium. All twenty Node tests also passed, including the administrator opportunity-source approval path, whose missing source-check import was corrected. No real account was signed in and no draft was scheduled by validation.
+
+Because the Blueprint disables automatic deployment, apply the code fix in Render: **cancha-automation → Manual Deploy → Deploy latest commit**. Wait for Live, reload `https://cancha-automation.onrender.com/admin`, and sign in with the existing administrator password. Do not reset the password or relax the origin check to address this bug.
