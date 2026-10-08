@@ -6,6 +6,9 @@ const help = {
   META_PAGE_ACCESS: 'Meta could not read your Pages. Enable pages_show_list, pages_read_engagement, instagram_basic and instagram_content_publish, and authorize the Cancha Page with an account that controls it.',
   META_NO_PAGES: 'Meta returned no accessible Pages. Authorize the Cancha Facebook Page in the login asset selection and confirm your Facebook account has Page control. Use a User access-token login configuration.',
   META_ACCOUNT_MISMATCH: 'The authorized Page must contain exactly the expected Instagram account @wearecancha. Check Page → Linked accounts, the assets selected during login, and any META_EXPECTED_PAGE_ID restriction in Render.',
+  META_PERMISSIONS_MISSING: 'The Meta login did not grant all required permissions. Check the Facebook Login for Business configuration, then reconnect and allow the requested access.',
+  META_INSTAGRAM_NOT_VISIBLE: 'Meta returned Facebook Pages but no accessible professional Instagram account. Confirm Instagram access is included in the login configuration and asset selection. The Page link can exist while this app lacks access.',
+  META_INSTAGRAM_USERNAME_MISSING: 'Meta returned an Instagram account ID but did not allow its username to be read. Check Instagram permissions and the assets selected in the login configuration.',
   META_PAGE_TOKEN: 'Meta returned the Instagram account without usable Page publishing authorization. Check the required permissions and Page control, then reconnect.'
 };
 export class MetaConnectionError extends Error {
@@ -13,6 +16,9 @@ export class MetaConnectionError extends Error {
     super(help[code] || 'Meta connection could not be completed. Start a new connection from the dashboard.');
     this.code = Object.hasOwn(help, code) ? code : 'META_CONNECTION_FAILED';
     // Never include Meta's message, URL, response body, authorization code or token.
+    this.pageCount = Number.isSafeInteger(details.pageCount) ? details.pageCount : null;
+    this.instagramAccountCount = Number.isSafeInteger(details.instagramAccountCount) ? details.instagramAccountCount : null;
+    this.missingPermissions = Array.isArray(details.missingPermissions) ? scopes.filter(scope => details.missingPermissions.includes(scope)) : [];
     this.metaCode = Number.isSafeInteger(details.code) && details.code >= 0 ? details.code : null;
     this.metaSubcode = Number.isSafeInteger(details.error_subcode) && details.error_subcode >= 0 ? details.error_subcode : null;
   }
@@ -54,10 +60,42 @@ export function createMetaAuthorization({appId, appSecret, version, baseUrl, log
       if (!short.access_token) throw new MetaConnectionError('META_CODE_EXCHANGE');
       const long = await request('oauth/access_token', {grant_type: 'fb_exchange_token', client_id: appId, client_secret: appSecret, fb_exchange_token: short.access_token}, null, 'META_LONG_TOKEN');
       if (!long.access_token) throw new MetaConnectionError('META_LONG_TOKEN');
-      const pages = await request('me/accounts', {fields: 'id,name,access_token,instagram_business_account{id,username}'}, long.access_token, 'META_PAGE_ACCESS');
-      if (!Array.isArray(pages.data) || pages.data.length === 0) throw new MetaConnectionError('META_NO_PAGES');
-      const matches = pages.data.filter(page => page.instagram_business_account?.username?.toLowerCase() === expectedUsername.toLowerCase() && (!expectedPageId || page.id === expectedPageId));
-      if (matches.length !== 1) throw new MetaConnectionError('META_ACCOUNT_MISMATCH');
+      const pages = [];
+      let after;
+      for (let batch = 0; batch < 10; batch++) {
+        const result = await request('me/accounts', {fields: 'id,name,access_token,instagram_business_account{id,username}', limit: '100', ...(after ? {after} : {})}, long.access_token, 'META_PAGE_ACCESS');
+        if (Array.isArray(result.data)) pages.push(...result.data);
+        if (!result.paging?.next) break;
+        const cursor = result.paging?.cursors?.after;
+        if (typeof cursor !== 'string' || cursor.length > 4096 || cursor === after || batch === 9) throw new MetaConnectionError('META_PAGE_ACCESS');
+        after = cursor;
+      }
+      const uniquePages = [...new Map(pages.filter(page => /^\d+$/.test(page.id || '')).map(page => [page.id, page])).values()];
+      if (!uniquePages.length) throw new MetaConnectionError('META_NO_PAGES');
+      // Meta may return only the Instagram ID in the Page result. Resolve its
+      // username with the Page token, retaining the exact account-name check.
+      for (const page of uniquePages) {
+        const instagram = page.instagram_business_account;
+        if (instagram && /^\d+$/.test(instagram.id || '') && !instagram.username && page.access_token && (!expectedPageId || page.id === expectedPageId)) {
+          try {
+            const account = await request(instagram.id, {fields: 'id,username'}, page.access_token, 'META_PAGE_ACCESS');
+            if (account.id === instagram.id && typeof account.username === 'string') instagram.username = account.username;
+          } catch { /* Surface missing access below without upstream data. */ }
+        }
+      }
+      const matches = uniquePages.filter(page => page.instagram_business_account?.username?.toLowerCase() === expectedUsername.toLowerCase() && (!expectedPageId || page.id === expectedPageId));
+      if (matches.length !== 1) {
+        const detail = {pageCount: uniquePages.length, instagramAccountCount: uniquePages.filter(page => page.instagram_business_account?.id).length};
+        try {
+          const granted = await request('me/permissions', {}, long.access_token, 'META_PAGE_ACCESS');
+          if (Array.isArray(granted.data) && granted.data.every(item => typeof item.permission === 'string' && typeof item.status === 'string')) detail.missingPermissions = scopes.filter(scope => !granted.data.some(item => item.permission === scope && item.status === 'granted'));
+        } catch { /* Some configurations cannot read grants; do not guess. */ }
+        let errorCode = 'META_ACCOUNT_MISMATCH';
+        if (detail.missingPermissions?.length) errorCode = 'META_PERMISSIONS_MISSING';
+        else if (!detail.instagramAccountCount) errorCode = 'META_INSTAGRAM_NOT_VISIBLE';
+        else if (!uniquePages.some(page => page.instagram_business_account?.username)) errorCode = 'META_INSTAGRAM_USERNAME_MISSING';
+        throw new MetaConnectionError(errorCode, detail);
+      }
       const page = matches[0];
       if (!page.access_token || !/^\d+$/.test(page.instagram_business_account.id || '')) throw new MetaConnectionError('META_PAGE_TOKEN');
       return {username: expectedUsername, pageId: page.id, accountId: page.instagram_business_account.id, pageToken: page.access_token, accountType: accountType || 'UNCONFIRMED', version, connectedAt: new Date().toISOString(), userAuthorizationExpiresAt: long.expires_in ? new Date(Date.now() + Number(long.expires_in) * 1000).toISOString() : null};

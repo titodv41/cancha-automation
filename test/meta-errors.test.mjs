@@ -31,3 +31,32 @@ test('failed callback displays only safe diagnostic codes and starts no publishi
   assert.equal(response.status,422);const html=await response.text();assert.match(html,/META_CODE_EXCHANGE/);assert.match(html,/Meta code 190, subcode 463/);assert.doesNotMatch(html,/do-not-expose|fixture-password/);assert.equal(admin.vault.read(),null);assert.equal(admin.db.prepare('SELECT COUNT(*) AS n FROM instagram_queue').get().n,0);
  }finally{await new Promise(resolve=>server.close(resolve));admin.close();await rm(dir,{recursive:true,force:true});}
 });
+test('Page lookup follows bounded cursors and resolves an omitted username using its Page token',async()=>{
+ const seen=[];
+ const authorization=createMetaAuthorization({...options,fetchImpl:async(input,args)=>{
+  const url=new URL(input);seen.push(url.pathname);
+  if(url.pathname.endsWith('/oauth/access_token'))return Response.json({access_token:'fixture-user-token'});
+  if(url.pathname.endsWith('/me/accounts')){
+   assert.equal(args.headers.Authorization,'Bearer fixture-user-token');
+   if(!url.searchParams.has('after'))return Response.json({data:[{id:'1',access_token:'fixture-other-token'}],paging:{next:'https://untrusted.example/never-follow-this',cursors:{after:'fixture-cursor'}}});
+   assert.equal(url.searchParams.get('after'),'fixture-cursor');assert.equal(url.hostname,'graph.facebook.com');
+   return Response.json({data:[{id:'2',access_token:'fixture-page-token',instagram_business_account:{id:'3'}}]});
+  }
+  assert.equal(url.pathname,'/v99.0/3');assert.equal(args.headers.Authorization,'Bearer fixture-page-token');
+  return Response.json({id:'3',username:'wearecancha'});
+ }});
+ const connection=await authorization.exchange('fixture-code');assert.equal(connection.pageId,'2');assert.equal(connection.accountId,'3');assert.equal(connection.username,'wearecancha');assert.equal(seen.filter(path=>path.endsWith('/me/accounts')).length,2);
+});
+test('account failures distinguish missing grants from invisible Instagram without exposing Page names or tokens',async()=>{
+ for(const granted of [false,true]){
+  const authorization=createMetaAuthorization({...options,fetchImpl:async input=>{
+   const url=new URL(input);
+   if(url.pathname.endsWith('/oauth/access_token'))return Response.json({access_token:'fixture-user-token'});
+   if(url.pathname.endsWith('/me/permissions'))return Response.json({data:['pages_show_list','pages_read_engagement',...(granted?['instagram_basic','instagram_content_publish']:[])].map(permission=>({permission,status:'granted'}))});
+   return Response.json({data:[{id:'1',name:'private-page-name-do-not-expose',access_token:'private-token-do-not-expose'}]});
+  }});
+  await assert.rejects(authorization.exchange('fixture-code'),error=>{
+   assert.equal(error.code,granted?'META_INSTAGRAM_NOT_VISIBLE':'META_PERMISSIONS_MISSING');assert.equal(error.pageCount,1);assert.equal(error.instagramAccountCount,0);assert.deepEqual(error.missingPermissions,granted?[]:['instagram_basic','instagram_content_publish']);assert.doesNotMatch(JSON.stringify(error),/do-not-expose/);return true;
+  });
+ }
+});
