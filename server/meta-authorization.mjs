@@ -9,6 +9,7 @@ const help = {
   META_PERMISSIONS_MISSING: 'The Meta login did not grant all required permissions. Check the Facebook Login for Business configuration, then reconnect and allow the requested access.',
   META_INSTAGRAM_NOT_VISIBLE: 'Meta returned Facebook Pages but no accessible professional Instagram account. Confirm Instagram access is included in the login configuration and asset selection. The Page link can exist while this app lacks access.',
   META_INSTAGRAM_USERNAME_MISSING: 'Meta returned an Instagram account ID but did not allow its username to be read. Check Instagram permissions and the assets selected in the login configuration.',
+  META_CANCHA_PAGE_ACCESS: 'Meta denied direct access to the confirmed Cancha Facebook Page. On Facebook, switch into Cancha → Settings → Page setup → Page access and check the authorizing profile’s Facebook access. Portfolio assignment alone does not establish this access. Also check that the Facebook Login for Business configuration permits Cancha’s assets.',
   META_EXPECTED_PAGE_NOT_VISIBLE: 'The authorized Page list does not include the confirmed Cancha Facebook Page. In Facebook Login for Business, include that Page in asset selection, then start a new connection.',
   META_INSTAGRAM_READ_FAILED: 'The confirmed Cancha Page token could not read the confirmed @wearecancha Instagram account. Check Instagram asset access in Facebook Login for Business and the authorizing user’s app/account access.',
   META_PAGE_TOKEN: 'Meta returned the Instagram account without usable Page publishing authorization. Check the required permissions and Page control, then reconnect.'
@@ -27,6 +28,7 @@ export class MetaConnectionError extends Error {
 }
 export function createMetaAuthorization({appId, appSecret, version, baseUrl, loginConfigId, expectedUsername = 'wearecancha', expectedPageId, expectedAccountId, accountType, fetchImpl = fetch}) {
   if (!/^\d+$/.test(appId || '') || !appSecret || !/^v\d+\.\d+$/.test(version || '')) throw Error('Configure the real Meta app and supported Graph version');
+  if ((expectedPageId && !/^\d+$/.test(expectedPageId)) || (expectedAccountId && !/^\d+$/.test(expectedAccountId))) throw Error('Configure valid confirmed account IDs');
   const base = new URL(baseUrl);
   if (base.protocol !== 'https:' || base.username || base.password || base.pathname !== '/') throw Error('Configure the deployed HTTPS service origin');
   const callback = base.origin + '/auth/meta/callback';
@@ -73,8 +75,17 @@ export function createMetaAuthorization({appId, appSecret, version, baseUrl, log
         after = cursor;
       }
       const uniquePages = [...new Map(pages.filter(page => /^\d+$/.test(page.id || '')).map(page => [page.id, page])).values()];
+      // The authorized Page-list response is discovery, not proof that a
+      // specific Page is inaccessible. Ask Meta for the owner-confirmed Page.
+      if (expectedPageId && !uniquePages.some(page => page.id === expectedPageId && page.access_token)) {
+        const direct = await request(expectedPageId, {fields: 'id,access_token,instagram_business_account{id,username}'}, long.access_token, 'META_CANCHA_PAGE_ACCESS');
+        if (direct.id !== expectedPageId) throw new MetaConnectionError('META_CANCHA_PAGE_ACCESS');
+        if (typeof direct.access_token !== 'string' || !direct.access_token) throw new MetaConnectionError('META_PAGE_TOKEN');
+        const index = uniquePages.findIndex(page => page.id === expectedPageId);
+        if (index === -1) uniquePages.push(direct);
+        else uniquePages[index] = {...uniquePages[index], ...direct};
+      }
       if (!uniquePages.length) throw new MetaConnectionError('META_NO_PAGES');
-      if (expectedPageId && !uniquePages.some(page => page.id === expectedPageId)) throw new MetaConnectionError('META_EXPECTED_PAGE_NOT_VISIBLE', {pageCount: uniquePages.length, instagramAccountCount: uniquePages.filter(page => page.instagram_business_account?.id).length});
       for (const page of uniquePages) {
         if (page.instagram_business_account?.id || !page.access_token || (expectedPageId && page.id !== expectedPageId)) continue;
         // The Page-token read is separate from the User-token Page list.
