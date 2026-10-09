@@ -61,6 +61,7 @@ jobs:
           META_PAGE_ACCESS_TOKEN: ${{ steps.clock.outputs.action == 'reconnect' && secrets.META_PAGE_ACCESS_TOKEN || '' }}
           FRAMER_API_KEY: ${{ steps.clock.outputs.action == 'prepare' && secrets.FRAMER_API_KEY || '' }}
           CANCHA_AUTOMATION_BACKEND: github
+          CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
           CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
           ACTION: ${{ steps.clock.outputs.action }}
         run: node scripts/github-instagram.mjs "$ACTION"
