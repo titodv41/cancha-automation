@@ -22,7 +22,8 @@
     "opportunities:stage": "node scripts/stage-opportunities.mjs",
     "opportunities:prepare": "node scripts/prepare-opportunities.mjs",
     "opportunities:automate": "node scripts/automate-opportunities.mjs",
-    "automation:status": "node scripts/check-automation-status.mjs"
+    "automation:status": "node scripts/check-automation-status.mjs",
+    "instagram:chat": "node scripts/chat-instagram.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",

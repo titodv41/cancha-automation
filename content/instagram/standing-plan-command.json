@@ -1,0 +1,29 @@
+{
+  "requestId": "cancha-daily-plan-20261009",
+  "action": "plan",
+  "authorized": true,
+  "ownerInstruction": "Owner asked: you choose the best time; a mix of tips, updates, stories, fun stuff, news and actual soccer happenings. One per day, automatically posted.",
+  "plan": {
+    "enabled": true,
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "localTime": "18:00",
+    "startDate": "2026-10-10",
+    "sourceTypes": [
+      "brand",
+      "opportunity",
+      "news"
+    ],
+    "formats": [
+      "feed",
+      "story"
+    ]
+  }
+}

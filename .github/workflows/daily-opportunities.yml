@@ -9,6 +9,12 @@ on:
       - 'scripts/prepare-opportunities.mjs'
       - 'scripts/automate-opportunities.mjs'
       - 'scripts/source-parser.mjs'
+      - 'scripts/prepare-editorial.mjs'
+      - 'server/chat-control.mjs'
+      - 'server/instagram-plan.mjs'
+      - 'server/instagram-queue.mjs'
+      - 'server/soccer-news.mjs'
+      - 'content/instagram/editorial-bank.json'
       - 'config/automated-organizers.json'
       - 'server/opportunity-policy.mjs'
       - 'server/offer-expiry.mjs'
@@ -16,7 +22,7 @@ on:
       - 'package*.json'
   schedule:
     # Both UTC hours cover 09:00 New York across daylight saving changes.
-    - cron: '0 13,14 * * 1-5'
+    - cron: '0 13,14 * * *'
 permissions:
   contents: read
 concurrency:
@@ -61,5 +67,5 @@ jobs:
           retention-days: 7
           if-no-files-found: error
     # With a secure Framer key and private backup host, checked jobs enter
-    # unpublished Framer changes and Instagram drafts await owner review.
+    # unpublished Framer changes and Instagram drafts enter the separately authorized hosted plan.
     # No site publication and no Meta token in this workflow.

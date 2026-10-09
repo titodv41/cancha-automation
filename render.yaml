@@ -21,6 +21,8 @@ services:
         generateValue: true
       - key: CANCHA_AUTOMATION_INGEST_SECRET
         generateValue: true
+      - key: CANCHA_CONTROL_TOKEN
+        generateValue: true
       - key: CANCHA_STATUS_TOKEN
         generateValue: true
       - key: CANCHA_SUBMISSIONS_DB
