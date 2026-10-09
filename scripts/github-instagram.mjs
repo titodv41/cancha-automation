@@ -3,6 +3,7 @@ import {tmpdir} from 'node:os';import {join} from 'node:path';import {spawnSync}
 import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
 import {openQueue,saveDraft,dispatchDue,metaPublisher} from '../server/instagram-queue.mjs';
 import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs';
+import {renewMetaConnection} from '../server/meta-renewal.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
 import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYork} from '../server/offer-expiry.mjs';
@@ -37,11 +38,7 @@ try{
  }
  if(mode==='reconnect'){
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
-  const url=new URL('https://graph.facebook.com/'+connection.version+'/'+connection.accountId);url.searchParams.set('fields','id,username');
-  const response=await fetch(url,{dispatcher,headers:{Authorization:'Bearer '+token},redirect:'error',signal:AbortSignal.timeout(30000)});
-  if(!response.ok)throw Error('Expected Cancha account could not be verified with the replacement token');const verified=await response.json();
-  if(verified.id!==expected.instagramAccountId||verified.username!==expected.username)throw Error('Expected Cancha account does not match replacement token');
-  connection.pageToken=token;connection.tokenRefreshedAt=new Date().toISOString();await checkpoint();
+  Object.assign(connection,await renewMetaConnection(connection,token,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})}));await checkpoint();
  }
  if(mode==='command'){
   // Reuse the authenticated command contract locally; receipts survive runs.

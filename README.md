@@ -2,7 +2,7 @@
 
 Framer project **GU8EIeQXaRbty0S23thu**. Authenticated Server API access works in this Codex instance. The user published the earlier listing fixes; live browsing was verified. New Providers, Offers, Stories and navigation changes are saved in Framer's **unpublished draft**. This automation has not published the site or Instagram content.
 
-Start with [the GitHub migration guide](docs/github-migration.md) to avoid paid Render hosting for daily Instagram. The replacement is prepared; the secure transfer and live validation remain outstanding. The earlier [daily Instagram guide](docs/chat-instagram.md) describes the Render backend. The owner authorized one automatically selected post daily at an initial 6 PM New York slot. The plan is prepared but needs hosted deployment and secure chat binding before activation. Thirty-five local tests pass. The earlier [Meta setup guide](docs/connect-meta-and-automation.md) covers account setup.
+Start with [the GitHub migration guide](docs/github-migration.md) to avoid paid Render hosting for daily Instagram. The replacement is prepared; the secure transfer and live validation remain outstanding. The earlier [daily Instagram guide](docs/chat-instagram.md) describes the Render backend. The owner authorized one automatically selected post daily at an initial 6 PM New York slot. The plan is prepared but needs hosted deployment and secure chat binding before activation. Forty-one local tests pass, including the encrypted migration safeguards. The earlier [Meta setup guide](docs/connect-meta-and-automation.md) covers account setup.
 
 Read [the growth and Instagram report](docs/growth-and-instagram.md) for the latest work, desktop/mobile previews, account connection steps and blockers. Review [six Instagram designs and captions](content/instagram/review.md) and three articles in `content/stories/`. The earlier [change report](docs/change-report.md) preserves the listing audit. Read [private submission deployment instructions](docs/private-submissions.md) to deploy the prepared queue. The organization form is deliberately locked until that service is available.
 
@@ -17,7 +17,7 @@ npm test
 npm run check:connection
 ```
 
-Thirty-five tests cover the read-only connection contract, Instagram approval/dispatch safeguards, New York offer expiry, and the real private receiver: signed intake, mandatory Pending review, retries, duplicate flags, consent, validation, and absence of public queue/contact access. They do not replace Framer Preview checks. `check:connection` reads only project information and disconnects, checking Cancha's hashed project identity without printing credentials.
+Forty-one tests cover the read-only connection contract, Instagram approval/dispatch safeguards, New York offer expiry, and the real private receiver: signed intake, mandatory Pending review, retries, duplicate flags, consent, validation, and absence of public queue/contact access. They do not replace Framer Preview checks. `check:connection` reads only project information and disconnects, checking Cancha's hashed project identity without printing credentials.
 
 The SDK captures global WebSocket at import time. `scripts/transport.mjs` installs a WebSocket adapter before the dynamic SDK import, preserving SDK authorization through the existing HTTPS proxy. TLS verification stays enabled and the WebSocket destination is limited to api.framer.com. `check:network` is optional: an unauthenticated probe is not an access check for the authenticated project.
 

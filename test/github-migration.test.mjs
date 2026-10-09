@@ -33,3 +33,10 @@ test('restore preserves a never-activated paused plan and private receipt histor
  db.exec('CREATE TABLE chat_control_receipts(id TEXT PRIMARY KEY,payload_hash TEXT,result TEXT,created_at TEXT,owner_instruction TEXT)');db.prepare('INSERT INTO chat_control_receipts VALUES(?,?,?,?,?)').run('fixture-request-id','fixture-hash','{}',new Date().toISOString(),'Fixture private instruction');
  const state=snapshotState(db,{pageToken:'fixture'}),restored=openQueue(join(dir,'restore-paused.sqlite'));try{restoreState(restored,state);assert.equal((await prepareStandingPlan(restored,{now,connected:true})).paused,true);assert.equal(restored.prepare('SELECT owner_instruction FROM chat_control_receipts').get().owner_instruction,'Fixture private instruction');}finally{restored.close();}
 }));
+
+test('replacement Meta credentials must verify exact identity before modifying the connection',async()=>{
+ const {renewMetaConnection}=await import('../server/meta-renewal.mjs');const connection={accountId:'123',version:'v26.0',pageToken:'fixture-old',accountType:'UNCONFIRMED'},expected={instagramAccountId:'123',username:'wearecancha'};
+ await assert.rejects(renewMetaConnection(connection,'fixture-new',expected,{fetchImpl:async()=>Response.json({id:'999',username:'wearecancha'})}),/does not match/);assert.equal(connection.pageToken,'fixture-old');
+ await assert.rejects(renewMetaConnection(connection,'fixture-new',expected,{fetchImpl:async()=>new Response('private upstream details',{status:403})}),error=>!error.message.includes('private upstream details'));
+ const updated=await renewMetaConnection(connection,'fixture-new',expected,{fetchImpl:async(url,options)=>{assert.equal(new URL(url).hostname,'graph.facebook.com');assert.equal(new URL(url).searchParams.has('access_token'),false);assert.equal(options.headers.Authorization,'Bearer fixture-new');return Response.json({id:'123',username:'wearecancha'});}});assert.equal(updated.pageToken,'fixture-new');assert.equal(updated.accountType,'UNCONFIRMED');assert.equal(connection.pageToken,'fixture-old');
+});
