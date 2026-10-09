@@ -26,10 +26,11 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: daily-opportunities
+  group: cancha-private-automation
   cancel-in-progress: false
 jobs:
   discover:
+    if: vars.CANCHA_AUTOMATION_BACKEND != 'github'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

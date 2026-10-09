@@ -1,0 +1,22 @@
+name: Cancha automation checks
+on:
+  push:
+    paths: ['server/**', 'scripts/github*.mjs', 'test/**', 'package*.json', '.github/workflows/**']
+  pull_request:
+    paths: ['server/**', 'scripts/github*.mjs', 'test/**', 'package*.json', '.github/workflows/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test

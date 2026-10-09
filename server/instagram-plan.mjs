@@ -1,3 +1,4 @@
+import {backendFrozen} from './github-state.mjs';
 import {contentHash,approve} from './instagram-queue.mjs';
 import {newYorkSchedule} from './scheduling.mjs';
 import {dateInNewYork} from './offer-expiry.mjs';
@@ -20,7 +21,7 @@ export function savePlan(db,input,ownerInstruction){
 export function validPostImage(row){try{const url=new URL(row.assetUrl);return url.origin==='https://framerusercontent.com'&&!url.username&&!url.password&&/^\/images\/[^?]+\.jpe?g$/i.test(url.pathname)&&!url.search&&/^[a-f0-9]{64}$/.test(row.assetChecksum||'');}catch{return false;}}
 function week(date){const d=new Date(date+'T12:00:00Z'),day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);return d.toISOString().slice(0,10);}
 export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource}={}){
- const plan=readPlan(db);if(!plan?.enabled||!connected)return {scheduled:[],skipped:[],paused:true};
+ const plan=readPlan(db);if(backendFrozen(db)||!plan?.enabled||!connected)return {scheduled:[],skipped:[],paused:true};
  const today=dateInNewYork(new Date(now));const all=db.prepare('SELECT * FROM instagram_queue ORDER BY id').all();
  const queueHash=all.map(row=>row.id+':'+row.status+':'+contentHash(JSON.parse(row.content))).join('|');
 
@@ -47,7 +48,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
    if(db.prepare("SELECT content FROM instagram_queue WHERE status IN ('Approved','Preparing','Publishing','Published','Needs reconciliation')").all().some(row=>JSON.parse(row.content).caption===content.caption))continue;let checked=false;
    if(requiresSource(content)){try{checked=await verifySource(content)===true;}catch{}if(!checked){blocked.add(old.id);result.skipped.push({id:old.id,reason:'Source unavailable, changed or closed'});continue;}}
    const latestPlan=readPlan(db),current=db.prepare('SELECT * FROM instagram_queue WHERE id=?').get(old.id);
-   if(!latestPlan?.enabled||latestPlan.updatedAt!==plan.updatedAt)return {...result,paused:true};
+   if(backendFrozen(db)||!latestPlan?.enabled||latestPlan.updatedAt!==plan.updatedAt)return {...result,paused:true};
    if(!current||current.status!=='Draft'||contentHash(JSON.parse(current.content))!==contentHash(content)){result.skipped.push({id:old.id,reason:'Content changed during source check'});continue;}
    // No await in this synchronous claim/approval section; queue and plan cannot
    // change between validation and approval in the single hosted Node process.

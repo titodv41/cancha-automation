@@ -1,10 +1,12 @@
+import {backendFrozen} from './github-state.mjs';
 import {readPlan,savePlan,validPostImage} from './instagram-plan.mjs';
 import {createHash, timingSafeEqual} from 'node:crypto';
 import {contentHash, saveDraft, approve} from './instagram-queue.mjs';
 import {confirmPostSource,requiresSource} from './post-source.mjs';
 const paths = ['/automation/review', '/automation/control', '/automation/plan'];
 const hash = value => createHash('sha256').update(value).digest('hex');
-const version = row => hash(JSON.stringify({content:contentHash(JSON.parse(row.content)),status:row.status,scheduledAt:row.scheduled_at,container:row.container_id,published:row.published_id}));
+export const queueVersion = row => hash(JSON.stringify({content:contentHash(JSON.parse(row.content)),status:row.status,scheduledAt:row.scheduled_at,container:row.container_id,published:row.published_id}));
+const version=queueVersion;
 class ControlError extends Error {constructor(status,message){super(message);this.status=status;}}
 const requireThat=(condition,status,message)=>{if(!condition)throw new ControlError(status,message);};
 function visible(row){const content=JSON.parse(row.content);return {id:row.id,status:row.status,version:version(row),scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note,sourceRecheckedAt:row.source_rechecked_at||null,content};}
@@ -24,6 +26,7 @@ export function createChatControl({db,vault,token,origin,fetchImpl=fetch}){
     requireThat(req.method==='GET',405,'Use GET');const connection=vault.read();
     return reply(res,200,{meta:{connected:!!connection,username:connection?.username||null,accountType:connection?.accountType||null},timezone:'America/New_York',plan:readPlan(db),publishingPolicy:readPlan(db)?.enabled?'Owner-authorized standing plan enabled':'Owner instruction required per post; standing plan paused',posts:db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all().map(visible)});
    }
+   requireThat(!backendFrozen(db),409,'Render is frozen for GitHub migration');
    requireThat(req.method==='POST',405,'Use POST');requireThat(String(req.headers['content-type']||'').startsWith('application/json'),415,'JSON required');
    let command;try{command=JSON.parse(await readBody(req));}catch(error){if(error instanceof ControlError)throw error;throw new ControlError(400,'Invalid JSON');}
    requireThat(command&&typeof command==='object'&&!Array.isArray(command),422,'A command object is required');

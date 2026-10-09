@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {fetch,ProxyAgent} from 'undici';
+import {sealState,unsealState} from '../server/github-state.mjs';
+export function githubStateClient({token=process.env.GITHUB_TOKEN||process.env.GH_TOKEN,key=process.env.CANCHA_GITHUB_STATE_KEY,repository=process.env.GITHUB_REPOSITORY||'titodv41/cancha-automation',fetchImpl=fetch}={}){
+ if(repository!=='titodv41/cancha-automation'||!token||!key||key.length<32)throw Error('Configure GitHub authentication and CANCHA_GITHUB_STATE_KEY');
+ const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
+ const root='https://api.github.com/repos/'+repository,branch='automation-state';let sha,loaded=false;
+ async function api(path,method='GET',value,allow404=false){const response=await fetchImpl(root+path,{dispatcher,method,redirect:'error',headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...(value?{'Content-Type':'application/json'}:{})},body:value?JSON.stringify(value):undefined,signal:AbortSignal.timeout(30000)});if(response.status===404&&allow404)return null;if(!response.ok){await response.body?.cancel();throw Error('GitHub state request rejected ('+response.status+'); no publication can proceed without durable state');}return response.json();}
+ return {async load(){const row=await api('/contents/state.enc.json?ref='+branch,'GET',undefined,true);loaded=true;sha=row?.sha;if(!row)return null;if(row.encoding!=='base64')throw Error('State file exceeds supported size; preserve backups before reducing it');return unsealState(JSON.parse(Buffer.from(row.content,'base64').toString()),key);},async save(state){if(!loaded)throw Error('Read current state before writing');if(!sha){const ref=await api('/git/ref/heads/'+branch,'GET',undefined,true);if(!ref){const main=await api('/git/ref/heads/main');await api('/git/refs','POST',{ref:'refs/heads/'+branch,sha:main.object.sha});}}const envelope=JSON.stringify(sealState(state,key));if(Buffer.byteLength(envelope)>950000)throw Error('Encrypted state is too large; preserve and archive backups before publishing');const response=await api('/contents/state.enc.json','PUT',{message:'Checkpoint encrypted Cancha automation state',branch,content:Buffer.from(envelope).toString('base64'),...(sha?{sha}:{})});sha=response.content.sha;return sha;},async saveBackup(snapshot){
+ const hash=createHash('sha256').update(JSON.stringify(snapshot)).digest('hex'),path='backups/'+hash+'.enc.json';
+ const existing=await api('/contents/'+path+'?ref='+branch,'GET',undefined,true);if(existing)return {hash,path,capturedAt:snapshot.capturedAt};
+ const envelope=JSON.stringify(sealState({schema:1,queue:[],backup:snapshot},key));if(Buffer.byteLength(envelope)>950000)throw Error('Encrypted backup exceeds supported size');
+ await api('/contents/'+path,'PUT',{message:'Preserve encrypted Cancha CMS backup',branch,content:Buffer.from(envelope).toString('base64')});return {hash,path,capturedAt:snapshot.capturedAt};
+ },async close(){await dispatcher?.close();}};
+}

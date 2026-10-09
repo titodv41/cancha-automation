@@ -1,0 +1,73 @@
+name: Cancha Instagram on GitHub
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'migrate once, then prepare/publish/review/pause/resume/command'
+        type: choice
+        default: review
+        options: [migrate, prepare, publish, review, pause, resume, command]
+      command_file:
+        description: 'Repository JSON command path; only used for command'
+        type: string
+        default: 'content/instagram/chat-command.json'
+  schedule:
+    # Prepare at 10 AM NY so the 6 PM slot is inside the freshness window.
+    # Publish after 6 PM; GitHub schedules are approximate and can be delayed.
+    - cron: '7 14,15,22,23 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  automate:
+    if: github.event_name == 'workflow_dispatch' || vars.CANCHA_AUTOMATION_BACKEND == 'github'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - id: clock
+        env:
+          EVENT: ${{ github.event_name }}
+          REQUESTED: ${{ inputs.action }}
+        run: |
+          if [ "$EVENT" = workflow_dispatch ]; then
+            echo "action=$REQUESTED" >> "$GITHUB_OUTPUT"
+          else
+            case "$(TZ=America/New_York date +%H)" in
+              10) echo 'action=prepare' >> "$GITHUB_OUTPUT" ;;
+              18) echo 'action=publish' >> "$GITHUB_OUTPUT" ;;
+            esac
+          fi
+      - uses: actions/checkout@v4
+        if: steps.clock.outputs.action != ''
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        if: steps.clock.outputs.action != ''
+        with:
+          node-version: 24
+          cache: npm
+      - if: steps.clock.outputs.action != ''
+        run: npm ci
+      - if: steps.clock.outputs.action == 'prepare'
+        run: npx playwright install --with-deps chromium
+      - name: Run private automation
+        if: steps.clock.outputs.action != ''
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_CONTROL_TOKEN: ${{ steps.clock.outputs.action == 'migrate' && secrets.CANCHA_CONTROL_TOKEN || '' }}
+          FRAMER_API_KEY: ${{ steps.clock.outputs.action == 'prepare' && secrets.FRAMER_API_KEY || '' }}
+          CANCHA_AUTOMATION_BACKEND: github
+          CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
+          ACTION: ${{ steps.clock.outputs.action }}
+        run: node scripts/github-instagram.mjs "$ACTION"
+      - uses: actions/upload-artifact@v4
+        if: success() && steps.clock.outputs.action != ''
+        with:
+          name: cancha-status-${{ github.run_id }}
+          path: private-data/github-summary.json
+          retention-days: 7
+          if-no-files-found: error
+    # Never upload plaintext Meta tokens, decrypted state, contacts or CMS backups.

@@ -1,5 +1,7 @@
 # Daily Instagram and chat control
 
+The owner has since selected [GitHub Actions migration](github-migration.md) to reduce hosting costs. Follow that guide for the current migration; this page documents the existing Render backend.
+
 Current owner instruction, October 9, 2026: one post daily, automatically selected and published, mixing tips, questions/fun, Cancha updates, storytelling, soccer news and current opportunities. This supersedes the earlier per-post review requirement. Initial slot: 6 PM America/New_York (not an analytics-proven optimum). Prepared start: October 10. Website publishing remains separate and requires explicit authorization.
 
 ## One-time secure connection
