@@ -51,3 +51,13 @@ If Meta revokes/expires the connection, obtain a new Page access token for the s
 ## Current verification and blockers
 
 Forty-one local tests pass, covering authenticated encryption/tampering, restore, migration freeze, preservation, checkpoint failures, source checks and daily limits. A real Docker smoke check passed for health, authenticated encrypted export/retry, frozen publishing and frozen private intake; it made no real Meta calls. Existing Meta connection was reported successful by the owner. The last successful daily workflow artifact confirms its runner lacked a usable Framer key and signed delivery configuration, so the actual Framer key still needs secure GitHub setup. Live migration, GitHub secrets, remote state writes, daily preparation and real Instagram publication still need verification. Render has not been deleted or switched off by Codex. The private submission service still needs an alternative or explicit form disable before retirement.
+
+
+## Verified live cutover — October 9, 2026
+
+- Migration succeeded: [run 37976616836](https://github.com/titodv41/cancha-automation/actions/runs/37976616836). All eight existing drafts and the encrypted connection were transferred; Render is frozen against publishing and new intake.
+- Read-only Meta identity verification succeeded: [run 37976820823](https://github.com/titodv41/cancha-automation/actions/runs/37976820823). @wearecancha is accessible with the migrated token. GitHub's backend variable is confirmed enabled. Business status remains UNCONFIRMED, so Story API publication remains gated.
+- Daily preparation succeeded after fixing a missing backup-client import: [run 37976919441](https://github.com/titodv41/cancha-automation/actions/runs/37976919441). The queue has ten Drafts, one encrypted CMS backup and zero migrated submissions. Fresh designs were uploaded/delivered; no Instagram post or Framer website was published.
+- Owner-authorized daily plan is enabled, starting October 10 at 18:00 New York; GitHub dispatch runs around 18:07. Today's preparation does not schedule tomorrow outside the freshness window. Tomorrow's 10:07 preparation selects the first eligible daily post.
+- Encrypted state and CMS backup recovery copies are saved under ignored `backups/github-migration-2026-10-09/`; no decrypted credentials were accessed in Codex.
+- Remaining: first real Instagram publication, submission-form replacement/disable, and deletion of the paid Render service/disk. Render billing has not been canceled. Private intake is paused after migration; it must not be presented as a working submission destination.
