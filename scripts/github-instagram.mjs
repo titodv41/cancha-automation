@@ -4,6 +4,7 @@ import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyA
 import {openQueue,saveDraft,dispatchDue,metaPublisher} from '../server/instagram-queue.mjs';
 import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs';
 import {renewMetaConnection} from '../server/meta-renewal.mjs';
+import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
 import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYork} from '../server/offer-expiry.mjs';
@@ -60,6 +61,7 @@ try{
  }
  const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0)};
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});
+ if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));
  if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Cancha Instagram\n\n'+JSON.stringify(summary,null,2)+'\n',{flag:'a'});
 }catch(error){const message=String(error.message);console.error(/^(Configure|GitHub state|Read current|Encrypted state|State file|Unsupported|GitHub state already|Migration needs|Render migration|No migrated|Expected Cancha|Daily preparation|Command rejected)/.test(message)?message:'Automation stopped safely; inspect configuration and durable state. No automatic retry of uncertain publication.');process.exitCode=1;}finally{db?.close();await client?.close();await dispatcher?.close();if(dir)await rm(dir,{recursive:true,force:true});}

@@ -69,7 +69,9 @@ jobs:
         if: success() && steps.clock.outputs.action != ''
         with:
           name: cancha-status-${{ github.run_id }}
-          path: private-data/github-summary.json
+          path: |
+            private-data/github-summary.json
+            private-data/instagram-preview.html
           retention-days: 7
           if-no-files-found: error
     # Never upload plaintext Meta tokens, decrypted state, contacts or CMS backups.
