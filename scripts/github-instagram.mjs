@@ -9,7 +9,7 @@ import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYor
 const mode=process.argv[2]||'review';let db,client,dir;
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -27,12 +27,21 @@ try{
  if(mode==='migrate'||mode==='resume'){const command=JSON.parse(await readFile('content/instagram/standing-plan-command.json','utf8'));savePlan(db,command.plan,command.ownerInstruction);await checkpoint();}
  if(mode==='pause'){savePlan(db,{enabled:false},'Owner paused daily Instagram through GitHub Actions');await checkpoint();}
  if(mode==='prepare'){
+  if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
   const run=spawnSync(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');
   // The child persists delivered drafts and backups through the same API.
   db.close();db=openQueue(join(dir,'reloaded.sqlite'));state=await client.load();restoreState(db,state);
  }
  if(mode==='prepare'||mode==='migrate'||mode==='resume'){
   await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource});await checkpoint();
+ }
+ if(mode==='reconnect'){
+  const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
+  const url=new URL('https://graph.facebook.com/'+connection.version+'/'+connection.accountId);url.searchParams.set('fields','id,username');
+  const response=await fetch(url,{dispatcher,headers:{Authorization:'Bearer '+token},redirect:'error',signal:AbortSignal.timeout(30000)});
+  if(!response.ok)throw Error('Expected Cancha account could not be verified with the replacement token');const verified=await response.json();
+  if(verified.id!==expected.instagramAccountId||verified.username!==expected.username)throw Error('Expected Cancha account does not match replacement token');
+  connection.pageToken=token;connection.tokenRefreshedAt=new Date().toISOString();await checkpoint();
  }
  if(mode==='command'){
   // Reuse the authenticated command contract locally; receipts survive runs.

@@ -6,7 +6,7 @@ on:
         description: 'migrate once, then prepare/publish/review/pause/resume/command'
         type: choice
         default: review
-        options: [migrate, prepare, publish, review, pause, resume, command]
+        options: [migrate, prepare, publish, review, pause, resume, command, reconnect]
       command_file:
         description: 'Repository JSON command path; only used for command'
         type: string
@@ -58,6 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
           CANCHA_CONTROL_TOKEN: ${{ steps.clock.outputs.action == 'migrate' && secrets.CANCHA_CONTROL_TOKEN || '' }}
+          META_PAGE_ACCESS_TOKEN: ${{ steps.clock.outputs.action == 'reconnect' && secrets.META_PAGE_ACCESS_TOKEN || '' }}
           FRAMER_API_KEY: ${{ steps.clock.outputs.action == 'prepare' && secrets.FRAMER_API_KEY || '' }}
           CANCHA_AUTOMATION_BACKEND: github
           CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
