@@ -6,7 +6,7 @@ on:
         description: 'migrate once, then prepare/publish/review/pause/resume/command'
         type: choice
         default: review
-        options: [migrate, prepare, publish, review, pause, resume, command, reconnect]
+        options: [migrate, prepare, publish, review, pause, resume, command, reconnect, verify]
       command_file:
         description: 'Repository JSON command path; only used for command'
         type: string

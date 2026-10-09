@@ -10,7 +10,7 @@ import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYor
 const mode=process.argv[2]||'review';let db,client,dir;
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -36,6 +36,7 @@ try{
  if(mode==='prepare'||mode==='migrate'||mode==='resume'){
   await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource});await checkpoint();
  }
+ if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='reconnect'){
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
   Object.assign(connection,await renewMetaConnection(connection,token,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})}));await checkpoint();
