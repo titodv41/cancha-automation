@@ -1,3 +1,4 @@
+import {sendPrivate} from './automation-service-client.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import fs from 'node:fs';import {fetch,ProxyAgent} from 'undici';import {chromium} from 'playwright';
 import {canonicalUrl,lifecycle,opportunityIdentity} from '../server/opportunity-policy.mjs';import {dateInNewYork} from '../server/offer-expiry.mjs';import {withProject} from './project-session.mjs';
