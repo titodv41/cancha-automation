@@ -1,3 +1,4 @@
+import {growthProgress} from '../server/growth-progress.mjs';
 import {sendPrivate} from './automation-service-client.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import fs from 'node:fs';import {fetch,ProxyAgent} from 'undici';import {chromium} from 'playwright';
@@ -7,7 +8,7 @@ const apply=process.argv.includes('--apply-statuses'),day=dateInNewYork(),config
 if(process.env.CI==='true'&&apply&&!privateBackup)throw Error('Unattended cleanup requires durable private backup');
 const dir=`private-data/daily-opportunities/${day}`;await mkdir(dir,{recursive:true,mode:0o700});
 let existing=JSON.parse(await readFile('audit/listings-before.json'));
-const report={date:day,timezone:config.timezone,target:config.targetPerWeekday,maximum:config.maximumPerRun,mode:apply?'apply draft statuses':'read-only',cmsConnected:false,published:false,sources:[],candidates:[],lifecycle:[]};
+const report={date:day,timezone:config.timezone,target:config.targetPerDay||config.targetPerWeekday,maximum:config.maximumPerRun,mode:apply?'apply draft statuses':'read-only',cmsConnected:false,published:false,sources:[],candidates:[],lifecycle:[]};
 if(process.env.FRAMER_API_KEY)await withProject(async f=>{
  const c=(await f.getCollections()).find(x=>x.name==='Opportunities');const fields=await c.getFields(),items=await c.getItems();const ids=Object.fromEntries(fields.map(x=>[x.name,x.id]));
  existing=items.map(x=>({id:x.id,slug:x.slug,title:x.fieldData[ids.Title]?.value,organization:x.fieldData[ids.Organization]?.value,registration:x.fieldData[ids['External Registration Link']]?.value,end:x.fieldData[ids['End Date']]?.value,status:x.fieldData[ids.Status]?.value,checkedOn:x.fieldData[ids['Review Checked On']]?.value,automationId:x.fieldData[ids['Automation ID']]?.value,sourceHash:x.fieldData[ids['Automation Source Hash']]?.value,reviewStatus:x.fieldData[ids['Review Status']]?.value}));report.cmsConnected=true;
@@ -18,6 +19,7 @@ if(process.env.FRAMER_API_KEY)await withProject(async f=>{
   const after=await c.getItems();if(after.length!==items.length||after.some(x=>items.find(y=>y.id===x.id)?.slug!==x.slug))throw Error('Record identity changed');report.statusesApplied=changes.length;
  }
 });else if(apply)throw Error('Cannot change CMS without secure Framer binding');
+const growthPlan=JSON.parse(await readFile('config/growth-plan.json'));report.growth=growthProgress(existing,growthPlan,day);
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 const known=new Set([...existing.map(x=>x.registration).filter(Boolean),...config.sources.map(x=>x.url)].map(canonicalUrl)),seen=new Set();
 const knownPostingIds=new Set(existing.map(x=>x.registration).filter(Boolean).map(opportunityIdentity));

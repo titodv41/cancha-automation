@@ -1,6 +1,6 @@
 # Daily opportunity workflow — October 6, 2026
 
-Target: three quality additions per weekday, maximum five staged additions per New York calendar day. Fewer is acceptable when the evidence is weak. Start with Florida soccer and relevant soccer careers from existing organizer-linked sources. Broaden the source registry only after checking organizer identity and relevance.
+Updated October 9: target nine quality additions per calendar day, maximum ten staged additions per New York day, toward 200 current opportunities by October 31. This is an aspiration, not a guaranteed quota. Fewer is acceptable when the evidence is weak. Start with Florida soccer and relevant soccer careers from existing organizer-linked sources. Broaden the source registry only after checking organizer identity and relevance.
 
 ## Current automation upgrade
 
@@ -38,3 +38,12 @@ For local runs: Node 24, `npm ci`, `PLAYWRIGHT_BROWSERS_PATH=/tmp/cancha-browser
 The first [GitHub execution](https://github.com/titodv41/cancha-automation/actions/runs/37413349782) completed successfully and produced its review artifact. Local verification passed all 12 tests; the remote job ran the two opportunity-policy tests and discovery without credentials. The first local CMS-connected scan found 20 leads from 12 HTTP-200 source pages, with zero lifecycle changes required; these leads were not verified, staged or published. The blank review template was correctly rejected by the live staging validator. That describes the first discovery run; the two supported records above were staged afterward.
 
 The upgraded [full automation run](https://github.com/titodv41/cancha-automation/actions/runs/37418473559) passed on GitHub and produced its artifact. Local credential-free execution prepared two supported jobs and matching designs without applying changes. Source availability may differ by runner; do not claim a daily quota or inspect HTTP success as verification. The queue container also passed a real persistent-volume restart with existing state preserved.
+
+
+## Florida growth direction — October 9
+
+Read `config/growth-plan.json` for the owner’s persistent direction: accessible soccer for young people/beginners, overlooked and small clubs including UPSL pathways, affordable community programs, tryouts/evaluations, camps and opportunities beyond jobs. Florida first; wider cities later. Current authenticated CMS baseline: 83 total, 9 Active, 67 Pending review, 5 Expired, 2 Archived. At nine useful current additions daily across October 10–31, the target may be mathematically possible; source availability is not established. Pending/expired rows never count toward current coverage. Existing pending records need official review and can be restored only on sufficient evidence.
+
+Daily report and GitHub summary now show growth gap and required pace. Snapshot counts describe the start of that preparation run, not a guarantee of what is publicly visible. Framer changes stay unpublished until the owner publishes. Official FYSA homepage discovery was checked and added as a research source; a 200 response is not verification of its opportunities. UPSL official-site fetches were blocked in this environment, so no fabricated club records or unchecked source adapters were added. Current unattended staging only supports three existing employer sources; youth/tryout/club adapters and source expansion remain essential to reaching the goal. Raising a limit alone cannot produce nine verified opportunities daily.
+
+The Instagram feed still publishes at most one daily. Daily creative delivery keeps at most three opportunity designs plus original/news content so a larger CMS batch does not eliminate editorial variety. Analytics optimization is not connected. Other-chat vision is unavailable here; the owner can bring that text into this conversation.

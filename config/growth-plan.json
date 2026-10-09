@@ -1,0 +1,15 @@
+{
+  "recordedOn": "2026-10-09",
+  "scope": "Florida soccer first; expand to other cities after local coverage is useful",
+  "startDate": "2026-10-10",
+  "deadline": "2026-10-31",
+  "targetCurrentOpportunities": 200,
+  "countPendingOrClosedTowardGoal": false,
+  "targetIsAspirational": true,
+  "dailyQualityTarget": 9,
+  "dailyMaximum": 10,
+  "priorities": ["Youth and beginner access", "Small and overlooked clubs, including UPSL pathways", "Tryouts and player evaluations", "Affordable community soccer and recreational programs", "Camps and clinics", "Coaching, volunteering and soccer careers"],
+  "regions": ["South Florida", "Tampa Bay", "Central Florida", "North Florida", "Southwest Florida"],
+  "principles": ["Verify exact official registration and current availability", "Preserve public URLs and remove duplicates without blindly deleting records", "Review existing Pending records before treating them as current", "Never fill quotas with stale, unverifiable or invented listings", "Use suitable permitted imagery and honest source labels", "Keep youth contact details private", "Framer changes stay unpublished until the owner publishes"],
+  "knownLimits": ["Current unattended adapters support three soccer employer job-board sources, not all youth/club program types", "Broader club/camp/tryout discovery requires additional source-specific verification adapters or human review", "Analytics-driven Instagram optimization is not connected", "Other-chat vision is not available in this conversation"]
+}

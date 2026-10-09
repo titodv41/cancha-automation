@@ -9,7 +9,7 @@ try{for(const lead of candidates.slice(0,50)){
  try{
   const bytes=await source.html(lead.url),data=await parseJob(page,bytes,lead.url);
   if(!images.has(approved.imageUrl)){imageBrowser||=await openBrowser({width:400,height:300});await imageBrowser.page.goto(approved.imageUrl,{waitUntil:'load'});const image=await imageBrowser.page.evaluate(()=>{const img=document.querySelector('img');return {loaded:!!img?.complete&&img.naturalWidth>0,width:img?.naturalWidth||0,height:img?.naturalHeight||0};});images.set(approved.imageUrl,image);}
-  const row=verifyJob({url:lead.url,...data,registry,image:images.get(approved.imageUrl)});if(ready.length<config.targetPerWeekday)ready.push(row);else blocked.push({url:lead.url,reason:'Daily target reached; recheck on a later run'});
+  const row=verifyJob({url:lead.url,...data,registry,image:images.get(approved.imageUrl)});if(ready.length<(config.targetPerDay||config.targetPerWeekday))ready.push(row);else blocked.push({url:lead.url,reason:'Daily target reached; recheck on a later run'});
  }catch(error){blocked.push({url:lead.url,reason:error.message});}
 }}
 finally{await browser.close();if(imageBrowser)await imageBrowser.browser.close();await source.close();}

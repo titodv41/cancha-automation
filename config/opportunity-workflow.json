@@ -1,7 +1,7 @@
 {
   "timezone": "America/New_York",
-  "targetPerWeekday": 3,
-  "maximumPerRun": 5,
+  "targetPerWeekday": 9,
+  "maximumPerRun": 10,
   "maximumSourceAgeHours": 72,
   "publishAutomatically": false,
   "sources": [
@@ -64,6 +64,13 @@
       "id": "safeguarding-compliance-specialist-official-job-board",
       "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/usl-league-office-jobs",
       "enabled": true
+    },
+    {
+      "id": "florida-youth-soccer-association-program-discovery",
+      "url": "https://www.fysa.com/",
+      "enabled": true,
+      "purpose": "Official league youth/club/program discovery only; leads require source-specific review, not automatic open claims"
     }
-  ]
+  ],
+  "targetPerDay": 9
 }

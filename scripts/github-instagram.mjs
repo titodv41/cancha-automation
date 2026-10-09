@@ -33,6 +33,7 @@ try{
   const run=spawnSync(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');
   // The child persists delivered drafts and backups through the same API.
   db.close();db=openQueue(join(dir,'reloaded.sqlite'));state=await client.load();restoreState(db,state);
+  state.growth=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/report.json','utf8')).growth;
  }
  if(mode==='prepare'||mode==='migrate'||mode==='resume'){
   await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource});await checkpoint();
@@ -59,7 +60,7 @@ try{
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.
   if(!alreadyPublished)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
  }
- const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0)};
+ const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0)};
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});
  if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));

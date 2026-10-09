@@ -9,7 +9,7 @@ if(!connected)result.blockers.push('Secure FRAMER_API_KEY is not configured in t
 if(!service)result.blockers.push('Private automation service and signed ingestion are not configured; durable private backups and Instagram delivery are unavailable.');
 run('scripts/prepare-editorial.mjs');const editorial=JSON.parse(await readFile(dir+'/editorial-drafts.json'));
 if(rows.length||editorial.length){
- const posts=[...rows.map(opportunityPost),...editorial].slice(0,5),file=dir+'/instagram-drafts.json',assets=dir+'/instagram-assets';await writeFile(file,JSON.stringify(posts,null,2),{mode:0o600});run('scripts/render-instagram.mjs',[file,assets]);result.instagramDrafts=posts.length;
+ const posts=[...rows.slice(0,3).map(opportunityPost),...editorial].slice(0,5),file=dir+'/instagram-drafts.json',assets=dir+'/instagram-assets';await writeFile(file,JSON.stringify(posts,null,2),{mode:0o600});run('scripts/render-instagram.mjs',[file,assets]);result.instagramDrafts=posts.length;
  if(connected){run('scripts/upload-instagram-assets.mjs',[file,assets]);}
  // Deliver Drafts first: if delivery fails, leave CMS unchanged so discovery
  // can retry tomorrow. Draft ingestion is idempotent and cannot approve posts.
