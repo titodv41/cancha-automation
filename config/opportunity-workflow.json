@@ -70,6 +70,24 @@
       "url": "https://www.fysa.com/",
       "enabled": true,
       "purpose": "Official league youth/club/program discovery only; leads require source-specific review, not automatic open claims"
+    },
+    {
+      "id": "aventura-premier-fc-2026-27-one-on-one-evaluations-official-club",
+      "url": "https://www.aventurapremierfc.com/1on1/",
+      "enabled": true,
+      "purpose": "Daily evidence recheck for an editorially reviewed local club program; discovery links remain unverified leads"
+    },
+    {
+      "id": "bay-lions-fsc-2026-27-supplemental-tryouts-official-club",
+      "url": "https://www.baylionsfloridasoccerclub.com/tryouts",
+      "enabled": true,
+      "purpose": "Daily evidence recheck for an editorially reviewed local club program; discovery links remain unverified leads"
+    },
+    {
+      "id": "hollywood-fc-wildcats-academy-beginner-training-official-club",
+      "url": "https://www.hollywoodfc.com/academy",
+      "enabled": true,
+      "purpose": "Daily evidence recheck for an editorially reviewed local club program; discovery links remain unverified leads"
     }
   ],
   "targetPerDay": 9

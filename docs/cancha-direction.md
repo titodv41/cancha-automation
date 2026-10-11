@@ -4,16 +4,18 @@ Owner direction recorded October 11, 2026. This brief guides future work; it doe
 
 Cancha is a local sports discovery and growth platform. Start with Florida soccer and one manageable area, helping people discover teams, clubs, tryouts, training, events, services and pathways. Help smaller organizations gain visibility, participants and local support. Keep Cancha's name, existing branding, typography and public listing URLs. “Support your local club” is a campaign within Cancha.
 
-## Current evidence, October 11
+## Initial inspection evidence, October 11
 
 - Framer access works. Opportunities contains 83 records: 9 Active, 67 Pending review, 5 Expired and 2 Archived. These are CMS counts, not a claim of independently verified current opportunities.
 - The public Explore page shows 11 cards, while CMS has 9 Active records. Publication and current CMS state differ; reconcile status before publishing. Homepage and Explore images loaded in this inspection; Explore fits a 390px viewport.
-- Live functional checks: all 11 detail routes returned HTTP 200 with working images and registration link targets present. Search, empty results and Clear Filters responded correctly. The Tampa Bay region filter incorrectly retained all 11 cards after waiting for updates; fix and retest before calling browsing complete. External registration destinations were not independently reverified in this inspection.
+- Live functional checks: detail routes and images load; search, empty results, Clear Filters and location filtering work after page hydration. The earlier Tampa Bay failure was a premature automated interaction, not a confirmed site defect. The refreshed public page now shows nine cards matching CMS Active count. External registration destinations were not independently reverified in that initial inspection.
 - Providers and Offers have no records. Stories has three unpublished drafts. Public organization/provider submission buttons are disabled; private submission intake is not operational.
 - GitHub preparation and review jobs have completed successfully. The queued introductory feed post is approved for October 11 at 18:00 America/New_York; no published ID was recorded at inspection. Verify actual publication through its Meta receipt, not merely a green workflow run.
 - A delayed-run schedule-selection bug was fixed before this inspection. First real scheduled publication remains to be demonstrated.
 - Automated discovery currently covers a small set of official soccer employer boards, mainly jobs. The daily cap is not a guarantee of nine useful local opportunities.
 - CMS automation prepares project changes with encrypted backups. It does not publish the Framer site. Instagram Stories publishing remains gated on confirmed eligible account type. Performance analytics are not connected.
+
+A subsequent starter-set review and owner-confirmed bulk status change are documented in [broward-pilot-review.md](broward-pilot-review.md). Later Active counts do not establish independent verification; the owner authorized automatic reconciliation of unresolved review statuses.
 
 ## Work now, in order
 

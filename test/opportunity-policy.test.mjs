@@ -23,3 +23,5 @@ test('daily additions require current human evidence, rights, resolution and no 
  assert.throws(()=>validateBatch([{...row,reviewedAt:'2026-10-07T13:00:00Z'}],[],config,now),/future/);
  assert.throws(()=>validateBatch([row],[],{...config,maximumPerRun:0},now),/maximum/);
 });
+
+test('manual Active and Verified switches cannot bypass unresolved official-source review',()=>{for(const reviewStatus of ['Availability not verified','Waitlist only','Automatic source recheck needed','Club source recheck needed']){const result=lifecycle({status:'Active',verified:true,checkedOn:'2026-10-11',reviewStatus,reviewNote:'Existing source is blocked'},new Date('2026-10-11T16:00:00Z'));assert.equal(result.status,'Pending review');assert.equal(result.verified,false);assert.equal(result.note,'Existing source is blocked');assert.equal(result.label,reviewStatus);}});
