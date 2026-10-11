@@ -1,28 +1,30 @@
-# Private Cancha submissions
+# Cancha form delivery without Render
 
-The existing Render service stores opportunity, provider and offer submissions in private SQLite, always as Pending review. Organization intake can also request an update to an existing Cancha opportunity URL. Contact information is never added to public CMS by this service. Approval in the private inbox does not publish to Framer.
+Cancha is transitioning organization, provider and offer forms to Framer's native Email destination. This uses the existing Framer site and a private owner inbox; no new Render or Cloudflare service is needed. Instagram scheduling remains on GitHub.
 
-## Activation
+## Current state and activation
 
-The server repair and connected Framer draft were tested on October 11, 2026. Production still requires:
+The three existing forms are prepared in the Framer draft with native submit buttons and loading, success and error states. They preserve Cancha typography and colors, required inputs and consent, and include a hidden Pending review label. Organization submissions can request a new opportunity or update an existing listing. No form code calls Render. Delivery remains guarded until native email destinations are configured.
 
-1. In Render → cancha-automation → Manual Deploy → Deploy latest commit. Automatic deployments are disabled. This workspace has no Render deployment credential.
-2. Check `https://cancha-automation.onrender.com/health` returns `publicIntake: 1` and `privateStorage: true`.
-3. Publish the connected Framer draft. The existing button stays disabled until the receiver advertises readiness.
-4. Submit consented test details from the published form and confirm a Pending review entry in the private inbox. Check desktop/mobile and failed delivery; fields remain populated on failure.
+The Server API does not expose native form Email destination settings. The owner must select the form layer named **Cancha submissions — configure Email in Send To** on `/organizations`, `/providers`, and `/offers`. Set **Send To → Email** to the chosen private inbox, remove obsolete Render webhook destinations, and complete any recipient verification. The recipient is not stored in frontend code or this public repository.
 
-Use the existing administrator password at `https://cancha-automation.onrender.com/admin`. The private inbox is `/admin/submissions`; its authenticated `/admin/submissions/export` endpoint downloads a private backup. Keep that export outside GitHub and public files. Export and migrate these new intake records before deleting Render: they are not automatically copied into the older GitHub migration archive.
+After the owner confirms destination configuration, run `node scripts/activate-email-intake.mjs --destinations-confirmed` to remove the temporary submission guard. This stages an editor change; it does not publish. Publish in Framer, send a consented test through each published form, and confirm email receipt including the submitted fields. Verify both a mobile and desktop submission. Do not claim email delivery is working until an email arrives. Framer's native delivery handles sending and failure; it does not merely open the visitor's mail app.
 
-## Delivery and privacy
+Use `node scripts/prepare-email-intake.mjs` only to prepare or repair this existing project. It backs up affected forms privately and retains the guard until owner confirmation. The older `connect-private-intake.mjs` is a legacy Render route and must not be used for the email transition.
 
-The existing `withSubmissionLock` export now intercepts browser submissions and sends them to `/intake/opportunity`, `/intake/provider` or `/intake/offer`. `/intake/challenge` supplies a short-lived, origin-bound signed token; the server signing secret never enters browser code. Allowed origins are the current public Framer site and Framer editor. A custom domain requires updating the allowlist before switching domains.
+## Review and privacy
 
-The receiver checks consent, schemas, HTTPS links, request size, a honeypot, delivery identity and request limits. CORS and challenge tokens limit browser misuse; they do not authenticate submitter identities or prevent all scripted spam. Duplicate delivery retries are idempotent, and likely duplicate submissions are flagged for review. Unknown or unreviewed submissions never publish automatically. Failed responses do not claim successful storage.
+Submissions go to the private inbox, not the public CMS. Pending review is an editorial label, not a database queue or authentication mechanism. Forward the relevant submission to Codex for review and source checks before a deliberate CMS action. Do not forward unnecessary contact data. Nothing automatically creates or publishes an opportunity, provider or discount. Framer provides native spam protection and rate limiting; email delivery may still be filtered as spam. Keep the inbox private and define a retention policy for contact information.
 
-The existing signed webhook routes remain frozen during the GitHub migration. The public browser intake and private review/login routes operate independently; Render Instagram publishing remains frozen, with scheduling on GitHub. No additional hosting service or subscription was created. The existing Render service and persistent disk retain their existing costs.
+## Render shutdown
 
-Set secrets only through secure Render environment settings; never paste them in chat or commit them. Existing CANCHA_WEBHOOK_SECRET and administrator credentials are reused. The server logs no submitted contact values. Restrict administrator access, establish a contact-data retention policy, and keep private backups encrypted outside the service document root.
+Do not deploy the legacy Render receiver repair. First configure native email delivery, publish and confirm actual receipt. Inspect and privately export any remaining Render submission data before deleting its service or disk. New Render intake was not activated by the previous repair. Existing migration archives may predate later records; do not assume they contain everything.
 
-## Validation
+Then, in the Render dashboard, delete the old web service and any separately billed persistent disk or other paid resources. Check Render Billing for remaining services and charges. Switching frontend code or Instagram schedules does not cancel a Render subscription. The owner must perform these account actions because this workspace has no Render administration credential.
 
-All 51 repository tests passed, including public intake, required consent, origin/token checks, duplicate delivery handling, body limits, migration behavior, private administrator login/review/export, and absence of automatic publication. Framer type checking passed. Production delivery must still be checked after deployment and Framer publication; local tests do not establish live delivery.
+## Evidence and official references
+
+Framer type checking and staged form structure checks passed. Desktop/mobile editor previews are generated under `previews/email-intake/`; previews are not evidence of email delivery. The full repository suite previously passed 51 tests for the retained backend code. Native destination configuration, site publication and real email receipt are separate checks.
+
+- [Framer native contact forms](https://www.framer.com/help/articles/how-can-i-add-a-contact-form-to-my-framer-website/): native forms support email, Sheets and webhook delivery.
+- [Framer native spam protection](https://www.framer.com/help/articles/how-framer-s-built-in-form-spam-protection-works/).

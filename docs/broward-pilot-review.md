@@ -35,4 +35,4 @@ After that confirmation, automatic lifecycle checks were extended to reject an A
 
 ## Private forms
 
-The existing forms now have a prepared private browser receiver on the existing Render service. Organization intake includes new-listing and existing-listing update choices. Provider and offer forms use the same private queue. The Framer draft is connected, but production activation requires deploying the server repair and publishing the Framer draft. See [private intake instructions](private-submissions.md). No new hosting subscription was created.
+The existing forms are now prepared for native Framer Email delivery, replacing the Render receiver dependency. Organization intake includes new-listing and existing-listing update choices. Production activation requires configuring private email destinations, removing the temporary guard, publishing and confirming actual receipt. See [private intake instructions](private-submissions.md). No new hosting subscription was created.
