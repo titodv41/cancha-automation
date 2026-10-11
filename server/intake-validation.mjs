@@ -1,5 +1,5 @@
 const definitions={
- opportunity:{required:['Organization','Contact Name','Contact Email','Opportunity Title','Category','Location','Eligibility','Registration Link','Description'],link:'Registration Link',optional:['Dates']},
+ opportunity:{required:['Organization','Contact Name','Contact Email','Opportunity Title','Category','Location','Eligibility','Registration Link','Description'],link:'Registration Link',optional:['Dates','Submission Type','Existing Cancha URL']},
  provider:{required:['Provider Name','Contact Name','Contact Email','Category','Location','Delivery','Languages','Age Groups Served','Qualifications','Services','Booking Link'],link:'Booking Link',optional:['Price Note','Image URL']},
  offer:{required:['Company','Contact Name','Contact Email','Offer Title','Category','Terms','Region','Redemption Link','Disclosure'],link:'Redemption Link',optional:['Code','Expires On','Image URL']}
 };
@@ -10,8 +10,18 @@ export function validateIntake(data,kind='opportunity'){
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean['Contact Email']))throw Error('Invalid email');
  for(const key of [definition.link,'Image URL'])if(clean[key]){const url=new URL(clean[key]);if(url.protocol!=='https:'||url.username||url.password)throw Error('HTTPS required');}
  if(![true,'true','on'].includes(data.Permission))throw Error('Permission required');clean.Permission=true;
+ if(kind==='opportunity'){
+  if(clean['Submission Type']&&!['New opportunity','Update existing opportunity'].includes(clean['Submission Type']))throw Error('Invalid request type');
+  if(clean['Existing Cancha URL']){const link=new URL(clean['Existing Cancha URL']);if(link.protocol!=='https:'||link.hostname!=='pioneering-friday-005497.framer.app'||!link.pathname.startsWith('/opportunities/')||link.username||link.password)throw Error('Existing Cancha listing URL required');}
+  if(clean['Submission Type']==='Update existing opportunity'&&!clean['Existing Cancha URL'])throw Error('Existing listing URL required');
+ }
  if(kind==='provider'&&!['Mental Performance','Strength & Conditioning','Private Training','Nutrition','Recruiting & College Guidance','Video & Highlights'].includes(clean.Category))throw Error('Invalid category');
  if(kind==='offer'&&!['Cleats','Training Gear','Camps','Other'].includes(clean.Category))throw Error('Invalid category');
+ if(kind==='opportunity'){
+  if(clean['Submission Type']&&!['New opportunity','Update existing opportunity'].includes(clean['Submission Type']))throw Error('Invalid request type');
+  if(clean['Existing Cancha URL']){const link=new URL(clean['Existing Cancha URL']);if(link.protocol!=='https:'||link.hostname!=='pioneering-friday-005497.framer.app'||!link.pathname.startsWith('/opportunities/')||link.username||link.password)throw Error('Existing Cancha listing URL required');}
+  if(clean['Submission Type']==='Update existing opportunity'&&!clean['Existing Cancha URL'])throw Error('Existing listing URL required');
+ }
  if(kind==='provider'&&!['In person','Remote','Both'].includes(clean.Delivery))throw Error('Invalid delivery');
  if(kind==='offer'){
   if(!['No paid relationship declared','Sponsored','Affiliate'].includes(clean.Disclosure))throw Error('Disclosure required');

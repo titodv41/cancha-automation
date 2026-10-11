@@ -6,7 +6,7 @@ Cancha is a local sports discovery and growth platform. Start with Florida socce
 
 ## Initial inspection evidence, October 11
 
-- Framer access works. Opportunities contains 83 records: 9 Active, 67 Pending review, 5 Expired and 2 Archived. These are CMS counts, not a claim of independently verified current opportunities.
+- Framer access works. Opportunities contains 84 records: 71 Active, 6 Pending review, 5 Expired and 2 Archived. These are CMS counts, not a claim of independently verified current opportunities.
 - The public Explore page shows 11 cards, while CMS has 9 Active records. Publication and current CMS state differ; reconcile status before publishing. Homepage and Explore images loaded in this inspection; Explore fits a 390px viewport.
 - Live functional checks: detail routes and images load; search, empty results, Clear Filters and location filtering work after page hydration. The earlier Tampa Bay failure was a premature automated interaction, not a confirmed site defect. The refreshed public page now shows nine cards matching CMS Active count. External registration destinations were not independently reverified in that initial inspection.
 - Providers and Offers have no records. Stories has three unpublished drafts. Public organization/provider submission buttons are disabled; private submission intake is not operational.
@@ -21,7 +21,7 @@ A subsequent starter-set review and owner-confirmed bulk status change are docum
 
 1. Build a useful South Florida starter set, beginning with Broward as a proposed pilot: review existing pending records before adding duplicates. Aim first for 20–30 genuinely current youth, beginner and local club opportunities. Record official source, city, age/eligibility, cost when known, dates and registration link. Flag uncertainty; preserve closed listing URLs and show closed status.
 2. Expand official local club and community-program sources, with source-specific checks. Reconcile live/CMS status and publish reviewed updates. Treat 200 by October 31 as an aspiration, never a reason to invent or weaken verification.
-3. Restore a simple private opportunity submission/update route. Store contact information privately and submissions as Pending review. A private destination is still needed; do not turn on an unbacked form or expose contact emails.
+3. Restore a simple private opportunity submission/update route. Store contact information privately and submissions as Pending review. The existing Render private receiver is prepared; deploy the repair before publishing the connected Framer form. Contact emails remain outside public CMS.
 4. Make age and location browsing useful to the pilot audience. Preserve existing search/filter architecture; improve actual CMS values and labels rather than rebuilding the site.
 5. Continue the authorized daily feed plan with source-checked opportunities, original tips, local-club storytelling and timely attributed soccer news. Confirm publication receipts. Enable Stories only after eligibility is confirmed. Do not claim automated performance optimization until metrics are available.
 6. Draft a small demand test: invite 10–15 local players/parents and 3–5 real clubs to try discovery; offer a manual club spotlight and measure feedback, update requests and participation interest. Sending outreach requires separate authorization; this brief does not authorize messages.

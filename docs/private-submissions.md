@@ -1,41 +1,28 @@
-# Deploy the private submission queue
+# Private Cancha submissions
 
-The receiver is prepared and tested, but it has not been deployed. The unpublished Framer form is locked and its native submit button is hidden. No contact data is stored in a public CMS collection. Every signed delivery is saved to private SQLite as **Pending review**; no route or process publishes it to Framer.
+The existing Render service stores opportunity, provider and offer submissions in private SQLite, always as Pending review. Organization intake can also request an update to an existing Cancha opportunity URL. Contact information is never added to public CMS by this service. Approval in the private inbox does not publish to Framer.
 
-## Hosting requirements
+## Activation
 
-Create a hosting account that supports an always-on Node 24 service, an HTTPS hostname, a persistent disk, and a secret manager. A container web service with a persistent disk works; an ephemeral filesystem or static website host does not. The Codex workspace is not the public submission host. No hosting charges or account creation have been authorized here.
+The server repair and connected Framer draft were tested on October 11, 2026. Production still requires:
 
-Build the container from the repository root using `docker build -f server/Dockerfile -t cancha-submissions .`. Mount a private persistent disk at `/data`; the runtime user is UID 1000 and must have write access. Never serve that disk with a static-file server. Set the platform port to 8787, or securely configure `PORT` to the platform's required value. Terminate TLS at the hosting provider. Use `GET /health` as the health check.
+1. In Render → cancha-automation → Manual Deploy → Deploy latest commit. Automatic deployments are disabled. This workspace has no Render deployment credential.
+2. Check `https://cancha-automation.onrender.com/health` returns `publicIntake: 1` and `privateStorage: true`.
+3. Publish the connected Framer draft. The existing button stays disabled until the receiver advertises readiness.
+4. Submit consented test details from the published form and confirm a Pending review entry in the private inbox. Check desktop/mobile and failed delivery; fields remain populated on failure.
 
-Create a random secret of at least 32 characters using the provider's secure generator or a password manager. Store it as **CANCHA_WEBHOOK_SECRET** in the hosting secret manager. Do not commit it, put it into a Framer code component, or send it in chat. The Framer API key is unrelated and must not be reused for this webhook. Store an encrypted copy in your password manager so the same value can be entered in the Framer webhook destination.
+Use the existing administrator password at `https://cancha-automation.onrender.com/admin`. The private inbox is `/admin/submissions`; its authenticated `/admin/submissions/export` endpoint downloads a private backup. Keep that export outside GitHub and public files. Export and migrate these new intake records before deleting Render: they are not automatically copied into the older GitHub migration archive.
 
-The receiver endpoint will be `https://YOUR-ACTUAL-HOST/webhook`. This is a placeholder, not a deployed address. Accept POST JSON, preserve the original request bytes and Framer headers, and return 2xx only after SQLite storage succeeds. Framer signs raw request bytes plus the submission ID with HMAC SHA256; the receiver verifies `Framer-Signature` and `Framer-Webhook-Submission-Id`. Unsigned requests receive 401. Framer can retry deliveries; delivery IDs are idempotent. Likely duplicates are flagged for review instead of published.
+## Delivery and privacy
 
-## Connect the draft form after deployment
+The existing `withSubmissionLock` export now intercepts browser submissions and sends them to `/intake/opportunity`, `/intake/provider` or `/intake/offer`. `/intake/challenge` supplies a short-lived, origin-bound signed token; the server signing secret never enters browser code. Allowed origins are the current public Framer site and Framer editor. A custom domain requires updating the allowlist before switching domains.
 
-In the Cancha Framer editor, open **For Organizations** → **Private organization submission** → **Pending review form — locked until deployment** (form ID `CnS4mD_8b`). Under **Send To**, add a **Webhook**, enter the actual HTTPS `/webhook` address and the matching secret through Framer's secure destination settings. These destination credentials are not configured by the repository.
+The receiver checks consent, schemas, HTTPS links, request size, a honeypot, delivery identity and request limits. CORS and challenge tokens limit browser misuse; they do not authenticate submitter identities or prevent all scripted spam. Duplicate delivery retries are idempotent, and likely duplicate submissions are flagged for review. Unknown or unreviewed submissions never publish automatically. Failed responses do not claim successful storage.
 
-The field names must remain: Organization, Contact Name, Contact Email, Opportunity Title, Category, Location, Eligibility, Dates, Registration Link, Description, Permission. Dates is optional; the other textual fields and consent are required. Registration Link must be HTTPS. Permission is a checkbox. Contact details are used privately for review.
+The existing signed webhook routes remain frozen during the GitHub migration. The public browser intake and private review/login routes operate independently; Render Instagram publishing remains frozen, with scheduling on GitHub. No additional hosting service or subscription was created. The existing Render service and persistent disk retain their existing costs.
 
-Test a submission in Framer Preview with your own consented test data; verify exactly one Pending review row on the private disk and verify that no CMS record was created. Keep the lock until the service, signature, storage and native form success/error states all pass. Then remove the `withSubmissionLock` override, hide the disabled “Submissions opening soon” code button, and reveal the native submit instance referenced by the form's `formSubmitButtonId`. Change the opening-soon notice. Test desktop/mobile, validation, failed delivery, successful delivery and a retried delivery before publishing. The site has not been published by this task.
+Set secrets only through secure Render environment settings; never paste them in chat or commit them. Existing CANCHA_WEBHOOK_SECRET and administrator credentials are reused. The server logs no submitted contact values. Restrict administrator access, establish a contact-data retention policy, and keep private backups encrypted outside the service document root.
 
-## Private review and operations
+## Validation
 
-On the host's private operator console, run `CANCHA_SUBMISSIONS_DB=/data/submissions.sqlite node server/review.mjs list`. This lists IDs, organizations, titles and status without contact emails. To record a decision, use `CANCHA_REVIEWER="Your actual name" node server/review.mjs set-status ID Approved "Official source checked"` or `Rejected "Reason"`, with the same database environment variable. Decisions only update private storage. Manually verify identity, duplicates, dates, eligibility and the official registration URL before any separate CMS action. Approved does not automatically mean published.
-
-Restrict host-console and disk access to Cancha administrators. Back up SQLite using a consistent SQLite backup on the private host, encrypt the backup, and keep it outside the web service's document root. Establish a retention policy and delete rejected/contact data when no longer needed. The receiver logs no submitted contact values and exposes no public queue, database, or public submission administration endpoint. The separate Instagram dashboard requires administrator login.
-
-Official specification: https://www.framer.com/help/articles/framer-form-webhook-setup/
-
-## Provider and offer forms
-
-The same private receiver now accepts provider submissions at `/providers/webhook` and merchant offers at `/offers/webhook`. Configure each native Framer form with its corresponding path, the same securely stored signing secret, and exactly its displayed field names. These routes validate different schemas and still force Pending review. Provider and offer contact emails never enter the public CMS collections. Operator decisions now record the actual reviewer identity and review timestamp. Approved private submissions still require a deliberate, reviewed CMS action; there is no automatic CMS publication. See growth-and-instagram.md for field mapping and account setup.
-
-The prepared [Render Blueprint](../render.yaml) combines this private receiver with encrypted Meta storage and the protected Instagram review service. See [current deployment steps](connect-meta-and-automation.md). Deployment does not unlock the Framer forms; the signed end-to-end submission check above still comes first.
-
-## Current status: October 11, 2026
-
-The instructions above describe the prepared signed-webhook implementation. Render was subsequently deployed for Meta, then its automation was migrated to GitHub; the existing Framer intake forms were never unlocked. `withSubmissionLock` still prevents sending, the native submit button is hidden, and the visible button is disabled. With the GitHub backend selected, Render currently returns 503 for intake as well. Do not unlock the forms against that receiver.
-
-GitHub Actions does not replace the public HTTPS intake service. Finish a private destination separately (an owner-controlled native Framer destination or a supported private webhook receiver), verify a real consented delivery, and then unlock the existing form. No new paid hosting or public contact-data storage was enabled. The owner has been asked which private destination can be used; that choice remains unresolved.
+All 51 repository tests passed, including public intake, required consent, origin/token checks, duplicate delivery handling, body limits, migration behavior, private administrator login/review/export, and absence of automatic publication. Framer type checking passed. Production delivery must still be checked after deployment and Framer publication; local tests do not establish live delivery.

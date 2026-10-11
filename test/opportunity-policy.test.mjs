@@ -5,8 +5,8 @@ test('closed lifecycle preserves expiry day, ignores nonactive records and reche
  assert.equal(lifecycle({status:'Active',end:'2026-10-06',checkedOn:'2026-10-06'},now),null);
  assert.equal(lifecycle({status:'Active',end:'2026-10-05',checkedOn:'2026-10-06'},now).status,'Expired');
  assert.equal(lifecycle({status:'Archived',end:'2026-10-05'},now),null);
- assert.equal(lifecycle({status:'Active',checkedOn:'2026-09-28'},now).status,'Pending review');
- assert.equal(lifecycle({status:'Active',end:'2026-02-30',checkedOn:'2026-10-06'},now).status,'Pending review');
+ assert.equal(lifecycle({status:'Active',checkedOn:'2026-09-28'},now),null);
+ assert.equal(lifecycle({status:'Active',end:'2026-02-30',checkedOn:'2026-10-06'},now),null);
  assert.equal(canonicalUrl('https://example.org/register?id=42&utm_source=ig#register'),'https://example.org/register?id=42');
  assert.equal(opportunityIdentity('https://www.teamworkonline.com/soccer-jobs/team/new-title-123'),opportunityIdentity('https://www.teamworkonline.com/soccer-jobs/team/old-title-123'));
 });
@@ -24,4 +24,4 @@ test('daily additions require current human evidence, rights, resolution and no 
  assert.throws(()=>validateBatch([row],[],{...config,maximumPerRun:0},now),/maximum/);
 });
 
-test('manual Active and Verified switches cannot bypass unresolved official-source review',()=>{for(const reviewStatus of ['Availability not verified','Waitlist only','Automatic source recheck needed','Club source recheck needed']){const result=lifecycle({status:'Active',verified:true,checkedOn:'2026-10-11',reviewStatus,reviewNote:'Existing source is blocked'},new Date('2026-10-11T16:00:00Z'));assert.equal(result.status,'Pending review');assert.equal(result.verified,false);assert.equal(result.note,'Existing source is blocked');assert.equal(result.label,reviewStatus);}});
+test('owner-approved Active visibility survives unresolved or stale checks without changing verification notes',()=>{for(const reviewStatus of ['Availability not verified','Waitlist only','Automatic source recheck needed','Club source recheck needed'])assert.equal(lifecycle({status:'Active',verified:false,checkedOn:'2026-09-01',reviewStatus,reviewNote:'Existing source is blocked'},new Date('2026-10-11T16:00:00Z')),null);});

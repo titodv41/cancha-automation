@@ -19,7 +19,7 @@ Added a Youth CMS age option and bound it in the existing Explore age filter, pr
 
 ## Ongoing checks
 
-`config/reviewed-club-sources.json` registers these four exact program pages with approved content hashes and a November 10 editorial review expiry. Daily checks normalize body text without scripts/styles, require the same HTTPS source and HTTP 200, and compare evidence with the approved review. Changes, blocked sources, or an expired review window return only those reviewed listings to Pending review. Unchanged evidence can refresh the source-check date; archives, expired listings and editorial holds are not overridden. An acknowledged backup is required before any write; a CMS edit during backup aborts the write.
+`config/reviewed-club-sources.json` registers these four exact program pages with approved content hashes and a November 10 editorial review expiry. Daily checks normalize body text without scripts/styles, require the same HTTPS source and HTTP 200, and compare evidence with the approved review. Changes, blocked sources, or an expired review window flag those listings for review without hiding an existing Active listing. Unchanged evidence can refresh the source-check date; archives, expired listings and editorial holds are not overridden. An acknowledged backup is required before any write; a CMS edit during backup aborts the write.
 
 A read-only run checked 18 sources and found 12 unverified research leads. All four reviewed club pages matched their approved evidence. These checks maintain a small reviewed set; they do not deliver nine new opportunities each day. Additional clubs and programs still require real evidence and review.
 
@@ -29,12 +29,10 @@ All 48 repository tests passed, including ten targeted regression checks, coveri
 
 The first snapshot contained 9 Active and 67 Pending review records. Before the successful pilot patch, a later snapshot contained 75 Active and 1 Pending review, with 66 records moved out of Pending review and verification/featured flags changed. This occurred before the pilot listing patch; none of the new GitHub jobs ran during that interval. The owner confirmed that they made this bulk change and asked Cancha automation to manage statuses instead. After the pilot patch there were 84 total and 71 Active records, which MUST NOT be reported as 71 source-verified opportunities.
 
-Final collection: 84 records — 12 Active, 65 Pending review, 5 Expired and 2 Archived. The cleanup returned 59 unresolved listings to Pending review; it did not independently verify them.
+Corrected collection: 84 records — 71 Active, 6 Pending review, 5 Expired and 2 Archived. The owner clarified that the 59 listings must stay Active. They were restored with Status-only writes; verification flags, other fields, IDs and public URLs were preserved. Stale checks no longer hide existing Active records. A confirmed passed end date can still mark a listing Expired. Active is visibility, not a claim of verification.
 
 After that confirmation, automatic lifecycle checks were extended to reject an Active/Verified toggle when the editorial label still says Availability not verified, Waitlist only, or a source recheck is required. The cleanup was run with a fresh backup; unrelated fields and featured selections were preserved. Passed stored dates are flagged as such, not called independently verified closures. Both snapshots remain privately in ignored backups.
 
 ## Private forms
 
-The existing native Framer form is present. It retains `withSubmissionLock`; the native submit is hidden and the visible button is disabled. This intentionally prevents losing contact data or suggesting a successful delivery without storage. The old Render receiver rejects submissions while the GitHub backend is selected. GitHub Actions is a scheduled runner, not a public form endpoint.
-
-No form was replaced, unlocked or published. To finish intake, configure a private destination through Framer's secure Send To controls, test a consented delivery, and verify private storage and Pending review handling before removing the lock. A Google/private email destination needs the owner's account/inbox choice; a webhook needs an actual supported private receiver. Contact emails must never enter public CMS records, repository files or Actions artifacts.
+The existing forms now have a prepared private browser receiver on the existing Render service. Organization intake includes new-listing and existing-listing update choices. Provider and offer forms use the same private queue. The Framer draft is connected, but production activation requires deploying the server repair and publishing the Framer draft. See [private intake instructions](private-submissions.md). No new hosting subscription was created.

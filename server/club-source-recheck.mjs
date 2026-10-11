@@ -7,7 +7,7 @@ export function clubRefreshDecision(item,review,source,day=new Date().toISOStrin
  let sameUrl=false;try{sameUrl=canonicalUrl(item.registration)===canonicalUrl(review.url)&&canonicalUrl(source?.url)===canonicalUrl(review.url);}catch{}
  const withinReviewWindow=/^\d{4}-\d{2}-\d{2}$/.test(review.reviewExpiresOn||'')&&day<=review.reviewExpiresOn;
  const unchanged=/^[a-f0-9]{64}$/.test(review.approvedTextHash||'')&&withinReviewWindow&&sameUrl&&source?.httpStatus===200&&!source.blocker&&source.clubTextHash===review.approvedTextHash;
- return {id:item.id,slug:item.slug,status:unchanged?'Active':'Pending review',reviewStatus:unchanged?'Organizer source rechecked':'Club source recheck needed',unchanged,restoring:item.status==='Pending review'};
+ return {id:item.id,slug:item.slug,status:unchanged?'Active':item.status,reviewStatus:unchanged?'Organizer source rechecked':'Club source recheck needed',unchanged,restoring:item.status==='Pending review'};
 }
 export async function refreshReviewedClubs(f,reviews,sources,{day,beforeWrite}={}){
  const c=(await f.getCollections()).find(x=>x.name==='Opportunities'),fields=await c.getFields(),items=await c.getItems(),ids=Object.fromEntries(fields.map(x=>[x.name,x.id]));

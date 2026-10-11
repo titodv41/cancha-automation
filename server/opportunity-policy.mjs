@@ -3,13 +3,9 @@ export function canonicalUrl(input){const u=new URL(input);if(u.protocol!=='http
 export function opportunityIdentity(input){const url=new URL(canonicalUrl(input));if(url.hostname.endsWith('teamworkonline.com')){const match=url.pathname.match(/-(\d+)$/)||url.pathname.match(/\/employment_opportunities\/(\d+)\//);if(match)return 'teamwork-posting:'+match[1];}return url.href;}
 export function lifecycle(item,now=new Date()){
  if(item.status!=='Active')return null;
- if(item.end){try{if(expiredOffer(item.end,now))return {status:'Expired',label:'Listed end date passed',verified:false,note:'The stored end date has passed. This listing is retained for its existing URL; organizer availability has not been reconfirmed.'};}catch{return {status:'Pending review',label:'Date needs review',verified:false,note:'The stored end date is invalid. Confirm with the organizer.'};}}
- // A manual Active/Verified toggle does not replace an explicit unresolved editorial review.
- if(['Availability not verified','Waitlist only','Automatic source recheck needed','Club source recheck needed'].includes(item.reviewStatus))return {status:'Pending review',label:item.reviewStatus,verified:false,note:item.reviewNote||'Existing editorial evidence is unresolved. Confirm the official source, eligibility and registration availability before presenting this listing as current.'};
- // Source checks are not proof of closure; unknown/blocked pages never become Expired.
- const checked=String(item.checkedOn||'').slice(0,10);
- const age=Date.parse(dateInNewYork(now))-Date.parse(checked);
- if(!Number.isFinite(age)||age>7*86400000||age<0)return {status:'Pending review',label:'Availability needs recheck',verified:false,note:'The organizer availability check is missing or more than seven calendar days old. Reconfirm dates, eligibility, registration and open status.'};
+ if(item.end){try{if(expiredOffer(item.end,now))return {status:'Expired',label:'Listed end date passed',verified:false,note:'The stored end date has passed. This listing is retained for its existing URL; organizer availability has not been reconfirmed.'};}catch{return null;}}
+ // The owner wants existing listings to stay Active while verification notes remain visible.
+ // A stale or unavailable check alone does not hide an existing listing.
  return null;
 }
 export function validateBatch(batch,existing,config,now=new Date()){

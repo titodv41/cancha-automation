@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {createIntakeGuard} from './public-intake.mjs';
 import {validateIntake} from './intake-validation.mjs';
 import {startInstagramWorker} from './instagram-worker.mjs';
 import {createAutomationConsole} from './automation-console.mjs';
@@ -18,7 +19,7 @@ export function validSignature(secret, id, body, signature) {
   return timingSafeEqual(Buffer.from(signature), Buffer.from(signatureFor(secret, id, body)));
 }
 export const validateSubmission=data=>validateIntake(data,'opportunity');
-export function createSubmissionServer({ secret, databasePath, admin }) {
+export function createSubmissionServer({ secret, databasePath, admin, allowedFormOrigins }) {
   if (typeof secret !== 'string' || secret.length < 32) throw new Error('Configure a secure CANCHA_WEBHOOK_SECRET of at least 32 characters');
   mkdirSync(dirname(databasePath), { recursive: true, mode: 0o700 });
   const db = new DatabaseSync(databasePath);chmodSync(databasePath,0o600);
@@ -34,19 +35,29 @@ export function createSubmissionServer({ secret, databasePath, admin }) {
   const getDelivery = db.prepare('SELECT id,payload_hash FROM submissions WHERE delivery_id=?');
   const getDuplicate = db.prepare('SELECT id FROM submissions WHERE fingerprint=? ORDER BY created_at LIMIT 1');
   const insert = db.prepare("INSERT INTO submissions(id,delivery_id,payload_hash,fingerprint,duplicate_of,created_at,kind,status,payload) VALUES(?,?,?,?,?,?,?,'Pending review',?)");
-  const server = http.createServer(async (req,res) => {
+  const intake=createIntakeGuard(secret,allowedFormOrigins);
+ const server = http.createServer(async (req,res) => {
     if(admin?.handles(req.url))return admin.handle(req,res);
-    function send(status,body={}) { res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(body)); }
-    if(req.method==='GET'&&req.url==='/health')return send(200,{ok:true});
-    const kind={'/webhook':'opportunity','/providers/webhook':'provider','/offers/webhook':'offer'}[req.url];
+    function send(status,body={}) { res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...intake.cors(req.headers.origin)});res.end(JSON.stringify(body)); }
+    if(req.method==='GET'&&req.url==='/health')return send(200,{ok:true,publicIntake:1,privateStorage:true});
+    const publicKind={'/intake/opportunity':'opportunity','/intake/provider':'provider','/intake/offer':'offer'}[req.url];
+    if(req.url==='/intake/challenge'||publicKind){
+      if(!intake.allowed(req.headers.origin))return send(403,{error:'Origin rejected'});
+      if(req.method==='OPTIONS')return send(204);
+      if(req.url==='/intake/challenge'){if(req.method!=='GET')return send(405);if(!intake.rate(req.socket.remoteAddress))return send(429,{error:'Try again later'});return send(200,{token:intake.challenge(req.headers.origin)});}
+      if(req.method!=='POST')return send(405);
+      if(!intake.rate(req.socket.remoteAddress))return send(429,{error:'Try again later'});
+    }
+    const kind=publicKind||{'/webhook':'opportunity','/providers/webhook':'provider','/offers/webhook':'offer'}[req.url];
     if(req.method!=='POST'||!kind)return send(404);
-    if(admin?.isFrozen())return send(503,{error:'Submissions paused during hosting migration'});
+    if(!publicKind&&admin?.isFrozen())return send(503,{error:'Submissions paused during hosting migration'});
     if(!String(req.headers['content-type']).startsWith('application/json'))return send(415);
     let bytes=0;const chunks=[];
     try {
       for await(const chunk of req){bytes+=chunk.length;if(bytes>65536){send(413);req.resume();return;}chunks.push(chunk);}
-      const body=Buffer.concat(chunks),delivery=req.headers['framer-webhook-submission-id'];
-      if(!validSignature(secret,delivery,body,req.headers['framer-signature']))return send(401);
+      const body=Buffer.concat(chunks);let delivery=req.headers['framer-webhook-submission-id'];
+      if(publicKind){const token=intake.verify(req.headers.origin,req.headers['x-cancha-intake-token']);if(!token)return send(401);delivery='public-'+token.id;}
+      else if(!validSignature(secret,delivery,body,req.headers['framer-signature']))return send(401);
       let payload;try{payload=validateIntake(JSON.parse(body.toString('utf8')),kind);}catch{return send(422,{error:'Invalid submission fields'});}
       const hash=createHash('sha256').update(body).digest('hex');
       const existing=getDelivery.get(delivery);
