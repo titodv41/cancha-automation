@@ -61,3 +61,9 @@ Forty-one local tests pass, covering authenticated encryption/tampering, restore
 - Owner-authorized daily plan is enabled, starting October 10 at 18:00 New York; GitHub dispatch runs around 18:07. Today's preparation does not schedule tomorrow outside the freshness window. Tomorrow's 10:07 preparation selects the first eligible daily post.
 - Encrypted state and CMS backup recovery copies are saved under ignored `backups/github-migration-2026-10-09/`; no decrypted credentials were accessed in Codex.
 - Remaining: first real Instagram publication, submission-form replacement/disable, and deletion of the paid Render service/disk. Render billing has not been canceled. Private intake is paused after migration; it must not be presented as a working submission destination.
+
+## October 11 schedule repair
+
+No Instagram publications were recorded when checked on October 11. GitHub delayed the October 10 scheduled jobs, and the old selector required the runner's actual New York hour to be exactly 10 or 18. Successful no-op runs therefore had no artifacts and did not prepare/publish. Replaced this with distinct UTC cron triggers and an intended-trigger/DST selector, tested against the observed delayed timestamps; all 43 tests pass. Late-publication freshness and daily/uncertainty guards remain in place.
+
+Live preparation [38155091315](https://github.com/titodv41/cancha-automation/actions/runs/38155091315) succeeded after the fix. It confirmed one Approved post, `cancha-introduction`, scheduled for October 11 at 18:00 America/New_York, twelve remaining Drafts, and the plan/schedule enabled. Published ID is still null; an actual Instagram publication remains unverified until the evening job succeeds. Keep Render and its encrypted recovery snapshot until that check and the form transition are complete.
