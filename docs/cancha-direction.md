@@ -8,6 +8,7 @@ Cancha is a local sports discovery and growth platform. Start with Florida socce
 
 - Framer access works. Opportunities contains 83 records: 9 Active, 67 Pending review, 5 Expired and 2 Archived. These are CMS counts, not a claim of independently verified current opportunities.
 - The public Explore page shows 11 cards, while CMS has 9 Active records. Publication and current CMS state differ; reconcile status before publishing. Homepage and Explore images loaded in this inspection; Explore fits a 390px viewport.
+- Live functional checks: all 11 detail routes returned HTTP 200 with working images and registration link targets present. Search, empty results and Clear Filters responded correctly. The Tampa Bay region filter incorrectly retained all 11 cards after waiting for updates; fix and retest before calling browsing complete. External registration destinations were not independently reverified in this inspection.
 - Providers and Offers have no records. Stories has three unpublished drafts. Public organization/provider submission buttons are disabled; private submission intake is not operational.
 - GitHub preparation and review jobs have completed successfully. The queued introductory feed post is approved for October 11 at 18:00 America/New_York; no published ID was recorded at inspection. Verify actual publication through its Meta receipt, not merely a green workflow run.
 - A delayed-run schedule-selection bug was fixed before this inspection. First real scheduled publication remains to be demonstrated.
