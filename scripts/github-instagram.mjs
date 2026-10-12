@@ -9,7 +9,7 @@ import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
 import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYork} from '../server/offer-expiry.mjs';
-const mode=process.argv[2]||'review';let db,client,dir;
+const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
  if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify'].includes(mode))throw Error('Unsupported GitHub automation action');
@@ -33,11 +33,11 @@ try{
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
   const run=spawnSync(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');
   // The child persists delivered drafts and backups through the same API.
-  db.close();db=openQueue(join(dir,'reloaded.sqlite'));state=await client.load();restoreState(db,state);
-  state.growth=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/report.json','utf8')).growth;
+  phase='reload-db';db.close();db=openQueue(join(dir,'reloaded.sqlite'));phase='reload-state';state=await client.load();phase='restore-state';restoreState(db,state);
+  phase='growth-report';state.growth=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/report.json','utf8')).growth;
  }
  if(mode==='prepare'||mode==='migrate'||mode==='resume'){
-  await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource});await checkpoint();
+  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource});await checkpoint();
  }
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='reconnect'){
@@ -66,4 +66,4 @@ try{
  if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));
  if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Cancha Instagram\n\n'+JSON.stringify(summary,null,2)+'\n',{flag:'a'});
-}catch(error){const message=String(error.message);console.error(/^(Configure|GitHub state|Read current|Encrypted state|State file|Unsupported|GitHub state already|Migration needs|Render migration|No migrated|Expected Cancha|Daily preparation|Command rejected)/.test(message)?message:'Automation stopped safely; inspect configuration and durable state. No automatic retry of uncertain publication.');process.exitCode=1;}finally{db?.close();await client?.close();await dispatcher?.close();if(dir)await rm(dir,{recursive:true,force:true});}
+}catch(error){console.error(JSON.stringify({phase,errorType:error.constructor.name,code:error.code||null,frames:String(error.stack||'').split('\n').slice(1,3)}));const message=String(error.message);console.error(/^(Configure|GitHub state|Read current|Encrypted state|State file|Unsupported|GitHub state already|Migration needs|Render migration|No migrated|Expected Cancha|Daily preparation|Command rejected)/.test(message)?message:'Automation stopped safely; inspect configuration and durable state. No automatic retry of uncertain publication.');process.exitCode=1;}finally{db?.close();await client?.close();await dispatcher?.close();if(dir)await rm(dir,{recursive:true,force:true});}
