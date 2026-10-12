@@ -2,7 +2,7 @@ import {withProject} from './project-session.mjs';import {checkAutomaticPublicat
 const reviewedPages=process.argv.includes('--include-reviewed-forms')?['/organizations','/providers','/offers']:[];
 await withProject(async f=>{
  const collection=(await f.getCollections()).find(c=>c.name==='Opportunities');if(!collection)throw Error('Opportunity collection missing');
- const preview=await f.agent.publish({action:'preview'}),hasChanges=checkAutomaticPublication(preview,{collectionId:collection.id,reviewedPages});
+ const preview=await f.agent.publish({action:'preview'}),hasChanges=checkAutomaticPublication(preview,{collectionId:collection.id,itemSlugs:(await collection.getItems()).map(item=>item.slug),reviewedPages});
  const before=await f.getPublishInfo();let result={published:false,noChanges:!hasChanges};
  if(hasChanges||process.argv.includes('--cms-updates')){
   const receipt=hasChanges?await f.agent.publish({action:'confirm_publish',confirmationHash:preview.confirmationHash}):await f.publish();if(receipt.errors?.length||['failed','blocked'].includes(receipt.status))throw Error('Framer publication rejected');
