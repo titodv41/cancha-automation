@@ -1,0 +1,9 @@
+{
+  "requestId": "cancha-oct12-recover-intro-001",
+  "ownerInstruction": "Owner authorized one automatic Cancha feed post per day and asks to fix the missed Instagram publication. Publish the previously approved Cancha introduction as today's recovery post.",
+  "action": "schedule",
+  "id": "cancha-introduction",
+  "version": "99ebb9b9ec0450a95ce5850756e3ec5b62c732ce882b8e259a750c1832ba19fe",
+  "authorized": true,
+  "scheduledAt": "2026-10-12T21:14:55.602Z"
+}

@@ -1,3 +1,4 @@
+import {expiredPublishingDay} from '../server/github-publish-window.mjs';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {spawnSync} from 'node:child_process';
 import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
@@ -54,7 +55,7 @@ try{
   const today=dateInNewYork(),all=db.prepare('SELECT * FROM instagram_queue').all();
   if(all.some(row=>['Publishing','Needs reconciliation'].includes(row.status)))throw Error('Uncertain publication requires reconciliation before another automatic post');
   const alreadyPublished=all.some(row=>row.status==='Published'&&(row.published_at||row.scheduled_at)&&dateInNewYork(new Date(row.published_at||row.scheduled_at))===today);
-  for(const row of all)if(['Approved','Preparing'].includes(row.status)&&Date.now()-Date.parse(row.scheduled_at)>2*3600000)db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Missed GitHub publishing window; choose fresh content again' WHERE id=?").run(row.id);
+  for(const row of all)if(['Approved','Preparing'].includes(row.status)&&expiredPublishingDay(row.scheduled_at))db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Scheduled New York day ended; choose fresh content again' WHERE id=?").run(row.id);
   await checkpoint();
   const publisher=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.

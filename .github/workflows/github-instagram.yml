@@ -18,6 +18,8 @@ on:
     - cron: '7 15 * * *'
     - cron: '7 22 * * *'
     - cron: '7 23 * * *'
+    # Evening catch-up checks; the publisher keeps one receipt per NY day.
+    - cron: '37 0-4,22-23 * * *'
 permissions:
   contents: write
 concurrency:

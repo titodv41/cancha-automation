@@ -28,3 +28,5 @@ Framer type checking and staged form structure checks passed. Desktop/mobile edi
 
 - [Framer native contact forms](https://www.framer.com/help/articles/how-can-i-add-a-contact-form-to-my-framer-website/): native forms support email, Sheets and webhook delivery.
 - [Framer native spam protection](https://www.framer.com/help/articles/how-framer-s-built-in-form-spam-protection-works/).
+
+October 12 activation: the owner confirmed Email configuration for all three forms. Their submission guards were removed in the Framer draft. Publication and actual inbox receipt still need confirmation; no Render account deletion was performed.
