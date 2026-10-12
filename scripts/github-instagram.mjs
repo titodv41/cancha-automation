@@ -37,7 +37,7 @@ try{
   phase='growth-report';state.growth=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/report.json','utf8')).growth;
  }
  if(mode==='prepare'||mode==='migrate'||mode==='resume'){
-  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource});await checkpoint();
+  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true});await checkpoint();
  }
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='reconnect'){

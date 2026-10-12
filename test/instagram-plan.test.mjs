@@ -31,3 +31,9 @@ test('daily plan waits for its freshness window and respects another post on the
  approve(db,'manual',{reviewer:'Fixture owner',scheduledAt:'2026-10-12T20:00:00Z',now});
  result=await prepareStandingPlan(db,{now,connected:true});assert.equal(result.scheduled.length,0);assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='automatic'").get().status,'Draft');
 }));
+
+test('photo-required preparation leaves old plain brand drafts unscheduled',()=>fixture(async db=>{
+ saveDraft(db,draft('a-plain'));saveDraft(db,{...draft('b-photo'),photo:{url:'https://framerusercontent.com/images/fixture.jpg',sourcePage:'https://commons.wikimedia.org/wiki/File:Fixture.jpg',creator:'Fixture author',license:'CC0',licenseUrl:'https://creativecommons.org/publicdomain/zero/1.0/deed.en',layout:'photo-split',originalChecksum:'b'.repeat(64)}});
+ savePlan(db,plan,'Fixture owner authorizes daily photo content');
+ const result=await prepareStandingPlan(db,{now,connected:true,requireBrandPhotos:true});assert.deepEqual(result.scheduled.map(x=>x.id),['b-photo']);assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='a-plain'").get().status,'Draft');
+}));

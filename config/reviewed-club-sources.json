@@ -2,10 +2,10 @@
   {
     "slug": "hollywood-fc-2026-27-supplemental-competitive-tryouts",
     "url": "https://www.hollywoodfc.com/tryouts",
-    "approvedTextHash": "2610af8e23e445a460f3f9446d8238cca237f0fe5e91fdc991e37d1bb3ec5658",
-    "reviewedOn": "2026-10-11",
-    "policy": "Recheck only this reviewed listing. Changed or inaccessible evidence returns it to Pending review; no new listings or inferred open claims.",
-    "reviewExpiresOn": "2026-11-10"
+    "approvedTextHash": "8552a3f98e464a9768680678114ca5abca55e64b0259e7d32a0b23b3357d070b",
+    "reviewedOn": "2026-10-12",
+    "policy": "Recheck this exact reviewed listing. Changed or inaccessible evidence is flagged for review; existing Active visibility is preserved. Confirm admission and scheduling with the club.",
+    "reviewExpiresOn": "2026-11-11"
   },
   {
     "slug": "aventura-premier-fc-2026-27-one-on-one-evaluations",
@@ -26,9 +26,25 @@
   {
     "slug": "hollywood-fc-wildcats-academy-beginner-training",
     "url": "https://www.hollywoodfc.com/academy",
-    "approvedTextHash": "69e55c05c6799343fa44b0ba0c2cb956ba8c8b782dbc4bd51424319d500523b7",
-    "reviewedOn": "2026-10-11",
-    "policy": "Recheck only this reviewed listing. Changed or inaccessible evidence returns it to Pending review; no new listings or inferred open claims.",
-    "reviewExpiresOn": "2026-11-10"
+    "approvedTextHash": "c7390565ab97fafbb0d51dd8bd7a6d6fcfb71fd4a9e8509c35b6a904ca7b4de0",
+    "reviewedOn": "2026-10-12",
+    "policy": "Recheck this exact reviewed listing. Changed or inaccessible evidence is flagged for review; existing Active visibility is preserved. Confirm admission and scheduling with the club.",
+    "reviewExpiresOn": "2026-11-11"
+  },
+  {
+    "slug": "fishhawk-premier-fc-2026-27-one-on-one-evaluations",
+    "url": "https://www.fishhawkpremierfc.com/1on1/",
+    "approvedTextHash": "c63b38ec6165492e92ee99686162b10010bf895ab42f2a734fc348e56f1d05db",
+    "reviewedOn": "2026-10-12",
+    "reviewExpiresOn": "2026-11-11",
+    "policy": "Recheck this exact reviewed listing. Changed or inaccessible evidence is flagged for review; existing Active visibility is preserved. Confirm admission and scheduling with the club."
+  },
+  {
+    "slug": "wec-premier-fc-2026-27-one-on-one-evaluations",
+    "url": "https://www.wecpremierfc.com/1on1/",
+    "approvedTextHash": "0ec47fd011946603e6705a9a3157a7c493d86bcb023b43002fe143652caebc71",
+    "reviewedOn": "2026-10-12",
+    "reviewExpiresOn": "2026-11-11",
+    "policy": "Recheck this exact reviewed listing. Changed or inaccessible evidence is flagged for review; existing Active visibility is preserved. Confirm admission and scheduling with the club."
   }
 ]

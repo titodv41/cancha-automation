@@ -1,0 +1,28 @@
+name: Cancha website analytics
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 14 * * *'
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/site-analytics-report.mjs
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cancha-website-analytics
+          path: private-data/site-analytics.json
+          retention-days: 7
+          if-no-files-found: error
+    # Aggregate counts only. No publishing, contact details or visitor identifiers.
