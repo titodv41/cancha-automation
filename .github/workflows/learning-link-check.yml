@@ -1,0 +1,27 @@
+name: Cancha learning resource links
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '19 13 * * 1'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-learning-resources.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: learning-resource-link-check
+          path: private-data/learning-link-check.json
+          retention-days: 7
+          if-no-files-found: ignore
+    # Checks public provider pages only; never approves enrollments or publishes.

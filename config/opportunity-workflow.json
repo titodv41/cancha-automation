@@ -88,6 +88,68 @@
       "url": "https://www.hollywoodfc.com/academy",
       "enabled": true,
       "purpose": "Daily evidence recheck for an editorially reviewed local club program; discovery links remain unverified leads"
+    },
+    {
+      "id": "linkedin-florida-soccer-discovery",
+      "url": "https://www.linkedin.com/jobs/search/?keywords=soccer&location=Florida",
+      "enabled": true,
+      "discoveryOnly": true,
+      "purpose": "Public search leads only; verify employer, exact role, dates, application URL and image rights before any automatic Active staging"
+    },
+    {
+      "id": "indeed-florida-soccer-discovery",
+      "url": "https://www.indeed.com/jobs?q=soccer&l=Florida",
+      "enabled": true,
+      "discoveryOnly": true,
+      "purpose": "Public search leads only; no login, CAPTCHA bypass or unsupported claims of open status"
+    },
+    {
+      "id": "fysa-official-club-finder",
+      "url": "https://www.fysa.com/play/",
+      "enabled": true,
+      "purpose": "Official local-club discovery; directory membership does not establish a currently open program or roster place"
+    },
+    {
+      "id": "upsl-official-team-directory",
+      "url": "https://premier.upsl.com/teams/",
+      "enabled": true,
+      "purpose": "Official small-club/team discovery; identify Florida clubs and follow their own current program sources before creating listings"
+    },
+    {
+      "id": "primary-discovery-20",
+      "url": "https://www.soccershots.com/miami/",
+      "enabled": true,
+      "purpose": "Official program/employer discovery only. Follow the exact current enrollment or vacancy source; this page alone does not verify an open opportunity."
+    },
+    {
+      "id": "primary-discovery-21",
+      "url": "https://ymcasouthflorida.org/sports/",
+      "enabled": true,
+      "purpose": "Official program/employer discovery only. Follow the exact current enrollment or vacancy source; this page alone does not verify an open opportunity."
+    },
+    {
+      "id": "primary-discovery-22",
+      "url": "https://www.imgacademy.com/about-img-academy/careers",
+      "enabled": true,
+      "purpose": "Official program/employer discovery only. Follow the exact current enrollment or vacancy source; this page alone does not verify an open opportunity."
+    },
+    {
+      "id": "primary-discovery-23",
+      "url": "https://www.orlandocitysc.com/club/careers",
+      "enabled": true,
+      "purpose": "Official program/employer discovery only. Follow the exact current enrollment or vacancy source; this page alone does not verify an open opportunity."
+    },
+    {
+      "id": "primary-discovery-24",
+      "url": "https://www.intermiamicf.com/club/careers",
+      "enabled": true,
+      "purpose": "Official program/employer discovery only. Follow the exact current enrollment or vacancy source; this page alone does not verify an open opportunity."
+    },
+    {
+      "id": "primary-discovery-25",
+      "url": "https://www.dosp.org/humanresources/employment-opportunities/",
+      "enabled": true,
+      "purpose": "Official program/employer discovery only. Follow the exact current enrollment or vacancy source; this page alone does not verify an open opportunity."
     }
   ],
   "targetPerDay": 50

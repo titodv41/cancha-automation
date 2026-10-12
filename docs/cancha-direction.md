@@ -29,3 +29,7 @@ A subsequent starter-set review and owner-confirmed bulk status change are docum
 ## Later, after evidence
 
 Test club promotion/outreach and sponsor support as manual services first. Test Cancha Match by manually helping teams arrange friendlies. Build operations tools only after repeated club requests. Add discounts only through real agreements. Expand sports/geography after local demand is demonstrated. Keep the equipment store and university gig marketplace parked.
+
+## October 12 follow-up
+
+Daily source-checked Active additions and guarded Framer publication are enabled, with a target/ceiling of 50 and a successful integrated run. Native email forms were published; actual inbox receipt remains an owner confirmation. Instagram introduction publication is confirmed. Training & Learning is published with seven official provider resources and topic/search filtering. See [source research](source-research-and-training.md) and [next-week outreach draft](provider-outreach-next-week.md). No outreach has been sent.
