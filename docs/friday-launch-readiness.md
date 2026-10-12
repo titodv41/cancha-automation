@@ -39,3 +39,12 @@ Compare landing visits and opportunity clicks, then collect direct feedback: cou
 ## Maintenance
 
 One-time October 12 scripts (`polish-friday.mjs`, `review-friday-clubs.mjs`, `publish-friday-guides.mjs`) refuse later dates and need fresh inspection/review before reuse. Private CMS backups and source evidence are ignored, not committed. Approved social assets and preview images contain no credentials or submissions. To review aggregate analytics, open GitHub Actions → Cancha website analytics → successful run → artifact `cancha-website-analytics`. To review Instagram queue/receipts, run the existing Instagram workflow with action `review`.
+
+## Verified execution
+
+- October 12: 60 tests passed, zero failed or skipped. The photo-required scheduler test confirms old plain brand drafts stay unscheduled.
+- Framer publication confirmed with a newer production deployment timestamp. Desktop 1440px and mobile 390px checks found no horizontal overflow or unloaded visible images. All three guide routes return 200 and include photo attribution/source links.
+- Explore: city Hollywood → two club records; city plus South Florida → same two; city plus Wildcats title search → one; unmatched city → visible empty state; Clear Filters → 70 Active records. Native forms remain visible on all three intake pages; actual Gmail receipt remains owner-unverified.
+- [GitHub photo preparation run](https://github.com/titodv41/cancha-automation/actions/runs/38317206409) succeeded. It rendered/uploaded the photo brand draft and a source-attributed news draft, delivered them to the encrypted private queue, and reported one existing published post with zero uncertain publications. Preparation found zero source-approved new listings and 28 leads requiring review. It did not publish an additional Instagram post.
+- [Website analytics run](https://github.com/titodv41/cancha-automation/actions/runs/38317209310) succeeded: 15 page aggregates, no campaign aggregates yet.
+- [Instagram review run](https://github.com/titodv41/cancha-automation/actions/runs/38317366016) confirmed the new photo draft and caption credits in the private preview artifact. Daily plan and GitHub scheduling are enabled. Tomorrow’s content is selected inside the morning preparation window, not pre-approved days ahead from stale opportunity facts.
