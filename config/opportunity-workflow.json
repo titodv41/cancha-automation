@@ -1,9 +1,9 @@
 {
   "timezone": "America/New_York",
-  "targetPerWeekday": 9,
-  "maximumPerRun": 10,
+  "targetPerWeekday": 50,
+  "maximumPerRun": 50,
   "maximumSourceAgeHours": 72,
-  "publishAutomatically": false,
+  "publishAutomatically": true,
   "sources": [
     {
       "id": "hollywood-fc-2026-27-supplemental-competitive-tryouts",
@@ -90,5 +90,5 @@
       "purpose": "Daily evidence recheck for an editorially reviewed local club program; discovery links remain unverified leads"
     }
   ],
-  "targetPerDay": 9
+  "targetPerDay": 50
 }

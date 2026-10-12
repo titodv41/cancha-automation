@@ -15,4 +15,8 @@ if(rows.length||editorial.length){
  // can retry tomorrow. Draft ingestion is idempotent and cannot approve posts.
  if(connected&&service){await sendPrivate('/automation/drafts',JSON.parse(await readFile(file)));result.deliveredToPrivateQueue=true;if(rows.length)run('scripts/stage-opportunities.mjs',[dir+'/ready.json','--ready-for-publish','--apply','--private-backup']);result.staged=rows.length;}
 }
+const workflow=JSON.parse(await readFile('config/opportunity-workflow.json'));
+const daily=JSON.parse(await readFile(dir+'/report.json'));
+const cmsUpdated=result.staged>0||daily.statusesApplied>0||daily.sourceRefreshesApplied>0||daily.clubSourceRefresh?.length>0;
+if(canWrite&&workflow.publishAutomatically){run('scripts/publish-opportunities.mjs',cmsUpdated?['--cms-updates']:[]);result.published=JSON.parse(await readFile('private-data/framer-publication.json')).published;}
 await writeFile(dir+'/automation-result.json',JSON.stringify(result,null,2),{mode:0o600});console.log(JSON.stringify(result));

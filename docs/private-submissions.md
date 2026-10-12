@@ -30,3 +30,5 @@ Framer type checking and staged form structure checks passed. Desktop/mobile edi
 - [Framer native spam protection](https://www.framer.com/help/articles/how-framer-s-built-in-form-spam-protection-works/).
 
 October 12 activation: the owner confirmed Email configuration for all three forms. Their submission guards were removed in the Framer draft. Publication and actual inbox receipt still need confirmation; no Render account deletion was performed.
+
+October 12 publication: the three confirmed native email forms were published to production. A production deployment timestamp was confirmed. Inbox receipt still requires a real consented submission and owner's confirmation; Render deletion remains an owner account action after preserving remaining private data.
