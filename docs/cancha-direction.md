@@ -6,13 +6,13 @@ Cancha is a local sports discovery and growth platform. Start with Florida socce
 
 ## Initial inspection evidence, October 11
 
-- Framer access works. Opportunities contains 84 records: 71 Active, 6 Pending review, 5 Expired and 2 Archived. These are CMS counts, not a claim of independently verified current opportunities.
+- Framer access works. Opportunities contains 84 records: 70 Active, 6 Pending review, 6 Expired and 2 Archived. These are CMS counts, not a claim of independently verified current opportunities.
 - The public Explore page shows 11 cards, while CMS has 9 Active records. Publication and current CMS state differ; reconcile status before publishing. Homepage and Explore images loaded in this inspection; Explore fits a 390px viewport.
-- Live functional checks: detail routes and images load; search, empty results, Clear Filters and location filtering work after page hydration. The earlier Tampa Bay failure was a premature automated interaction, not a confirmed site defect. The refreshed public page now shows nine cards matching CMS Active count. External registration destinations were not independently reverified in that initial inspection.
+- Live functional checks: detail routes and images load; search, empty results, Clear Filters and location filtering work after page hydration. The earlier Tampa Bay failure was a premature automated interaction, not a confirmed site defect. That earlier inspection showed nine cards matching the Active count at the time; the October 12 CMS count is 70 Active and includes owner-activated records, not 70 independently verified opportunities. External registration destinations were not independently reverified in that initial inspection.
 - Providers and Offers have no records. Stories has three unpublished drafts. Public organization/provider submission buttons are disabled; private submission intake is not operational.
 - GitHub preparation and review jobs have completed successfully. The queued introductory feed post is approved for October 11 at 18:00 America/New_York; no published ID was recorded at inspection. Verify actual publication through its Meta receipt, not merely a green workflow run.
 - A delayed-run schedule-selection bug was fixed before this inspection. First real scheduled publication remains to be demonstrated.
-- Automated discovery currently covers a small set of official soccer employer boards, mainly jobs. The daily cap is not a guarantee of nine useful local opportunities.
+- Automated discovery currently covers a small set of official soccer employer boards, mainly jobs. The daily cap is not a guarantee of 50 useful local opportunities.
 - CMS automation prepares project changes with encrypted backups. It does not publish the Framer site. Instagram Stories publishing remains gated on confirmed eligible account type. Performance analytics are not connected.
 
 A subsequent starter-set review and owner-confirmed bulk status change are documented in [broward-pilot-review.md](broward-pilot-review.md). Later Active counts do not establish independent verification; the owner authorized automatic reconciliation of unresolved review statuses.

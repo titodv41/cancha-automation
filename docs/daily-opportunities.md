@@ -1,3 +1,5 @@
+> Current October 12 configuration: target/ceiling 50 source-checked additions per day. The GitHub Instagram preparation job runs discovery and Active staging, followed by guarded production publication. Existing Active records remain visible when a recheck is unavailable. Read [the current daily workflow](daily-growth-workflow.md); older dated setup notes below describe earlier manual-publish limits.
+
 # Daily opportunity workflow — October 6, 2026
 
 Updated October 9: target nine quality additions per calendar day, maximum ten staged additions per New York day, toward 200 current opportunities by October 31. This is an aspiration, not a guaranteed quota. Fewer is acceptable when the evidence is weak. Start with Florida soccer and relevant soccer careers from existing organizer-linked sources. Broaden the source registry only after checking organizer identity and relevance.

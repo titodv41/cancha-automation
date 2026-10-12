@@ -13,3 +13,9 @@ Instagram is separately limited to one feed post daily, targeting 6 PM New York 
 Reusable pattern for another project: discover → verify → back up → stage → guarded publish → record delivery → measure outcomes. Reuse that structure, but keep account credentials, databases, sources and brand assets separate. Real video production can be added later as an asset input before the review/publishing steps.
 
 Next priorities: expand trustworthy Florida program sources, introduce photo/carousel templates with permitted images, and connect Instagram metrics for weekly topic/design comparisons. Do not fill a daily quota with duplicate programs or recycle closed listings.
+
+## October 12 validation
+
+[The full GitHub preparation run succeeded](https://github.com/titodv41/cancha-automation/actions/runs/38311137237). It checked 18 sources, left 9 leads for manual review, added 0 new opportunities, delivered 2 Instagram drafts privately, and confirmed a production Framer deployment. Collection count: 84 total, 70 Active, 6 Pending review, 6 Expired and 2 Archived; Active counts include owner-approved visibility and are not independent verification counts. One dated listing was moved to Expired; the restored owner-activated records were not hidden for stale checks. The daily plan stayed enabled with 1 Published Instagram post and 0 uncertain publications. All 57 repository tests passed. Published forms on all three pages rendered with native submit buttons in a 390-pixel browser viewport; email receipt remains an owner check.
+
+Two integration faults were fixed during validation: the publication gate now recognizes individual Opportunities collection items, and the parent runner now waits asynchronously for its child task and reopens the state client before reloading. The synchronous wait had left its HTTP connection unusable after source preparation. Failed intermediate runs were not counted as successful end-to-end checks.
