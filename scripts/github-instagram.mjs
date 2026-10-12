@@ -1,6 +1,6 @@
 import {expiredPublishingDay} from '../server/github-publish-window.mjs';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
-import {tmpdir} from 'node:os';import {join} from 'node:path';import {spawnSync} from 'node:child_process';
+import {tmpdir} from 'node:os';import {join} from 'node:path';import {runSubprocess} from './subprocess.mjs';
 import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
 import {openQueue,saveDraft,dispatchDue,metaPublisher} from '../server/instagram-queue.mjs';
 import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs';
@@ -31,9 +31,9 @@ try{
  if(mode==='pause'){savePlan(db,{enabled:false},'Owner paused daily Instagram through GitHub Actions');await checkpoint();}
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
-  const run=spawnSync(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');
+  const run=await runSubprocess(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');
   // The child persists delivered drafts and backups through the same API.
-  phase='reload-db';db.close();db=openQueue(join(dir,'reloaded.sqlite'));phase='reload-state';state=await client.load();phase='restore-state';restoreState(db,state);
+  phase='reload-db';db.close();db=openQueue(join(dir,'reloaded.sqlite'));phase='reload-state';await client.close();client=githubStateClient();state=await client.load();phase='restore-state';restoreState(db,state);
   phase='growth-report';state.growth=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/report.json','utf8')).growth;
  }
  if(mode==='prepare'||mode==='migrate'||mode==='resume'){
