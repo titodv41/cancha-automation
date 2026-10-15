@@ -53,3 +53,5 @@ Before selling a pilot, define its duration, price, included exposure and measur
 - Full browser checks block outbound POST requests; no test email, public submission or Instagram post was sent.
 
 The final reviewed release was deployed with the SDK publication method after the agent confirmation left page changes pending. A fresh preview then returned zero pending changes. The first hosted daily preparation correctly refused the pending design changes; its source research, classification and placement phases completed without CMS mutations. Hosted automation checks and weekly source health passed. A subsequent daily-preparation run was requested after publishing; its final result still needs confirmation. Instagram remains paused.
+
+Final recheck limitation: after the release, GitHub API and query-specific live-site GET requests intermittently returned HTTP 503. A supplementary quick-link/social-sharing rerun could not be completed reliably during that interruption; the earlier full desktop/mobile functional checks remain the completed evidence. Recheck these after service recovery rather than weakening assertions.
