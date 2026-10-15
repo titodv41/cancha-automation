@@ -1,4 +1,4 @@
-import {approvedSocialPhoto} from './social-creative.mjs';
+import {approvedSocialPhoto,recentlyUsedPhoto} from './social-creative.mjs';
 import {backendFrozen} from './github-state.mjs';
 import {contentHash,approve} from './instagram-queue.mjs';
 import {newYorkSchedule} from './scheduling.mjs';
@@ -46,6 +46,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
   while(cursor<candidates.length){
    const old=candidates[cursor++],content=JSON.parse(old.content);if(blocked.has(old.id))continue;const before=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(old.id);if(before?.status!=='Draft')continue;
    if(content.sourceType==='news'&&Date.parse(slot.scheduledAt)-Date.parse(content.factsCheckedAt)>36*3600000)continue;
+   if(recentlyUsedPhoto(content,db.prepare('SELECT * FROM instagram_queue').all(),slot.scheduledAt)){result.skipped.push({id:old.id,reason:'Image or source photograph already used within 30 days'});continue;}
    if(db.prepare("SELECT content FROM instagram_queue WHERE status IN ('Approved','Preparing','Publishing','Published','Needs reconciliation')").all().some(row=>JSON.parse(row.content).caption===content.caption))continue;let checked=false;
    if(requiresSource(content)){try{checked=await verifySource(content)===true;}catch{}if(!checked){blocked.add(old.id);result.skipped.push({id:old.id,reason:'Source unavailable, changed or closed'});continue;}}
    const latestPlan=readPlan(db),current=db.prepare('SELECT * FROM instagram_queue WHERE id=?').get(old.id);

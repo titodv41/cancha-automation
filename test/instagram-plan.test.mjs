@@ -37,3 +37,11 @@ test('photo-required preparation leaves old plain brand drafts unscheduled',()=>
  savePlan(db,plan,'Fixture owner authorizes daily photo content');
  const result=await prepareStandingPlan(db,{now,connected:true,requireBrandPhotos:true});assert.deepEqual(result.scheduled.map(x=>x.id),['b-photo']);assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='a-plain'").get().status,'Draft');
 }));
+
+test('standing plan skips a reused source photo even when the next post has a different crop',()=>fixture(async db=>{
+ const original={originalChecksum:'c'.repeat(64),sourcePage:'https://commons.wikimedia.org/wiki/File:Pitch.jpg',url:'https://framerusercontent.com/images/pitch.jpg'};
+ saveDraft(db,{...draft('previous'),assetChecksum:'1'.repeat(64),assetUrl:'https://framerusercontent.com/images/previous.jpg',photo:original});db.prepare("UPDATE instagram_queue SET status='Published',published_at='2026-10-11T22:00:00Z',scheduled_at='2026-10-11T22:00:00Z' WHERE id='previous'").run();
+ saveDraft(db,{...draft('a-reused'),assetChecksum:'2'.repeat(64),assetUrl:'https://framerusercontent.com/images/new-crop.jpg',photo:{...original,url:'https://framerusercontent.com/images/recropped.jpg'}});
+ saveDraft(db,{...draft('b-fresh'),assetChecksum:'3'.repeat(64),assetUrl:'https://framerusercontent.com/images/fresh.jpg',photo:{originalChecksum:'d'.repeat(64),sourcePage:'https://commons.wikimedia.org/wiki/File:Other.jpg',url:'https://framerusercontent.com/images/other.jpg'}});
+ savePlan(db,plan,'Fixture owner authorizes the standing plan');const result=await prepareStandingPlan(db,{now,connected:true});assert.deepEqual(result.scheduled.map(x=>x.id),['b-fresh']);assert(result.skipped.some(x=>x.id==='a-reused'));assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='a-reused'").get().status,'Draft');
+}));

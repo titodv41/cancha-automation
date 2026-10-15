@@ -1,0 +1,34 @@
+{
+  "status": "unpublished_concepts_not_queue_items",
+  "reviewedOn": "2026-10-15",
+  "note": "These replace generic prompts with specific local utility. No assets are cleared or scheduled. Recheck organizer information before publishing. Carousel and video concepts need publisher support before automation.",
+  "concepts": [
+    {
+      "id": "hollywood-first-program",
+      "audience": "Broward parents with a child starting soccer",
+      "hook": "A first soccer program doesn't have to mean a full team season.",
+      "captionDraft": "Around Hollywood and looking for a beginner option? Hollywood FC's Wildcats Academy describes a practice-only program for ages 4–14, with month-to-month participation rather than a full team-season commitment. The club lists approximately $145/month and says places depend on availability.\n\nOne detail to know before paying: the club says it does not offer a free trial. Ask about the current group, venue and timetable—the page also contains a summer-specific schedule.\n\nFind the listing in Cancha: Explore → City: Hollywood. Confirm the current terms directly with Hollywood FC.",
+      "source": "https://www.hollywoodfc.com/academy",
+      "visualDirection": "Lead with an authentic, permission-cleared photograph of the actual beginner program, with a compact Hollywood location label. A second detail panel can explain age, monthly price and commitment. No Sweden/Dallas stock, fake testimonial, implied partnership or invented child/coach quote.",
+      "missing": ["Actual program imagery with reuse permission", "Final visual review", "Fresh availability check before dispatch"]
+    },
+    {
+      "id": "missed-tryouts-local-routes",
+      "audience": "Families still looking for a competitive team in Lithia or Ocala",
+      "hook": "Missed tryouts? These two clubs still list individual evaluations.",
+      "captionDraft": "The big tryout date isn't always the last chance to ask.\n\nFishHawk Premier FC in Lithia and WEC Premier FC in Ocala currently describe 2026/27 one-on-one evaluations for boys and girls U8–U19. Both say a program director contacts registered players to arrange the evaluation.\n\nAn evaluation request is not a roster place. Ask which age groups still have space, what it costs and where to go before making plans.\n\nFind the clubs on Cancha, then confirm directly with the organizer.",
+      "sources": ["https://www.fishhawkpremierfc.com/1on1/", "https://www.wecpremierfc.com/1on1/"],
+      "visualDirection": "Three-slide local guide: one strong cover, one clearly labeled Lithia club card, one Ocala club card. Use actual club imagery only with documented reuse rights, or original club/location graphics. Never merge the two locations into one event.",
+      "missing": ["Cleared club assets or original location graphics", "Final artwork", "Carousel publishing support if using multiple slides", "Fresh source check before dispatch"]
+    },
+    {
+      "id": "cancha-real-directory-demo",
+      "audience": "People who want a nearby place to play and do not know Cancha yet",
+      "hook": "Start with your city. See what's actually nearby.",
+      "captionDraft": "Cancha should make the local search shorter. Here's the actual path: open Explore, type Hollywood in the city filter, and open a club listing for its details and official link.\n\nWe're starting with Florida soccer. If your club's information needs updating, use the opportunity submission form so we can review it. No invented reviews or promises of a guaranteed place.",
+      "sources": ["https://pioneering-friday-005497.framer.app/explore?city=Hollywood", "https://pioneering-friday-005497.framer.app/organizations"],
+      "visualDirection": "A short recording of the real directory interaction, or a compact original before/after search graphic. Let visitors see the actual results and organizer links; no stock photo overlay and no fabricated user activity.",
+      "missing": ["New screen capture and final edit", "Video publishing support if using a Reel", "Verify live results before capture"]
+    }
+  ]
+}

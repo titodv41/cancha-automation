@@ -7,3 +7,16 @@ export function applyEditorialCreative(row,photos){
  const credit=`Photo: ${photo.creator} / Wikimedia Commons (${photo.license}). ${photo.alt} Cropped and overlaid with Cancha design.\n${photo.sourcePage}\n${photo.licenseUrl}`;
  return {...row,photo,visualStyle:photo.layout,caption:row.caption+'\n\n'+credit,altText:row.altText+' '+photo.alt,rights:`Original Cancha copy and design; real illustrative photograph by ${photo.creator}, ${photo.license}. Reuse terms and source recorded; no claimed affiliation with the people or location photographed.`};
 }
+
+// Compare source identity as well as rendered files: a new crop is still the same photo.
+export function recentlyUsedPhoto(content,rows,scheduledAt,{days=30}={}){
+ const identities=row=>[row.photo?.originalChecksum&&'original:'+row.photo.originalChecksum,row.photo?.sourcePage&&'source:'+row.photo.sourcePage,row.photo?.url&&'photo:'+row.photo.url,row.assetChecksum&&'render:'+row.assetChecksum,row.assetUrl&&'asset:'+row.assetUrl].filter(Boolean);
+ const keys=new Set(identities(content)),at=Date.parse(scheduledAt);if(!keys.size||!Number.isFinite(at))return false;
+ return rows.some(row=>{
+  if(!['Approved','Preparing','Publishing','Published','Needs reconciliation'].includes(row.status))return false;
+  const previous=Date.parse(row.published_at||row.scheduled_at),elapsed=at-previous;
+  if(!Number.isFinite(previous)||elapsed<0||elapsed>=days*86400000)return false;
+  let other;try{other=typeof row.content==='string'?JSON.parse(row.content):row.content;}catch{return false;}
+  return !!other&&identities(other).some(key=>keys.has(key));
+ });
+}
