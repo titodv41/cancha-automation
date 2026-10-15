@@ -8,3 +8,8 @@ test('individual collection changes must match an existing Opportunities slug',(
  for(const name of ['providers/current-club','opportunities/unknown'])assert.throws(()=>check({...base,changes:[{type:'CollectionItem',name,status:'updated'}]},policy));
  assert.throws(()=>check({...base,changes:[{type:'CollectionItem',name:'opportunities/current-club',status:'removed'}]},policy));
 });
+
+test('club placement maintenance can publish known profile updates but cannot add or remove profiles',()=>{
+ const p={...policy,additionalCollections:[{path:'clubs',slugs:['reviewed-club']}]};assert.equal(check({...base,changes:[{type:'CollectionItem',name:'clubs/reviewed-club',status:'updated'}]},p),true);
+ for(const change of [{type:'CollectionItem',name:'clubs/new-club',status:'updated'},{type:'CollectionItem',name:'clubs/reviewed-club',status:'added'},{type:'CollectionItem',name:'clubs/reviewed-club',status:'removed'},{type:'WebPage',name:'/clubs',status:'updated'}])assert.throws(()=>check({...base,changes:[change]},p));
+});

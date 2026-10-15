@@ -1,0 +1,8 @@
+import * as React from 'react'
+import {addPropertyControls,ControlType} from 'framer'
+/** @framerSupportedLayoutWidth any @framerSupportedLayoutHeight fixed */
+export default function ClubProfileVisual({image='',name='',kind='Club'}){
+ const src=typeof image==='string'?image:(image as any)?.src;const [failed,setFailed]=React.useState(false);React.useEffect(()=>setFailed(false),[src]);
+ return <div style={{height:'100%',minHeight:100,width:'100%',background:'#E6ECE4',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'space-between',gap:20,padding:'14px 22px',boxSizing:'border-box',overflow:'hidden',fontFamily:'Alumni Sans,sans-serif',color:'#0C3E2E'}}>{src&&!failed?<img src={src} alt={`${name} logo`} onError={()=>setFailed(true)} style={{width:'100%',height:'100%',maxHeight:92,objectFit:'contain'}}/>:<><div><div style={{fontSize:16,fontWeight:700,letterSpacing:2,color:'#446758'}}>LOCAL SOCCER</div><div style={{fontSize:32,fontWeight:800,lineHeight:1.05,marginTop:8}}>{kind==='Place'?'FIND YOUR PITCH.':'FIND YOUR CLUB.'}</div></div><svg width="100" height="76" viewBox="0 0 100 76" aria-hidden="true" style={{flexShrink:0}}><rect x="2" y="2" width="96" height="72" rx="5" fill="none" stroke="#63816F" strokeWidth="2"/><path d="M50 2v72M2 21h15v34H2m96-34H83v34h15" fill="none" stroke="#63816F"/><circle cx="50" cy="38" r="13" fill="none" stroke="#63816F"/><circle cx="62" cy="27" r="5" fill="#FF5A1F"/></svg></>}</div>
+}
+addPropertyControls(ClubProfileVisual,{image:{type:ControlType.Image},name:{type:ControlType.String},kind:{type:ControlType.String,defaultValue:'Club'}})

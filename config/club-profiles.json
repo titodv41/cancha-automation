@@ -1,0 +1,769 @@
+[
+  {
+    "slug": "hollywood-fc",
+    "name": "Hollywood FC",
+    "type": "Club",
+    "city": "Hollywood",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.hollywoodfc.com/",
+        "textChecksum": "f9cf6bbc3541b62d604aa733adecf4b70aa007b9c54ac942c55165b9a2d1bb89"
+      },
+      {
+        "url": "https://www.hollywoodfc.com/fields",
+        "textChecksum": "4e1802dbbf36b7f99ca76f07bdc12910807a65bfb75a310b83f2ad25e3407f5e"
+      },
+      {
+        "url": "https://www.hollywoodfc.com/academy"
+      }
+    ],
+    "website": "https://www.hollywoodfc.com/",
+    "summary": "Youth soccer in Hollywood, from beginner practice and recreation to competitive age-group teams.",
+    "ages": "Youth: preschool and age-group programs. Wildcats Academy lists ages 4–14.",
+    "levels": "Beginner · Recreational · Competitive",
+    "programs": [
+      "Beginner academy",
+      "Recreational teams",
+      "Competitive teams",
+      "Goalkeeper training"
+    ],
+    "address": "Club lists Boggs Field and Dowdy Field in Hollywood; confirm the venue for your program.",
+    "priceNote": "Wildcats Academy lists approximately $145/month; other programs have separate fees. Confirm current prices and cancellation terms.",
+    "accessNotes": "This is a club profile, not a claim that registration is open. Contact the club for current groups, availability, eligibility and the correct training venue.",
+    "overview": "Youth soccer in Hollywood, from beginner practice and recreation to competitive age-group teams.",
+    "audience": [
+      "Youth"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "weston-fc",
+    "name": "Weston FC",
+    "type": "Club",
+    "city": "Weston",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.westonfc.org/",
+        "textChecksum": "6b64a0d69527a65ccfb8605bc537e39f74b231ffb3d665784dd7380a4192b7cf"
+      },
+      {
+        "url": "https://www.westonfc.org/about-1-1",
+        "textChecksum": "7debb83eb214918a0cf07f8775acb66310e48273ee44d6ec55edca7579699f13"
+      },
+      {
+        "url": "https://www.westonfc.org/about-1-2",
+        "textChecksum": "8526bdff03cf251e73daf4d64f64797cf678a888329ba3d97cc767fb66cd0d5d"
+      },
+      {
+        "url": "https://www.westonfc.org/contact-10",
+        "textChecksum": "e11b7f55c121b5f7226ecc0e52f6cdd398f862e86a954cb82e29ee5b1cb56ca7"
+      }
+    ],
+    "website": "https://www.westonfc.org/",
+    "summary": "Boys’ and girls’ competitive programs, performance training and league pathways based around Weston.",
+    "ages": "Youth programs; the boys’ program also lists UPSL and League Two pathways. Check individual team eligibility.",
+    "levels": "Competitive",
+    "programs": [
+      "Boys’ programs",
+      "Girls’ programs",
+      "Performance program",
+      "UPSL / League Two pathways"
+    ],
+    "address": "Club lists Vista Park, Weston Regional Park and partner facilities in Southwest Ranches.",
+    "priceNote": "Program and team fees are not established by this profile. Ask the club for full current costs.",
+    "accessNotes": "This is a club profile, not a claim that registration is open. Contact the club for current groups, availability, eligibility and the correct training venue.",
+    "overview": "Boys’ and girls’ competitive programs, performance training and league pathways based around Weston.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "west-pines-united-fc",
+    "name": "West Pines United FC",
+    "type": "Club",
+    "city": "Pembroke Pines",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://westpinesunited.org/",
+        "textChecksum": "e617c6c68181c49cfb4d64db63677efbf8b41054f0d73281042285a619b4f950"
+      },
+      {
+        "url": "https://westpinesunited.org/about-us/",
+        "textChecksum": "ae2b107a4abc870a63f68bb1650cd14940a52cd142cc76021f6b1eb6ae73a762"
+      }
+    ],
+    "website": "https://westpinesunited.org/",
+    "summary": "Youth academy and competitive travel soccer with boys’ and girls’ programs in the West Pines area.",
+    "ages": "Youth: boys’ and girls’ programs. Ask the club for current birth-date groups and academy entry requirements.",
+    "levels": "Competitive; ask about academy entry level",
+    "programs": [
+      "Youth academy",
+      "Boys’ program",
+      "Girls’ program",
+      "Goalkeeper program"
+    ],
+    "address": "Pembroke Pines; use the club’s contact page to confirm the location for your team or session.",
+    "priceNote": "Ask the club for current academy, team, uniform and travel fees.",
+    "accessNotes": "This is a club profile, not a claim that registration is open. Contact the club for current groups, availability, eligibility and the correct training venue.",
+    "overview": "Youth academy and competitive travel soccer with boys’ and girls’ programs in the West Pines area.",
+    "audience": [
+      "Youth"
+    ],
+    "experience": [
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "coral-springs-soccer-academy",
+    "name": "Coral Springs Soccer Academy",
+    "type": "Club",
+    "city": "Coral Springs",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.coralspringssoccer.com/",
+        "textChecksum": "2e1439f00e52918042c2e323a3778d6b48129bf80658df04f093a429d20904d9"
+      },
+      {
+        "url": "https://www.coralspringssoccer.com/contacts/",
+        "textChecksum": "060f7549b6aa9d845d985e3138b276f5039bca79e237971a12d63ae731efc1ae"
+      }
+    ],
+    "website": "https://www.coralspringssoccer.com/",
+    "summary": "Development, recreational soccer, travel programs and futsal for young players in Coral Springs.",
+    "ages": "Published program ranges include recreation ages 5–13 and travel ages 7–15. Confirm the current group.",
+    "levels": "Beginner · Recreational · Competitive",
+    "programs": [
+      "Development",
+      "Recreational soccer",
+      "Travel soccer",
+      "Futsal",
+      "Camps"
+    ],
+    "address": "Contact location: Somerset Riverside Academy, 2251 Riverside Dr, Coral Springs, FL 33071. Confirm the training venue.",
+    "priceNote": "Fees are not established by this profile. Ask about current program costs and trial conditions.",
+    "accessNotes": "This is a club profile, not a claim that registration is open. Contact the club for current groups, availability, eligibility and the correct training venue. The contact page’s embedded form reports an error; use the official contact details shown on that page.",
+    "overview": "Development, recreational soccer, travel programs and futsal for young players in Coral Springs.",
+    "audience": [
+      "Youth"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "parkland-soccer",
+    "name": "Parkland Soccer",
+    "type": "Club",
+    "city": "Parkland",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.parklandsoccer.net/home",
+        "textChecksum": "e028f99b16ddbd33a4c5cddf7635e4ae79cbf356fbf0b2a85504d7a04a0c49fe"
+      },
+      {
+        "url": "https://www.parklandsoccer.net/locations",
+        "textChecksum": "e6772432ed82ba4165a008636e2a8732166afa3e8b4e023c0b5c0ff65b738f57"
+      }
+    ],
+    "website": "https://www.parklandsoccer.net/home",
+    "summary": "Youth soccer divisions and scheduled games at Pine Trails Park in Parkland.",
+    "ages": "Youth divisions listed from Under 5 through Under 18; confirm current eligibility and resident rules.",
+    "levels": "Ask the organizer about the right division and playing level",
+    "programs": [
+      "Youth divisions",
+      "Scheduled league games"
+    ],
+    "address": "Club game-location directory lists Pine Trails Park; city address: 10555 Trails End, Parkland, FL 33076.",
+    "priceNote": "Confirm current registration fees, resident requirements and refund terms with Parkland Soccer.",
+    "accessNotes": "This is a club profile, not a claim that registration is open. Contact the club for current groups, availability, eligibility and the correct training venue.",
+    "overview": "Youth soccer divisions and scheduled games at Pine Trails Park in Parkland.",
+    "audience": [
+      "Youth"
+    ],
+    "experience": [],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "davie-united-sc",
+    "name": "Davie United SC",
+    "type": "Club",
+    "city": "Davie",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.davieunited.com/",
+        "textChecksum": "da36208cda6e75d23c99aed051e160df8330fb1ab339cfffcdf893c45566e938"
+      }
+    ],
+    "website": "https://www.davieunited.com/",
+    "summary": "Youth development, recreational and competitive soccer, plus adult leagues with multiple age divisions.",
+    "ages": "Youth starts with Smart Start ages 3–4. Adult offerings include 18+, 35+, 45+ and 50+ divisions; check each league’s rules.",
+    "levels": "Beginner · Recreational · Competitive",
+    "programs": [
+      "Youth development",
+      "Recreational soccer",
+      "Competitive academy",
+      "Adult leagues",
+      "Skills training"
+    ],
+    "address": "Davie; confirm the facility and session with the club’s Location & Facilities information.",
+    "priceNote": "Fees vary by program or league. Ask for current registration, team and equipment costs.",
+    "accessNotes": "This is a club profile, not a claim that registration is open. Contact the club for current groups, availability, eligibility and the correct training venue.",
+    "overview": "Youth development, recreational and competitive soccer, plus adult leagues with multiple age divisions.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "boggs-park-sports-fields",
+    "name": "Boggs Park & Sports Fields",
+    "type": "Place",
+    "city": "Hollywood",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.hollywoodfl.org/Facilities/Facility/Details/Boggs-Park-Sports-Fields-96",
+        "textChecksum": "882d2abd79f8b7c687defc12a47c9c9fddf3d1337d504f632383b7fbc779a4ba"
+      },
+      {
+        "url": "https://www.hollywoodfc.com/fields",
+        "textChecksum": "4e1802dbbf36b7f99ca76f07bdc12910807a65bfb75a310b83f2ad25e3407f5e"
+      }
+    ],
+    "website": "https://www.hollywoodfl.org/Facilities/Facility/Details/Boggs-Park-Sports-Fields-96",
+    "summary": "City-listed soccer and football fields used by Hollywood FC, with specific casual-use and rental rules.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "2310 N 23rd Ave, Hollywood, FL 33020.",
+    "priceNote": "City lists non-lighted rental at $62.93/hour and lighted rental at $78.93/hour, plus applicable deposit, insurance, taxes and surcharges. Confirm the current quote.",
+    "accessNotes": "City says casual field use is first-come, first-served only during its listed windows, and permits take priority. Organized games, coaching, practices and tournaments require rental. Check the official field schedule and current conditions.",
+    "overview": "City-listed soccer and football fields used by Hollywood FC, with specific casual-use and rental rules.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "dowdy-field",
+    "name": "Dowdy Field",
+    "type": "Place",
+    "city": "Hollywood",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.hollywoodfc.com/fields",
+        "textChecksum": "4e1802dbbf36b7f99ca76f07bdc12910807a65bfb75a310b83f2ad25e3407f5e"
+      }
+    ],
+    "website": "https://www.hollywoodfc.com/fields",
+    "summary": "Hollywood FC lists Dowdy Field as a soccer location; confirm the assigned program and field access.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "2161 Johnson St, Hollywood, FL 33020.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The club lists this facility, but this profile does not confirm public walk-on access, rental rules or a current program timetable. Check with the club or City of Hollywood.",
+    "overview": "Hollywood FC lists Dowdy Field as a soccer location; confirm the assigned program and field access.",
+    "audience": [
+      "Youth"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "bamford-sports-complex-pine-island-park",
+    "name": "Bamford Sports Complex & Pine Island Park",
+    "type": "Place",
+    "city": "Davie",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.davie-fl.gov/Facilities/Facility/Details/Bamford-Sports-Complex-Pine-Island-Park-7",
+        "textChecksum": "9a6a576ea76b58626dbfe96d972a341f0ef3f504553e7a2052db9f2987a7b4e4"
+      },
+      {
+        "url": "https://westpinesunited.org/",
+        "textChecksum": "e617c6c68181c49cfb4d64db63677efbf8b41054f0d73281042285a619b4f950"
+      }
+    ],
+    "website": "https://www.davie-fl.gov/Facilities/Facility/Details/Bamford-Sports-Complex-Pine-Island-Park-7",
+    "summary": "A Town of Davie sports complex listed as a soccer venue by West Pines United.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "3801 S Pine Island Road, Davie, FL 33328.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The town directs field rentals to its sports department. Confirm the correct soccer field, booking requirements and current access; park hours do not establish an available playing slot.",
+    "overview": "A Town of Davie sports complex listed as a soccer venue by West Pines United.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "vista-park",
+    "name": "Vista Park",
+    "type": "Place",
+    "city": "Weston",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.westonfc.org/contact-10",
+        "textChecksum": "e11b7f55c121b5f7226ecc0e52f6cdd398f862e86a954cb82e29ee5b1cb56ca7"
+      }
+    ],
+    "website": "https://www.westonfc.org/contact-10",
+    "summary": "Weston FC lists a four-field complex behind Cypress Bay High School, with turf, concessions and restrooms.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "18800 Vista Park Blvd, Weston, FL 33332.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "Club-listed soccer venue. Contact the club or City of Weston for field assignments, permitted use and current availability; no walk-on access or rental entitlement is confirmed.",
+    "overview": "Weston FC lists a four-field complex behind Cypress Bay High School, with turf, concessions and restrooms.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "weston-regional-park",
+    "name": "Weston Regional Park",
+    "type": "Place",
+    "city": "Weston",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.westonfc.org/contact-10",
+        "textChecksum": "e11b7f55c121b5f7226ecc0e52f6cdd398f862e86a954cb82e29ee5b1cb56ca7"
+      }
+    ],
+    "website": "https://www.westonfc.org/contact-10",
+    "summary": "Weston FC lists grass fields 7 and 8 at this Weston park.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "20200 Saddle Club Rd, Weston, FL 33327.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The club identifies the soccer fields it uses. Confirm public-use rules, reservations and closures with the operator before planning a game.",
+    "overview": "Weston FC lists grass fields 7 and 8 at this Weston park.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "mision-vida-soccer-complex",
+    "name": "Mision Vida Soccer Complex",
+    "type": "Place",
+    "city": "Southwest Ranches",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.westonfc.org/contact-10",
+        "textChecksum": "e11b7f55c121b5f7226ecc0e52f6cdd398f862e86a954cb82e29ee5b1cb56ca7"
+      }
+    ],
+    "website": "https://www.westonfc.org/contact-10",
+    "summary": "Weston FC identifies Mision Vida as its home base with two grass fields.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "17950 Griffin Rd, Southwest Ranches, FL 33331.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "Club-operated or partner venue. Public walk-on play and private rentals have not been confirmed. Arrange any visit or training through the club.",
+    "overview": "Weston FC identifies Mision Vida as its home base with two grass fields.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "archbishop-mccarthy-soccer-facilities",
+    "name": "Archbishop McCarthy Soccer Facilities",
+    "type": "Place",
+    "city": "Southwest Ranches",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.westonfc.org/contact-10",
+        "textChecksum": "e11b7f55c121b5f7226ecc0e52f6cdd398f862e86a954cb82e29ee5b1cb56ca7"
+      }
+    ],
+    "website": "https://www.westonfc.org/contact-10",
+    "summary": "School facilities used through Weston FC’s partnership, including multiple soccer training areas.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "5451 S Flamingo Rd, Southwest Ranches, FL 33330.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "School and club-partner facilities, not a public drop-in park. Access must be arranged through the school or club; public bookings and walk-on use are not confirmed.",
+    "overview": "School facilities used through Weston FC’s partnership, including multiple soccer training areas.",
+    "audience": [
+      "Youth"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "pine-trails-park",
+    "name": "Pine Trails Park",
+    "type": "Place",
+    "city": "Parkland",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.cityofparkland.org/Facilities/Facility/Details/Pine-Trails-Park-5",
+        "textChecksum": "c2238f25824cbd6378a0bd38609103d26160013fbfdf954df262853820ac7ac9"
+      },
+      {
+        "url": "https://www.parklandsoccer.net/locations",
+        "textChecksum": "e6772432ed82ba4165a008636e2a8732166afa3e8b4e023c0b5c0ff65b738f57"
+      }
+    ],
+    "website": "https://www.cityofparkland.org/Facilities/Facility/Details/Pine-Trails-Park-5",
+    "summary": "City soccer and multipurpose fields, including synthetic turf, also used for Parkland Soccer divisions.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "10555 Trails End, Parkland, FL 33076.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "Check with Parkland Parks & Recreation for field permits, program assignments, closures and lightning alerts. Park opening hours do not guarantee a free field.",
+    "overview": "City soccer and multipurpose fields, including synthetic turf, also used for Parkland Soccer divisions.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "terramar-park",
+    "name": "Terramar Park",
+    "type": "Place",
+    "city": "Parkland",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.cityofparkland.org/Facilities/Facility/Details/Terramar-Park-7",
+        "textChecksum": "3907bcfb875fc3b5d96a81546ea794dc02100afe6f15bb92ab0db19550d259b0"
+      }
+    ],
+    "website": "https://www.cityofparkland.org/Facilities/Facility/Details/Terramar-Park-7",
+    "summary": "Parkland’s municipal park lists soccer facilities and four multipurpose fields.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "6700 W Hillsboro Boulevard, Parkland, FL 33067.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "Confirm field reservations, program schedules and permitted use with Parkland Parks & Recreation. Check current lightning alerts and closures before going.",
+    "overview": "Parkland’s municipal park lists soccer facilities and four multipurpose fields.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "chapel-trail-park",
+    "name": "Chapel Trail Park",
+    "type": "Place",
+    "city": "Pembroke Pines",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.ppines.com/Facilities/Facility/Details/Chapel-Trail-Park-5",
+        "textChecksum": "94bc78a91da6a8d0e42807686a3119e81dd3afb2818394772f7bba31638c74fa"
+      }
+    ],
+    "website": "https://www.ppines.com/Facilities/Facility/Details/Chapel-Trail-Park-5",
+    "summary": "Neighborhood park with lighted soccer fields and a shaded playground.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "19531 Taft St, Pembroke Pines, FL 33026.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The city requires a permit for lessons, training and any organized sport or activity. Contact its field-rental office for availability; soccer program inquiries are directed to West Pines United.",
+    "overview": "Neighborhood park with lighted soccer fields and a shaded playground.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "pines-recreation-center-fields",
+    "name": "Pines Recreation Center — Soccer Fields",
+    "type": "Place",
+    "city": "Pembroke Pines",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.ppines.com/Facilities/Facility/Details/Pines-Recreation-Center-14",
+        "textChecksum": "9f51c68ec9330cc6aea0d6f271e74103cec7b1680b31e9b490e209a4f497fbf7"
+      }
+    ],
+    "website": "https://www.ppines.com/Facilities/Facility/Details/Pines-Recreation-Center-14",
+    "summary": "The city lists three lighted football/soccer fields; its recreation building and hall are closed until further notice.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "7400 Pines Blvd, Pembroke Pines, FL 33024.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The city page says the fields are open while the recreation center and hall are closed. Organized sports, training and lessons require a city permit. Confirm current closures and field availability before traveling.",
+    "overview": "The city lists three lighted football/soccer fields; its recreation building and hall are closed until further notice.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "silver-lakes-north",
+    "name": "Silver Lakes North",
+    "type": "Place",
+    "city": "Pembroke Pines",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.ppines.com/Facilities/Facility/Details/Silver-Lakes-North-18",
+        "textChecksum": "d0582955cc2cc555d239ec630ee89cafb2327f2eca984d22282a03ab990cf56f"
+      }
+    ],
+    "website": "https://www.ppines.com/Facilities/Facility/Details/Silver-Lakes-North-18",
+    "summary": "Municipal recreation area with two soccer fields, alongside courts and a walking path.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "2300 NW 172 Ave, Pembroke Pines, FL 33026.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The city requires a permit for lessons or training. Contact the city for field rental and current availability; the park’s pavilion policy does not establish soccer-field access.",
+    "overview": "Municipal recreation area with two soccer fields, alongside courts and a walking path.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "walter-c-young-facility",
+    "name": "Walter C. Young Facility",
+    "type": "Place",
+    "city": "Pembroke Pines",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.ppines.com/Facilities/Facility/Details/Walter-C-Young-Facility-28",
+        "textChecksum": "c3f17cb8d46a53e2732f7d1df6d169167d04f1e5c9a044123a75f8a13aa236e2"
+      }
+    ],
+    "website": "https://www.ppines.com/Facilities/Facility/Details/Walter-C-Young-Facility-28",
+    "summary": "City-listed public recreation facility with a football/soccer field, courts and a running track.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "901 NW 129 Ave, Pembroke Pines, FL 33026.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "The city describes the facility as open to the public and supplies field-rental requirements. Confirm reservation priority, field status and permitted organized use with the city.",
+    "overview": "City-listed public recreation facility with a football/soccer field, courts and a running track.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  },
+  {
+    "slug": "west-pines-soccer-park-preserve",
+    "name": "West Pines Soccer Park & Preserve",
+    "type": "Place",
+    "city": "Pembroke Pines",
+    "county": "Broward",
+    "sources": [
+      {
+        "url": "https://www.ppines.com/Facilities/Facility/Details/West-Pines-Soccer-Park-Preserve-29",
+        "textChecksum": "37370f4d43e2122974850c856e6a6e98ec6c2af2f44b129b4afd297b096ede59"
+      }
+    ],
+    "website": "https://www.ppines.com/Facilities/Facility/Details/West-Pines-Soccer-Park-Preserve-29",
+    "summary": "Pembroke Pines soccer park with six lighted soccer fields and a shaded playground.",
+    "ages": "Venue profile: program ages and eligibility depend on the organizer.",
+    "levels": "Venue: playing level depends on the session or organizer.",
+    "programs": [
+      "Soccer venue"
+    ],
+    "address": "350 SW 196 Avenue, Pembroke Pines, FL 33029.",
+    "priceNote": "Current field fees, permits and availability must be confirmed with the operator; no free access is promised.",
+    "accessNotes": "Use the city’s official soccer-program and field-rental contacts to arrange play. Confirm current bookings and access rules; this profile does not confirm a free slot. The city address is used instead of the different address on the club’s tournament list.",
+    "overview": "Pembroke Pines soccer park with six lighted soccer fields and a shaded playground.",
+    "audience": [
+      "Youth",
+      "Adult"
+    ],
+    "experience": [
+      "Beginner",
+      "Recreational",
+      "Competitive"
+    ],
+    "checkedOn": "2026-10-15",
+    "sponsored": false,
+    "placementPriority": 0
+  }
+]

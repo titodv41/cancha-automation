@@ -1,3 +1,4 @@
+import {discoveryTrack} from './discovery-track.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';import {validateBatch} from './opportunity-policy.mjs';import {dateInNewYork} from './offer-expiry.mjs';
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 export async function stageBatch(f,rows,config,{apply=false,readyForPublish=false,beforeWrite}={}){
@@ -12,6 +13,7 @@ export async function stageBatch(f,rows,config,{apply=false,readyForPublish=fals
   fieldData[ids['Full Description']]={type:'formattedText',value:'<p>'+esc(row.fullDescription)+'</p>'};
   for(const[name,key]of [['Start Date','startDate'],['End Date','endDate']])if(row[key])fieldData[ids[name]]={type:'date',value:row[key]};
   fieldData[ids.Status]={type:'enum',value:fields.find(x=>x.name==='Status').cases.find(x=>x.name===(readyForPublish?'Active':'Pending review')).id};
+  if(ids['Discovery Track'])fieldData[ids['Discovery Track']]={type:'string',value:discoveryTrack(row.category)};
   fieldData[ids.Verified]={type:'boolean',value:false};fieldData[ids.Featured]={type:'boolean',value:false};
   fieldData[ids['Review Status']]={type:'string',value:readyForPublish?'Organizer source checked automatically':'Ready for editorial review'};
   fieldData[ids['Review Checked On']]={type:'date',value:dateInNewYork(new Date(row.sourceCheckedAt))};

@@ -1,0 +1,5 @@
+import * as React from 'react'
+import{addPropertyControls,ControlType}from'framer'
+/** @framerSupportedLayoutWidth any @framerSupportedLayoutHeight auto */
+export default function ClubProfileHeading({name='',city='',kind='',address=''}){return <header className="cancha-club-heading"><style>{`.cancha-club-heading{font-family:'Alumni Sans',sans-serif;color:#0C3E2E;width:100%}.cancha-club-heading h1{font-size:54px;font-weight:800;line-height:1.03;margin:0 0 16px;overflow-wrap:anywhere}.cancha-club-heading p{font-size:27px;line-height:1.2;margin:0}.cancha-club-heading a{display:inline-block;margin-top:18px;color:#0C3E2E;font-size:23px;font-weight:700;text-underline-offset:4px}@media(max-width:809px){.cancha-club-heading h1{font-size:40px}}`}</style><h1>{name}</h1><p>{city}</p>{kind==='Place'&&address&&<a href={'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(address)} target="_blank" rel="noopener noreferrer">Get directions ↗</a>}</header>}
+addPropertyControls(ClubProfileHeading,{name:{type:ControlType.String},city:{type:ControlType.String},kind:{type:ControlType.String},address:{type:ControlType.String}})

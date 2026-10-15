@@ -1,0 +1,141 @@
+{
+  "projectId": "GU8EIeQXaRbty0S23thu",
+  "capturedAt": "2026-10-15T18:45:28.373Z",
+  "collections": {
+    "Clubs": {
+      "id": "knyvaauJy",
+      "fields": {
+        "Name": "PFOXNjqnP",
+        "City": "xwuyWKUQF",
+        "County": "RXzxNevBQ",
+        "Audience": "QxzMBJ8WA",
+        "Ages": "LqnJz07GD",
+        "Levels": "W2F2ccc6C",
+        "Program Types": "LJ8jQyElG",
+        "Summary": "NLhiBAaYN",
+        "Address": "EIJrBey8I",
+        "Access Notes": "TzPi8t6Ol",
+        "Price Note": "MYqe74UEm",
+        "Search Terms": "lZ_vB3HWv",
+        "Type": "rLqxqxPfz",
+        "Overview": "ni2hM0khz",
+        "Website": "Wuxkr8GGU",
+        "Source": "uzyYfsWiQ",
+        "Source Notes": "UCBejUMq1",
+        "Source Checked On": "hEFcodweR",
+        "Image": "DDvRjJvKS",
+        "Status": "ikAN0GtPw",
+        "Sponsored": "FzgUWna1r",
+        "Placement Priority": "gS53fBmLF",
+        "Placement Until": "APgRar5It",
+        "Source Checked Label": "YyK9xNLFE",
+        "Experience Tags": "Nfmf010ev"
+      }
+    },
+    "Opportunities": {
+      "id": "a3zk3f981",
+      "fields": {
+        "Title": "I6VV78sst",
+        "Organization": "r9ZER4OWH",
+        "Category": "zlD35oPOv",
+        "Sport": "jUWlVihTD",
+        "City": "CWTFP3e5o",
+        "Region": "QDZGQbLHb",
+        "State": "TRoGx2k88",
+        "Level": "OmYdEIo0g",
+        "Age Group": "p8dvgxwsC",
+        "Gender": "NHPAMCwli",
+        "Start Date": "xRN_e1hKE",
+        "End Date": "iAGtZCcvi",
+        "Cost": "K6Wtn4oPp",
+        "Short Description": "fD53aaphr",
+        "Full Description": "l8FL4LlF9",
+        "Image": "Wrqjvwhw6",
+        "External Registration Link": "hnKsuV8oR",
+        "Instagram": "lI4DUpoLa",
+        "Featured": "r8IBklDwp",
+        "Verified": "peJWx3Di_",
+        "Status": "K7LPXYanZ",
+        "Image Treatment": "Cq4xk90to",
+        "Image Background": "a2VP_0s7i",
+        "Image Max Width": "f4CR73IMk",
+        "Review Status": "hg2trSkq5",
+        "Review Note": "iUhMEAGIf",
+        "Review Checked On": "nVFbOSWQm",
+        "Automation ID": "j_9tUpYj1",
+        "Automation Added On": "t33m9klep",
+        "Automation Source Hash": "rIsd9cQFX",
+        "Discovery Track": "IPSRfnWIJ"
+      }
+    }
+  },
+  "pages": {
+    "clubs": {
+      "id": "YoXnHiVO7",
+      "path": "/clubs",
+      "breakpoints": [
+        {
+          "id": "otmXIuBEf",
+          "name": "Desktop"
+        },
+        {
+          "id": "Vq_VI38sf",
+          "name": "Phone"
+        }
+      ]
+    },
+    "profile": {
+      "id": "nYqllTBEd",
+      "path": "/clubs/:Clubs",
+      "breakpoints": [
+        {
+          "id": "UULg1Oxnt",
+          "name": "Desktop"
+        },
+        {
+          "id": "oOkdAZ25T",
+          "name": "Phone"
+        }
+      ]
+    },
+    "careers": {
+      "id": "byKUK4ekK",
+      "path": "/careers",
+      "breakpoints": [
+        {
+          "id": "AZ0vRZdVA",
+          "name": "Desktop"
+        },
+        {
+          "id": "WDgSUygBI",
+          "name": "Phone"
+        }
+      ]
+    },
+    "opportunities": {
+      "id": "U3ge4GVfE",
+      "path": "/explore",
+      "breakpoints": [
+        {
+          "id": "ZijhG7ZLh",
+          "name": "Desktop"
+        },
+        {
+          "id": "lKLla_2TC",
+          "name": "Tablet"
+        },
+        {
+          "id": "fQ9grtsPv",
+          "name": "Phone"
+        }
+      ]
+    }
+  },
+  "codeFiles": {
+    "DiscoveryIntro.tsx": "VS0wrH6",
+    "ClubProfileVisual.tsx": "DaDhu2l",
+    "DirectoryQuerySelect.tsx": "VoVGGJ6",
+    "HomeCitySearch.tsx": "g48DNF0",
+    "ClubProfileHeading.tsx": "Je3XNOZ"
+  }
+}

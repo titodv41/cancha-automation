@@ -1,0 +1,28 @@
+name: Cancha club and place source health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 13 * * 1'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-club-profile-sources.mjs
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: club-place-source-health
+          path: private-data/club-source-health.json
+          retention-days: 7
+          if-no-files-found: error
+    # Public link/identity checks only. No credentials, publishing or automatic verification claims.
