@@ -44,7 +44,7 @@ The fresh private review confirmed the account connection, a paused plan, three 
 - Actual desktop 1440px and mobile 390px checks passed: homepage city/activity search; menu and Escape behavior; combined city/age/activity/level filtering; persistent URLs/reload; empty/reset; progressive loading; map-to-list city selection; source-checked toggle; careers and preserved detail routes. No runtime errors or horizontal overflow were observed.
 - A recorded-past camp detail page was separately checked on mobile and displayed the closed/date-passed warning with its real review date.
 - Tools did not submit native forms. The owner confirmed the organization-form test email arrived in Gmail. No new Instagram publication has been inferred from local rendering or tests.
-- Hosted checks, preparation, insights and creative activation need their actual GitHub run results; queued runs are reported as pending, not successful.
+- The first actual insights artifact returned permission_required for instagram_manage_insights. No performance statistics were obtained; follow instagram-insights-connection.md for secure owner reauthorization. Hosted preparation/creative activation are still pending during the Actions incident, and are not reported as successful.
 
 Pitch the current product as an early local discovery directory starting with Broward, with additional Florida opportunities. Before a wider launch: recruit real coach/club submissions, obtain permission for authentic local photos/video, and test a real find-a-team task with a few players/parents. Those are stronger next steps than adding accounts, AI chat, a checkout or more navigation sections.
 
@@ -55,3 +55,5 @@ The cutover is also applied once by the next successful daily preparation if a s
 Requested hosted activation: https://github.com/titodv41/cancha-automation/actions/runs/39281221087
 Requested hosted preparation: https://github.com/titodv41/cancha-automation/actions/runs/39281226105
 Requested read-only insights: https://github.com/titodv41/cancha-automation/actions/runs/39278905728
+
+Latest updated-creative activation request: https://github.com/titodv41/cancha-automation/actions/runs/39282231661 (commit 57b8330; still queued at the final check). Meta analytics permission is independent of this runner delay and of publishing access.
