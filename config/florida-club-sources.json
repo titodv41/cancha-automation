@@ -1,0 +1,113 @@
+{
+  "enabled": true,
+  "maximumPerRun": 10,
+  "url": "https://premier.upsl.com/teams/",
+  "locations": {
+    "Miami": {
+      "county": "Miami-Dade"
+    },
+    "Doral": {
+      "county": "Miami-Dade"
+    },
+    "Fort Lauderdale": {
+      "county": "Broward"
+    },
+    "Pembroke Pines": {
+      "county": "Broward"
+    },
+    "Davie": {
+      "county": "Broward"
+    },
+    "Weston": {
+      "county": "Broward"
+    },
+    "Miramar": {
+      "county": "Broward"
+    },
+    "Plantation": {
+      "county": "Broward"
+    },
+    "Parkland": {
+      "county": "Broward"
+    },
+    "Boca Raton": {
+      "county": "Palm Beach"
+    },
+    "Boynton Beach": {
+      "county": "Palm Beach"
+    },
+    "Orlando": {
+      "county": "Orange"
+    },
+    "Winter Park": {
+      "county": "Orange"
+    },
+    "Kissimmee": {
+      "county": "Osceola"
+    },
+    "Montverde": {
+      "county": "Lake"
+    },
+    "Palm Bay": {
+      "county": "Brevard"
+    },
+    "Melbourne": {
+      "county": "Brevard"
+    },
+    "Lakeland": {
+      "county": "Polk"
+    },
+    "DeLand": {
+      "county": "Volusia"
+    },
+    "New Smyrna Beach": {
+      "county": "Volusia"
+    },
+    "Tampa": {
+      "county": "Hillsborough"
+    },
+    "Brandon": {
+      "county": "Hillsborough"
+    },
+    "Clearwater": {
+      "county": "Pinellas"
+    },
+    "Largo": {
+      "county": "Pinellas"
+    },
+    "St. Petersburg": {
+      "county": "Pinellas"
+    },
+    "Saint Leo": {
+      "county": "Pasco"
+    },
+    "Fort Myers": {
+      "county": "Lee"
+    },
+    "Naples": {
+      "county": "Collier"
+    },
+    "Sarasota": {
+      "county": "Sarasota"
+    },
+    "Lakewood Ranch": {
+      "county": "Manatee"
+    },
+    "Jacksonville": {
+      "county": "Duval"
+    },
+    "Port St. Lucie": {
+      "county": "St. Lucie"
+    },
+    "Port Saint Lucie": {
+      "city": "Port St. Lucie",
+      "county": "St. Lucie"
+    }
+  },
+  "excludedNames": [
+    "Atletum FC / FIFA Ref Cup",
+    "Inter Miami CF U17",
+    "Parkland Soccer Club"
+  ],
+  "exclusionReason": "Possible duplicate organization/squad: retain existing Parkland profile, one Inter Miami academy profile; defer ambiguous Atletum identity."
+}

@@ -33,6 +33,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
  }
  const windowHash=queueHash+'|'+slots.map(slot=>slot.scheduledAt).join(',');
  if(plan.lastCheckedDay===today&&plan.lastQueueHash===windowHash)return {scheduled:[],skipped:[],alreadyChecked:true};
+ const latestPublished=all.filter(r=>r.status==='Published').sort((a,b)=>Date.parse(b.published_at||b.scheduled_at)-Date.parse(a.published_at||a.scheduled_at))[0],lastKind=latestPublished?JSON.parse(latestPublished.content).creativeKind:null;
  const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireCreativeVersion||content.creativeVersion===requireCreativeVersion)&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo)||approvedOriginalCreative(content))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&validPostImage(content);});
  const result={scheduled:[],skipped:[]};const blocked=new Set();let cursor=0;
  for(const slot of slots){
@@ -42,7 +43,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
   // Prefer a different topic each day; news and opportunities alternate with
   // tips, questions, updates and storytelling when those drafts are available.
   const day=new Date(slot.date+'T12:00:00Z').getUTCDay(),preferred=['update','tip','opportunity','storytelling','fun','news','tip'][day];
-  candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(b.id===preferredDraftId)-Number(a.id===preferredDraftId)||Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
+  candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(b.id===preferredDraftId)-Number(a.id===preferredDraftId)||Number(!!lastKind&&x.creativeKind===lastKind)-Number(!!lastKind&&y.creativeKind===lastKind)||Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
   while(cursor<candidates.length){
    const old=candidates[cursor++],content=JSON.parse(old.content);if(blocked.has(old.id))continue;const before=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(old.id);if(before?.status!=='Draft')continue;
    if(content.sourceType==='news'&&Date.parse(slot.scheduledAt)-Date.parse(content.factsCheckedAt)>36*3600000)continue;

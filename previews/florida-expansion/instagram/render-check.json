@@ -1,0 +1,47 @@
+[
+  {
+    "id": "florida-photo-orlando",
+    "path": "previews/florida-expansion/instagram/florida-photo-orlando.jpg",
+    "checksum": "23cf4793f037dc9fb85f7783c549e642e533955625ae2bdc8bb0738e9b6486cd",
+    "capturedAt": "2026-10-19T18:25:34.593Z",
+    "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?region=Central+Florida",
+    "published": false,
+    "overflow": false
+  },
+  {
+    "id": "florida-photo-florida",
+    "path": "previews/florida-expansion/instagram/florida-photo-florida.jpg",
+    "checksum": "98d751743060367b528344f3eb3c3b6b6af71c7d369928a720ae13620eb67946",
+    "capturedAt": "2026-10-19T18:25:37.590Z",
+    "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs",
+    "published": false,
+    "overflow": false
+  },
+  {
+    "id": "florida-guide-training-or-tryout",
+    "path": "previews/florida-expansion/instagram/florida-guide-training-or-tryout.jpg",
+    "checksum": "bd4c5d8ed984d0ea8b7916b712c2e3316e8ea6a26d6f8aadbbdb79d9fade07e7",
+    "capturedAt": "2026-10-19T18:25:38.123Z",
+    "sourceUrl": null,
+    "published": false,
+    "overflow": false
+  },
+  {
+    "id": "florida-guide-first-coaching-step",
+    "path": "previews/florida-expansion/instagram/florida-guide-first-coaching-step.jpg",
+    "checksum": "e0f8a75a072c362ddb2a8ebd395ce7551c474cc60357c57ad4d84c0433e82bb2",
+    "capturedAt": "2026-10-19T18:25:38.656Z",
+    "sourceUrl": null,
+    "published": false,
+    "overflow": false
+  },
+  {
+    "id": "florida-guide-analyse-your-first-match",
+    "path": "previews/florida-expansion/instagram/florida-guide-analyse-your-first-match.jpg",
+    "checksum": "c36575521c48bfb5e49bba626a3440cc04f7c048f960e6e69253b2e76f16a51a",
+    "capturedAt": "2026-10-19T18:25:39.189Z",
+    "sourceUrl": null,
+    "published": false,
+    "overflow": false
+  }
+]

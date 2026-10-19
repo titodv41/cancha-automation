@@ -1,0 +1,173 @@
+[
+  {
+    "id": "florida-photo-orlando",
+    "sourceType": "brand",
+    "format": "feed",
+    "topic": "storytelling",
+    "creativeKind": "photo-guide",
+    "subjectKey": "photo:4e65f20fdb839face92cae5294371a37edf62c4b3a6b934b9619045bfbc1136e",
+    "photo": {
+      "id": "orlando",
+      "city": "Orlando",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Orlando_City_Stadium_(41641396365).jpg",
+      "creator": "Jamie Smed from Cincinnati, Ohio",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "originalChecksum": "4e65f20fdb839face92cae5294371a37edf62c4b3a6b934b9619045bfbc1136e",
+      "alt": "Archive photograph of Orlando City Stadium in 2018; used for Orlando soccer context, not as a current match report.",
+      "layout": "photo-poster",
+      "archive": true,
+      "url": "https://framerusercontent.com/images/YhCMUz4J9Lyd3PyPwllIOdHhjo.jpg"
+    },
+    "photoNote": "Orlando City Stadium \u00b7 Archive, 2018",
+    "kicker": "FLORIDA SOCCER / ORLANDO",
+    "headline": "Orlando is more\nthan matchday.",
+    "body": "Find the club beyond the stadium.\nBuild your own place in the game.",
+    "cta": "Who should we put on the Orlando shortlist?",
+    "previewUrl": "https://pioneering-friday-005497.framer.app/clubs?region=Central+Florida",
+    "caption": "Orlando soccer doesn\u2019t begin and end at the stadium.\n\nOur directory now includes Emerald FC, Kissimmee SC and Montverde Academy, based on their official league profiles. They serve different pathways; ask each team about eligibility and current recruitment rather than assuming an open tryout.\n\nBrowse Central Florida:\nhttps://pioneering-friday-005497.framer.app/clubs?region=Central+Florida\n\nWhich local team deserves a closer look?\n\nArchive photograph: Orlando City Stadium in 2018. This is a look at the city\u2019s soccer setting, not a current match report.\n\nPhoto: Jamie Smed from Cincinnati, Ohio / Wikimedia Commons (CC BY 2.0). Scaled and framed in an original Cancha design.\nhttps://commons.wikimedia.org/wiki/File:Orlando_City_Stadium_(41641396365).jpg\nhttps://creativecommons.org/licenses/by/2.0/\n\n#Cancha #FloridaSoccer #OrlandoSoccer",
+    "altText": "Archive photograph of Orlando City Stadium in 2018; used for Orlando soccer context, not as a current match report. Original Cancha headline and community question.",
+    "rights": "Original Cancha copy and design. Licensed archive photograph: Jamie Smed from Cincinnati, Ohio, CC BY 2.0. Attribution and source retained in caption and design; no affiliation or current-event claim."
+  },
+  {
+    "id": "florida-photo-florida",
+    "sourceType": "brand",
+    "format": "feed",
+    "topic": "fun",
+    "creativeKind": "photo-guide",
+    "subjectKey": "photo:40502181cc0a4e710de6385cccab9d73616ad193b46e80d43540d412bf2a6718",
+    "photo": {
+      "id": "florida",
+      "city": "Florida",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Green_soccer_field_Florida.jpg",
+      "creator": "Kurt Kaiser",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "originalChecksum": "40502181cc0a4e710de6385cccab9d73616ad193b46e80d43540d412bf2a6718",
+      "alt": "A community soccer field in Florida; illustrative photograph, not a named Cancha venue or confirmed open session.",
+      "layout": "photo-poster",
+      "archive": true,
+      "url": "https://framerusercontent.com/images/ZomnFk5ycJhsKnWP5lzxh9nU6A.jpg"
+    },
+    "photoNote": "Florida community field \u00b7 Illustrative archive",
+    "kicker": "FLORIDA SOCCER / YOUR LOCAL GAME",
+    "headline": "What\u2019s your\nlocal pitch called?",
+    "body": "The field. The group chat. The weekly game.\nThat\u2019s where a soccer community starts.",
+    "cta": "Tell us your city and the place you play.",
+    "previewUrl": "https://pioneering-friday-005497.framer.app/clubs",
+    "caption": "Every local soccer scene has its own meeting point.\n\nMaybe it\u2019s a small-sided game after work, a family\u2019s weekend club or the pitch you learned on. Tell us the city and the place that makes soccer feel like home.\n\nWe\u2019re building Cancha around those real clubs and places across Florida. Suggest yours through the website so we can check its official details.\nhttps://pioneering-friday-005497.framer.app/organizations\n\nIllustrative archive photograph of a Florida community field. It does not identify a bookable Cancha venue or promise public walk-on access.\n\nPhoto: Kurt Kaiser / Wikimedia Commons (CC0). Scaled and framed in an original Cancha design.\nhttps://commons.wikimedia.org/wiki/File:Green_soccer_field_Florida.jpg\nhttps://creativecommons.org/publicdomain/zero/1.0/deed.en\n\n#Cancha #FloridaSoccer #LocalSoccer",
+    "altText": "A community soccer field in Florida; illustrative photograph, not a named Cancha venue or confirmed open session. Original Cancha headline and community question.",
+    "rights": "Original Cancha copy and design. Licensed archive photograph: Kurt Kaiser, CC0. Attribution and source retained in caption and design; no affiliation or current-event claim."
+  },
+  {
+    "id": "florida-guide-training-or-tryout",
+    "sourceType": "brand",
+    "format": "feed",
+    "topic": "tip",
+    "creativeKind": "parent-guide",
+    "subjectKey": "guide:training-or-tryout",
+    "kicker": "CANCHA NOTES / ON & OFF THE PITCH",
+    "headline": "Tryout or training?\nKnow the difference.",
+    "body": "Choose the session for the step you actually want.",
+    "cta": "Save this before you sign up.",
+    "questions": [
+      [
+        "01",
+        "A training session",
+        "Practice and coaching. It may have no link to team selection."
+      ],
+      [
+        "02",
+        "An evaluation",
+        "A coach assesses fit. Attendance does not guarantee a roster place."
+      ],
+      [
+        "03",
+        "A camp or showcase",
+        "Ask who runs it, who it serves and which coaches are confirmed."
+      ],
+      [
+        "04",
+        "A team registration",
+        "Check the season, total cost and whether a place is confirmed."
+      ]
+    ],
+    "caption": "A training session, an evaluation and a team place are three different things.\n\nBefore paying or travelling, ask what the session actually includes and what happens afterward. If you want a team, ask about current recruitment. If you want practice, check the age and skill group.\n\nBuild a shortlist on Cancha, then confirm the details directly.\nhttps://pioneering-friday-005497.framer.app/explore\n\n#Cancha #FloridaSoccer #SoccerCommunity",
+    "altText": "Tryout or training? Know the difference. Four original Cancha practical prompts: A training session, An evaluation, A camp or showcase, A team registration.",
+    "rights": "Original Cancha educational copy and design. No employment, roster place, qualification or performance outcome is promised."
+  },
+  {
+    "id": "florida-guide-first-coaching-step",
+    "sourceType": "brand",
+    "format": "feed",
+    "topic": "tip",
+    "creativeKind": "parent-guide",
+    "subjectKey": "guide:first-coaching-step",
+    "kicker": "CANCHA NOTES / ON & OFF THE PITCH",
+    "headline": "Your next role\ncould be on the sideline.",
+    "body": "You don\u2019t need to guess where to start.",
+    "cta": "Send this to someone who wants to coach.",
+    "questions": [
+      [
+        "01",
+        "Pick the environment",
+        "Youth club, school, recreational league or a specialist role."
+      ],
+      [
+        "02",
+        "Read the actual role",
+        "Hours, responsibilities, required experience and compensation."
+      ],
+      [
+        "03",
+        "Check the pathway",
+        "Use FYSA and U.S. Soccer for official coaching-course guidance."
+      ],
+      [
+        "04",
+        "Ask about support",
+        "Who mentors coaches, plans sessions and handles club policies?"
+      ]
+    ],
+    "caption": "Love explaining the game? Coaching is one route into soccer beyond playing.\n\nStart with an actual club role and its requirements. Then use the official FYSA/U.S. Soccer pathway to understand which course is appropriate; completing a course alone does not promise a job.\n\nCourses: https://pioneering-friday-005497.framer.app/training\nRoles: https://pioneering-friday-005497.framer.app/careers\n\n#Cancha #FloridaSoccer #SoccerCommunity",
+    "altText": "Your next role could be on the sideline. Four original Cancha practical prompts: Pick the environment, Read the actual role, Check the pathway, Ask about support.",
+    "rights": "Original Cancha educational copy and design. No employment, roster place, qualification or performance outcome is promised."
+  },
+  {
+    "id": "florida-guide-analyse-your-first-match",
+    "sourceType": "brand",
+    "format": "feed",
+    "topic": "tip",
+    "creativeKind": "parent-guide",
+    "subjectKey": "guide:analyse-your-first-match",
+    "kicker": "CANCHA NOTES / ON & OFF THE PITCH",
+    "headline": "Watch one match.\nNotice more.",
+    "body": "A small first project for a future soccer analyst.",
+    "cta": "What would you track first?",
+    "questions": [
+      [
+        "01",
+        "Pick one question",
+        "For example: how does a team move the ball out of its own half?"
+      ],
+      [
+        "02",
+        "Choose a few tags",
+        "Build-up shape, pressure, progression and the outcome."
+      ],
+      [
+        "03",
+        "Record clear examples",
+        "Use footage you have permission to analyse and share."
+      ],
+      [
+        "04",
+        "Write one finding",
+        "Explain what the clips show, and what they cannot prove."
+      ]
+    ],
+    "caption": "You can start learning analysis with one clear question, rather than a dashboard full of numbers.\n\nUse footage you can lawfully work with, define a few consistent tags and explain the examples. Avoid drawing a season-long conclusion from one match.\n\nWe\u2019ve collected official video/data-analysis courses alongside coaching and player-development resources:\nhttps://pioneering-friday-005497.framer.app/training\n\n#Cancha #FloridaSoccer #SoccerCommunity",
+    "altText": "Watch one match. Notice more. Four original Cancha practical prompts: Pick one question, Choose a few tags, Record clear examples, Write one finding.",
+    "rights": "Original Cancha educational copy and design. No employment, roster place, qualification or performance outcome is promised."
+  }
+]

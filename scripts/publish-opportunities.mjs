@@ -3,7 +3,7 @@ import{syncDiscoveryCatalog}from'./sync-discovery-catalog.mjs';import{verifyRele
 const reviewedPages=process.argv.includes('--include-reviewed-forms')?['/organizations','/providers','/offers']:[];
 await withProject(async f=>{
  const collection=(await f.getCollections()).find(c=>c.name==='Opportunities');if(!collection)throw Error('Opportunity collection missing');
- const clubs=(await f.getCollections()).find(c=>c.name==='Clubs');const additionalCollections=clubs?[{path:'clubs',slugs:(await clubs.getItems()).map(x=>x.slug)}]:[];
+ const clubs=(await f.getCollections()).find(c=>c.name==='Clubs');const additionalCollections=clubs?[{id:clubs.id,path:'clubs',allowAdded:true,slugs:(await clubs.getItems()).map(x=>x.slug)}]:[];
  const dataFile=(await f.getCodeFiles()).find(x=>x.name==='CanchaDiscoveryData.tsx');let contract,derived;
  if(dataFile){contract=await verifyReleaseContract(f);derived=await syncDiscoveryCatalog(f,{apply:true});}
  const preview=await f.agent.publish({action:'preview'}),hasChanges=checkAutomaticPublication(preview,{collectionId:collection.id,itemSlugs:(await collection.getItems()).map(item=>item.slug),reviewedPages,additionalCollections,verifiedDerivedPages:contract?.derivedPages||[],verifiedDataFileId:dataFile?.id});

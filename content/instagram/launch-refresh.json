@@ -9,7 +9,7 @@
     "headline": "Your next game.\nA little closer.",
     "body": "Clubs. Training. Fields.\nStart with your city.",
     "cta": "Find your people. @wearecancha",
-    "caption": "Finding a team shouldn’t take five different group chats.\n\nCancha now brings club profiles, fields, training and dated opportunities into a simpler place to explore. Start with your city, age group and the level you want to play.\n\nOur club directory starts in Broward. Tryouts and events cover more Florida cities. Check current spaces and access directly with the organizer.\n\nExplore: https://pioneering-friday-005497.framer.app/clubs\n\nWhich Florida city should we cover more deeply next?\n\n#Cancha #FloridaSoccer #BrowardSoccer #LocalSoccer",
+    "caption": "Finding a team shouldn\u2019t take five different group chats.\n\nCancha now brings club profiles, fields, training and dated opportunities into a simpler place to explore. Start with your city, age group and the level you want to play.\n\nExplore source-checked club profiles from South and Central Florida to Tampa Bay, alongside courses, careers and services. Check current spaces and access directly with the organizer.\n\nExplore: https://pioneering-friday-005497.framer.app/clubs\n\nWhich Florida city should we cover more deeply next?\n\n#Cancha #FloridaSoccer #OrlandoSoccer #LocalSoccer",
     "altText": "Cancha local soccer discovery preview showing the real club directory, search and filters.",
     "rights": "Original Cancha copy, design and product screenshot. Club badges identify the actual directory profiles; no partnership is implied. No third-party action photograph.",
     "previewUrl": "https://pioneering-friday-005497.framer.app/clubs"
@@ -26,12 +26,12 @@
     "questions": [
       [
         "01",
-        "What’s the full cost?",
+        "What\u2019s the full cost?",
         "Registration, kit, travel, tournament and payment terms."
       ],
       [
         "02",
-        "What’s the weekly commitment?",
+        "What\u2019s the weekly commitment?",
         "Training days, travel distance and the match schedule."
       ],
       [
@@ -46,9 +46,9 @@
       ]
     ],
     "cta": "Save this for your next club conversation.",
-    "caption": "The badge looks good. Now ask about the week-to-week reality.\n\nBefore you commit, check the full cost, the training and match schedule, whether the group fits the player, and what the club’s next step actually is. A trial or evaluation may be offered; ask rather than assuming.\n\nThere’s no single right answer for every family. A program that works for your schedule and goals is worth finding.\n\nUse Cancha to build a shortlist, then talk directly with the club.\nhttps://pioneering-friday-005497.framer.app/clubs\n\n#Cancha #SoccerParents #YouthSoccer #FloridaSoccer",
+    "caption": "The badge looks good. Now ask about the week-to-week reality.\n\nBefore you commit, check the full cost, the training and match schedule, whether the group fits the player, and what the club\u2019s next step actually is. A trial or evaluation may be offered; ask rather than assuming.\n\nThere\u2019s no single right answer for every family. A program that works for your schedule and goals is worth finding.\n\nUse Cancha to build a shortlist, then talk directly with the club.\nhttps://pioneering-friday-005497.framer.app/clubs\n\n#Cancha #SoccerParents #YouthSoccer #FloridaSoccer",
     "altText": "Four original Cancha prompts for parents and players: full cost, weekly commitment, group fit and whether a trial or evaluation is available.",
-    "rights": "Original Cancha educational copy and graphic. General questions, not a claim about any specific club’s availability or policies."
+    "rights": "Original Cancha educational copy and graphic. General questions, not a claim about any specific club\u2019s availability or policies."
   },
   {
     "id": "cancha-broward-field-guide",
@@ -60,8 +60,8 @@
     "headline": "A field nearby.\nA better starting point.",
     "body": "Explore local venues.\nCheck the access rules first.",
     "cta": "Find the pitch. Confirm the plan.",
-    "caption": "A field on a map doesn’t always mean you can walk on and play.\n\nOur Broward place profiles bring together official venue information, location notes and access restrictions. Some facilities need a permit or are tied to a club or school.\n\nStart with places like Boggs Park, Weston Regional Park or Pine Trails Park, then read the profile and confirm the rules with the operator. These are venue profiles, not scheduled pickup games.\n\nThe map groups listings at city centers. Open a profile for the actual location and directions.\nhttps://pioneering-friday-005497.framer.app/clubs?activity=Fields%20%26%20places&view=map\n\n#Cancha #BrowardSoccer #FloridaSoccer #CommunitySoccer\n\nMap data © OpenStreetMap contributors: https://www.openstreetmap.org/copyright",
-    "altText": "Cancha’s real Broward city overview map and venue directory. City markers are not exact venue locations.",
+    "caption": "A field on a map doesn\u2019t always mean you can walk on and play.\n\nOur Broward place profiles bring together official venue information, location notes and access restrictions. Some facilities need a permit or are tied to a club or school.\n\nStart with places like Boggs Park, Weston Regional Park or Pine Trails Park, then read the profile and confirm the rules with the operator. These are venue profiles, not scheduled pickup games.\n\nThe map groups listings at city centers. Open a profile for the actual location and directions.\nhttps://pioneering-friday-005497.framer.app/clubs?activity=Fields%20%26%20places&view=map\n\n#Cancha #BrowardSoccer #FloridaSoccer #CommunitySoccer\n\nMap data \u00a9 OpenStreetMap contributors: https://www.openstreetmap.org/copyright",
+    "altText": "Cancha\u2019s real Broward city overview map and venue directory. City markers are not exact venue locations.",
     "rights": "Original Cancha copy/design and real product screenshot. Map attribution to OpenStreetMap contributors is preserved. No implied permission to access a venue.",
     "previewUrl": "https://pioneering-friday-005497.framer.app/clubs?activity=Fields%20%26%20places&view=map"
   }

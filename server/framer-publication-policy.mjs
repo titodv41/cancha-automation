@@ -6,8 +6,8 @@ export function checkAutomaticPublication(preview,{collectionId,itemSlugs=[],rev
   if(change.type==='CodeFile'&&change.status==='updated'&&change.nodeId===verifiedDataFileId&&change.name==='CanchaDiscoveryData.tsx')continue;
   if(change.type==='WebPage'&&reviewedPages.includes(change.name)&&change.status==='updated')continue;
   if(change.type==='CollectionItem'&&['updated','added'].includes(change.status)&&itemSlugs.some(slug=>change.name==='opportunities/'+slug))continue;
-  if(change.type==='CollectionItem'&&change.status==='updated'&&additionalCollections.some(c=>c.slugs.some(slug=>change.name===c.path+'/'+slug)))continue;
-  if(['Collection','CMSCollection'].includes(change.type)&&change.nodeId===collectionId&&change.status==='updated')continue;
+  if(change.type==='CollectionItem'&&['updated','added'].includes(change.status)&&additionalCollections.some(c=>(change.status==='updated'||c.allowAdded===true)&&c.slugs.some(slug=>change.name===c.path+'/'+slug)))continue;
+  if(['Collection','CMSCollection'].includes(change.type)&&(change.nodeId===collectionId||additionalCollections.some(c=>c.allowAdded===true&&c.id===change.nodeId))&&change.status==='updated')continue;
   throw Error('Unrelated or unsupported Framer changes require review: '+change.type+' '+change.name);
  }
  if((preview.changes||[]).length&&!preview.confirmationHash)throw Error('Framer publication confirmation missing');

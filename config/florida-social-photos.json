@@ -1,0 +1,28 @@
+[
+  {
+    "id": "orlando",
+    "city": "Orlando",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Orlando_City_Stadium_(41641396365).jpg",
+    "creator": "Jamie Smed from Cincinnati, Ohio",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "originalChecksum": "4e65f20fdb839face92cae5294371a37edf62c4b3a6b934b9619045bfbc1136e",
+    "alt": "Archive photograph of Orlando City Stadium in 2018; used for Orlando soccer context, not as a current match report.",
+    "layout": "photo-poster",
+    "archive": true,
+    "url": "https://framerusercontent.com/images/YhCMUz4J9Lyd3PyPwllIOdHhjo.jpg"
+  },
+  {
+    "id": "florida",
+    "city": "Florida",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Green_soccer_field_Florida.jpg",
+    "creator": "Kurt Kaiser",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "originalChecksum": "40502181cc0a4e710de6385cccab9d73616ad193b46e80d43540d412bf2a6718",
+    "alt": "A community soccer field in Florida; illustrative photograph, not a named Cancha venue or confirmed open session.",
+    "layout": "photo-poster",
+    "archive": true,
+    "url": "https://framerusercontent.com/images/ZomnFk5ycJhsKnWP5lzxh9nU6A.jpg"
+  }
+]

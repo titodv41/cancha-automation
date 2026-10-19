@@ -1,9 +1,112 @@
 [
- {"id":"fifa-training","title":"Training ideas and game understanding","provider":"FIFA Training Centre","track":"Player development","kind":"Learning library","description":"Explore practice ideas, game principles and youth-development resources from FIFA.","url":"https://www.fifatrainingcentre.com/en/","checkedOn":"2026-10-12"},
- {"id":"us-soccer-coaching","title":"Find your coaching pathway","provider":"U.S. Soccer","track":"Coaching","kind":"Education pathway","description":"Understand U.S. Soccer’s coaching education pathway and follow its official course guidance.","url":"https://www.ussoccer.com/coaching","checkedOn":"2026-10-12"},
- {"id":"united-coaches","title":"Coaching courses and continuing education","provider":"United Soccer Coaches","track":"Coaching","kind":"Course directory","description":"Explore coaching courses, diplomas and online learning offered by United Soccer Coaches.","url":"https://unitedsoccercoaches.org/education/","checkedOn":"2026-10-12"},
- {"id":"statsbomb-video","title":"Analysing Football Using Video","provider":"Hudl Statsbomb","track":"Video & data analysis","kind":"Online course","description":"Learn about match breakdowns, video-analysis workflows and using video alongside football data.","url":"https://courses.statsbomb.com/courses/analysing-football-using-video","checkedOn":"2026-10-12"},
- {"id":"statsbomb-analytics","title":"Introduction to Football Analytics","provider":"Hudl Statsbomb","track":"Video & data analysis","kind":"Online course","description":"Explore football analytics through an introductory course from Hudl Statsbomb.","url":"https://courses.statsbomb.com/courses/introduction-to-football-analytics","checkedOn":"2026-10-12"},
- {"id":"statsbomb-scouting","title":"Modern Scouting and Data-Driven Recruitment","provider":"Hudl Statsbomb","track":"Video & data analysis","kind":"Online course","description":"Explore how scouting and data can inform player recruitment and evaluation.","url":"https://courses.statsbomb.com/courses/modern-scouting-and-data-driven-recruitment","checkedOn":"2026-10-12"},
- {"id":"nsca-education","title":"Strength and conditioning education","provider":"NSCA","track":"Physical preparation","kind":"Education directory","description":"Browse strength-and-conditioning education, articles and professional learning resources.","url":"https://www.nsca.com/education/education-overview/","checkedOn":"2026-10-12"}
+  {
+    "id": "fifa-training",
+    "title": "Training ideas and game understanding",
+    "provider": "FIFA Training Centre",
+    "track": "Player development",
+    "kind": "Learning library",
+    "description": "Explore practice ideas, game principles and youth-development resources from FIFA.",
+    "url": "https://www.fifatrainingcentre.com/en/",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "us-soccer-coaching",
+    "title": "Find your coaching pathway",
+    "provider": "U.S. Soccer",
+    "track": "Coaching",
+    "kind": "Education pathway",
+    "description": "Understand U.S. Soccer\u2019s coaching education pathway and follow its official course guidance.",
+    "url": "https://www.ussoccer.com/coaching",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "united-coaches",
+    "title": "Coaching courses and continuing education",
+    "provider": "United Soccer Coaches",
+    "track": "Coaching",
+    "kind": "Course directory",
+    "description": "Explore coaching courses, diplomas and online learning offered by United Soccer Coaches.",
+    "url": "https://unitedsoccercoaches.org/education/",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "statsbomb-video",
+    "title": "Analysing Football Using Video",
+    "provider": "Hudl Statsbomb",
+    "track": "Video & data analysis",
+    "kind": "Online course",
+    "description": "Learn about match breakdowns, video-analysis workflows and using video alongside football data.",
+    "url": "https://courses.statsbomb.com/courses/analysing-football-using-video",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "statsbomb-analytics",
+    "title": "Introduction to Football Analytics",
+    "provider": "Hudl Statsbomb",
+    "track": "Video & data analysis",
+    "kind": "Online course",
+    "description": "Explore football analytics through an introductory course from Hudl Statsbomb.",
+    "url": "https://courses.statsbomb.com/courses/introduction-to-football-analytics",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "statsbomb-scouting",
+    "title": "Modern Scouting and Data-Driven Recruitment",
+    "provider": "Hudl Statsbomb",
+    "track": "Video & data analysis",
+    "kind": "Online course",
+    "description": "Explore how scouting and data can inform player recruitment and evaluation.",
+    "url": "https://courses.statsbomb.com/courses/modern-scouting-and-data-driven-recruitment",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "nsca-education",
+    "title": "Strength and conditioning education",
+    "provider": "NSCA",
+    "track": "Physical preparation",
+    "kind": "Education directory",
+    "description": "Browse strength-and-conditioning education, articles and professional learning resources.",
+    "url": "https://www.nsca.com/education/education-overview/",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "fysa-courses",
+    "title": "Coaching licenses in Florida",
+    "provider": "Florida Youth Soccer Association",
+    "track": "Coaching",
+    "kind": "Florida course directory",
+    "description": "Explore the Grassroots, D, C and B pathways and follow FYSA to the official Learning Center. Confirm live dates and prerequisites.",
+    "url": "https://www.fysa.com/coaching-courses/",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "fysa-referees",
+    "title": "Start your referee pathway",
+    "provider": "Florida Youth Soccer Association",
+    "track": "Refereeing",
+    "kind": "Florida pathway",
+    "description": "Find Florida referee resources and the official training and registration route. Check current minimum ages and certification requirements.",
+    "url": "https://www.fysa.com/referees/",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "coaching-manual",
+    "title": "Build better coaching sessions",
+    "provider": "The Coaching Manual",
+    "track": "Coaching",
+    "kind": "Session-planning platform",
+    "description": "Explore coaching-session resources and planning tools. Access, subscriptions and suitability depend on the provider.",
+    "url": "https://www.thecoachingmanual.com/",
+    "checkedOn": "2026-10-19"
+  },
+  {
+    "id": "online-soccer-academy",
+    "title": "Practice individual soccer skills",
+    "provider": "Online Soccer Academy",
+    "track": "Player development",
+    "kind": "Video learning library",
+    "description": "Browse skill tutorials and practice ideas. Adapt sessions to your ability and training environment.",
+    "url": "https://www.onlinesocceracademy.com/",
+    "checkedOn": "2026-10-19"
+  }
 ]
