@@ -21,7 +21,7 @@ export function savePlan(db,input,ownerInstruction){
 }
 export function validPostImage(row){try{const url=new URL(row.assetUrl);return url.origin==='https://framerusercontent.com'&&!url.username&&!url.password&&/^\/images\/[^?]+\.jpe?g$/i.test(url.pathname)&&!url.search&&/^[a-f0-9]{64}$/.test(row.assetChecksum||'');}catch{return false;}}
 function week(date){const d=new Date(date+'T12:00:00Z'),day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);return d.toISOString().slice(0,10);}
-export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false,requireCreativeVersion=null}={}){
+export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false,requireCreativeVersion=null,preferredDraftId=null}={}){
  const plan=readPlan(db);if(backendFrozen(db)||!plan?.enabled||!connected)return {scheduled:[],skipped:[],paused:true};
  const today=dateInNewYork(new Date(now));const all=db.prepare('SELECT * FROM instagram_queue ORDER BY id').all();
  const queueHash=all.map(row=>row.id+':'+row.status+':'+contentHash(JSON.parse(row.content))).join('|');
@@ -42,7 +42,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
   // Prefer a different topic each day; news and opportunities alternate with
   // tips, questions, updates and storytelling when those drafts are available.
   const day=new Date(slot.date+'T12:00:00Z').getUTCDay(),preferred=['update','tip','opportunity','storytelling','fun','news','tip'][day];
-  candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
+  candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(b.id===preferredDraftId)-Number(a.id===preferredDraftId)||Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
   while(cursor<candidates.length){
    const old=candidates[cursor++],content=JSON.parse(old.content);if(blocked.has(old.id))continue;const before=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(old.id);if(before?.status!=='Draft')continue;
    if(content.sourceType==='news'&&Date.parse(slot.scheduledAt)-Date.parse(content.factsCheckedAt)>36*3600000)continue;
