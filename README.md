@@ -56,4 +56,4 @@ See [daily workflow](docs/daily-opportunities.md) for the weekday discovery sche
 
 ## Website discovery
 
-See [player age and goal discovery](docs/player-profile-discovery.md) for the current homepage and directory, age evidence rules, private backup requirements and guarded release checks. The current browser smoke test is `node scripts/verify-player-discovery.mjs` (`verify-launch.mjs` forwards to it).
+See [the simpler discovery redesign](docs/simple-discovery-redesign.md) for the current homepage, optional filters, fonts, maps, research and release checks. [Age evidence rules](docs/player-profile-discovery.md) document the underlying age-matching limits. The current browser smoke test is `node scripts/verify-simple-discovery.mjs`; the earlier browser entry points forward to it.

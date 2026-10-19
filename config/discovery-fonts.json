@@ -1,0 +1,18 @@
+{
+  "Inter": {
+    "url": "https://framerusercontent.com/assets/8R1ym7Ck2DUNLqPQAYs9u8tUpg.woff2",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "assets/fonts/OFL-Inter.txt",
+    "source": "https://fonts.google.com/specimen/Inter",
+    "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "weights": "400 700"
+  },
+  "Manrope": {
+    "url": "https://framerusercontent.com/assets/tClRAUxeyhJ0nYekcGyvItxP4IE.woff2",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "assets/fonts/OFL-Manrope.txt",
+    "source": "https://fonts.google.com/specimen/Manrope",
+    "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+    "weights": "500 800"
+  }
+}
