@@ -1,0 +1,35 @@
+name: Cancha Instagram learning report
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 15 * * 2'
+permissions:
+  contents: write
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  insights:
+    if: github.event_name == 'workflow_dispatch' || vars.CANCHA_AUTOMATION_BACKEND == 'github'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/github-instagram.mjs insights
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: github
+          CANCHA_SCHEDULE_BACKEND: github
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cancha-learning-${{ github.run_id }}
+          path: private-data/instagram-insights.json
+          retention-days: 7

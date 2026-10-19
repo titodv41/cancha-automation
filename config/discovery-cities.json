@@ -1,0 +1,5759 @@
+{
+  "source": {
+    "name": "U.S. Census Bureau, 2025 Florida Places Gazetteer",
+    "url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_12.txt",
+    "retrievedOn": "2026-10-19",
+    "sha256": "9b5f7e013fa22787acac43615d4531ae925db85afcd0e9306b882d9fa07f1c28",
+    "meaning": "Census internal points for city/place overviews, not venues or club headquarters"
+  },
+  "places": [
+    {
+      "city": "Acacia Villas",
+      "lat": 26.645735,
+      "lng": -80.110444,
+      "geoid": "1200075"
+    },
+    {
+      "city": "Alachua",
+      "lat": 29.779286,
+      "lng": -82.484781,
+      "geoid": "1200375"
+    },
+    {
+      "city": "Alafaya",
+      "lat": 28.529295,
+      "lng": -81.186675,
+      "geoid": "1200410"
+    },
+    {
+      "city": "Alford",
+      "lat": 30.69664,
+      "lng": -85.39572,
+      "geoid": "1200625"
+    },
+    {
+      "city": "Allentown",
+      "lat": 30.770489,
+      "lng": -87.084428,
+      "geoid": "1200800"
+    },
+    {
+      "city": "Altamonte Springs",
+      "lat": 28.661022,
+      "lng": -81.394681,
+      "geoid": "1200950"
+    },
+    {
+      "city": "Altha",
+      "lat": 30.57335,
+      "lng": -85.126082,
+      "geoid": "1201000"
+    },
+    {
+      "city": "Altoona",
+      "lat": 28.968733,
+      "lng": -81.648092,
+      "geoid": "1201050"
+    },
+    {
+      "city": "Alturas",
+      "lat": 27.842056,
+      "lng": -81.681576,
+      "geoid": "1201100"
+    },
+    {
+      "city": "Alva",
+      "lat": 26.721492,
+      "lng": -81.624284,
+      "geoid": "1201125"
+    },
+    {
+      "city": "Andrews",
+      "lat": 29.549578,
+      "lng": -82.888292,
+      "geoid": "1201353"
+    },
+    {
+      "city": "Anna Maria",
+      "lat": 27.529833,
+      "lng": -82.733719,
+      "geoid": "1201475"
+    },
+    {
+      "city": "Apalachicola",
+      "lat": 29.727426,
+      "lng": -84.994047,
+      "geoid": "1201625"
+    },
+    {
+      "city": "Apollo Beach",
+      "lat": 27.76302,
+      "lng": -82.403313,
+      "geoid": "1201675"
+    },
+    {
+      "city": "Apopka",
+      "lat": 28.701701,
+      "lng": -81.531825,
+      "geoid": "1201700"
+    },
+    {
+      "city": "Arcadia",
+      "lat": 27.221209,
+      "lng": -81.858429,
+      "geoid": "1201750"
+    },
+    {
+      "city": "Archer",
+      "lat": 29.545752,
+      "lng": -82.51691,
+      "geoid": "1201775"
+    },
+    {
+      "city": "Aripeka",
+      "lat": 28.429337,
+      "lng": -82.668286,
+      "geoid": "1201875"
+    },
+    {
+      "city": "Asbury Lake",
+      "lat": 30.049014,
+      "lng": -81.787591,
+      "geoid": "1202187"
+    },
+    {
+      "city": "Astatula",
+      "lat": 28.70732,
+      "lng": -81.73419,
+      "geoid": "1202250"
+    },
+    {
+      "city": "Astor",
+      "lat": 29.163834,
+      "lng": -81.534621,
+      "geoid": "1202275"
+    },
+    {
+      "city": "Atlantic Beach",
+      "lat": 30.339552,
+      "lng": -81.396669,
+      "geoid": "1202400"
+    },
+    {
+      "city": "Atlantis",
+      "lat": 26.597248,
+      "lng": -80.1041,
+      "geoid": "1202500"
+    },
+    {
+      "city": "Auburndale",
+      "lat": 28.109997,
+      "lng": -81.797322,
+      "geoid": "1202550"
+    },
+    {
+      "city": "Aucilla",
+      "lat": 30.477028,
+      "lng": -83.760399,
+      "geoid": "1202575"
+    },
+    {
+      "city": "Avalon",
+      "lat": 30.536216,
+      "lng": -87.104631,
+      "geoid": "1202660"
+    },
+    {
+      "city": "Ave Maria",
+      "lat": 26.322804,
+      "lng": -81.439425,
+      "geoid": "1202677"
+    },
+    {
+      "city": "Aventura",
+      "lat": 25.96016,
+      "lng": -80.133011,
+      "geoid": "1202681"
+    },
+    {
+      "city": "Avon Park",
+      "lat": 27.589703,
+      "lng": -81.507278,
+      "geoid": "1202750"
+    },
+    {
+      "city": "Azalea Park",
+      "lat": 28.547251,
+      "lng": -81.295395,
+      "geoid": "1202850"
+    },
+    {
+      "city": "Babson Park",
+      "lat": 27.834206,
+      "lng": -81.528085,
+      "geoid": "1202900"
+    },
+    {
+      "city": "Bagdad",
+      "lat": 30.584172,
+      "lng": -87.044892,
+      "geoid": "1202925"
+    },
+    {
+      "city": "Baldwin",
+      "lat": 30.307776,
+      "lng": -81.973665,
+      "geoid": "1203250"
+    },
+    {
+      "city": "Bal Harbour",
+      "lat": 25.893341,
+      "lng": -80.123188,
+      "geoid": "1203275"
+    },
+    {
+      "city": "Balm",
+      "lat": 27.753039,
+      "lng": -82.289456,
+      "geoid": "1203375"
+    },
+    {
+      "city": "Bardmoor",
+      "lat": 27.856083,
+      "lng": -82.75324,
+      "geoid": "1203480"
+    },
+    {
+      "city": "Bartow",
+      "lat": 27.887064,
+      "lng": -81.821777,
+      "geoid": "1203675"
+    },
+    {
+      "city": "Bascom",
+      "lat": 30.927758,
+      "lng": -85.118081,
+      "geoid": "1203725"
+    },
+    {
+      "city": "Bay Harbor Islands",
+      "lat": 25.887979,
+      "lng": -80.133582,
+      "geoid": "1203975"
+    },
+    {
+      "city": "Bay Hill",
+      "lat": 28.462372,
+      "lng": -81.514793,
+      "geoid": "1204070"
+    },
+    {
+      "city": "Bay Lake",
+      "lat": 28.38917,
+      "lng": -81.578534,
+      "geoid": "1204150"
+    },
+    {
+      "city": "Bayonet Point",
+      "lat": 28.326488,
+      "lng": -82.683432,
+      "geoid": "1204162"
+    },
+    {
+      "city": "Bay Pines",
+      "lat": 27.816314,
+      "lng": -82.777749,
+      "geoid": "1204200"
+    },
+    {
+      "city": "Bayport",
+      "lat": 28.543064,
+      "lng": -82.644015,
+      "geoid": "1204250"
+    },
+    {
+      "city": "Bayshore Gardens",
+      "lat": 27.43302,
+      "lng": -82.578072,
+      "geoid": "1204350"
+    },
+    {
+      "city": "Beacon Square",
+      "lat": 28.211219,
+      "lng": -82.750751,
+      "geoid": "1204650"
+    },
+    {
+      "city": "Bear Creek",
+      "lat": 27.758102,
+      "lng": -82.728762,
+      "geoid": "1204735"
+    },
+    {
+      "city": "Bee Ridge",
+      "lat": 27.2843,
+      "lng": -82.473077,
+      "geoid": "1204925"
+    },
+    {
+      "city": "Bell",
+      "lat": 29.756846,
+      "lng": -82.861969,
+      "geoid": "1204975"
+    },
+    {
+      "city": "Bellair-Meadowbrook Terrace",
+      "lat": 30.179292,
+      "lng": -81.734379,
+      "geoid": "1205025"
+    },
+    {
+      "city": "Belleair",
+      "lat": 27.935974,
+      "lng": -82.812777,
+      "geoid": "1205075"
+    },
+    {
+      "city": "Belleair Beach",
+      "lat": 27.931244,
+      "lng": -82.836575,
+      "geoid": "1205100"
+    },
+    {
+      "city": "Belleair Bluffs",
+      "lat": 27.919619,
+      "lng": -82.81975,
+      "geoid": "1205125"
+    },
+    {
+      "city": "Belleair Shore",
+      "lat": 27.917267,
+      "lng": -82.845257,
+      "geoid": "1205150"
+    },
+    {
+      "city": "Belle Glade",
+      "lat": 26.692215,
+      "lng": -80.665559,
+      "geoid": "1205200"
+    },
+    {
+      "city": "Belle Isle",
+      "lat": 28.464935,
+      "lng": -81.351253,
+      "geoid": "1205300"
+    },
+    {
+      "city": "Belleview",
+      "lat": 29.060615,
+      "lng": -82.055868,
+      "geoid": "1205375"
+    },
+    {
+      "city": "Bellview",
+      "lat": 30.464787,
+      "lng": -87.30925,
+      "geoid": "1205462"
+    },
+    {
+      "city": "Berkshire Lakes",
+      "lat": 26.161624,
+      "lng": -81.728497,
+      "geoid": "1205806"
+    },
+    {
+      "city": "Berrydale",
+      "lat": 30.897011,
+      "lng": -87.034001,
+      "geoid": "1205825"
+    },
+    {
+      "city": "Beverly Beach",
+      "lat": 29.51577,
+      "lng": -81.14692,
+      "geoid": "1206100"
+    },
+    {
+      "city": "Beverly Hills",
+      "lat": 28.91755,
+      "lng": -82.454135,
+      "geoid": "1206125"
+    },
+    {
+      "city": "Big Coppitt Key",
+      "lat": 24.580225,
+      "lng": -81.652178,
+      "geoid": "1206350"
+    },
+    {
+      "city": "Big Pine Key",
+      "lat": 24.685137,
+      "lng": -81.362518,
+      "geoid": "1206425"
+    },
+    {
+      "city": "Biscayne Gardens",
+      "lat": 25.913038,
+      "lng": -80.200668,
+      "geoid": "1206575"
+    },
+    {
+      "city": "Biscayne Park",
+      "lat": 25.881696,
+      "lng": -80.181101,
+      "geoid": "1206600"
+    },
+    {
+      "city": "Bithlo",
+      "lat": 28.581806,
+      "lng": -81.09202,
+      "geoid": "1206625"
+    },
+    {
+      "city": "Black Diamond",
+      "lat": 28.906711,
+      "lng": -82.494615,
+      "geoid": "1206667"
+    },
+    {
+      "city": "Black Hammock",
+      "lat": 28.706005,
+      "lng": -81.177323,
+      "geoid": "1206670"
+    },
+    {
+      "city": "Bloomingdale",
+      "lat": 27.876716,
+      "lng": -82.261418,
+      "geoid": "1206875"
+    },
+    {
+      "city": "Blountstown",
+      "lat": 30.44285,
+      "lng": -85.045401,
+      "geoid": "1206925"
+    },
+    {
+      "city": "Boca Raton",
+      "lat": 26.37269,
+      "lng": -80.103711,
+      "geoid": "1207300"
+    },
+    {
+      "city": "Bokeelia",
+      "lat": 26.681353,
+      "lng": -82.141633,
+      "geoid": "1207375"
+    },
+    {
+      "city": "Bonifay",
+      "lat": 30.781349,
+      "lng": -85.688758,
+      "geoid": "1207450"
+    },
+    {
+      "city": "Bonita Springs",
+      "lat": 26.355011,
+      "lng": -81.784234,
+      "geoid": "1207525"
+    },
+    {
+      "city": "Boulevard Gardens",
+      "lat": 26.127138,
+      "lng": -80.181174,
+      "geoid": "1207687"
+    },
+    {
+      "city": "Bowling Green",
+      "lat": 27.637752,
+      "lng": -81.824773,
+      "geoid": "1207775"
+    },
+    {
+      "city": "Boynton Beach",
+      "lat": 26.528334,
+      "lng": -80.080722,
+      "geoid": "1207875"
+    },
+    {
+      "city": "Bradenton",
+      "lat": 27.489798,
+      "lng": -82.576804,
+      "geoid": "1207950"
+    },
+    {
+      "city": "Bradenton Beach",
+      "lat": 27.461683,
+      "lng": -82.69651,
+      "geoid": "1207975"
+    },
+    {
+      "city": "Bradfordville",
+      "lat": 30.570576,
+      "lng": -84.204204,
+      "geoid": "1208075"
+    },
+    {
+      "city": "Bradley Junction",
+      "lat": 27.794569,
+      "lng": -81.978223,
+      "geoid": "1208125"
+    },
+    {
+      "city": "Brandon",
+      "lat": 27.935985,
+      "lng": -82.299255,
+      "geoid": "1208150"
+    },
+    {
+      "city": "Branford",
+      "lat": 29.96225,
+      "lng": -82.924284,
+      "geoid": "1208175"
+    },
+    {
+      "city": "Brent",
+      "lat": 30.471891,
+      "lng": -87.250693,
+      "geoid": "1208300"
+    },
+    {
+      "city": "Briny Breezes",
+      "lat": 26.508902,
+      "lng": -80.052246,
+      "geoid": "1208575"
+    },
+    {
+      "city": "Bristol",
+      "lat": 30.425539,
+      "lng": -84.977292,
+      "geoid": "1208600"
+    },
+    {
+      "city": "Broadview Park",
+      "lat": 26.09875,
+      "lng": -80.20847,
+      "geoid": "1208650"
+    },
+    {
+      "city": "Bronson",
+      "lat": 29.449109,
+      "lng": -82.638474,
+      "geoid": "1208700"
+    },
+    {
+      "city": "Brooker",
+      "lat": 29.887631,
+      "lng": -82.332666,
+      "geoid": "1208725"
+    },
+    {
+      "city": "Brookridge",
+      "lat": 28.548069,
+      "lng": -82.489958,
+      "geoid": "1208762"
+    },
+    {
+      "city": "Brooksville",
+      "lat": 28.516578,
+      "lng": -82.404665,
+      "geoid": "1208800"
+    },
+    {
+      "city": "Brownsdale",
+      "lat": 30.894151,
+      "lng": -87.21502,
+      "geoid": "1208925"
+    },
+    {
+      "city": "Brownsville",
+      "lat": 25.82161,
+      "lng": -80.241758,
+      "geoid": "1209000"
+    },
+    {
+      "city": "Buckhead Ridge",
+      "lat": 27.132544,
+      "lng": -80.885148,
+      "geoid": "1209315"
+    },
+    {
+      "city": "Buckingham",
+      "lat": 26.645484,
+      "lng": -81.747363,
+      "geoid": "1209350"
+    },
+    {
+      "city": "Buenaventura Lakes",
+      "lat": 28.333421,
+      "lng": -81.352159,
+      "geoid": "1209415"
+    },
+    {
+      "city": "Bunnell",
+      "lat": 29.418736,
+      "lng": -81.31948,
+      "geoid": "1209550"
+    },
+    {
+      "city": "Burnt Store Marina",
+      "lat": 26.76709,
+      "lng": -82.051415,
+      "geoid": "1209612"
+    },
+    {
+      "city": "Bushnell",
+      "lat": 28.690157,
+      "lng": -82.117661,
+      "geoid": "1209625"
+    },
+    {
+      "city": "Butler Beach",
+      "lat": 29.798881,
+      "lng": -81.264799,
+      "geoid": "1209630"
+    },
+    {
+      "city": "Cabana Colony",
+      "lat": 26.855441,
+      "lng": -80.086488,
+      "geoid": "1209655"
+    },
+    {
+      "city": "Callahan",
+      "lat": 30.565566,
+      "lng": -81.831917,
+      "geoid": "1209700"
+    },
+    {
+      "city": "Callaway",
+      "lat": 30.130399,
+      "lng": -85.548596,
+      "geoid": "1209725"
+    },
+    {
+      "city": "Campbell",
+      "lat": 28.259287,
+      "lng": -81.450841,
+      "geoid": "1209875"
+    },
+    {
+      "city": "Campbellton",
+      "lat": 30.957854,
+      "lng": -85.408601,
+      "geoid": "1209900"
+    },
+    {
+      "city": "Canal Point",
+      "lat": 26.862568,
+      "lng": -80.622169,
+      "geoid": "1210100"
+    },
+    {
+      "city": "Cape Canaveral",
+      "lat": 28.393226,
+      "lng": -80.604791,
+      "geoid": "1210250"
+    },
+    {
+      "city": "Cape Coral",
+      "lat": 26.643192,
+      "lng": -81.997364,
+      "geoid": "1210275"
+    },
+    {
+      "city": "Capitola",
+      "lat": 30.442416,
+      "lng": -84.079232,
+      "geoid": "1210350"
+    },
+    {
+      "city": "Captiva",
+      "lat": 26.497641,
+      "lng": -82.187205,
+      "geoid": "1210425"
+    },
+    {
+      "city": "Carrabelle",
+      "lat": 29.854391,
+      "lng": -84.66792,
+      "geoid": "1210725"
+    },
+    {
+      "city": "Carrollwood",
+      "lat": 28.058222,
+      "lng": -82.515768,
+      "geoid": "1210825"
+    },
+    {
+      "city": "Caryville",
+      "lat": 30.775167,
+      "lng": -85.811916,
+      "geoid": "1210975"
+    },
+    {
+      "city": "Casselberry",
+      "lat": 28.661183,
+      "lng": -81.321926,
+      "geoid": "1211050"
+    },
+    {
+      "city": "Cedar Grove",
+      "lat": 30.186223,
+      "lng": -85.630241,
+      "geoid": "1211150"
+    },
+    {
+      "city": "Cedar Key",
+      "lat": 29.150265,
+      "lng": -83.037362,
+      "geoid": "1211225"
+    },
+    {
+      "city": "Celebration",
+      "lat": 28.310344,
+      "lng": -81.55106,
+      "geoid": "1211285"
+    },
+    {
+      "city": "Center Hill",
+      "lat": 28.621983,
+      "lng": -82.014974,
+      "geoid": "1211325"
+    },
+    {
+      "city": "Century",
+      "lat": 30.977307,
+      "lng": -87.264724,
+      "geoid": "1211362"
+    },
+    {
+      "city": "Chaires",
+      "lat": 30.444166,
+      "lng": -84.132033,
+      "geoid": "1211525"
+    },
+    {
+      "city": "Charleston Park",
+      "lat": 26.705489,
+      "lng": -81.580674,
+      "geoid": "1211597"
+    },
+    {
+      "city": "Charlotte Harbor",
+      "lat": 26.961501,
+      "lng": -82.059331,
+      "geoid": "1211625"
+    },
+    {
+      "city": "Charlotte Park",
+      "lat": 26.904381,
+      "lng": -82.048963,
+      "geoid": "1211650"
+    },
+    {
+      "city": "Chattahoochee",
+      "lat": 30.698344,
+      "lng": -84.83061,
+      "geoid": "1211800"
+    },
+    {
+      "city": "Cheval",
+      "lat": 28.148049,
+      "lng": -82.517294,
+      "geoid": "1211912"
+    },
+    {
+      "city": "Chiefland",
+      "lat": 29.491791,
+      "lng": -82.866119,
+      "geoid": "1211925"
+    },
+    {
+      "city": "Chipley",
+      "lat": 30.775586,
+      "lng": -85.540016,
+      "geoid": "1211975"
+    },
+    {
+      "city": "Chokoloskee",
+      "lat": 25.814223,
+      "lng": -81.360103,
+      "geoid": "1212150"
+    },
+    {
+      "city": "Christmas",
+      "lat": 28.554759,
+      "lng": -80.990992,
+      "geoid": "1212250"
+    },
+    {
+      "city": "Chuluota",
+      "lat": 28.640293,
+      "lng": -81.118405,
+      "geoid": "1212275"
+    },
+    {
+      "city": "Chumuckla",
+      "lat": 30.788123,
+      "lng": -87.225978,
+      "geoid": "1212300"
+    },
+    {
+      "city": "Cinco Bayou",
+      "lat": 30.42223,
+      "lng": -86.60956,
+      "geoid": "1212325"
+    },
+    {
+      "city": "Citrus Hills",
+      "lat": 28.886829,
+      "lng": -82.430749,
+      "geoid": "1212412"
+    },
+    {
+      "city": "Citrus Park",
+      "lat": 28.070996,
+      "lng": -82.562173,
+      "geoid": "1212425"
+    },
+    {
+      "city": "Citrus Springs",
+      "lat": 28.993166,
+      "lng": -82.459486,
+      "geoid": "1212450"
+    },
+    {
+      "city": "Clarcona",
+      "lat": 28.630931,
+      "lng": -81.501304,
+      "geoid": "1212675"
+    },
+    {
+      "city": "Clearwater",
+      "lat": 27.979419,
+      "lng": -82.771256,
+      "geoid": "1212875"
+    },
+    {
+      "city": "Clermont",
+      "lat": 28.524105,
+      "lng": -81.723614,
+      "geoid": "1212925"
+    },
+    {
+      "city": "Cleveland",
+      "lat": 26.951675,
+      "lng": -81.989955,
+      "geoid": "1212950"
+    },
+    {
+      "city": "Clewiston",
+      "lat": 26.752811,
+      "lng": -80.939194,
+      "geoid": "1213000"
+    },
+    {
+      "city": "Cloud Lake",
+      "lat": 26.674876,
+      "lng": -80.071543,
+      "geoid": "1213050"
+    },
+    {
+      "city": "Cobbtown",
+      "lat": 30.879675,
+      "lng": -87.128857,
+      "geoid": "1213125"
+    },
+    {
+      "city": "Cocoa",
+      "lat": 28.376643,
+      "lng": -80.763306,
+      "geoid": "1213150"
+    },
+    {
+      "city": "Cocoa Beach",
+      "lat": 28.32914,
+      "lng": -80.627539,
+      "geoid": "1213175"
+    },
+    {
+      "city": "Cocoa West",
+      "lat": 28.359044,
+      "lng": -80.77129,
+      "geoid": "1213225"
+    },
+    {
+      "city": "Coconut Creek",
+      "lat": 26.280943,
+      "lng": -80.184718,
+      "geoid": "1213275"
+    },
+    {
+      "city": "Coleman",
+      "lat": 28.799462,
+      "lng": -82.068031,
+      "geoid": "1213400"
+    },
+    {
+      "city": "Combee Settlement",
+      "lat": 28.060079,
+      "lng": -81.90424,
+      "geoid": "1213775"
+    },
+    {
+      "city": "Connerton",
+      "lat": 28.307793,
+      "lng": -82.464927,
+      "geoid": "1213965"
+    },
+    {
+      "city": "Conway",
+      "lat": 28.496937,
+      "lng": -81.333042,
+      "geoid": "1214050"
+    },
+    {
+      "city": "Cooper City",
+      "lat": 26.04806,
+      "lng": -80.284961,
+      "geoid": "1214125"
+    },
+    {
+      "city": "Coral Gables",
+      "lat": 25.683061,
+      "lng": -80.261659,
+      "geoid": "1214250"
+    },
+    {
+      "city": "Coral Springs",
+      "lat": 26.270722,
+      "lng": -80.259301,
+      "geoid": "1214400"
+    },
+    {
+      "city": "Coral Terrace",
+      "lat": 25.746187,
+      "lng": -80.304463,
+      "geoid": "1214412"
+    },
+    {
+      "city": "Cortez",
+      "lat": 27.467748,
+      "lng": -82.668684,
+      "geoid": "1214700"
+    },
+    {
+      "city": "Cottondale",
+      "lat": 30.78973,
+      "lng": -85.366039,
+      "geoid": "1214850"
+    },
+    {
+      "city": "Country Club",
+      "lat": 25.939522,
+      "lng": -80.309225,
+      "geoid": "1214895"
+    },
+    {
+      "city": "Country Walk",
+      "lat": 25.632882,
+      "lng": -80.433982,
+      "geoid": "1215055"
+    },
+    {
+      "city": "Crawfordville",
+      "lat": 30.199393,
+      "lng": -84.363205,
+      "geoid": "1215300"
+    },
+    {
+      "city": "Crescent Beach",
+      "lat": 29.730332,
+      "lng": -81.241709,
+      "geoid": "1215325"
+    },
+    {
+      "city": "Crescent City",
+      "lat": 29.434538,
+      "lng": -81.513284,
+      "geoid": "1215375"
+    },
+    {
+      "city": "Crestview",
+      "lat": 30.747932,
+      "lng": -86.579275,
+      "geoid": "1215475"
+    },
+    {
+      "city": "Crooked Lake Park",
+      "lat": 27.830606,
+      "lng": -81.590233,
+      "geoid": "1215515"
+    },
+    {
+      "city": "Cross City",
+      "lat": 29.638598,
+      "lng": -83.124836,
+      "geoid": "1215575"
+    },
+    {
+      "city": "Crystal Lake",
+      "lat": 28.035979,
+      "lng": -81.899636,
+      "geoid": "1215725"
+    },
+    {
+      "city": "Crystal River",
+      "lat": 28.895504,
+      "lng": -82.60187,
+      "geoid": "1215775"
+    },
+    {
+      "city": "Crystal Springs",
+      "lat": 28.183617,
+      "lng": -82.152899,
+      "geoid": "1215800"
+    },
+    {
+      "city": "Cudjoe Key",
+      "lat": 24.67875,
+      "lng": -81.499676,
+      "geoid": "1215862"
+    },
+    {
+      "city": "Cutler Bay",
+      "lat": 25.576148,
+      "lng": -80.334007,
+      "geoid": "1215968"
+    },
+    {
+      "city": "Cypress Gardens",
+      "lat": 28.003516,
+      "lng": -81.690566,
+      "geoid": "1216050"
+    },
+    {
+      "city": "Cypress Lake",
+      "lat": 26.539284,
+      "lng": -81.899392,
+      "geoid": "1216062"
+    },
+    {
+      "city": "Cypress Quarters",
+      "lat": 27.248182,
+      "lng": -80.809844,
+      "geoid": "1216100"
+    },
+    {
+      "city": "Dade City",
+      "lat": 28.35263,
+      "lng": -82.194158,
+      "geoid": "1216125"
+    },
+    {
+      "city": "Dade City North",
+      "lat": 28.384084,
+      "lng": -82.194265,
+      "geoid": "1216175"
+    },
+    {
+      "city": "Dania Beach",
+      "lat": 26.057213,
+      "lng": -80.164585,
+      "geoid": "1216335"
+    },
+    {
+      "city": "Davenport",
+      "lat": 28.161193,
+      "lng": -81.610839,
+      "geoid": "1216450"
+    },
+    {
+      "city": "Davie",
+      "lat": 26.079169,
+      "lng": -80.283013,
+      "geoid": "1216475"
+    },
+    {
+      "city": "Day",
+      "lat": 30.198419,
+      "lng": -83.28731,
+      "geoid": "1216500"
+    },
+    {
+      "city": "Daytona Beach",
+      "lat": 29.19071,
+      "lng": -81.097083,
+      "geoid": "1216525"
+    },
+    {
+      "city": "Daytona Beach Shores",
+      "lat": 29.171252,
+      "lng": -80.980749,
+      "geoid": "1216550"
+    },
+    {
+      "city": "DeBary",
+      "lat": 28.881398,
+      "lng": -81.32427,
+      "geoid": "1216675"
+    },
+    {
+      "city": "Deerfield Beach",
+      "lat": 26.311716,
+      "lng": -80.125378,
+      "geoid": "1216725"
+    },
+    {
+      "city": "DeFuniak Springs",
+      "lat": 30.706132,
+      "lng": -86.11857,
+      "geoid": "1216800"
+    },
+    {
+      "city": "DeLand",
+      "lat": 29.022663,
+      "lng": -81.286498,
+      "geoid": "1216875"
+    },
+    {
+      "city": "DeLand Southwest",
+      "lat": 29.007779,
+      "lng": -81.311294,
+      "geoid": "1216937"
+    },
+    {
+      "city": "De Leon Springs",
+      "lat": 29.117246,
+      "lng": -81.351571,
+      "geoid": "1216975"
+    },
+    {
+      "city": "Delray Beach",
+      "lat": 26.455903,
+      "lng": -80.09042,
+      "geoid": "1217100"
+    },
+    {
+      "city": "Deltona",
+      "lat": 28.905121,
+      "lng": -81.210978,
+      "geoid": "1217200"
+    },
+    {
+      "city": "Desoto Acres",
+      "lat": 27.382576,
+      "lng": -82.518019,
+      "geoid": "1217273"
+    },
+    {
+      "city": "Desoto Lakes",
+      "lat": 27.380515,
+      "lng": -82.498993,
+      "geoid": "1217300"
+    },
+    {
+      "city": "Destin",
+      "lat": 30.40438,
+      "lng": -86.471447,
+      "geoid": "1217325"
+    },
+    {
+      "city": "Dickerson City",
+      "lat": 30.477598,
+      "lng": -87.06904,
+      "geoid": "1217450"
+    },
+    {
+      "city": "Dixonville",
+      "lat": 30.984173,
+      "lng": -87.052629,
+      "geoid": "1217710"
+    },
+    {
+      "city": "Doctor Phillips",
+      "lat": 28.443262,
+      "lng": -81.490542,
+      "geoid": "1217725"
+    },
+    {
+      "city": "Doral",
+      "lat": 25.815956,
+      "lng": -80.357556,
+      "geoid": "1217935"
+    },
+    {
+      "city": "Dover",
+      "lat": 27.986821,
+      "lng": -82.231146,
+      "geoid": "1218075"
+    },
+    {
+      "city": "Duck Key",
+      "lat": 24.772765,
+      "lng": -80.90952,
+      "geoid": "1218425"
+    },
+    {
+      "city": "Dundee",
+      "lat": 28.015303,
+      "lng": -81.59802,
+      "geoid": "1218550"
+    },
+    {
+      "city": "Dunedin",
+      "lat": 28.038054,
+      "lng": -82.794776,
+      "geoid": "1218575"
+    },
+    {
+      "city": "Dunnellon",
+      "lat": 29.059608,
+      "lng": -82.42538,
+      "geoid": "1218675"
+    },
+    {
+      "city": "Eagle Lake",
+      "lat": 27.97427,
+      "lng": -81.755395,
+      "geoid": "1218875"
+    },
+    {
+      "city": "East Bronson",
+      "lat": 29.459296,
+      "lng": -82.59054,
+      "geoid": "1219025"
+    },
+    {
+      "city": "East Lake",
+      "lat": 28.122877,
+      "lng": -82.689096,
+      "geoid": "1219206"
+    },
+    {
+      "city": "East Lake-Orient Park",
+      "lat": 28.004435,
+      "lng": -82.364668,
+      "geoid": "1219212"
+    },
+    {
+      "city": "East Milton",
+      "lat": 30.617223,
+      "lng": -86.964336,
+      "geoid": "1219275"
+    },
+    {
+      "city": "East Palatka",
+      "lat": 29.649604,
+      "lng": -81.599037,
+      "geoid": "1219350"
+    },
+    {
+      "city": "Eastpoint",
+      "lat": 29.756671,
+      "lng": -84.861719,
+      "geoid": "1219400"
+    },
+    {
+      "city": "East Williston",
+      "lat": 29.38835,
+      "lng": -82.416482,
+      "geoid": "1219575"
+    },
+    {
+      "city": "Eatonville",
+      "lat": 28.614993,
+      "lng": -81.392377,
+      "geoid": "1219650"
+    },
+    {
+      "city": "Ebro",
+      "lat": 30.437284,
+      "lng": -85.882013,
+      "geoid": "1219725"
+    },
+    {
+      "city": "Edgewater",
+      "lat": 28.954439,
+      "lng": -80.940857,
+      "geoid": "1219825"
+    },
+    {
+      "city": "Edgewood",
+      "lat": 28.48151,
+      "lng": -81.370131,
+      "geoid": "1219900"
+    },
+    {
+      "city": "Eglin AFB",
+      "lat": 30.46053,
+      "lng": -86.55054,
+      "geoid": "1220050"
+    },
+    {
+      "city": "Egypt Lake-Leto",
+      "lat": 28.017322,
+      "lng": -82.506141,
+      "geoid": "1220108"
+    },
+    {
+      "city": "Elfers",
+      "lat": 28.21387,
+      "lng": -82.722074,
+      "geoid": "1220275"
+    },
+    {
+      "city": "Ellenton",
+      "lat": 27.52658,
+      "lng": -82.526683,
+      "geoid": "1220375"
+    },
+    {
+      "city": "El Portal",
+      "lat": 25.855316,
+      "lng": -80.196161,
+      "geoid": "1220650"
+    },
+    {
+      "city": "Englewood",
+      "lat": 26.96868,
+      "lng": -82.347886,
+      "geoid": "1220825"
+    },
+    {
+      "city": "Ensley",
+      "lat": 30.525954,
+      "lng": -87.272268,
+      "geoid": "1220925"
+    },
+    {
+      "city": "Espanola",
+      "lat": 29.50549,
+      "lng": -81.302107,
+      "geoid": "1221100"
+    },
+    {
+      "city": "Estero",
+      "lat": 26.425585,
+      "lng": -81.799539,
+      "geoid": "1221150"
+    },
+    {
+      "city": "Esto",
+      "lat": 30.981662,
+      "lng": -85.642959,
+      "geoid": "1221250"
+    },
+    {
+      "city": "Eustis",
+      "lat": 28.857172,
+      "lng": -81.676824,
+      "geoid": "1221350"
+    },
+    {
+      "city": "Everglades",
+      "lat": 25.857784,
+      "lng": -81.386481,
+      "geoid": "1221425"
+    },
+    {
+      "city": "Fairview Shores",
+      "lat": 28.60048,
+      "lng": -81.397751,
+      "geoid": "1221750"
+    },
+    {
+      "city": "Fanning Springs",
+      "lat": 29.58815,
+      "lng": -82.92507,
+      "geoid": "1221850"
+    },
+    {
+      "city": "Feather Sound",
+      "lat": 27.910028,
+      "lng": -82.68876,
+      "geoid": "1221945"
+    },
+    {
+      "city": "Fellsmere",
+      "lat": 27.721191,
+      "lng": -80.609944,
+      "geoid": "1222100"
+    },
+    {
+      "city": "Fernandina Beach",
+      "lat": 30.657916,
+      "lng": -81.450001,
+      "geoid": "1222175"
+    },
+    {
+      "city": "Ferndale",
+      "lat": 28.619512,
+      "lng": -81.692856,
+      "geoid": "1222225"
+    },
+    {
+      "city": "Fern Park",
+      "lat": 28.648192,
+      "lng": -81.345571,
+      "geoid": "1222250"
+    },
+    {
+      "city": "Ferry Pass",
+      "lat": 30.521127,
+      "lng": -87.186351,
+      "geoid": "1222275"
+    },
+    {
+      "city": "Fidelis",
+      "lat": 30.930497,
+      "lng": -87.030735,
+      "geoid": "1222325"
+    },
+    {
+      "city": "Fisher Island",
+      "lat": 25.761725,
+      "lng": -80.142283,
+      "geoid": "1222375"
+    },
+    {
+      "city": "Fish Hawk",
+      "lat": 27.849253,
+      "lng": -82.21509,
+      "geoid": "1222387"
+    },
+    {
+      "city": "Five Points",
+      "lat": 30.22013,
+      "lng": -82.644755,
+      "geoid": "1222475"
+    },
+    {
+      "city": "Flagler Beach",
+      "lat": 29.473852,
+      "lng": -81.13102,
+      "geoid": "1222550"
+    },
+    {
+      "city": "Flagler Estates",
+      "lat": 29.648445,
+      "lng": -81.457729,
+      "geoid": "1222560"
+    },
+    {
+      "city": "Fleming Island",
+      "lat": 30.099018,
+      "lng": -81.711918,
+      "geoid": "1222660"
+    },
+    {
+      "city": "Floral City",
+      "lat": 28.70668,
+      "lng": -82.306726,
+      "geoid": "1222775"
+    },
+    {
+      "city": "Florida City",
+      "lat": 25.444071,
+      "lng": -80.467665,
+      "geoid": "1222975"
+    },
+    {
+      "city": "Florida Gulf Coast University",
+      "lat": 26.464084,
+      "lng": -81.766517,
+      "geoid": "1223005"
+    },
+    {
+      "city": "Florida Ridge",
+      "lat": 27.583464,
+      "lng": -80.383463,
+      "geoid": "1223050"
+    },
+    {
+      "city": "Floridatown",
+      "lat": 30.582419,
+      "lng": -87.160944,
+      "geoid": "1223125"
+    },
+    {
+      "city": "Forest City",
+      "lat": 28.661479,
+      "lng": -81.444877,
+      "geoid": "1223375"
+    },
+    {
+      "city": "Fort Braden",
+      "lat": 30.426034,
+      "lng": -84.542655,
+      "geoid": "1223680"
+    },
+    {
+      "city": "Fort Denaud",
+      "lat": 26.72271,
+      "lng": -81.554106,
+      "geoid": "1223730"
+    },
+    {
+      "city": "Fort Green",
+      "lat": 27.625455,
+      "lng": -81.939711,
+      "geoid": "1223850"
+    },
+    {
+      "city": "Fort Green Springs",
+      "lat": 27.587623,
+      "lng": -81.940198,
+      "geoid": "1223875"
+    },
+    {
+      "city": "Fort Lauderdale",
+      "lat": 26.141227,
+      "lng": -80.146731,
+      "geoid": "1224000"
+    },
+    {
+      "city": "Fort Meade",
+      "lat": 27.765879,
+      "lng": -81.805464,
+      "geoid": "1224100"
+    },
+    {
+      "city": "Fort Myers",
+      "lat": 26.617839,
+      "lng": -81.831725,
+      "geoid": "1224125"
+    },
+    {
+      "city": "Fort Myers Beach",
+      "lat": 26.430176,
+      "lng": -81.91404,
+      "geoid": "1224150"
+    },
+    {
+      "city": "Fort Myers Shores",
+      "lat": 26.713889,
+      "lng": -81.743795,
+      "geoid": "1224175"
+    },
+    {
+      "city": "Fort Pierce",
+      "lat": 27.426112,
+      "lng": -80.342488,
+      "geoid": "1224300"
+    },
+    {
+      "city": "Fort Pierce North",
+      "lat": 27.474942,
+      "lng": -80.359341,
+      "geoid": "1224337"
+    },
+    {
+      "city": "Fort Pierce South",
+      "lat": 27.409735,
+      "lng": -80.354266,
+      "geoid": "1224387"
+    },
+    {
+      "city": "Fort Walton Beach",
+      "lat": 30.424904,
+      "lng": -86.621762,
+      "geoid": "1224475"
+    },
+    {
+      "city": "Fort White",
+      "lat": 29.922223,
+      "lng": -82.712622,
+      "geoid": "1224500"
+    },
+    {
+      "city": "Fountainebleau",
+      "lat": 25.772279,
+      "lng": -80.346246,
+      "geoid": "1224562"
+    },
+    {
+      "city": "Four Corners",
+      "lat": 28.333179,
+      "lng": -81.647492,
+      "geoid": "1224581"
+    },
+    {
+      "city": "Franklin Park",
+      "lat": 26.132652,
+      "lng": -80.176326,
+      "geoid": "1224710"
+    },
+    {
+      "city": "Freeport",
+      "lat": 30.49986,
+      "lng": -86.129921,
+      "geoid": "1224825"
+    },
+    {
+      "city": "Frostproof",
+      "lat": 27.748894,
+      "lng": -81.526465,
+      "geoid": "1224900"
+    },
+    {
+      "city": "Fruit Cove",
+      "lat": 30.096829,
+      "lng": -81.621051,
+      "geoid": "1224925"
+    },
+    {
+      "city": "Fruitland Park",
+      "lat": 28.849595,
+      "lng": -81.936899,
+      "geoid": "1224975"
+    },
+    {
+      "city": "Fruitville",
+      "lat": 27.332867,
+      "lng": -82.459479,
+      "geoid": "1225000"
+    },
+    {
+      "city": "Fuller Heights",
+      "lat": 27.92517,
+      "lng": -81.996713,
+      "geoid": "1225025"
+    },
+    {
+      "city": "Fussels Corner",
+      "lat": 28.057629,
+      "lng": -81.860679,
+      "geoid": "1225125"
+    },
+    {
+      "city": "Gainesville",
+      "lat": 29.679537,
+      "lng": -82.346793,
+      "geoid": "1225175"
+    },
+    {
+      "city": "Garcon Point",
+      "lat": 30.476311,
+      "lng": -87.085947,
+      "geoid": "1225392"
+    },
+    {
+      "city": "Garden Grove",
+      "lat": 28.471735,
+      "lng": -82.434493,
+      "geoid": "1225475"
+    },
+    {
+      "city": "Gardner",
+      "lat": 27.36299,
+      "lng": -81.786258,
+      "geoid": "1225550"
+    },
+    {
+      "city": "Gateway",
+      "lat": 26.580042,
+      "lng": -81.747645,
+      "geoid": "1225655"
+    },
+    {
+      "city": "Geneva",
+      "lat": 28.736626,
+      "lng": -81.116237,
+      "geoid": "1225750"
+    },
+    {
+      "city": "Gibsonton",
+      "lat": 27.828358,
+      "lng": -82.379097,
+      "geoid": "1225900"
+    },
+    {
+      "city": "Gifford",
+      "lat": 27.675621,
+      "lng": -80.425157,
+      "geoid": "1225925"
+    },
+    {
+      "city": "Gladeview",
+      "lat": 25.839908,
+      "lng": -80.238852,
+      "geoid": "1225987"
+    },
+    {
+      "city": "Glencoe",
+      "lat": 29.015674,
+      "lng": -80.969962,
+      "geoid": "1226000"
+    },
+    {
+      "city": "Glen Ridge",
+      "lat": 26.67213,
+      "lng": -80.076686,
+      "geoid": "1226050"
+    },
+    {
+      "city": "Glen St. Mary",
+      "lat": 30.275166,
+      "lng": -82.160296,
+      "geoid": "1226075"
+    },
+    {
+      "city": "Glenvar Heights",
+      "lat": 25.709369,
+      "lng": -80.315857,
+      "geoid": "1226100"
+    },
+    {
+      "city": "Golden Beach",
+      "lat": 25.963274,
+      "lng": -80.122149,
+      "geoid": "1226250"
+    },
+    {
+      "city": "Golden Gate",
+      "lat": 26.183598,
+      "lng": -81.703694,
+      "geoid": "1226300"
+    },
+    {
+      "city": "Goldenrod",
+      "lat": 28.611918,
+      "lng": -81.291229,
+      "geoid": "1226475"
+    },
+    {
+      "city": "Golf",
+      "lat": 26.50286,
+      "lng": -80.105766,
+      "geoid": "1226550"
+    },
+    {
+      "city": "Gonzalez",
+      "lat": 30.588748,
+      "lng": -87.286299,
+      "geoid": "1226700"
+    },
+    {
+      "city": "Goodland",
+      "lat": 25.925252,
+      "lng": -81.647592,
+      "geoid": "1226775"
+    },
+    {
+      "city": "Gotha",
+      "lat": 28.530986,
+      "lng": -81.516577,
+      "geoid": "1226900"
+    },
+    {
+      "city": "Goulding",
+      "lat": 30.439911,
+      "lng": -87.229479,
+      "geoid": "1226925"
+    },
+    {
+      "city": "Goulds",
+      "lat": 25.561249,
+      "lng": -80.388073,
+      "geoid": "1226950"
+    },
+    {
+      "city": "Graceville",
+      "lat": 30.960272,
+      "lng": -85.512828,
+      "geoid": "1227000"
+    },
+    {
+      "city": "Grand Ridge",
+      "lat": 30.704252,
+      "lng": -85.015205,
+      "geoid": "1227175"
+    },
+    {
+      "city": "Grant-Valkaria",
+      "lat": 27.934301,
+      "lng": -80.565885,
+      "geoid": "1227256"
+    },
+    {
+      "city": "Greenacres",
+      "lat": 26.627009,
+      "lng": -80.13761,
+      "geoid": "1227322"
+    },
+    {
+      "city": "Greenbriar",
+      "lat": 28.013662,
+      "lng": -82.750589,
+      "geoid": "1227360"
+    },
+    {
+      "city": "Green Cove Springs",
+      "lat": 29.985312,
+      "lng": -81.680979,
+      "geoid": "1227400"
+    },
+    {
+      "city": "Greensboro",
+      "lat": 30.570966,
+      "lng": -84.72287,
+      "geoid": "1227550"
+    },
+    {
+      "city": "Greenville",
+      "lat": 30.466762,
+      "lng": -83.635254,
+      "geoid": "1227575"
+    },
+    {
+      "city": "Greenwood",
+      "lat": 30.872685,
+      "lng": -85.161169,
+      "geoid": "1227600"
+    },
+    {
+      "city": "Grenelefe",
+      "lat": 28.049204,
+      "lng": -81.547436,
+      "geoid": "1227635"
+    },
+    {
+      "city": "Gretna",
+      "lat": 30.579594,
+      "lng": -84.710972,
+      "geoid": "1227650"
+    },
+    {
+      "city": "Grove City",
+      "lat": 26.906715,
+      "lng": -82.326071,
+      "geoid": "1227775"
+    },
+    {
+      "city": "Groveland",
+      "lat": 28.646137,
+      "lng": -81.796896,
+      "geoid": "1227800"
+    },
+    {
+      "city": "Gulf Breeze",
+      "lat": 30.368257,
+      "lng": -87.173449,
+      "geoid": "1228000"
+    },
+    {
+      "city": "Gulf Gate",
+      "lat": 27.257722,
+      "lng": -82.507551,
+      "geoid": "1228045"
+    },
+    {
+      "city": "Gulfport",
+      "lat": 27.746437,
+      "lng": -82.709943,
+      "geoid": "1228175"
+    },
+    {
+      "city": "Gulf Stream",
+      "lat": 26.486008,
+      "lng": -80.057414,
+      "geoid": "1228275"
+    },
+    {
+      "city": "Gun Club Estates",
+      "lat": 26.67535,
+      "lng": -80.108413,
+      "geoid": "1228305"
+    },
+    {
+      "city": "Haines City",
+      "lat": 28.112817,
+      "lng": -81.616537,
+      "geoid": "1228400"
+    },
+    {
+      "city": "Hallandale Beach",
+      "lat": 25.983955,
+      "lng": -80.140766,
+      "geoid": "1228452"
+    },
+    {
+      "city": "Hampton",
+      "lat": 29.864134,
+      "lng": -82.138805,
+      "geoid": "1228575"
+    },
+    {
+      "city": "Harbor Bluffs",
+      "lat": 27.907816,
+      "lng": -82.826538,
+      "geoid": "1228650"
+    },
+    {
+      "city": "Harbour Heights",
+      "lat": 26.992987,
+      "lng": -82.005987,
+      "geoid": "1228800"
+    },
+    {
+      "city": "Harlem",
+      "lat": 26.73237,
+      "lng": -80.951845,
+      "geoid": "1228925"
+    },
+    {
+      "city": "Harlem Heights",
+      "lat": 26.515132,
+      "lng": -81.928186,
+      "geoid": "1228937"
+    },
+    {
+      "city": "Harold",
+      "lat": 30.673827,
+      "lng": -86.847369,
+      "geoid": "1229000"
+    },
+    {
+      "city": "Hastings",
+      "lat": 29.71439,
+      "lng": -81.499154,
+      "geoid": "1229100"
+    },
+    {
+      "city": "Havana",
+      "lat": 30.630326,
+      "lng": -84.413796,
+      "geoid": "1229150"
+    },
+    {
+      "city": "Haverhill",
+      "lat": 26.69073,
+      "lng": -80.121848,
+      "geoid": "1229200"
+    },
+    {
+      "city": "Hawthorne",
+      "lat": 29.593677,
+      "lng": -82.094467,
+      "geoid": "1229275"
+    },
+    {
+      "city": "Heathrow",
+      "lat": 28.778682,
+      "lng": -81.371052,
+      "geoid": "1229320"
+    },
+    {
+      "city": "Heritage Bay",
+      "lat": 26.28237,
+      "lng": -81.660489,
+      "geoid": "1229381"
+    },
+    {
+      "city": "Heritage Pines",
+      "lat": 28.428758,
+      "lng": -82.623382,
+      "geoid": "1229385"
+    },
+    {
+      "city": "Hernando",
+      "lat": 28.954529,
+      "lng": -82.393459,
+      "geoid": "1229425"
+    },
+    {
+      "city": "Hernando Beach",
+      "lat": 28.468093,
+      "lng": -82.667265,
+      "geoid": "1229437"
+    },
+    {
+      "city": "Hialeah",
+      "lat": 25.869941,
+      "lng": -80.302865,
+      "geoid": "1230000"
+    },
+    {
+      "city": "Hialeah Gardens",
+      "lat": 25.887713,
+      "lng": -80.356925,
+      "geoid": "1230025"
+    },
+    {
+      "city": "Highland Beach",
+      "lat": 26.411621,
+      "lng": -80.064352,
+      "geoid": "1230200"
+    },
+    {
+      "city": "Highland City",
+      "lat": 27.963473,
+      "lng": -81.878623,
+      "geoid": "1230225"
+    },
+    {
+      "city": "Highland Park",
+      "lat": 27.862111,
+      "lng": -81.566374,
+      "geoid": "1230325"
+    },
+    {
+      "city": "High Point",
+      "lat": 28.547252,
+      "lng": -82.520941,
+      "geoid": "1230494"
+    },
+    {
+      "city": "High Springs",
+      "lat": 29.799634,
+      "lng": -82.589322,
+      "geoid": "1230525"
+    },
+    {
+      "city": "Hillcrest Heights",
+      "lat": 27.824864,
+      "lng": -81.536196,
+      "geoid": "1230700"
+    },
+    {
+      "city": "Hilliard",
+      "lat": 30.686551,
+      "lng": -81.921197,
+      "geoid": "1230750"
+    },
+    {
+      "city": "Hill 'n Dale",
+      "lat": 28.513764,
+      "lng": -82.29086,
+      "geoid": "1230800"
+    },
+    {
+      "city": "Hillsboro Beach",
+      "lat": 26.278548,
+      "lng": -80.079508,
+      "geoid": "1230850"
+    },
+    {
+      "city": "Hillsboro Pines",
+      "lat": 26.325108,
+      "lng": -80.192141,
+      "geoid": "1230858"
+    },
+    {
+      "city": "Hobe Sound",
+      "lat": 27.072663,
+      "lng": -80.142367,
+      "geoid": "1230975"
+    },
+    {
+      "city": "Holden Heights",
+      "lat": 28.51954,
+      "lng": -81.400187,
+      "geoid": "1231025"
+    },
+    {
+      "city": "Holden Lakes",
+      "lat": 28.498555,
+      "lng": -81.384594,
+      "geoid": "1231030"
+    },
+    {
+      "city": "Holiday",
+      "lat": 28.186216,
+      "lng": -82.742637,
+      "geoid": "1231075"
+    },
+    {
+      "city": "Holley",
+      "lat": 30.452894,
+      "lng": -86.904342,
+      "geoid": "1231275"
+    },
+    {
+      "city": "Holly Hill",
+      "lat": 29.245606,
+      "lng": -81.047045,
+      "geoid": "1231350"
+    },
+    {
+      "city": "Hollywood",
+      "lat": 26.030967,
+      "lng": -80.164609,
+      "geoid": "1232000"
+    },
+    {
+      "city": "Holmes Beach",
+      "lat": 27.510568,
+      "lng": -82.715538,
+      "geoid": "1232150"
+    },
+    {
+      "city": "Homeland",
+      "lat": 27.818138,
+      "lng": -81.826981,
+      "geoid": "1232250"
+    },
+    {
+      "city": "Homestead",
+      "lat": 25.465912,
+      "lng": -80.445993,
+      "geoid": "1232275"
+    },
+    {
+      "city": "Homestead Base",
+      "lat": 25.49328,
+      "lng": -80.39022,
+      "geoid": "1232325"
+    },
+    {
+      "city": "Homosassa",
+      "lat": 28.784867,
+      "lng": -82.607604,
+      "geoid": "1232375"
+    },
+    {
+      "city": "Homosassa Springs",
+      "lat": 28.809314,
+      "lng": -82.540848,
+      "geoid": "1232400"
+    },
+    {
+      "city": "Horizon West",
+      "lat": 28.443121,
+      "lng": -81.613259,
+      "geoid": "1232610"
+    },
+    {
+      "city": "Horseshoe Beach",
+      "lat": 29.443609,
+      "lng": -83.288445,
+      "geoid": "1232650"
+    },
+    {
+      "city": "Hosford",
+      "lat": 30.403387,
+      "lng": -84.808087,
+      "geoid": "1232675"
+    },
+    {
+      "city": "Howey-in-the-Hills",
+      "lat": 28.704376,
+      "lng": -81.784092,
+      "geoid": "1232775"
+    },
+    {
+      "city": "Hudson",
+      "lat": 28.359232,
+      "lng": -82.689659,
+      "geoid": "1232825"
+    },
+    {
+      "city": "Hunters Creek",
+      "lat": 28.359757,
+      "lng": -81.437045,
+      "geoid": "1232967"
+    },
+    {
+      "city": "Hurlburt Field",
+      "lat": 30.426372,
+      "lng": -86.719287,
+      "geoid": "1232975"
+    },
+    {
+      "city": "Hutchinson Island South",
+      "lat": 27.305322,
+      "lng": -80.220243,
+      "geoid": "1232993"
+    },
+    {
+      "city": "Hypoluxo",
+      "lat": 26.567253,
+      "lng": -80.051812,
+      "geoid": "1233150"
+    },
+    {
+      "city": "Immokalee",
+      "lat": 26.424012,
+      "lng": -81.421556,
+      "geoid": "1233250"
+    },
+    {
+      "city": "Indialantic",
+      "lat": 28.08622,
+      "lng": -80.568302,
+      "geoid": "1233375"
+    },
+    {
+      "city": "Indian Creek",
+      "lat": 25.877871,
+      "lng": -80.137303,
+      "geoid": "1233425"
+    },
+    {
+      "city": "Indian Harbour Beach",
+      "lat": 28.157468,
+      "lng": -80.600147,
+      "geoid": "1233450"
+    },
+    {
+      "city": "Indian Lake Estates",
+      "lat": 27.798648,
+      "lng": -81.356231,
+      "geoid": "1233500"
+    },
+    {
+      "city": "Indian River Estates",
+      "lat": 27.355216,
+      "lng": -80.298032,
+      "geoid": "1233585"
+    },
+    {
+      "city": "Indian River Shores",
+      "lat": 27.710084,
+      "lng": -80.382032,
+      "geoid": "1233600"
+    },
+    {
+      "city": "Indian Rocks Beach",
+      "lat": 27.895812,
+      "lng": -82.846238,
+      "geoid": "1233625"
+    },
+    {
+      "city": "Indian Shores",
+      "lat": 27.853154,
+      "lng": -82.844616,
+      "geoid": "1233675"
+    },
+    {
+      "city": "Indiantown",
+      "lat": 27.040053,
+      "lng": -80.488242,
+      "geoid": "1233700"
+    },
+    {
+      "city": "Inglis",
+      "lat": 29.033046,
+      "lng": -82.661004,
+      "geoid": "1233800"
+    },
+    {
+      "city": "Interlachen",
+      "lat": 29.622267,
+      "lng": -81.894733,
+      "geoid": "1233900"
+    },
+    {
+      "city": "Inverness",
+      "lat": 28.844153,
+      "lng": -82.342886,
+      "geoid": "1233950"
+    },
+    {
+      "city": "Inverness Highlands North",
+      "lat": 28.864505,
+      "lng": -82.376959,
+      "geoid": "1233958"
+    },
+    {
+      "city": "Inverness Highlands South",
+      "lat": 28.800689,
+      "lng": -82.337182,
+      "geoid": "1233966"
+    },
+    {
+      "city": "Inwood",
+      "lat": 28.038474,
+      "lng": -81.767361,
+      "geoid": "1234000"
+    },
+    {
+      "city": "Iona",
+      "lat": 26.51719,
+      "lng": -81.960811,
+      "geoid": "1234012"
+    },
+    {
+      "city": "Islamorada, Village of Islands",
+      "lat": 24.984352,
+      "lng": -80.543296,
+      "geoid": "1234132"
+    },
+    {
+      "city": "Island Walk",
+      "lat": 26.25103,
+      "lng": -81.710982,
+      "geoid": "1234185"
+    },
+    {
+      "city": "Istachatta",
+      "lat": 28.661859,
+      "lng": -82.274532,
+      "geoid": "1234275"
+    },
+    {
+      "city": "Ives Estates",
+      "lat": 25.963406,
+      "lng": -80.182871,
+      "geoid": "1234400"
+    },
+    {
+      "city": "Jacksonville",
+      "lat": 30.336864,
+      "lng": -81.661603,
+      "geoid": "1235000"
+    },
+    {
+      "city": "Jacksonville Beach",
+      "lat": 30.272466,
+      "lng": -81.385604,
+      "geoid": "1235050"
+    },
+    {
+      "city": "Jacob City",
+      "lat": 30.885534,
+      "lng": -85.413569,
+      "geoid": "1235200"
+    },
+    {
+      "city": "Jan Phyl Village",
+      "lat": 28.016212,
+      "lng": -81.793764,
+      "geoid": "1235300"
+    },
+    {
+      "city": "Jasmine Estates",
+      "lat": 28.296095,
+      "lng": -82.689171,
+      "geoid": "1235350"
+    },
+    {
+      "city": "Jasper",
+      "lat": 30.455935,
+      "lng": -82.934214,
+      "geoid": "1235375"
+    },
+    {
+      "city": "Jay",
+      "lat": 30.950365,
+      "lng": -87.152265,
+      "geoid": "1235425"
+    },
+    {
+      "city": "Jennings",
+      "lat": 30.596821,
+      "lng": -83.106994,
+      "geoid": "1235525"
+    },
+    {
+      "city": "Jensen Beach",
+      "lat": 27.24398,
+      "lng": -80.241136,
+      "geoid": "1235550"
+    },
+    {
+      "city": "June Park",
+      "lat": 28.071734,
+      "lng": -80.687788,
+      "geoid": "1235800"
+    },
+    {
+      "city": "Juno Beach",
+      "lat": 26.875457,
+      "lng": -80.059625,
+      "geoid": "1235850"
+    },
+    {
+      "city": "Juno Ridge",
+      "lat": 26.849018,
+      "lng": -80.062029,
+      "geoid": "1235862"
+    },
+    {
+      "city": "Jupiter",
+      "lat": 26.918551,
+      "lng": -80.11694,
+      "geoid": "1235875"
+    },
+    {
+      "city": "Jupiter Farms",
+      "lat": 26.922525,
+      "lng": -80.218037,
+      "geoid": "1235890"
+    },
+    {
+      "city": "Jupiter Inlet Colony",
+      "lat": 26.947962,
+      "lng": -80.075174,
+      "geoid": "1235900"
+    },
+    {
+      "city": "Jupiter Island",
+      "lat": 27.026945,
+      "lng": -80.101888,
+      "geoid": "1235925"
+    },
+    {
+      "city": "Kathleen",
+      "lat": 28.119175,
+      "lng": -82.040006,
+      "geoid": "1235950"
+    },
+    {
+      "city": "Kendale Lakes",
+      "lat": 25.706946,
+      "lng": -80.411595,
+      "geoid": "1236062"
+    },
+    {
+      "city": "Kendall",
+      "lat": 25.669538,
+      "lng": -80.354741,
+      "geoid": "1236100"
+    },
+    {
+      "city": "Kendall West",
+      "lat": 25.706816,
+      "lng": -80.440697,
+      "geoid": "1236121"
+    },
+    {
+      "city": "Kenneth City",
+      "lat": 27.816064,
+      "lng": -82.714643,
+      "geoid": "1236175"
+    },
+    {
+      "city": "Kensington Park",
+      "lat": 27.356661,
+      "lng": -82.494987,
+      "geoid": "1236200"
+    },
+    {
+      "city": "Kenwood Estates",
+      "lat": 26.627619,
+      "lng": -80.115194,
+      "geoid": "1236220"
+    },
+    {
+      "city": "Key Biscayne",
+      "lat": 25.69068,
+      "lng": -80.165587,
+      "geoid": "1236300"
+    },
+    {
+      "city": "Key Colony Beach",
+      "lat": 24.723406,
+      "lng": -81.021647,
+      "geoid": "1236325"
+    },
+    {
+      "city": "Key Largo",
+      "lat": 25.122584,
+      "lng": -80.411571,
+      "geoid": "1236375"
+    },
+    {
+      "city": "Keystone",
+      "lat": 28.127642,
+      "lng": -82.608095,
+      "geoid": "1236462"
+    },
+    {
+      "city": "Keystone Heights",
+      "lat": 29.78294,
+      "lng": -82.035615,
+      "geoid": "1236475"
+    },
+    {
+      "city": "Key Vista",
+      "lat": 28.194078,
+      "lng": -82.769807,
+      "geoid": "1236535"
+    },
+    {
+      "city": "Key West",
+      "lat": 24.565063,
+      "lng": -81.775539,
+      "geoid": "1236550"
+    },
+    {
+      "city": "Kissimmee",
+      "lat": 28.30278,
+      "lng": -81.417831,
+      "geoid": "1236950"
+    },
+    {
+      "city": "LaBelle",
+      "lat": 26.720952,
+      "lng": -81.452477,
+      "geoid": "1237225"
+    },
+    {
+      "city": "Lacoochee",
+      "lat": 28.466059,
+      "lng": -82.170417,
+      "geoid": "1237275"
+    },
+    {
+      "city": "La Crosse",
+      "lat": 29.850087,
+      "lng": -82.402638,
+      "geoid": "1237300"
+    },
+    {
+      "city": "Lady Lake",
+      "lat": 28.919754,
+      "lng": -81.932759,
+      "geoid": "1237375"
+    },
+    {
+      "city": "Laguna Beach",
+      "lat": 30.254727,
+      "lng": -85.951148,
+      "geoid": "1237500"
+    },
+    {
+      "city": "Lake Alfred",
+      "lat": 28.137249,
+      "lng": -81.71679,
+      "geoid": "1237525"
+    },
+    {
+      "city": "Lake Belvedere Estates",
+      "lat": 26.690674,
+      "lng": -80.135153,
+      "geoid": "1237542"
+    },
+    {
+      "city": "Lake Buena Vista",
+      "lat": 28.377311,
+      "lng": -81.524813,
+      "geoid": "1237625"
+    },
+    {
+      "city": "Lake Butler",
+      "lat": 28.498283,
+      "lng": -81.548243,
+      "geoid": "1237648"
+    },
+    {
+      "city": "Lake Butler",
+      "lat": 30.017687,
+      "lng": -82.34336,
+      "geoid": "1237650"
+    },
+    {
+      "city": "Lake City",
+      "lat": 30.188638,
+      "lng": -82.642246,
+      "geoid": "1237775"
+    },
+    {
+      "city": "Lake Clarke Shores",
+      "lat": 26.645628,
+      "lng": -80.075276,
+      "geoid": "1237800"
+    },
+    {
+      "city": "Lake Hamilton",
+      "lat": 28.04944,
+      "lng": -81.621858,
+      "geoid": "1237975"
+    },
+    {
+      "city": "Lake Harbor",
+      "lat": 26.688498,
+      "lng": -80.807923,
+      "geoid": "1238000"
+    },
+    {
+      "city": "Lake Hart",
+      "lat": 28.38128,
+      "lng": -81.231847,
+      "geoid": "1238012"
+    },
+    {
+      "city": "Lake Helen",
+      "lat": 28.983864,
+      "lng": -81.231087,
+      "geoid": "1238025"
+    },
+    {
+      "city": "Lake Kathryn",
+      "lat": 28.99807,
+      "lng": -81.488413,
+      "geoid": "1238162"
+    },
+    {
+      "city": "Lake Kerr",
+      "lat": 29.349169,
+      "lng": -81.792387,
+      "geoid": "1238238"
+    },
+    {
+      "city": "Lakeland",
+      "lat": 28.055496,
+      "lng": -81.954772,
+      "geoid": "1238250"
+    },
+    {
+      "city": "Lakeland Highlands",
+      "lat": 27.957379,
+      "lng": -81.951054,
+      "geoid": "1238262"
+    },
+    {
+      "city": "Lake Lindsey",
+      "lat": 28.632263,
+      "lng": -82.361693,
+      "geoid": "1238275"
+    },
+    {
+      "city": "Lake Lorraine",
+      "lat": 30.440566,
+      "lng": -86.565364,
+      "geoid": "1238287"
+    },
+    {
+      "city": "Lake Mack-Forest Hills",
+      "lat": 29.000455,
+      "lng": -81.406347,
+      "geoid": "1238332"
+    },
+    {
+      "city": "Lake Magdalene",
+      "lat": 28.081724,
+      "lng": -82.484183,
+      "geoid": "1238350"
+    },
+    {
+      "city": "Lake Mary",
+      "lat": 28.759104,
+      "lng": -81.332813,
+      "geoid": "1238425"
+    },
+    {
+      "city": "Lake Mary Jane",
+      "lat": 28.37897,
+      "lng": -81.170157,
+      "geoid": "1238430"
+    },
+    {
+      "city": "Lake Mystic",
+      "lat": 30.391557,
+      "lng": -84.991325,
+      "geoid": "1238519"
+    },
+    {
+      "city": "Lake Panasoffkee",
+      "lat": 28.784289,
+      "lng": -82.123072,
+      "geoid": "1238575"
+    },
+    {
+      "city": "Lake Park",
+      "lat": 26.800059,
+      "lng": -80.06746,
+      "geoid": "1238600"
+    },
+    {
+      "city": "Lake Placid",
+      "lat": 27.302605,
+      "lng": -81.371476,
+      "geoid": "1238625"
+    },
+    {
+      "city": "Lake Sarasota",
+      "lat": 27.294739,
+      "lng": -82.433175,
+      "geoid": "1238690"
+    },
+    {
+      "city": "Lakeside",
+      "lat": 30.136548,
+      "lng": -81.769246,
+      "geoid": "1238813"
+    },
+    {
+      "city": "Lake Wales",
+      "lat": 27.920697,
+      "lng": -81.599505,
+      "geoid": "1238950"
+    },
+    {
+      "city": "Lakewood Park",
+      "lat": 27.539014,
+      "lng": -80.38716,
+      "geoid": "1239062"
+    },
+    {
+      "city": "Lakewood Ranch",
+      "lat": 27.423532,
+      "lng": -82.386716,
+      "geoid": "1239067"
+    },
+    {
+      "city": "Lake Worth Beach",
+      "lat": 26.61972,
+      "lng": -80.058718,
+      "geoid": "1239081"
+    },
+    {
+      "city": "Lamont",
+      "lat": 30.379675,
+      "lng": -83.813376,
+      "geoid": "1239100"
+    },
+    {
+      "city": "Land O' Lakes",
+      "lat": 28.208307,
+      "lng": -82.445842,
+      "geoid": "1239200"
+    },
+    {
+      "city": "Lantana",
+      "lat": 26.58336,
+      "lng": -80.05538,
+      "geoid": "1239375"
+    },
+    {
+      "city": "Largo",
+      "lat": 27.908685,
+      "lng": -82.774174,
+      "geoid": "1239425"
+    },
+    {
+      "city": "Lauderdale-by-the-Sea",
+      "lat": 26.191337,
+      "lng": -80.09946,
+      "geoid": "1239475"
+    },
+    {
+      "city": "Lauderdale Lakes",
+      "lat": 26.166932,
+      "lng": -80.200826,
+      "geoid": "1239525"
+    },
+    {
+      "city": "Lauderhill",
+      "lat": 26.161619,
+      "lng": -80.225054,
+      "geoid": "1239550"
+    },
+    {
+      "city": "Laurel",
+      "lat": 27.150957,
+      "lng": -82.455472,
+      "geoid": "1239600"
+    },
+    {
+      "city": "Laurel Hill",
+      "lat": 30.960581,
+      "lng": -86.457819,
+      "geoid": "1239650"
+    },
+    {
+      "city": "Lawtey",
+      "lat": 30.04844,
+      "lng": -82.072478,
+      "geoid": "1239700"
+    },
+    {
+      "city": "Layton",
+      "lat": 24.825131,
+      "lng": -80.811624,
+      "geoid": "1239725"
+    },
+    {
+      "city": "Lazy Lake",
+      "lat": 26.156345,
+      "lng": -80.145203,
+      "geoid": "1239750"
+    },
+    {
+      "city": "Lealman",
+      "lat": 27.819699,
+      "lng": -82.68461,
+      "geoid": "1239775"
+    },
+    {
+      "city": "Lecanto",
+      "lat": 28.825093,
+      "lng": -82.49979,
+      "geoid": "1239825"
+    },
+    {
+      "city": "Lee",
+      "lat": 30.413101,
+      "lng": -83.304142,
+      "geoid": "1239850"
+    },
+    {
+      "city": "Leesburg",
+      "lat": 28.717206,
+      "lng": -81.903089,
+      "geoid": "1239875"
+    },
+    {
+      "city": "Lehigh Acres",
+      "lat": 26.612695,
+      "lng": -81.638845,
+      "geoid": "1239925"
+    },
+    {
+      "city": "Leisure City",
+      "lat": 25.493935,
+      "lng": -80.436093,
+      "geoid": "1239950"
+    },
+    {
+      "city": "Lely",
+      "lat": 26.105492,
+      "lng": -81.727846,
+      "geoid": "1239987"
+    },
+    {
+      "city": "Lely Resort",
+      "lat": 26.096381,
+      "lng": -81.704481,
+      "geoid": "1240037"
+    },
+    {
+      "city": "Lemon Grove",
+      "lat": 27.593128,
+      "lng": -81.650293,
+      "geoid": "1240100"
+    },
+    {
+      "city": "Liberty Triangle",
+      "lat": 29.075788,
+      "lng": -82.219272,
+      "geoid": "1240387"
+    },
+    {
+      "city": "Lighthouse Point",
+      "lat": 26.277756,
+      "lng": -80.088619,
+      "geoid": "1240450"
+    },
+    {
+      "city": "Limestone",
+      "lat": 27.367249,
+      "lng": -81.904786,
+      "geoid": "1240525"
+    },
+    {
+      "city": "Limestone Creek",
+      "lat": 26.943291,
+      "lng": -80.140784,
+      "geoid": "1240562"
+    },
+    {
+      "city": "Lisbon",
+      "lat": 28.882515,
+      "lng": -81.774316,
+      "geoid": "1240750"
+    },
+    {
+      "city": "Live Oak",
+      "lat": 30.29565,
+      "lng": -82.985117,
+      "geoid": "1240875"
+    },
+    {
+      "city": "Lloyd",
+      "lat": 30.483413,
+      "lng": -84.026123,
+      "geoid": "1240950"
+    },
+    {
+      "city": "Lochmoor Waterway Estates",
+      "lat": 26.642486,
+      "lng": -81.907186,
+      "geoid": "1240985"
+    },
+    {
+      "city": "Lockhart",
+      "lat": 28.627103,
+      "lng": -81.433784,
+      "geoid": "1241025"
+    },
+    {
+      "city": "Longboat Key",
+      "lat": 27.400457,
+      "lng": -82.644175,
+      "geoid": "1241150"
+    },
+    {
+      "city": "Longwood",
+      "lat": 28.701396,
+      "lng": -81.348389,
+      "geoid": "1241250"
+    },
+    {
+      "city": "Loughman",
+      "lat": 28.237997,
+      "lng": -81.569837,
+      "geoid": "1241400"
+    },
+    {
+      "city": "Lower Grand Lagoon",
+      "lat": 30.143134,
+      "lng": -85.752221,
+      "geoid": "1241562"
+    },
+    {
+      "city": "Loxahatchee Groves",
+      "lat": 26.720882,
+      "lng": -80.277195,
+      "geoid": "1241577"
+    },
+    {
+      "city": "Lutz",
+      "lat": 28.140689,
+      "lng": -82.44972,
+      "geoid": "1241775"
+    },
+    {
+      "city": "Lynn Haven",
+      "lat": 30.233571,
+      "lng": -85.636917,
+      "geoid": "1241825"
+    },
+    {
+      "city": "Macclenny",
+      "lat": 30.280699,
+      "lng": -82.125634,
+      "geoid": "1241950"
+    },
+    {
+      "city": "McGregor",
+      "lat": 26.561555,
+      "lng": -81.912922,
+      "geoid": "1242090"
+    },
+    {
+      "city": "McIntosh",
+      "lat": 29.449355,
+      "lng": -82.220739,
+      "geoid": "1242150"
+    },
+    {
+      "city": "Madeira Beach",
+      "lat": 27.79556,
+      "lng": -82.791566,
+      "geoid": "1242400"
+    },
+    {
+      "city": "Madison",
+      "lat": 30.471487,
+      "lng": -83.413453,
+      "geoid": "1242425"
+    },
+    {
+      "city": "Maitland",
+      "lat": 28.629625,
+      "lng": -81.37291,
+      "geoid": "1242575"
+    },
+    {
+      "city": "Malabar",
+      "lat": 27.987057,
+      "lng": -80.58245,
+      "geoid": "1242625"
+    },
+    {
+      "city": "Malone",
+      "lat": 30.95895,
+      "lng": -85.162154,
+      "geoid": "1242650"
+    },
+    {
+      "city": "Manalapan",
+      "lat": 26.56664,
+      "lng": -80.040186,
+      "geoid": "1242700"
+    },
+    {
+      "city": "Manasota Key",
+      "lat": 26.924043,
+      "lng": -82.353116,
+      "geoid": "1242750"
+    },
+    {
+      "city": "Manatee Road",
+      "lat": 29.514538,
+      "lng": -82.919212,
+      "geoid": "1242787"
+    },
+    {
+      "city": "Mango",
+      "lat": 27.992201,
+      "lng": -82.307312,
+      "geoid": "1242850"
+    },
+    {
+      "city": "Mangonia Park",
+      "lat": 26.758597,
+      "lng": -80.076142,
+      "geoid": "1242900"
+    },
+    {
+      "city": "Marathon",
+      "lat": 24.732338,
+      "lng": -81.025122,
+      "geoid": "1243000"
+    },
+    {
+      "city": "Marco Island",
+      "lat": 25.932025,
+      "lng": -81.704838,
+      "geoid": "1243083"
+    },
+    {
+      "city": "Marco Shores-Hammock Bay",
+      "lat": 25.995653,
+      "lng": -81.695858,
+      "geoid": "1243090"
+    },
+    {
+      "city": "Margate",
+      "lat": 26.248037,
+      "lng": -80.211169,
+      "geoid": "1243125"
+    },
+    {
+      "city": "Marianna",
+      "lat": 30.794456,
+      "lng": -85.22841,
+      "geoid": "1243175"
+    },
+    {
+      "city": "Marineland",
+      "lat": 29.669956,
+      "lng": -81.215479,
+      "geoid": "1243250"
+    },
+    {
+      "city": "Marion Oaks",
+      "lat": 29.001261,
+      "lng": -82.195305,
+      "geoid": "1243300"
+    },
+    {
+      "city": "Mary Esther",
+      "lat": 30.411654,
+      "lng": -86.659006,
+      "geoid": "1243375"
+    },
+    {
+      "city": "Masaryktown",
+      "lat": 28.44184,
+      "lng": -82.460736,
+      "geoid": "1243400"
+    },
+    {
+      "city": "Mascotte",
+      "lat": 28.605189,
+      "lng": -81.905977,
+      "geoid": "1243425"
+    },
+    {
+      "city": "Matlacha",
+      "lat": 26.636436,
+      "lng": -82.076605,
+      "geoid": "1243475"
+    },
+    {
+      "city": "Matlacha Isles-Matlacha Shores",
+      "lat": 26.629311,
+      "lng": -82.058719,
+      "geoid": "1243484"
+    },
+    {
+      "city": "Mayo",
+      "lat": 30.051197,
+      "lng": -83.176898,
+      "geoid": "1243575"
+    },
+    {
+      "city": "Meadow Oaks",
+      "lat": 28.349751,
+      "lng": -82.597647,
+      "geoid": "1243785"
+    },
+    {
+      "city": "Meadow Woods",
+      "lat": 28.372902,
+      "lng": -81.333706,
+      "geoid": "1243800"
+    },
+    {
+      "city": "Medley",
+      "lat": 25.864855,
+      "lng": -80.357618,
+      "geoid": "1243900"
+    },
+    {
+      "city": "Medulla",
+      "lat": 27.958507,
+      "lng": -81.981212,
+      "geoid": "1243925"
+    },
+    {
+      "city": "Melbourne",
+      "lat": 28.110438,
+      "lng": -80.662717,
+      "geoid": "1243975"
+    },
+    {
+      "city": "Melbourne Beach",
+      "lat": 28.066869,
+      "lng": -80.559603,
+      "geoid": "1244000"
+    },
+    {
+      "city": "Melbourne Village",
+      "lat": 28.087962,
+      "lng": -80.665121,
+      "geoid": "1244075"
+    },
+    {
+      "city": "Memphis",
+      "lat": 27.54495,
+      "lng": -82.555899,
+      "geoid": "1244175"
+    },
+    {
+      "city": "Merritt Island",
+      "lat": 28.309239,
+      "lng": -80.675956,
+      "geoid": "1244275"
+    },
+    {
+      "city": "Mexico Beach",
+      "lat": 29.945923,
+      "lng": -85.412254,
+      "geoid": "1244300"
+    },
+    {
+      "city": "Miami",
+      "lat": 25.775163,
+      "lng": -80.208615,
+      "geoid": "1245000"
+    },
+    {
+      "city": "Miami Beach",
+      "lat": 25.810596,
+      "lng": -80.148852,
+      "geoid": "1245025"
+    },
+    {
+      "city": "Miami Gardens",
+      "lat": 25.948892,
+      "lng": -80.243585,
+      "geoid": "1245060"
+    },
+    {
+      "city": "Miami Lakes",
+      "lat": 25.912739,
+      "lng": -80.320422,
+      "geoid": "1245100"
+    },
+    {
+      "city": "Miami Shores",
+      "lat": 25.867011,
+      "lng": -80.178341,
+      "geoid": "1245175"
+    },
+    {
+      "city": "Miami Springs",
+      "lat": 25.820164,
+      "lng": -80.288945,
+      "geoid": "1245200"
+    },
+    {
+      "city": "Micanopy",
+      "lat": 29.506351,
+      "lng": -82.280499,
+      "geoid": "1245225"
+    },
+    {
+      "city": "Micco",
+      "lat": 27.856377,
+      "lng": -80.51129,
+      "geoid": "1245275"
+    },
+    {
+      "city": "Miccosukee",
+      "lat": 30.593056,
+      "lng": -84.046779,
+      "geoid": "1245300"
+    },
+    {
+      "city": "Middleburg",
+      "lat": 30.050226,
+      "lng": -81.901075,
+      "geoid": "1245350"
+    },
+    {
+      "city": "Midway",
+      "lat": 30.502715,
+      "lng": -84.460593,
+      "geoid": "1245425"
+    },
+    {
+      "city": "Midway",
+      "lat": 30.405055,
+      "lng": -87.009612,
+      "geoid": "1245465"
+    },
+    {
+      "city": "Midway",
+      "lat": 28.792398,
+      "lng": -81.231279,
+      "geoid": "1245475"
+    },
+    {
+      "city": "Milton",
+      "lat": 30.629636,
+      "lng": -87.051407,
+      "geoid": "1245750"
+    },
+    {
+      "city": "Mims",
+      "lat": 28.691319,
+      "lng": -80.843999,
+      "geoid": "1245775"
+    },
+    {
+      "city": "Minneola",
+      "lat": 28.602324,
+      "lng": -81.729452,
+      "geoid": "1245900"
+    },
+    {
+      "city": "Miramar",
+      "lat": 25.972529,
+      "lng": -80.338582,
+      "geoid": "1245975"
+    },
+    {
+      "city": "Miramar Beach",
+      "lat": 30.384881,
+      "lng": -86.343631,
+      "geoid": "1246000"
+    },
+    {
+      "city": "Molino",
+      "lat": 30.702751,
+      "lng": -87.320706,
+      "geoid": "1246225"
+    },
+    {
+      "city": "Monticello",
+      "lat": 30.542248,
+      "lng": -83.872178,
+      "geoid": "1246500"
+    },
+    {
+      "city": "Montura",
+      "lat": 26.642838,
+      "lng": -81.093769,
+      "geoid": "1246520"
+    },
+    {
+      "city": "Montverde",
+      "lat": 28.602468,
+      "lng": -81.674134,
+      "geoid": "1246525"
+    },
+    {
+      "city": "Moon Lake",
+      "lat": 28.297893,
+      "lng": -82.605576,
+      "geoid": "1246540"
+    },
+    {
+      "city": "Moore Haven",
+      "lat": 26.833752,
+      "lng": -81.098451,
+      "geoid": "1246550"
+    },
+    {
+      "city": "Morriston",
+      "lat": 29.281127,
+      "lng": -82.440031,
+      "geoid": "1246725"
+    },
+    {
+      "city": "Mount Carmel",
+      "lat": 30.991549,
+      "lng": -87.124366,
+      "geoid": "1247000"
+    },
+    {
+      "city": "Mount Dora",
+      "lat": 28.813349,
+      "lng": -81.633411,
+      "geoid": "1247050"
+    },
+    {
+      "city": "Mount Plymouth",
+      "lat": 28.803875,
+      "lng": -81.53449,
+      "geoid": "1247125"
+    },
+    {
+      "city": "Mulat",
+      "lat": 30.559771,
+      "lng": -87.130062,
+      "geoid": "1247175"
+    },
+    {
+      "city": "Mulberry",
+      "lat": 27.905447,
+      "lng": -81.988254,
+      "geoid": "1247200"
+    },
+    {
+      "city": "Munson",
+      "lat": 30.829059,
+      "lng": -86.889723,
+      "geoid": "1247300"
+    },
+    {
+      "city": "Myrtle Grove",
+      "lat": 30.414537,
+      "lng": -87.302824,
+      "geoid": "1247550"
+    },
+    {
+      "city": "Naples",
+      "lat": 26.150485,
+      "lng": -81.795299,
+      "geoid": "1247625"
+    },
+    {
+      "city": "Naples Manor",
+      "lat": 26.08969,
+      "lng": -81.724811,
+      "geoid": "1247650"
+    },
+    {
+      "city": "Naples Park",
+      "lat": 26.262921,
+      "lng": -81.811316,
+      "geoid": "1247675"
+    },
+    {
+      "city": "Naranja",
+      "lat": 25.516148,
+      "lng": -80.421926,
+      "geoid": "1247700"
+    },
+    {
+      "city": "Nassau Village-Ratliff",
+      "lat": 30.510826,
+      "lng": -81.80884,
+      "geoid": "1247787"
+    },
+    {
+      "city": "Navarre",
+      "lat": 30.416071,
+      "lng": -86.888674,
+      "geoid": "1248050"
+    },
+    {
+      "city": "Navarre Beach",
+      "lat": 30.376448,
+      "lng": -86.893666,
+      "geoid": "1248055"
+    },
+    {
+      "city": "Neptune Beach",
+      "lat": 30.312573,
+      "lng": -81.393123,
+      "geoid": "1248100"
+    },
+    {
+      "city": "Newberry",
+      "lat": 29.645825,
+      "lng": -82.594604,
+      "geoid": "1248200"
+    },
+    {
+      "city": "New Port Richey",
+      "lat": 28.246638,
+      "lng": -82.717502,
+      "geoid": "1248500"
+    },
+    {
+      "city": "New Port Richey East",
+      "lat": 28.263251,
+      "lng": -82.6942,
+      "geoid": "1248525"
+    },
+    {
+      "city": "New Smyrna Beach",
+      "lat": 29.02936,
+      "lng": -80.95486,
+      "geoid": "1248625"
+    },
+    {
+      "city": "New York",
+      "lat": 30.837048,
+      "lng": -87.233531,
+      "geoid": "1248725"
+    },
+    {
+      "city": "Niceville",
+      "lat": 30.528825,
+      "lng": -86.475995,
+      "geoid": "1248750"
+    },
+    {
+      "city": "Nobleton",
+      "lat": 28.645075,
+      "lng": -82.261536,
+      "geoid": "1248825"
+    },
+    {
+      "city": "Nocatee",
+      "lat": 30.085107,
+      "lng": -81.409909,
+      "geoid": "1248850"
+    },
+    {
+      "city": "Nokomis",
+      "lat": 27.123799,
+      "lng": -82.435785,
+      "geoid": "1248875"
+    },
+    {
+      "city": "Noma",
+      "lat": 30.978109,
+      "lng": -85.620983,
+      "geoid": "1248900"
+    },
+    {
+      "city": "North Bay Village",
+      "lat": 25.849129,
+      "lng": -80.151029,
+      "geoid": "1249225"
+    },
+    {
+      "city": "North Brooksville",
+      "lat": 28.577393,
+      "lng": -82.331867,
+      "geoid": "1249237"
+    },
+    {
+      "city": "Northdale",
+      "lat": 28.104607,
+      "lng": -82.528112,
+      "geoid": "1249260"
+    },
+    {
+      "city": "North DeLand",
+      "lat": 29.048399,
+      "lng": -81.296516,
+      "geoid": "1249275"
+    },
+    {
+      "city": "North Fort Myers",
+      "lat": 26.717956,
+      "lng": -81.845811,
+      "geoid": "1249350"
+    },
+    {
+      "city": "North Key Largo",
+      "lat": 25.260754,
+      "lng": -80.321566,
+      "geoid": "1249406"
+    },
+    {
+      "city": "North Lauderdale",
+      "lat": 26.21245,
+      "lng": -80.221392,
+      "geoid": "1249425"
+    },
+    {
+      "city": "North Merritt Island",
+      "lat": 28.461126,
+      "lng": -80.713145,
+      "geoid": "1249435"
+    },
+    {
+      "city": "North Miami",
+      "lat": 25.900829,
+      "lng": -80.1686,
+      "geoid": "1249450"
+    },
+    {
+      "city": "North Miami Beach",
+      "lat": 25.929996,
+      "lng": -80.165179,
+      "geoid": "1249475"
+    },
+    {
+      "city": "North Palm Beach",
+      "lat": 26.820298,
+      "lng": -80.056905,
+      "geoid": "1249600"
+    },
+    {
+      "city": "North Port",
+      "lat": 27.058166,
+      "lng": -82.198044,
+      "geoid": "1249675"
+    },
+    {
+      "city": "North Redington Beach",
+      "lat": 27.819702,
+      "lng": -82.823228,
+      "geoid": "1249725"
+    },
+    {
+      "city": "North River Shores",
+      "lat": 27.22169,
+      "lng": -80.276115,
+      "geoid": "1249750"
+    },
+    {
+      "city": "North Sarasota",
+      "lat": 27.356636,
+      "lng": -82.522318,
+      "geoid": "1249787"
+    },
+    {
+      "city": "North Weeki Wachee",
+      "lat": 28.553581,
+      "lng": -82.554864,
+      "geoid": "1249905"
+    },
+    {
+      "city": "Oak Hill",
+      "lat": 28.876961,
+      "lng": -80.834957,
+      "geoid": "1250450"
+    },
+    {
+      "city": "Oakland",
+      "lat": 28.552076,
+      "lng": -81.636676,
+      "geoid": "1250525"
+    },
+    {
+      "city": "Oakland Park",
+      "lat": 26.179051,
+      "lng": -80.152411,
+      "geoid": "1250575"
+    },
+    {
+      "city": "Oakleaf Plantation",
+      "lat": 30.174025,
+      "lng": -81.83641,
+      "geoid": "1250630"
+    },
+    {
+      "city": "Oak Ridge",
+      "lat": 28.472766,
+      "lng": -81.416685,
+      "geoid": "1250638"
+    },
+    {
+      "city": "Ocala",
+      "lat": 29.17751,
+      "lng": -82.151025,
+      "geoid": "1250750"
+    },
+    {
+      "city": "Ocala Estates",
+      "lat": 29.201763,
+      "lng": -82.309793,
+      "geoid": "1250756"
+    },
+    {
+      "city": "Ocean Breeze",
+      "lat": 27.240954,
+      "lng": -80.225681,
+      "geoid": "1250875"
+    },
+    {
+      "city": "Ocean City",
+      "lat": 30.439857,
+      "lng": -86.607246,
+      "geoid": "1250925"
+    },
+    {
+      "city": "Ocean Ridge",
+      "lat": 26.530938,
+      "lng": -80.046814,
+      "geoid": "1250950"
+    },
+    {
+      "city": "Ocklawaha",
+      "lat": 29.045855,
+      "lng": -81.934911,
+      "geoid": "1251050"
+    },
+    {
+      "city": "Ocoee",
+      "lat": 28.57882,
+      "lng": -81.533045,
+      "geoid": "1251075"
+    },
+    {
+      "city": "Odessa",
+      "lat": 28.182333,
+      "lng": -82.550417,
+      "geoid": "1251100"
+    },
+    {
+      "city": "Ojus",
+      "lat": 25.954635,
+      "lng": -80.171414,
+      "geoid": "1251125"
+    },
+    {
+      "city": "Okahumpka",
+      "lat": 28.745962,
+      "lng": -81.897876,
+      "geoid": "1251150"
+    },
+    {
+      "city": "Okeechobee",
+      "lat": 27.241608,
+      "lng": -80.829311,
+      "geoid": "1251200"
+    },
+    {
+      "city": "Old Miakka",
+      "lat": 27.318681,
+      "lng": -82.279302,
+      "geoid": "1251342"
+    },
+    {
+      "city": "Oldsmar",
+      "lat": 28.048381,
+      "lng": -82.671254,
+      "geoid": "1251350"
+    },
+    {
+      "city": "Olga",
+      "lat": 26.708176,
+      "lng": -81.693388,
+      "geoid": "1251400"
+    },
+    {
+      "city": "Olympia Heights",
+      "lat": 25.727896,
+      "lng": -80.339,
+      "geoid": "1251475"
+    },
+    {
+      "city": "Ona",
+      "lat": 27.482963,
+      "lng": -81.909728,
+      "geoid": "1251500"
+    },
+    {
+      "city": "On Top of the World",
+      "lat": 29.105817,
+      "lng": -82.286572,
+      "geoid": "1251587"
+    },
+    {
+      "city": "Opa-locka",
+      "lat": 25.899998,
+      "lng": -80.255219,
+      "geoid": "1251650"
+    },
+    {
+      "city": "Orange City",
+      "lat": 28.93728,
+      "lng": -81.283339,
+      "geoid": "1251825"
+    },
+    {
+      "city": "Orange Park",
+      "lat": 30.170853,
+      "lng": -81.704672,
+      "geoid": "1252125"
+    },
+    {
+      "city": "Orangetree",
+      "lat": 26.292899,
+      "lng": -81.57587,
+      "geoid": "1252162"
+    },
+    {
+      "city": "Orchid",
+      "lat": 27.771941,
+      "lng": -80.424461,
+      "geoid": "1252175"
+    },
+    {
+      "city": "Oriole Beach",
+      "lat": 30.372465,
+      "lng": -87.100486,
+      "geoid": "1252250"
+    },
+    {
+      "city": "Orlando",
+      "lat": 28.472818,
+      "lng": -81.320242,
+      "geoid": "1253000"
+    },
+    {
+      "city": "Orlovista",
+      "lat": 28.544055,
+      "lng": -81.462937,
+      "geoid": "1253100"
+    },
+    {
+      "city": "Ormond Beach",
+      "lat": 29.293276,
+      "lng": -81.101447,
+      "geoid": "1253150"
+    },
+    {
+      "city": "Ormond-by-the-Sea",
+      "lat": 29.343284,
+      "lng": -81.068605,
+      "geoid": "1253200"
+    },
+    {
+      "city": "Osprey",
+      "lat": 27.190394,
+      "lng": -82.475705,
+      "geoid": "1253425"
+    },
+    {
+      "city": "Otter Creek",
+      "lat": 29.323288,
+      "lng": -82.775101,
+      "geoid": "1253500"
+    },
+    {
+      "city": "Oviedo",
+      "lat": 28.66193,
+      "lng": -81.187101,
+      "geoid": "1253575"
+    },
+    {
+      "city": "Pace",
+      "lat": 30.616737,
+      "lng": -87.164733,
+      "geoid": "1253725"
+    },
+    {
+      "city": "Page Park",
+      "lat": 26.578163,
+      "lng": -81.861443,
+      "geoid": "1253775"
+    },
+    {
+      "city": "Pahokee",
+      "lat": 26.820209,
+      "lng": -80.662049,
+      "geoid": "1253800"
+    },
+    {
+      "city": "Paisley",
+      "lat": 28.97931,
+      "lng": -81.532186,
+      "geoid": "1253850"
+    },
+    {
+      "city": "Palatka",
+      "lat": 29.650107,
+      "lng": -81.671878,
+      "geoid": "1253875"
+    },
+    {
+      "city": "Palm Bay",
+      "lat": 27.954802,
+      "lng": -80.664962,
+      "geoid": "1254000"
+    },
+    {
+      "city": "Palm Beach",
+      "lat": 26.694843,
+      "lng": -80.041863,
+      "geoid": "1254025"
+    },
+    {
+      "city": "Palm Beach Gardens",
+      "lat": 26.848788,
+      "lng": -80.167124,
+      "geoid": "1254075"
+    },
+    {
+      "city": "Palm Beach Shores",
+      "lat": 26.777352,
+      "lng": -80.034377,
+      "geoid": "1254150"
+    },
+    {
+      "city": "Palm City",
+      "lat": 27.177783,
+      "lng": -80.285524,
+      "geoid": "1254175"
+    },
+    {
+      "city": "Palm Coast",
+      "lat": 29.536837,
+      "lng": -81.242627,
+      "geoid": "1254200"
+    },
+    {
+      "city": "Palmer Ranch",
+      "lat": 27.223405,
+      "lng": -82.461313,
+      "geoid": "1254238"
+    },
+    {
+      "city": "Palmetto",
+      "lat": 27.52505,
+      "lng": -82.574964,
+      "geoid": "1254250"
+    },
+    {
+      "city": "Palmetto Bay",
+      "lat": 25.621703,
+      "lng": -80.318906,
+      "geoid": "1254275"
+    },
+    {
+      "city": "Palmetto Estates",
+      "lat": 25.622682,
+      "lng": -80.360615,
+      "geoid": "1254300"
+    },
+    {
+      "city": "Palm Harbor",
+      "lat": 28.08477,
+      "lng": -82.757569,
+      "geoid": "1254350"
+    },
+    {
+      "city": "Palmona Park",
+      "lat": 26.689447,
+      "lng": -81.894404,
+      "geoid": "1254357"
+    },
+    {
+      "city": "Palm River-Clair Mel",
+      "lat": 27.924491,
+      "lng": -82.379398,
+      "geoid": "1254387"
+    },
+    {
+      "city": "Palm Shores",
+      "lat": 28.191781,
+      "lng": -80.659339,
+      "geoid": "1254425"
+    },
+    {
+      "city": "Palm Springs",
+      "lat": 26.635808,
+      "lng": -80.098352,
+      "geoid": "1254450"
+    },
+    {
+      "city": "Palm Springs North",
+      "lat": 25.934252,
+      "lng": -80.331028,
+      "geoid": "1254500"
+    },
+    {
+      "city": "Palm Valley",
+      "lat": 30.200548,
+      "lng": -81.390961,
+      "geoid": "1254525"
+    },
+    {
+      "city": "Panacea",
+      "lat": 30.02642,
+      "lng": -84.392586,
+      "geoid": "1254625"
+    },
+    {
+      "city": "Panama City",
+      "lat": 30.239496,
+      "lng": -85.530292,
+      "geoid": "1254700"
+    },
+    {
+      "city": "Panama City Beach",
+      "lat": 30.233151,
+      "lng": -85.877116,
+      "geoid": "1254725"
+    },
+    {
+      "city": "Paradise Heights",
+      "lat": 28.623628,
+      "lng": -81.54406,
+      "geoid": "1254912"
+    },
+    {
+      "city": "Parker",
+      "lat": 30.12839,
+      "lng": -85.600236,
+      "geoid": "1255075"
+    },
+    {
+      "city": "Parkland",
+      "lat": 26.32136,
+      "lng": -80.254296,
+      "geoid": "1255125"
+    },
+    {
+      "city": "Pasadena Hills",
+      "lat": 28.279537,
+      "lng": -82.241336,
+      "geoid": "1255305"
+    },
+    {
+      "city": "Patrick AFB",
+      "lat": 28.232233,
+      "lng": -80.609914,
+      "geoid": "1255375"
+    },
+    {
+      "city": "Paxton",
+      "lat": 30.972592,
+      "lng": -86.311772,
+      "geoid": "1255475"
+    },
+    {
+      "city": "Pea Ridge",
+      "lat": 30.599137,
+      "lng": -87.099723,
+      "geoid": "1255532"
+    },
+    {
+      "city": "Pebble Creek",
+      "lat": 28.160204,
+      "lng": -82.342436,
+      "geoid": "1255540"
+    },
+    {
+      "city": "Pelican Bay",
+      "lat": 26.234887,
+      "lng": -81.810215,
+      "geoid": "1255650"
+    },
+    {
+      "city": "Pelican Marsh",
+      "lat": 26.24989,
+      "lng": -81.78147,
+      "geoid": "1255680"
+    },
+    {
+      "city": "Pembroke Park",
+      "lat": 25.988941,
+      "lng": -80.180258,
+      "geoid": "1255750"
+    },
+    {
+      "city": "Pembroke Pines",
+      "lat": 26.014716,
+      "lng": -80.340171,
+      "geoid": "1255775"
+    },
+    {
+      "city": "Penney Farms",
+      "lat": 29.98071,
+      "lng": -81.810769,
+      "geoid": "1255875"
+    },
+    {
+      "city": "Pensacola",
+      "lat": 30.440989,
+      "lng": -87.191242,
+      "geoid": "1255925"
+    },
+    {
+      "city": "Pensacola Station",
+      "lat": 30.350615,
+      "lng": -87.316902,
+      "geoid": "1256004"
+    },
+    {
+      "city": "Perry",
+      "lat": 30.109053,
+      "lng": -83.582275,
+      "geoid": "1256150"
+    },
+    {
+      "city": "Pierson",
+      "lat": 29.241647,
+      "lng": -81.45664,
+      "geoid": "1256425"
+    },
+    {
+      "city": "Pine Air",
+      "lat": 26.658597,
+      "lng": -80.107415,
+      "geoid": "1256475"
+    },
+    {
+      "city": "Pine Castle",
+      "lat": 28.454666,
+      "lng": -81.369572,
+      "geoid": "1256500"
+    },
+    {
+      "city": "Pinecraft",
+      "lat": 27.323151,
+      "lng": -82.500669,
+      "geoid": "1256525"
+    },
+    {
+      "city": "Pinecrest",
+      "lat": 25.665174,
+      "lng": -80.304857,
+      "geoid": "1256625"
+    },
+    {
+      "city": "Pine Hills",
+      "lat": 28.581802,
+      "lng": -81.469536,
+      "geoid": "1256825"
+    },
+    {
+      "city": "Pine Island",
+      "lat": 28.572441,
+      "lng": -82.654777,
+      "geoid": "1256840"
+    },
+    {
+      "city": "Pine Island Center",
+      "lat": 26.623798,
+      "lng": -82.127162,
+      "geoid": "1256850"
+    },
+    {
+      "city": "Pine Lakes",
+      "lat": 28.939774,
+      "lng": -81.430586,
+      "geoid": "1256865"
+    },
+    {
+      "city": "Pineland",
+      "lat": 26.66108,
+      "lng": -82.148101,
+      "geoid": "1256875"
+    },
+    {
+      "city": "Pine Level",
+      "lat": 30.889154,
+      "lng": -87.169481,
+      "geoid": "1256955"
+    },
+    {
+      "city": "Pinellas Park",
+      "lat": 27.858883,
+      "lng": -82.708213,
+      "geoid": "1256975"
+    },
+    {
+      "city": "Pine Manor",
+      "lat": 26.573721,
+      "lng": -81.877627,
+      "geoid": "1257025"
+    },
+    {
+      "city": "Pine Ridge",
+      "lat": 28.932994,
+      "lng": -82.476182,
+      "geoid": "1257058"
+    },
+    {
+      "city": "Pine Ridge",
+      "lat": 26.230256,
+      "lng": -81.792994,
+      "geoid": "1257066"
+    },
+    {
+      "city": "Pinewood",
+      "lat": 25.869354,
+      "lng": -80.217059,
+      "geoid": "1257250"
+    },
+    {
+      "city": "Pioneer",
+      "lat": 26.728538,
+      "lng": -81.217199,
+      "geoid": "1257320"
+    },
+    {
+      "city": "Pittman",
+      "lat": 28.998374,
+      "lng": -81.649218,
+      "geoid": "1257380"
+    },
+    {
+      "city": "Plantation",
+      "lat": 26.125573,
+      "lng": -80.261818,
+      "geoid": "1257425"
+    },
+    {
+      "city": "Plantation",
+      "lat": 27.068279,
+      "lng": -82.370468,
+      "geoid": "1257450"
+    },
+    {
+      "city": "Plantation Island",
+      "lat": 25.847825,
+      "lng": -81.37698,
+      "geoid": "1257492"
+    },
+    {
+      "city": "Plantation Mobile Home Park",
+      "lat": 26.70258,
+      "lng": -80.132343,
+      "geoid": "1257518"
+    },
+    {
+      "city": "Plant City",
+      "lat": 28.015355,
+      "lng": -82.117805,
+      "geoid": "1257550"
+    },
+    {
+      "city": "Poinciana",
+      "lat": 28.118729,
+      "lng": -81.479234,
+      "geoid": "1257900"
+    },
+    {
+      "city": "Point Baker",
+      "lat": 30.686607,
+      "lng": -87.051734,
+      "geoid": "1257908"
+    },
+    {
+      "city": "Polk City",
+      "lat": 28.180471,
+      "lng": -81.830032,
+      "geoid": "1257950"
+    },
+    {
+      "city": "Pomona Park",
+      "lat": 29.503039,
+      "lng": -81.58646,
+      "geoid": "1258025"
+    },
+    {
+      "city": "Pompano Beach",
+      "lat": 26.241622,
+      "lng": -80.133851,
+      "geoid": "1258050"
+    },
+    {
+      "city": "Ponce de Leon",
+      "lat": 30.724036,
+      "lng": -85.936883,
+      "geoid": "1258175"
+    },
+    {
+      "city": "Ponce Inlet",
+      "lat": 29.092782,
+      "lng": -80.931705,
+      "geoid": "1258200"
+    },
+    {
+      "city": "Port Charlotte",
+      "lat": 26.989467,
+      "lng": -82.113651,
+      "geoid": "1258350"
+    },
+    {
+      "city": "Port LaBelle",
+      "lat": 26.760647,
+      "lng": -81.383855,
+      "geoid": "1258420"
+    },
+    {
+      "city": "Port Orange",
+      "lat": 29.113444,
+      "lng": -81.013223,
+      "geoid": "1258575"
+    },
+    {
+      "city": "Port Richey",
+      "lat": 28.275019,
+      "lng": -82.725032,
+      "geoid": "1258600"
+    },
+    {
+      "city": "Port St. Joe",
+      "lat": 29.817561,
+      "lng": -85.309146,
+      "geoid": "1258675"
+    },
+    {
+      "city": "Port St. John",
+      "lat": 28.475701,
+      "lng": -80.810424,
+      "geoid": "1258700"
+    },
+    {
+      "city": "Port St. Lucie",
+      "lat": 27.280554,
+      "lng": -80.388261,
+      "geoid": "1258715"
+    },
+    {
+      "city": "Port Salerno",
+      "lat": 27.145193,
+      "lng": -80.188709,
+      "geoid": "1258727"
+    },
+    {
+      "city": "Pretty Bayou",
+      "lat": 30.200131,
+      "lng": -85.697724,
+      "geoid": "1258962"
+    },
+    {
+      "city": "Princeton",
+      "lat": 25.540648,
+      "lng": -80.398394,
+      "geoid": "1258975"
+    },
+    {
+      "city": "Progress Village",
+      "lat": 27.885648,
+      "lng": -82.364256,
+      "geoid": "1259050"
+    },
+    {
+      "city": "Punta Gorda",
+      "lat": 26.897754,
+      "lng": -82.065812,
+      "geoid": "1259200"
+    },
+    {
+      "city": "Punta Rassa",
+      "lat": 26.499755,
+      "lng": -82.002107,
+      "geoid": "1259250"
+    },
+    {
+      "city": "Quail Ridge",
+      "lat": 28.348598,
+      "lng": -82.554903,
+      "geoid": "1259311"
+    },
+    {
+      "city": "Quincy",
+      "lat": 30.565983,
+      "lng": -84.585847,
+      "geoid": "1259325"
+    },
+    {
+      "city": "Raiford",
+      "lat": 30.063716,
+      "lng": -82.240811,
+      "geoid": "1259400"
+    },
+    {
+      "city": "Rainbow Lakes Estates",
+      "lat": 29.160461,
+      "lng": -82.50972,
+      "geoid": "1259450"
+    },
+    {
+      "city": "Rainbow Park",
+      "lat": 29.165358,
+      "lng": -82.363995,
+      "geoid": "1259466"
+    },
+    {
+      "city": "Rainbow Springs",
+      "lat": 29.097095,
+      "lng": -82.441983,
+      "geoid": "1259470"
+    },
+    {
+      "city": "Raleigh",
+      "lat": 29.447868,
+      "lng": -82.468078,
+      "geoid": "1259475"
+    },
+    {
+      "city": "Reddick",
+      "lat": 29.368698,
+      "lng": -82.197561,
+      "geoid": "1259675"
+    },
+    {
+      "city": "Redington Beach",
+      "lat": 27.809487,
+      "lng": -82.812138,
+      "geoid": "1259725"
+    },
+    {
+      "city": "Redington Shores",
+      "lat": 27.831725,
+      "lng": -82.8335,
+      "geoid": "1259750"
+    },
+    {
+      "city": "Richmond Heights",
+      "lat": 25.63329,
+      "lng": -80.371226,
+      "geoid": "1260225"
+    },
+    {
+      "city": "Richmond West",
+      "lat": 25.609276,
+      "lng": -80.429646,
+      "geoid": "1260230"
+    },
+    {
+      "city": "Ridgecrest",
+      "lat": 27.889445,
+      "lng": -82.806275,
+      "geoid": "1260275"
+    },
+    {
+      "city": "Ridge Manor",
+      "lat": 28.492948,
+      "lng": -82.189551,
+      "geoid": "1260325"
+    },
+    {
+      "city": "Ridge Wood Heights",
+      "lat": 27.286254,
+      "lng": -82.51204,
+      "geoid": "1260475"
+    },
+    {
+      "city": "Rio",
+      "lat": 27.216409,
+      "lng": -80.240783,
+      "geoid": "1260550"
+    },
+    {
+      "city": "Rio Pinar",
+      "lat": 28.519131,
+      "lng": -81.261196,
+      "geoid": "1260562"
+    },
+    {
+      "city": "River Park",
+      "lat": 27.322901,
+      "lng": -80.331572,
+      "geoid": "1260785"
+    },
+    {
+      "city": "River Ridge",
+      "lat": 28.266882,
+      "lng": -82.625747,
+      "geoid": "1260835"
+    },
+    {
+      "city": "Riverview",
+      "lat": 27.824706,
+      "lng": -82.303879,
+      "geoid": "1260950"
+    },
+    {
+      "city": "Riviera Beach",
+      "lat": 26.781424,
+      "lng": -80.076059,
+      "geoid": "1260975"
+    },
+    {
+      "city": "Rockledge",
+      "lat": 28.321362,
+      "lng": -80.737823,
+      "geoid": "1261500"
+    },
+    {
+      "city": "Roeville",
+      "lat": 30.685094,
+      "lng": -86.992212,
+      "geoid": "1261615"
+    },
+    {
+      "city": "Roosevelt Gardens",
+      "lat": 26.140678,
+      "lng": -80.18088,
+      "geoid": "1261807"
+    },
+    {
+      "city": "Roseland",
+      "lat": 27.835325,
+      "lng": -80.488207,
+      "geoid": "1261875"
+    },
+    {
+      "city": "Rotonda",
+      "lat": 26.88512,
+      "lng": -82.277881,
+      "geoid": "1261937"
+    },
+    {
+      "city": "Royal Palm Beach",
+      "lat": 26.699015,
+      "lng": -80.227581,
+      "geoid": "1262100"
+    },
+    {
+      "city": "Royal Palm Estates",
+      "lat": 26.681657,
+      "lng": -80.132755,
+      "geoid": "1262118"
+    },
+    {
+      "city": "Ruskin",
+      "lat": 27.706834,
+      "lng": -82.422182,
+      "geoid": "1262275"
+    },
+    {
+      "city": "Safety Harbor",
+      "lat": 28.006303,
+      "lng": -82.697836,
+      "geoid": "1262425"
+    },
+    {
+      "city": "St. Augustine",
+      "lat": 29.896152,
+      "lng": -81.311128,
+      "geoid": "1262500"
+    },
+    {
+      "city": "St. Augustine Beach",
+      "lat": 29.841563,
+      "lng": -81.27097,
+      "geoid": "1262525"
+    },
+    {
+      "city": "St. Augustine Shores",
+      "lat": 29.805799,
+      "lng": -81.312195,
+      "geoid": "1262550"
+    },
+    {
+      "city": "St. Augustine South",
+      "lat": 29.844825,
+      "lng": -81.316195,
+      "geoid": "1262562"
+    },
+    {
+      "city": "St. Cloud",
+      "lat": 28.233697,
+      "lng": -81.280211,
+      "geoid": "1262625"
+    },
+    {
+      "city": "St. George Island",
+      "lat": 29.652057,
+      "lng": -84.889768,
+      "geoid": "1262650"
+    },
+    {
+      "city": "St. James City",
+      "lat": 26.542582,
+      "lng": -82.101977,
+      "geoid": "1262675"
+    },
+    {
+      "city": "St. Leo",
+      "lat": 28.336849,
+      "lng": -82.256009,
+      "geoid": "1262775"
+    },
+    {
+      "city": "St. Lucie Village",
+      "lat": 27.49988,
+      "lng": -80.341811,
+      "geoid": "1262800"
+    },
+    {
+      "city": "St. Marks",
+      "lat": 30.166095,
+      "lng": -84.208292,
+      "geoid": "1262825"
+    },
+    {
+      "city": "St. Pete Beach",
+      "lat": 27.716801,
+      "lng": -82.739622,
+      "geoid": "1262885"
+    },
+    {
+      "city": "St. Petersburg",
+      "lat": 27.762727,
+      "lng": -82.644131,
+      "geoid": "1263000"
+    },
+    {
+      "city": "Samoset",
+      "lat": 27.476399,
+      "lng": -82.543083,
+      "geoid": "1263225"
+    },
+    {
+      "city": "Samsula-Spruce Creek",
+      "lat": 29.051647,
+      "lng": -81.062493,
+      "geoid": "1263362"
+    },
+    {
+      "city": "San Antonio",
+      "lat": 28.339858,
+      "lng": -82.278605,
+      "geoid": "1263375"
+    },
+    {
+      "city": "San Carlos Park",
+      "lat": 26.476694,
+      "lng": -81.819751,
+      "geoid": "1263425"
+    },
+    {
+      "city": "San Castle",
+      "lat": 26.565095,
+      "lng": -80.06107,
+      "geoid": "1263435"
+    },
+    {
+      "city": "Sanford",
+      "lat": 28.789401,
+      "lng": -81.274601,
+      "geoid": "1263650"
+    },
+    {
+      "city": "Sanibel",
+      "lat": 26.451038,
+      "lng": -82.105676,
+      "geoid": "1263700"
+    },
+    {
+      "city": "Sarasota",
+      "lat": 27.338257,
+      "lng": -82.543721,
+      "geoid": "1264175"
+    },
+    {
+      "city": "Sarasota Springs",
+      "lat": 27.308767,
+      "lng": -82.475812,
+      "geoid": "1264325"
+    },
+    {
+      "city": "Satellite Beach",
+      "lat": 28.178733,
+      "lng": -80.599402,
+      "geoid": "1264400"
+    },
+    {
+      "city": "Sawgrass",
+      "lat": 30.19126,
+      "lng": -81.371143,
+      "geoid": "1264525"
+    },
+    {
+      "city": "Schall Circle",
+      "lat": 26.715226,
+      "lng": -80.114343,
+      "geoid": "1264547"
+    },
+    {
+      "city": "Scottsmoor",
+      "lat": 28.767974,
+      "lng": -80.870986,
+      "geoid": "1264625"
+    },
+    {
+      "city": "Sea Ranch Lakes",
+      "lat": 26.19987,
+      "lng": -80.098403,
+      "geoid": "1264725"
+    },
+    {
+      "city": "Sebastian",
+      "lat": 27.779212,
+      "lng": -80.482654,
+      "geoid": "1264825"
+    },
+    {
+      "city": "Sebring",
+      "lat": 27.471396,
+      "lng": -81.451568,
+      "geoid": "1264875"
+    },
+    {
+      "city": "Seffner",
+      "lat": 28.001639,
+      "lng": -82.274077,
+      "geoid": "1264925"
+    },
+    {
+      "city": "Seminole",
+      "lat": 27.842735,
+      "lng": -82.785304,
+      "geoid": "1264975"
+    },
+    {
+      "city": "Seminole Manor",
+      "lat": 26.583618,
+      "lng": -80.101324,
+      "geoid": "1265100"
+    },
+    {
+      "city": "Seville",
+      "lat": 29.340151,
+      "lng": -81.509516,
+      "geoid": "1265200"
+    },
+    {
+      "city": "Sewall's Point",
+      "lat": 27.197011,
+      "lng": -80.198858,
+      "geoid": "1265225"
+    },
+    {
+      "city": "Shady Hills",
+      "lat": 28.403032,
+      "lng": -82.545056,
+      "geoid": "1265385"
+    },
+    {
+      "city": "Shalimar",
+      "lat": 30.443266,
+      "lng": -86.582989,
+      "geoid": "1265425"
+    },
+    {
+      "city": "Sharpes",
+      "lat": 28.443598,
+      "lng": -80.7614,
+      "geoid": "1265525"
+    },
+    {
+      "city": "Siesta Key",
+      "lat": 27.274813,
+      "lng": -82.549327,
+      "geoid": "1266000"
+    },
+    {
+      "city": "Silver Lake",
+      "lat": 28.832148,
+      "lng": -81.801073,
+      "geoid": "1266062"
+    },
+    {
+      "city": "Silver Springs",
+      "lat": 29.219167,
+      "lng": -82.055539,
+      "geoid": "1266125"
+    },
+    {
+      "city": "Silver Springs Shores",
+      "lat": 29.111881,
+      "lng": -82.014604,
+      "geoid": "1266175"
+    },
+    {
+      "city": "Silver Springs Shores East",
+      "lat": 29.049449,
+      "lng": -81.883026,
+      "geoid": "1266179"
+    },
+    {
+      "city": "Sky Lake",
+      "lat": 28.461272,
+      "lng": -81.390465,
+      "geoid": "1266425"
+    },
+    {
+      "city": "Sneads",
+      "lat": 30.708575,
+      "lng": -84.925605,
+      "geoid": "1266725"
+    },
+    {
+      "city": "Solana",
+      "lat": 26.937223,
+      "lng": -82.029695,
+      "geoid": "1266875"
+    },
+    {
+      "city": "Sopchoppy",
+      "lat": 30.059872,
+      "lng": -84.485396,
+      "geoid": "1266925"
+    },
+    {
+      "city": "Sorrento",
+      "lat": 28.80909,
+      "lng": -81.563611,
+      "geoid": "1266975"
+    },
+    {
+      "city": "South Apopka",
+      "lat": 28.656809,
+      "lng": -81.505717,
+      "geoid": "1267163"
+    },
+    {
+      "city": "South Bay",
+      "lat": 26.688379,
+      "lng": -80.735526,
+      "geoid": "1267175"
+    },
+    {
+      "city": "South Beach",
+      "lat": 27.575523,
+      "lng": -80.333446,
+      "geoid": "1267192"
+    },
+    {
+      "city": "South Bradenton",
+      "lat": 27.460603,
+      "lng": -82.584713,
+      "geoid": "1267258"
+    },
+    {
+      "city": "South Brooksville",
+      "lat": 28.514172,
+      "lng": -82.437633,
+      "geoid": "1267266"
+    },
+    {
+      "city": "Southchase",
+      "lat": 28.379244,
+      "lng": -81.390255,
+      "geoid": "1267270"
+    },
+    {
+      "city": "South Daytona",
+      "lat": 29.166211,
+      "lng": -81.005523,
+      "geoid": "1267325"
+    },
+    {
+      "city": "Southeast Arcadia",
+      "lat": 27.186186,
+      "lng": -81.852085,
+      "geoid": "1267355"
+    },
+    {
+      "city": "Southgate",
+      "lat": 27.304823,
+      "lng": -82.512286,
+      "geoid": "1267425"
+    },
+    {
+      "city": "South Gate Ridge",
+      "lat": 27.284499,
+      "lng": -82.496645,
+      "geoid": "1267450"
+    },
+    {
+      "city": "South Highpoint",
+      "lat": 27.912411,
+      "lng": -82.710613,
+      "geoid": "1267462"
+    },
+    {
+      "city": "South Miami",
+      "lat": 25.70855,
+      "lng": -80.295105,
+      "geoid": "1267550"
+    },
+    {
+      "city": "South Miami Heights",
+      "lat": 25.588232,
+      "lng": -80.385789,
+      "geoid": "1267575"
+    },
+    {
+      "city": "South Palm Beach",
+      "lat": 26.590437,
+      "lng": -80.037977,
+      "geoid": "1267650"
+    },
+    {
+      "city": "South Pasadena",
+      "lat": 27.752914,
+      "lng": -82.739252,
+      "geoid": "1267675"
+    },
+    {
+      "city": "South Patrick Shores",
+      "lat": 28.204473,
+      "lng": -80.611249,
+      "geoid": "1267725"
+    },
+    {
+      "city": "Southport",
+      "lat": 30.290481,
+      "lng": -85.651643,
+      "geoid": "1267800"
+    },
+    {
+      "city": "South Sarasota",
+      "lat": 27.286278,
+      "lng": -82.533133,
+      "geoid": "1267887"
+    },
+    {
+      "city": "South Venice",
+      "lat": 27.044689,
+      "lng": -82.415841,
+      "geoid": "1268100"
+    },
+    {
+      "city": "Southwest Ranches",
+      "lat": 26.049688,
+      "lng": -80.373833,
+      "geoid": "1268135"
+    },
+    {
+      "city": "Springfield",
+      "lat": 30.169763,
+      "lng": -85.603795,
+      "geoid": "1268275"
+    },
+    {
+      "city": "Spring Hill",
+      "lat": 28.479207,
+      "lng": -82.529658,
+      "geoid": "1268350"
+    },
+    {
+      "city": "Springhill",
+      "lat": 30.747203,
+      "lng": -86.922538,
+      "geoid": "1268365"
+    },
+    {
+      "city": "Spring Lake",
+      "lat": 28.498368,
+      "lng": -82.294056,
+      "geoid": "1268375"
+    },
+    {
+      "city": "Spring Ridge",
+      "lat": 29.82184,
+      "lng": -82.724453,
+      "geoid": "1268435"
+    },
+    {
+      "city": "Stacey Street",
+      "lat": 26.697843,
+      "lng": -80.123864,
+      "geoid": "1268487"
+    },
+    {
+      "city": "Starke",
+      "lat": 29.947452,
+      "lng": -82.112885,
+      "geoid": "1268525"
+    },
+    {
+      "city": "Steinhatchee",
+      "lat": 29.687003,
+      "lng": -83.377068,
+      "geoid": "1268625"
+    },
+    {
+      "city": "Stock Island",
+      "lat": 24.56399,
+      "lng": -81.739793,
+      "geoid": "1268800"
+    },
+    {
+      "city": "Stuart",
+      "lat": 27.195272,
+      "lng": -80.244114,
+      "geoid": "1268875"
+    },
+    {
+      "city": "Sugarmill Woods",
+      "lat": 28.74026,
+      "lng": -82.506044,
+      "geoid": "1268950"
+    },
+    {
+      "city": "Sumatra",
+      "lat": 30.022979,
+      "lng": -84.982518,
+      "geoid": "1269025"
+    },
+    {
+      "city": "Sun City Center",
+      "lat": 27.714416,
+      "lng": -82.355762,
+      "geoid": "1269250"
+    },
+    {
+      "city": "Suncoast Estates",
+      "lat": 26.711162,
+      "lng": -81.868911,
+      "geoid": "1269275"
+    },
+    {
+      "city": "Sunny Isles Beach",
+      "lat": 25.938818,
+      "lng": -80.123529,
+      "geoid": "1269555"
+    },
+    {
+      "city": "Sunrise",
+      "lat": 26.171601,
+      "lng": -80.261633,
+      "geoid": "1269700"
+    },
+    {
+      "city": "Sunset",
+      "lat": 25.706081,
+      "lng": -80.352371,
+      "geoid": "1269812"
+    },
+    {
+      "city": "Surfside",
+      "lat": 25.878819,
+      "lng": -80.125006,
+      "geoid": "1270075"
+    },
+    {
+      "city": "Sweetwater",
+      "lat": 25.784402,
+      "lng": -80.38705,
+      "geoid": "1270345"
+    },
+    {
+      "city": "Taft",
+      "lat": 28.428328,
+      "lng": -81.367675,
+      "geoid": "1270525"
+    },
+    {
+      "city": "Tallahassee",
+      "lat": 30.453529,
+      "lng": -84.252272,
+      "geoid": "1270600"
+    },
+    {
+      "city": "Tamarac",
+      "lat": 26.203298,
+      "lng": -80.256032,
+      "geoid": "1270675"
+    },
+    {
+      "city": "Tamiami",
+      "lat": 25.756321,
+      "lng": -80.402559,
+      "geoid": "1270700"
+    },
+    {
+      "city": "Tampa",
+      "lat": 27.970086,
+      "lng": -82.479673,
+      "geoid": "1271000"
+    },
+    {
+      "city": "Tangelo Park",
+      "lat": 28.455999,
+      "lng": -81.446441,
+      "geoid": "1271075"
+    },
+    {
+      "city": "Tangerine",
+      "lat": 28.760166,
+      "lng": -81.637975,
+      "geoid": "1271100"
+    },
+    {
+      "city": "Tarpon Springs",
+      "lat": 28.149054,
+      "lng": -82.779371,
+      "geoid": "1271150"
+    },
+    {
+      "city": "Tavares",
+      "lat": 28.765875,
+      "lng": -81.756384,
+      "geoid": "1271225"
+    },
+    {
+      "city": "Tavernier",
+      "lat": 25.026449,
+      "lng": -80.499702,
+      "geoid": "1271250"
+    },
+    {
+      "city": "Taylor Creek",
+      "lat": 27.213904,
+      "lng": -80.791252,
+      "geoid": "1271300"
+    },
+    {
+      "city": "Temple Terrace",
+      "lat": 28.043,
+      "lng": -82.375859,
+      "geoid": "1271400"
+    },
+    {
+      "city": "Tequesta",
+      "lat": 26.964872,
+      "lng": -80.113241,
+      "geoid": "1271525"
+    },
+    {
+      "city": "The Acreage",
+      "lat": 26.774186,
+      "lng": -80.276882,
+      "geoid": "1271564"
+    },
+    {
+      "city": "The Crossings",
+      "lat": 25.670569,
+      "lng": -80.400752,
+      "geoid": "1271567"
+    },
+    {
+      "city": "The Hammocks",
+      "lat": 25.670376,
+      "lng": -80.448872,
+      "geoid": "1271569"
+    },
+    {
+      "city": "The Meadows",
+      "lat": 27.362943,
+      "lng": -82.47446,
+      "geoid": "1271580"
+    },
+    {
+      "city": "The Villages",
+      "lat": 28.898947,
+      "lng": -81.993737,
+      "geoid": "1271625"
+    },
+    {
+      "city": "Thonotosassa",
+      "lat": 28.046622,
+      "lng": -82.296539,
+      "geoid": "1271725"
+    },
+    {
+      "city": "Three Lakes",
+      "lat": 25.64274,
+      "lng": -80.399961,
+      "geoid": "1271741"
+    },
+    {
+      "city": "Three Oaks",
+      "lat": 26.473114,
+      "lng": -81.796898,
+      "geoid": "1271758"
+    },
+    {
+      "city": "Tice",
+      "lat": 26.675138,
+      "lng": -81.817274,
+      "geoid": "1271800"
+    },
+    {
+      "city": "Tierra Verde",
+      "lat": 27.662,
+      "lng": -82.724253,
+      "geoid": "1271825"
+    },
+    {
+      "city": "Tiger Point",
+      "lat": 30.380069,
+      "lng": -87.052448,
+      "geoid": "1271842"
+    },
+    {
+      "city": "Tildenville",
+      "lat": 28.541381,
+      "lng": -81.606365,
+      "geoid": "1271850"
+    },
+    {
+      "city": "Timber Pines",
+      "lat": 28.469209,
+      "lng": -82.602431,
+      "geoid": "1271867"
+    },
+    {
+      "city": "Titusville",
+      "lat": 28.573368,
+      "lng": -80.819404,
+      "geoid": "1271900"
+    },
+    {
+      "city": "Town 'n' Country",
+      "lat": 28.010228,
+      "lng": -82.577167,
+      "geoid": "1272145"
+    },
+    {
+      "city": "Treasure Island",
+      "lat": 27.764834,
+      "lng": -82.769119,
+      "geoid": "1272325"
+    },
+    {
+      "city": "Trenton",
+      "lat": 29.60913,
+      "lng": -82.814774,
+      "geoid": "1272350"
+    },
+    {
+      "city": "Trilby",
+      "lat": 28.456437,
+      "lng": -82.193976,
+      "geoid": "1272425"
+    },
+    {
+      "city": "Trinity",
+      "lat": 28.18099,
+      "lng": -82.646916,
+      "geoid": "1272442"
+    },
+    {
+      "city": "Tropical Park",
+      "lat": 28.380509,
+      "lng": -80.707486,
+      "geoid": "1272521"
+    },
+    {
+      "city": "Tyndall AFB",
+      "lat": 30.089367,
+      "lng": -85.59914,
+      "geoid": "1272875"
+    },
+    {
+      "city": "Umatilla",
+      "lat": 28.927012,
+      "lng": -81.664188,
+      "geoid": "1273025"
+    },
+    {
+      "city": "Union Park",
+      "lat": 28.567029,
+      "lng": -81.238085,
+      "geoid": "1273075"
+    },
+    {
+      "city": "University",
+      "lat": 28.076942,
+      "lng": -82.433319,
+      "geoid": "1273163"
+    },
+    {
+      "city": "University",
+      "lat": 28.589487,
+      "lng": -81.200128,
+      "geoid": "1273172"
+    },
+    {
+      "city": "Upper Grand Lagoon",
+      "lat": 30.169214,
+      "lng": -85.749742,
+      "geoid": "1273312"
+    },
+    {
+      "city": "Valparaiso",
+      "lat": 30.489932,
+      "lng": -86.514164,
+      "geoid": "1273675"
+    },
+    {
+      "city": "Valrico",
+      "lat": 27.919084,
+      "lng": -82.231259,
+      "geoid": "1273700"
+    },
+    {
+      "city": "Vamo",
+      "lat": 27.2205,
+      "lng": -82.499923,
+      "geoid": "1273725"
+    },
+    {
+      "city": "Venice",
+      "lat": 27.116973,
+      "lng": -82.41519,
+      "geoid": "1273900"
+    },
+    {
+      "city": "Venice Gardens",
+      "lat": 27.073699,
+      "lng": -82.413252,
+      "geoid": "1273950"
+    },
+    {
+      "city": "Verandah",
+      "lat": 26.697152,
+      "lng": -81.741067,
+      "geoid": "1274016"
+    },
+    {
+      "city": "Vernon",
+      "lat": 30.61225,
+      "lng": -85.700254,
+      "geoid": "1274125"
+    },
+    {
+      "city": "Vero Beach",
+      "lat": 27.64722,
+      "lng": -80.393136,
+      "geoid": "1274150"
+    },
+    {
+      "city": "Vero Beach South",
+      "lat": 27.612827,
+      "lng": -80.418141,
+      "geoid": "1274200"
+    },
+    {
+      "city": "Vero Lake Estates",
+      "lat": 27.746334,
+      "lng": -80.52831,
+      "geoid": "1274225"
+    },
+    {
+      "city": "Verona Walk",
+      "lat": 26.086046,
+      "lng": -81.67974,
+      "geoid": "1274235"
+    },
+    {
+      "city": "Viera East",
+      "lat": 28.262234,
+      "lng": -80.714643,
+      "geoid": "1274368"
+    },
+    {
+      "city": "Viera West",
+      "lat": 28.245188,
+      "lng": -80.740267,
+      "geoid": "1274370"
+    },
+    {
+      "city": "Vilano Beach",
+      "lat": 29.930346,
+      "lng": -81.301077,
+      "geoid": "1274400"
+    },
+    {
+      "city": "Villas",
+      "lat": 26.546745,
+      "lng": -81.864945,
+      "geoid": "1274512"
+    },
+    {
+      "city": "Vineyards",
+      "lat": 26.23047,
+      "lng": -81.727892,
+      "geoid": "1274562"
+    },
+    {
+      "city": "Virginia Gardens",
+      "lat": 25.809521,
+      "lng": -80.297476,
+      "geoid": "1274575"
+    },
+    {
+      "city": "Wabasso",
+      "lat": 27.75024,
+      "lng": -80.443326,
+      "geoid": "1274625"
+    },
+    {
+      "city": "Wabasso Beach",
+      "lat": 27.75366,
+      "lng": -80.39761,
+      "geoid": "1274635"
+    },
+    {
+      "city": "Wacissa",
+      "lat": 30.353518,
+      "lng": -84.001005,
+      "geoid": "1274700"
+    },
+    {
+      "city": "Wahneta",
+      "lat": 27.958651,
+      "lng": -81.72878,
+      "geoid": "1274775"
+    },
+    {
+      "city": "Waldo",
+      "lat": 29.792038,
+      "lng": -82.166931,
+      "geoid": "1274925"
+    },
+    {
+      "city": "Wallace",
+      "lat": 30.673287,
+      "lng": -87.19585,
+      "geoid": "1274975"
+    },
+    {
+      "city": "Warm Mineral Springs",
+      "lat": 27.046863,
+      "lng": -82.270421,
+      "geoid": "1275175"
+    },
+    {
+      "city": "Warrington",
+      "lat": 30.384444,
+      "lng": -87.293788,
+      "geoid": "1275200"
+    },
+    {
+      "city": "Washington Park",
+      "lat": 26.132484,
+      "lng": -80.182396,
+      "geoid": "1275225"
+    },
+    {
+      "city": "Watergate",
+      "lat": 26.335877,
+      "lng": -80.212724,
+      "geoid": "1275275"
+    },
+    {
+      "city": "Watertown",
+      "lat": 30.185857,
+      "lng": -82.602353,
+      "geoid": "1275300"
+    },
+    {
+      "city": "Wauchula",
+      "lat": 27.546903,
+      "lng": -81.810087,
+      "geoid": "1275375"
+    },
+    {
+      "city": "Waukeenah",
+      "lat": 30.395482,
+      "lng": -83.97552,
+      "geoid": "1275425"
+    },
+    {
+      "city": "Wausau",
+      "lat": 30.633355,
+      "lng": -85.587315,
+      "geoid": "1275450"
+    },
+    {
+      "city": "Waverly",
+      "lat": 27.985282,
+      "lng": -81.625304,
+      "geoid": "1275475"
+    },
+    {
+      "city": "Webster",
+      "lat": 28.613131,
+      "lng": -82.051298,
+      "geoid": "1275600"
+    },
+    {
+      "city": "Wedgefield",
+      "lat": 28.48596,
+      "lng": -81.081824,
+      "geoid": "1275612"
+    },
+    {
+      "city": "Weeki Wachee Gardens",
+      "lat": 28.537266,
+      "lng": -82.623115,
+      "geoid": "1275641"
+    },
+    {
+      "city": "Wekiwa Springs",
+      "lat": 28.69958,
+      "lng": -81.424771,
+      "geoid": "1275725"
+    },
+    {
+      "city": "Welaka",
+      "lat": 29.485205,
+      "lng": -81.660964,
+      "geoid": "1275750"
+    },
+    {
+      "city": "Wellington",
+      "lat": 26.648995,
+      "lng": -80.267208,
+      "geoid": "1275812"
+    },
+    {
+      "city": "Wesley Chapel",
+      "lat": 28.205247,
+      "lng": -82.317108,
+      "geoid": "1275875"
+    },
+    {
+      "city": "West Bradenton",
+      "lat": 27.500989,
+      "lng": -82.614195,
+      "geoid": "1276050"
+    },
+    {
+      "city": "West Canaveral Groves",
+      "lat": 28.39268,
+      "lng": -80.849217,
+      "geoid": "1276058"
+    },
+    {
+      "city": "Westchase",
+      "lat": 28.056497,
+      "lng": -82.608317,
+      "geoid": "1276062"
+    },
+    {
+      "city": "Westchester",
+      "lat": 25.745392,
+      "lng": -80.353457,
+      "geoid": "1276075"
+    },
+    {
+      "city": "West DeLand",
+      "lat": 29.016217,
+      "lng": -81.334377,
+      "geoid": "1276087"
+    },
+    {
+      "city": "Westgate",
+      "lat": 26.699411,
+      "lng": -80.098846,
+      "geoid": "1276290"
+    },
+    {
+      "city": "Westlake",
+      "lat": 26.754736,
+      "lng": -80.298554,
+      "geoid": "1276417"
+    },
+    {
+      "city": "West Lealman",
+      "lat": 27.819871,
+      "lng": -82.738885,
+      "geoid": "1276481"
+    },
+    {
+      "city": "West Little River",
+      "lat": 25.856915,
+      "lng": -80.237,
+      "geoid": "1276487"
+    },
+    {
+      "city": "West Melbourne",
+      "lat": 28.050398,
+      "lng": -80.658327,
+      "geoid": "1276500"
+    },
+    {
+      "city": "West Miami",
+      "lat": 25.757805,
+      "lng": -80.296876,
+      "geoid": "1276525"
+    },
+    {
+      "city": "Weston",
+      "lat": 26.100391,
+      "lng": -80.402059,
+      "geoid": "1276582"
+    },
+    {
+      "city": "West Palm Beach",
+      "lat": 26.745114,
+      "lng": -80.127038,
+      "geoid": "1276600"
+    },
+    {
+      "city": "West Park",
+      "lat": 25.978672,
+      "lng": -80.18101,
+      "geoid": "1276658"
+    },
+    {
+      "city": "West Pensacola",
+      "lat": 30.426725,
+      "lng": -87.268114,
+      "geoid": "1276675"
+    },
+    {
+      "city": "West Perrine",
+      "lat": 25.60608,
+      "lng": -80.363899,
+      "geoid": "1276700"
+    },
+    {
+      "city": "West Samoset",
+      "lat": 27.470383,
+      "lng": -82.555253,
+      "geoid": "1276740"
+    },
+    {
+      "city": "West Vero Corridor",
+      "lat": 27.634974,
+      "lng": -80.482752,
+      "geoid": "1276937"
+    },
+    {
+      "city": "Westview",
+      "lat": 25.882307,
+      "lng": -80.242028,
+      "geoid": "1276950"
+    },
+    {
+      "city": "Westville",
+      "lat": 30.771078,
+      "lng": -85.838124,
+      "geoid": "1276975"
+    },
+    {
+      "city": "Westwood Lakes",
+      "lat": 25.724653,
+      "lng": -80.369341,
+      "geoid": "1277075"
+    },
+    {
+      "city": "Wewahitchka",
+      "lat": 30.126203,
+      "lng": -85.190712,
+      "geoid": "1277100"
+    },
+    {
+      "city": "Whiskey Creek",
+      "lat": 26.571131,
+      "lng": -81.888563,
+      "geoid": "1277137"
+    },
+    {
+      "city": "White City",
+      "lat": 27.372178,
+      "lng": -80.340548,
+      "geoid": "1277275"
+    },
+    {
+      "city": "White Springs",
+      "lat": 30.331826,
+      "lng": -82.756072,
+      "geoid": "1277400"
+    },
+    {
+      "city": "Whitfield",
+      "lat": 27.410703,
+      "lng": -82.566664,
+      "geoid": "1277467"
+    },
+    {
+      "city": "Whitfield",
+      "lat": 30.873458,
+      "lng": -87.066657,
+      "geoid": "1277470"
+    },
+    {
+      "city": "Wildwood",
+      "lat": 28.805813,
+      "lng": -82.007324,
+      "geoid": "1277675"
+    },
+    {
+      "city": "Williamsburg",
+      "lat": 28.401262,
+      "lng": -81.447802,
+      "geoid": "1277735"
+    },
+    {
+      "city": "Williston",
+      "lat": 29.393879,
+      "lng": -82.442308,
+      "geoid": "1277825"
+    },
+    {
+      "city": "Williston Highlands",
+      "lat": 29.333612,
+      "lng": -82.535656,
+      "geoid": "1277837"
+    },
+    {
+      "city": "Willow Oak",
+      "lat": 27.921919,
+      "lng": -82.024247,
+      "geoid": "1277862"
+    },
+    {
+      "city": "Wilton Manors",
+      "lat": 26.159318,
+      "lng": -80.13935,
+      "geoid": "1278000"
+    },
+    {
+      "city": "Wimauma",
+      "lat": 27.674909,
+      "lng": -82.313163,
+      "geoid": "1278025"
+    },
+    {
+      "city": "Windermere",
+      "lat": 28.494488,
+      "lng": -81.524504,
+      "geoid": "1278050"
+    },
+    {
+      "city": "Winding Cypress",
+      "lat": 26.061596,
+      "lng": -81.677378,
+      "geoid": "1278063"
+    },
+    {
+      "city": "Windsor",
+      "lat": 27.786776,
+      "lng": -80.413999,
+      "geoid": "1278110"
+    },
+    {
+      "city": "Winter Beach",
+      "lat": 27.712574,
+      "lng": -80.421733,
+      "geoid": "1278225"
+    },
+    {
+      "city": "Winter Garden",
+      "lat": 28.541217,
+      "lng": -81.597043,
+      "geoid": "1278250"
+    },
+    {
+      "city": "Winter Haven",
+      "lat": 28.045836,
+      "lng": -81.732743,
+      "geoid": "1278275"
+    },
+    {
+      "city": "Winter Park",
+      "lat": 28.59663,
+      "lng": -81.345748,
+      "geoid": "1278300"
+    },
+    {
+      "city": "Winter Springs",
+      "lat": 28.688064,
+      "lng": -81.269962,
+      "geoid": "1278325"
+    },
+    {
+      "city": "Wiscon",
+      "lat": 28.540982,
+      "lng": -82.466111,
+      "geoid": "1278340"
+    },
+    {
+      "city": "Woodlawn Beach",
+      "lat": 30.388055,
+      "lng": -86.996049,
+      "geoid": "1278500"
+    },
+    {
+      "city": "Woodville",
+      "lat": 30.315143,
+      "lng": -84.268847,
+      "geoid": "1278700"
+    },
+    {
+      "city": "World Golf Village",
+      "lat": 29.967988,
+      "lng": -81.49006,
+      "geoid": "1278740"
+    },
+    {
+      "city": "Worthington Springs",
+      "lat": 29.933606,
+      "lng": -82.408518,
+      "geoid": "1278775"
+    },
+    {
+      "city": "Wright",
+      "lat": 30.444099,
+      "lng": -86.641974,
+      "geoid": "1278800"
+    },
+    {
+      "city": "Yalaha",
+      "lat": 28.744711,
+      "lng": -81.822504,
+      "geoid": "1278900"
+    },
+    {
+      "city": "Yankeetown",
+      "lat": 29.031915,
+      "lng": -82.763241,
+      "geoid": "1278925"
+    },
+    {
+      "city": "Yeehaw Junction",
+      "lat": 27.703242,
+      "lng": -80.883603,
+      "geoid": "1278975"
+    },
+    {
+      "city": "Yulee",
+      "lat": 30.635418,
+      "lng": -81.569584,
+      "geoid": "1279175"
+    },
+    {
+      "city": "Zellwood",
+      "lat": 28.721898,
+      "lng": -81.573234,
+      "geoid": "1279200"
+    },
+    {
+      "city": "Zephyrhills",
+      "lat": 28.240721,
+      "lng": -82.179024,
+      "geoid": "1279225"
+    },
+    {
+      "city": "Zephyrhills North",
+      "lat": 28.25208,
+      "lng": -82.165327,
+      "geoid": "1279231"
+    },
+    {
+      "city": "Zephyrhills South",
+      "lat": 28.215211,
+      "lng": -82.188497,
+      "geoid": "1279237"
+    },
+    {
+      "city": "Zephyrhills West",
+      "lat": 28.230945,
+      "lng": -82.205331,
+      "geoid": "1279243"
+    },
+    {
+      "city": "Zolfo Springs",
+      "lat": 27.492579,
+      "lng": -81.786793,
+      "geoid": "1279250"
+    }
+  ]
+}

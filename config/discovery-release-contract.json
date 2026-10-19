@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "codeFiles": {
+    "CanchaUI.tsx": "d3c67f27ec6e067f5c3780c0c242b94f507352f081705d99800773a23394b325",
+    "DiscoveryModel.tsx": "7f6686ac33ae34281f250f7392579bc14d340616baf8f72c2c1e634f0139eb1e",
+    "DiscoveryCityMap.tsx": "47b315bf6940536899e12583b2de232d02f1d38bf8b7c07f295a7b4c0250bd3e",
+    "CanchaNavigation.tsx": "d8aa3a8abc08afdf7ceb806fceff6da62dc4cee75eb7bdf703f8d5c6b1308cf7",
+    "CanchaFooter.tsx": "f1392226387b147c571206a027795eaab3c8cae0765e2c6d62fc74ecf46ed04e",
+    "CanchaHome.tsx": "91dcfe0ef72201d7b41638e938a15cdee3e24491a573cd00ce7d7b66b38bf050",
+    "CanchaDiscovery.tsx": "b11700a1c89445ddbcd4d527b25034e1a56cbde4b93026d996fc148f7bd97e10",
+    "OpportunityStatus.tsx": "07c101d0f802e33a85d50bb525dbb3d26718585ac465ff295ddf29fd0c492275"
+  },
+  "scenes": {
+    "ZuWkzhOX9": "5ebfaa88d68f5de851a6cb5d68bc212b235eed7e600316d9233875fa083889dd",
+    "augiA20Il": "fa42d2731a3dbf76d6b9c8fb987a266a3b15fb17586a9cb1d463917dfbf87517",
+    "YoXnHiVO7": "00fe84ee1eb3c14b545549e575f182834ce09dbc2d22b7c93ee26ab1ac20d57c",
+    "U3ge4GVfE": "164775163447a6a58b1453c8c796772369814723fc38898cffd3aae7ee740a26",
+    "byKUK4ekK": "daeaba4860b368b0b256fa997bb069af57ea7e705c1e5e95d6b4571b67e5363e",
+    "IeTr8B53a": "e449d42379cbf27e5d9ee61fe5edea5671ac9b7c856a6cfbb5bedf6adb763759"
+  },
+  "derivedPages": [
+    {
+      "id": "augiA20Il",
+      "name": "Home"
+    },
+    {
+      "id": "YoXnHiVO7",
+      "name": "/clubs"
+    },
+    {
+      "id": "U3ge4GVfE",
+      "name": "/explore"
+    },
+    {
+      "id": "byKUK4ekK",
+      "name": "/careers"
+    }
+  ]
+}

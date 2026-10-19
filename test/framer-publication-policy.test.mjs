@@ -13,3 +13,9 @@ test('club placement maintenance can publish known profile updates but cannot ad
  const p={...policy,additionalCollections:[{path:'clubs',slugs:['reviewed-club']}]};assert.equal(check({...base,changes:[{type:'CollectionItem',name:'clubs/reviewed-club',status:'updated'}]},p),true);
  for(const change of [{type:'CollectionItem',name:'clubs/new-club',status:'updated'},{type:'CollectionItem',name:'clubs/reviewed-club',status:'added'},{type:'CollectionItem',name:'clubs/reviewed-club',status:'removed'},{type:'WebPage',name:'/clubs',status:'updated'}])assert.throws(()=>check({...base,changes:[change]},p));
 });
+test('derived discovery renders require matching reviewed page identities and data file',()=>{
+ const page={type:'WebPage',nodeId:'p',name:'/clubs',status:'updated'},data={type:'CodeFile',nodeId:'d',name:'CanchaDiscoveryData.tsx',status:'updated'};
+ assert.throws(()=>check({...base,changes:[page,data]},policy));
+ const p={...policy,verifiedDerivedPages:[{id:'p',name:'/clubs'}],verifiedDataFileId:'d'};assert.equal(check({...base,changes:[page,data]},p),true);
+ for(const change of [{...page,nodeId:'other'},{...page,name:'/about'},{...data,name:'Other.tsx'},{...data,status:'added'},{...data,nodeId:'other'}])assert.throws(()=>check({...base,changes:[change]},p));
+});
