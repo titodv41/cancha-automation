@@ -40,7 +40,7 @@ The fresh private review confirmed the account connection, a paused plan, three 
 
 ## Validation and launch boundaries
 
-- 80 automated tests passed after the implementation, including source/privacy projection, dates, filtering, sponsored ordering, publication scope/contracts, original creative evidence, old-queue exclusion, reuse, approval integrity, Meta insights failures and existing private-state/publishing safeguards.
+- 81 automated tests passed after the implementation, including source/privacy projection, dates, filtering, sponsored ordering, publication scope/contracts, original creative evidence, old-queue exclusion, reuse, approval integrity, Meta insights failures and existing private-state/publishing safeguards.
 - Actual desktop 1440px and mobile 390px checks passed: homepage city/activity search; menu and Escape behavior; combined city/age/activity/level filtering; persistent URLs/reload; empty/reset; progressive loading; map-to-list city selection; source-checked toggle; careers and preserved detail routes. No runtime errors or horizontal overflow were observed.
 - A recorded-past camp detail page was separately checked on mobile and displayed the closed/date-passed warning with its real review date.
 - Native forms were not submitted; inbox receipt remains untested. No new Instagram publication has been inferred from local rendering or tests.
@@ -49,3 +49,9 @@ The fresh private review confirmed the account connection, a paused plan, three 
 Pitch the current product as an early local discovery directory starting with Broward, with additional Florida opportunities. Before a wider launch: confirm form receipt, recruit real coach/club submissions, obtain permission for authentic local photos/video, and test a real find-a-team task with a few players/parents. Those are stronger next steps than adding accounts, AI chat, a checkout or more navigation sections.
 
 GitHub status reported an active Actions/Pages incident while the requested jobs were waiting without runners: https://stspg.io/nrv2k8s68bwn. This prevents confirmation of hosted activation and insights, not local validation or Framer publication. Do not request new credentials or claim the scheduler has resumed merely because dispatch was accepted.
+
+The cutover is also applied once by the next successful daily preparation if a separate refresh job is delayed or displaced by GitHub concurrency. The applied creative version is durably checkpointed. Subsequent prepare runs preserve any later owner pause; read-only review/insights actions never activate publishing.
+
+Requested hosted activation: https://github.com/titodv41/cancha-automation/actions/runs/39281221087
+Requested hosted preparation: https://github.com/titodv41/cancha-automation/actions/runs/39281226105
+Requested read-only insights: https://github.com/titodv41/cancha-automation/actions/runs/39278905728

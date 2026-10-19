@@ -1,6 +1,6 @@
 import {expiredPublishingDay} from '../server/github-publish-window.mjs';
 import{collectInstagramInsights,instagramLearning}from'../server/instagram-insights.mjs';
-import{approvedOriginalCreative}from'../server/social-creative.mjs';
+import{approvedOriginalCreative,shouldActivateLocalCreative}from'../server/social-creative.mjs';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {runSubprocess} from './subprocess.mjs';
 import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
@@ -31,12 +31,13 @@ try{
  const checkpoint=async()=>{state=snapshotState(db,connection,state);await client.save(state);};
  if(mode==='migrate'||mode==='resume'){const command=JSON.parse(await readFile('content/instagram/standing-plan-command.json','utf8'));savePlan(db,command.plan,command.ownerInstruction);await checkpoint();}
  if(mode==='pause'){savePlan(db,{enabled:false},'Owner paused daily Instagram through GitHub Actions');await checkpoint();}
- if(mode==='refresh-creative'){
+ const localPolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
+ if(shouldActivateLocalCreative(mode,state,localPolicy)){
   const command=JSON.parse(await readFile('content/instagram/local-plan-command.json')),drafts=JSON.parse(await readFile('content/instagram/launch-refresh-ready.json'));
   if(drafts.length!==3||drafts.some(x=>!approvedOriginalCreative(x)))throw Error('Reviewed local creative assets are missing');
   savePlan(db,{enabled:false},'Replace the rejected old creative with the owner-requested local discovery approach');
   for(const draft of drafts)saveDraft(db,draft);
-  savePlan(db,command.plan,command.ownerInstruction);await checkpoint();
+  savePlan(db,command.plan,command.ownerInstruction);state.localCreativeVersion=localPolicy.requiredCreativeVersion;await checkpoint();
  }
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
