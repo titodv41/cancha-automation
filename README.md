@@ -53,3 +53,7 @@ Reusable Codex installation/start instructions were saved as an environment conf
 ## Daily opportunities
 
 See [daily workflow](docs/daily-opportunities.md) for the weekday discovery schedule, source reports, closed/stale status handling and human-reviewed draft staging. The target is three quality additions, maximum five per New York day, without automatic publication. See [complete Meta and automation setup](docs/connect-meta-and-automation.md). The private service now implements OAuth, encrypted tokens, owner review and scheduling. Custom API schedules appear in its dashboard; Business Suite schedules appear in Planner. Hosting and real Meta authorization remain outstanding.
+
+## Website discovery
+
+See [player age and goal discovery](docs/player-profile-discovery.md) for the current homepage and directory, age evidence rules, private backup requirements and guarded release checks. The current browser smoke test is `node scripts/verify-player-discovery.mjs` (`verify-launch.mjs` forwards to it).

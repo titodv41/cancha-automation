@@ -1,5 +1,26 @@
 export const LEVELS=['Beginner','Recreational','Competitive','Academy','Semi-pro pathway','Professional','School / college']
 export const ACTIVITIES=['Clubs & teams','Fields & places','Training','Tryouts','Camps & showcases','Tournaments']
+export const GOALS=[
+ {activity:'Clubs & teams',label:'Join a club',icon:'club',path:'/clubs'},
+ {activity:'Tryouts',label:'Find tryouts',icon:'tryout',path:'/explore'},
+ {activity:'Camps & showcases',label:'Camps & showcases',icon:'camp',path:'/explore'},
+ {activity:'Training',label:'Improve my game',icon:'train',path:'/clubs'},
+ {activity:'Fields & places',label:'Find a pitch',icon:'pitch',path:'/clubs'},
+ {activity:'Tournaments',label:'Tournaments',icon:'trophy',path:'/explore'}
+]
+export const EMPTY_FILTERS={q:'',city:'',age:'',playerAge:'',role:'player',level:'',activity:'',type:'',checked:false,includeUnknown:true,view:'list'}
+export const PROFILE_KEYS=['playerAge','age','level','role','includeUnknown']
+export function playerAge(value:any){const s=String(value??'');const n=Number(s);return /^\d{1,2}$/.test(s)&&n>=2&&n<=99?n:null}
+export function ageFit(item:any,value:any){
+ const n=playerAge(value);if(n===null)return {hidden:false,known:false,rank:0,label:''}
+ const e=item.ageEvidence||{},audience=String(e.audience||item.audience||'').toLowerCase()
+ if(e.kind==='ages'){const match=e.ranges?.some((r:any)=>n>=r.min&&(r.max===null||n<=r.max));return {hidden:!match,known:!!match,rank:0,label:`Listed ${e.label.toLowerCase()} · check other requirements`}}
+ // U-groups use season/birth-year cutoffs. Conservative bounds only remove clear mismatches.
+ if(e.kind==='season')return {hidden:n<e.min||n>e.max,known:false,rank:1,label:`${e.label} · confirm birth-year cutoff`}
+ const youth=audience.includes('youth'),adult=audience.includes('adult')
+ const hidden=youth&&!adult&&n>=20||adult&&!youth&&n<16
+ return {hidden,known:false,rank:youth||adult?2:3,label:item.kind==='Place'?'Confirm session age rules':'Confirm team / program age eligibility'}
+}
 export function matchesActivity(item:any,activity:string){
  if(!activity)return true
  const p=String(item.programs||'').toLowerCase()
@@ -7,12 +28,15 @@ export function matchesActivity(item:any,activity:string){
  if(activity==='Fields & places')return item.kind==='Place'
  if(activity==='Training')return item.kind==='Open Training'||item.kind==='Club'&&/training|performance|goalkeep|clinic/.test(p)
  if(activity==='Tryouts')return item.kind==='Tryout'
- if(activity==='Camps & showcases')return ['College Opportunity','Showcase'].includes(item.kind)
+ if(activity==='Camps & showcases')return ['College Opportunity','Showcase'].includes(item.kind)||item.kind==='Tournament'&&/showcase/.test(`${item.name} ${item.summary}`.toLowerCase())
  if(activity==='Tournaments')return item.kind==='Tournament'
  return false
 }
-export function filterDiscovery(items:any[],f:any){return items.filter(i=>{
- const q=String(f.q||'').trim().toLowerCase(),city=String(f.city||'').trim().toLowerCase()
- return (!q||`${i.name} ${i.organization} ${i.city} ${i.summary} ${i.programs}`.toLowerCase().includes(q))&&(!city||i.city.toLowerCase().includes(city))&&(!f.level||i.levels.includes(f.level))&&(!f.age||i.audience.toLowerCase().includes(f.age.toLowerCase()))&&matchesActivity(i,f.activity)&&(!f.checked||i.sourceChecked)&&(!f.type||i.kind===f.type)
-})}
-export function readDiscoveryFilters(search:string){const p=new URLSearchParams(search),raw=p.get('level')||p.get('level-2')||'',category=p.get('category-2')||'';return {q:p.get('q')||p.get('search')||'',city:p.get('city')||'',age:p.get('age')||p.get('age-group-2')||(raw==='Youth'?'Youth':''),level:({'Competitive Amateur':'Competitive','College':'School / college','High School':'School / college','Youth':''}[raw]??raw),activity:p.get('activity')||({'Tryout':'Tryouts','Open Training':'Training','Tournament':'Tournaments','Showcase':'Camps & showcases','College Opportunity':'Camps & showcases'}[category]||''),type:p.get('type')||p.get('kind')||(['Job','Internship','Volunteer Opportunity'].includes(category)?category:''),checked:p.get('checked')==='1',view:p.get('view')==='map'?'map':'list'}}
+export function filterDiscovery(items:any[],f:any){const result=items.filter(i=>{
+ const q=String(f.q||'').trim().toLowerCase(),city=String(f.city||'').trim().toLowerCase(),fit=ageFit(i,f.playerAge)
+ return (!q||`${i.name} ${i.organization} ${i.city} ${i.summary} ${i.programs}`.toLowerCase().includes(q))&&(!city||i.city.toLowerCase().includes(city))&&(!f.level||i.levels.includes(f.level))&&(!f.age||String(i.ageEvidence?.audience||i.audience).toLowerCase().includes(f.age.toLowerCase()))&&!fit.hidden&&(f.includeUnknown!==false||playerAge(f.playerAge)===null||fit.known)&&matchesActivity(i,f.activity)&&(!f.checked||i.sourceChecked)&&(!f.type||i.kind===f.type)
+ });return playerAge(f.playerAge)===null?result:result.sort((a,b)=>ageFit(a,f.playerAge).rank-ageFit(b,f.playerAge).rank)}
+export function readDiscoveryFilters(search:string){const p=new URLSearchParams(search),raw=p.get('level')||p.get('level-2')||'',category=p.get('category-2')||'';return {...EMPTY_FILTERS,q:p.get('q')||p.get('search')||'',city:p.get('city')||'',age:p.get('age')||p.get('age-group-2')||(raw==='Youth'?'Youth':''),playerAge:playerAge(p.get('playerAge'))===null?'':p.get('playerAge')||'',role:p.get('role')==='parent'?'parent':'player',level:({'Competitive Amateur':'Competitive','College':'School / college','High School':'School / college','Youth':''}[raw]??raw),activity:p.get('activity')||({'Tryout':'Tryouts','Open Training':'Training','Tournament':'Tournaments','Showcase':'Camps & showcases','College Opportunity':'Camps & showcases'}[category]||''),type:p.get('type')||p.get('kind')||(['Job','Internship','Volunteer Opportunity'].includes(category)?category:''),checked:p.get('checked')==='1',includeUnknown:p.get('ages')!=='known',view:p.get('view')==='map'?'map':'list'}}
+export function discoverySearch(filters:any){const p=new URLSearchParams();for(const k of ['q','city','age','playerAge','role','level','activity','type','checked','view']){const v=filters[k];if(!v||k==='view'&&v==='list'||k==='role'&&v==='player'||k==='playerAge'&&playerAge(v)===null)continue;p.set(k,v===true?'1':String(v))}if(filters.includeUnknown===false)p.set('ages','known');return p.toString()}
+export function discoveryHref(path:string,f:any,overrides:any={}){const search=discoverySearch({...f,q:'',type:'',checked:false,...overrides});return path+(search?'?'+search:'')}
+export function playerSummary(f:any){const n=playerAge(f.playerAge);return [f.role==='parent'?'For your child':'For you',n!==null?`age ${n}`:f.age?f.age.toLowerCase():'all ages',f.level].filter(Boolean).join(' · ')}
