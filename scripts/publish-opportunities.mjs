@@ -8,7 +8,7 @@ await withProject(async f=>{
  if(dataFile){contract=await verifyReleaseContract(f);derived=await syncDiscoveryCatalog(f,{apply:true});}
  const preview=await f.agent.publish({action:'preview'}),hasChanges=checkAutomaticPublication(preview,{collectionId:collection.id,itemSlugs:(await collection.getItems()).map(item=>item.slug),reviewedPages,additionalCollections,verifiedDerivedPages:contract?.derivedPages||[],verifiedDataFileId:dataFile?.id});
  const before=await f.getPublishInfo();let result={published:false,noChanges:!hasChanges};
- if(hasChanges||process.argv.includes('--cms-updates')){
+ if(hasChanges||derived?.result.applied||process.argv.includes('--cms-updates')){
   if(dataFile){await verifyReleaseContract(f);const current=await syncDiscoveryCatalog(f);if(current.content!==derived.content||(await f.getCodeFiles()).find(x=>x.id===dataFile.id)?.content!==derived.content)throw Error('Public discovery data changed during publication');}
   const receipt=await f.publish();if(receipt.errors?.length||['failed','blocked'].includes(receipt.status))throw Error('Framer publication rejected');
   let info;for(let i=0;i<20;i++){info=await f.getPublishInfo();if(info.production?.deploymentTime> (before.production?.deploymentTime||0))break;await new Promise(resolve=>setTimeout(resolve,2000));}

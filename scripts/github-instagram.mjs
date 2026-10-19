@@ -1,5 +1,6 @@
 import {expiredPublishingDay} from '../server/github-publish-window.mjs';
-import{collectInstagramInsights}from'../server/instagram-insights.mjs';
+import{collectInstagramInsights,instagramLearning}from'../server/instagram-insights.mjs';
+import{approvedOriginalCreative}from'../server/social-creative.mjs';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {runSubprocess} from './subprocess.mjs';
 import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyAgent} from 'undici';import fs from 'node:fs';
@@ -13,7 +14,7 @@ import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYor
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -30,6 +31,13 @@ try{
  const checkpoint=async()=>{state=snapshotState(db,connection,state);await client.save(state);};
  if(mode==='migrate'||mode==='resume'){const command=JSON.parse(await readFile('content/instagram/standing-plan-command.json','utf8'));savePlan(db,command.plan,command.ownerInstruction);await checkpoint();}
  if(mode==='pause'){savePlan(db,{enabled:false},'Owner paused daily Instagram through GitHub Actions');await checkpoint();}
+ if(mode==='refresh-creative'){
+  const command=JSON.parse(await readFile('content/instagram/local-plan-command.json')),drafts=JSON.parse(await readFile('content/instagram/launch-refresh-ready.json'));
+  if(drafts.length!==3||drafts.some(x=>!approvedOriginalCreative(x)))throw Error('Reviewed local creative assets are missing');
+  savePlan(db,{enabled:false},'Replace the rejected old creative with the owner-requested local discovery approach');
+  for(const draft of drafts)saveDraft(db,draft);
+  savePlan(db,command.plan,command.ownerInstruction);await checkpoint();
+ }
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
   const run=await runSubprocess(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');
@@ -37,13 +45,14 @@ try{
   phase='reload-db';db.close();db=openQueue(join(dir,'reloaded.sqlite'));phase='reload-state';await client.close();client=githubStateClient();state=await client.load();phase='restore-state';restoreState(db,state);
   phase='growth-report';state.growth=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/report.json','utf8')).growth;
  }
- if(mode==='prepare'||mode==='migrate'||mode==='resume'){
-  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true});await checkpoint();
+ if(mode==='prepare'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'){
+  const creativePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
+  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null});await checkpoint();
  }
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='insights'){
   const report=await collectInstagramInsights(connection,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
-  state.instagramInsights=[...(state.instagramInsights||[]).slice(-89),report];await checkpoint();await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/instagram-insights.json',JSON.stringify(report,null,2),{mode:0o600});console.log(JSON.stringify({readOnlyInsights:true,status:report.status,posts:report.posts.length,requiredPermission:report.requiredPermission}));
+  state.instagramInsights=[...(state.instagramInsights||[]).slice(-89),report];const learning=instagramLearning(state.instagramInsights);report.topicComparison=learning.topicComparison;report.ageCohortHours=learning.ageCohortHours;report.learningNote=learning.note||'Comparable cohort found; topic preference is an experiment, not proof of causation or guaranteed reach.';await checkpoint();await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/instagram-insights.json',JSON.stringify(report,null,2),{mode:0o600});console.log(JSON.stringify({readOnlyInsights:true,status:report.status,posts:report.posts.length,requiredPermission:report.requiredPermission,comparableTopics:learning.topicComparison.length}));
  }
  if(mode==='reconnect'){
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');

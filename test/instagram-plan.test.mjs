@@ -45,3 +45,8 @@ test('standing plan skips a reused source photo even when the next post has a di
  saveDraft(db,{...draft('b-fresh'),assetChecksum:'3'.repeat(64),assetUrl:'https://framerusercontent.com/images/fresh.jpg',photo:{originalChecksum:'d'.repeat(64),sourcePage:'https://commons.wikimedia.org/wiki/File:Other.jpg',url:'https://framerusercontent.com/images/other.jpg'}});
  savePlan(db,plan,'Fixture owner authorizes the standing plan');const result=await prepareStandingPlan(db,{now,connected:true});assert.deepEqual(result.scheduled.map(x=>x.id),['b-fresh']);assert(result.skipped.some(x=>x.id==='a-reused'));assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='a-reused'").get().status,'Draft');
 }));
+test('the new creative gate excludes legacy posts and allows evidenced original directory artwork',()=>fixture(async db=>{
+ saveDraft(db,draft('a-legacy'));
+ const image='b'.repeat(64);saveDraft(db,{...draft('b-local'),creativeVersion:'cancha-local-v2',assetChecksum:image,rights:'Original Cancha screenshot and design',visualEvidence:{creator:'Cancha',kind:'product-demo',subjectKey:'directory-demo',sourceUrl:'https://pioneering-friday-005497.framer.app/clubs',assetChecksum:image,renderedAt:new Date().toISOString()}});
+ savePlan(db,plan,'Owner requested better local discovery content under the existing daily authorization');const result=await prepareStandingPlan(db,{now,connected:true,requireBrandPhotos:true,requireCreativeVersion:'cancha-local-v2'});assert.deepEqual(result.scheduled.map(x=>x.id),['b-local']);assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='a-legacy'").get().status,'Draft');
+}));

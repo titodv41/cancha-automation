@@ -1,4 +1,4 @@
-import {approvedSocialPhoto,recentlyUsedPhoto} from './social-creative.mjs';
+import {approvedSocialPhoto,approvedOriginalCreative,recentlyUsedPhoto} from './social-creative.mjs';
 import {backendFrozen} from './github-state.mjs';
 import {contentHash,approve} from './instagram-queue.mjs';
 import {newYorkSchedule} from './scheduling.mjs';
@@ -21,7 +21,7 @@ export function savePlan(db,input,ownerInstruction){
 }
 export function validPostImage(row){try{const url=new URL(row.assetUrl);return url.origin==='https://framerusercontent.com'&&!url.username&&!url.password&&/^\/images\/[^?]+\.jpe?g$/i.test(url.pathname)&&!url.search&&/^[a-f0-9]{64}$/.test(row.assetChecksum||'');}catch{return false;}}
 function week(date){const d=new Date(date+'T12:00:00Z'),day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);return d.toISOString().slice(0,10);}
-export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false}={}){
+export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false,requireCreativeVersion=null}={}){
  const plan=readPlan(db);if(backendFrozen(db)||!plan?.enabled||!connected)return {scheduled:[],skipped:[],paused:true};
  const today=dateInNewYork(new Date(now));const all=db.prepare('SELECT * FROM instagram_queue ORDER BY id').all();
  const queueHash=all.map(row=>row.id+':'+row.status+':'+contentHash(JSON.parse(row.content))).join('|');
@@ -33,7 +33,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
  }
  const windowHash=queueHash+'|'+slots.map(slot=>slot.scheduledAt).join(',');
  if(plan.lastCheckedDay===today&&plan.lastQueueHash===windowHash)return {scheduled:[],skipped:[],alreadyChecked:true};
- const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&validPostImage(content);});
+ const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireCreativeVersion||content.creativeVersion===requireCreativeVersion)&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo)||approvedOriginalCreative(content))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&validPostImage(content);});
  const result={scheduled:[],skipped:[]};const blocked=new Set();let cursor=0;
  for(const slot of slots){
   const scheduled=db.prepare('SELECT * FROM instagram_queue WHERE scheduled_at IS NOT NULL').all();

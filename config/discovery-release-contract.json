@@ -1,13 +1,13 @@
 {
   "version": 1,
   "codeFiles": {
-    "CanchaUI.tsx": "d3c67f27ec6e067f5c3780c0c242b94f507352f081705d99800773a23394b325",
-    "DiscoveryModel.tsx": "7f6686ac33ae34281f250f7392579bc14d340616baf8f72c2c1e634f0139eb1e",
+    "CanchaUI.tsx": "520dbabfae0e786d172d4c85ae6f2528e6926bfe53385d9d9d79c068e35c26bf",
+    "DiscoveryModel.tsx": "2cc8bfdecb5d644ea00ab3924a6122173e78344d639775855524b3e2ba72e035",
     "DiscoveryCityMap.tsx": "47b315bf6940536899e12583b2de232d02f1d38bf8b7c07f295a7b4c0250bd3e",
-    "CanchaNavigation.tsx": "d8aa3a8abc08afdf7ceb806fceff6da62dc4cee75eb7bdf703f8d5c6b1308cf7",
-    "CanchaFooter.tsx": "f1392226387b147c571206a027795eaab3c8cae0765e2c6d62fc74ecf46ed04e",
-    "CanchaHome.tsx": "91dcfe0ef72201d7b41638e938a15cdee3e24491a573cd00ce7d7b66b38bf050",
-    "CanchaDiscovery.tsx": "b11700a1c89445ddbcd4d527b25034e1a56cbde4b93026d996fc148f7bd97e10",
+    "CanchaNavigation.tsx": "8e83108c879f4f3b9cc40649568ebb7b1d334a730c23853734bd1be90f47ae8d",
+    "CanchaFooter.tsx": "84a62eb2d6fd6994e5a405774f6a7a689c92c743764ad3a3db210ae932a139cb",
+    "CanchaHome.tsx": "1a778d70cb9a579083ed91b5235895192ab96c6a05570535387b72a5fc50d5ab",
+    "CanchaDiscovery.tsx": "77a21eaf618ee25fcd9637cc9040d9815653201c7c3af530d979e4b04af42a9a",
     "OpportunityStatus.tsx": "07c101d0f802e33a85d50bb525dbb3d26718585ac465ff295ddf29fd0c492275"
   },
   "scenes": {

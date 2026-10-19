@@ -1,5 +1,7 @@
 {
   "evergreenBankEnabled": false,
   "syndicatedHeadlinePostsEnabled": false,
+  "localEditorialEnabled": true,
+  "requiredCreativeVersion": "cancha-local-v2",
   "reason": "October 15 creative reset: the fixed bank and uncontextualized headlines do not meet Cancha's local editorial direction. The live Instagram plan is paused separately. Website opportunity discovery continues."
 }

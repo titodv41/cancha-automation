@@ -20,4 +20,5 @@ const workflow=JSON.parse(await readFile('config/opportunity-workflow.json'));
 const daily=JSON.parse(await readFile(dir+'/report.json'));
 const cmsUpdated=result.placementsCleared>0||result.classified>0||result.staged>0||daily.statusesApplied>0||daily.sourceRefreshesApplied>0||daily.clubSourceRefresh?.length>0;
 if(canWrite&&workflow.publishAutomatically){run('scripts/publish-opportunities.mjs',cmsUpdated?['--cms-updates']:[]);result.published=JSON.parse(await readFile('private-data/framer-publication.json')).published;}
+if(connected&&github)try{run('scripts/prepare-local-editorial.mjs')}catch{result.blockers.push('Local Instagram creative preparation failed validation. No new local draft delivered; inspect the run before retrying.');}
 await writeFile(dir+'/automation-result.json',JSON.stringify(result,null,2),{mode:0o600});console.log(JSON.stringify(result));

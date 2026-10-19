@@ -1,4 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {applyEditorialCreative,approvedSocialPhoto} from '../server/social-creative.mjs';
+import{approvedOriginalCreative}from'../server/social-creative.mjs';import{contentHash}from'../server/instagram-queue.mjs';
 const photo={url:'https://framerusercontent.com/images/photo.jpg',sourcePage:'https://commons.wikimedia.org/wiki/File:Soccer.jpg',originalChecksum:'a'.repeat(64),creator:'Photographer',license:'CC BY 4.0',licenseUrl:'https://creativecommons.org/licenses/by/4.0',layout:'photo-poster',alt:'Soccer in Dallas.'};
 test('real editorial photos require permitted source terms and retain credit/context',()=>{assert(approvedSocialPhoto(photo));for(const invalid of [{...photo,license:'All rights reserved'},{...photo,url:'http://example.test/photo.jpg'},{...photo,sourcePage:'https://example.test/photo'},{...photo,originalChecksum:''}])assert.equal(approvedSocialPhoto(invalid),false);const row={id:'test',sourceType:'brand',caption:'Practice makes progress.',altText:'Cancha tip.'};const result=applyEditorialCreative(row,[photo]);assert(result.caption.includes('Photographer'));assert(result.caption.includes(photo.licenseUrl));assert(result.altText.includes('Dallas'));assert.deepEqual(applyEditorialCreative(row,[photo]),result);assert.throws(()=>applyEditorialCreative(row,[]));const news={...row,sourceType:'news'};assert.equal(applyEditorialCreative(news,[photo]),news);});
 
@@ -11,4 +12,9 @@ test('photo reuse checks original source across different crops and render files
  assert.equal(recentlyUsedPhoto({photo:{sourcePage:'https://commons.wikimedia.org/wiki/File:Different.jpg'}},[old],at),false);
  assert.equal(recentlyUsedPhoto({photo},[{...old,status:'Draft'}],at),false);
  assert.equal(recentlyUsedPhoto({photo},[{...old,published_at:'2026-09-15T22:00:00Z'}],at),false);
+});
+test('new original product artwork requires current evidence, matching image bytes and an actual Cancha source',()=>{
+ const base={creativeVersion:'cancha-local-v2',assetChecksum:'c'.repeat(64),rights:'Original Cancha design',caption:'Local clubs',altText:'Directory demo',visualEvidence:{creator:'Cancha',kind:'product-demo',subjectKey:'demo-one',sourceUrl:'https://pioneering-friday-005497.framer.app/clubs',assetChecksum:'c'.repeat(64),renderedAt:new Date().toISOString()}};
+ assert.equal(approvedOriginalCreative(base),true);for(const row of [{...base,creativeVersion:'old'},{...base,assetChecksum:'d'.repeat(64)},{...base,visualEvidence:{...base.visualEvidence,sourceUrl:'https://other.example/clubs'}},{...base,visualEvidence:{...base.visualEvidence,renderedAt:'2026-01-01T00:00:00Z'}},{...base,visualEvidence:{...base.visualEvidence,sourceReviewedOn:'2020-01-01'}}])assert.equal(approvedOriginalCreative(row),false);
+ assert.notEqual(contentHash(base),contentHash({...base,visualEvidence:{...base.visualEvidence,subjectKey:'changed'}}));
 });
