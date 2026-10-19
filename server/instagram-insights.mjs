@@ -1,4 +1,7 @@
 const metrics=['reach','saved','shares','likes','comments','total_interactions'];
+// Keep only the age window used by comparisons in durable state. The private
+// report artifact retains the full read; daily snapshots must not grow forever.
+export function learningSnapshot(report){return{...report,posts:(report.posts||[]).filter(p=>{const age=(Date.parse(report.collectedAt)-Date.parse(p.publishedAt))/3600000;return age>=48&&age<192}),unavailableMetrics:[],recommendations:[]};}
 export function instagramLearning(reports){
  const first=new Map();for(const r of [...reports].sort((a,b)=>Date.parse(a.collectedAt)-Date.parse(b.collectedAt)))for(const p of r.posts||[]){const age=(Date.parse(r.collectedAt)-Date.parse(p.publishedAt))/3600000;if(age<48||age>=192||!Number.isFinite(age)||!(p.metrics.reach>=20)||!Number.isFinite(p.metrics.saved)||!Number.isFinite(p.metrics.shares))continue;const cohort=Math.floor(age/48),key=p.id+':'+cohort;if(!first.has(key))first.set(key,{...p,cohort});}
  const candidates=[];for(const cohort of[1,2,3]){const topics={};for(const p of first.values())if(p.cohort===cohort)(topics[p.topic]||=[]).push((p.metrics.saved+p.metrics.shares)/p.metrics.reach*100);const comparison=Object.entries(topics).filter(([,v])=>v.length>=5).map(([topic,v])=>({topic,posts:v.length,savesAndSharesPer100Reached:v.reduce((a,b)=>a+b,0)/v.length})).sort((a,b)=>b.savesAndSharesPer100Reached-a.savesAndSharesPer100Reached);if(comparison.length>=2)candidates.push({ageCohortHours:[cohort*48,(cohort+1)*48],topicComparison:comparison});}

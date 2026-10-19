@@ -37,11 +37,11 @@ The Orlando stadium photograph is explicitly labeled as an **archive from 2018**
 
 The standing feed plan remains one post daily targeting **18:00 America/New_York**, subject to GitHub schedule delays, freshness, duplicate and uncertain-publication guards. Refreshing assets is not a publication receipt. Stories remain gated because the migrated account type is unconfirmed.
 
-The real read-only insights run [39301572667](https://github.com/titodv41/cancha-automation/actions/runs/39301572667) returned **permission_required / instagram_manage_insights**. No reach/save/share measurements were obtained. Publishing works independently of this permission; we cannot claim that performance learning is operating yet. The exact secure owner steps are in [Instagram analytics access](instagram-insights-connection.md). No token should be pasted into chat.
+The real read-only insights run [39301572667](https://github.com/titodv41/cancha-automation/actions/runs/39301572667) returned **permission_required / instagram_manage_insights**. No reach/save/share measurements were obtained. The read-only report now runs daily at approximately 17:37 UTC; durable history keeps 35 compact snapshots of the comparable post-age window instead of accumulating full reports indefinitely. Publishing works independently of this permission; we cannot claim that performance learning is operating yet. The exact secure owner steps are in [Instagram analytics access](instagram-insights-connection.md). No token should be pasted into chat.
 
 ## Validation
 
-- 100 automated tests passed, including current-season source rejection, duplicate prevention, regional filtering, map clustering, publication boundaries, photo attribution/context and existing publication safeguards.
+- 104 automated tests passed, including current-season source rejection, duplicate prevention, regional filtering, map clustering, publication boundaries, photo attribution/context and existing publication safeguards.
 - Eleven Framer code files passed typechecking before publication.
 - Live desktop/mobile verification and the remote daily/queue run are recorded in the delivery addendum below when completed.
 - The guarded publisher verifies the exact reviewed CMS baseline and source files. An explicit `--include-reviewed-cms` permits only known reviewed collection items for this one-time batch; routine daily publishing retains its narrower policy.
@@ -57,3 +57,11 @@ Browser checks never submit forms. The owner's earlier organization-form email r
 ### Published website verification
 
 Deployment `56f3169fa` was published at 18:29 UTC on October 19, with no remaining pending changes. The full discovery browser suite passed on the public site at 1440, 390 and 320 pixels. The additional Florida suite also passed at all three widths: visible navigation, regional results and URL persistence, eleven courses and analysis/empty/reset filters, both real provider profiles, the FIFA directory link, retained native submission form, the waitlist condition and new club routes. No horizontal overflow or runtime errors were recorded.
+
+### Unattended source repair and media evidence
+
+The first real preparation run, [39303802039](https://github.com/titodv41/cancha-automation/actions/runs/39303802039), refreshed/published the website and delivered two photographic Instagram drafts, but its club import was blocked by the UPSL HTTP response. It added no clubs; a green workflow result alone did not establish successful growth. The status summary now exposes club additions, remaining candidates and automation blockers.
+
+An independent adapter now follows the official FYSA page’s own public EmbedDirectory data endpoint. The inspected directory contained 223 members; 116 records had supported South/Central Florida city mappings. These are candidates, not 116 new verified programs. Each addition also requires a matching club website; repurposed casino domains, unsafe links, ambiguous identity, duplicate names/aliases and unsupported locations are held. Canonical HTTPS redirects are allowed only between the same host and its www variant. Administrative street addresses and individual contacts are not copied as playing venues. Identifying logos are used when established; otherwise the original Cancha artwork remains visible. Unattended writes still require the encrypted backup and remain capped at ten per run.
+
+All 90 distinct stored image URLs across 125 records decoded successfully. A live simulated image failure also displayed the intended original Cancha fallback. No private form was submitted by these checks.

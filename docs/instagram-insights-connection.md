@@ -12,7 +12,7 @@ Use the existing **Instagram API with Facebook Login** route. Do not switch inte
 
 If Meta reports an access-level or permission error, share only its non-secret error text. Do not expose tokens in screenshots. An app permission toggle alone does not update a previously issued token. The old Render OAuth/dashboard is not required by this secure replacement-token workflow.
 
-The weekly report and bounded content adjustments are implemented. Topic preference requires independent posts sampled in comparable age cohorts and enough examples in two topics. Real performance learning remains blocked until Meta grants the reads and enough data exists; no growth guarantee is made.
+The daily read-only report and bounded content adjustments are implemented. Topic preference requires independent posts sampled in comparable age cohorts and enough examples in two topics. Real performance learning remains blocked until Meta grants the reads and enough data exists; no growth guarantee is made.
 
 Official references:
 
