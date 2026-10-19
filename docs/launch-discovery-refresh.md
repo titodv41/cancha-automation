@@ -14,7 +14,7 @@ The owner asked for a simpler, professional local soccer destination, fewer head
 
 At the baseline there were 84 Opportunities records: 69 Active, 7 Expired, 6 Pending review and 2 Archived. This design migration changed no listing content, status, slug or registration URL. During the task, authorized lifecycle processing changed those three passed-end-date records to Expired and refreshed the four existing club-source review dates to October 19. Those updates were inspected and preserved; all titles, images, registration links and slugs stayed unchanged. The resulting CMS counts are 66 Active, 10 Expired, 6 Pending review and 2 Archived. The current public projection contains 50 play opportunities, 16 careers and 20 club/place profiles (6 clubs, 14 venues). Three Active records had end dates before October 19 and are omitted from current results without deleting their URLs. Active is an owner/CMS state, not proof that registration is open. Four current listings had recent organizer-source checks; most legacy opportunity availability remains unconfirmed and is labeled accordingly.
 
-Providers and Offers still have zero records. Existing email submission destinations were preserved. Browser checks do not establish Gmail delivery; the owner still needs to submit and confirm one receipt before advertising organization intake as tested. No email was sent by this work.
+Providers and Offers still have zero records. Existing email submission destinations were preserved. On October 19 the owner confirmed a test /organizations submission arrived in Gmail. This is owner-confirmed delivery, beyond the browser checks. Provider/offer delivery was not separately confirmed. No email was sent by the tools.
 
 ## Keeping the directory current
 
@@ -43,10 +43,10 @@ The fresh private review confirmed the account connection, a paused plan, three 
 - 81 automated tests passed after the implementation, including source/privacy projection, dates, filtering, sponsored ordering, publication scope/contracts, original creative evidence, old-queue exclusion, reuse, approval integrity, Meta insights failures and existing private-state/publishing safeguards.
 - Actual desktop 1440px and mobile 390px checks passed: homepage city/activity search; menu and Escape behavior; combined city/age/activity/level filtering; persistent URLs/reload; empty/reset; progressive loading; map-to-list city selection; source-checked toggle; careers and preserved detail routes. No runtime errors or horizontal overflow were observed.
 - A recorded-past camp detail page was separately checked on mobile and displayed the closed/date-passed warning with its real review date.
-- Native forms were not submitted; inbox receipt remains untested. No new Instagram publication has been inferred from local rendering or tests.
+- Tools did not submit native forms. The owner confirmed the organization-form test email arrived in Gmail. No new Instagram publication has been inferred from local rendering or tests.
 - Hosted checks, preparation, insights and creative activation need their actual GitHub run results; queued runs are reported as pending, not successful.
 
-Pitch the current product as an early local discovery directory starting with Broward, with additional Florida opportunities. Before a wider launch: confirm form receipt, recruit real coach/club submissions, obtain permission for authentic local photos/video, and test a real find-a-team task with a few players/parents. Those are stronger next steps than adding accounts, AI chat, a checkout or more navigation sections.
+Pitch the current product as an early local discovery directory starting with Broward, with additional Florida opportunities. Before a wider launch: recruit real coach/club submissions, obtain permission for authentic local photos/video, and test a real find-a-team task with a few players/parents. Those are stronger next steps than adding accounts, AI chat, a checkout or more navigation sections.
 
 GitHub status reported an active Actions/Pages incident while the requested jobs were waiting without runners: https://stspg.io/nrv2k8s68bwn. This prevents confirmation of hosted activation and insights, not local validation or Framer publication. Do not request new credentials or claim the scheduler has resumed merely because dispatch was accepted.
 
