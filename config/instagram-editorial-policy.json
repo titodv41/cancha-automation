@@ -3,5 +3,6 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "October 15 creative reset: the fixed bank and uncontextualized headlines do not meet Cancha's local editorial direction. The live Instagram plan is paused separately. Website opportunity discovery continues."
+  "reason": "October 19 local discovery refresh: keep the rejected generic bank/headlines disabled; admit only evidenced local-v2 creative and preserve any later owner pause.",
+  "cutoverRequestedAt": "2026-10-19T15:45:00.000Z"
 }

@@ -5,7 +5,7 @@ export function approvedOriginalCreative(row){
  if(e.kind!=='parent-guide'){try{const u=new URL(e.sourceUrl);if(u.origin!=='https://pioneering-friday-005497.framer.app'||!['/clubs','/explore'].some(p=>u.pathname===p||u.pathname.startsWith(p+'/')))return false}catch{return false}}
  return !!row.rights&&!!row.caption&&!!row.altText;
 }
-export const shouldActivateLocalCreative=(mode,state,policy)=>mode==='refresh-creative'||mode==='prepare'&&policy.localEditorialEnabled===true&&!!policy.requiredCreativeVersion&&state.localCreativeVersion!==policy.requiredCreativeVersion;
+export const shouldActivateLocalCreative=(mode,state,policy)=>!(policy.cutoverRequestedAt&&state.plan?.enabled===false&&Date.parse(state.plan.updatedAt)>Date.parse(policy.cutoverRequestedAt))&&(mode==='refresh-creative'||mode==='prepare'&&policy.localEditorialEnabled===true&&!!policy.requiredCreativeVersion&&state.localCreativeVersion!==policy.requiredCreativeVersion);
 export function applyEditorialCreative(row,photos){
  if(row.sourceType!=='brand')return row;
  const approved=photos.filter(approvedSocialPhoto);if(!approved.length)throw Error('Approved real photography is required for brand preparation');
