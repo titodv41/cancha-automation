@@ -1,6 +1,6 @@
 import{createHash}from'node:crypto';
 export function sceneDigest(value){
- const stable=x=>Array.isArray(x)?x.map(stable):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).filter(k=>!k.startsWith('$')).sort().map(k=>[k,stable(x[k])])):x;
+ const stable=x=>Array.isArray(x)?x.map(stable):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).filter(k=>!k.startsWith('$')||k.startsWith('$control__')).sort().map(k=>[k,stable(x[k])])):x;
  return createHash('sha256').update(JSON.stringify(stable(value))).digest('hex');
 }
 export const contentDigest=value=>createHash('sha256').update(value).digest('hex');

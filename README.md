@@ -1,6 +1,6 @@
 # Cancha automation
 
-Cancha's existing Framer project is **GU8EIeQXaRbty0S23thu**. Live website: https://pioneering-friday-005497.framer.app/. The October 20 discovery release adds city/ZIP search, clearer cards/copy and 130 additional source-backed club profiles (201 club/place profiles in total). See [the current discovery and growth pilot](docs/discovery-growth-pilot.md) for scope, evidence, campaigns and limitations; older delivery notes are historical snapshots.
+Cancha's existing Framer project is **GU8EIeQXaRbty0S23thu**. Live website: https://pioneering-friday-005497.framer.app/. The latest October 20 visual-directory release adds **130 profiles, for 331 total**: clubs/league squads, venues and pickup organizers. It adds visual categories, sourced league/division filters and concise club/opportunity pages. See [the current release](docs/visual-directory-release.md) for evidence and coverage limits; [the earlier discovery/growth pilot](docs/discovery-growth-pilot.md) preserves campaign and ZIP-search history.
 
 **Current backend: GitHub Actions, not Render.** The owner-authorized plan is one automatically selected eligible Instagram feed post daily around 18:00 New York. The October 19 post has a confirmed Meta publication receipt. Stories and video publishing are not enabled. Publishing permission and insights permission are separate: [the remaining analytics setup](docs/instagram-insights-connection.md) explains the secure owner step for performance learning.
 
@@ -28,8 +28,8 @@ GitHub Actions needs its own **Repository secret** named `FRAMER_API_KEY`; Codex
 ## Discovery and daily updates
 
 - `framer/CanchaHome.tsx`, `CanchaDiscovery.tsx` and `DiscoveryModel.tsx`: what/where search, optional age/level/activity filters, ZIP-area proximity, shareable filters and bounded campaign attribution.
-- `server/discovery-catalog.mjs`: public-only projection of Clubs and Active Opportunities; no private submission/contact fields.
-- `scripts/discover-florida-clubs.mjs`: official UPSL/FYSA adapters, duplicate checks, safe website identity, reviewed badge selection, backup before mutation and guarded publication. Daily cap: 15 qualified club profiles, not a guaranteed quota.
+- `server/discovery-catalog.mjs`: public-only projection of Clubs and Active Opportunities, plus safe details for retained closed URLs. Pending submissions/contact paragraphs are excluded; common card/detail facts are packed once to fit Framer’s file limit.
+- `scripts/discover-florida-clubs.mjs`: official UPSL Premier/Division 1 and FYSA adapters, duplicate checks, safe website identity, reviewed badge selection, backup before mutation and guarded publication. Daily cap: 25 qualified club profiles, not a guaranteed quota.
 - `scripts/automate-opportunities.mjs`: source/date checks, qualified opportunity staging, directory growth, reviewed publication and local Instagram draft preparation. The configured opportunity research target is 50; actual source quality determines additions. Club profiles are counted separately from current openings.
 - `scripts/github-instagram.mjs`: encrypted private GitHub state, standing plan, exactly bounded dispatch and publication receipts. The rejected generic content bank stays disabled.
 - `config/growth-campaigns.json` and `content/instagram/discovery-campaigns.json`: organic discovery campaign plan and original creative pool. No paid ads or new subscription service was activated.
@@ -40,9 +40,9 @@ Existing owner-activated opportunities must not be sent back to Pending review m
 
 ## Verification and references
 
-`npm test` covers source adapters, privacy, duplicate/lifecycle rules, queue receipts, age matching, ZIP search, campaign links and publication scope. Framer typechecks code before application. `scripts/verify-simple-discovery.mjs` and `verify-nearby-discovery.mjs` check browsing on desktop/mobile; `verify-florida-expansion.mjs` checks courses, services and preserved forms/routes. Browser checks block outgoing POSTs and do not send submissions.
+`npm test` covers source adapters, privacy, duplicate/lifecycle rules, queue receipts, age matching, ZIP search, campaign links and publication scope. Framer typechecks code before application. `scripts/verify-visual-discovery.mjs`, `verify-simple-discovery.mjs` and `verify-nearby-discovery.mjs` check browsing/details on desktop/mobile; `verify-florida-expansion.mjs` checks courses, services and preserved forms/routes. Browser checks block outgoing POSTs and do not send submissions.
 
-`backups/` and `private-data/` are private and excluded from Git. Preserve private backups before discarding the workspace. `previews/zip-discovery/` contains the current website/campaign previews and an unscheduled product-video prototype. Older files in `audit/`, `inputs/`, `previews/` and deployment guides preserve implementation history.
+`backups/` and `private-data/` are private and excluded from Git. Preserve private backups before discarding the workspace. `previews/visual-discovery/` contains the latest website previews. `previews/zip-discovery/` preserves earlier campaign previews and an unscheduled product-video prototype. Older files in `audit/`, `inputs/`, `previews/` and deployment guides preserve implementation history.
 
 - [Discovery and growth pilot](docs/discovery-growth-pilot.md)
 - [Instagram analytics access](docs/instagram-insights-connection.md)

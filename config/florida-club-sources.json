@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "maximumPerRun": 15,
+  "maximumPerRun": 25,
   "url": "https://premier.upsl.com/teams/",
   "locations": {
     "Miami": {
@@ -486,5 +486,11 @@
       "reviewedOn": "2026-10-20",
       "reason": "Own location page identifies Orlando; FYSA mailing city is St. Petersburg."
     }
-  }
+  },
+  "additionalUpslDirectories": [
+    {
+      "url": "https://division1.upsl.com/teams/",
+      "division": "Division 1"
+    }
+  ]
 }

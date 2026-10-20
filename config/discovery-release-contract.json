@@ -2,26 +2,33 @@
   "version": 1,
   "codeFiles": {
     "OpportunityImage.tsx": "73c5264c529a46dc5b52772dd33b7845832cdb67b4731dc07ddc8ef97d863d48",
-    "TrainingDirectory.tsx": "ded7ac30180557e2c9b260881843f8cd82eb8b5f483dc5e22174238cf4037f19",
-    "ClubProfileVisual.tsx": "7b678c19d95086a51b1a931da627b697c7276bfe9c21b3859ebfedcc628059b2",
-    "CanchaUI.tsx": "1fee8b6d240c83f3307fb946d33aff1fcb5be7b71b6afdc45a6c7e2f7ac80770",
-    "DiscoveryModel.tsx": "4413691fa6b2458a64a4508fc0f156e49d168112e989fbd90bf9f01927ea90cc",
-    "DiscoveryCityMap.tsx": "23cb1417d0ed9a292e1a0aaf60e1205161a9f349ad6fcd92854494170278fada",
-    "CanchaNavigation.tsx": "f6aa6fcb9a0e9ae84775443d1661e65b7179ae1ca83dd89542057365a77feca2",
-    "CanchaFooter.tsx": "fc8d62614aa5cab0e1279f4588b58dd78314af78a4f40d78f99a3707d2b6cd2b",
-    "CanchaHome.tsx": "cf7fdb67744b9e11b6261fd794d4dac8b0394adcd7a8097f26cf45909e27a958",
-    "CanchaDiscovery.tsx": "71e6bb8f4d6276d1e0c69c81d401aa50a98874f2020ceb03ca7ae66906c229a3",
-    "OpportunityStatus.tsx": "664349ee99574bca6ae35bf10c6b24b636411ceb9b0c8e3efcc7e01c01aa3240",
-    "CanchaPlayerFit.tsx": "b7122e5a742d22084abf4ad9bb6ca0cb75ccd624ceddede601c45d665d387c16"
+    "TrainingDirectory.tsx": "b4099b36730981a539dd6eb0efd7cc7456f33ffd792f252ba66a0e6503071a81",
+    "ClubProfileVisual.tsx": "50596ad890e54cf4fa0a7adbb28ae7a4dead6fab2ae4bf034bbeb9d71caf0f99",
+    "CanchaUI.tsx": "8f3d186b6047eba9664d7007a92b3580c221c7288e9170c2cc44be18419a74e5",
+    "DiscoveryModel.tsx": "a92851594d87497630db3b0e93475891b3cf0decc34d18d77516f89c7e24073f",
+    "DiscoveryCityMap.tsx": "9440c2e903df73d85904607a4b92851d710c14ab8672c90a9c7b9e51bc48865c",
+    "CanchaNavigation.tsx": "e0d9e78da867c6a0760d17d61e580f1fcdf1ec0b7070ab37e67dbbd26849c4ac",
+    "CanchaFooter.tsx": "85d5422a71b651cd38c3cce303db19a2de37602771566a02b9d54d65021fbccf",
+    "CanchaHome.tsx": "c277d231c02b423540c79c6ae9781815bb9ece9f0a824b39a2daf04d6130485a",
+    "CanchaDiscovery.tsx": "5fef1067a29d410acbc31824a2dc06e1ab14ce15a29e52eb4024c0266d0c7463",
+    "OpportunityStatus.tsx": "f6463d00d86b5866015b2f9abca200b325f6f558332dcf4e31f6dbf34e8ac778",
+    "CanchaPlayerFit.tsx": "22df263b4cbede7e24279c28fb868a3f3f882bc02b3ac9ed5db0321950dde88e",
+    "CanchaDetail.tsx": "79f3fff17dd827fb12d6efdee5967f5d6a26391a8bd7a22bc31cb6ee0a9036bb"
   },
   "scenes": {
     "ZuWkzhOX9": "5ebfaa88d68f5de851a6cb5d68bc212b235eed7e600316d9233875fa083889dd",
-    "augiA20Il": "fa42d2731a3dbf76d6b9c8fb987a266a3b15fb17586a9cb1d463917dfbf87517",
-    "YoXnHiVO7": "00fe84ee1eb3c14b545549e575f182834ce09dbc2d22b7c93ee26ab1ac20d57c",
-    "U3ge4GVfE": "164775163447a6a58b1453c8c796772369814723fc38898cffd3aae7ee740a26",
-    "byKUK4ekK": "daeaba4860b368b0b256fa997bb069af57ea7e705c1e5e95d6b4571b67e5363e",
-    "IeTr8B53a": "e449d42379cbf27e5d9ee61fe5edea5671ac9b7c856a6cfbb5bedf6adb763759",
-    "aqX4AvuzN": "403d86b99794d8d544fcbd29d00bfcb3d37d2ca8728cb892c7b4f3239c81b345"
+    "augiA20Il": "f5e9e2a6264d1bd6550c46a52265900950c10bca530a5ed61bcae6d7b2a8701b",
+    "YoXnHiVO7": "a0b5c3048270ef79b1b15189cb217f2927566d9162f44ed920a5c88f84673d52",
+    "U3ge4GVfE": "3140dc020ee2c8182c690a168236530282ff593347b62f953ddaf58ef3ef6179",
+    "byKUK4ekK": "2aa8fc5839c814ffd29d5304bbc15ea0b597b94886080bf49a95afb1f2f87091",
+    "IeTr8B53a": "e7e8e28dcf7e91f105dceb06a588eb4540b7c4719981a5268b13a5be030216a1",
+    "aqX4AvuzN": "403d86b99794d8d544fcbd29d00bfcb3d37d2ca8728cb892c7b4f3239c81b345",
+    "nYqllTBEd": "0930ed3027ed19a39c02d3eefe35c3addf0a6d044ff73747eea41b3f28203357",
+    "npRy9P91I": "2c9ffd2b6738ebdd735b7e009fc56c08eb704c7d2e1ec87ebd51605ea2989829",
+    "t4_q6twTf": "459a341b5bd4abe233cd4d1a807657d15b715041c69dd2522028482291362539",
+    "OogsDn6ap": "03a11efd95390e810bec37ce757d2b4cc9ac0396a5acd45d80e19ad4c11f8791",
+    "Ro6xqCMwV": "a44c3905c3160e3a75d09f1a90fb68da1fb78143970abc032406de578fb2ac9d",
+    "l0HD5a5Bn": "9da2ec273ab9af4db539ab76879085c515961cbaad5e8493fc9cbba3bfef04a6"
   },
   "textStyles": {
     "DtKo62PZZ": "35c0a95658510808b5108f4d76cb87950597ac781e7be487a783c9378c72ccbc",
@@ -44,6 +51,14 @@
     {
       "id": "byKUK4ekK",
       "name": "/careers"
+    },
+    {
+      "id": "nYqllTBEd",
+      "name": "/clubs/:slug"
+    },
+    {
+      "id": "IeTr8B53a",
+      "name": "/opportunities/:slug"
     }
   ]
 }

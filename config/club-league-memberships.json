@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "weston-fc",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Weston FC",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "tampa-bay-united",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Tampa Bay United",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "west-florida-flames",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "West Florida Flames",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "img-academy",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "IMG Academy",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "sol-sc-florida",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Sol SC Florida",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "miami-futbol-academy-rush",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Miami Futbol Academy Rush",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "inter-miami-cf-academy",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Inter Miami CF",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "clearwater-chargers-sc",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Chargers Soccer Club",
+    "note": "Published official list is explicitly 2025\u201326. Current season/age-group participation must be confirmed."
+  },
+  {
+    "slug": "ideasport-soccer-academy",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "IdeaSport Soccer Academy",
+    "note": "Official published membership list is 2025\u201326; current season and age-group membership require confirmation."
+  },
+  {
+    "slug": "jacksonville-fc",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "Jacksonville FC",
+    "note": "Official published membership list is 2025\u201326; current season and age-group membership require confirmation."
+  },
+  {
+    "slug": "south-florida-football-academy",
+    "league": "MLS NEXT",
+    "division": "Homegrown member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/about/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "South Florida Football Academy",
+    "note": "Official published membership list is 2025\u201326; current season and age-group membership require confirmation."
+  },
+  {
+    "slug": "nona-soccer-academy",
+    "league": "MLS NEXT",
+    "division": "Academy member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/academy-division/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "NONA Soccer Academy",
+    "note": "Membership list is explicitly 2025\u201326; verify the current season."
+  },
+  {
+    "slug": "one-fc",
+    "league": "MLS NEXT",
+    "division": "Academy member list",
+    "season": "2025\u201326",
+    "source": "https://www.mlssoccer.com/mlsnext/academy-division/members",
+    "checkedOn": "2026-10-20",
+    "sourceName": "One FC",
+    "note": "Membership list is explicitly 2025\u201326; verify the current season."
+  }
+]

@@ -5,10 +5,11 @@ export const GOALS=[
  {activity:'Tryouts',label:'Find tryouts',icon:'tryout',path:'/explore'},
  {activity:'Camps & showcases',label:'Camps & showcases',icon:'camp',path:'/explore'},
  {activity:'Training',label:'Improve my game',icon:'train',path:'/clubs'},
+ {activity:'Pickup groups',label:'Find pickup groups',icon:'pitch',path:'/clubs'},
  {activity:'Fields & places',label:'Find a pitch',icon:'pitch',path:'/clubs'},
  {activity:'Tournaments',label:'Tournaments',icon:'trophy',path:'/explore'}
 ]
-export const EMPTY_FILTERS={q:'',near:'',radius:'25',city:'',region:'',age:'',playerAge:'',role:'player',level:'',activity:'',type:'',checked:false,includeUnknown:true,view:'auto'}
+export const EMPTY_FILTERS={q:'',near:'',radius:'25',city:'',region:'',age:'',playerAge:'',role:'player',level:'',activity:'',type:'',league:'',division:'',play:'',checked:false,includeUnknown:true,view:'auto'}
 export const PROFILE_KEYS=['playerAge','age','level','includeUnknown']
 export function playerAge(value:any){const s=String(value??'');const n=Number(s);return /^\d{1,2}$/.test(s)&&n>=2&&n<=99?n:null}
 export function ageFit(item:any,value:any){
@@ -26,6 +27,7 @@ export function matchesActivity(item:any,activity:string){
  const p=String(item.programs||'').toLowerCase()
  if(activity==='Clubs & teams')return item.kind==='Club'
  if(activity==='Fields & places')return item.kind==='Place'
+ if(activity==='Pickup groups')return item.kind==='Pickup group'
  if(activity==='Training')return ['Open Training','Private Training'].includes(item.kind)||item.kind==='Club'&&/training|performance|goalkeep|clinic/.test(p)
  if(activity==='Tryouts')return item.kind==='Tryout'
  if(activity==='Camps & showcases')return ['College Opportunity','Showcase','Camp / Clinic'].includes(item.kind)||item.kind==='Tournament'&&/showcase/.test(`${item.name} ${item.summary}`.toLowerCase())
@@ -35,16 +37,16 @@ export function matchesActivity(item:any,activity:string){
 export function filterDiscovery(items:any[],f:any){const location=String(f.near||'').trim().toLowerCase(),zip=zipArea(location),radius=searchRadius(f.radius);const result=items.filter(i=>{
  const q=String(f.q||'').trim().toLowerCase(),city=String(f.city||'').trim().toLowerCase(),fit=ageFit(i,f.playerAge)
  const distance=zip?distanceMiles(zip,i.cityPoint):null,local=(!location||zip)?(!location||distance!==null&&distance<=radius):!/^\d/.test(location)&&i.city.toLowerCase().includes(location)
- return local&&(!q||`${i.name} ${i.organization} ${i.city} ${i.county||''} ${i.region||''} ${i.summary} ${i.programs} ${i.levelLabel||''} ${(i.levels||[]).join(' ')} ${i.audience||''}`.toLowerCase().includes(q))&&(!city||i.city.toLowerCase().includes(city))&&(!f.region||i.region===f.region)&&(!f.level||i.levels.includes(f.level))&&(!f.age||String(i.ageEvidence?.audience||i.audience).toLowerCase().includes(f.age.toLowerCase()))&&!fit.hidden&&(f.includeUnknown!==false||playerAge(f.playerAge)===null||fit.known)&&matchesActivity(i,f.activity)&&(!f.checked||i.sourceChecked)&&(!f.type||i.kind===f.type)
+ return local&&(!q||`${i.name} ${i.organization} ${i.city} ${i.county||''} ${i.region||''} ${i.summary} ${i.programs} ${i.levelLabel||''} ${(i.levels||[]).join(' ')} ${i.audience||''}`.toLowerCase().includes(q))&&(!city||i.city.toLowerCase().includes(city))&&(!f.region||i.region===f.region)&&(!f.level||i.levels.includes(f.level))&&(!f.league||(i.leagues||[]).some((l:any)=>l.name===f.league&&(!f.division||l.division===f.division)))&&(!f.play||matchesPlay(i,f.play))&&(!f.age||String(i.ageEvidence?.audience||i.audience).toLowerCase().includes(f.age.toLowerCase()))&&!fit.hidden&&(f.includeUnknown!==false||playerAge(f.playerAge)===null||fit.known)&&matchesActivity(i,f.activity)&&(!f.checked||i.sourceChecked)&&(!f.type||i.kind===f.type)
  });return result.sort((a,b)=>Number(b.sponsored)-Number(a.sponsored)||(zip?(distanceMiles(zip,a.cityPoint)??Infinity)-(distanceMiles(zip,b.cityPoint)??Infinity):0)||(playerAge(f.playerAge)!==null?ageFit(a,f.playerAge).rank-ageFit(b,f.playerAge).rank:0))}
-export function readDiscoveryFilters(search:string){const p=new URLSearchParams(search),raw=p.get('level')||p.get('level-2')||'',category=p.get('category-2')||'';return {...EMPTY_FILTERS,campaign:campaignFromSearch(search),q:/^\d{5}$/.test(p.get('q')||'')&&!p.has('near')?'':p.get('q')||p.get('search')||'',near:p.get('near')||p.get('zip')||(/^\d{5}$/.test(p.get('q')||'')?p.get('q'):'')||'',radius:String(searchRadius(p.get('radius'))),city:p.get('city')||'',region:p.get('region')||'',age:p.get('age')||p.get('age-group-2')||(raw==='Youth'?'Youth':''),playerAge:playerAge(p.get('playerAge'))===null?'':p.get('playerAge')||'',role:'player',level:({'Competitive Amateur':'Competitive','College':'School / college','High School':'School / college','Youth':''}[raw]??raw),activity:p.get('activity')||({'Tryout':'Tryouts','Open Training':'Training','Tournament':'Tournaments','Showcase':'Camps & showcases','College Opportunity':'Camps & showcases'}[category]||''),type:p.get('type')||p.get('kind')||(['Job','Internship','Volunteer Opportunity'].includes(category)?category:''),checked:p.get('checked')==='1',includeUnknown:p.get('ages')!=='known',view:p.get('view')==='map'?'map':p.get('view')==='list'?'list':'auto'}}
-export function discoverySearch(filters:any){const p=new URLSearchParams();for(const k of ['q','near','radius','city','region','age','playerAge','level','activity','type','checked','view']){const v=filters[k];if(!v||k==='radius'&&(!filters.near||String(v)==='25')||k==='view'&&v==='auto'||k==='role'&&v==='player'||k==='playerAge'&&playerAge(v)===null)continue;p.set(k,v===true?'1':String(v))}if(filters.includeUnknown===false)p.set('ages','known');for(const[k,v]of Object.entries(filters.campaign||{}))if(CAMPAIGN_KEYS.includes(k)&&typeof v==='string'&&/^[a-z0-9_-]{1,100}$/i.test(v))p.set(k,v);return p.toString()}
-export function discoveryHref(path:string,f:any,overrides:any={}){const search=discoverySearch({...f,q:'',type:'',checked:false,...overrides});return path+(search?'?'+search:'')}
+export function readDiscoveryFilters(search:string){const p=new URLSearchParams(search),raw=p.get('level')||p.get('level-2')||'',category=p.get('category-2')||'';return {...EMPTY_FILTERS,campaign:campaignFromSearch(search),q:/^\d{5}$/.test(p.get('q')||'')&&!p.has('near')?'':p.get('q')||p.get('search')||'',near:p.get('near')||p.get('zip')||(/^\d{5}$/.test(p.get('q')||'')?p.get('q'):'')||'',radius:String(searchRadius(p.get('radius'))),city:p.get('city')||'',region:p.get('region')||'',age:p.get('age')||p.get('age-group-2')||(raw==='Youth'?'Youth':''),playerAge:playerAge(p.get('playerAge'))===null?'':p.get('playerAge')||'',role:'player',level:({'Competitive Amateur':'Competitive','College':'School / college','High School':'School / college','Youth':''}[raw]??raw),activity:p.get('activity')||({'Tryout':'Tryouts','Open Training':'Training','Tournament':'Tournaments','Showcase':'Camps & showcases','College Opportunity':'Camps & showcases'}[category]||''),division:p.get('division')||'',league:p.get('league')||'',play:p.get('play')||'',type:p.get('type')||p.get('kind')||(['Job','Internship','Volunteer Opportunity'].includes(category)?category:''),checked:p.get('checked')==='1',includeUnknown:p.get('ages')!=='known',view:p.get('view')==='map'?'map':p.get('view')==='list'?'list':'auto'}}
+export function discoverySearch(filters:any){const p=new URLSearchParams();for(const k of ['q','near','radius','city','region','age','playerAge','level','activity','type','league','division','play','checked','view']){const v=filters[k];if(!v||k==='radius'&&(!filters.near||String(v)==='25')||k==='view'&&v==='auto'||k==='role'&&v==='player'||k==='playerAge'&&playerAge(v)===null)continue;p.set(k,v===true?'1':String(v))}if(filters.includeUnknown===false)p.set('ages','known');for(const[k,v]of Object.entries(filters.campaign||{}))if(CAMPAIGN_KEYS.includes(k)&&typeof v==='string'&&/^[a-z0-9_-]{1,100}$/i.test(v))p.set(k,v);return p.toString()}
+export function discoveryHref(path:string,f:any,overrides:any={}){const search=discoverySearch({...f,q:'',type:'',league:'',division:'',play:'',checked:false,...overrides});return path+(search?'?'+search:'')}
 export function playerSummary(f:any){return [playerAge(f.playerAge)!==null?'Age '+f.playerAge:f.age||'',f.level].filter(Boolean).join(' · ')||'All players'}
 export const BASIC_LEVELS=['Beginner','Recreational','Competitive','Academy']
 export function levelOptionsForAge(value:any,advanced=false,selected=''){return LEVELS.filter(l=>advanced||BASIC_LEVELS.includes(l)||l===selected)}
 export function goalPath(activity:string,fallback='/clubs'){return GOALS.find(g=>g.activity===activity)?.path||fallback}
-export function activeFilterCount(f:any){return ['near','city','region','playerAge','age','level','activity','type'].filter(k=>f[k]).length+Number(!!f.checked)+Number(f.includeUnknown===false)}
+export function activeFilterCount(f:any){return ['near','city','region','playerAge','age','level','activity','type','league','division','play'].filter(k=>f[k]).length+Number(!!f.checked)+Number(f.includeUnknown===false)}
 export function cardAgeLabel(item:any){const e=item.ageEvidence;if(e?.kind==='ages'||e?.kind==='season')return e.label;const a=String(item.ages||'');return a==='See eligibility'?'Ages: confirm with organizer':a.length>60?item.audience||'Ages vary by program':a}
 // Merge nearby city markers until their hit targets no longer overlap.
 export function clusterMapPoints(points:any[],distance=46){let groups=points.map(p=>({...p,members:[p]})),changed=true;while(changed){changed=false;outer:for(let a=0;a<groups.length;a++)for(let b=a+1;b<groups.length;b++)if(Math.hypot(groups[a].x-groups[b].x,groups[a].y-groups[b].y)<distance){const members=[...groups[a].members,...groups[b].members];groups[a]={x:members.reduce((s,p)=>s+p.x,0)/members.length,y:members.reduce((s,p)=>s+p.y,0)/members.length,count:members.reduce((s,p)=>s+p.count,0),members};groups.splice(b,1);changed=true;break outer}}return groups}
@@ -59,3 +61,15 @@ export const ZIP_AREAS:Record<string,number[]>={"32003":[30.095582,-81.710162],"
 
 const CAMPAIGN_KEYS=['utm_source','utm_medium','utm_campaign','utm_content']
 export function campaignFromSearch(search:string){const p=new URLSearchParams(search);return Object.fromEntries(CAMPAIGN_KEYS.map(k=>[k,p.get(k)]).filter(([,v])=>!!v&&/^[a-z0-9_-]{1,100}$/i.test(v)))}
+
+export const BROWSE_CATEGORIES=[
+ {id:'all',label:'All soccer',icon:'search',patch:{play:'',league:'',activity:''}},
+ {id:'rec',label:'Recreational',icon:'pitch',patch:{play:'Recreational',league:'',activity:''}},
+ {id:'academy',label:'Clubs & academies',icon:'club',patch:{play:'',league:'',activity:'Clubs & teams'}},
+ {id:'upsl',label:'UPSL',icon:'trophy',patch:{play:'',league:'UPSL',activity:'Clubs & teams'}},
+ {id:'mlsnext',label:'MLS NEXT',icon:'star',patch:{play:'',league:'MLS NEXT',activity:'Clubs & teams'}},
+ {id:'parks',label:'Parks & fields',icon:'map',patch:{play:'',league:'',activity:'Fields & places'}},
+ {id:'pickup',label:'Pickup groups',icon:'people',patch:{play:'',league:'',activity:'Pickup groups'}}
+]
+export function matchesPlay(item:any,play:string){return play==='Recreational'?(item.levels||[]).includes('Recreational'):play==='Community'?item.kind==='Pickup group':play==='Academy'?(item.levels||[]).includes('Academy'):false}
+export function categorySelected(f:any,category:any){return ['play','league','activity'].every(k=>(f[k]||'')===(category.patch[k]||''))}

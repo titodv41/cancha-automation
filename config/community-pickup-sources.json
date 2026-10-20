@@ -1,0 +1,9 @@
+{
+  "reviewedOn": "2026-10-20",
+  "sources": [
+    {"name":"GoodRec Orlando pickup soccer","slug":"goodrec-orlando-pickup-soccer","city":"Orlando","county":"Orange","url":"https://www.goodrec.com/pickup-soccer/orlando","minimumAge":18},
+    {"name":"GoodRec Miami pickup soccer","slug":"goodrec-miami-pickup-soccer","city":"Miami","county":"Miami-Dade","url":"https://www.goodrec.com/pickup-soccer/miami","minimumAge":18}
+  ],
+  "notImported": [{"url":"https://www.goodrec.com/pickup-soccer/tampa","reason":"Redirects to a generic page without establishing a Tampa-specific listing."}],
+  "scope": "Organizer profiles, not replicated sessions, bookings, prices or availability. No affiliation or paid-ad photo rights are claimed."
+}

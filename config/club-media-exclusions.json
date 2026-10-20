@@ -108,5 +108,15 @@
     "slug": "jupiter-united-soccer",
     "assetUrl": "https://framerusercontent.com/images/vsVsDplfs7ufCwtLAn45HS4wUw.webp",
     "reason": "Frozen-yogurt sponsor logo, not this club badge."
+  },
+  {
+    "slug": "juventus-academy-miami",
+    "assetUrl": "https://framerusercontent.com/images/MaESyw5PKora0Vsj8Z1FYAEgM6E.jpg",
+    "reason": "League directory returns an Athletum badge for Juventus Academy Miami; identity mismatch."
+  },
+  {
+    "slug": "osheas-fc",
+    "assetUrl": "https://framerusercontent.com/images/Fxc2Qjho7foiQfjsBYrcCiqGdjY.jpg",
+    "reason": "Irish pub wordmark; a distinct team identifying badge is not established."
   }
 ]

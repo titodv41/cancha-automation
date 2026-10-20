@@ -14,5 +14,13 @@
     "source": "https://fonts.google.com/specimen/Manrope",
     "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
     "weights": "500 800"
+  },
+  "BarlowCondensed": {
+    "url": "https://framerusercontent.com/assets/Ss6xN8qtW5v1PS6cUtlsFo01s.woff2",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "assets/fonts/OFL-BarlowCondensed.txt",
+    "source": "https://fonts.google.com/specimen/Barlow+Condensed",
+    "sha256": "5e5c01d3260d47223cbf28a3dc9109099a2abeb3cbf8199ddf13164f7ccf98ce",
+    "weights": "700 italic"
   }
 }
