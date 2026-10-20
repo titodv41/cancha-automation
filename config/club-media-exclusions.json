@@ -1,4 +1,92 @@
 [
-  {"slug":"citrus-united-soccer","assetUrl":"https://framerusercontent.com/images/49hJAbneP0FKPvyq2eNZKZ4ff4.jpg","reason":"TARSA association logo is not the Citrus United club badge."},
-  {"slug":"hobe-sound-sc","assetUrl":"https://framerusercontent.com/images/HVpU8ZCXmMJ4ljmk00YEapSY5k.png","reason":"TOPSoccer program logo is not an identifying Hobe Sound club badge."}
+  {
+    "slug": "citrus-united-soccer",
+    "assetUrl": "https://framerusercontent.com/images/49hJAbneP0FKPvyq2eNZKZ4ff4.jpg",
+    "reason": "TARSA association logo is not the Citrus United club badge."
+  },
+  {
+    "slug": "hobe-sound-sc",
+    "assetUrl": "https://framerusercontent.com/images/HVpU8ZCXmMJ4ljmk00YEapSY5k.png",
+    "reason": "TOPSoccer program logo is not an identifying Hobe Sound club badge."
+  },
+  {
+    "slug": "plant-city-fc",
+    "assetUrl": "https://framerusercontent.com/images/SyToOGgAmW1dfAASJDF6npan7Q.png",
+    "reason": "RoomRite sponsor logo, not the club badge."
+  },
+  {
+    "slug": "leg-a-z-soccer-club",
+    "assetUrl": "https://framerusercontent.com/images/uZ4wFyfm1frJCrTh5Wr5vObeFY.png",
+    "reason": "FIFA logo, not the club badge."
+  },
+  {
+    "slug": "fort-myers-beach-soccer",
+    "assetUrl": "https://framerusercontent.com/images/JMzoklFX3InMGMTOeut6I06AWc.png",
+    "reason": "GotSoccer platform logo, not the club badge."
+  },
+  {
+    "slug": "naples-united-fc",
+    "assetUrl": "https://framerusercontent.com/images/2wmdXtnLrKre475Vt7Ny0jik.png",
+    "reason": "Locksmith sponsor logo, not the club badge."
+  },
+  {
+    "slug": "rip-city-surf-soccer-club",
+    "assetUrl": "https://framerusercontent.com/images/ViC2F9bAOyyETrXvApMjiiS70.png",
+    "reason": "Pediatrics sponsor logo, not the club badge."
+  },
+  {
+    "slug": "naples-elite-soccer-club",
+    "assetUrl": "https://framerusercontent.com/images/OUKwY1XBfxhmN0l8tppMlFxIlkM.png",
+    "reason": "Adidas supplier logo, not the club badge."
+  },
+  {
+    "slug": "florida-legends-football-club",
+    "assetUrl": "https://framerusercontent.com/images/eDcqEGCzWaQrM7QR0SD6Paf5A.png",
+    "reason": "Instagram icon, not the club badge."
+  },
+  {
+    "slug": "city-of-miami-beach-soccer",
+    "assetUrl": "https://framerusercontent.com/images/safb4Bbox90Jw0sL4pTUCf6ugo.svg",
+    "reason": "White municipal mark is illegible on the card and is not a club badge."
+  },
+  {
+    "slug": "nature-coast-soccer-club-inc",
+    "assetUrl": "https://framerusercontent.com/images/s6FVvwh3UdBBSNoLkO4aWvfwSU.png",
+    "reason": "Image identifies Atlantic Coast Lightning, not this registered club."
+  },
+  {
+    "slug": "miami-shores-soccer-club",
+    "assetUrl": "https://framerusercontent.com/images/0ywtPkX2hZ9MyyjyGJAimD0po3I.png",
+    "reason": "Orlando City affiliate badge does not identify this club."
+  },
+  {
+    "slug": "fc-sarasota-inc",
+    "assetUrl": "https://framerusercontent.com/images/flZ5QVE6sBz6hMhMOD6mGODyLoo.png",
+    "reason": "Image identifies Miami Shores FC, not FC Sarasota."
+  },
+  {
+    "slug": "soccer-paradise",
+    "assetUrl": "https://framerusercontent.com/images/GPGVhohfpg1AzLY8t48Ror75XgQ.png",
+    "reason": "SFUYSA association logo, not this club badge."
+  },
+  {
+    "slug": "one-fc",
+    "assetUrl": "https://framerusercontent.com/images/Yg6PWYTvvLS3LwnFMvQu32mgbjU.svg",
+    "reason": "Generic cube mark does not establish this club identity."
+  },
+  {
+    "slug": "fc-prime",
+    "assetUrl": "https://framerusercontent.com/images/jDd80E6ZVjjj77dRHwPYkx4srA.png",
+    "reason": "Capelli Sport supplier logo, not the club badge."
+  },
+  {
+    "slug": "fort-lauderdale-select-fc",
+    "assetUrl": "https://framerusercontent.com/images/GPGVhohfpg1AzLY8t48Ror75XgQ.png",
+    "reason": "SFUYSA association logo, not the club badge."
+  },
+  {
+    "slug": "palm-beach-rush-soccer-club",
+    "assetUrl": "https://framerusercontent.com/images/pmb3SqujlW9HCyyZ0fuS15ROSDA.png",
+    "reason": "Global Sports Experiences logo does not identify the listed club."
+  }
 ]
