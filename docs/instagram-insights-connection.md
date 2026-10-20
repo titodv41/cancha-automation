@@ -1,6 +1,6 @@
 # Instagram analytics access: remaining owner step
 
-On October 19 the actual read-only workflow returned `permission_required`, requiring `instagram_manage_insights`. Meta denied the first media-insights request. No reach/save/share figures were obtained; missing data is not zero performance. This permission is separate from content publishing. The website and email intake do not depend on it.
+On October 20 the fresh read-only workflow (run 39372373064) again returned `permission_required`, requiring `instagram_manage_insights`. Meta denied the first media-insights request. No reach/save/share figures were obtained; missing data is not zero performance. This permission is separate from content publishing. The website and email intake do not depend on it.
 
 Use the existing **Instagram API with Facebook Login** route. Do not switch integrations or recreate the app. Meta labels can vary.
 

@@ -1,14 +1,14 @@
 # Cancha automation
 
-Framer project **GU8EIeQXaRbty0S23thu**. Authenticated Server API access works in this Codex instance. The user published the earlier listing fixes; live browsing was verified. New Providers, Offers, Stories and navigation changes are saved in Framer's **unpublished draft**. This automation has not published the site or Instagram content.
+Cancha's existing Framer project is **GU8EIeQXaRbty0S23thu**. Live website: https://pioneering-friday-005497.framer.app/. The October 20 discovery release adds city/ZIP search, clearer cards/copy and 130 additional source-backed club profiles (201 club/place profiles in total). See [the current discovery and growth pilot](docs/discovery-growth-pilot.md) for scope, evidence, campaigns and limitations; older delivery notes are historical snapshots.
 
-Start with [the GitHub migration guide](docs/github-migration.md) to avoid paid Render hosting for daily Instagram. The replacement is prepared; the secure transfer and live validation remain outstanding. The earlier [daily Instagram guide](docs/chat-instagram.md) describes the Render backend. The owner authorized one automatically selected post daily at an initial 6 PM New York slot. The plan is prepared but needs hosted deployment and secure chat binding before activation. Forty-one local tests pass, including the encrypted migration safeguards. The earlier [Meta setup guide](docs/connect-meta-and-automation.md) covers account setup.
+**Current backend: GitHub Actions, not Render.** The owner-authorized plan is one automatically selected eligible Instagram feed post daily around 18:00 New York. The October 19 post has a confirmed Meta publication receipt. Stories and video publishing are not enabled. Publishing permission and insights permission are separate: [the remaining analytics setup](docs/instagram-insights-connection.md) explains the secure owner step for performance learning.
 
-Read [the growth and Instagram report](docs/growth-and-instagram.md) for the latest work, desktop/mobile previews, account connection steps and blockers. Review [six Instagram designs and captions](content/instagram/review.md) and three articles in `content/stories/`. The earlier [change report](docs/change-report.md) preserves the listing audit. Read [private submission deployment instructions](docs/private-submissions.md) to deploy the prepared queue. The organization form is deliberately locked until that service is available.
+**Current submission intake: native Framer email forms.** Organization-form delivery was confirmed by the owner. Contacts stay private; unreviewed submissions do not automatically become public profiles. Preserve these form destinations and fields. Do not restore the retired Render receiver or `SubmissionLock` from older notes.
 
 ## Environment
 
-Use Node.js 24 (tested with 24.19.0). Exact dependencies and lockfile: framer-api 5.1.0, ws 8.22.0, https-proxy-agent 9.1.0; development browser tools Playwright 1.63.0 and undici 8.1.0. For screenshot/asset commands, set `PLAYWRIGHT_BROWSERS_PATH=/tmp/cancha-browsers` and run `npx playwright install chromium`.
+Use Node.js 24. Exact dependencies are locked: framer-api 5.1.0, ws 8.22.0, https-proxy-agent 9.1.0; browser tools Playwright 1.63.0 and undici 8.1.0. For browser commands, set `PLAYWRIGHT_BROWSERS_PATH=/tmp/cancha-browsers` and install Chromium if it is missing. FFmpeg is used only for the optional product-video preview.
 
 ```bash
 cd /workspace/cancha-automation
@@ -17,45 +17,35 @@ npm test
 npm run check:connection
 ```
 
-Forty-one tests cover the read-only connection contract, Instagram approval/dispatch safeguards, New York offer expiry, and the real private receiver: signed intake, mandatory Pending review, retries, duplicate flags, consent, validation, and absence of public queue/contact access. They do not replace Framer Preview checks. `check:connection` reads only project information and disconnects, checking Cancha's hashed project identity without printing credentials.
+The connection check is read-only, checks Cancha's hashed project identity and never prints credentials. The SDK captures global WebSocket at import time; `scripts/transport.mjs` preserves authorization through the inherited proxy and CA, with TLS verification enabled. Runtime configuration and credentials must be checked after a workspace restore; no new setup secret was needed for the October 20 release.
 
-The SDK captures global WebSocket at import time. `scripts/transport.mjs` installs a WebSocket adapter before the dynamic SDK import, preserving SDK authorization through the existing HTTPS proxy. TLS verification stays enabled and the WebSocket destination is limited to api.framer.com. `check:network` is optional: an unauthenticated probe is not an access check for the authenticated project.
+## Credentials
 
-## Secure Framer credential
+A Framer project key is created in **Site Settings → General → API Keys**. Store it in a password manager and in Codex **Network secrets / Secretos de red**, named `FRAMER_API_KEY`, scoped to `api.framer.com`. Never paste it in chat, a command argument, an ordinary configuration file or Git.
 
-Create a project key in the correct Framer project's **Site Settings → General → API Keys**. Store it in a password manager. In Codex environment settings, use **Network secrets / Secretos de red**, name **FRAMER_API_KEY**, destination **api.framer.com**, and enter the value only in the secure secret field. Do not send it in chat, commit it, or put it in ordinary environment variables, command arguments or installation scripts. The existing secure binding works; no replacement key is required.
+GitHub Actions needs its own **Repository secret** named `FRAMER_API_KEY`; Codex's proxy placeholder is not the raw value to copy there. Meta tokens and the encrypted-state key also belong in GitHub's secure secret fields. Existing secure access works. Do not replace credentials solely because a legacy guide describes an earlier setup stage.
 
-A Framer key may permit more actions than our read-only connection test uses. Editing scripts are separate and must only run within an explicitly authorized scope. `getProjectInfo()` returns a hash rather than the URL's project ID; `scripts/read-project.mjs` validates the observed Cancha hash.
+## Discovery and daily updates
 
-## Saved code and audit
+- `framer/CanchaHome.tsx`, `CanchaDiscovery.tsx` and `DiscoveryModel.tsx`: what/where search, optional age/level/activity filters, ZIP-area proximity, shareable filters and bounded campaign attribution.
+- `server/discovery-catalog.mjs`: public-only projection of Clubs and Active Opportunities; no private submission/contact fields.
+- `scripts/discover-florida-clubs.mjs`: official UPSL/FYSA adapters, duplicate checks, safe website identity, reviewed badge selection, backup before mutation and guarded publication. Daily cap: 15 qualified club profiles, not a guaranteed quota.
+- `scripts/automate-opportunities.mjs`: source/date checks, qualified opportunity staging, directory growth, reviewed publication and local Instagram draft preparation. The configured opportunity research target is 50; actual source quality determines additions. Club profiles are counted separately from current openings.
+- `scripts/github-instagram.mjs`: encrypted private GitHub state, standing plan, exactly bounded dispatch and publication receipts. The rejected generic content bank stays disabled.
+- `config/growth-campaigns.json` and `content/instagram/discovery-campaigns.json`: organic discovery campaign plan and original creative pool. No paid ads or new subscription service was activated.
 
-- `framer/OpportunityImage.tsx`: contain/padded badges, cover photos, source-aware badge size and background.
-- `framer/SubmissionLock.tsx`: form submission lock and disabled button while hosting is unavailable.
-- `server/submissions.mjs`: private signed webhook intake using SQLite. Protected Instagram administration is separate from private submission review; no automatic CMS publishing.
-- `server/review.mjs`: private operator review commands; decisions never publish to Framer.
-- `server/Dockerfile`: container deployment preparation, not a deployed service.
-- `inputs/`: supplied CSV data converted from UTF-8 BOM and retained as JSON.
-- `audit/`: staged image assertions, source checks, per-listing review, duplicate comparisons and draft snapshots.
-- `previews/`: Framer canvas screenshots of desktop/mobile draft layouts. Canvas collection-list templates can show placeholder content; detail screenshots render a real CMS example.
-- `backups/`: complete pre-change Opportunities export and project metadata, private and excluded from Git. Preserve/download the backup before discarding this workspace.
+Existing owner-activated opportunities must not be sent back to Pending review merely because a source is stale or blocked. Preserve URLs. Flag uncertainty; close listings only when source/date evidence establishes closure. New entries still require sufficient source evidence. Do not fabricate open tryouts, fees, credentials or discounts from a club-directory entry.
 
-**Do not rerun the one-time design scripts blindly.** Some create nodes and are audit records of implementation, not idempotent migrations. `apply-image-patch.mjs` matches existing IDs by unique system Slug, asserts no item/slug changes and no non-image field changes, and requires the three-image verification before the full patch. New listing review fields and statuses were applied only after image-only verification.
+**Do not rerun one-time page/schema builders blindly.** Back up first and inspect current live/editor state. Publication guards check reviewed code/scenes and narrowly scoped CMS changes; unrelated owner edits block automation. Keep club additions and their publication in the same Framer session to avoid inconsistent snapshots across clients.
 
-## Official documentation
+## Verification and references
 
-- https://www.framer.com/developers/server-api-quick-start
-- https://www.framer.com/developers/server-api-faq
-- https://www.framer.com/help/articles/framer-form-webhook-setup/
-- Installed SDK type declarations and the project's official agent API schema/Forms/CMS guides.
+`npm test` covers source adapters, privacy, duplicate/lifecycle rules, queue receipts, age matching, ZIP search, campaign links and publication scope. Framer typechecks code before application. `scripts/verify-simple-discovery.mjs` and `verify-nearby-discovery.mjs` check browsing on desktop/mobile; `verify-florida-expansion.mjs` checks courses, services and preserved forms/routes. Browser checks block outgoing POSTs and do not send submissions.
 
-Reusable Codex installation/start instructions were saved as an environment configuration draft. Review and publish that **environment configuration** in Codex settings to activate it for future tasks; this is separate from publishing the Framer website. No credentials were added to those scripts.
+`backups/` and `private-data/` are private and excluded from Git. Preserve private backups before discarding the workspace. `previews/zip-discovery/` contains the current website/campaign previews and an unscheduled product-video prototype. Older files in `audit/`, `inputs/`, `previews/` and deployment guides preserve implementation history.
 
-## Daily opportunities
-
-See [daily workflow](docs/daily-opportunities.md) for the weekday discovery schedule, source reports, closed/stale status handling and human-reviewed draft staging. The target is three quality additions, maximum five per New York day, without automatic publication. See [complete Meta and automation setup](docs/connect-meta-and-automation.md). The private service now implements OAuth, encrypted tokens, owner review and scheduling. Custom API schedules appear in its dashboard; Business Suite schedules appear in Planner. Hosting and real Meta authorization remain outstanding.
-
-## Website discovery
-
-See [the simpler discovery redesign](docs/simple-discovery-redesign.md) for the current homepage, optional filters, fonts, maps, research and release checks. [Age evidence rules](docs/player-profile-discovery.md) document the underlying age-matching limits. The current browser smoke test is `node scripts/verify-simple-discovery.mjs`; the earlier browser entry points forward to it.
-
-See [Florida expansion and daily creative](docs/florida-expansion.md) for the restored careers/courses/services navigation, official league importer, new source batch, Instagram design refresh and current analytics limits.
+- [Discovery and growth pilot](docs/discovery-growth-pilot.md)
+- [Instagram analytics access](docs/instagram-insights-connection.md)
+- [GitHub migration history](docs/github-migration.md)
+- [Age-evidence rules](docs/player-profile-discovery.md)
+- [Framer Server API](https://www.framer.com/developers/server-api-reference)

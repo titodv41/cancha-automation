@@ -1,0 +1,23 @@
+{
+  "capturedAt": "2026-10-20T04:38:49.942Z",
+  "source": "https://pioneering-friday-005497.framer.app/",
+  "type": "Original read-only product walkthrough",
+  "published": false,
+  "scheduled": false,
+  "audio": false,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p"
+      }
+    ],
+    "format": {
+      "duration": "16.733333"
+    }
+  }
+}
