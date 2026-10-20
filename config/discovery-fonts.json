@@ -20,7 +20,9 @@
     "license": "SIL Open Font License 1.1",
     "licenseFile": "assets/fonts/OFL-BarlowCondensed.txt",
     "source": "https://fonts.google.com/specimen/Barlow+Condensed",
-    "sha256": "5e5c01d3260d47223cbf28a3dc9109099a2abeb3cbf8199ddf13164f7ccf98ce",
-    "weights": "700 italic"
+    "sha256": "b17a0ee295659b28279ff690a24d08d47a4e9245e5f8579b0ecad81621f54612",
+    "weights": "700 italic",
+    "originalSourceSha256": "5e5c01d3260d47223cbf28a3dc9109099a2abeb3cbf8199ddf13164f7ccf98ce",
+    "assetFormat": "woff2 (Framer conversion of the downloaded TTF)"
   }
 }

@@ -1,0 +1,70 @@
+{
+  "source": "Production Framer website, read-only browser checks",
+  "url": "https://pioneering-friday-005497.framer.app",
+  "layoutDeploymentId": "4f7a18367",
+  "latestVerifiedProductionDeploymentTime": 1792478215593,
+  "capturedOn": "2026-10-20",
+  "codeCommit": "5a1df8f",
+  "images": [
+    {
+      "file": "home-desktop.png",
+      "sha256": "2fcbf212ea15956dcd668eebf292b6a1385e849f83276d2059e041eb3efb1123"
+    },
+    {
+      "file": "home-mobile.png",
+      "sha256": "4528c3b7ff39237671a43107102559f88db0ebcc9dbbb29fd6df36ab700023a8"
+    },
+    {
+      "file": "clubs-desktop.png",
+      "sha256": "33e256ee2659147ab6e8baad685a476de03cabec6c6b5e35c45f7f9e4fb70704"
+    },
+    {
+      "file": "clubs-mobile.png",
+      "sha256": "9f26ed526579c07ce59994668e9606e2de64636af9a055b7bf78d11f4eb5c361"
+    },
+    {
+      "file": "clubs-small-mobile.png",
+      "sha256": "ba7681d90af42c6856f50d5b782cc6f4fb777b497e7ce5fae0bf5a2b73bfcc2a"
+    },
+    {
+      "file": "club-detail-desktop.png",
+      "sha256": "71b5d8a746171843743f77f10c5c43af7d9fd71aa382afc24ec796aa9a0208a0"
+    },
+    {
+      "file": "club-detail-mobile.png",
+      "sha256": "8d38b209ab24f848b91ceb5abada665af99bf548018ddb46e259e5c76c7f647f"
+    },
+    {
+      "file": "opportunity-detail-desktop.png",
+      "sha256": "e27ec0ae7ceb7c65fec2a44d33149387724c6fb0a57f612fa64766b82b79ef10"
+    },
+    {
+      "file": "opportunity-detail-mobile.png",
+      "sha256": "9eef2b0709eb96a6b31fdfb90a9f91068f94aebee6cb4ea2ca974822f8f40987"
+    },
+    {
+      "file": "courses-desktop.png",
+      "sha256": "52fe960647dc436ef8788126910b5d70493f97b3ca10ca906769f2ee84ab9b11"
+    },
+    {
+      "file": "courses-mobile.png",
+      "sha256": "caeae7f5252e4ca253fd35124641a4195edc3abba36853af01987cfa28d7799e"
+    },
+    {
+      "file": "services-desktop.png",
+      "sha256": "10750671377e3bf453f5985cfb177c1f5299b45a8ec574171e062afb0e9e3894"
+    },
+    {
+      "file": "services-mobile.png",
+      "sha256": "22e7041e68f3a3d12f16da4f7d3afb84c662076a6013fc5c71a70fe390d18f73"
+    },
+    {
+      "file": "organization-form-desktop.png",
+      "sha256": "30d28a42c21108eec083f4dcc72e2f14900559eb66523ba9077630ab6fa69ef4"
+    },
+    {
+      "file": "organization-form-mobile.png",
+      "sha256": "b46e0f78daf94e8698239986b915d5460ef8a2eee13daf8c2761e6a0c5bca514"
+    }
+  ]
+}
