@@ -1,0 +1,20 @@
+{
+  "bio": "https://pioneering-friday-005497.framer.app/clubs?utm_source=instagram&utm_medium=organic_social&utm_campaign=florida_discovery&utm_content=bio",
+  "campaigns": [
+    {
+      "id": "first-club",
+      "instagram": "https://pioneering-friday-005497.framer.app/clubs?age=Youth&level=Recreational&activity=Clubs+%26+teams&utm_source=instagram&utm_medium=organic_social&utm_campaign=first-club&utm_content=feed",
+      "facebook": "https://pioneering-friday-005497.framer.app/clubs?age=Youth&level=Recreational&activity=Clubs+%26+teams&utm_source=facebook&utm_medium=community&utm_campaign=first-club&utm_content=helpful_reply"
+    },
+    {
+      "id": "adult-team",
+      "instagram": "https://pioneering-friday-005497.framer.app/clubs?age=Adult&activity=Clubs+%26+teams&utm_source=instagram&utm_medium=organic_social&utm_campaign=adult-team&utm_content=feed",
+      "facebook": "https://pioneering-friday-005497.framer.app/clubs?age=Adult&activity=Clubs+%26+teams&utm_source=facebook&utm_medium=community&utm_campaign=adult-team&utm_content=helpful_reply"
+    },
+    {
+      "id": "local-pitches",
+      "instagram": "https://pioneering-friday-005497.framer.app/clubs?activity=Fields+%26+places&view=map&utm_source=instagram&utm_medium=organic_social&utm_campaign=local-pitches&utm_content=feed",
+      "facebook": "https://pioneering-friday-005497.framer.app/clubs?activity=Fields+%26+places&view=map&utm_source=facebook&utm_medium=community&utm_campaign=local-pitches&utm_content=helpful_reply"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "sourceType": "brand",
+    "format": "feed",
+    "rights": "Original Cancha educational copy and design. Product views show the real directory; no availability, partnership, field access or coaching credentials are implied.",
+    "id": "campaign-first-club-01",
+    "campaignId": "first-club",
+    "subjectKey": "campaign:first-club:program-labels",
+    "topic": "tip",
+    "creativeKind": "parent-guide",
+    "kicker": "CHOOSING A YOUTH CLUB",
+    "headline": "Rec or travel?\nStart here.",
+    "body": "The program matters more than the label.",
+    "questions": [
+      [
+        "01",
+        "Recreational",
+        "Ask how new players join and which age groups are offered."
+      ],
+      [
+        "02",
+        "Competitive",
+        "Ask about selection, training, travel and the full cost."
+      ],
+      [
+        "03",
+        "Academy",
+        "The name alone does not explain the level. Ask what the program includes."
+      ],
+      [
+        "04",
+        "Check the weekly routine",
+        "Pick something that fits the player, the schedule and the budget."
+      ]
+    ],
+    "cta": "Find youth clubs on Cancha.",
+    "caption": "Recreational. Travel. Academy.\n\nThe labels help, but they do not tell you what a normal week will look like.\n\nIf you are exploring a first club, ask how new players join, which age group fits and what the weekly commitment costs. For competitive programs, ask about selection and travel as well.\n\nOn Cancha, start with youth recreational clubs, add your city or ZIP and open a few profiles. Then talk to the clubs that suit your family. Link in our bio.\n\nWhich detail do you wish clubs made easier to find?\n\n#Cancha #FloridaSoccer #SoccerParents",
+    "altText": "Cancha guide to comparing recreational, competitive and academy soccer: ask about entry, age groups, travel, cost and the weekly routine."
+  },
+  {
+    "sourceType": "brand",
+    "format": "feed",
+    "rights": "Original Cancha educational copy and design. Product views show the real directory; no availability, partnership, field access or coaching credentials are implied.",
+    "id": "campaign-adult-team-01",
+    "campaignId": "adult-team",
+    "subjectKey": "campaign:adult-team:local-search",
+    "topic": "local-guide",
+    "creativeKind": "product-demo",
+    "kicker": "FIND A LOCAL TEAM",
+    "headline": "Still looking\nfor a team?",
+    "body": "Compare Florida clubs by area and level.",
+    "cta": "Search your city or ZIP on Cancha.",
+    "previewUrl": "https://pioneering-friday-005497.framer.app/clubs?age=Adult&activity=Clubs+%26+teams&utm_source=instagram&utm_medium=organic_social&utm_campaign=adult-team&utm_content=feed",
+    "caption": "You still want to play. Finding a team should be the easy part.\n\nStart with adult club profiles on Cancha. Search your city or ZIP, then choose the level you want. Open a profile for its official information and check recruitment directly with the club.\n\nA league listing does not mean the team is holding open tryouts. Dated trials and camps are listed separately under Tryouts & events.\nFind adult clubs through the link in our bio. Add your city or ZIP and use the age/level filters.\n\nWhich Florida city needs more adult-team options?\n\n#Cancha #FloridaSoccer #AmateurSoccer #LocalSoccer",
+    "altText": "Actual Cancha adult-club results with local search and optional level filters."
+  },
+  {
+    "sourceType": "brand",
+    "format": "feed",
+    "rights": "Original Cancha educational copy and design. Product views show the real directory; no availability, partnership, field access or coaching credentials are implied.",
+    "id": "campaign-broward-pitches-01",
+    "campaignId": "local-pitches",
+    "subjectKey": "campaign:local-pitches:broward-map",
+    "topic": "local-guide",
+    "creativeKind": "map-guide",
+    "kicker": "BROWARD / PLACES TO PLAY",
+    "headline": "Where do you\nplay in Broward?",
+    "body": "Explore local venues. Tell us what is missing.",
+    "cta": "Help us map local soccer.",
+    "previewUrl": "https://pioneering-friday-005497.framer.app/clubs?activity=Fields+%26+places&view=map&utm_source=instagram&utm_medium=organic_social&utm_campaign=local-pitches&utm_content=feed&region=South+Florida",
+    "caption": "A regular game usually starts with someone who knows the place.\n\nOur first venue guides cover places in Broward, including Weston Regional Park, Boggs Park and Pine Trails Park. Read the profile and confirm the access rules before you go. Some spaces need permission or a reservation.\n\nThese are venue profiles, not scheduled Cancha pickup games. We want to learn where people already play and where a local group would be useful.\nOpen the link in our bio and choose Places to explore the venue guides.\n\nWhich city and venue should we look into next? Share the place, not private contact details.\n\nMap data © OpenStreetMap contributors: https://www.openstreetmap.org/copyright\n\n#Cancha #BrowardSoccer #LocalSoccer",
+    "altText": "Cancha city overview map of Broward soccer venues. Map pins show city areas, not precise venue positions."
+  }
+]

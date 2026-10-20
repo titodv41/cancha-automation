@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "maximumPerRun": 10,
+  "maximumPerRun": 15,
   "url": "https://premier.upsl.com/teams/",
   "locations": {
     "Miami": {
@@ -273,6 +273,193 @@
     },
     "Belleview": {
       "county": "Marion"
+    },
+    "Bradenton": {
+      "county": "Manatee"
+    },
+    "Stuart": {
+      "county": "Martin"
+    },
+    "Gainesville": {
+      "county": "Alachua"
+    },
+    "Plant City": {
+      "county": "Hillsborough"
+    },
+    "Lauderhill": {
+      "county": "Broward"
+    },
+    "Brooksville": {
+      "county": "Hernando"
+    },
+    "Ponte Vedra Beach": {
+      "county": "St. Johns"
+    },
+    "Margate": {
+      "county": "Broward"
+    },
+    "Panama City": {
+      "county": "Bay"
+    },
+    "Temple Terrace": {
+      "county": "Hillsborough"
+    },
+    "Kathleen": {
+      "county": "Polk"
+    },
+    "Fort Myers Beach": {
+      "county": "Lee"
+    },
+    "West Miami": {
+      "county": "Miami-Dade"
+    },
+    "Virginia Gardens": {
+      "county": "Miami-Dade"
+    },
+    "Miami Shores": {
+      "county": "Miami-Dade"
+    },
+    "Dunedin": {
+      "county": "Pinellas"
+    },
+    "St. Augustine": {
+      "county": "St. Johns"
+    },
+    "Lake City": {
+      "county": "Columbia"
+    },
+    "Navarre": {
+      "county": "Santa Rosa"
+    },
+    "Hallandale Beach": {
+      "county": "Broward"
+    },
+    "Islamorada": {
+      "county": "Monroe"
+    },
+    "Marco Island": {
+      "county": "Collier"
+    },
+    "Seminole": {
+      "county": "Pinellas"
+    },
+    "Perry": {
+      "county": "Taylor"
+    },
+    "Palm Beach": {
+      "county": "Palm Beach"
+    },
+    "North Palm Beach": {
+      "county": "Palm Beach"
+    },
+    "Coconut Creek": {
+      "county": "Broward"
+    },
+    "Riverview": {
+      "county": "Hillsborough"
+    },
+    "Ormond Beach": {
+      "county": "Volusia"
+    },
+    "Lithia": {
+      "county": "Hillsborough"
+    },
+    "North Port": {
+      "county": "Sarasota"
+    },
+    "Indialantic": {
+      "county": "Brevard"
+    },
+    "Niceville": {
+      "county": "Okaloosa"
+    },
+    "Wimauma": {
+      "county": "Hillsborough"
+    },
+    "Palmetto": {
+      "county": "Manatee"
+    },
+    "Indiantown": {
+      "county": "Martin"
+    },
+    "North Bay Village": {
+      "county": "Miami-Dade"
+    },
+    "Inverness": {
+      "county": "Citrus"
+    },
+    "Summerfield": {
+      "county": "Marion"
+    },
+    "Dade City": {
+      "county": "Pasco"
+    },
+    "Tallahassee": {
+      "county": "Leon"
+    },
+    "Venice": {
+      "county": "Sarasota"
+    },
+    "Port Richey": {
+      "county": "Pasco"
+    },
+    "Vero Beach": {
+      "county": "Indian River"
+    },
+    "Estero": {
+      "county": "Lee"
+    },
+    "Oldsmar": {
+      "county": "Pinellas"
+    },
+    "Yulee": {
+      "county": "Nassau"
+    },
+    "Sunny Isles Beach": {
+      "county": "Miami-Dade"
+    },
+    "Bonita Springs": {
+      "county": "Lee"
+    },
+    "Fleming Island": {
+      "county": "Clay"
+    },
+    "Cape Coral": {
+      "county": "Lee"
+    },
+    "Hobe Sound": {
+      "county": "Martin"
+    },
+    "Port Charlotte": {
+      "county": "Charlotte"
+    },
+    "Spring Hill": {
+      "county": "Hernando"
+    },
+    "Beverly Hills": {
+      "county": "Citrus"
+    },
+    "Parrish": {
+      "county": "Manatee"
+    },
+    "Destin": {
+      "county": "Okaloosa"
+    },
+    "Port St Lucie": {
+      "city": "Port St. Lucie",
+      "county": "St. Lucie"
+    },
+    "St Petersburg": {
+      "city": "St. Petersburg",
+      "county": "Pinellas"
+    },
+    "Deland": {
+      "city": "DeLand",
+      "county": "Volusia"
+    },
+    "Ft Myers": {
+      "city": "Fort Myers",
+      "county": "Lee"
     }
   },
   "excludedNames": [
@@ -284,10 +471,20 @@
   "fysaEnabled": true,
   "fysaPage": "https://www.fysa.com/play/",
   "fysaWidget": "widget_ssckVcRO9qqyb62G",
-  "sourceCandidateLimit": 35,
+  "sourceCandidateLimit": 85,
   "aliases": {
     "Inter Miami CF": "Inter Miami CF Academy",
     "Chargers Soccer Club": "Clearwater Chargers SC",
     "Miami FC": "Miami FC U20"
+  },
+  "fysaScope": "Florida member clubs with an unambiguous mapped city, safe official website and verified website identity. No availability is inferred.",
+  "locationOverrides": {
+    "Paris Saint Germain Academy Orlando": {
+      "city": "Orlando",
+      "county": "Orange",
+      "source": "https://www.psgacademyorlando.com/locations/",
+      "reviewedOn": "2026-10-20",
+      "reason": "Own location page identifies Orlando; FYSA mailing city is St. Petersburg."
+    }
   }
 }

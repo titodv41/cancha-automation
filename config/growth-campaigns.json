@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "status": "organic pilot; no paid ads activated",
+  "dailyFeedPosts": 1,
+  "localTime": "18:00",
+  "timezone": "America/New_York",
+  "bioPath": "/clubs",
+  "campaigns": [
+    {"id":"first-club","audience":"Families looking for youth recreational soccer","path":"/clubs","filters":{"age":"Youth","level":"Recreational","activity":"Clubs & teams"},"primaryAction":"Open a suitable club profile, then contact the organizer","message":"Compare age groups, full cost and the weekly schedule before registering."},
+    {"id":"adult-team","audience":"Adult players looking for a club","path":"/clubs","filters":{"age":"Adult","activity":"Clubs & teams"},"primaryAction":"Find a local team profile and check recruitment directly","message":"Search your area and level; league membership does not mean an open roster spot."},
+    {"id":"local-pitches","audience":"People looking for soccer venues in the currently covered areas","path":"/clubs","filters":{"activity":"Fields & places","view":"map"},"primaryAction":"Open a venue profile and check access","message":"Explore the places directory. Venue profiles are separate from organized pickup sessions."}
+  ],
+  "measurement": {"source":"Framer native aggregate analytics and Meta insights when authorized","reviewAfterDays":14,"minimumEvidence":"Inspect real tagged visits, profile visits, clicks and submissions. Low samples or missing permissions are not proof a campaign won.","privacy":"No new advertising pixel, cookies, contact exports or external tracker."},
+  "paidAds": {"enabled":false,"prerequisites":["Owner-approved budget and objective","A functioning location-specific landing view with sufficient relevant results","Real creative/media cleared for advertising","Verified measurement and honest claims"]}
+}
