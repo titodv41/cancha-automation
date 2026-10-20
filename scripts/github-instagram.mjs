@@ -14,7 +14,7 @@ import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYor
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -39,6 +39,7 @@ try{
   for(const draft of drafts)saveDraft(db,draft);
   savePlan(db,command.plan,command.ownerInstruction);state.localCreativeVersion=localPolicy.requiredCreativeVersion;await checkpoint();
  }
+ if(mode==='repair-media'){if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs the existing Framer secret');const run=await runSubprocess(process.execPath,['scripts/repair-reviewed-club-media.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation media repair stopped');await client.close();client=githubStateClient();state=await client.load();}
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
   const run=await runSubprocess(process.execPath,['scripts/automate-opportunities.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation failed; nothing published');

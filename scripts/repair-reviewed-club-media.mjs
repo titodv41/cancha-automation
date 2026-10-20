@@ -1,0 +1,2 @@
+import{withProject}from'./project-session.mjs';import{repairReviewedClubMedia}from'./repair-club-media.mjs';import{publishOpportunities}from'./publish-opportunities.mjs';
+await withProject(async f=>{const repaired=await repairReviewedClubMedia(f,{durable:true});const result=await publishOpportunities(f,{cmsUpdates:repaired>0});console.log(JSON.stringify({reviewedMediaRepairs:repaired,published:result.published,newProfiles:0}));});
