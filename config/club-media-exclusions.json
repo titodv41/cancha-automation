@@ -93,5 +93,20 @@
     "slug": "tropical-soccer",
     "assetUrl": "https://framerusercontent.com/images/eDcqEGCzWaQrM7QR0SD6Paf5A.png",
     "reason": "Existing profile reused the same Instagram icon; use original Cancha category art."
+  },
+  {
+    "slug": "barcelona-soccer-academy",
+    "assetUrl": "https://framerusercontent.com/images/IgAr6PDaTsmOy15GWvVCoCA2Sk.png",
+    "reason": "Stored badge is too blurred to identify; use readable original Cancha art until a better source is established."
+  },
+  {
+    "slug": "east-orlando-knights-futbol-club",
+    "assetUrl": "https://framerusercontent.com/images/dtvFOx01eDileM40wYG310Rw.png",
+    "reason": "Creative-design sponsor logo, not this club badge."
+  },
+  {
+    "slug": "jupiter-united-soccer",
+    "assetUrl": "https://framerusercontent.com/images/vsVsDplfs7ufCwtLAn45HS4wUw.webp",
+    "reason": "Frozen-yogurt sponsor logo, not this club badge."
   }
 ]
