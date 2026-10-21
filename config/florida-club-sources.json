@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "maximumPerRun": 25,
+  "maximumPerRun": 50,
   "url": "https://premier.upsl.com/teams/",
   "locations": {
     "Miami": {
@@ -460,6 +460,12 @@
     "Ft Myers": {
       "city": "Fort Myers",
       "county": "Lee"
+    },
+    "Tamarac": {
+      "county": "Broward"
+    },
+    "Quincy": {
+      "county": "Gadsden"
     }
   },
   "excludedNames": [

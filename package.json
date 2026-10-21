@@ -29,6 +29,7 @@
   "dependencies": {
     "framer-api": "5.1.0",
     "https-proxy-agent": "9.1.0",
+    "linkedom": "0.18.12",
     "ws": "8.22.0"
   },
   "devDependencies": {

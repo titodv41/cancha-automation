@@ -3,7 +3,11 @@
 export function discoveryAgeEvidence({entity,ages='',audience='',summary='',description=''}) {
  const text=`${ages} ${summary} ${description}`.replace(/<[^>]*>/g,' ').replace(/&(?:ndash|mdash);/g,'–').replace(/\s+/g,' ');
  if(entity==='career')return {kind:'unknown',label:'Check employer requirements'};
- if(entity==='profile')return {kind:'programs',label:ages||'Confirm program ages',audience};
+ if(entity==='profile'){
+  const bounded=ages.match(/^Provider-wide ages (\d{1,2})[-–](\d{1,2});/);
+  if(bounded&&Number(bounded[1])>=2&&Number(bounded[2])>=Number(bounded[1]))return {kind:'ages',ranges:[{min:Number(bounded[1]),max:Number(bounded[2])}],label:'Ages '+bounded[1]+'–'+bounded[2]};
+  return {kind:'programs',label:ages||'Confirm program ages',audience};
+ }
  const ranges=[...text.matchAll(/\bages?\s+(\d{1,2})\s*[-–—]\s*(\d{1,2})\b/gi)].map(m=>({min:Number(m[1]),max:Number(m[2]),label:m[0]})).filter(r=>r.min>=2&&r.max>=r.min&&r.max<=99);
  // Multiple program ranges may have gaps. Keep all of them rather than flattening.
  if(ranges.length)return {kind:'ages',ranges,label:[...new Set(ranges.map(r=>r.label))].join(' · ')};

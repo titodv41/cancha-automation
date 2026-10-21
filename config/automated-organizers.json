@@ -36,5 +36,41 @@
     "imageBackground": "Light",
     "imageMaxWidth": 95,
     "imageProvenance": "Existing Cancha CMS branding from safeguarding-compliance-specialist; reused under the user\u2019s existing image instructions, not a new licensing claim."
+  },
+  {
+    "organization": "Orlando City SC & Orlando Pride",
+    "sourcePrefix": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/",
+    "board": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride",
+    "officialCareersUrl": "https://www.orlandocitysc.com/club/careers",
+    "imageSource": "https://cf-production.teamworkonline.com/uploads/public/thumb_e396a292-4fc4-4de7-81e6-e9b5765cbc38.png",
+    "organizationAliases": [
+      "Orlando City SC & Orlando Pride"
+    ],
+    "imageUrl": "https://framerusercontent.com/images/B8O94LlMJY5HRPCtK9vqoBUr0.png",
+    "imageTreatment": "Badge",
+    "imageBackground": "Light",
+    "imageMaxWidth": 180,
+    "imageProvenance": "Identifying employer logo from the official-linked TeamWork board, reviewed October 21, 2026. No partnership or paid-ad clearance implied.",
+    "imageSourceChecksum": "caff9735b99d0569e948adbd2ebf579ea5a898f0bf42b08124fed3be308ede16",
+    "applicationPathKinds": [
+      "interest_expressions"
+    ],
+    "applicationPathEvidence": "Official-linked employer postings expose exact TeamWork /employment_opportunities/{posting-id}/interest_expressions/new Apply Now actions. Follow-up employer application is still required."
+  },
+  {
+    "organization": "Sporting JAX",
+    "sourcePrefix": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/JAXUSL-LLC-jobs/",
+    "board": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/JAXUSL-LLC-jobs",
+    "officialCareersUrl": "https://www.sportingjax.com/careers/",
+    "imageSource": "https://cf-production.teamworkonline.com/uploads/public/thumb_77b2c8d3-2497-4f6f-804d-bb3646e77f78.png",
+    "organizationAliases": [
+      "Sporting JAX"
+    ],
+    "imageUrl": "https://framerusercontent.com/images/lDGj0xYmsGQZefOD3vlAv7DMY2M.png",
+    "imageTreatment": "Badge",
+    "imageBackground": "Light",
+    "imageMaxWidth": 180,
+    "imageProvenance": "Identifying employer logo from the official-linked TeamWork board, reviewed October 21, 2026. No partnership or paid-ad clearance implied.",
+    "imageSourceChecksum": "ef1d1cf31c8f300a0261751fa1a054458a070d2cb95e96b090d199ce9d8c70bf"
   }
 ]

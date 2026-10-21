@@ -14,3 +14,13 @@ test('structured job checks preserve unknown dates, identify automation honestly
  assert.throws(()=>verifyJob({...options,schemas:[job,job]}),/ambiguous/);
  assert.throws(()=>verifyJob({...options,schemas:[{...job,jobLocation:[{address:{addressCountry:'US',addressRegion:'CA',addressLocality:'Miami'}}]}]}),/Florida/);
 });
+
+test('an employer-specific interest action stays bound to the approved employer, origin and exact posting',()=>{
+ const link='https://www.teamworkonline.com/employment_opportunities/123/interest_expressions/new';
+ assert.throws(()=>verifyJob({...options,applicationLinks:[link]}),/application/);
+ const supported={...options,registry:[{...registry[0],applicationPathKinds:['interest_expressions']}],applicationLinks:[link]};
+ assert.equal(verifyJob(supported).openConfirmed,true);
+ assert.throws(()=>verifyJob({...supported,applicationLinks:[link.replace('/123/','/456/')]}),/application/);
+ assert.throws(()=>verifyJob({...supported,applicationLinks:[link.replace('www.teamworkonline.com','unrelated.example')]}),/application/);
+ assert.throws(()=>verifyJob({...supported,registry:[{...registry[0],applicationPathKinds:['unreviewed']}]}),/application/);
+});

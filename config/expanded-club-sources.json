@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "reviewedOn": "2026-10-21",
+  "scope": "Florida adult leagues, regional introductory soccer providers, and city-listed soccer venues. These are profiles, not claims of open registration or scheduled pickup.",
+  "cityOverrides": {},
+  "scopeCounties": {
+    "/miami/": ["Miami-Dade"],
+    "/southbroward/": ["Broward"],
+    "/eastbroward/": ["Broward"],
+    "/homestead/": ["Miami-Dade"]
+  },
+  "limits": "Regional providers are grouped by franchise. School/childcare locator entries are never imported as public parks or open classes. Sites that are parked, unrelated, blocked or identity-mismatched are excluded."
+}

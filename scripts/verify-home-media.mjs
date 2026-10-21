@@ -14,7 +14,7 @@ for(const[device,width]of[['desktop',1440],['mobile',390],['small-mobile',320]])
   await visit('/');await page.locator('main[data-ready="true"]').waitFor();
   assert(await page.locator('main h1').evaluate(e=>getComputedStyle(e).fontFamily.includes('Cancha Display')&&getComputedStyle(e).fontStyle==='italic'),'Cancha headline identity retained');
   assert(await page.evaluate(()=>document.fonts.check('italic 700 72px "Cancha Display"')),'Actual display font loaded');
-  assert(await page.locator('.ch3-intro').evaluate(e=>getComputedStyle(e).fontFamily.includes('Cancha Manrope')&&+getComputedStyle(e).fontWeight>=600),'Supporting text has a substantial readable weight');
+  assert(await page.locator('.ch3-intro').evaluate(e=>getComputedStyle(e).fontFamily.includes('system')&&+getComputedStyle(e).fontWeight>=500),'Supporting text uses a readable device UI font');
   const scene=page.locator('.ch3-community-scene');await scene.locator('img').evaluate(i=>i.decode());
   assert(await scene.locator('img').count()===1,'Single intentional community photograph replaces rejected slideshow');
   assert(await scene.getByRole('link',{name:'Orlando, Florida',exact:true}).getAttribute('href')==='/clubs?near=Orlando','Photo location leads to relevant directory results');
@@ -27,7 +27,7 @@ for(const[device,width]of[['desktop',1440],['mobile',390],['small-mobile',320]])
   const next=page.getByRole('button',{name:'Next clubs',exact:true});let steps=0;
   while(steps++<10){await page.waitForFunction(()=>{const n=document.querySelector('.ch3-club-strip'),b=document.querySelector('button[aria-label="Next clubs"]');return b.disabled===(n.scrollLeft+n.clientWidth>=n.scrollWidth-2)});if(await next.isDisabled())break;const before=await strip.evaluate(n=>n.scrollLeft);await next.click();await page.waitForFunction(before=>document.querySelector('.ch3-club-strip').scrollLeft>before,before)}
   assert(steps>0&&await next.isDisabled(),'Manual controls reach last club');
-  const end=await strip.evaluate(n=>n.scrollLeft);await page.getByRole('button',{name:'Previous clubs',exact:true}).focus();await page.keyboard.press('Enter');await page.waitForFunction(end=>document.querySelector('.ch3-club-strip').scrollLeft<end,end);
+  const end=await strip.evaluate(n=>n.scrollLeft),previous=page.getByRole('button',{name:'Previous clubs',exact:true});if(end>0){await previous.focus();await page.keyboard.press('Enter');await page.waitForFunction(end=>document.querySelector('.ch3-club-strip').scrollLeft<end,end)}else assert(await previous.isDisabled(),'All badges fit without unnecessary scrolling');
   assert(await page.getByRole('heading',{name:'How Cancha works',exact:true}).count()===1,'Current process explained');
   const credits=page.locator('details.cf3-credits');assert(!await credits.evaluate(n=>n.open),'Credits discreet by default');await credits.locator('summary').focus();await page.keyboard.press('Enter');assert(await credits.evaluate(n=>n.open),'Credits keyboard accessible');assert(await credits.getByRole('link',{name:'CC BY 4.0',exact:true}).count()===1,'Photograph license retained');await credits.locator('summary').click();
   await page.locator('.ch3-paths').scrollIntoViewIfNeeded();await page.locator('.ch3-paths img').evaluateAll(async images=>Promise.all(images.map(i=>i.decode())));

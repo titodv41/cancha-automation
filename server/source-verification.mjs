@@ -2,7 +2,7 @@ import {createHash} from 'node:crypto';
 import {canonicalUrl} from './opportunity-policy.mjs';
 const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
 const identity=s=>clean(s).toLowerCase().replace(/[^a-z0-9]/g,'');
-const regions={miami:'South Florida',fortlauderdale:'South Florida',hollywood:'South Florida',tampa:'Tampa Bay',stpetersburg:'Tampa Bay',stpete:'Tampa Bay',clearwater:'Tampa Bay',orlando:'Central Florida',lakeland:'Central Florida',ocala:'Central Florida',jacksonville:'North Florida',tallahassee:'North Florida',fortmyers:'Southwest Florida',naples:'Southwest Florida'};
+const regions={miami:'South Florida',fortlauderdale:'South Florida',hollywood:'South Florida',tampa:'Tampa Bay',stpetersburg:'Tampa Bay',stpete:'Tampa Bay',clearwater:'Tampa Bay',orlando:'Central Florida',kissimmee:'Central Florida',sanford:'Central Florida',lakeland:'Central Florida',ocala:'Central Florida',jacksonville:'North Florida',tallahassee:'North Florida',fortmyers:'Southwest Florida',naples:'Southwest Florida'};
 export function flattenSchemas(values){const rows=[];for(const value of values){if(Array.isArray(value))rows.push(...flattenSchemas(value));else if(value&&typeof value==='object'){rows.push(value);if(value['@graph'])rows.push(...flattenSchemas(value['@graph']));}}return rows;}
 export function verifyJob({url,schemas,pageText,descriptionText,applicationLinks,registry,image,sourceHash,now=new Date()}){
  const official=registry.find(x=>canonicalUrl(url).startsWith(x.sourcePrefix));if(!official)throw Error('No supported organizer adapter');
@@ -10,7 +10,8 @@ export function verifyJob({url,schemas,pageText,descriptionText,applicationLinks
  const organization=clean(job.hiringOrganization?.name);if(!official.organizationAliases.some(x=>identity(x)===identity(organization)))throw Error('Organizer does not match approved source');
  const id=String(job.identifier?.value||'');if(!/^\d+$/.test(id)||!url.endsWith('-'+id)||!clean(job.title))throw Error('Posting identity does not match URL');
  if(/closed to new applications|position (?:has been )?filled|no longer accepting applications/i.test(pageText))throw Error('Organizer says applications are closed');
- const application=applicationLinks.find(x=>{try{return new URL(x).origin===new URL(url).origin&&new URL(x).pathname===`/employment_opportunities/${id}/applications/new`;}catch{return false;}});if(!application)throw Error('No exact working application action');
+ const actionKinds=(official.applicationPathKinds||['applications']).filter(x=>['applications','interest_expressions'].includes(x));
+ const application=applicationLinks.find(x=>{try{return new URL(x).origin===new URL(url).origin&&actionKinds.some(kind=>new URL(x).pathname===`/employment_opportunities/${id}/${kind}/new`);}catch{return false;}});if(!application)throw Error('No exact working application action');
  if(job.validThrough&&(!Number.isFinite(Date.parse(job.validThrough))||Date.parse(job.validThrough)<=now.getTime()))throw Error('Posting metadata is stale; organizer review needed');
  if(!Number.isFinite(Date.parse(job.datePosted))||Date.parse(job.datePosted)>now.getTime())throw Error('Posting date is missing or invalid');
  const locations=[job.jobLocation].flat().filter(Boolean);if(locations.length!==1)throw Error('Multiple/unknown job locations require review');const address=locations[0].address;
