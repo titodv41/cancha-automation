@@ -162,6 +162,69 @@
       "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/JAXUSL-LLC-jobs",
       "enabled": true,
       "purpose": "Official employer-linked board; individual jobs must pass exact identity, dates, application action, eligibility, Florida location and image checks."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-1",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/ticket-sales-premium-account-executive-2195584",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-2",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/creative-creative-project-manager-2194775",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-3",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/stadium-operations-part-time-stadium-security-guard-2194614",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-4",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/fan-ambassadors-fan-ambassador-2194613",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-5",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/training-facilities-security-guard-ohp-2192865",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-6",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/team-operations-head-academy-athletic-trainer-2191552",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-7",
+      "url": "https://www.teamworkonline.com/soccer-jobs/orlando-city-sc-pride/orlando-city-sc-pride/stadium-operations-sports-turf-specialist-2183139",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-8",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/JAXUSL-LLC-jobs/group-sales-executive-2194112",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
+    },
+    {
+      "id": "reviewed-employer-seed-2026-10-21-9",
+      "url": "https://www.teamworkonline.com/soccer-jobs/usl-soccer-jobs/JAXUSL-LLC-jobs/account-executive-ticket-sales-2194111",
+      "enabled": true,
+      "discoverySeedUntil": "2026-10-28",
+      "purpose": "Public job URL found on an official-linked employer board. Recheck the exact posting before Active staging; expires as a discovery seed after one week."
     }
   ],
   "targetPerDay": 50
