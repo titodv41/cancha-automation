@@ -1,7 +1,7 @@
 import{createHash}from'node:crypto';
 import{withProject}from'./project-session.mjs';import{readFile,writeFile}from'node:fs/promises';import{syncDiscoveryCatalog}from'./sync-discovery-catalog.mjs';
 const dir=process.argv[2];if(!dir?.startsWith('backups/'))throw Error('Pass an existing private project backup directory');
-const names=['CanchaUI','DiscoveryModel','DiscoveryCityMap','CanchaPlayerFit','CanchaNavigation','CanchaFooter','CanchaHome','CanchaDiscovery','OpportunityStatus','TrainingDirectory','OpportunityImage','ClubProfileVisual','CanchaDetail'];
+const names=['CanchaUI','DiscoveryModel','DiscoveryCityMap','CanchaPlayerFit','CanchaNavigation','CanchaFooter','CanchaHome','CanchaDiscovery','OpportunityStatus','TrainingDirectory','OpportunityImage','ClubProfileVisual','CanchaDetail','CanchaCommunity'];
 await withProject(async f=>{
  const prior=JSON.parse(await readFile('private-data/player-fit-build.json').catch(()=>'{"manifest":{}}')),digest=x=>createHash('sha256').update(x).digest('hex');
  const before=JSON.parse(await readFile(dir+'/code-files.json')),current=await f.getCodeFiles(),sources=new Map(await Promise.all(names.map(async n=>[n+'.tsx',await readFile('framer/'+n+'.tsx','utf8')])));

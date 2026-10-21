@@ -1,0 +1,262 @@
+{
+  "checkedAt": "2026-10-21T18:06:02.443Z",
+  "base": "https://pioneering-friday-005497.framer.app",
+  "deployment": "295e5c9d7",
+  "optimizationStatus": "optimized",
+  "pendingChanges": 0,
+  "cmsUnchanged": true,
+  "nativeFormScenesUnchanged": true,
+  "counts": {
+    "Opportunities": 96,
+    "Providers": 2,
+    "Offers": 0,
+    "Stories": 3,
+    "Clubs": 360
+  },
+  "nodeTests": 143,
+  "framerTypechecks": 14,
+  "communityChecks": [
+    {
+      "device": "desktop",
+      "passed": true,
+      "displayFont": true,
+      "bodyFont": "Barlow 500/600/700",
+      "ctaContrast": 9.334485560967618,
+      "noFakeGroups": true,
+      "guideSearch": true,
+      "nativeGroupTypePrefilled": true,
+      "privateForm": true,
+      "noHorizontalOverflow": true,
+      "runtimeErrors": []
+    },
+    {
+      "device": "mobile",
+      "passed": true,
+      "displayFont": true,
+      "bodyFont": "Barlow 500/600/700",
+      "ctaContrast": 9.334485560967618,
+      "noFakeGroups": true,
+      "guideSearch": true,
+      "nativeGroupTypePrefilled": true,
+      "privateForm": true,
+      "noHorizontalOverflow": true,
+      "runtimeErrors": []
+    },
+    {
+      "device": "small-mobile",
+      "passed": true,
+      "displayFont": true,
+      "bodyFont": "Barlow 500/600/700",
+      "ctaContrast": 9.334485560967618,
+      "noFakeGroups": true,
+      "guideSearch": true,
+      "nativeGroupTypePrefilled": true,
+      "privateForm": true,
+      "noHorizontalOverflow": true,
+      "runtimeErrors": []
+    }
+  ],
+  "homeChecks": [
+    {
+      "device": "desktop",
+      "passed": true,
+      "brandFont": true,
+      "substantialBodyType": true,
+      "staticCommunityPhoto": true,
+      "eightUncroppedBadges": true,
+      "manualCarousel": true,
+      "reducedMotion": true,
+      "creditsAccessible": true,
+      "elevenProviderLogos": true,
+      "courseFiltering": true,
+      "organizationFallback": true,
+      "venueCityMap": true,
+      "noOverflow": true
+    },
+    {
+      "device": "mobile",
+      "passed": true,
+      "brandFont": true,
+      "substantialBodyType": true,
+      "staticCommunityPhoto": true,
+      "eightUncroppedBadges": true,
+      "manualCarousel": true,
+      "reducedMotion": true,
+      "creditsAccessible": true,
+      "elevenProviderLogos": true,
+      "courseFiltering": true,
+      "organizationFallback": true,
+      "venueCityMap": true,
+      "noOverflow": true
+    },
+    {
+      "device": "small-mobile",
+      "passed": true,
+      "brandFont": true,
+      "substantialBodyType": true,
+      "staticCommunityPhoto": true,
+      "eightUncroppedBadges": true,
+      "manualCarousel": true,
+      "reducedMotion": true,
+      "creditsAccessible": true,
+      "elevenProviderLogos": true,
+      "courseFiltering": true,
+      "organizationFallback": true,
+      "venueCityMap": true,
+      "noOverflow": true
+    },
+    {
+      "device": "motion",
+      "passed": true,
+      "gentleMovement": true,
+      "pauseResume": true,
+      "hoverPause": true,
+      "offscreenPause": true
+    }
+  ],
+  "discoveryChecks": [
+    {
+      "device": "desktop",
+      "passed": true,
+      "searchWithoutFilters": true,
+      "optionalFilters": true,
+      "cancelAndApply": true,
+      "youngPlayerBasicLevels": true,
+      "advancedPathwayExplicit": true,
+      "parentModeRemoved": true,
+      "age14Showcases": true,
+      "adult24Pathway": true,
+      "ageEvidenceToggle": true,
+      "urlAndTabPersistence": true,
+      "mapAndList": true,
+      "cityPreviews": true,
+      "attribution": true,
+      "loadMore": true,
+      "emptyReset": true,
+      "careers": true,
+      "nativeRoutes": true,
+      "fontsLoaded": true,
+      "noHorizontalOverflow": true,
+      "measurements": [
+        {
+          "page": "home",
+          "words": 409,
+          "firstCardTop": 1993.515625
+        },
+        {
+          "page": "clubs",
+          "firstCardTop": 576.96875
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "device": "mobile",
+      "passed": true,
+      "searchWithoutFilters": true,
+      "optionalFilters": true,
+      "cancelAndApply": true,
+      "youngPlayerBasicLevels": true,
+      "advancedPathwayExplicit": true,
+      "parentModeRemoved": true,
+      "age14Showcases": true,
+      "adult24Pathway": true,
+      "ageEvidenceToggle": true,
+      "urlAndTabPersistence": true,
+      "mapAndList": true,
+      "cityPreviews": true,
+      "attribution": true,
+      "loadMore": true,
+      "emptyReset": true,
+      "careers": true,
+      "nativeRoutes": true,
+      "fontsLoaded": true,
+      "noHorizontalOverflow": true,
+      "measurements": [
+        {
+          "page": "home",
+          "words": 404,
+          "firstCardTop": 2692.28125
+        },
+        {
+          "page": "clubs",
+          "firstCardTop": 637.171875
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "device": "small-mobile",
+      "passed": true,
+      "searchWithoutFilters": true,
+      "optionalFilters": true,
+      "cancelAndApply": true,
+      "youngPlayerBasicLevels": true,
+      "advancedPathwayExplicit": true,
+      "parentModeRemoved": true,
+      "age14Showcases": true,
+      "adult24Pathway": true,
+      "ageEvidenceToggle": true,
+      "urlAndTabPersistence": true,
+      "mapAndList": true,
+      "cityPreviews": true,
+      "attribution": true,
+      "loadMore": true,
+      "emptyReset": true,
+      "careers": true,
+      "nativeRoutes": true,
+      "fontsLoaded": true,
+      "noHorizontalOverflow": true,
+      "measurements": [
+        {
+          "page": "home",
+          "words": 404,
+          "firstCardTop": 2711.15625
+        },
+        {
+          "page": "clubs",
+          "firstCardTop": 639.171875
+        }
+      ],
+      "runtimeErrors": []
+    }
+  ],
+  "nativePreviewChecks": [
+    {
+      "device": "desktop",
+      "path": "/providers",
+      "settledHeadingFont": true,
+      "guideImageLoaded": false
+    },
+    {
+      "device": "desktop",
+      "path": "/stories/questions-before-you-register",
+      "settledHeadingFont": true,
+      "guideImageLoaded": true
+    },
+    {
+      "device": "mobile",
+      "path": "/providers",
+      "settledHeadingFont": true,
+      "guideImageLoaded": false
+    },
+    {
+      "device": "mobile",
+      "path": "/stories/questions-before-you-register",
+      "settledHeadingFont": true,
+      "guideImageLoaded": true
+    },
+    {
+      "device": "small-mobile",
+      "path": "/providers",
+      "settledHeadingFont": true,
+      "guideImageLoaded": false
+    },
+    {
+      "device": "small-mobile",
+      "path": "/stories/questions-before-you-register",
+      "settledHeadingFont": true,
+      "guideImageLoaded": true
+    }
+  ]
+}

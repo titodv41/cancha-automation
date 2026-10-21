@@ -14,7 +14,7 @@ for(const[device,width]of[['desktop',1440],['mobile',390],['small-mobile',320]])
   await visit('/');await page.locator('main[data-ready="true"]').waitFor();
   assert(await page.locator('main h1').evaluate(e=>getComputedStyle(e).fontFamily.includes('Cancha Display')&&getComputedStyle(e).fontStyle==='italic'),'Cancha headline identity retained');
   assert(await page.evaluate(()=>document.fonts.check('italic 700 72px "Cancha Display"')),'Actual display font loaded');
-  assert(await page.locator('.ch3-intro').evaluate(e=>getComputedStyle(e).fontFamily.includes('system')&&+getComputedStyle(e).fontWeight>=500),'Supporting text uses a readable device UI font');
+  assert(await page.locator('.ch3-intro').evaluate(e=>getComputedStyle(e).fontFamily.includes('Cancha UI')&&+getComputedStyle(e).fontWeight>=500),'Supporting text uses the Barlow UI family');
   const scene=page.locator('.ch3-community-scene');await scene.locator('img').evaluate(i=>i.decode());
   assert(await scene.locator('img').count()===1,'Single intentional community photograph replaces rejected slideshow');
   assert(await scene.getByRole('link',{name:'Orlando, Florida',exact:true}).getAttribute('href')==='/clubs?near=Orlando','Photo location leads to relevant directory results');

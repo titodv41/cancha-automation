@@ -2,7 +2,7 @@
 
 Current owner preference, October 21, 2026. Preserve this identity during future edits.
 
-- Keep the existing Cancha wordmark. Use the established **Cancha Display** bold italic face for the main headlines. Use the device UI font for readable body text and controls; keep substantial Manrope card headings. Keep athletic Cancha Display section titles. Avoid thin supporting copy.
+- Keep the existing Cancha wordmark. Use the established **Cancha Display** bold italic face for the main headlines. Use matching Barlow 500/600/700 for readable body text, controls and substantial card headings. Keep athletic Cancha Display section titles. Avoid thin supporting copy.
 - Keep the forest green, cream and orange brand palette. Use direct, useful wording. Avoid chains of motivational slogans or adding text merely to fill space.
 - Use real soccer photography, actual directory badges, provider marks and relevant resource images. Keep each image tied to what the section contains. Do not fabricate clubs, testimonials, partnerships or Cancha-run events.
 - The homepage uses one published Orlando supporters photograph as illustrative Florida soccer context. The owner rejected the previous rotating photo panel. It does not claim those people use or endorse Cancha. The source, creator, license, date/context and responsive crop are documented in the footer's collapsed **Photo credits** section and `config/community-media.json`.
@@ -14,3 +14,5 @@ Current owner preference, October 21, 2026. Preserve this identity during future
 - Preserve free discovery, existing URLs, source/availability caveats and private native submission forms. Do not add accounts, a contact paywall, checkout, ads or subscriptions merely for appearance.
 
 Photo media and resource marks are separately documented in `config/community-media.json` and `config/home-resource-media.json`, with course-provider marks in `config/learning-provider-media.json`. Rights to display editorial or identifying media do not establish a partnership or permission to imply endorsement in an ad.
+
+October 21 Community follow-up: use the matching Barlow 500/600/700 UI family for supporting text and controls. Keep Cancha Display for athletic headings, including legacy native paragraph layers used as titles. Do not flatten all native text into the body face. Community group cards need real admin-approved invitations; avoid empty city cards or fabricated group membership. Preserve native CMS guides and private email delivery.

@@ -4,7 +4,7 @@ Official prices checked October 21, 2026. USD before tax; confirm the checkout t
 
 ## Lowest price with the current site structure
 
-Cancha currently has five CMS collections: Clubs, Opportunities, Providers, Stories and Offers. Removing an empty collection alone is not enough to reach Basic's two-collection limit.
+Cancha currently has five CMS collections: Clubs, Opportunities, Providers, Stories and Offers. Removing an empty collection alone is not enough to reach Basic's two-collection limit. A collection is a table of similar content; an item is one stored record, such as one club or one opportunity. Basic's 1,000 CMS items are a site content allowance, not visitors or posts per month. The October 21 backup has 461 records: 360 Clubs, 96 Opportunities, two Providers, three Stories and zero Offers. Retained closed listings also use records.
 
 | Framer plan | Annual billing | Monthly billing | CMS limits | Fit for Cancha today |
 | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ The Made in Framer badge can be removed through a paid site plan and custom-doma
 
 ## Ways to spend less
 
-**Basic after consolidation:** keep Clubs and Opportunities in CMS; move the small Providers/Stories directories and currently empty Offers collection to reviewed repository data while preserving their URLs, forms and update workflow. That is a real migration, not a plan-toggle shortcut. It needs a backup, template/binding audit and route verification before deleting collections. The 1,000-item limit must also fit the intended directory growth. No collections have been removed.
+**Basic after consolidation:** keep Clubs and Opportunities in CMS; move the small Providers/Stories directories and currently empty Offers collection to reviewed repository data while preserving their URLs, forms and update workflow. That is a real migration, not a plan-toggle shortcut. It needs a backup, template/binding audit and route verification before deleting collections. The 1,000-item limit must also fit the intended directory growth. No collections have been removed. The WhatsApp group directory uses reviewed repository data and adds no sixth CMS collection. Given the goal of a much larger Florida directory, do not buy Basic solely on price without checking expected growth against its item limit.
 
 **Different hosting:** static hosting can reduce the recurring hosting bill, but replacing Framer means migrating the site, CMS publishing, forms and automation. It does not produce the same operational setup simply by changing DNS. Price that work separately before cancelling anything.
 

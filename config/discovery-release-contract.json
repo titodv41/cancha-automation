@@ -4,16 +4,17 @@
     "OpportunityImage.tsx": "73c5264c529a46dc5b52772dd33b7845832cdb67b4731dc07ddc8ef97d863d48",
     "TrainingDirectory.tsx": "042bbf4f82d30be0c8f3d050e7d4e8b17ac9c0fffe0a669c4ad3036740a7642d",
     "ClubProfileVisual.tsx": "50596ad890e54cf4fa0a7adbb28ae7a4dead6fab2ae4bf034bbeb9d71caf0f99",
-    "CanchaUI.tsx": "05b2b664684085c690b771e25e5f741a0ee2c465a44492fc24dbdb9b3f87ab1e",
+    "CanchaUI.tsx": "c3c376a959a5d8503d09e1e53bda876f9ec7ce21c28ec566555eaa7fa878633e",
     "DiscoveryModel.tsx": "df8aabd2e61513e7cbb1a8b2ff192b6dbe751548e7d9c487a7f8a91118c3b29e",
     "DiscoveryCityMap.tsx": "e5737428943fc0535e1241bf497f3205e853f10bae56ea1ac6652245620c9b13",
-    "CanchaNavigation.tsx": "03d92dce2b0d9b5f4f9ff1f9f30e9044b748cdfd2228817aef47b34b7e13f261",
-    "CanchaFooter.tsx": "82eb8154f23889b6b44e53db41a1178bb737a9a4fdfde6550ed7fe6fc6c62a46",
+    "CanchaNavigation.tsx": "f70de870c468c4e8c6539501945894b79cd1c7ff5e16f5c6a127f6080d0dfbfd",
+    "CanchaFooter.tsx": "22ef83d2e5debbc7e17e99655881bbbde5ea3355c65a9143ad45800a333bbcfe",
     "CanchaHome.tsx": "f25e4db974a61cbd0ad8791a8b0abd2507895344eec3240bc47672937da484d2",
     "CanchaDiscovery.tsx": "a1f13c94358a9675fe6f44c5c69388d7f345e83b889db73cd0e3eb0d21d4f17e",
     "OpportunityStatus.tsx": "5274a042def081c53c00d80289121a2a705a3444445976864901a7e613c4cf45",
     "CanchaPlayerFit.tsx": "4e47382b29aac898376e592b2198a7a8e18b0c841ba2b9f692ce5f026fb6b13a",
-    "CanchaDetail.tsx": "d2bb7bcbddc6301542fa910f39661926d06c3928ec338c6bbbfbb079d7c4893a"
+    "CanchaDetail.tsx": "d2bb7bcbddc6301542fa910f39661926d06c3928ec338c6bbbfbb079d7c4893a",
+    "CanchaCommunity.tsx": "264d8a21bbf4cd8cbe90f4700a7605df35a40d9b4452a16649d634e455cf8c2e"
   },
   "scenes": {
     "ZuWkzhOX9": "5ebfaa88d68f5de851a6cb5d68bc212b235eed7e600316d9233875fa083889dd",
@@ -26,7 +27,7 @@
     "nYqllTBEd": "0930ed3027ed19a39c02d3eefe35c3addf0a6d044ff73747eea41b3f28203357",
     "npRy9P91I": "2c9ffd2b6738ebdd735b7e009fc56c08eb704c7d2e1ec87ebd51605ea2989829",
     "t4_q6twTf": "ee0b6d2a141e50af6b503f13073e58634f9ee17909e91ac791ae31543479f3c1",
-    "OogsDn6ap": "226d3296a6b57e8748cdffc65bc4909745254f82ce38dd27c9e3cb8ab5cc39d3",
+    "OogsDn6ap": "05d4c404e4856212c88cb4ef1846a249a876a4cb9d5a3139b9b5ebc4941a9be1",
     "Ro6xqCMwV": "82d688082a42b9c83214769e2bf31efb316bd7b6a5eea853c4a1eb387f4454ee",
     "l0HD5a5Bn": "13385440ed5112a28b6d417ccf7b492bc329baaa7fbc4344b8e085d806c0618c"
   },
