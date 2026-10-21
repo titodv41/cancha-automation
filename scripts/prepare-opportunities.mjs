@@ -13,4 +13,4 @@ try{for(const lead of candidates.slice(0,50)){
  }catch(error){blocked.push({url:lead.url,reason:error.message});}
 }}
 finally{await browser.close();if(imageBrowser)await imageBrowser.browser.close();await source.close();}
-await writeFile(dir+'/ready.json',JSON.stringify(ready,null,2),{mode:0o600});await writeFile(dir+'/manual-review.json',JSON.stringify(blocked,null,2),{mode:0o600});console.log(JSON.stringify({sourceChecked:ready.length,manualReview:blocked.length,batch:dir+'/ready.json',published:false}));
+await writeFile(dir+'/ready.json',JSON.stringify(ready,null,2),{mode:0o600});await writeFile(dir+'/manual-review.json',JSON.stringify(blocked,null,2),{mode:0o600});console.log(JSON.stringify({sourceChecked:ready.length,manualReview:blocked.length,manualReasons:blocked.reduce((out,row)=>{out[row.reason]=(out[row.reason]||0)+1;return out},{}),batch:dir+'/ready.json',published:false}));

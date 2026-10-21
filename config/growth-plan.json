@@ -33,7 +33,7 @@
     "Publish reviewed opportunity collection changes automatically; unrelated site edits require review"
   ],
   "knownLimits": [
-    "Current unattended adapters support three soccer employer job-board sources, not all youth/club program types",
+    "Current unattended adapters support five soccer employer job boards plus club/league/program/venue profile sources; open youth/club opportunities still need exact enrollment evidence",
     "Broader club/camp/tryout discovery requires additional source-specific verification adapters or human review",
     "Analytics-driven Instagram optimization is not connected",
     "Other-chat vision is not available in this conversation"
