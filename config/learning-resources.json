@@ -1,33 +1,39 @@
 [
   {
     "id": "fifa-training",
-    "title": "Training ideas and game understanding",
+    "title": "FIFA training library",
     "provider": "FIFA Training Centre",
     "track": "Player development",
     "kind": "Learning library",
-    "description": "Explore practice ideas, game principles and youth-development resources from FIFA.",
+    "description": "Practice ideas, game principles and youth development resources.",
     "url": "https://www.fifatrainingcentre.com/en/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/7hI8GK7LADXah6aB6NCvT4yMOY.svg",
+    "imageBackground": "#09243b"
   },
   {
     "id": "us-soccer-coaching",
-    "title": "Find your coaching pathway",
+    "title": "U.S. Soccer coaching pathway",
     "provider": "U.S. Soccer",
     "track": "Coaching",
     "kind": "Education pathway",
-    "description": "Understand U.S. Soccer\u2019s coaching education pathway and follow its official course guidance.",
+    "description": "Coaching education levels and official course guidance.",
     "url": "https://www.ussoccer.com/coaching",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/IbNBv5EqPeRW2KcgbmvkhIwUliI.png",
+    "imageBackground": "#102b46"
   },
   {
     "id": "united-coaches",
-    "title": "Coaching courses and continuing education",
+    "title": "United Soccer Coaches courses",
     "provider": "United Soccer Coaches",
     "track": "Coaching",
     "kind": "Course directory",
-    "description": "Explore coaching courses, diplomas and online learning offered by United Soccer Coaches.",
+    "description": "Coaching courses, diplomas and online learning.",
     "url": "https://unitedsoccercoaches.org/education/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/O2YN2uM6YSdb5Rc4DBui0CQ50w.png",
+    "imageBackground": "#ffffff"
   },
   {
     "id": "statsbomb-video",
@@ -37,7 +43,9 @@
     "kind": "Online course",
     "description": "Learn about match breakdowns, video-analysis workflows and using video alongside football data.",
     "url": "https://courses.statsbomb.com/courses/analysing-football-using-video",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/cmCGMwoUpFIfG6DupfcTFKiUbc.svg",
+    "imageBackground": "#f4f6f0"
   },
   {
     "id": "statsbomb-analytics",
@@ -47,7 +55,9 @@
     "kind": "Online course",
     "description": "Explore football analytics through an introductory course from Hudl Statsbomb.",
     "url": "https://courses.statsbomb.com/courses/introduction-to-football-analytics",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/cmCGMwoUpFIfG6DupfcTFKiUbc.svg",
+    "imageBackground": "#f4f6f0"
   },
   {
     "id": "statsbomb-scouting",
@@ -57,56 +67,68 @@
     "kind": "Online course",
     "description": "Explore how scouting and data can inform player recruitment and evaluation.",
     "url": "https://courses.statsbomb.com/courses/modern-scouting-and-data-driven-recruitment",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/cmCGMwoUpFIfG6DupfcTFKiUbc.svg",
+    "imageBackground": "#f4f6f0"
   },
   {
     "id": "nsca-education",
-    "title": "Strength and conditioning education",
+    "title": "Strength & conditioning education",
     "provider": "NSCA",
     "track": "Physical preparation",
     "kind": "Education directory",
-    "description": "Browse strength-and-conditioning education, articles and professional learning resources.",
+    "description": "Strength and conditioning articles and professional learning resources.",
     "url": "https://www.nsca.com/education/education-overview/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/SkI9zCjBjY3K4ATiyd42IKZwfbw.svg",
+    "imageBackground": "#151b23"
   },
   {
     "id": "fysa-courses",
-    "title": "Coaching licenses in Florida",
+    "title": "Florida coaching courses",
     "provider": "Florida Youth Soccer Association",
     "track": "Coaching",
     "kind": "Florida course directory",
-    "description": "Explore the Grassroots, D, C and B pathways and follow FYSA to the official Learning Center. Confirm live dates and prerequisites.",
+    "description": "Grassroots, D, C and B pathways. Check current dates and prerequisites with FYSA.",
     "url": "https://www.fysa.com/coaching-courses/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/OMVk1bG6Dc0HcwS0tS4PTHodvJk.png",
+    "imageBackground": "#f4f6f0"
   },
   {
     "id": "fysa-referees",
-    "title": "Start your referee pathway",
+    "title": "Florida referee training",
     "provider": "Florida Youth Soccer Association",
     "track": "Refereeing",
     "kind": "Florida pathway",
-    "description": "Find Florida referee resources and the official training and registration route. Check current minimum ages and certification requirements.",
+    "description": "Training and registration links. Check current minimum ages and certification requirements.",
     "url": "https://www.fysa.com/referees/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/OMVk1bG6Dc0HcwS0tS4PTHodvJk.png",
+    "imageBackground": "#f4f6f0"
   },
   {
     "id": "coaching-manual",
-    "title": "Build better coaching sessions",
+    "title": "The Coaching Manual",
     "provider": "The Coaching Manual",
     "track": "Coaching",
     "kind": "Session-planning platform",
-    "description": "Explore coaching-session resources and planning tools. Access, subscriptions and suitability depend on the provider.",
+    "description": "Session resources and planning tools for coaches. Access and subscriptions depend on the provider.",
     "url": "https://www.thecoachingmanual.com/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/lsM5srP0Q4I4N82xUGO5FaBjb8.svg",
+    "imageBackground": "#153d30"
   },
   {
     "id": "online-soccer-academy",
-    "title": "Practice individual soccer skills",
+    "title": "Online Soccer Academy tutorials",
     "provider": "Online Soccer Academy",
     "track": "Player development",
     "kind": "Video learning library",
-    "description": "Browse skill tutorials and practice ideas. Adapt sessions to your ability and training environment.",
+    "description": "Soccer skill tutorials and individual practice ideas.",
     "url": "https://www.onlinesocceracademy.com/",
-    "checkedOn": "2026-10-19"
+    "checkedOn": "2026-10-19",
+    "image": "https://framerusercontent.com/images/dwHBeTiGcy1bqFTe1wNCjLcNc.png",
+    "imageBackground": "#fff"
   }
 ]

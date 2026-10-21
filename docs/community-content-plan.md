@@ -5,7 +5,7 @@ Owner direction, October 21, 2026: keep the clean style of the last two posts; f
 ## What changed
 
 - Community questions now receive priority until four posts in the calendar week's scheduled/published mix cover that topic, when eligible content is available. This is a target, not a claim that seven good posts always exist.
-- Three earlier promotional/product-guide drafts are excluded from new automatic selection. Published posts and their receipts are preserved.
+- Three earlier promotional/product-guide drafts and two empty-field/stadium photo drafts are excluded from new automatic selection. Published posts and their receipts are preserved.
 - Three inspected community assets are delivered by the `refresh-community` workflow action: a welcoming-club question, a returning-player question and a credited Florida field photo asking about regular games. They use the same source/creative validation, freshness and one-post-per-day checks as the existing system.
 - The daily preparation pool includes a parent-advice discussion and can add current source-backed club/place features. Repeat photos/subjects are excluded for 30 days; weak, stale or exhausted content is skipped.
 
@@ -30,3 +30,5 @@ Framer's latest 14-day read showed 49 homepage pageviews, 31 `/clubs` pageviews 
 The new workflow action imports only the three reviewed, fresh assets. It never changes published content, resumes an owner-paused plan or retries an uncertain publication. Daily preparation/publishing still uses the encrypted GitHub state and existing secrets. Render is not required. No new paid services, ads, DMs or outreach were activated.
 
 Use [Google Flow experiments](google-flow-content-workflow.md) for clearly illustrative clips or use the existing product-video renderer. Review one export and implement a video-specific publishing path before enabling automated video.
+
+The later identity audit adds a licensed Orlando player-huddle photograph and community question to the future pool. It retains archive context and original-source identity checks. Automatic club spotlights require a real identifying image; unillustrated club profiles are skipped for social features. The added subject is not a claim of a new publication. See the current [community identity release](community-identity-release.md).

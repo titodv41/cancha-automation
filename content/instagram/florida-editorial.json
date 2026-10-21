@@ -169,5 +169,35 @@
     "caption": "You can start learning analysis with one clear question, rather than a dashboard full of numbers.\n\nUse footage you can lawfully work with, define a few consistent tags and explain the examples. Avoid drawing a season-long conclusion from one match.\n\nWe’ve collected official video/data-analysis courses alongside coaching and player-development resources:\nhttps://pioneering-friday-005497.framer.app/training\n\n#Cancha #FloridaSoccer #SoccerCommunity",
     "altText": "Watch one match. Notice more. Four original Cancha practical prompts: Pick one question, Choose a few tags, Record clear examples, Write one finding.",
     "rights": "Original Cancha educational copy and design. No employment, roster place, qualification or performance outcome is promised."
+  },
+  {
+    "id": "community-photo-orlando-huddle",
+    "sourceType": "brand",
+    "format": "feed",
+    "topic": "community",
+    "creativeKind": "photo-guide",
+    "subjectKey": "photo:6dda931a98621c732e72c51d88042e5bbea1b3b5db825c2286cc1d0a24a847cd",
+    "photo": {
+      "id": "orlando-community-huddle",
+      "city": "Orlando",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:OCSC_huddle.jpg",
+      "creator": "Keiteay",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "originalChecksum": "6dda931a98621c732e72c51d88042e5bbea1b3b5db825c2286cc1d0a24a847cd",
+      "alt": "Archive photograph of Orlando City players huddling before their August 2, 2025 match against Atlas FC. Illustrative Florida soccer context, not a Cancha event.",
+      "layout": "photo-poster",
+      "archive": true,
+      "url": "https://framerusercontent.com/images/aQ2oPLraa5fNfOZCWsBF65506c8.jpg"
+    },
+    "photoNote": "Orlando City · Archive, August 2025",
+    "kicker": "FLORIDA SOCCER / YOUR FIRST TEAM",
+    "headline": "Who got you\ninto soccer?",
+    "body": "Who made you want to keep playing?",
+    "cta": "Tell us about them in the comments.",
+    "previewUrl": "https://pioneering-friday-005497.framer.app/clubs",
+    "caption": "Who introduced you to soccer in your Florida city?\n\nTell us about the person or club that made you want to keep playing. Someone reading might be looking for their first team. Please leave private contact details out.\n\nArchive photo: Orlando City players before their August 2, 2025 Leagues Cup match against Atlas FC. Used for Florida soccer context.\n\nPhoto: Keiteay / Wikimedia Commons (CC0), framed in an original Cancha design.\nhttps://commons.wikimedia.org/wiki/File:OCSC_huddle.jpg\nhttps://creativecommons.org/publicdomain/zero/1.0/deed.en\n\n#Cancha #FloridaSoccer #SoccerCommunity",
+    "altText": "Archive photograph of Orlando City players huddling before their August 2, 2025 match. Original Cancha community question: Who got you into soccer?",
+    "rights": "Original Cancha community question and layout. Published photograph by Keiteay, CC0. No affiliation, endorsement or current match report is claimed."
   }
 ]

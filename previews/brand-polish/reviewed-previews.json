@@ -1,0 +1,558 @@
+{
+  "site": "https://pioneering-friday-005497.framer.app/",
+  "deploymentId": "e1522c2d8",
+  "publishedAt": "2026-10-21T04:50:38.166Z",
+  "validatedAt": "2026-10-21T04:57:07.931158+00:00",
+  "optimized": true,
+  "nodeTests": {
+    "passed": 124,
+    "failed": 0
+  },
+  "framerTypechecks": 13,
+  "cmsUnchanged": {
+    "Opportunities": 87,
+    "Providers": 2,
+    "Offers": 0,
+    "Stories": 3,
+    "Clubs": 331
+  },
+  "checks": {
+    "media": [
+      {
+        "device": "desktop",
+        "passed": true,
+        "brandFont": true,
+        "substantialBodyType": true,
+        "staticCommunityPhoto": true,
+        "eightUncroppedBadges": true,
+        "manualCarousel": true,
+        "reducedMotion": true,
+        "creditsAccessible": true,
+        "elevenProviderLogos": true,
+        "courseFiltering": true,
+        "organizationFallback": true,
+        "venueCityMap": true,
+        "noOverflow": true
+      },
+      {
+        "device": "mobile",
+        "passed": true,
+        "brandFont": true,
+        "substantialBodyType": true,
+        "staticCommunityPhoto": true,
+        "eightUncroppedBadges": true,
+        "manualCarousel": true,
+        "reducedMotion": true,
+        "creditsAccessible": true,
+        "elevenProviderLogos": true,
+        "courseFiltering": true,
+        "organizationFallback": true,
+        "venueCityMap": true,
+        "noOverflow": true
+      },
+      {
+        "device": "small-mobile",
+        "passed": true,
+        "brandFont": true,
+        "substantialBodyType": true,
+        "staticCommunityPhoto": true,
+        "eightUncroppedBadges": true,
+        "manualCarousel": true,
+        "reducedMotion": true,
+        "creditsAccessible": true,
+        "elevenProviderLogos": true,
+        "courseFiltering": true,
+        "organizationFallback": true,
+        "venueCityMap": true,
+        "noOverflow": true
+      },
+      {
+        "device": "motion",
+        "passed": true,
+        "gentleMovement": true,
+        "pauseResume": true,
+        "hoverPause": true,
+        "offscreenPause": true
+      }
+    ],
+    "browsing": [
+      {
+        "device": "desktop",
+        "passed": true,
+        "searchWithoutFilters": true,
+        "optionalFilters": true,
+        "cancelAndApply": true,
+        "youngPlayerBasicLevels": true,
+        "advancedPathwayExplicit": true,
+        "parentModeRemoved": true,
+        "age14Showcases": true,
+        "adult24Pathway": true,
+        "ageEvidenceToggle": true,
+        "urlAndTabPersistence": true,
+        "mapAndList": true,
+        "cityPreviews": true,
+        "attribution": true,
+        "loadMore": true,
+        "emptyReset": true,
+        "careers": true,
+        "nativeRoutes": true,
+        "fontsLoaded": true,
+        "noHorizontalOverflow": true,
+        "measurements": [
+          {
+            "page": "home",
+            "words": 432,
+            "firstCardTop": 2076.140625
+          },
+          {
+            "page": "clubs",
+            "firstCardTop": 576.96875
+          }
+        ],
+        "runtimeErrors": []
+      },
+      {
+        "device": "mobile",
+        "passed": true,
+        "searchWithoutFilters": true,
+        "optionalFilters": true,
+        "cancelAndApply": true,
+        "youngPlayerBasicLevels": true,
+        "advancedPathwayExplicit": true,
+        "parentModeRemoved": true,
+        "age14Showcases": true,
+        "adult24Pathway": true,
+        "ageEvidenceToggle": true,
+        "urlAndTabPersistence": true,
+        "mapAndList": true,
+        "cityPreviews": true,
+        "attribution": true,
+        "loadMore": true,
+        "emptyReset": true,
+        "careers": true,
+        "nativeRoutes": true,
+        "fontsLoaded": true,
+        "noHorizontalOverflow": true,
+        "measurements": [
+          {
+            "page": "home",
+            "words": 427,
+            "firstCardTop": 2712.171875
+          },
+          {
+            "page": "clubs",
+            "firstCardTop": 637.171875
+          }
+        ],
+        "runtimeErrors": []
+      },
+      {
+        "device": "small-mobile",
+        "passed": true,
+        "searchWithoutFilters": true,
+        "optionalFilters": true,
+        "cancelAndApply": true,
+        "youngPlayerBasicLevels": true,
+        "advancedPathwayExplicit": true,
+        "parentModeRemoved": true,
+        "age14Showcases": true,
+        "adult24Pathway": true,
+        "ageEvidenceToggle": true,
+        "urlAndTabPersistence": true,
+        "mapAndList": true,
+        "cityPreviews": true,
+        "attribution": true,
+        "loadMore": true,
+        "emptyReset": true,
+        "careers": true,
+        "nativeRoutes": true,
+        "fontsLoaded": true,
+        "noHorizontalOverflow": true,
+        "measurements": [
+          {
+            "page": "home",
+            "words": 427,
+            "firstCardTop": 2768.375
+          },
+          {
+            "page": "clubs",
+            "firstCardTop": 639.171875
+          }
+        ],
+        "runtimeErrors": []
+      }
+    ],
+    "details": [
+      {
+        "width": 1440,
+        "passed": true,
+        "categories": true,
+        "upslDivisions": true,
+        "mlsSeasonLabels": true,
+        "ageEligibility": true,
+        "detailBindings": true,
+        "sourceDisclosure": true,
+        "nativeForm": true,
+        "noOverflow": true,
+        "runtimeErrors": []
+      },
+      {
+        "width": 390,
+        "passed": true,
+        "categories": true,
+        "upslDivisions": true,
+        "mlsSeasonLabels": true,
+        "ageEligibility": true,
+        "detailBindings": true,
+        "sourceDisclosure": true,
+        "nativeForm": true,
+        "noOverflow": true,
+        "runtimeErrors": []
+      },
+      {
+        "width": 320,
+        "passed": true,
+        "categories": true,
+        "upslDivisions": true,
+        "mlsSeasonLabels": true,
+        "ageEligibility": true,
+        "detailBindings": true,
+        "sourceDisclosure": true,
+        "nativeForm": true,
+        "noOverflow": true,
+        "runtimeErrors": []
+      }
+    ],
+    "sections": [
+      {
+        "width": 1440,
+        "passed": true,
+        "regions": true,
+        "courses": true,
+        "providers": true,
+        "agentDirectory": true,
+        "nativeFormsPreserved": true,
+        "newRoutes": true,
+        "runtimeErrors": []
+      },
+      {
+        "width": 390,
+        "passed": true,
+        "regions": true,
+        "courses": true,
+        "providers": true,
+        "agentDirectory": true,
+        "nativeFormsPreserved": true,
+        "newRoutes": true,
+        "runtimeErrors": []
+      },
+      {
+        "width": 320,
+        "passed": true,
+        "regions": true,
+        "courses": true,
+        "providers": true,
+        "agentDirectory": true,
+        "nativeFormsPreserved": true,
+        "newRoutes": true,
+        "runtimeErrors": []
+      }
+    ]
+  },
+  "images": [
+    {
+      "file": "browsing/age14-events-desktop.png",
+      "sha256": "7804a83afc276e0675ad13dbe7212027fc1df568986d3bcca2645913b8d6a844",
+      "capturedAt": "2026-10-21T04:51:04.502357+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/age14-events-mobile.png",
+      "sha256": "aee67abb5e27cdc335868429e6707d61b7a979d11a265c489fa6d4ffd11bf043",
+      "capturedAt": "2026-10-21T04:51:40.426455+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/age14-events-small-mobile.png",
+      "sha256": "91321873b7b1ca0c765a5a674c6a61c00117a8824fbc2f34528cff88a0e35241",
+      "capturedAt": "2026-10-21T04:52:10.358452+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/clubs-desktop.png",
+      "sha256": "7c853c6870a2ad40f3525e0442042c83b8d746bfbd23019ac96638845058cd58",
+      "capturedAt": "2026-10-21T04:51:02.502352+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/clubs-mobile.png",
+      "sha256": "3244d3c38cba8bf1aaddd7256f74b8858ea8a47bb763f03bb93e9aab13cafc4a",
+      "capturedAt": "2026-10-21T04:51:39.034451+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/clubs-small-mobile.png",
+      "sha256": "6b835f2fb5ea323f33ce58db445eff14bb95e71cc96c928ebc1c15538e766732",
+      "capturedAt": "2026-10-21T04:52:09.161154+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/filters-desktop.png",
+      "sha256": "847aaab8e794846cf234d8e06a8ea3b8fd300d50a5a011eb31a5cce7f5fea8f9",
+      "capturedAt": "2026-10-21T04:51:02.786352+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/filters-mobile.png",
+      "sha256": "080d4a16ecf5a15c2f428d57a804a25648573fbddd22ba2e4e85aae3449beea5",
+      "capturedAt": "2026-10-21T04:51:39.210451+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/filters-small-mobile.png",
+      "sha256": "07c1b55386e9b7f1063f13f322d76d364dd56ab5733688cf0ad9c491b1db3297",
+      "capturedAt": "2026-10-21T04:52:09.406469+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/home-desktop.png",
+      "sha256": "3dc4fa3fe818979fb46e3a4e6f912843e97b7c005e8992ab469b11223671674f",
+      "capturedAt": "2026-10-21T04:50:59.598344+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/home-mobile.png",
+      "sha256": "213e7c500d275ff26afdbfb545988eb877500fae0836dd91eb78e915d625c247",
+      "capturedAt": "2026-10-21T04:51:37.446447+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/home-small-mobile.png",
+      "sha256": "eb69813706d11ed40e2c0d5794458795e4b6ff8493548bd490b65aebd34d3c7e",
+      "capturedAt": "2026-10-21T04:52:06.970513+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/organization-form-desktop.png",
+      "sha256": "3c3ddeea3cff2b1675f10ae9aab9a81253fe577a0e514b81615e78be826789cb",
+      "capturedAt": "2026-10-21T04:51:28.958424+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/organization-form-mobile.png",
+      "sha256": "68629af01b2af73d3670b1bb1455be108bd646697d3128f7c016575e6490f18b",
+      "capturedAt": "2026-10-21T04:52:01.110580+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/organization-form-small-mobile.png",
+      "sha256": "573dc55f73ae1ad11153ccd08d9084b5c4b0c144c5810fa700a8fea0d8b86849",
+      "capturedAt": "2026-10-21T04:52:29.887381+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/places-desktop.png",
+      "sha256": "ea95865ede01585d92df3fd084b2344e0d033ac0a1d85ae17205c87bc93d6eeb",
+      "capturedAt": "2026-10-21T04:51:13.718382+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/places-mobile.png",
+      "sha256": "f70ec86128f93c2d79b9ed8a6bbb9712947f307d3186d009c3f6bddd914ac5a2",
+      "capturedAt": "2026-10-21T04:51:48.854477+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "browsing/places-small-mobile.png",
+      "sha256": "9ab7257484783e454d33951131af1351982b78c0e0bb1a5c18ff5a7d896b0d60",
+      "capturedAt": "2026-10-21T04:52:18.314459+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/club-detail-1440.png",
+      "sha256": "662987e05cc4f29731c3a5e8d190c273e3fabba50f3a1fde49bb58c4f9bb4323",
+      "capturedAt": "2026-10-21T04:53:02.144826+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/club-detail-320.png",
+      "sha256": "b5a56d456b55f9d25f215121df0624a0b29709dfe03f79bfbee14868484199a8",
+      "capturedAt": "2026-10-21T04:53:35.710013+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/club-detail-390.png",
+      "sha256": "98f45d2cc7a73dcf59483eff8bb0db04f2919fd3679d7c0b840d0b4a5e343926",
+      "capturedAt": "2026-10-21T04:53:21.949595+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/clubs-1440.png",
+      "sha256": "2aa95beb6a6b0f91d787d39380c19355c7ac8e0dff78b7528528ba462685808b",
+      "capturedAt": "2026-10-21T04:52:58.964752+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/clubs-320.png",
+      "sha256": "5b11c4d8049d4475167124e9df4e1af5ef2c98c6e4dba756013f0067e28d004f",
+      "capturedAt": "2026-10-21T04:53:32.358585+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/clubs-390.png",
+      "sha256": "3265f029cbb97550956cfa43b61b615ce1321f9784482c1fc79cd7d72a2a19c0",
+      "capturedAt": "2026-10-21T04:53:18.230801+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/home-1440.png",
+      "sha256": "361e70c1180c3ba3ff66c3bbbf5f55dd960b3c1c532522268655e4bf6fd795b8",
+      "capturedAt": "2026-10-21T04:52:56.372620+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/home-320.png",
+      "sha256": "ebfb21d78abc6899e585c56d865b847e7317c85dfbb579553a2432ea2e20c593",
+      "capturedAt": "2026-10-21T04:53:29.909859+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/home-390.png",
+      "sha256": "d5ba532e2c6bd8ae9cc56922c19a98122f6f1e5427a07a968335548502fed15b",
+      "capturedAt": "2026-10-21T04:53:15.961378+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/opportunity-detail-1440.png",
+      "sha256": "209c5c29730c6a60b1631ec12768cccd143611a612d73c864d818c7094619dec",
+      "capturedAt": "2026-10-21T04:53:10.777163+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/opportunity-detail-320.png",
+      "sha256": "bbcff58e6f52bb0ddd6c90731c4471869122397992435f9598253b46116908cd",
+      "capturedAt": "2026-10-21T04:53:40.141085+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "details/opportunity-detail-390.png",
+      "sha256": "1b28b8748bc495c5e556327978d4aa17ec07ff420acd1a8193eb3e82b017271e",
+      "capturedAt": "2026-10-21T04:53:26.673726+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "instagram/community-photo-orlando-huddle.jpg",
+      "sha256": "a9f5838aa4baca9defaecd951abf6ee9ec555946cb172e4932c7a65452a24476",
+      "capturedAt": "2026-10-21T04:15:28.440638+00:00",
+      "kind": "instagram-preview-unpublished"
+    },
+    {
+      "file": "media/courses-desktop.png",
+      "sha256": "b8f61135d8cc642bf7445c3be03ecbb1e1153d1749c462a4fdb695c4b31d470c",
+      "capturedAt": "2026-10-21T04:51:30.002427+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/courses-mobile.png",
+      "sha256": "43e369f2eab7f6e6457f8332e614a5830c7ef54f78a5a2ad3b47704085996c0e",
+      "capturedAt": "2026-10-21T04:52:03.310579+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/courses-small-mobile.png",
+      "sha256": "1fa03bf16c9dabbeb7b7343929808bf36c9cb3b47ecf902a722fdb3aceb821f3",
+      "capturedAt": "2026-10-21T04:52:35.135670+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/home-desktop.png",
+      "sha256": "a24876a6772e8c6467064df208730c274118c27f4a6bc667a355b799953df4df",
+      "capturedAt": "2026-10-21T04:51:15.394386+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/home-mobile.png",
+      "sha256": "f5f3bacac9e00c55b3d04d3a7eff9cf5a10a6929e3a1b3a1c7f36dce6882fd4a",
+      "capturedAt": "2026-10-21T04:51:54.946493+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/home-small-mobile.png",
+      "sha256": "2db1b279f7429b722809981d8135ad82019450a4c42ac83f1ff43664c930c64e",
+      "capturedAt": "2026-10-21T04:52:27.138898+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/venue-desktop.png",
+      "sha256": "007eadd91d02386536cf503cda61bceea22e26220e5ec1645d85dcc5f06d0521",
+      "capturedAt": "2026-10-21T04:51:45.218467+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/venue-mobile.png",
+      "sha256": "f8d51f18b56f5d912fb30ea085eb1bc2c505b41e7d6084e4f02423e4133bb336",
+      "capturedAt": "2026-10-21T04:52:17.870458+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "media/venue-small-mobile.png",
+      "sha256": "1b62bb0e10e3072eb852dafcb1d1dd672b34c96263aabc97ed5d9714f82df23e",
+      "capturedAt": "2026-10-21T04:52:48.600303+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/central-florida-1440.png",
+      "sha256": "cd03bbaaa02a08a15a8472d0d79566a5d41d8c5bf504b4a45ccb65ce4472d8fb",
+      "capturedAt": "2026-10-21T04:53:26.541721+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/central-florida-320.png",
+      "sha256": "4eeebdf74bb592e3e934848c56bf3dc21cc46bd0a16d058a23e48b148ae3c2d3",
+      "capturedAt": "2026-10-21T04:55:13.436178+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/central-florida-390.png",
+      "sha256": "57f9c882fa380514e24cf45c6db4f409f8ec1af00f7f94b12250fb43723f50a3",
+      "capturedAt": "2026-10-21T04:54:22.903228+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/courses-1440.png",
+      "sha256": "501487ca18ace191c5ff4f19f0ae1c8cd1d5b693cd70d411aea1912253fed110",
+      "capturedAt": "2026-10-21T04:53:33.973947+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/courses-320.png",
+      "sha256": "98d943d00a494976e578ca223f5349e4174e0ceeefb5add3af42aabebb747e45",
+      "capturedAt": "2026-10-21T04:55:20.516283+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/courses-390.png",
+      "sha256": "b75e495f303cd9205f9c3d401f64de75b750bc6cfbdaf8d94116c06f90b0265e",
+      "capturedAt": "2026-10-21T04:54:30.983405+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/services-1440.png",
+      "sha256": "4a610b2c916dd4d56682f7b43095a4a23c740fcbd98431c65aca6955b0882569",
+      "capturedAt": "2026-10-21T04:53:41.038868+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/services-320.png",
+      "sha256": "b4ea4b58fac197ceeb7a82266fc48625c281ff0db0c4c87f2a6016255e911539",
+      "capturedAt": "2026-10-21T04:55:27.100373+00:00",
+      "kind": "production-browser"
+    },
+    {
+      "file": "sections/services-390.png",
+      "sha256": "3185e36c0ee9ca7c0921e12c4a5d23420071a858e88be739f15d832bc2359707",
+      "capturedAt": "2026-10-21T04:54:37.719543+00:00",
+      "kind": "production-browser"
+    }
+  ]
+}

@@ -58,3 +58,11 @@ Code is checked by Framer's TypeScript service before applying. Node tests cover
 - Full CMS fields/items were compared with the private starting backup; all five collections and their statuses were preserved.
 - Latest read-only Insights workflow `39538193534` succeeded as a diagnostic but returned `permission_required` for `instagram_manage_insights`; missing data is not represented as zero engagement.
 - Reviewed production screenshots and SHA-256 checksums: `previews/location-community/reviewed-previews.json`. Earlier failed/local captures were moved into private storage, not labeled production previews.
+
+### Purposeful media and booking-model extension
+
+The homepage now includes eight identifying club badges in a manual, swipeable carousel, with keyboard controls and profile links. The heading is “Clubs in the directory”; these are not sponsor, customer or endorsement claims. A short How Cancha works section explains search, comparison and contacting the organizer. The desktop hero uses a credited, cropped 2018 Orlando stadium archive photograph; the narrow phone photo is removed so search stays prominent. The repeated lower-page photo is replaced with an event illustration. The hidden hero image loads lazily.
+
+[Booking marketplace versus ads](marketplace-revenue-model.md) adds official GoodRec player/partner research, public-contact bypass limitations, booking/lead measurement, illustrative margins and a staged pilot. GoodRec's public partner portal says it takes a percentage of bookings, but no exact fee was established. No payment feature, partnership or paid game was launched.
+
+GitHub verification before this extension: CI `39539015084` passed, community import `39539037912` succeeded, and daily preparation `39539126225` succeeded with the plan enabled, five existing publication receipts and no uncertain publications. The three reviewed community assets were loaded into Draft status, ready for the normal scheduling window. Daily preparation added one more fresh community guide. Draft is not a claim that a post has already been published or assigned a future date.

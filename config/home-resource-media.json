@@ -1,0 +1,16 @@
+{
+  "courses": {
+    "name": "FIFA Training Centre",
+    "url": "https://framerusercontent.com/images/7hI8GK7LADXah6aB6NCvT4yMOY.svg",
+    "source": "https://www.fifatrainingcentre.com/en/",
+    "sourceAsset": "https://www.fifatrainingcentre.com/assets/img/logos/logo-sm.svg",
+    "checksum": "f7ba6f44b43a342846794ec141d81717e5c8a12b764c353ce1f7651589135827",
+    "usage": "Identifies an existing listed learning resource; no sponsorship or endorsement."
+  },
+  "coaches": {
+    "name": "My Personal Football Coach",
+    "url": "https://framerusercontent.com/images/V68j8jhKYdG6pETdE4OpLfu3Ykg.png",
+    "source": "/providers/my-personal-football-coach",
+    "usage": "Identifies an existing directory provider; no sponsorship or endorsement."
+  }
+}

@@ -3,13 +3,15 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "Owner likes the latest two designs and requests community participation ahead of promotion. Prioritize useful questions, local recommendations and practical help; preserve daily limits and publication receipts.",
+  "reason": "Keep the daily community-first plan, the clean original layouts and source checks. Retire older promotional drafts and empty-field/stadium photographs; use real player/supporter context without claiming endorsements.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
   "retiredDraftIds": [
     "campaign-first-club-01",
     "cancha-broward-field-guide",
-    "cancha-first-club-questions"
+    "cancha-first-club-questions",
+    "florida-photo-florida",
+    "florida-photo-orlando"
   ]
 }

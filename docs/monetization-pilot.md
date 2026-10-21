@@ -2,6 +2,8 @@
 
 Research checked October 21, 2026. These are proposed tests, not products currently for sale. No payment service, subscription, ad spend or paid placement was activated.
 
+For the owner’s GoodRec comparison, see [booking marketplace versus ads](marketplace-revenue-model.md): booking a real game and charging for contact details have different economics.
+
 ## Start with a small featured-placement pilot
 
 Keep accurate basic club profiles, corrections, search and submissions free. First test whether a local club values measurable visibility in a relevant search. A paid position must say **Sponsored placement**, respect city/age/type filters, have an end date and never imply better coaching or Cancha certification. A club should not have to pay to correct its information.

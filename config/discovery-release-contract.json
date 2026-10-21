@@ -2,18 +2,18 @@
   "version": 1,
   "codeFiles": {
     "OpportunityImage.tsx": "73c5264c529a46dc5b52772dd33b7845832cdb67b4731dc07ddc8ef97d863d48",
-    "TrainingDirectory.tsx": "b4099b36730981a539dd6eb0efd7cc7456f33ffd792f252ba66a0e6503071a81",
+    "TrainingDirectory.tsx": "9734e60cd183f9c9708e0ce4bfbfc1d10dea6e328c9c78ad8eb98d3bffed107a",
     "ClubProfileVisual.tsx": "50596ad890e54cf4fa0a7adbb28ae7a4dead6fab2ae4bf034bbeb9d71caf0f99",
-    "CanchaUI.tsx": "924bcf9996bf222d4231bc3b094fb85ad27583760b8349a1b775b30e715806f1",
+    "CanchaUI.tsx": "43ba92781074cb6686442dc6939cdf516f6f70aa74bbe461e02e3fcb93567811",
     "DiscoveryModel.tsx": "df8aabd2e61513e7cbb1a8b2ff192b6dbe751548e7d9c487a7f8a91118c3b29e",
     "DiscoveryCityMap.tsx": "a4d6b79e2d8b636b36ea65e99fbf42fed780c8f751e331b83d720ca9645e8c4c",
-    "CanchaNavigation.tsx": "e0d9e78da867c6a0760d17d61e580f1fcdf1ec0b7070ab37e67dbbd26849c4ac",
-    "CanchaFooter.tsx": "c45439a335fcdb812f05f5dd294c46b9863ebe9ac5bf4462eba85f32c74157ea",
-    "CanchaHome.tsx": "7613d42162c60f94f7051fb770efee44d431f27df3b14869dc6ac80b432527ad",
+    "CanchaNavigation.tsx": "cb76199ab2c4b5369ae3eae0eaf3b7d60d38262a3ac5d020840065127c8251eb",
+    "CanchaFooter.tsx": "0bb541b1d526932626ad211616a5810efb8f0fd6395ffee2fbff7ec5c2430a40",
+    "CanchaHome.tsx": "494f59930dc2d2af99ceeced9a5891a31ee96a1291b833274d8ad4ae74f15487",
     "CanchaDiscovery.tsx": "53a3a8262dda6a97813fd35a2f04dd7d280efb66821b7460cc4f13438bd3151a",
     "OpportunityStatus.tsx": "f6463d00d86b5866015b2f9abca200b325f6f558332dcf4e31f6dbf34e8ac778",
     "CanchaPlayerFit.tsx": "1b38bd927639eec5113206fe9f6e3dd159c480ef266c71e642e6d1aebfc7e81c",
-    "CanchaDetail.tsx": "79f3fff17dd827fb12d6efdee5967f5d6a26391a8bd7a22bc31cb6ee0a9036bb"
+    "CanchaDetail.tsx": "f59ea321b40b36ca95bb29b92ab3d7ea4d5475afcd1d513b3dd7df593544d9d6"
   },
   "scenes": {
     "ZuWkzhOX9": "5ebfaa88d68f5de851a6cb5d68bc212b235eed7e600316d9233875fa083889dd",
