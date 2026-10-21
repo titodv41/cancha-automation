@@ -1,3 +1,4 @@
+import{discoveryAgeEvidence}from'./discovery-ages.mjs';
 // League affiliation comes from reviewed sources, never from the word "academy".
 export function profileLeagues(item,memberships=[]){
  const out=memberships.filter(x=>x.slug===item.slug).map(x=>({name:x.league,division:x.division||'',season:x.season||'',source:x.source,checkedOn:x.checkedOn}));
@@ -10,5 +11,5 @@ export function profileAgeEvidence({name='',source='',ages='',audience=''}){
  const squad=name.match(/\bU(1[3-9]|2[01])\b/i);
  if(/^https:\/\/(premier|division1)\.upsl\.com\/teams\//.test(source)&&squad)return {kind:'season',min:2,max:Number(squad[1])+1,label:'U'+squad[1],audience};
  if(/^https:\/\/www\.goodrec\.com\/pickup-soccer\/(miami|orlando)$/.test(source)&&/^Ages 18 and older\./.test(ages))return {kind:'ages',ranges:[{min:18,max:null}],label:'Ages 18+',audience};
- return {kind:'programs',label:ages||'Confirm program ages',audience};
+ return discoveryAgeEvidence({entity:'profile',ages,audience});
 }

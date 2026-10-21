@@ -30,4 +30,26 @@ The native email submission forms and private recipients remain unchanged. No li
 
 For the actual domain/hosting options and CMS-plan constraint, see [domain and hosting costs](domain-and-hosting-costs.md). No paid plan or domain was purchased.
 
-Production counts, deployment and responsive checks will be recorded after the hosted daily preparation completes.
+## Hosted source restriction
+
+GitHub preparation [39554918223](https://github.com/titodv41/cancha-automation/actions/runs/39554918223) confirmed that all five approved TeamWork employer boards return **HTTP 403 to GitHub Actions**, including the two new employers. Exact posting seeds were also unavailable there. The same public pages load through this managed workspace's configured network. No login, CAPTCHA workaround or TLS bypass was used. Unattended career additions are therefore blocked in that runner; the daily result now explicitly lists unavailable employer boards rather than treating club-import success as job-source success.
+
+The 29 directory additions were separately confirmed in hosted preparation [39554088688](https://github.com/titodv41/cancha-automation/actions/runs/39554088688). The full original 331 club records and all other collections remained unchanged at that point. The encrypted full Clubs backup was acknowledged before mutation. A prior run stopped before adding clubs because of the backup size limit; compression and lossless restore checks resolved it.
+
+Nine additional Orlando/Sporting JAX jobs were checked through this workspace and staged with a fresh local private snapshot and a second exact source-fact comparison. The workspace also confirmed four older job postings explicitly closed, including the older fan-ambassador role. These are marked Closed with their URLs preserved; uncertain or merely blocked listings are not demoted. Their production publication is confirmed below; local source access does not establish that GitHub can fetch them tomorrow.
+
+## Verified production result
+
+Deployment **d4c3e2141**, October 21, 2026 at **06:48:17 UTC**. Framer subsequently confirmed production optimization; no pending changes remained. This includes the final selected-category contrast fix.
+
+- **360 directory profiles:** 332 clubs/team profiles, adult leagues and regional programs; 26 venues; two pickup organizers. This is not a claim of 360 separate clubs or complete Florida coverage.
+- **29 new profiles:** four adult leagues, 16 regional Soccer Shots programs and nine City of Orlando soccer-field locations. All original 331 directory records are unchanged, including their slugs and existing media.
+- **96 opportunity records:** 74 Active (53 play listings and 21 careers), six Pending review, 14 Expired and two Archived. Nine new employer jobs were added. Four older exact employer postings explicitly closed and were marked Expired; two existing jobs had their source-review status/date refreshed. No record was deleted and no slug changed. The six Pending records were not activated.
+- All 20 new league/program profiles have decoded identifying marks. The nine new venues use attributed city-area maps. Across the directory, 222 profiles have identifying images; 112 use full-name typographic identities and 26 use maps. These are not all official photographs or logos. All 74 Active opportunity cards have images.
+- The daily recheck now uses the same structured source parser and evidence hash as initial job preparation. A previously missing recheck helper was fixed. Recent automatic source labels require the posting identity and source hash; an Active flag alone does not establish a source check.
+- Providers (two), Stories (three), Offers (zero), all collection fields, native form destinations and native page content are preserved. Automated browser tests send no forms; the owner had already confirmed real email delivery.
+- **139 Node tests** and **13 Framer typechecks** passed. Production search/filter/navigation checks passed at 1440, 390 and 320 pixels, with no runtime errors or horizontal overflow. Initial directory cards remain at approximately 577/637/639 pixels. New program age/level projection, exact official links, identifying media, regional program and adult-league labels, venue-map attribution and closed-career routes were checked. The selected category has readable text contrast.
+
+The private initial baseline is `backups/growth-polish-2026-10-21`; the final reviewed baseline is `backups/growth-reviewed-2026-10-21`. The [preview manifest](../previews/growth-polish/reviewed-previews.json) records production checks and screenshot hashes. See [desktop home](../previews/growth-polish/expansion/home-desktop.png), [mobile home](../previews/growth-polish/expansion/home-mobile.png), [youth discovery](../previews/growth-polish/expansion/youth-programs-desktop.png) and [new venue detail](../previews/growth-polish/expansion/new-venue-mobile.png).
+
+The unattended job-source restriction remains. Club imports work through GitHub, but the supported directories are finite: a cap of 50 does not establish 50 fresh clubs every day. More source-specific coverage work is needed as these directories are exhausted. No new Instagram post, Insights permission, domain or paid subscription is claimed by this release.

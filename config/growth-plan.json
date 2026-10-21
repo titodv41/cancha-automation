@@ -36,6 +36,7 @@
     "Current unattended adapters support five soccer employer job boards plus club/league/program/venue profile sources; open youth/club opportunities still need exact enrollment evidence",
     "Broader club/camp/tryout discovery requires additional source-specific verification adapters or human review",
     "Analytics-driven Instagram optimization is not connected",
-    "Other-chat vision is not available in this conversation"
+    "Other-chat vision is not available in this conversation",
+    "GitHub Actions currently receives HTTP 403 from all five approved employer boards; workspace checks can succeed, but unattended job additions are blocked in that runner."
   ]
 }

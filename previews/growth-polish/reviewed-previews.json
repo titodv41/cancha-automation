@@ -1,0 +1,547 @@
+{
+  "checkedAt": "2026-10-21T06:56:19.723Z",
+  "deployment": "d4c3e2141",
+  "production": {
+    "deploymentTime": 1792565297108,
+    "optimizationStatus": "optimized",
+    "url": "https://pioneering-friday-005497.framer.app",
+    "currentPageUrl": "https://pioneering-friday-005497.framer.app/"
+  },
+  "pendingChanges": 0,
+  "counts": {
+    "Opportunities": 96,
+    "Providers": 2,
+    "Offers": 0,
+    "Stories": 3,
+    "Clubs": 360
+  },
+  "opportunityStatuses": {
+    "Active": 74,
+    "Expired": 14,
+    "Pending review": 6,
+    "Archived": 2
+  },
+  "changes": {
+    "Opportunities": {
+      "added": 9,
+      "changed": 6,
+      "removed": 0
+    },
+    "Providers": {
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "Offers": {
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "Stories": {
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "Clubs": {
+      "added": 29,
+      "changed": 0,
+      "removed": 0
+    }
+  },
+  "nodeTests": 139,
+  "framerTypechecks": 13,
+  "checks": {
+    "expanded-discovery-browser": {
+      "base": "https://pioneering-friday-005497.framer.app",
+      "checkedAt": "2026-10-21T06:53:33.835Z",
+      "checks": [
+        {
+          "device": "desktop",
+          "passed": true,
+          "newProfiles": 29,
+          "newCareers": 9,
+          "ageFiveBeginner": true,
+          "ageFourteenExclusion": true,
+          "programAndLeagueLabels": true,
+          "officialLinks": true,
+          "allNewLogosDecoded": true,
+          "cityAreaMap": true,
+          "noOverflow": true
+        },
+        {
+          "device": "mobile",
+          "passed": true,
+          "newProfiles": 29,
+          "newCareers": 9,
+          "ageFiveBeginner": true,
+          "ageFourteenExclusion": true,
+          "programAndLeagueLabels": true,
+          "officialLinks": true,
+          "allNewLogosDecoded": true,
+          "cityAreaMap": true,
+          "noOverflow": true
+        },
+        {
+          "device": "small-mobile",
+          "passed": true,
+          "newProfiles": 29,
+          "newCareers": 9,
+          "ageFiveBeginner": true,
+          "ageFourteenExclusion": true,
+          "programAndLeagueLabels": true,
+          "officialLinks": true,
+          "allNewLogosDecoded": true,
+          "cityAreaMap": true,
+          "noOverflow": true
+        }
+      ]
+    },
+    "simple-discovery-browser": {
+      "base": "https://pioneering-friday-005497.framer.app",
+      "checkedAt": "2026-10-21T06:51:53.679Z",
+      "passed": true,
+      "checks": [
+        {
+          "device": "desktop",
+          "passed": true,
+          "searchWithoutFilters": true,
+          "optionalFilters": true,
+          "cancelAndApply": true,
+          "youngPlayerBasicLevels": true,
+          "advancedPathwayExplicit": true,
+          "parentModeRemoved": true,
+          "age14Showcases": true,
+          "adult24Pathway": true,
+          "ageEvidenceToggle": true,
+          "urlAndTabPersistence": true,
+          "mapAndList": true,
+          "cityPreviews": true,
+          "attribution": true,
+          "loadMore": true,
+          "emptyReset": true,
+          "careers": true,
+          "nativeRoutes": true,
+          "fontsLoaded": true,
+          "noHorizontalOverflow": true,
+          "measurements": [
+            {
+              "page": "home",
+              "words": 409,
+              "firstCardTop": 2009.703125
+            },
+            {
+              "page": "clubs",
+              "firstCardTop": 576.96875
+            }
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "device": "mobile",
+          "passed": true,
+          "searchWithoutFilters": true,
+          "optionalFilters": true,
+          "cancelAndApply": true,
+          "youngPlayerBasicLevels": true,
+          "advancedPathwayExplicit": true,
+          "parentModeRemoved": true,
+          "age14Showcases": true,
+          "adult24Pathway": true,
+          "ageEvidenceToggle": true,
+          "urlAndTabPersistence": true,
+          "mapAndList": true,
+          "cityPreviews": true,
+          "attribution": true,
+          "loadMore": true,
+          "emptyReset": true,
+          "careers": true,
+          "nativeRoutes": true,
+          "fontsLoaded": true,
+          "noHorizontalOverflow": true,
+          "measurements": [
+            {
+              "page": "home",
+              "words": 404,
+              "firstCardTop": 2716.28125
+            },
+            {
+              "page": "clubs",
+              "firstCardTop": 637.171875
+            }
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "device": "small-mobile",
+          "passed": true,
+          "searchWithoutFilters": true,
+          "optionalFilters": true,
+          "cancelAndApply": true,
+          "youngPlayerBasicLevels": true,
+          "advancedPathwayExplicit": true,
+          "parentModeRemoved": true,
+          "age14Showcases": true,
+          "adult24Pathway": true,
+          "ageEvidenceToggle": true,
+          "urlAndTabPersistence": true,
+          "mapAndList": true,
+          "cityPreviews": true,
+          "attribution": true,
+          "loadMore": true,
+          "emptyReset": true,
+          "careers": true,
+          "nativeRoutes": true,
+          "fontsLoaded": true,
+          "noHorizontalOverflow": true,
+          "measurements": [
+            {
+              "page": "home",
+              "words": 404,
+              "firstCardTop": 2746.34375
+            },
+            {
+              "page": "clubs",
+              "firstCardTop": 639.171875
+            }
+          ],
+          "runtimeErrors": []
+        }
+      ]
+    },
+    "home-media-browser": {
+      "base": "https://pioneering-friday-005497.framer.app",
+      "checkedAt": "2026-10-21T06:10:58.082Z",
+      "checks": [
+        {
+          "device": "desktop",
+          "passed": true,
+          "brandFont": true,
+          "substantialBodyType": true,
+          "staticCommunityPhoto": true,
+          "eightUncroppedBadges": true,
+          "manualCarousel": true,
+          "reducedMotion": true,
+          "creditsAccessible": true,
+          "elevenProviderLogos": true,
+          "courseFiltering": true,
+          "organizationFallback": true,
+          "venueCityMap": true,
+          "noOverflow": true
+        },
+        {
+          "device": "mobile",
+          "passed": true,
+          "brandFont": true,
+          "substantialBodyType": true,
+          "staticCommunityPhoto": true,
+          "eightUncroppedBadges": true,
+          "manualCarousel": true,
+          "reducedMotion": true,
+          "creditsAccessible": true,
+          "elevenProviderLogos": true,
+          "courseFiltering": true,
+          "organizationFallback": true,
+          "venueCityMap": true,
+          "noOverflow": true
+        },
+        {
+          "device": "small-mobile",
+          "passed": true,
+          "brandFont": true,
+          "substantialBodyType": true,
+          "staticCommunityPhoto": true,
+          "eightUncroppedBadges": true,
+          "manualCarousel": true,
+          "reducedMotion": true,
+          "creditsAccessible": true,
+          "elevenProviderLogos": true,
+          "courseFiltering": true,
+          "organizationFallback": true,
+          "venueCityMap": true,
+          "noOverflow": true
+        },
+        {
+          "device": "motion",
+          "passed": true,
+          "gentleMovement": true,
+          "pauseResume": true,
+          "hoverPause": true,
+          "offscreenPause": true
+        }
+      ]
+    },
+    "visual-discovery-browser": {
+      "base": "https://pioneering-friday-005497.framer.app",
+      "checkedAt": "2026-10-21T06:22:18.114Z",
+      "passed": true,
+      "checks": [
+        {
+          "width": 1440,
+          "passed": true,
+          "categories": true,
+          "upslDivisions": true,
+          "mlsSeasonLabels": true,
+          "ageEligibility": true,
+          "detailBindings": true,
+          "sourceDisclosure": true,
+          "nativeForm": true,
+          "noOverflow": true,
+          "runtimeErrors": []
+        },
+        {
+          "width": 390,
+          "passed": true,
+          "categories": true,
+          "upslDivisions": true,
+          "mlsSeasonLabels": true,
+          "ageEligibility": true,
+          "detailBindings": true,
+          "sourceDisclosure": true,
+          "nativeForm": true,
+          "noOverflow": true,
+          "runtimeErrors": []
+        },
+        {
+          "width": 320,
+          "passed": true,
+          "categories": true,
+          "upslDivisions": true,
+          "mlsSeasonLabels": true,
+          "ageEligibility": true,
+          "detailBindings": true,
+          "sourceDisclosure": true,
+          "nativeForm": true,
+          "noOverflow": true,
+          "runtimeErrors": []
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    {
+      "path": "browsing/age14-events-desktop.png",
+      "sha256": "617bcdb04e6a3945e1b5558b963db631ed7a2e6dbd53cc55ddd145f338a3494d",
+      "bytes": 134279
+    },
+    {
+      "path": "browsing/age14-events-mobile.png",
+      "sha256": "61ed8ed57e0573f105098e070375dcab3a5e88b24ccae8cbe942fce06c0484fd",
+      "bytes": 75534
+    },
+    {
+      "path": "browsing/age14-events-small-mobile.png",
+      "sha256": "14e5e377a9f9e32440405d380a3f9216e6996c71105f5eac95ccc61b574709cc",
+      "bytes": 67176
+    },
+    {
+      "path": "browsing/clubs-desktop.png",
+      "sha256": "7a56f34bbf2f20090b791fc633df52869603da444098d0eb05f3e94e0f8bd2b3",
+      "bytes": 213970
+    },
+    {
+      "path": "browsing/clubs-mobile.png",
+      "sha256": "ef3077c10df6f36b0d58105a0a8971dd94da82296aaa9264e90a82a75e17b366",
+      "bytes": 85059
+    },
+    {
+      "path": "browsing/clubs-small-mobile.png",
+      "sha256": "6058c42e098b6ad3f0460e876f01e64eb07c4ea524fac69fc8d8b9157dfdee61",
+      "bytes": 75932
+    },
+    {
+      "path": "browsing/filters-desktop.png",
+      "sha256": "7a21ae81d504835635aab36b0c3c4f4ee24ba16b1d43c90c170e24095fd6c645",
+      "bytes": 220341
+    },
+    {
+      "path": "browsing/filters-mobile.png",
+      "sha256": "7cd50cf83ecbd5c158cb55beb1d19f683eb79700c194cfa4e342af8077122116",
+      "bytes": 77423
+    },
+    {
+      "path": "browsing/filters-small-mobile.png",
+      "sha256": "62fcb213a9a706b2f093a97804a9fb70aa5d53b9df882a46bc6430e36aa2efa0",
+      "bytes": 72939
+    },
+    {
+      "path": "browsing/home-desktop.png",
+      "sha256": "db3045b658538d2c1504ad582bd494b82c093639b10caf87d6ff34d121af7934",
+      "bytes": 422092
+    },
+    {
+      "path": "browsing/home-mobile.png",
+      "sha256": "616356064bbd468f9fda1d80d2e0c4d754152c3edbd16e63d33d43b6552fbf59",
+      "bytes": 170101
+    },
+    {
+      "path": "browsing/home-small-mobile.png",
+      "sha256": "cdce2c48d0c2239360bdea0cf8a3216f770751a77dabb1d78b1f63afb901b811",
+      "bytes": 140197
+    },
+    {
+      "path": "browsing/organization-form-desktop.png",
+      "sha256": "dbcbeae3cf9e7a6738f27ddfaf2d2ecf27ce252c2423c8ae086142b50e4f5ffb",
+      "bytes": 97486
+    },
+    {
+      "path": "browsing/organization-form-mobile.png",
+      "sha256": "0f2b55bec32f641d528f69cfe1c528b9c40af88ac228fc49d0064965107e7071",
+      "bytes": 71753
+    },
+    {
+      "path": "browsing/organization-form-small-mobile.png",
+      "sha256": "a0c5b08bc93ab086a56fe444d4deb299ec0c39d06973589084e42d6c4275c9aa",
+      "bytes": 65249
+    },
+    {
+      "path": "browsing/places-desktop.png",
+      "sha256": "227995408ac6ba3fbe490564eeb48ac67c39ed9e32a00dee9366825b9bbd4a2a",
+      "bytes": 291607
+    },
+    {
+      "path": "browsing/places-mobile.png",
+      "sha256": "6872ea5580f05bd9934228ce3f6941ea02c9fe72156691094c54dd953037d144",
+      "bytes": 140321
+    },
+    {
+      "path": "browsing/places-small-mobile.png",
+      "sha256": "d4d829779d706df7051797cda8096945f82a9157738f357dfa1225d514f3b625",
+      "bytes": 126383
+    },
+    {
+      "path": "details/club-detail-1440.png",
+      "sha256": "861aabf92aab13f3c7b13f6ba773faa4246331efd0cd914afc0066bd707f236e",
+      "bytes": 187980
+    },
+    {
+      "path": "details/club-detail-320.png",
+      "sha256": "a48746ac180dcd50ecd928985ebc60ae042b1ecce67d8060787fd1ddd30da5ec",
+      "bytes": 160355
+    },
+    {
+      "path": "details/club-detail-390.png",
+      "sha256": "17d4d0858e38fe7e23202e4d7ab2241957928020c60b78571785a659d0cdde9c",
+      "bytes": 166441
+    },
+    {
+      "path": "details/opportunity-detail-1440.png",
+      "sha256": "60c0cb215d52bd2f2e88df914703bb2524ef6844929af801684b93ac7a9c08dd",
+      "bytes": 199917
+    },
+    {
+      "path": "details/opportunity-detail-320.png",
+      "sha256": "7989c87337bbd3234ad591fdc07aa3105906efea87c4a5590866987fc5a73ac7",
+      "bytes": 164679
+    },
+    {
+      "path": "details/opportunity-detail-390.png",
+      "sha256": "455f44928ab2c99301c0dfa9633ede5ff7d7a53e82abf8529e0dc06236d90cd3",
+      "bytes": 175005
+    },
+    {
+      "path": "expansion/home-desktop.png",
+      "sha256": "df36c4c37891c094d7ad4541e884a4f9b546a2395da924f94242cbc932b2e367",
+      "bytes": 932273
+    },
+    {
+      "path": "expansion/home-mobile.png",
+      "sha256": "111ce08f7262198b1bd213a8515bafd1dd88daaad0d5a077e59cae6d4ff4a280",
+      "bytes": 173245
+    },
+    {
+      "path": "expansion/home-small-mobile.png",
+      "sha256": "0176027fe86221359e557aaa462b271b382d5408a0ae4bbbcb2d4bcbeec47895",
+      "bytes": 142798
+    },
+    {
+      "path": "expansion/new-venue-desktop.png",
+      "sha256": "256499952464e20fc68685a1858e1c7a388bb108c526fc32407fb450475e9735",
+      "bytes": 274892
+    },
+    {
+      "path": "expansion/new-venue-mobile.png",
+      "sha256": "41f7ed14e8175eb9ea629b3af03793804ee06bfaf5aff49df1e9b82a8c188962",
+      "bytes": 167263
+    },
+    {
+      "path": "expansion/new-venue-small-mobile.png",
+      "sha256": "f764e41c49a4e692c025225b407fa8701f0b64fbbe8a596893b11d5f8563ba02",
+      "bytes": 156698
+    },
+    {
+      "path": "expansion/program-detail-desktop.png",
+      "sha256": "14acd02c1af11a7a63320f41d21e912418c873c65ad0b71b4517943cbd371b09",
+      "bytes": 132775
+    },
+    {
+      "path": "expansion/program-detail-mobile.png",
+      "sha256": "4f804efd9215c9f8787bad972235223ec0096419137682028601708bbd7a4674",
+      "bytes": 97737
+    },
+    {
+      "path": "expansion/program-detail-small-mobile.png",
+      "sha256": "a9d8717c09097ce71e430a1eb7477c1a2b46e3a07c4f5c087f75815e163c0756",
+      "bytes": 92021
+    },
+    {
+      "path": "expansion/youth-programs-desktop.png",
+      "sha256": "b1606139a18fda45831ec00cbb6a79e24dd617042291a168b67dd8a7d61fc5a9",
+      "bytes": 151006
+    },
+    {
+      "path": "expansion/youth-programs-mobile.png",
+      "sha256": "2065849ad0bf50e20b89441a92e3e8d565525bcb3f120a187f8164a42fb88649",
+      "bytes": 86541
+    },
+    {
+      "path": "expansion/youth-programs-small-mobile.png",
+      "sha256": "0c65632bf99c873fe0c1ccdd5081b76f52b2a082282177fc2c8375709958fabc",
+      "bytes": 80019
+    },
+    {
+      "path": "media/courses-desktop.png",
+      "sha256": "7a967fe5504cda8177c0695567002d84df50414a789c97db9987b3dee838c525",
+      "bytes": 352679
+    },
+    {
+      "path": "media/courses-mobile.png",
+      "sha256": "864e7962f805c827df99b43dab02ac87197f6cc795664ea55f2bbd58b0df8539",
+      "bytes": 377539
+    },
+    {
+      "path": "media/courses-small-mobile.png",
+      "sha256": "5fe4c211c3235055b9706d0cea4dbd00ab7b323734b34409e0716bf4dc751ae1",
+      "bytes": 367658
+    },
+    {
+      "path": "media/home-desktop.png",
+      "sha256": "df36c4c37891c094d7ad4541e884a4f9b546a2395da924f94242cbc932b2e367",
+      "bytes": 932273
+    },
+    {
+      "path": "media/home-mobile.png",
+      "sha256": "111ce08f7262198b1bd213a8515bafd1dd88daaad0d5a077e59cae6d4ff4a280",
+      "bytes": 173245
+    },
+    {
+      "path": "media/home-small-mobile.png",
+      "sha256": "0176027fe86221359e557aaa462b271b382d5408a0ae4bbbcb2d4bcbeec47895",
+      "bytes": 142798
+    },
+    {
+      "path": "media/venue-desktop.png",
+      "sha256": "3e9a77c3524bf70374a27fd2023c67f1f1e957618964e8a636fde186e8226879",
+      "bytes": 273928
+    },
+    {
+      "path": "media/venue-mobile.png",
+      "sha256": "f4fee13f0cb1e73b0c69224446ac92ba3e0243267521fdcd1434ad5a41c41df5",
+      "bytes": 168322
+    },
+    {
+      "path": "media/venue-small-mobile.png",
+      "sha256": "eb8b5cf94131cfc2e87189499ee5b50b701b8a03ef86e943ad053a58c513ecf6",
+      "bytes": 158156
+    }
+  ]
+}
