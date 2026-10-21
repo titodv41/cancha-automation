@@ -4,15 +4,15 @@
     "OpportunityImage.tsx": "73c5264c529a46dc5b52772dd33b7845832cdb67b4731dc07ddc8ef97d863d48",
     "TrainingDirectory.tsx": "b4099b36730981a539dd6eb0efd7cc7456f33ffd792f252ba66a0e6503071a81",
     "ClubProfileVisual.tsx": "50596ad890e54cf4fa0a7adbb28ae7a4dead6fab2ae4bf034bbeb9d71caf0f99",
-    "CanchaUI.tsx": "8f3d186b6047eba9664d7007a92b3580c221c7288e9170c2cc44be18419a74e5",
-    "DiscoveryModel.tsx": "a92851594d87497630db3b0e93475891b3cf0decc34d18d77516f89c7e24073f",
-    "DiscoveryCityMap.tsx": "9440c2e903df73d85904607a4b92851d710c14ab8672c90a9c7b9e51bc48865c",
+    "CanchaUI.tsx": "924bcf9996bf222d4231bc3b094fb85ad27583760b8349a1b775b30e715806f1",
+    "DiscoveryModel.tsx": "df8aabd2e61513e7cbb1a8b2ff192b6dbe751548e7d9c487a7f8a91118c3b29e",
+    "DiscoveryCityMap.tsx": "a4d6b79e2d8b636b36ea65e99fbf42fed780c8f751e331b83d720ca9645e8c4c",
     "CanchaNavigation.tsx": "e0d9e78da867c6a0760d17d61e580f1fcdf1ec0b7070ab37e67dbbd26849c4ac",
-    "CanchaFooter.tsx": "85d5422a71b651cd38c3cce303db19a2de37602771566a02b9d54d65021fbccf",
-    "CanchaHome.tsx": "c277d231c02b423540c79c6ae9781815bb9ece9f0a824b39a2daf04d6130485a",
-    "CanchaDiscovery.tsx": "5fef1067a29d410acbc31824a2dc06e1ab14ce15a29e52eb4024c0266d0c7463",
+    "CanchaFooter.tsx": "c45439a335fcdb812f05f5dd294c46b9863ebe9ac5bf4462eba85f32c74157ea",
+    "CanchaHome.tsx": "7613d42162c60f94f7051fb770efee44d431f27df3b14869dc6ac80b432527ad",
+    "CanchaDiscovery.tsx": "53a3a8262dda6a97813fd35a2f04dd7d280efb66821b7460cc4f13438bd3151a",
     "OpportunityStatus.tsx": "f6463d00d86b5866015b2f9abca200b325f6f558332dcf4e31f6dbf34e8ac778",
-    "CanchaPlayerFit.tsx": "22df263b4cbede7e24279c28fb868a3f3f882bc02b3ac9ed5db0321950dde88e",
+    "CanchaPlayerFit.tsx": "1b38bd927639eec5113206fe9f6e3dd159c480ef266c71e642e6d1aebfc7e81c",
     "CanchaDetail.tsx": "79f3fff17dd827fb12d6efdee5967f5d6a26391a8bd7a22bc31cb6ee0a9036bb"
   },
   "scenes": {
@@ -25,10 +25,10 @@
     "aqX4AvuzN": "403d86b99794d8d544fcbd29d00bfcb3d37d2ca8728cb892c7b4f3239c81b345",
     "nYqllTBEd": "0930ed3027ed19a39c02d3eefe35c3addf0a6d044ff73747eea41b3f28203357",
     "npRy9P91I": "2c9ffd2b6738ebdd735b7e009fc56c08eb704c7d2e1ec87ebd51605ea2989829",
-    "t4_q6twTf": "459a341b5bd4abe233cd4d1a807657d15b715041c69dd2522028482291362539",
-    "OogsDn6ap": "03a11efd95390e810bec37ce757d2b4cc9ac0396a5acd45d80e19ad4c11f8791",
-    "Ro6xqCMwV": "a44c3905c3160e3a75d09f1a90fb68da1fb78143970abc032406de578fb2ac9d",
-    "l0HD5a5Bn": "9da2ec273ab9af4db539ab76879085c515961cbaad5e8493fc9cbba3bfef04a6"
+    "t4_q6twTf": "ee0b6d2a141e50af6b503f13073e58634f9ee17909e91ac791ae31543479f3c1",
+    "OogsDn6ap": "226d3296a6b57e8748cdffc65bc4909745254f82ce38dd27c9e3cb8ab5cc39d3",
+    "Ro6xqCMwV": "82d688082a42b9c83214769e2bf31efb316bd7b6a5eea853c4a1eb387f4454ee",
+    "l0HD5a5Bn": "13385440ed5112a28b6d417ccf7b492bc329baaa7fbc4344b8e085d806c0618c"
   },
   "textStyles": {
     "DtKo62PZZ": "35c0a95658510808b5108f4d76cb87950597ac781e7be487a783c9378c72ccbc",

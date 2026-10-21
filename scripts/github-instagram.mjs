@@ -14,7 +14,7 @@ import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYor
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','refresh-community','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -39,6 +39,13 @@ try{
   for(const draft of drafts)saveDraft(db,draft);
   savePlan(db,command.plan,command.ownerInstruction);state.localCreativeVersion=localPolicy.requiredCreativeVersion;await checkpoint();
  }
+ if(mode==='refresh-community'){
+  const drafts=JSON.parse(await readFile('content/instagram/community-ready.json'));
+  if(drafts.length!==3||drafts.some(x=>!approvedOriginalCreative(x)||x.topic!=='community'))throw Error('Reviewed community assets are missing or stale');
+  for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
+  for(const id of localPolicy.retiredDraftIds||[])db.prepare("UPDATE instagram_queue SET note='Retired from automatic selection: community-first content direction' WHERE id=? AND status='Draft'").run(id);
+  state.communityEditorialRevision='2026-10-21';await checkpoint();
+ }
  if(mode==='repair-media'){if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs the existing Framer secret');const run=await runSubprocess(process.execPath,['scripts/repair-reviewed-club-media.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation media repair stopped');await client.close();client=githubStateClient();state=await client.load();}
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
@@ -47,10 +54,10 @@ try{
   phase='reload-db';db.close();db=openQueue(join(dir,'reloaded.sqlite'));phase='reload-state';await client.close();client=githubStateClient();state=await client.load();phase='restore-state';restoreState(db,state);
   phase='growth-report';const growthDir='private-data/daily-opportunities/'+dateInNewYork(),dailyResult=JSON.parse(await readFile(growthDir+'/automation-result.json'));state.growth={...JSON.parse(await readFile(growthDir+'/report.json','utf8')).growth,clubProfilesAdded:dailyResult.clubProfilesAdded||0,clubCandidatesRemaining:dailyResult.clubCandidatesRemaining||0,automationBlockers:dailyResult.blockers||[]};
  }
- if(mode==='prepare'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'){
+ if(mode==='prepare'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'){
   const creativePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
   const launchNotPublished=state.localCreativeVersion==='cancha-local-v2'&&!db.prepare("SELECT id FROM instagram_queue WHERE id='cancha-local-discovery' AND status='Published'").get();
-  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null});await checkpoint();
+  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null,editorialPolicy:creativePolicy});await checkpoint();
  }
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='insights'){

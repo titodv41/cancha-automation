@@ -3,6 +3,13 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "October 19 local discovery refresh: keep the rejected generic bank/headlines disabled; admit only evidenced local-v2 creative and preserve any later owner pause.",
-  "cutoverRequestedAt": "2026-10-19T15:45:00.000Z"
+  "reason": "Owner likes the latest two designs and requests community participation ahead of promotion. Prioritize useful questions, local recommendations and practical help; preserve daily limits and publication receipts.",
+  "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
+  "communityFirst": true,
+  "communityWeeklyTarget": 4,
+  "retiredDraftIds": [
+    "campaign-first-club-01",
+    "cancha-broward-field-guide",
+    "cancha-first-club-questions"
+  ]
 }

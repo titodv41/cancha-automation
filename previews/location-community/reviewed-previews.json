@@ -1,0 +1,164 @@
+{
+  "project": "GU8EIeQXaRbty0S23thu",
+  "reviewedAt": "2026-10-21T03:30:12.094Z",
+  "deployment": "78fda2e32",
+  "type": "Production browser captures; CSS/font/route checks, no form submissions",
+  "files": [
+    {
+      "file": "age14-events-desktop.png",
+      "sha256": "a7e27f1b06ebb35dd3f8cc250bf8c127b6d91a47422e10562567d38cca7b475e"
+    },
+    {
+      "file": "age14-events-mobile.png",
+      "sha256": "9f61b75f7525da57cf7c6e6558c3473a9e12282121e4926b155cc9bcb15ac4c3"
+    },
+    {
+      "file": "age14-events-small-mobile.png",
+      "sha256": "193e5da7aa48809499a1a9a447cc0533c789e527759b47a58abb63b9d731ce82"
+    },
+    {
+      "file": "central-florida-1440.png",
+      "sha256": "2deae49375d8ba05a0a94ccbb0813db1d3cc4c42fac45b5259aa44a9653dc796"
+    },
+    {
+      "file": "central-florida-320.png",
+      "sha256": "4bf674a323b41279ee580539d99a3ddf80a02ec9406a25afecaf2ce48cdc3301"
+    },
+    {
+      "file": "central-florida-390.png",
+      "sha256": "ccd5441f14cdaaa26223f37212a638d1d281cee8c3307f45f1474c0a63b2eacc"
+    },
+    {
+      "file": "club-detail-1440.png",
+      "sha256": "a803c57686e3884a3d522bdda323040ee08d6f8476e3ec4fea36fd7bf384d1d3"
+    },
+    {
+      "file": "club-detail-320.png",
+      "sha256": "3aeec1e2d8f3898f812e881a0fab58a020bebed3e8626ddc2b14276a7fbbc6b1"
+    },
+    {
+      "file": "club-detail-390.png",
+      "sha256": "11137297f18f4b2e6698e81a3f924d10f4c6ffa1ac9116f3c010101929bf7682"
+    },
+    {
+      "file": "clubs-1440.png",
+      "sha256": "1bf20fb0e5856e7e73d116b9e62201f8495fc954f1e6a3c3e860e33c19179050"
+    },
+    {
+      "file": "clubs-320.png",
+      "sha256": "f26f0ae7e3756ac09c0f9ab07b81bff44fc76f1d5752ae4001d02dc0dcd2c097"
+    },
+    {
+      "file": "clubs-390.png",
+      "sha256": "f58f290d93b626e9c36a3d7ed4f306655bc46855960b782033c01e91bb32c5b4"
+    },
+    {
+      "file": "clubs-desktop.png",
+      "sha256": "b86509a042c01370ed181ea6311bbbb2156b0cc964c646a3599197c846925d0a"
+    },
+    {
+      "file": "clubs-mobile.png",
+      "sha256": "dc417b30fea0e14cda12d12d24f4b9957fb1fb9cb6c5cdec4e1698e551799c0f"
+    },
+    {
+      "file": "clubs-small-mobile.png",
+      "sha256": "2d1ada40f94ff04e491e987bf66ebf6abd50f30e01f992e97f5a20ef25590952"
+    },
+    {
+      "file": "courses-1440.png",
+      "sha256": "d49005cf9bd2eb17fdfb4055abf921380a8be05da9e3c28a666ee49acddb881c"
+    },
+    {
+      "file": "courses-320.png",
+      "sha256": "27ee5347c83bc405808193e08fcf92148cc61cf3fa4a7e84bc773ccee7cc085d"
+    },
+    {
+      "file": "courses-390.png",
+      "sha256": "81cd4ceaca659cb0b56173c61de2a4d18db7bc31fb29a5c18f063c26d8f61b83"
+    },
+    {
+      "file": "filters-desktop.png",
+      "sha256": "41376a1796f1f336b2d0a8d3ac4ab76e2da448006a9fd0cb710d56e31bc17b90"
+    },
+    {
+      "file": "filters-mobile.png",
+      "sha256": "45433af506022ef4bc20661c55f0052ba26bf72c221816073336d23aa926bf67"
+    },
+    {
+      "file": "filters-small-mobile.png",
+      "sha256": "643afdae9da6499ac372a67a19b1247fab9305844d1f27b73d8ad2e432e75d53"
+    },
+    {
+      "file": "home-1440.png",
+      "sha256": "ab61be75badac37b409c629fb7bf3f3d2f52f288ba1aaba362f57905a5a3191b"
+    },
+    {
+      "file": "home-320.png",
+      "sha256": "795b8942c49b5440efb563bf338d6ac1bf623d4b90d181130af2e8d8cde5a61c"
+    },
+    {
+      "file": "home-390.png",
+      "sha256": "78ffa8c8b5029ccabc09cca2ce556ba345106d4f989bfb30d0d55309e5144c40"
+    },
+    {
+      "file": "home-desktop.png",
+      "sha256": "fa7ad5dae452b9967249f1af754c07b99c393e5d5c1dec5f22dd1fa5824544d6"
+    },
+    {
+      "file": "home-mobile.png",
+      "sha256": "8bf6ac94acb8e0e038fe56101c3206f8b59d48b058dd2f147a4923a97f8f381f"
+    },
+    {
+      "file": "home-small-mobile.png",
+      "sha256": "9417f433f59f279bebe59d9568f3221843ad75eae2cd515a5ff4afed918bf32d"
+    },
+    {
+      "file": "opportunity-detail-1440.png",
+      "sha256": "433e2d0b409145a1206383cd7cd48e4c40468717d586f7a72f19fb42d50ab214"
+    },
+    {
+      "file": "opportunity-detail-320.png",
+      "sha256": "51c81bc5de5a711d00bddb8f64cf357d29350e5b377c33ce4f59d0d8cfefc603"
+    },
+    {
+      "file": "opportunity-detail-390.png",
+      "sha256": "86228f0a178e34a3af87753ca4f5dff19f5aaaebd4be073b877575b005aeffda"
+    },
+    {
+      "file": "organization-form-desktop.png",
+      "sha256": "a77d1298f0d0407e848265e36ebd9fa0754895cacb879e286671cfc56c9eef2a"
+    },
+    {
+      "file": "organization-form-mobile.png",
+      "sha256": "1aa54b66253f77828be5614fc880acdcc84b78e0d5a5c62bd771e889470dc7e4"
+    },
+    {
+      "file": "organization-form-small-mobile.png",
+      "sha256": "d64664f50089ab0b1ad44c952b5ae325383ce283898248dbb08420387ed12044"
+    },
+    {
+      "file": "places-desktop.png",
+      "sha256": "ef47f0077c4003b708115022224e3393d0fdecbdba233ca056c8fc54cd3c0118"
+    },
+    {
+      "file": "places-mobile.png",
+      "sha256": "be3a40638cd04d1561b573cef8a495a9664d4f8a00d924fcf0309a260d0e513c"
+    },
+    {
+      "file": "places-small-mobile.png",
+      "sha256": "6c0bc56fc1a762daa70f8f2966fb2638563118f18037827e9794749674587e7a"
+    },
+    {
+      "file": "services-1440.png",
+      "sha256": "075ac4d37c1f5cc9638bbff478a894f8db198b1e0108b299444ad113f4ed2cf2"
+    },
+    {
+      "file": "services-320.png",
+      "sha256": "b5a657f5eb18a58e6a27056f801e32a1a53bdf62c366d3909f59eb290db42de8"
+    },
+    {
+      "file": "services-390.png",
+      "sha256": "82de61a8a36e1592fdac66a7ae15a42ca57056e7134016d4f2a1efd059d1339c"
+    }
+  ]
+}

@@ -1,6 +1,25 @@
 import * as React from 'react'
-import{EMPTY_FILTERS,PROFILE_KEYS,GOALS,BASIC_LEVELS,readDiscoveryFilters,discoverySearch,playerAge,levelOptionsForAge}from'./DiscoveryModel.tsx'
+import{Icon}from'./CanchaUI.tsx'
+import{EMPTY_FILTERS,PROFILE_KEYS,GOALS,BASIC_LEVELS,readDiscoveryFilters,discoverySearch,playerAge,levelOptionsForAge,nearestFloridaZip}from'./DiscoveryModel.tsx'
 const STORAGE='cancha-player-fit-v2'
+export function DeviceLocationControl({onLocate,value=''}:any){
+ const[busy,setBusy]=React.useState(false),[message,setMessage]=React.useState(''),request=React.useRef(0),resolved=React.useRef(''),id=React.useId()
+ React.useEffect(()=>{request.current++;setBusy(false);if(value!==resolved.current)setMessage('');return()=>{request.current++}},[value])
+ const locate=async()=>{
+  const attempt=++request.current
+  if(!window.isSecureContext||!navigator.geolocation){setMessage('Location is unavailable here. Enter a city or ZIP instead.');return}
+  setBusy(true);setMessage('Your browser will ask for location access.')
+  navigator.geolocation.getCurrentPosition(async position=>{
+   if(attempt!==request.current)return
+   const area=nearestFloridaZip(position.coords.latitude,position.coords.longitude,position.coords.accuracy)
+   if(attempt!==request.current)return
+   setBusy(false)
+   if(!area){setMessage('We could not find a nearby Florida ZIP area. Enter a city or ZIP instead.');return}
+   resolved.current=area.zip;onLocate(area.zip);setMessage('Using nearby ZIP area '+area.zip+'. You can change it.')
+  },error=>{if(attempt!==request.current)return;setBusy(false);setMessage(error.code===1?'Location access was declined. Enter a city or ZIP instead.':error.code===3?'Location took too long. Try again or enter a city or ZIP.':'Location is unavailable. Enter a city or ZIP instead.')},{enableHighAccuracy:false,timeout:8000,maximumAge:300000})
+ }
+ return <div className="cv-location-control"><button className="cv-locate" type="button" disabled={busy} aria-busy={busy} aria-describedby={id+'-privacy'} onClick={locate}><Icon name="pin" size={15}/>{busy?'Finding your area…':'Use my location'}</button><span id={id+'-privacy'} className="cv-location-privacy">Uses your location once to choose a nearby ZIP area.</span>{message&&<p className="cv-location-status" role="status">{message}</p>}</div>
+}
 export function usePlayerFilters(syncUrl=false){
  const[f,setF]=React.useState<any>({...EMPTY_FILTERS}),[ready,setReady]=React.useState(false)
  React.useEffect(()=>{const load=()=>{const p=new URLSearchParams(window.location.search),parsed=readDiscoveryFilters(window.location.search);let saved:any={};if(!['playerAge','age','age-group-2','level','level-2','ages'].some(k=>p.has(k))){try{const raw=JSON.parse(sessionStorage.getItem(STORAGE)||'{}');saved=Object.fromEntries(PROFILE_KEYS.filter(k=>k in raw).map(k=>[k,raw[k]]));if(playerAge(saved.playerAge)===null)saved.playerAge=''}catch{saved={}}}setF({...parsed,...saved,role:'player'});setReady(true)};load();window.addEventListener('popstate',load);return()=>window.removeEventListener('popstate',load)},[])

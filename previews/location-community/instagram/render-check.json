@@ -1,0 +1,29 @@
+[
+  {
+    "id": "community-welcome-01",
+    "path": "previews/location-community/instagram/community-welcome-01.jpg",
+    "checksum": "7f3644234484d1107a9613704c11be03bee1eae211ae11e48e5ef179e806b2c9",
+    "capturedAt": "2026-10-21T03:16:26.108Z",
+    "sourceUrl": null,
+    "published": false,
+    "overflow": false
+  },
+  {
+    "id": "community-adult-return-01",
+    "path": "previews/location-community/instagram/community-adult-return-01.jpg",
+    "checksum": "005fa599f0787870c3c57d311c7b32527dda0cf3db0dc894a51d08afb2a5f3cd",
+    "capturedAt": "2026-10-21T03:16:26.641Z",
+    "sourceUrl": null,
+    "published": false,
+    "overflow": false
+  },
+  {
+    "id": "florida-photo-florida",
+    "path": "previews/location-community/instagram/florida-photo-florida.jpg",
+    "checksum": "aad99fc99830f836aab4f748e26203f636a4d816d76d6af6a616b6bebaaa567b",
+    "capturedAt": "2026-10-21T03:16:28.492Z",
+    "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs",
+    "published": false,
+    "overflow": false
+  }
+]

@@ -21,7 +21,7 @@ export function savePlan(db,input,ownerInstruction){
 }
 export function validPostImage(row){try{const url=new URL(row.assetUrl);return url.origin==='https://framerusercontent.com'&&!url.username&&!url.password&&/^\/images\/[^?]+\.jpe?g$/i.test(url.pathname)&&!url.search&&/^[a-f0-9]{64}$/.test(row.assetChecksum||'');}catch{return false;}}
 function week(date){const d=new Date(date+'T12:00:00Z'),day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);return d.toISOString().slice(0,10);}
-export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false,requireCreativeVersion=null,preferredDraftId=null}={}){
+export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false,requireCreativeVersion=null,preferredDraftId=null,editorialPolicy={}}={}){
  const plan=readPlan(db);if(backendFrozen(db)||!plan?.enabled||!connected)return {scheduled:[],skipped:[],paused:true};
  const today=dateInNewYork(new Date(now));const all=db.prepare('SELECT * FROM instagram_queue ORDER BY id').all();
  const queueHash=all.map(row=>row.id+':'+row.status+':'+contentHash(JSON.parse(row.content))).join('|');
@@ -31,10 +31,10 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
   if(date<plan.startDate||!plan.weekdays.includes(day.getUTCDay()))continue;
   try{const scheduledAt=newYorkSchedule(date+'T'+plan.localTime);if(Date.parse(scheduledAt)>now&&Date.parse(scheduledAt)-now<=8*3600000)slots.push({date,scheduledAt});}catch{/* DST ambiguity skips this slot. */}
  }
- const windowHash=queueHash+'|'+slots.map(slot=>slot.scheduledAt).join(',');
+ const policyHash=Object.keys(editorialPolicy).length?'|editorial:'+JSON.stringify(editorialPolicy):'',windowHash=queueHash+'|'+slots.map(slot=>slot.scheduledAt).join(',')+policyHash;
  if(plan.lastCheckedDay===today&&plan.lastQueueHash===windowHash)return {scheduled:[],skipped:[],alreadyChecked:true};
  const latestPublished=all.filter(r=>r.status==='Published').sort((a,b)=>Date.parse(b.published_at||b.scheduled_at)-Date.parse(a.published_at||a.scheduled_at))[0],lastKind=latestPublished?JSON.parse(latestPublished.content).creativeKind:null;
- const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireCreativeVersion||content.creativeVersion===requireCreativeVersion)&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo)||approvedOriginalCreative(content))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&validPostImage(content);});
+ const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireCreativeVersion||content.creativeVersion===requireCreativeVersion)&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo)||approvedOriginalCreative(content))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&!editorialPolicy.retiredDraftIds?.includes(row.id)&&validPostImage(content);});
  const result={scheduled:[],skipped:[]};const blocked=new Set();let cursor=0;
  for(const slot of slots){
   const scheduled=db.prepare('SELECT * FROM instagram_queue WHERE scheduled_at IS NOT NULL').all();
@@ -42,8 +42,9 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
   if(inWeek.length>=plan.maxPerWeek||scheduled.some(row=>dateInNewYork(new Date(row.scheduled_at))===slot.date))continue;
   // Prefer a different topic each day; news and opportunities alternate with
   // tips, questions, updates and storytelling when those drafts are available.
+  const communityCount=inWeek.filter(r=>JSON.parse(r.content).topic==='community').length,preferCommunity=editorialPolicy.communityFirst&&communityCount<(editorialPolicy.communityWeeklyTarget||4);
   const day=new Date(slot.date+'T12:00:00Z').getUTCDay(),preferred=['update','tip','opportunity','storytelling','fun','news','tip'][day];
-  candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(b.id===preferredDraftId)-Number(a.id===preferredDraftId)||Number(!!lastKind&&x.creativeKind===lastKind)-Number(!!lastKind&&y.creativeKind===lastKind)||Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
+  candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(b.id===preferredDraftId)-Number(a.id===preferredDraftId)||(preferCommunity?Number(y.topic==='community')-Number(x.topic==='community'):0)||Number(!!lastKind&&x.creativeKind===lastKind)-Number(!!lastKind&&y.creativeKind===lastKind)||Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
   while(cursor<candidates.length){
    const old=candidates[cursor++],content=JSON.parse(old.content);if(blocked.has(old.id))continue;const before=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(old.id);if(before?.status!=='Draft')continue;
    if(content.sourceType==='news'&&Date.parse(slot.scheduledAt)-Date.parse(content.factsCheckedAt)>36*3600000)continue;
@@ -62,6 +63,6 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
    }catch{result.skipped.push({id:old.id,reason:'Draft failed publishing requirements'});}
   }
  }
- const latest=readPlan(db);if(latest?.enabled&&latest.updatedAt===plan.updatedAt){const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY id').all();const state={...latest,lastCheckedDay:today,lastQueueHash:rows.map(row=>row.id+':'+row.status+':'+contentHash(JSON.parse(row.content))).join('|')+'|'+slots.map(slot=>slot.scheduledAt).join(','),lastResult:result};delete state.updatedAt;db.prepare('UPDATE instagram_standing_plan SET state=? WHERE id=1').run(JSON.stringify(state));}
+ const latest=readPlan(db);if(latest?.enabled&&latest.updatedAt===plan.updatedAt){const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY id').all();const state={...latest,lastCheckedDay:today,lastQueueHash:rows.map(row=>row.id+':'+row.status+':'+contentHash(JSON.parse(row.content))).join('|')+'|'+slots.map(slot=>slot.scheduledAt).join(',')+policyHash,lastResult:result};delete state.updatedAt;db.prepare('UPDATE instagram_standing_plan SET state=? WHERE id=1').run(JSON.stringify(state));}
  return result;
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "community-welcome-01", "sourceType": "brand", "format": "feed", "topic": "community", "creativeKind": "community-question", "theme": "forest",
+    "subjectKey": "community:first-game-welcome", "kicker": "FLORIDA / LOCAL RECOMMENDATIONS",
+    "headline": "Which club made\nyou feel welcome?", "body": "Someone else might be looking for their first team.",
+    "prompt": "Share the club + city.", "note": "A good first recommendation can make a difference.",
+    "cta": "Tell us in the comments.",
+    "caption": "Which Florida club would you recommend to someone starting out?\n\nTell us the club, the city and what made it welcoming. Parents, players and coaches: we’d like to hear from you.\n\nWe’ll check suggested clubs before adding or updating a directory profile. Please leave out children’s names, private group links and personal contact details.\n\n#Cancha #FloridaSoccer #LocalSoccer",
+    "altText": "Original Cancha pitch illustration asking which Florida club made people feel welcome. Invitation to share a club and city, without private details.",
+    "rights": "Original Cancha illustration, design and community question. No invented quote, endorsement, member, event or partnership."
+  },
+  {
+    "id": "community-adult-return-01", "sourceType": "brand", "format": "feed", "topic": "community", "creativeKind": "community-question", "theme": "cream",
+    "subjectKey": "community:return-to-soccer", "kicker": "BACK TO SOCCER",
+    "headline": "Haven’t played\nin a while?", "body": "What would make it easier to join a local game?",
+    "prompt": "Tell us what’s missing.", "note": "A beginner-friendly group? A clear price? Someone to go with?",
+    "cta": "Your city + one thing that would help.",
+    "caption": "Getting back into soccer can be awkward when you don’t know the level, the people or how to join.\n\nWhat would help you give a local game a try? A beginner-friendly session, a clear price, knowing someone there—or something else?\n\nTell us your Florida city and what’s missing. We’re using these suggestions to decide which groups and places to research next. This post is a conversation, not an invitation to a scheduled game.\n\n#Cancha #FloridaSoccer #PickupSoccer",
+    "altText": "Original Cancha pitch illustration asking returning players what would help them join a local game, with examples such as beginner-friendly sessions and clear prices.",
+    "rights": "Original Cancha illustration, design and community question. No organized game, participant or demand figure is claimed."
+  },
+  {
+    "id": "community-parent-advice-01", "sourceType": "brand", "format": "feed", "topic": "community", "creativeKind": "parent-guide",
+    "subjectKey": "community:parent-first-season", "kicker": "FOR SOCCER PARENTS",
+    "headline": "What do you wish\nyou’d asked first?", "body": "Help another family choose their first club.",
+    "questions": [["01", "The weekly schedule", "Which detail caught you by surprise?"], ["02", "The full cost", "What should a new family ask about?"], ["03", "The first session", "What helped your child settle in?"], ["04", "Your advice", "What would you tell a parent starting today?"]],
+    "cta": "Share one useful question in the comments.",
+    "caption": "Soccer parents: what do you wish you’d asked before your child’s first season?\n\nMaybe it was about the weekly schedule, the total cost or how new players settle in. Share the question that would have helped you.\n\nWe want the directory to answer the things families actually need to know. Please keep children’s names and private details out of the comments.\n\n#Cancha #FloridaSoccer #SoccerParents",
+    "altText": "Cancha discussion guide inviting parents to share useful questions about a first soccer season: schedule, total cost and settling into a team.",
+    "rights": "Original Cancha discussion prompts and design. No parent testimony, price, credential or club endorsement is invented."
+  }
+]
