@@ -1,5 +1,80 @@
 [
   {
+    "id": "explainer-miami-homestead-20261022",
+    "format": "feed",
+    "sourceType": "brand",
+    "topic": "community",
+    "creativeKind": "animated-explainer",
+    "creativeVersion": "cancha-local-v2",
+    "headline": "A NEW HOME\nIN HOMESTEAD?",
+    "caption": "A new home for Miami FC in Homestead? Here’s the plan.\n\n15,000 stadium seats. An 80-acre sports complex. A $300 million development including training, public sports facilities and a hotel.\n\nMiami FC announced the plans in September 2025 and still lists Homestead as its future stadium. This is the proposal, not an opening announcement. The image is the club-published architectural rendering.\n\nWould you make the trip? Tell us your city.\nhttps://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/\n\n#MiamiFC #Homestead #FloridaSoccer #SupportYourLocalClub",
+    "altText": "Animated explainer of Miami FC’s planned Homestead stadium, using its official architectural rendering and crest. Graphics show 15,000 planned seats, 80 acres and a $300 million full development with training, public sports facilities and a hotel. This is a future plan, not an open stadium. Generic synthetic narration and original music accompany the graphics.",
+    "editorialOrganization": "Miami FC",
+    "editorialSourceId": "miami-homestead-background-20261022",
+    "officialSourceUrl": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+    "sourceHash": "319ab18f8fd037417e5dbd8db28f962aa3f9eda0c185e77814f675ba80212756",
+    "factsCheckedAt": "2026-10-22T19:00:42.258Z",
+    "rights": "Owner confirms subject media permissions are handled. Miami FC published the architectural rendering and crest. Original Cancha diagrams, animation, music and effects. Generic synthetic off-screen Kokoro narrator under Apache-2.0; no interview or cloned person.",
+    "photos": [
+      {
+        "id": "stadium-plan",
+        "sourcePage": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+        "originalUrl": "https://www.miamifc.com/wp-content/uploads/sites/4/2025/09/32_60d728.png",
+        "publisher": "Miami FC",
+        "subject": "Architectural rendering of the proposed Homestead stadium and Sports Performance Hub",
+        "originalChecksum": "69a6dfa1c8ebeef0f75622b7739a44282aae895bb1ea0b59b9c97f0626d40a63",
+        "authorization": "owner-cleared-2026-10-22"
+      },
+      {
+        "id": "club-crest",
+        "sourcePage": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+        "originalUrl": "https://www.miamifc.com/wp-content/uploads/sites/4/2023/06/cropped-logo_Miami-FC.png",
+        "publisher": "Miami FC",
+        "subject": "Miami FC official crest",
+        "originalChecksum": "3cd13c93c1d7e1e1cd1803b958e1d373100b907330cf76572252e1eb29262971",
+        "authorization": "owner-cleared-2026-10-22"
+      }
+    ],
+    "audioEvidence": {
+      "originalMusic": true,
+      "originalSoundEffects": true,
+      "syntheticNarration": true,
+      "narrationProvider": "Kokoro ONNX",
+      "narrationVoice": "af_heart",
+      "voiceBlend": {
+        "af_heart": 0.8,
+        "af_bella": 0.2
+      },
+      "modelChecksum": "beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a",
+      "narrationLicense": "Apache-2.0",
+      "sourceClipAudioUsed": false,
+      "musicBPM": 122
+    },
+    "assetUrl": "https://framerusercontent.com/images/SbRmCEX2cnwMTneXVCCE6zUphg.jpg",
+    "assetChecksum": "fbb690f0650a315a8780b9422fd36bd16ca13ab12bd9bc288f459dacffb85f71",
+    "reel": {
+      "assetUrl": "https://framerusercontent.com/assets/FBlqcHjiWZfgcw5MErjPQ3xPCQ.mp4",
+      "assetChecksum": "1c79ff8dfed4af355d2a6e9d808850378072982fb70727f6373431b2e72ada4b",
+      "width": 1080,
+      "height": 1920,
+      "durationSeconds": 24,
+      "codec": "h264",
+      "audioCodec": "aac"
+    },
+    "visualEvidence": {
+      "creator": "Cancha",
+      "kind": "animated-explainer",
+      "subjectKey": "miami-homestead-background-20261022",
+      "sourceUrl": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+      "sourceHash": "319ab18f8fd037417e5dbd8db28f962aa3f9eda0c185e77814f675ba80212756",
+      "assetChecksum": "fbb690f0650a315a8780b9422fd36bd16ca13ab12bd9bc288f459dacffb85f71",
+      "videoChecksum": "1c79ff8dfed4af355d2a6e9d808850378072982fb70727f6373431b2e72ada4b",
+      "renderedAt": "2026-10-22T19:00:11.937Z",
+      "context": "planned-development",
+      "animation": "Stadium outline, capacity count and development blocks"
+    }
+  },
+  {
     "id": "motion-weston-u15-20261022",
     "format": "feed",
     "sourceType": "brand",
@@ -13,7 +88,7 @@
     "editorialSourceId": "weston-u15-club-clip-20261022",
     "officialSourceUrl": "https://www.westonfc.org/",
     "sourceHash": "78719d3978232f95baa15637305800199d0f9c6eb2abde99b1a9daa6d0c31547",
-    "factsCheckedAt": "2026-10-22T18:49:30.785Z",
+    "factsCheckedAt": "2026-10-22T19:06:03.666Z",
     "rights": "Owner confirms club media permissions are handled. Exact public club post and original footage checksum recorded. Original Cancha animation, beat and sound effects. Generic synthetic off-screen Kokoro narrator (Apache-2.0 model); not a player or coach quotation.",
     "footage": [
       {
@@ -43,11 +118,11 @@
       "modelChecksum": "beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a",
       "musicBPM": 126
     },
-    "assetUrl": "https://framerusercontent.com/images/75N9OVIHVDoLz2nZ7ahSjcSdriQ.jpg",
-    "assetChecksum": "9486e66d5087b8da6699f787389363c48a4047ecc8d1e07768996b28d53aec1b",
+    "assetUrl": "https://framerusercontent.com/images/n1NuDDKbyCQn6Sk8UYsqwQFKa0.jpg",
+    "assetChecksum": "d76e9997041f0a0735b1d469c46f805e5ca7c3c26756afb9d24536e2848a8351",
     "reel": {
-      "assetUrl": "https://framerusercontent.com/assets/kIK1HpE6dpSjGzdXbuAq2rr3rYI.mp4",
-      "assetChecksum": "0b91619ce38950e8cab291df34060098d03c842e0a49d9d87e854e8e475a2077",
+      "assetUrl": "https://framerusercontent.com/assets/evABv7PFqUve3TnXziHIznAmSw.mp4",
+      "assetChecksum": "17e32a14dc1154abeafd8b2eea7af6d7149d27d89674d256235b6a3ca1a13ab7",
       "width": 1080,
       "height": 1920,
       "durationSeconds": 22,
@@ -60,9 +135,9 @@
       "subjectKey": "weston-u15-club-clip-20261022",
       "sourceUrl": "https://www.westonfc.org/",
       "sourceHash": "78719d3978232f95baa15637305800199d0f9c6eb2abde99b1a9daa6d0c31547",
-      "assetChecksum": "9486e66d5087b8da6699f787389363c48a4047ecc8d1e07768996b28d53aec1b",
-      "videoChecksum": "0b91619ce38950e8cab291df34060098d03c842e0a49d9d87e854e8e475a2077",
-      "renderedAt": "2026-10-22T18:46:24.652Z"
+      "assetChecksum": "d76e9997041f0a0735b1d469c46f805e5ca7c3c26756afb9d24536e2848a8351",
+      "videoChecksum": "17e32a14dc1154abeafd8b2eea7af6d7149d27d89674d256235b6a3ca1a13ab7",
+      "renderedAt": "2026-10-22T19:05:50.210Z"
     }
   }
 ]

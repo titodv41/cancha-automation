@@ -1,0 +1,8 @@
+import{spawnSync,execFileSync}from'node:child_process';import{readFile}from'node:fs/promises';import{createHash}from'node:crypto';
+export async function auditVideo(file,durationSeconds){
+ const bytes=await readFile(file),info=JSON.parse(execFileSync('ffprobe',['-v','error','-show_entries','stream=codec_name,width,height,r_frame_rate,pix_fmt,channels,sample_rate:format=duration','-of','json',file])),video=info.streams.find(s=>s.codec_name==='h264'),audio=info.streams.find(s=>s.codec_name==='aac');
+ if(bytes.length>20_000_000||!video||video.width!==1080||video.height!==1920||video.r_frame_rate!=='30/1'||!['yuv420p','yuvj420p'].includes(video.pix_fmt)||!audio||audio.channels!==2||audio.sample_rate!=='48000'||Math.abs(Number(info.format.duration)-durationSeconds)>.1)throw Error('Video delivery format, size or duration failed audit');
+ const measured=spawnSync('ffmpeg',['-hide_banner','-i',file,'-af','loudnorm=I=-14:TP=-1.3:LRA=8:print_format=json','-f','null','-'],{encoding:'utf8',maxBuffer:2_000_000});if(measured.status!==0)throw Error('Video sound audit failed');const match=measured.stderr.match(/\{\s*"input_i"[\s\S]*?\}/);if(!match)throw Error('Missing sound measurement');const sound=JSON.parse(match[0]),integratedLUFS=Number(sound.input_i),truePeakDb=Number(sound.input_tp);
+ if(!Number.isFinite(integratedLUFS)||integratedLUFS< -17||integratedLUFS> -12||!Number.isFinite(truePeakDb)||truePeakDb> -.8)throw Error('Video sound outside the delivery loudness/peak range');
+ return{sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length,width:video.width,height:video.height,fps:30,durationSeconds:Number(info.format.duration),channels:audio.channels,sampleRate:Number(audio.sample_rate),integratedLUFS,truePeakDb,passed:true};
+}

@@ -1,0 +1,8 @@
+import{readFile,writeFile}from'node:fs/promises';import{auditVideo}from'../video/audit-output.mjs';import{motionDesignHash,explainerDesignHash}from'../video/render-contract.mjs';import{localStoryDescriptor,localStoryHash}from'../server/local-story-source.mjs';
+const ready=JSON.parse(await readFile('content/instagram/motion-ready.json')),result=[];
+for(const[manifestPath,reportPath,hashDesign]of[['content/instagram/motion-stories.json','previews/motion/motion-report.json',motionDesignHash],['content/instagram/explainer-stories.json','previews/explainers/explainer-report.json',explainerDesignHash]]){
+ const manifest=JSON.parse(await readFile(manifestPath)),story=manifest.stories[0],report=JSON.parse(await readFile(reportPath)),brand=JSON.parse(await readFile(manifest.brandManifest)).brand,row=ready.find(r=>r.id===story.id);
+ if(!row||report.designHash!==await hashDesign(process.cwd(),story,brand)||row.sourceHash!==localStoryHash(localStoryDescriptor(story.editorialSourceId))||report.sourceHash!==row.sourceHash)throw Error('Video render or source evidence is stale');
+ const audit=await auditVideo(report.file,story.durationSeconds);if(audit.sha256!==report.sha256||row.reel.assetChecksum!==audit.sha256)throw Error('Queued film differs from audited file');result.push({id:row.id,url:row.reel.assetUrl,voiceModel:report.audio.voice.modelFile,voiceBlend:report.audio.voice.voiceBlend,musicBPM:report.audio.bpm,...audit});
+}
+await writeFile('previews/motion/quality-audit.json',JSON.stringify({checkedAt:new Date().toISOString(),videos:result},null,2)+'\n');console.log(JSON.stringify(result,null,2));

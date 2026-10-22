@@ -66,3 +66,21 @@ Reviewed original repositories:
 - [Remotion official skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion-best-practices): consulted creation, markup, timing, transitions, audio and voiceover guidance. Existing pinned Remotion 4.0.537 remains in place. Frame-driven easing, measured narration timing, actual-media inspection and source-editable compositions are applied. The owner has already authorized rendered public previews and local free narration, so the generic skill defaults do not override those preferences.
 
 USL league sites returned HTTP 403 during research. Do not publish a “new” promotion/relegation update until a current accessible official announcement can be checked. A past approval/plan is not evidence that the system has launched.
+
+## Animated news explainers
+
+`content/instagram/explainer-stories.json` configures a separate 24-second explainer composition. The first explains Miami FC’s Homestead proposal with the club-published architectural rendering and official crest, an animated stadium outline/capacity count, facility icons and development blocks. It states the 15,000-seat/80-acre/$300 million **development plan** and identifies Homestead as a future home. The caption dates the announcement to September 2025; it is not framed as a new opening. The current club homepage still identifies a future stadium in Homestead. No opening date, construction milestone or confirmed promotion/relegation launch is invented.
+
+```sh
+npm run content:explainer
+node scripts/prepare-explainer-queue.mjs
+node scripts/audit-motion-output.mjs
+```
+
+The ready-file upserts preserve other reviewed films. Both live-footage films and animated explainers use the same immutable MP4 checks, source recheck, synthetic-audio flag, daily carousel requirement and durable publisher. Each new film receives an unpublished Meta processing check before import. The scheduler later creates a fresh processing container within its authorized publishing window.
+
+`skills/soccer-motion/SKILL.md` is the reusable project skill. It combines the owner’s editorial direction with the official Remotion guidance, source/claim distinctions, concise spoken copy and a repeatable visual/audio audit. It introduces no paid provider.
+
+## Delivery audit
+
+`video/audit-output.mjs` checks the actual output, not only the render options: 1080×1920, 30 fps, 8-bit 4:2:0 H.264, stereo AAC at 48 kHz, expected duration, public-asset size limit and actual loudness/true peak. Full-range `yuvj420p` is accepted alongside `yuv420p`; the former is a full-range 4:2:0 signal, not a different-resolution or higher-bit-depth format. Rendering and Meta processing accepted that output. The CLI also rejects stale story/brand/renderer/model hashes or a queued MP4 that differs from the audited render. Phone playback is inspected separately. Numbers are delivery checks, not a substitute for listening to the tone or judging the edit.

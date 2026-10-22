@@ -1,4 +1,7 @@
 import {MotionStory} from './MotionStory';
+import {NewsExplainer} from './NewsExplainer';
+import motionManifest from '../../content/instagram/motion-stories.json';
+import explainerManifest from '../../content/instagram/explainer-stories.json';
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Composition, Img, continueRender, delayRender, interpolate, registerRoot, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
@@ -36,5 +39,5 @@ const Story=({brand,beats,photos}:StoryProps)=>{
   </div>
  </AbsoluteFill>;
 };
-const Root=()=> <><Composition id="PhotoStory" component={Story} durationInFrames={450} fps={30} width={1080} height={1920} defaultProps={defaults}/><Composition id="MotionStory" component={MotionStory} durationInFrames={660} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:{},clip:"",audio:""}}/></>;
+const Root=()=> <><Composition id="PhotoStory" component={Story} durationInFrames={450} fps={30} width={1080} height={1920} defaultProps={defaults}/><Composition id="MotionStory" component={MotionStory} durationInFrames={660} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:motionManifest.stories[0],clip:'generated/motion/club-clip.mp4',audio:'generated/motion/soundtrack.wav'}}/><Composition id="NewsExplainer" component={NewsExplainer} durationInFrames={720} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:explainerManifest.stories[0],media:{'stadium-plan':'generated/explainer/stadium-plan.png','club-crest':'generated/explainer/club-crest.png'},audio:'generated/explainer/soundtrack.wav'}}/></>;
 registerRoot(Root);

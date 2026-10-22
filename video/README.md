@@ -18,3 +18,5 @@ The [official Remotion pricing page](https://www.remotion.dev/docs/license/prici
 ## Actual clips, animation and audio
 
 The later motion workflow uses a source-checked club clip, original animated graphics, original music/effects and free local Kokoro narration. Run `npm run content:voice-setup` once, then `npm run content:motion` from the repository root. It renders the 22-second template. Full setup and publishing details: `docs/motion-and-honest-growth.md`. Reels now have their own publishing path and use the second daily slot after a published carousel. The older Puerta photo-led video remains a separate preview example.
+
+For a graphics-led news film, use `npm run content:explainer` from the repository root, inspect the five scene frames, then `node scripts/prepare-explainer-queue.mjs`. `node scripts/audit-motion-output.mjs` checks both finished films, audio levels and their queued hashes. Project skill: [`soccer-motion`](../skills/soccer-motion/SKILL.md). Photo carousels keep their existing design and separate renderer.

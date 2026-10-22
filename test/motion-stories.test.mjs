@@ -2,7 +2,9 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {parseHTML} from 'linkedom';import{createHash}from'node:crypto';
 import{localStoryDescriptor,localStoryHash,confirmLocalStorySource}from'../server/local-story-source.mjs';
 import{validReel,verifyReelAssets}from'../server/instagram-media.mjs';
-import{metaPublisher,contentHash}from'../server/instagram-queue.mjs';
+import{metaPublisher,contentHash,openQueue,saveDraft,approve}from'../server/instagram-queue.mjs';
+import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
+import{mkdtempSync,rmSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';
 import{satisfiesDailyMediaMix}from'../server/instagram-media-mix.mjs';
 import{approvedOriginalCreative}from'../server/social-creative.mjs';
 const source=localStoryDescriptor('weston-u15-club-clip-20261022'),doc=source.documents[0];
@@ -29,4 +31,18 @@ test('Reel creates one processing container after immutable public bytes checks 
 test('daily Reel publication waits for a real same-day carousel receipt, not its approval or yesterday',()=>{
  const policy={minimumDailyCarousels:1},now=Date.parse('2026-10-23T22:00:00Z'),c={status:'Published',published_at:'2026-10-23T16:37:00Z',content:JSON.stringify({slides:[{},{}]})};
  assert.equal(satisfiesDailyMediaMix(reel,[],policy,{now}),false);assert.equal(satisfiesDailyMediaMix(reel,[{...c,status:'Approved'}],policy,{now}),false);assert.equal(satisfiesDailyMediaMix(reel,[{...c,published_at:'2026-10-22T22:00:00Z'}],policy,{now}),false);assert.equal(satisfiesDailyMediaMix(reel,[c],policy,{now}),true);assert.equal(satisfiesDailyMediaMix({slides:[{},{}]},[],policy,{now}),true);
+});
+test('a stadium explainer requires its exact source, subject media, matching video and planned context',()=>{
+ const source=localStoryDescriptor('miami-homestead-background-20261022'),url=source.documents[0].url,sourceHash=localStoryHash(source);
+ const item={...reel,caption:'Miami FC’s planned Homestead stadium. Announced in September 2025.',altText:'Official architectural rendering of the planned venue.',editorialSourceId:source.id,officialSourceUrl:url,sourceHash,creativeVersion:'cancha-local-v2',rights:'Owner cleared subject media; original diagrams/audio.',photos:[{authorization:'owner-cleared-2026-10-22',publisher:'Miami FC',subject:'Proposed stadium rendering',sourcePage:url,originalUrl:'https://www.miamifc.com/wp-content/uploads/stadium.png',originalChecksum:'a'.repeat(64)}],audioEvidence:{originalMusic:true,originalSoundEffects:true,narrationLicense:'Apache-2.0',syntheticNarration:true},visualEvidence:{creator:'Cancha',kind:'animated-explainer',subjectKey:source.id,sourceUrl:url,sourceHash,assetChecksum:reel.assetChecksum,videoChecksum:reel.reel.assetChecksum,renderedAt:new Date().toISOString(),context:'planned-development'}};
+ assert(approvedOriginalCreative(item));
+ for(const changed of[{...item,photos:[]},{...item,photos:[{...item.photos[0],sourcePage:'https://other.test/'}]},{...item,visualEvidence:{...item.visualEvidence,context:'open-now'}},{...item,visualEvidence:{...item.visualEvidence,videoChecksum:'b'.repeat(64)}}])assert.equal(approvedOriginalCreative(changed),false);
+});
+test('motion revisions keep untouched standing-plan slots and preserve manual or dispatched work',()=>{
+ const dir=mkdtempSync(join(tmpdir(),'motion-refresh-')),db=openQueue(join(dir,'queue.sqlite')),now=Date.now(),scheduledAt=new Date(now+86400000).toISOString();
+ const item={...reel,factsCheckedAt:new Date(now).toISOString(),creativeVersion:'cancha-local-v2',rights:'Owner cleared footage; original sound and design.',footage:[{authorization:'owner-cleared-2026-10-22',publisher:'Weston FC',subject:'U15',sourcePage:doc.url,permalink:doc.permalink,originalChecksum:'a'.repeat(64)}],audioEvidence:{originalMusic:true,originalSoundEffects:true},visualEvidence:{creator:'Cancha',kind:'motion-story',subjectKey:source.id,sourceUrl:doc.url,sourceHash:row.sourceHash,assetChecksum:reel.assetChecksum,videoChecksum:reel.reel.assetChecksum,renderedAt:new Date(now).toISOString()}};
+ try{saveDraft(db,item);approve(db,item.id,{reviewer:'Cancha owner-authorized standing plan',scheduledAt,now,allowSourceRecheck:true});const revised={...item,caption:'A revised source-checked caption'};const result=refreshMotionEditorial(db,[revised],{now});assert.equal(result.rescheduled.length,1);let stored=db.prepare('SELECT * FROM instagram_queue').get();assert.equal(stored.scheduled_at,scheduledAt);assert.equal(stored.approved_hash,contentHash(revised));
+ for(const status of['Preparing','Publishing','Published','Needs reconciliation']){db.prepare('UPDATE instagram_queue SET status=?').run(status);assert.deepEqual(refreshMotionEditorial(db,[{...revised,caption:'Later revision'}],{now}).protected,[item.id]);assert.equal(db.prepare('SELECT content FROM instagram_queue').get().content,JSON.stringify(revised))}
+ db.prepare("UPDATE instagram_queue SET status='Approved',approved_by='Manual owner review'").run();assert.deepEqual(refreshMotionEditorial(db,[item],{now}).protected,[item.id]);
+ }finally{db.close();rmSync(dir,{recursive:true,force:true})}
 });

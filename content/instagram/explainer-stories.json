@@ -1,0 +1,91 @@
+{
+  "brandManifest": "content/instagram/photo-editorial.json",
+  "stories": [
+    {
+      "id": "explainer-miami-homestead-20261022",
+      "editorialSourceId": "miami-homestead-background-20261022",
+      "organization": "Miami FC",
+      "sourcePage": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+      "durationSeconds": 24,
+      "authorization": "owner-cleared-2026-10-22",
+      "city": "Homestead",
+      "state": "Florida",
+      "kicker": "MIAMI FC · THE STADIUM PLAN",
+      "title": "A NEW HOME\nIN HOMESTEAD?",
+      "capacity": 15000,
+      "capacityLabel": "PLANNED STADIUM SEATS",
+      "acres": 80,
+      "acresLabel": "ACRES IN THE DEVELOPMENT",
+      "budget": "$300M",
+      "budgetLabel": "FULL DEVELOPMENT PLAN",
+      "facilities": [
+        "Training academy",
+        "Public sports facilities",
+        "Sports-themed hotel"
+      ],
+      "question": "WOULD YOU\nMAKE THE TRIP?",
+      "communityCTA": "Tell us your city.",
+      "caption": "A new home for Miami FC in Homestead? Here’s the plan.\n\n15,000 stadium seats. An 80-acre sports complex. A $300 million development including training, public sports facilities and a hotel.\n\nMiami FC announced the plans in September 2025 and still lists Homestead as its future stadium. This is the proposal, not an opening announcement. The image is the club-published architectural rendering.\n\nWould you make the trip? Tell us your city.\nhttps://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/\n\n#MiamiFC #Homestead #FloridaSoccer #SupportYourLocalClub",
+      "altText": "Animated explainer of Miami FC’s planned Homestead stadium, using its official architectural rendering and crest. Graphics show 15,000 planned seats, 80 acres and a $300 million full development with training, public sports facilities and a hotel. This is a future plan, not an open stadium. Generic synthetic narration and original music accompany the graphics.",
+      "voice": "af_heart",
+      "voiceBlend": {
+        "af_heart": 0.8,
+        "af_bella": 0.2
+      },
+      "voiceModel": "kokoro-v1.0.onnx",
+      "music": {
+        "bpm": 122,
+        "style": "bright-house",
+        "duckedGain": 0.36,
+        "openGain": 0.8
+      },
+      "narration": [
+        {
+          "start": 0.4,
+          "text": "Miami F C is planning a new home in Homestead.",
+          "speed": 1.02
+        },
+        {
+          "start": 4.5,
+          "text": "A fifteen thousand seat stadium, in an eighty acre sports complex.",
+          "speed": 1.02
+        },
+        {
+          "start": 10.4,
+          "text": "The three hundred million dollar plan also includes training, recreation and a hotel.",
+          "speed": 1.04
+        },
+        {
+          "start": 16,
+          "text": "A future home for Miami F C, right here in South Florida.",
+          "speed": 1.01
+        },
+        {
+          "start": 20.5,
+          "text": "Would you make the trip?",
+          "speed": 1.0
+        }
+      ],
+      "photos": [
+        {
+          "id": "stadium-plan",
+          "sourcePage": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+          "originalUrl": "https://www.miamifc.com/wp-content/uploads/sites/4/2025/09/32_60d728.png",
+          "publisher": "Miami FC",
+          "subject": "Architectural rendering of the proposed Homestead stadium and Sports Performance Hub",
+          "originalChecksum": "69a6dfa1c8ebeef0f75622b7739a44282aae895bb1ea0b59b9c97f0626d40a63",
+          "authorization": "owner-cleared-2026-10-22"
+        },
+        {
+          "id": "club-crest",
+          "sourcePage": "https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/",
+          "originalUrl": "https://www.miamifc.com/wp-content/uploads/sites/4/2023/06/cropped-logo_Miami-FC.png",
+          "publisher": "Miami FC",
+          "subject": "Miami FC official crest",
+          "originalChecksum": "3cd13c93c1d7e1e1cd1803b958e1d373100b907330cf76572252e1eb29262971",
+          "authorization": "owner-cleared-2026-10-22"
+        }
+      ]
+    }
+  ]
+}

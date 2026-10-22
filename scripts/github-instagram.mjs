@@ -1,3 +1,4 @@
+import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
 import {satisfiesDailyMediaMix} from '../server/instagram-media-mix.mjs';
 import {refreshPhotoEditorial} from '../server/photo-editorial-refresh.mjs';
 import {verifyCarouselAssets,verifyReelAssets} from '../server/instagram-media.mjs';
@@ -66,17 +67,20 @@ try{
  }
  if(mode==='refresh-motion-stories'){
   const drafts=JSON.parse(await readFile('content/instagram/motion-ready.json'));
-  if(!drafts.length||drafts.length>5||drafts.some(r=>!approvedOriginalCreative(r)||r.visualEvidence.kind!=='motion-story'))throw Error('Reviewed motion stories missing or stale');
+  if(!drafts.length||drafts.length>5||drafts.some(r=>!approvedOriginalCreative(r)||!['motion-story','animated-explainer'].includes(r.visualEvidence.kind)))throw Error('Reviewed motion stories missing or stale');
   for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Reviewed local story blocked: '+draft.id);await verifyReelAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})})}
-  const sample=drafts[0];if(state.motionPreflight?.assetChecksum!==sample.reel.assetChecksum||state.motionPreflight?.status!=='FINISHED'){
+  state.motionPreflights||={};
+  for(const sample of drafts){
+   const previous=state.motionPreflights[sample.id]||state.motionPreflight;
+   if(previous?.assetChecksum===sample.reel.assetChecksum&&previous?.status==='FINISHED'){state.motionPreflights[sample.id]=previous;continue;}
    const media=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})}),container=await media.create(sample);let status='IN_PROGRESS';
    for(let check=0;check<20;check++){status=await media.status(container);if(status!=='IN_PROGRESS')break;await new Promise(resolve=>setTimeout(resolve,2000))}
    if(status!=='FINISHED')throw Error('Reviewed motion processing not ready: '+status);
-   // A processing check only. This container is never used to publish and expires;
-   // the scheduled job creates a fresh one inside its normal approval/window checks.
+   // Processing only: never publish this container or retain its expiring ID.
    state.motionPreflight={assetChecksum:sample.reel.assetChecksum,status,checkedAt:new Date().toISOString(),published:false,freshContainerAtSchedule:true};
+   state.motionPreflights[sample.id]=state.motionPreflight;
   }
-  for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
+  state.motionEditorialRefresh=refreshMotionEditorial(db,drafts);
   state.motionRevision='2026-10-22';await checkpoint();
  }
  if(mode==='repair-media'){if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs the existing Framer secret');const run=await runSubprocess(process.execPath,['scripts/repair-reviewed-club-media.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation media repair stopped');await client.close();client=githubStateClient();state=await client.load();}
@@ -118,7 +122,7 @@ try{
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.
   const due=db.prepare("SELECT content FROM instagram_queue WHERE status IN ('Approved','Preparing') AND scheduled_at<=? ORDER BY scheduled_at LIMIT 1").get(new Date().toISOString());const mixAllowed=!due||satisfiesDailyMediaMix(JSON.parse(due.content),db.prepare('SELECT * FROM instagram_queue').all(),localPolicy);if(mayPublish&&mixAllowed)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
  }
- const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note,slideCount:JSON.parse(row.content).slides?.length||1,videoSeconds:JSON.parse(row.content).reel?.durationSeconds||null,creativeKind:JSON.parse(row.content).visualEvidence?.kind||null})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0),photoEditorialRefresh:state.photoEditorialRefresh||null,motionPreflight:state.motionPreflight||null};
+ const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note,slideCount:JSON.parse(row.content).slides?.length||1,videoSeconds:JSON.parse(row.content).reel?.durationSeconds||null,creativeKind:JSON.parse(row.content).visualEvidence?.kind||null})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0),photoEditorialRefresh:state.photoEditorialRefresh||null,motionPreflight:state.motionPreflight||null,motionPreflights:state.motionPreflights||{},motionEditorialRefresh:state.motionEditorialRefresh||null};
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});
  if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));

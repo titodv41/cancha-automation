@@ -28,7 +28,8 @@
     "content:photos": "node scripts/build-photo-editorial.mjs",
     "content:video": "npm --prefix video run render",
     "content:voice-setup": "node video/audio/setup.mjs",
-    "content:motion": "node video/render-motion.mjs"
+    "content:motion": "node video/render-motion.mjs",
+    "content:explainer": "node video/render-explainer.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",
