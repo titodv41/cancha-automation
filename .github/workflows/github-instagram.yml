@@ -12,14 +12,14 @@ on:
         type: string
         default: 'content/instagram/chat-command.json'
   schedule:
-    # Prepare at 10 AM NY so the 6 PM slot is inside the freshness window.
+    # Prepare at 10 AM NY for 12:30 PM and 6 PM source-checked slots.
     # Publish after 6 PM; GitHub schedules are approximate and can be delayed.
     - cron: '7 14 * * *'
     - cron: '7 15 * * *'
     - cron: '7 22 * * *'
     - cron: '7 23 * * *'
-    # Evening catch-up checks; the publisher keeps one receipt per NY day.
-    - cron: '37 0-4,22-23 * * *'
+    # Midday/evening checks; plan caps and four-hour spacing protect delayed runs.
+    - cron: '37 0-4,16-23 * * *'
 permissions:
   contents: write
 concurrency:

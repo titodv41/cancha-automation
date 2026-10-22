@@ -466,6 +466,12 @@
     },
     "Quincy": {
       "county": "Gadsden"
+    },
+    "Lehigh Acres": {
+      "county": "Lee"
+    },
+    "Keystone Heights": {
+      "county": "Clay"
     }
   },
   "excludedNames": [
@@ -491,6 +497,14 @@
       "source": "https://www.psgacademyorlando.com/locations/",
       "reviewedOn": "2026-10-20",
       "reason": "Own location page identifies Orlando; FYSA mailing city is St. Petersburg."
+    },
+    "Lehigh YSA": {
+      "city": "Lehigh Acres",
+      "source": "https://lehighyouthsoccer.com/"
+    },
+    "Keystone Heights YSC": {
+      "city": "Keystone Heights",
+      "source": "https://keystoneyouthsoccer.com/"
     }
   },
   "additionalUpslDirectories": [

@@ -6,6 +6,17 @@ async function fixture(run){const dir=await mkdtemp(join(tmpdir(),'cancha-standi
 const now=Date.parse('2026-10-12T16:00:00Z');
 const draft=(id,sourceType='brand',format='feed')=>({id,format,sourceType,caption:'Fixture caption '+id,altText:'Fixture description',assetUrl:'https://framerusercontent.com/images/fixture.jpg',assetChecksum:'a'.repeat(64),...(sourceType==='opportunity'?{factsCheckedAt:new Date(now-1000).toISOString(),sourceHash:'a'.repeat(64),officialSourceUrl:'https://www.teamworkonline.com/fixture'}:{})});
 const plan={enabled:true,weekdays:[1,3,5],localTime:'18:00',startDate:'2026-10-12',sourceTypes:['brand','opportunity']};
+test('two daily slots schedule different clubs, remain idempotent and both pause cleanly',()=>fixture(async db=>{
+ const at=Date.parse('2026-10-12T14:05:00Z');
+ for(const [id,badge,checksum]of[['a-club','weston','1'],['b-same-club','weston','2'],['c-other-club','jax','3']])saveDraft(db,{...draft(id),editorialOrganization:badge,assetChecksum:checksum.repeat(64),assetUrl:'https://framerusercontent.com/images/'+id+'.jpg'});
+ savePlan(db,{...plan,weekdays:[0,1,2,3,4,5,6],localTimes:['12:30','18:00']},'Owner asks for two good local posts per day');
+ assert.equal(readPlan(db).maxPerWeek,14);
+ const result=await prepareStandingPlan(db,{now:at,connected:true});assert.deepEqual(result.scheduled.map(x=>x.id),['a-club','c-other-club']);assert.deepEqual(result.scheduled.map(x=>x.scheduledAt),['2026-10-12T16:30:00.000Z','2026-10-12T22:00:00.000Z']);
+ assert.equal((await prepareStandingPlan(db,{now:at,connected:true})).scheduled.length,0);
+ savePlan(db,{enabled:false},'Owner pauses both daily slots');assert.equal(db.prepare("SELECT count(*) n FROM instagram_queue WHERE status='Approved'").get().n,0);
+ assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','14:00']},'Too close fixture'),/four hours/);
+ assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','18:00','21:00']},'Too many fixture'),/one or two/);
+}));
 test('curated local stories take priority but still need live source confirmation and a vacant slot',()=>fixture(async db=>{
  saveDraft(db,{...draft('a-generic'),topic:'community'});
  saveDraft(db,{...draft('b-checked'),editorialSourceId:'reviewed-local-story',factsCheckedAt:new Date(now-5*86400000).toISOString()});

@@ -4,7 +4,7 @@
     "path": "previews/local-stories-2026-10-22/local-rowdies-shield-20261022.jpg",
     "designHash": "4b3aed8eced22acf154893441a0594b1feaaea3a892e45dd87a4a4976b95f600",
     "checksum": "9e099a944b9006fceffbd7db2fc21b67a2b14b19f27741abbbb243e19f24b2db",
-    "renderedAt": "2026-10-22T15:13:22.879Z",
+    "renderedAt": "2026-10-22T16:22:22.143Z",
     "overflow": false,
     "overlap": false,
     "fonts": true
@@ -14,7 +14,7 @@
     "path": "previews/local-stories-2026-10-22/local-puerta-four-20261022.jpg",
     "designHash": "a8b9acb8e767122abec98ec5a44a206a563c65e9a9ca4b7258d482bacc1d56a7",
     "checksum": "34f43e4012fe3fed5feafe68270ac532ea345c1510da8be97e5df8634a9a027d",
-    "renderedAt": "2026-10-22T15:13:22.992Z",
+    "renderedAt": "2026-10-22T16:22:22.395Z",
     "overflow": false,
     "overlap": false,
     "fonts": true
@@ -24,7 +24,7 @@
     "path": "previews/local-stories-2026-10-22/local-weston-club-20261022.jpg",
     "designHash": "74bd9d2ec0e0700cbd7bda6032332956243ef3aad4e7d0fc30adc57a6567e7f7",
     "checksum": "74fb5f075dfd0de9887d3253394c20ca74ef66726695364113567878dc37ff40",
-    "renderedAt": "2026-10-22T15:13:23.031Z",
+    "renderedAt": "2026-10-22T16:22:22.487Z",
     "overflow": false,
     "overlap": false,
     "fonts": true
@@ -34,7 +34,7 @@
     "path": "previews/local-stories-2026-10-22/local-fkk-programs-20261022.jpg",
     "designHash": "3bd0cdbb106b649fff0fbef252747734505b0d16fcff053689fd1a0c387c15f5",
     "checksum": "bd6487b588176672a4643db16dfa0ff76c41ad1706446077d5730d9a1895ba2f",
-    "renderedAt": "2026-10-22T15:13:23.075Z",
+    "renderedAt": "2026-10-22T16:22:22.552Z",
     "overflow": false,
     "overlap": false,
     "fonts": true
@@ -44,7 +44,7 @@
     "path": "previews/local-stories-2026-10-22/local-weston-coach-20261022.jpg",
     "designHash": "4f914800a415dcaccb2b9bee1f29227be82dc20d6b61873b4ee4f80f6b330dfc",
     "checksum": "fe772681e5b29e11bc2d5d2b824fdebdf745b8a6c0b93f89ccd81258b3446aa9",
-    "renderedAt": "2026-10-22T15:13:23.108Z",
+    "renderedAt": "2026-10-22T16:22:22.614Z",
     "overflow": false,
     "overlap": false,
     "fonts": true
@@ -54,7 +54,7 @@
     "path": "previews/local-stories-2026-10-22/local-miami-stadium-20261022.jpg",
     "designHash": "b66ad48b07566baad26e690d4d7e78b804c87489f9f8c01c25365c554c5f86c3",
     "checksum": "afc68837944d7f385de47a74733fdf4de122e723e47c3eb1f225b40f05cb301d",
-    "renderedAt": "2026-10-22T15:13:23.142Z",
+    "renderedAt": "2026-10-22T16:22:22.644Z",
     "overflow": false,
     "overlap": false,
     "fonts": true
@@ -64,7 +64,27 @@
     "path": "previews/local-stories-2026-10-22/local-rowdies-playoff-20261022.jpg",
     "designHash": "a36f2a4f6875a1d534e188b9e8ce47e2c70003cc3527e76cb895306f9fca0bf7",
     "checksum": "98d5913714cc563ca6791e747496885a55cf8ab8ff0ab7f8a167c2e676b6b40c",
-    "renderedAt": "2026-10-22T15:13:23.174Z",
+    "renderedAt": "2026-10-22T16:22:22.719Z",
+    "overflow": false,
+    "overlap": false,
+    "fonts": true
+  },
+  {
+    "id": "community-next-city-20261022",
+    "path": "previews/local-stories-2026-10-22/community-next-city-20261022.jpg",
+    "designHash": "cd41f4ff843091bf81ed5aaeab50aef40e1d63d50aa2ca4ddc8cc84599b792dd",
+    "checksum": "318f6b867e81246bd7de66330e82747d96f0c6a7f852289aec74c8b99b8e7e05",
+    "renderedAt": "2026-10-22T16:22:22.765Z",
+    "overflow": false,
+    "overlap": false,
+    "fonts": true
+  },
+  {
+    "id": "community-coach-questions-20261022",
+    "path": "previews/local-stories-2026-10-22/community-coach-questions-20261022.jpg",
+    "designHash": "6bd98a06abdd23322c085289d92a5790676b0514b37a238cc17f0afbb1da6c9a",
+    "checksum": "811002ad871528d11913c1be1f820ff3b75e82ea4c85afd67f55618e61ac9c08",
+    "renderedAt": "2026-10-22T16:22:22.810Z",
     "overflow": false,
     "overlap": false,
     "fonts": true

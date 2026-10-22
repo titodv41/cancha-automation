@@ -1,0 +1,77 @@
+{
+  "enabled": true,
+  "reviewedOn": "2026-10-22",
+  "scope": "Florida regional youth-program identities and private indoor venues. A profile is not an open session or public walk-on permission.",
+  "soccerStarsAreas": {
+    "kissimmeewinterhaven": {
+      "label": "Kissimmee-Winter Haven",
+      "city": "Kissimmee",
+      "county": "Osceola"
+    },
+    "fortmyersnaples": {
+      "label": "Fort Myers to Naples",
+      "city": "Fort Myers",
+      "county": "Lee"
+    },
+    "westftlauderdale": {
+      "label": "West Fort Lauderdale",
+      "city": "Fort Lauderdale",
+      "county": "Broward"
+    },
+    "capecoral": {
+      "label": "Cape Coral",
+      "city": "Cape Coral",
+      "county": "Lee"
+    },
+    "northbroward": {
+      "label": "North Broward",
+      "city": "Fort Lauderdale",
+      "county": "Broward"
+    },
+    "tampabay": {
+      "label": "Tampa Bay",
+      "city": "Tampa",
+      "county": "Hillsborough"
+    },
+    "spacecoast": {
+      "label": "Space Coast",
+      "city": "Melbourne",
+      "county": "Brevard"
+    },
+    "clearwater": {
+      "label": "Clearwater",
+      "city": "Clearwater",
+      "county": "Pinellas"
+    },
+    "orlando": {
+      "label": "Orlando",
+      "city": "Orlando",
+      "county": "Orange"
+    },
+    "swflorida": {
+      "label": "Southwest Florida",
+      "city": "Fort Myers",
+      "county": "Lee"
+    },
+    "browardcounty": {
+      "label": "Broward County",
+      "city": "Fort Lauderdale",
+      "county": "Broward"
+    },
+    "palmbeaches": {
+      "label": "Palm Beaches",
+      "city": "West Palm Beach",
+      "county": "Palm Beach"
+    },
+    "miami": {
+      "label": "Miami",
+      "city": "Miami",
+      "county": "Miami-Dade"
+    },
+    "jax": {
+      "label": "JAX",
+      "city": "Jacksonville",
+      "county": "Duval"
+    }
+  }
+}

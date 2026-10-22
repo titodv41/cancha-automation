@@ -11,6 +11,7 @@ import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
 import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYork} from '../server/offer-expiry.mjs';
+import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
@@ -48,7 +49,7 @@ try{
  }
  if(mode==='refresh-local-stories'){
   const drafts=JSON.parse(await readFile('content/instagram/local-stories-ready.json'));
-  if(!drafts.length||drafts.length>10||drafts.some(x=>!approvedOriginalCreative(x)||x.visualEvidence.kind!=='local-story'))throw Error('Reviewed local stories are missing or stale');
+  if(!drafts.length||drafts.length>10||drafts.some(x=>!approvedOriginalCreative(x)||!['local-story','community-question'].includes(x.visualEvidence.kind)))throw Error('Reviewed local stories are missing or stale');
   // Check the entire batch before checkpointing; never replace owner approvals or receipts.
   for(const draft of drafts){let valid=false;try{valid=await confirmPostSource(draft)===true}catch{}if(!valid)throw Error('Reviewed local story blocked: '+draft.id)}
   for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
@@ -86,12 +87,12 @@ try{
  if(mode==='publish'){
   const today=dateInNewYork(),all=db.prepare('SELECT * FROM instagram_queue').all();
   if(all.some(row=>['Publishing','Needs reconciliation'].includes(row.status)))throw Error('Uncertain publication requires reconciliation before another automatic post');
-  const alreadyPublished=all.some(row=>row.status==='Published'&&(row.published_at||row.scheduled_at)&&dateInNewYork(new Date(row.published_at||row.scheduled_at))===today);
+  const mayPublish=canPublishFeed(all,readPlan(db));
   for(const row of all)if(['Approved','Preparing'].includes(row.status)&&expiredPublishingDay(row.scheduled_at))db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Scheduled New York day ended; choose fresh content again' WHERE id=?").run(row.id);
   await checkpoint();
   const publisher=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.
-  if(!alreadyPublished)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
+  if(mayPublish)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
  }
  const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0)};
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});

@@ -3,7 +3,7 @@ import {openBrowser} from './browser-session.mjs';import {sourceSession} from '.
 import {parseJob} from './source-parser.mjs';
 const dir=`private-data/daily-opportunities/${dateInNewYork()}`,file=process.argv[2]||dir+'/candidates.json';await mkdir(dir,{recursive:true,mode:0o700});
 const candidates=JSON.parse(await readFile(file)),registry=JSON.parse(await readFile('config/automated-organizers.json')),config=JSON.parse(await readFile('config/opportunity-workflow.json')),ready=[],blocked=[];
-const source=sourceSession(),browser=await chromium.launch({headless:true}),context=await browser.newContext({javaScriptEnabled:false});await context.route('**/*',route=>route.abort());const page=await context.newPage();const images=new Map();let imageBrowser;
+const source=sourceSession(),browser=await chromium.launch({headless:true,...(process.env.CANCHA_BROWSER_EXECUTABLE?{executablePath:process.env.CANCHA_BROWSER_EXECUTABLE}:{})}),context=await browser.newContext({javaScriptEnabled:false});await context.route('**/*',route=>route.abort());const page=await context.newPage();const images=new Map();let imageBrowser;
 const ordered=[...candidates.filter(x=>registry.some(r=>x.url.startsWith(r.sourcePrefix))),...candidates.filter(x=>!registry.some(r=>x.url.startsWith(r.sourcePrefix)))];
 try{for(const lead of ordered.slice(0,50)){
  const approved=registry.find(x=>lead.url.startsWith(x.sourcePrefix));if(!approved){blocked.push({url:lead.url,reason:'No supported structured-source adapter; manual review needed'});continue;}

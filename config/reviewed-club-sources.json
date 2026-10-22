@@ -46,5 +46,13 @@
     "reviewedOn": "2026-10-12",
     "reviewExpiresOn": "2026-11-11",
     "policy": "Recheck this exact reviewed listing. Changed or inaccessible evidence is flagged for review; existing Active visibility is preserved. Confirm admission and scheduling with the club."
+  },
+  {
+    "slug": "fkk-winter-classic-2027-team-tournament",
+    "url": "https://floridakrazekrush.com/winter-classic/",
+    "approvedTextHash": "231213f45fc05d0291def684f057405cfbd5b08335a8237e10a4e0cd8f2477ad",
+    "reviewedOn": "2026-10-22",
+    "reviewExpiresOn": "2026-11-21",
+    "policy": "Official dates, team audience and exact registration identity checked. Confirm late-fee cutoff directly; source has differing Jan 8/9 references. No independent player entry or guaranteed team acceptance."
   }
 ]

@@ -1,0 +1,46 @@
+{
+  "reviewedOn": "2026-10-22",
+  "placement": "Independent resource links, not sponsors or partners",
+  "brands": [
+    {
+      "id": "adidas",
+      "name": "adidas",
+      "url": "https://www.adidas.com/us/soccer",
+      "asset": "https://www.adidas-group.com/en/public/adidas-logo-white.svg",
+      "mime": "image/svg+xml",
+      "background": "dark",
+      "image": "https://framerusercontent.com/images/WLWP5ZnqsDvB5UlUAHBwr1GPIk.svg",
+      "sourceChecksum": "4740d40461ed91718de79c3e1960f64f1772f2eedc2960530c92a872820b1b49"
+    },
+    {
+      "id": "on",
+      "name": "On",
+      "url": "https://www.on.com/en-us/",
+      "asset": "https://www.on.com/favicon.ico",
+      "mime": "image/x-icon",
+      "background": "light",
+      "sourceChecksum": "d7277ceb49dd081db5a3043967de05ae9865a3749ec294bb9c83334300db8cfc",
+      "image": "https://framerusercontent.com/assets/4fSCMJaB0RAO1JfOJ5AjBeTTs.png"
+    },
+    {
+      "id": "gatorade",
+      "name": "Gatorade",
+      "url": "https://www.gatorade.com/",
+      "asset": "https://www.gatorade.com/icon.png?c41cccc1aff75dd4",
+      "mime": "image/png",
+      "background": "light",
+      "sourceChecksum": "b648ce3f5eee52781b1f4239815c455157aca9c04c6a975418cdc02667b1f66c",
+      "image": "https://framerusercontent.com/images/ijDwR3cv5uMht1BuUg1jX2S3Ej8.png"
+    },
+    {
+      "id": "celsius",
+      "name": "CELSIUS",
+      "url": "https://www.celsius.com/",
+      "mime": "image/svg+xml",
+      "background": "light",
+      "asset": "https://www.celsius.com/ (first official wordmark SVG)",
+      "sourceChecksum": "392adaf2e2315b626bf157638c496433184509fbb64ed5e682ff7d4d0a9de60b",
+      "image": "https://framerusercontent.com/images/a73hBdj0k8cbX124Md0AzeRfgjM.svg"
+    }
+  ]
+}

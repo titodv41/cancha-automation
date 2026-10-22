@@ -11,3 +11,7 @@ test('evening catch-up selects publishing in summer and winter, never the next m
  for(const at of ['2026-10-12T23:37:00Z','2026-10-13T02:37:00Z','2026-12-13T04:37:00Z'])assert.equal(scheduledAction({event:'schedule',cron:'37 0-4,22-23 * * *',now:new Date(at)}),'publish');
  for(const at of ['2026-10-13T04:37:00Z','2026-12-12T22:37:00Z'])assert.equal(scheduledAction({event:'schedule',cron:'37 0-4,22-23 * * *',now:new Date(at)}),'');
 });
+test('two-post catch-up works after midday in either offset and stays off the next morning',()=>{
+ for(const at of ['2026-10-22T16:37:00Z','2026-12-22T17:37:00Z','2026-10-23T03:37:00Z'])assert.equal(scheduledAction({event:'schedule',cron:'37 0-4,16-23 * * *',now:new Date(at)}),'publish');
+ for(const at of ['2026-10-23T04:37:00Z','2026-12-22T16:37:00Z'])assert.equal(scheduledAction({event:'schedule',cron:'37 0-4,16-23 * * *',now:new Date(at)}),'');
+});

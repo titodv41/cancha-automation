@@ -29,7 +29,7 @@ const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_P
 const activeSources=config.sources.filter(x=>x.enabled&&(!x.discoverySeedUntil||x.discoverySeedUntil>=day));
 const known=new Set([...existing.map(x=>x.registration).filter(Boolean),...activeSources.map(x=>x.url)].map(canonicalUrl)),seen=new Set();
 const knownPostingIds=new Set(existing.map(x=>x.registration).filter(Boolean).map(opportunityIdentity));
-const browser=await chromium.launch({headless:true});const context=await browser.newContext({javaScriptEnabled:false});await context.route('**/*',route=>route.abort());const page=await context.newPage();
+const browser=await chromium.launch({headless:true,...(process.env.CANCHA_BROWSER_EXECUTABLE?{executablePath:process.env.CANCHA_BROWSER_EXECUTABLE}:{})});const context=await browser.newContext({javaScriptEnabled:false});await context.route('**/*',route=>route.abort());const page=await context.newPage();
 const organizers=JSON.parse(await readFile('config/automated-organizers.json'));const sources=[...activeSources];for(const item of existing.filter(x=>(x.status==='Active'||x.status==='Pending review'&&x.reviewStatus==='Automatic source recheck needed')&&x.registration&&organizers.some(y=>x.registration.startsWith(y.sourcePrefix))))if(!sources.some(x=>x.url===item.registration))sources.push({id:item.slug,url:item.registration});
 try{for(const source of sources){
  const check={id:source.id,url:source.url,checkedAt:new Date().toISOString(),verifiedOpportunity:false};report.sources.push(check);
