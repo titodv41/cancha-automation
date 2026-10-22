@@ -1,0 +1,72 @@
+[
+  {
+    "id": "jax",
+    "path": "jax.png",
+    "url": "https://www.sportingjax.com/wp-content/uploads/sites/75/2026/01/PRIMARY-CREST-1.png",
+    "sourcePage": "https://www.sportingjax.com/",
+    "alt": "Sporting JAX crest",
+    "checksum": "0b7694c3996711ca2aae0ed05697725e227ed54bbace0bcfab5033f15d163f75",
+    "treatment": "Unmodified identifying mark, contained on a neutral badge panel. Independent editorial use; no partnership or endorsement implied."
+  },
+  {
+    "id": "rowdies",
+    "path": "rowdies.png",
+    "url": "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2022/03/cropped-Site-logo.png",
+    "sourcePage": "https://www.rowdiessoccer.com/",
+    "alt": "Tampa Bay Rowdies badge",
+    "checksum": "1ce3d0b39264b5a0a12b24c39e20eeec1e2454265752bdbbe51e48d778def795",
+    "treatment": "Unmodified identifying mark, contained on a neutral badge panel. Independent editorial use; no partnership or endorsement implied."
+  },
+  {
+    "id": "miami",
+    "path": "miami.png",
+    "url": "https://www.miamifc.com/wp-content/uploads/sites/4/2023/06/cropped-logo_Miami-FC.png",
+    "sourcePage": "https://www.miamifc.com/",
+    "alt": "Miami FC badge",
+    "checksum": "3cd13c93c1d7e1e1cd1803b958e1d373100b907330cf76572252e1eb29262971",
+    "treatment": "Unmodified identifying mark, contained on a neutral badge panel. Independent editorial use; no partnership or endorsement implied."
+  },
+  {
+    "id": "weston",
+    "path": "weston.png",
+    "url": "https://framerusercontent.com/images/4Ai8jxFb1osSRd8Cv5lNAJfaW8g.png",
+    "sourcePage": "https://www.westonfc.org/",
+    "alt": "Weston FC badge",
+    "checksum": "66428e7f8cc3ab214fbee189520723584f001c836c22942f6ce7226cdb6dbf0d",
+    "treatment": "Unmodified identifying mark, contained on a neutral badge panel. Independent editorial use; no partnership or endorsement implied."
+  },
+  {
+    "id": "fkk",
+    "path": "fkk.png",
+    "url": "https://framerusercontent.com/images/YVPtkfSJL76gY3DYxknGd7Ed0c.png",
+    "sourcePage": "https://floridakrazekrush.com/",
+    "alt": "Florida Kraze Krush badge",
+    "checksum": "d0468db8cb40a80f2299cdf305ddcaba3d31cb79387fe65e074f91d39616de1b",
+    "treatment": "Unmodified identifying mark, contained on a neutral badge panel. Independent editorial use; no partnership or endorsement implied."
+  },
+  {
+    "id": "cancha",
+    "path": "cancha.png",
+    "url": "https://framerusercontent.com/images/JUYZ43aps7QlsKNI8oaZmJcMigA.png",
+    "sourcePage": "https://pioneering-friday-005497.framer.app/",
+    "alt": "Cancha logo",
+    "checksum": "44debf4b6bcc76af8bd96bd4b6e5bda870a1af689d057c95eac9f6ec99f17955",
+    "treatment": "Unmodified identifying mark, contained on a neutral badge panel. Independent editorial use; no partnership or endorsement implied."
+  },
+  {
+    "id": "display",
+    "path": "display.woff2",
+    "url": "https://framerusercontent.com/assets/Ss6xN8qtW5v1PS6cUtlsFo01s.woff2",
+    "checksum": "b17a0ee295659b28279ff690a24d08d47a4e9245e5f8579b0ecad81621f54612",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "assets/fonts/OFL-BarlowCondensed.txt"
+  },
+  {
+    "id": "ui",
+    "path": "ui.woff2",
+    "url": "https://framerusercontent.com/assets/eGhrLPNdnzDZGIIIgEOfcxneO2M.woff2",
+    "checksum": "ed0d50ad5b159de03f1689707217d985fce68e23e4915a1bf28758e49c27c88f",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "assets/fonts/OFL-Barlow.txt"
+  }
+]

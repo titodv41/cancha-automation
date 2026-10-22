@@ -6,6 +6,16 @@ async function fixture(run){const dir=await mkdtemp(join(tmpdir(),'cancha-standi
 const now=Date.parse('2026-10-12T16:00:00Z');
 const draft=(id,sourceType='brand',format='feed')=>({id,format,sourceType,caption:'Fixture caption '+id,altText:'Fixture description',assetUrl:'https://framerusercontent.com/images/fixture.jpg',assetChecksum:'a'.repeat(64),...(sourceType==='opportunity'?{factsCheckedAt:new Date(now-1000).toISOString(),sourceHash:'a'.repeat(64),officialSourceUrl:'https://www.teamworkonline.com/fixture'}:{})});
 const plan={enabled:true,weekdays:[1,3,5],localTime:'18:00',startDate:'2026-10-12',sourceTypes:['brand','opportunity']};
+test('curated local stories take priority but still need live source confirmation and a vacant slot',()=>fixture(async db=>{
+ saveDraft(db,{...draft('a-generic'),topic:'community'});
+ saveDraft(db,{...draft('b-checked'),editorialSourceId:'reviewed-local-story',factsCheckedAt:new Date(now-5*86400000).toISOString()});
+ saveDraft(db,{...draft('c-changed'),editorialSourceId:'changed-story',factsCheckedAt:new Date(now-1000).toISOString()});
+ savePlan(db,plan,'Owner requests local club and people features under daily plan');
+ const result=await prepareStandingPlan(db,{now,connected:true,editorialPolicy:{communityFirst:true,curatedDraftIds:['c-changed','b-checked']},verifySource:async r=>r.id==='b-checked'});
+ assert.deepEqual(result.scheduled.map(x=>x.id),['b-checked']);assert(result.skipped.some(x=>x.id==='c-changed'));
+ const again=await prepareStandingPlan(db,{now,connected:true,editorialPolicy:{curatedDraftIds:['a-generic']}});assert.equal(again.scheduled.length,0);
+ assert.equal(db.prepare("SELECT status FROM instagram_queue WHERE id='a-generic'").get().status,'Draft');
+}));
 test('community preference selects conversation content and leaves retired promotional drafts alone',()=>fixture(async db=>{saveDraft(db,{...draft('a-promotion'),topic:'update'});saveDraft(db,{...draft('b-retired'),topic:'community'});saveDraft(db,{...draft('c-conversation'),topic:'community'});savePlan(db,plan,'Owner requests community content before promotion');const result=await prepareStandingPlan(db,{now,connected:true,editorialPolicy:{communityFirst:true,communityWeeklyTarget:4,retiredDraftIds:['b-retired']}});assert.deepEqual(result.scheduled.map(x=>x.id),['c-conversation']);assert.equal(db.prepare('SELECT status FROM instagram_queue WHERE id=?').get('b-retired').status,'Draft');assert.equal(db.prepare("SELECT COUNT(*) AS n FROM instagram_queue WHERE status='Approved'").get().n,1)}));
 test('standing plan chooses only agreed feed slots, skips unsafe sources and stops its pending posts on pause',()=>fixture(async db=>{
  for(const row of [draft('a-closed','opportunity'),draft('b-valid','opportunity'),draft('c-brand'),draft('d-brand'),draft('providers-coming-soon'),draft('a-story','brand','story')])saveDraft(db,row);

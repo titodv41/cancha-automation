@@ -1,0 +1,35 @@
+import {openBrowser} from './browser-session.mjs';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {localStoryDescriptor} from '../server/local-story-source.mjs';
+const input=process.argv[2]||'content/instagram/local-stories.json';
+const out=process.argv[3]||'previews/local-stories-2026-10-22';
+const rows=JSON.parse(await readFile(input)),root='content/instagram/local-stories/assets/';
+const esc=s=>String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const data=async(name,type)=>`data:${type};base64,${(await readFile(root+name)).toString('base64')}`;
+const display=await data('display.woff2','font/woff2'),ui=await data('ui.woff2','font/woff2'),logo=await data('cancha.png','image/png');
+await mkdir(out,{recursive:true});const {browser,page}=await openBrowser({width:1080,height:1350}),checks=[];
+try{for(const row of rows){
+ const dark=row.theme==='forest',badge=await data(row.badge+'.png','image/png');
+ const programs=row.layout==='programs';
+ const art=programs?`<div class="badge"><img src="${badge}"></div><div class="program-list"><strong>U7–U8</strong><span>Developmental</span><strong>U9–U19</strong><span>Recreational</span><small>Fall 2026 closed.<br>Spring recreational waitlist listed.</small></div>`:`<div class="stat"><strong>${esc(row.hero)}</strong><span>${esc(row.label)}</span></div><div class="badge"><img src="${badge}"></div>`;
+ await page.setContent(`<!doctype html><html><head><style>
+ @font-face{font-family:Display;src:url('${display}');font-weight:700;font-style:italic}@font-face{font-family:UI;src:url('${ui}');font-weight:600}
+ *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1350px}body{background:${dark?'#103f32':'#f5f3e9'};color:${dark?'#f5f3e9':'#103f32'};font:600 28px/1.3 UI,sans-serif}.page{padding:44px 58px;height:1350px;display:flex;flex-direction:column;overflow:hidden}
+ .brand{display:flex;justify-content:space-between;align-items:center;height:68px;flex-shrink:0;font-size:23px}.logo{width:205px;height:68px;overflow:hidden}.logo img{width:100%;height:100%;object-fit:cover;${dark?'filter:brightness(0) invert(1)':''}}
+ .eyebrow{font-size:22px;letter-spacing:2px;display:flex;align-items:center;gap:15px;margin:45px 0 28px}.eyebrow:before{content:'';height:12px;width:12px;background:#f55b32;border-radius:50%;display:block}
+ h1{font:italic 700 ${row.layout==='coach'?111:136}px/.91 Display,sans-serif;letter-spacing:-2px;white-space:pre-line;margin:0 0 35px;flex-shrink:0}
+ .art{display:flex;align-items:center;justify-content:space-between;gap:28px;border-top:1px solid ${dark?'#527466':'#b4c5b3'};border-bottom:1px solid ${dark?'#527466':'#b4c5b3'};min-height:320px;padding:30px 0;flex-shrink:0}
+ .stat{min-width:0;max-width:650px}.stat strong{display:block;font:italic 700 ${row.layout==='player'?330:row.layout==='coach'?108:row.layout==='business'?180:row.layout==='club'?130:row.layout==='event'?150:220}px/.9 Display,sans-serif;white-space:pre-line;letter-spacing:-3px;color:${dark?'#d7ef86':'#103f32'}}.stat span{display:block;font-size:${row.layout==='coach'?20:23}px;letter-spacing:1px;margin-top:23px;max-width:570px}
+ .badge{width:${row.layout==='club'?300:row.layout==='player'?270:230}px;height:${row.layout==='club'?300:row.layout==='player'?270:230}px;padding:27px;background:${row.badge==='rowdies'?'#103f32':'#fff'};border-radius:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid ${row.badge==='rowdies'?'#527466':'#d5dfd4'}}.badge img{width:100%;height:100%;object-fit:contain;display:block}
+ .detail{font-size:31px;margin:29px 0 14px}.context{font-size:25px;line-height:1.4;white-space:pre-line;color:${dark?'#c5d8cb':'#4b665b'};margin:0}.bottom{margin-top:auto;padding-top:22px}.question{font-size:29px;line-height:1.3;max-width:870px;margin-bottom:27px}.source{border-top:1px solid ${dark?'#527466':'#b4c5b3'};padding-top:19px;display:flex;justify-content:space-between;gap:12px;font-size:17px;color:${dark?'#c5d8cb':'#4b665b'}}.source b{color:${dark?'#d7ef86':'#103f32'};font-size:18px}
+ .program-list{flex:1;padding-left:20px}.program-list strong{font:italic 700 89px/.95 Display,sans-serif;display:block}.program-list span{display:block;font-size:29px;margin:5px 0 25px}.program-list small{font-size:20px;line-height:1.4;display:block}
+ </style></head><body><main class="page"><div class="brand"><div class="logo"><img src="${logo}" alt="Cancha"></div><span>@wearecancha</span></div><div class="eyebrow">${esc(row.kicker)}</div><h1>${esc(row.headline)}</h1><section class="art">${art}</section><div class="detail">${esc(row.detail)}</div><p class="context">${esc(row.context)}</p><footer class="bottom"><div class="question">${esc(row.question)}</div><div class="source"><span>${esc(row.sourceLabel)}</span><b>THE LOCAL GAME</b></div></footer></main></body></html>`,{waitUntil:'load'});
+ await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([document.fonts.load('italic 700 136px Display'),document.fonts.load('600 28px UI')]);await Promise.all([...document.images].map(i=>i.decode()))});
+ const problems=await page.evaluate(()=>{const main=document.querySelector('main'),footer=document.querySelector('footer');return {overflow:main.scrollHeight>1350||[...document.querySelectorAll('h1,.stat,.art,.detail,.context,.source')].some(e=>e.scrollWidth>e.clientWidth+1),overlap:footer.getBoundingClientRect().top<document.querySelector('.context').getBoundingClientRect().bottom,fonts:document.fonts.check('italic 700 136px Display')&&document.fonts.check('600 28px UI')}});
+ if(problems.overflow||problems.overlap||!problems.fonts)throw Error(row.id+' failed visual bounds '+JSON.stringify(problems));
+ const path=out+'/'+row.id+'.jpg';await page.screenshot({path,type:'jpeg',quality:95});checks.push({id:row.id,path,designHash:createHash('sha256').update(JSON.stringify(row)).digest('hex'),checksum:createHash('sha256').update(await readFile(path)).digest('hex'),renderedAt:new Date().toISOString(),...problems});console.log(row.id+' rendered');
+ }
+ await writeFile(out+'/render-check.json',JSON.stringify(checks,null,2));
+ await writeFile(out+'/index.html',`<!doctype html><meta name="viewport" content="width=device-width"><title>Cancha local stories · Oct 22</title><style>body{font:16px system-ui;background:#e6eadd;margin:24px;color:#103f32}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}figure{margin:0}img{width:100%;border-radius:12px}figcaption{padding:10px 0}a{color:inherit}</style><h1>Cancha local stories</h1><p>Reviewed creative · Daily queue · Original layouts and identifying club marks</p><div class="grid">${rows.map(r=>`<figure><a href="${r.id}.jpg"><img src="${r.id}.jpg" alt="${esc(r.altText)}"></a><figcaption>${esc(r.kicker)}<br><a href="${esc(r.officialSourceUrl||localStoryDescriptor(r.editorialSourceId)?.documents[0]?.url||'')}">Official source</a></figcaption></figure>`).join('')}</div>`);
+}finally{await browser.close()}

@@ -1,0 +1,14 @@
+{
+  "previewOnly": true,
+  "composition": "PuertaFourGoals",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "frames": 540,
+  "durationSeconds": 18,
+  "audio": false,
+  "renderedAt": "2026-10-22T15:12:57.012Z",
+  "sourceUrl": "https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/",
+  "sourceHash": "7ebe1bf9f9786d7d5baaf4c1093531fd413276c131e2cacaefc86a5d2307a411",
+  "sha256": "f621258b95aaaac67ef87a3e871038378b9a26bbc596883e52142945825692e2"
+}

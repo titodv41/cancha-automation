@@ -3,7 +3,7 @@ import {ProxyAgent,fetch} from 'undici';
 import fs from 'node:fs';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 export async function openBrowser(viewport={width:1440,height:1000},options={}){
- const browser=await chromium.launch({headless:true});
+ const browser=await chromium.launch({headless:true,...(process.env.CANCHA_BROWSER_EXECUTABLE?{executablePath:process.env.CANCHA_BROWSER_EXECUTABLE}:{})});
  const context=await browser.newContext({...options,viewport,timezoneId:'America/New_York',serviceWorkers:'block'});
  await context.route('**/*',async route=>{
   const req=route.request(),url=req.url();

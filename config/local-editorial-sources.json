@@ -1,0 +1,56 @@
+[
+  {
+    "id": "rowdies-shield-20261018",
+    "kind": "news",
+    "publishedOn": "2026-10-18",
+    "validUntil": "2026-10-27T00:00:00Z",
+    "documents": [{"url":"https://www.rowdiessoccer.com/news/2026/10/18/rowdies-claim-players-shield-in-1-0-victory-over-detroit/","facts":["Sebastian Cruz","1-0 victory","88th minute","home field advantage throughout the 2026 USL Championship Playoffs"]}]
+  },
+  {
+    "id": "puerta-four-goals-20261016",
+    "kind": "person-feature",
+    "publishedOn": "2026-10-16",
+    "validUntil": "2026-10-30T00:00:00Z",
+    "documents": [{"url":"https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/","facts":["nineteen-year-old midfielder Ashlyn Puerta","four goals broke the record","4-1","Gainbridge Super League"]}]
+  },
+  {
+    "id": "weston-club-notes-20261022",
+    "kind": "club-profile",
+    "validUntil": "2026-11-05T00:00:00Z",
+    "documents": [{"url":"https://www.westonfc.org/about","facts":["formed in 1998","ages from 7-19","Vista Park","Weston Regional Park"]}]
+  },
+  {
+    "id": "fkk-program-notes-20261022",
+    "kind": "club-profile",
+    "validUntil": "2026-11-05T00:00:00Z",
+    "documents": [
+      {"url":"https://floridakrazekrush.com/developmental/","facts":["DEVELOPMENTAL U7 - U8","Central Winds Park","Shane Kelly Park","REGISTRATION FOR FALL 2026 IS NOW CLOSED"]},
+      {"url":"https://floridakrazekrush.com/rec/","facts":["RECREATIONAL U9 - U19","FALL Registration is CLOSED/FULL","waitlisted","Spring 2027"]}
+    ]
+  },
+  {
+    "id": "weston-luis-mendoza-20261022",
+    "kind": "person-feature",
+    "validUntil": "2026-11-05T00:00:00Z",
+    "documents": [{"url":"https://www.westonfc.org/copy-of-admin-staff","facts":["Luis Mendoza","directs all technical aspects of the boys programming","Technical Director"]}]
+  },
+  {
+    "id": "miami-homestead-background-20261022",
+    "kind": "business-background",
+    "publishedOn": "2025-09-18",
+    "validUntil": "2026-11-05T00:00:00Z",
+    "documents": [
+      {"url":"https://www.miamifc.com/news/2025/09/18/miami-fc-unveils-new-stadium-plans/","facts":["80-acre","$300 million","15,000-seat stadium","Homestead","once completed"]},
+      {"url":"https://www.miamifc.com/","facts":["future stadium in Homestead"]}
+    ]
+  },
+  {
+    "id": "rowdies-playoff-20261030",
+    "kind": "event",
+    "validUntil": "2026-10-30T23:30:00Z",
+    "documents": [
+      {"url":"https://www.rowdiessoccer.com/news/2026/09/27/rowdies-to-open-2026-playoffs-at-home-on-october-30/","facts":["October 30","Al Lang Stadium"]},
+      {"url":"https://www.rowdiessoccer.com/news/2026/10/18/rowdies-claim-players-shield-in-1-0-victory-over-detroit/","facts":["October 30","7:30 p.m. ET"]}
+    ]
+  }
+]
