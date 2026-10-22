@@ -1,0 +1,69 @@
+{
+  "brandManifest": "content/instagram/photo-editorial.json",
+  "stories": [
+    {
+      "id": "motion-weston-u15-20261022",
+      "editorialSourceId": "weston-u15-club-clip-20261022",
+      "organization": "Weston FC",
+      "sourcePage": "https://www.westonfc.org/",
+      "permalink": "https://www.instagram.com/p/Dex6anEIGnc/",
+      "clipIndex": 0,
+      "trimStart": 8,
+      "clipSeconds": 18,
+      "durationSeconds": 22,
+      "authorization": "owner-cleared-2026-10-22",
+      "title": "DON’T SLEEP\nON YOUR\nLOCAL CLUB.",
+      "team": "WESTON FC · MLS NEXT",
+      "score": "2–0",
+      "scoreContext": "U15 win",
+      "question": "WHICH FLORIDA\nACADEMY NEXT?",
+      "caption": "Weston FC. MLS NEXT. A 2–0 win for the U15s.\n\nWhich Florida club should we watch next? Drop the club and city below.\n\nFind your next club on Cancha. Link in bio.\nhttps://www.westonfc.org/\n\n#WestonFC #FloridaSoccer #MLSNext #SupportYourLocalClub",
+      "altText": "Weston FC U15 match footage with animated Cancha graphics: MLS NEXT, 2–0 win. An upbeat original soundtrack and generic synthetic off-screen narrator accompany the clip. Cancha asks which Florida club to cover next.",
+      "voice": "af_heart",
+      "narration": [
+        {
+          "start": 0.4,
+          "text": "Weston F C. The local game is right here.",
+          "speed": 1.01
+        },
+        {
+          "start": 6.3,
+          "text": "The under fifteens take the win. Two nil.",
+          "speed": 1.04
+        },
+        {
+          "start": 12.4,
+          "text": "Which Florida club should we watch next? Tell us below.",
+          "speed": 1.02
+        },
+        {
+          "start": 19,
+          "text": "Find your club on Cancha.",
+          "speed": 1.06
+        }
+      ],
+      "originalChecksum": "a7ce09f18f6d81954dcf8749a9a3cd31d6f13ab06f70bd69ed598d1d4c486552",
+      "city": "Weston",
+      "state": "Florida",
+      "teamLabel": "MLS NEXT · U15",
+      "kicker": "WESTON FC · FLORIDA",
+      "actionTitle": "THIS IS THE\nLOCAL GAME.",
+      "resultLine": "Weston FC U15 · 2–0 win",
+      "communityCTA": "Tell us the club and city.",
+      "outroEyebrow": "CLUBS. COACHES. COMMUNITY.",
+      "outroTitle": "FIND YOUR\nLOCAL GAME.",
+      "voiceBlend": {
+        "af_heart": 0.8,
+        "af_bella": 0.2
+      },
+      "voiceModel": "kokoro-v1.0.onnx",
+      "music": {
+        "bpm": 126,
+        "style": "bright-house",
+        "duckedGain": 0.42,
+        "openGain": 0.85
+      },
+      "resultTitle": "WESTON FC.\nU15 WIN."
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "Owner requested subject-specific real photos, concise readable carousels and no fine print on artwork. Skip badge-only fallbacks. Keep the two daily slots, source expiry, asset-repeat checks and publication receipts.",
+  "reason": "At least one eligible real-photo carousel each day; second slot may use a source-checked club clip with original motion graphics, original sound and generic off-screen narration. Use genuine directory scale and dates for urgency; no invented members or partners. Keep source expiry, daily caps and durable receipts.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
@@ -20,10 +20,13 @@
   "curatedDraftIds": [
     "local-rowdies-shield-20261022",
     "local-puerta-four-20261022",
+    "motion-weston-u15-20261022",
     "local-fkk-programs-20261022",
     "local-weston-club-20261022",
     "local-weston-coach-20261022",
     "local-rowdies-playoff-20261022"
   ],
-  "requireSubjectPhotos": true
+  "requireSubjectPhotos": true,
+  "allowMotionStories": true,
+  "minimumDailyCarousels": 1
 }

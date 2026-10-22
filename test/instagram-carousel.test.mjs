@@ -17,6 +17,7 @@ const queue=()=>{const dir=mkdtempSync(join(tmpdir(),'cancha-carousel-'));return
 test('carousel approval binds slide order and photos while preserving existing single-image hashes',()=>{
  const legacy=JSON.parse(readFileSync('content/instagram/local-stories-ready.json')).find(p=>p.id==='local-rowdies-shield-20261022');
  assert.equal(contentHash(legacy),'5f43afcac9808c8694c19e26d2fb735c3f90c8031ea7326812f5ba0c154e9be8');
+ const storyboard=JSON.parse(readFileSync('content/instagram/photo-editorial-ready.json')).find(p=>p.id==='local-puerta-four-20261022');assert(storyboard.video.beats.length);assert.equal(contentHash(storyboard),'021d58d86c5857635728642e3d2ba0905bbbc7583a3ce226d169dc2980a68aa3');assert(validPostImage(storyboard));assert(approvedOriginalCreative(storyboard));
  const r=row();assert(approvedOriginalCreative(r));assert(validPostImage(r));
  assert.notEqual(contentHash(r),contentHash({...r,slides:[r.slides[0],r.slides[2],r.slides[1]]}));
  assert.notEqual(contentHash(r),contentHash({...r,photos:[{...r.photos[0],subject:'Other subject'}]}));

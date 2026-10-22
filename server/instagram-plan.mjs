@@ -1,4 +1,4 @@
-import {validJpeg,validCarousel} from './instagram-media.mjs';
+import {validJpeg,validCarousel,validReel} from './instagram-media.mjs';
 import {approvedSocialPhoto,approvedOriginalCreative,recentlyUsedPhoto} from './social-creative.mjs';
 import {backendFrozen} from './github-state.mjs';
 import {contentHash,approve} from './instagram-queue.mjs';
@@ -25,7 +25,7 @@ export function savePlan(db,input,ownerInstruction){
  const state={enabled:true,weekdays:[...input.weekdays].sort(),localTime:input.localTime,localTimes,maxPerDay:localTimes.length,startDate:input.startDate,sourceTypes:[...new Set(input.sourceTypes)],timezone:'America/New_York',formats:[...new Set(formats)],maxPerWeek:input.weekdays.length*localTimes.length,excludedIds:['providers-coming-soon'],lastCheckedDay:null,lastQueueHash:null,lastResult:null};
  db.prepare('INSERT INTO instagram_standing_plan VALUES(1,?,?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state,updated_at=excluded.updated_at,owner_instruction=excluded.owner_instruction').run(JSON.stringify(state),new Date().toISOString(),ownerInstruction.trim());return readPlan(db);
 }
-export function validPostImage(row){return validJpeg(row,{hosted:true})&&validCarousel(row,{hosted:true});}
+export function validPostImage(row){return validJpeg(row,{hosted:true})&&validCarousel(row,{hosted:true})&&validReel(row);}
 function week(date){const d=new Date(date+'T12:00:00Z'),day=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-day);return d.toISOString().slice(0,10);}
 export async function prepareStandingPlan(db,{now=Date.now(),connected=false,accountType='UNCONFIRMED',verifySource=confirmPostSource,requireBrandPhotos=false,requireCreativeVersion=null,preferredDraftId=null,editorialPolicy={}}={}){
  const plan=readPlan(db);if(backendFrozen(db)||!plan?.enabled||!connected)return {scheduled:[],skipped:[],paused:true};
@@ -40,7 +40,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
  const policyHash=Object.keys(editorialPolicy).length?'|editorial:'+JSON.stringify(editorialPolicy):'',windowHash=queueHash+'|'+slots.map(slot=>slot.scheduledAt).join(',')+policyHash;
  if(plan.lastCheckedDay===today&&plan.lastQueueHash===windowHash)return {scheduled:[],skipped:[],alreadyChecked:true};
  const latestPublished=all.filter(r=>r.status==='Published').sort((a,b)=>Date.parse(b.published_at||b.scheduled_at)-Date.parse(a.published_at||a.scheduled_at))[0],lastKind=latestPublished?JSON.parse(latestPublished.content).creativeKind:null;
- const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireCreativeVersion||content.creativeVersion===requireCreativeVersion)&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo)||approvedOriginalCreative(content))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&!editorialPolicy.retiredDraftIds?.includes(row.id)&&(!editorialPolicy.requireSubjectPhotos||content.visualEvidence?.kind==='photo-carousel'&&approvedOriginalCreative(content))&&validPostImage(content);});
+ const candidates=all.filter(row=>{const content=JSON.parse(row.content);return row.status==='Draft'&&(!requireCreativeVersion||content.creativeVersion===requireCreativeVersion)&&(!requireBrandPhotos||content.sourceType!=='brand'||approvedSocialPhoto(content.photo)||approvedOriginalCreative(content))&&(plan.formats||['feed']).includes(content.format)&&(content.format!=='story'||accountType==='BUSINESS')&&plan.sourceTypes.includes(content.sourceType)&&!plan.excludedIds.includes(row.id)&&!editorialPolicy.retiredDraftIds?.includes(row.id)&&(!editorialPolicy.requireSubjectPhotos||(content.visualEvidence?.kind==='photo-carousel'||editorialPolicy.allowMotionStories&&content.visualEvidence?.kind==='motion-story')&&approvedOriginalCreative(content))&&validPostImage(content);});
  const result={scheduled:[],skipped:[]};const blocked=new Set();let cursor=0;
  for(const slot of slots){
   const scheduled=db.prepare('SELECT * FROM instagram_queue WHERE scheduled_at IS NOT NULL').all();
@@ -53,7 +53,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
   const day=new Date(slot.date+'T12:00:00Z').getUTCDay(),preferred=['update','tip','opportunity','storytelling','fun','news','tip'][day];
   candidates.sort((a,b)=>{const x=JSON.parse(a.content),y=JSON.parse(b.content);const topic=row=>row.sourceType==='brand'?(row.topic||'update'):row.sourceType;return Number(b.id===preferredDraftId)-Number(a.id===preferredDraftId)||(editorialPolicy.curatedDraftIds?.includes(a.id)?editorialPolicy.curatedDraftIds.indexOf(a.id):999)-(editorialPolicy.curatedDraftIds?.includes(b.id)?editorialPolicy.curatedDraftIds.indexOf(b.id):999)||(preferCommunity?Number(y.topic==='community')-Number(x.topic==='community'):0)||Number(!!lastKind&&x.creativeKind===lastKind)-Number(!!lastKind&&y.creativeKind===lastKind)||Number(topic(y)===preferred)-Number(topic(x)===preferred);});cursor=0;
   while(cursor<candidates.length){
-   const old=candidates[cursor++],content=JSON.parse(old.content);if(blocked.has(old.id))continue;const before=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(old.id);if(before?.status!=='Draft')continue;
+   const old=candidates[cursor++],content=JSON.parse(old.content);if(blocked.has(old.id))continue;if(content.reel&&(editorialPolicy.minimumDailyCarousels||0)>0&&!sameDay.some(r=>['Approved','Preparing','Publishing','Published'].includes(r.status)&&JSON.parse(r.content).slides?.length>=2)){result.skipped.push({id:old.id,reason:'Reserve a daily carousel before a Reel'});continue;}const before=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(old.id);if(before?.status!=='Draft')continue;
    const organization=c=>c.editorialOrganization||c.profile?.slug||(c.editorialSourceId?c.badge:null);
    if(organization(content)&&sameDay.some(r=>organization(JSON.parse(r.content))===organization(content))){result.skipped.push({id:old.id,reason:'Use a different club in the second daily slot'});continue;}
    if(content.sourceType==='news'&&!content.editorialSourceId&&Date.parse(slot.scheduledAt)-Date.parse(content.factsCheckedAt)>36*3600000)continue;

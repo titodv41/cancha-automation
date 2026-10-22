@@ -26,7 +26,9 @@
     "instagram:chat": "node scripts/chat-instagram.mjs",
     "instagram:github": "node scripts/github-instagram.mjs",
     "content:photos": "node scripts/build-photo-editorial.mjs",
-    "content:video": "npm --prefix video run render"
+    "content:video": "npm --prefix video run render",
+    "content:voice-setup": "node video/audio/setup.mjs",
+    "content:motion": "node video/render-motion.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",

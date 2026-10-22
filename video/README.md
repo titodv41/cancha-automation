@@ -11,6 +11,10 @@ The runner reads the brand, actual photo URLs and timed story beats from `conten
 
 The current example uses Puerta's real match celebration and official roster portrait, with movement, short transitions and readable titles. It has no fine-print footer, soundtrack, narration or invented match footage. Photo provenance and source hashes remain in the manifest and render report.
 
-**Publishing:** video remains a preview. Automatic Reels have not been enabled. Feed carousels use the existing two-slot daily plan. Full workflow: `docs/photo-editorial-workflow.md` and `skills/photo-editorial/SKILL.md`.
+**Publishing:** the original Puerta photo video remains a preview. Source-checked motion stories now have an enabled Reels path under the existing two-slot daily plan. Full workflow: `docs/photo-editorial-workflow.md` and `skills/photo-editorial/SKILL.md`.
 
 The [official Remotion pricing page](https://www.remotion.dev/docs/license/pricing), checked October 22, 2026, permits free commercial use by individuals and companies of up to three people. Recheck if the team grows. No paid service/license was purchased. Rendering consumes the current machine's resources. Barlow font licenses are in `assets/fonts/`.
+
+## Actual clips, animation and audio
+
+The later motion workflow uses a source-checked club clip, original animated graphics, original music/effects and free local Kokoro narration. Run `npm run content:voice-setup` once, then `npm run content:motion` from the repository root. It renders the 22-second template. Full setup and publishing details: `docs/motion-and-honest-growth.md`. Reels now have their own publishing path and use the second daily slot after a published carousel. The older Puerta photo-led video remains a separate preview example.

@@ -140,5 +140,24 @@
         ]
       }
     ]
+  },
+  {
+    "id": "weston-u15-club-clip-20261022",
+    "kind": "club-result",
+    "publishedOn": "2026-10-22",
+    "validUntil": "2026-10-29T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://www.westonfc.org/",
+        "format": "wix-instagram-feed",
+        "scriptId": "wix-warmup-data",
+        "permalink": "https://www.instagram.com/p/Dex6anEIGnc/",
+        "publishedAt": "2026-10-22T02:29:45.000Z",
+        "facts": [
+          "Our U15 Academy boys rise to the occasion",
+          "2-0 victory"
+        ]
+      }
+    ]
   }
 ]

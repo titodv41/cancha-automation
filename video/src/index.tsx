@@ -1,3 +1,4 @@
+import {MotionStory} from './MotionStory';
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Composition, Img, continueRender, delayRender, interpolate, registerRoot, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
@@ -35,5 +36,5 @@ const Story=({brand,beats,photos}:StoryProps)=>{
   </div>
  </AbsoluteFill>;
 };
-const Root=()=> <Composition id="PhotoStory" component={Story} durationInFrames={450} fps={30} width={1080} height={1920} defaultProps={defaults}/>;
+const Root=()=> <><Composition id="PhotoStory" component={Story} durationInFrames={450} fps={30} width={1080} height={1920} defaultProps={defaults}/><Composition id="MotionStory" component={MotionStory} durationInFrames={660} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:{},clip:"",audio:""}}/></>;
 registerRoot(Root);

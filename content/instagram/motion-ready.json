@@ -1,0 +1,68 @@
+[
+  {
+    "id": "motion-weston-u15-20261022",
+    "format": "feed",
+    "sourceType": "brand",
+    "topic": "community",
+    "creativeKind": "motion-story",
+    "creativeVersion": "cancha-local-v2",
+    "headline": "DON’T SLEEP\nON YOUR\nLOCAL CLUB.",
+    "caption": "Weston FC. MLS NEXT. A 2–0 win for the U15s.\n\nWhich Florida club should we watch next? Drop the club and city below.\n\nFind your next club on Cancha. Link in bio.\nhttps://www.westonfc.org/\n\n#WestonFC #FloridaSoccer #MLSNext #SupportYourLocalClub",
+    "altText": "Weston FC U15 match footage with animated Cancha graphics: MLS NEXT, 2–0 win. An upbeat original soundtrack and generic synthetic off-screen narrator accompany the clip. Cancha asks which Florida club to cover next.",
+    "editorialOrganization": "Weston FC",
+    "editorialSourceId": "weston-u15-club-clip-20261022",
+    "officialSourceUrl": "https://www.westonfc.org/",
+    "sourceHash": "78719d3978232f95baa15637305800199d0f9c6eb2abde99b1a9daa6d0c31547",
+    "factsCheckedAt": "2026-10-22T18:49:30.785Z",
+    "rights": "Owner confirms club media permissions are handled. Exact public club post and original footage checksum recorded. Original Cancha animation, beat and sound effects. Generic synthetic off-screen Kokoro narrator (Apache-2.0 model); not a player or coach quotation.",
+    "footage": [
+      {
+        "sourcePage": "https://www.westonfc.org/",
+        "permalink": "https://www.instagram.com/p/Dex6anEIGnc/",
+        "publisher": "Weston FC",
+        "subject": "Weston FC U15 Academy match clip",
+        "authorization": "owner-cleared-2026-10-22",
+        "originalChecksum": "a7ce09f18f6d81954dcf8749a9a3cd31d6f13ab06f70bd69ed598d1d4c486552",
+        "editedChecksum": "c9bd766fd71438cfff84c330f5dd29b9dfdaecb2053e45e66387ef8eb88d0361",
+        "trimStart": 8,
+        "clipSeconds": 18
+      }
+    ],
+    "audioEvidence": {
+      "originalMusic": true,
+      "originalSoundEffects": true,
+      "syntheticNarration": true,
+      "narrationProvider": "Kokoro ONNX",
+      "narrationVoice": "af_heart",
+      "narrationLicense": "Apache-2.0",
+      "sourceClipAudioUsed": false,
+      "voiceBlend": {
+        "af_heart": 0.8,
+        "af_bella": 0.2
+      },
+      "modelChecksum": "beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a",
+      "musicBPM": 126
+    },
+    "assetUrl": "https://framerusercontent.com/images/75N9OVIHVDoLz2nZ7ahSjcSdriQ.jpg",
+    "assetChecksum": "9486e66d5087b8da6699f787389363c48a4047ecc8d1e07768996b28d53aec1b",
+    "reel": {
+      "assetUrl": "https://framerusercontent.com/assets/kIK1HpE6dpSjGzdXbuAq2rr3rYI.mp4",
+      "assetChecksum": "0b91619ce38950e8cab291df34060098d03c842e0a49d9d87e854e8e475a2077",
+      "width": 1080,
+      "height": 1920,
+      "durationSeconds": 22,
+      "codec": "h264",
+      "audioCodec": "aac"
+    },
+    "visualEvidence": {
+      "creator": "Cancha",
+      "kind": "motion-story",
+      "subjectKey": "weston-u15-club-clip-20261022",
+      "sourceUrl": "https://www.westonfc.org/",
+      "sourceHash": "78719d3978232f95baa15637305800199d0f9c6eb2abde99b1a9daa6d0c31547",
+      "assetChecksum": "9486e66d5087b8da6699f787389363c48a4047ecc8d1e07768996b28d53aec1b",
+      "videoChecksum": "0b91619ce38950e8cab291df34060098d03c842e0a49d9d87e854e8e475a2077",
+      "renderedAt": "2026-10-22T18:46:24.652Z"
+    }
+  }
+]

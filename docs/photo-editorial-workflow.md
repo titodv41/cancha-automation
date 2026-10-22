@@ -39,7 +39,7 @@ The existing feed plan is two eligible posts/day at 12:30 PM and 6 PM New York, 
 
 The October 22 batch can supply tonight and the next few days. New facts/photos/copy still need a fresh editorial brief. The daily job checks and schedules eligible prepared content; it does not run an unattended AI researcher or invent a new batch. `requireSubjectPhotos` prevents the older badge-only fallback. If fresh, non-repeating work runs out, a slot is skipped. Renew expiring stories and replenish the batch through the same workflow.
 
-Video output is a public preview, not an automatic Reel. It uses two real photos with camera movement, transitions and concise titles; no match clips or fabricated action. It currently has no soundtrack or narration. The image/carousel publishing path is enabled. Reels require their own video-container checks before enabling a recurring Reel plan.
+The first Puerta video remains a photo-led example. The later motion workflow adds actual club footage, original animation/music/effects and generic synthetic narration, with a verified Reels publishing path. See `docs/motion-and-honest-growth.md`. At least one eligible photo carousel is reserved each day; a Reel can use the second slot only after an actual same-day carousel publication. Both count within the two-post daily cap. Source checks, immutable asset checks and durable receipts apply to Reels too.
 
 Insights still require `instagram_manage_insights`. This creative upgrade does not establish that reach or conversion has improved. Keep measured results separate from design judgment.
 

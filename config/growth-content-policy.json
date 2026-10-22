@@ -1,0 +1,16 @@
+{
+  "direction": "Build local soccer community through recognizable clubs, real match moments and useful discovery.",
+  "socialProof": {
+    "allowed": ["Current public club/program/place profile totals from the CMS", "Dated source-checked events", "Genuine submissions, members or partners once evidenced"],
+    "unsupportedMemberCount": null,
+    "directoryProfilesAreMembers": false,
+    "listedClubsArePartners": false
+  },
+  "urgency": {
+    "allowed": ["A specific upcoming match or event date", "A registration deadline explicitly stated by the organizer", "A waitlist explicitly stated by the organizer", "An invitation to help build Cancha early"],
+    "avoid": ["Invented member or viewer counts", "Made-up last spots or ticket scarcity", "Restarting countdowns", "Calling an event end date a registration deadline", "Describing unconfirmed clubs or brands as partners"]
+  },
+  "dailyMix": {"minimumPhotoCarousels":1,"maximumTotalFeedPosts":2,"secondSlot":"Source-checked motion story when ready, otherwise another fresh photo carousel"},
+  "video": {"footage":"Exact-topic official club clips or owner-supplied footage", "broadcastHighlights":"Use a permitted direct file or owner-supplied clip; do not bypass a player, login or download restriction", "music":"Original or appropriately cleared tracks", "narration":"Generic off-screen synthetic narration, never a fabricated player or coach quote"},
+  "measurement": {"permissionBlocker":"instagram_manage_insights", "evaluate":["Watch time and completion when accessible", "Shares and saves per reach", "Profile visits", "Tracked website visits", "Club submissions"],"noGuaranteedGrowth":true}
+}
