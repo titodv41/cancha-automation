@@ -1,0 +1,35 @@
+{
+  "reviewedOn": "2026-10-22",
+  "status": "Prepared pilot destinations; no ad campaign or account changes activated.",
+  "bio": "https://pioneering-friday-005497.framer.app/clubs?utm_source=instagram&utm_medium=organic_social&utm_campaign=florida_discovery&utm_content=bio",
+  "campaigns": [
+    {
+      "id": "orlando-youth-clubs",
+      "audience": "Families comparing youth club programs in Orlando",
+      "filters": {
+        "city": "Orlando",
+        "age": "Youth",
+        "activity": "Clubs & teams"
+      },
+      "url": "https://pioneering-friday-005497.framer.app/clubs?city=Orlando&age=Youth&activity=Clubs+%26+teams&utm_source=instagram&utm_medium=organic_social&utm_campaign=orlando-youth-clubs&utm_content=pilot",
+      "matchingProfilesAtReview": 27
+    },
+    {
+      "id": "miami-adult-team",
+      "audience": "Adult players comparing Miami club profiles",
+      "filters": {
+        "city": "Miami",
+        "age": "Adult",
+        "activity": "Clubs & teams"
+      },
+      "url": "https://pioneering-friday-005497.framer.app/clubs?city=Miami&age=Adult&activity=Clubs+%26+teams&utm_source=instagram&utm_medium=organic_social&utm_campaign=miami-adult-team&utm_content=pilot",
+      "matchingProfilesAtReview": 18
+    }
+  ],
+  "notes": [
+    "Matching directory profiles are not confirmed open registrations or available roster places. Counts change with source updates.",
+    "Instagram feed captions do not make these URLs clickable; use a bio link, an approved Story link or a campaign destination.",
+    "A UTM click does not prove a registration, enquiry or sale.",
+    "Only two Orlando profiles match the narrower Youth + Recreational + Clubs & teams combination. The prepared youth landing view therefore leaves playing level optional; it does not claim every result serves beginners."
+  ]
+}

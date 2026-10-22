@@ -29,6 +29,8 @@ GitHub Actions needs its own **Repository secret** named `FRAMER_API_KEY`; Codex
 
 ## Discovery and daily updates
 
+The October 22 [traffic and platform review](docs/traffic-readiness-2026-10-22.md) recommends keeping Framer for launch, fixing campaign/Insights measurement and upgrading catalog loading before a large import. It includes verified costs, current blockers and [prepared local pilot links](content/growth/traffic-pilot-links.json); no ads or plan purchase were activated.
+
 - `framer/CanchaHome.tsx`, `CanchaDiscovery.tsx` and `DiscoveryModel.tsx`: what/where search, optional age/level/activity filters, ZIP-area proximity, shareable filters and bounded campaign attribution.
 - `server/discovery-catalog.mjs`: public-only projection of Clubs and Active Opportunities, plus safe details for retained closed URLs. Pending submissions/contact paragraphs are excluded; common card/detail facts are packed once to fit Framer’s file limit.
 - `scripts/discover-florida-clubs.mjs`: official UPSL Premier/Division 1, FYSA, FASA, regional Soccer Shots and Orlando soccer-field adapters, duplicate checks, safe website identity, reviewed badge selection, backup before mutation and guarded publication. Cap: 50 qualified new profiles per run, not a guaranteed quota. Regional providers and fields are not counted as open registrations.
