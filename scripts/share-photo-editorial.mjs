@@ -12,7 +12,8 @@ try {
  await page.setContent(`<style>@page{size:1080px 1350px;margin:0}*{box-sizing:border-box}html,body{padding:0;margin:0}.sheet{width:1080px;height:1350px;break-after:page}.sheet:last-child{break-after:auto}img{display:block;width:1080px;height:1350px}</style>${images.map(i=>`<div class="sheet"><img src="${i.data}"></div>`).join('')}`);
  await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode())));
  await page.pdf({path:dir+'/cancha-photo-carousels.pdf',printBackground:true,preferCSSPageSize:true,margin:{top:0,right:0,bottom:0,left:0}});
- await page.setContent(`<style>body{margin:0;padding:24px;background:#dce2d6;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}img{width:100%;display:block;border-radius:6px}</style>${images.filter(i=>i.slide===i.row.slides[0]).map(i=>`<img src="${i.data}">`).join('')}`);
+ await page.setViewportSize({width:1260,height:100});
+ await page.setContent(`<style>body{margin:0;padding:24px;background:#dce2d6;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;align-content:start;grid-auto-rows:min-content}img{width:100%;display:block;border-radius:6px}</style>${images.filter(i=>i.slide===i.row.slides[0]).map(i=>`<img src="${i.data}">`).join('')}`);
  await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode())));
  await page.screenshot({path:dir+'/covers.jpg',fullPage:true,type:'jpeg',quality:94});
  const links={createdAt:new Date().toISOString(),carousels:rows.length,slides:images.length,covers:rows.map(r=>({id:r.id,url:r.assetUrl,slides:r.slides.map(s=>s.assetUrl)}))};
