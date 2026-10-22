@@ -47,3 +47,11 @@ The previous chat links referred to workspace files, which the owner could not o
 ## Small next steps
 
 Get club-owned photos and brief first-person interviews with permission; organize the first city community with a real admin; measure directory visits and inquiries before buying ads or selling featured placement. Keep Florida coverage useful while collecting other-state demand. Do not build a paid contact wall, claim unagreed sponsors or launch many states with thin coverage.
+
+## Saved receipts
+
+Implementation commit: 6365484. Framer deployment of the homepage and first batch: 87ee6cdc9; the subsequent tournament/data publish is confirmed at production deploymentTime 1792687204050. [Plan command run 39816809493](https://github.com/titodv41/cancha-automation/actions/runs/39816809493) succeeded and confirms enabled=true, localTimes=[12:30,18:00], maxPerDay=2, maxPerWeek=14, startDate=2026-10-23. [Content import run 39817040009](https://github.com/titodv41/cancha-automation/actions/runs/39817040009) succeeded; nine reviewed local/community rows are present, with tonight’s Rowdies approval preserved and the remaining eight Draft for future daily windows. No uncertain publication is present. The import did not publish an extra post.
+
+Live browser checks passed at 1440, 390 and 320 pixels. Public desktop/mobile and video URLs are recorded in content/instagram/local-stories-preview-links.json. The local home-layout preview can be reproduced with node scripts/preview-home.mjs after running the read-only catalog sync and installing the separate video package; it binds to 127.0.0.1 and does not implement native Framer form delivery.
+
+The final detail-page check also caught a listing suggesting itself among related opportunities. That predicate now excludes the current slug; the reviewed detail-only fix was typechecked and published. No listing data changed.
