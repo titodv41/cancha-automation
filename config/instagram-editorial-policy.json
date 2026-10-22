@@ -3,7 +3,7 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "At least one eligible real-photo carousel each day; the second slot may use a source-checked club clip or useful animated explainer with actual subject media, original sound and generic narration. No fabricated members, partners or launch claims.",
+  "reason": "Owner rejected the current video voice and visual treatment. Keep the approved photo-carousels running. Hold all Reels until a new Cancha-branded direction and narration meet the owner’s bar.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
@@ -15,19 +15,20 @@
     "florida-photo-orlando",
     "community-next-city-20261022",
     "community-coach-questions-20261022",
-    "local-miami-stadium-20261022"
+    "local-miami-stadium-20261022",
+    "motion-weston-u15-20261022",
+    "explainer-miami-homestead-20261022"
   ],
   "curatedDraftIds": [
     "local-rowdies-shield-20261022",
     "local-puerta-four-20261022",
-    "motion-weston-u15-20261022",
     "local-fkk-programs-20261022",
-    "explainer-miami-homestead-20261022",
     "local-weston-club-20261022",
     "local-weston-coach-20261022",
     "local-rowdies-playoff-20261022"
   ],
   "requireSubjectPhotos": true,
-  "allowMotionStories": true,
-  "minimumDailyCarousels": 1
+  "allowMotionStories": false,
+  "minimumDailyCarousels": 1,
+  "videoCreativeReviewRequired": true
 }

@@ -32,6 +32,13 @@ test('daily Reel publication waits for a real same-day carousel receipt, not its
  const policy={minimumDailyCarousels:1},now=Date.parse('2026-10-23T22:00:00Z'),c={status:'Published',published_at:'2026-10-23T16:37:00Z',content:JSON.stringify({slides:[{},{}]})};
  assert.equal(satisfiesDailyMediaMix(reel,[],policy,{now}),false);assert.equal(satisfiesDailyMediaMix(reel,[{...c,status:'Approved'}],policy,{now}),false);assert.equal(satisfiesDailyMediaMix(reel,[{...c,published_at:'2026-10-22T22:00:00Z'}],policy,{now}),false);assert.equal(satisfiesDailyMediaMix(reel,[c],policy,{now}),true);assert.equal(satisfiesDailyMediaMix({slides:[{},{}]},[],policy,{now}),true);
 });
+test('an owner video hold overrides a published carousel and also applies without a daily minimum',()=>{
+ const receipt={status:'Published',published_at:new Date().toISOString(),content:JSON.stringify({slides:[{},{}]})};
+ assert.equal(satisfiesDailyMediaMix(reel,[receipt],{allowMotionStories:false,minimumDailyCarousels:1}),false);
+ assert.equal(satisfiesDailyMediaMix(reel,[receipt],{allowMotionStories:false}),false);
+ assert.equal(satisfiesDailyMediaMix(reel,[receipt],{retiredDraftIds:[reel.id]}),false);
+ assert.equal(satisfiesDailyMediaMix({slides:[{},{}]},[receipt],{allowMotionStories:false}),true);
+});
 test('a stadium explainer requires its exact source, subject media, matching video and planned context',()=>{
  const source=localStoryDescriptor('miami-homestead-background-20261022'),url=source.documents[0].url,sourceHash=localStoryHash(source);
  const item={...reel,caption:'Miami FC’s planned Homestead stadium. Announced in September 2025.',altText:'Official architectural rendering of the planned venue.',editorialSourceId:source.id,officialSourceUrl:url,sourceHash,creativeVersion:'cancha-local-v2',rights:'Owner cleared subject media; original diagrams/audio.',photos:[{authorization:'owner-cleared-2026-10-22',publisher:'Miami FC',subject:'Proposed stadium rendering',sourcePage:url,originalUrl:'https://www.miamifc.com/wp-content/uploads/stadium.png',originalChecksum:'a'.repeat(64)}],audioEvidence:{originalMusic:true,originalSoundEffects:true,narrationLicense:'Apache-2.0',syntheticNarration:true},visualEvidence:{creator:'Cancha',kind:'animated-explainer',subjectKey:source.id,sourceUrl:url,sourceHash,assetChecksum:reel.assetChecksum,videoChecksum:reel.reel.assetChecksum,renderedAt:new Date().toISOString(),context:'planned-development'}};

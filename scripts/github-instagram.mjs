@@ -66,6 +66,7 @@ try{
   const result=refreshPhotoEditorial(db,drafts);state.photoEditorialRevision='2026-10-22';state.photoEditorialRefresh=result;await checkpoint();console.log(JSON.stringify({photoEditorial:result}));
  }
  if(mode==='refresh-motion-stories'){
+  if(!localPolicy.allowMotionStories||localPolicy.videoCreativeReviewRequired)throw Error('Reviewed motion import paused while the owner reviews the new video direction');
   const drafts=JSON.parse(await readFile('content/instagram/motion-ready.json'));
   if(!drafts.length||drafts.length>5||drafts.some(r=>!approvedOriginalCreative(r)||!['motion-story','animated-explainer'].includes(r.visualEvidence.kind)))throw Error('Reviewed motion stories missing or stale');
   for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Reviewed local story blocked: '+draft.id);await verifyReelAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})})}
