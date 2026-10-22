@@ -7,3 +7,8 @@ private-data/
 backups/
 audit/assets/
 audit/official-pages/
+
+# Rebuildable photo editorial previews; share hosted links instead.
+/previews/photo-editorial/
+/previews/video/photo-story-*
+/previews/video/local-*-20261022.mp4

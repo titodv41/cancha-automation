@@ -1,3 +1,5 @@
+import {refreshPhotoEditorial} from '../server/photo-editorial-refresh.mjs';
+import {verifyCarouselAssets} from '../server/instagram-media.mjs';
 import {expiredPublishingDay} from '../server/github-publish-window.mjs';
 import{collectInstagramInsights,instagramLearning,learningSnapshot}from'../server/instagram-insights.mjs';
 import{approvedOriginalCreative,shouldActivateLocalCreative}from'../server/social-creative.mjs';
@@ -15,7 +17,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','refresh-community','refresh-local-stories','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -55,6 +57,12 @@ try{
   for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
   state.localStoriesRevision='2026-10-22';await checkpoint();
  }
+ if(mode==='refresh-photo-stories'){
+  const drafts=JSON.parse(await readFile('content/instagram/photo-editorial-ready.json'));
+  // Check the whole batch before any queue write. Public assets carry no Meta token.
+  for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Reviewed local story blocked: '+draft.id);await verifyCarouselAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});}
+  const result=refreshPhotoEditorial(db,drafts);state.photoEditorialRevision='2026-10-22';state.photoEditorialRefresh=result;await checkpoint();console.log(JSON.stringify({photoEditorial:result}));
+ }
  if(mode==='repair-media'){if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs the existing Framer secret');const run=await runSubprocess(process.execPath,['scripts/repair-reviewed-club-media.mjs'],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)throw Error('Daily preparation media repair stopped');await client.close();client=githubStateClient();state=await client.load();}
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
@@ -63,7 +71,7 @@ try{
   phase='reload-db';db.close();db=openQueue(join(dir,'reloaded.sqlite'));phase='reload-state';await client.close();client=githubStateClient();state=await client.load();phase='restore-state';restoreState(db,state);
   phase='growth-report';const growthDir='private-data/daily-opportunities/'+dateInNewYork(),dailyResult=JSON.parse(await readFile(growthDir+'/automation-result.json'));state.growth={...JSON.parse(await readFile(growthDir+'/report.json','utf8')).growth,clubProfilesAdded:dailyResult.clubProfilesAdded||0,clubCandidatesRemaining:dailyResult.clubCandidatesRemaining||0,automationBlockers:dailyResult.blockers||[]};
  }
- if(mode==='prepare'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'){
+ if(mode==='prepare'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'||mode==='refresh-photo-stories'){
   const creativePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
   const launchNotPublished=state.localCreativeVersion==='cancha-local-v2'&&!db.prepare("SELECT id FROM instagram_queue WHERE id='cancha-local-discovery' AND status='Published'").get();
   phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null,editorialPolicy:creativePolicy});await checkpoint();
@@ -94,7 +102,7 @@ try{
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.
   if(mayPublish)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
  }
- const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0)};
+ const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note,slideCount:JSON.parse(row.content).slides?.length||1,creativeKind:JSON.parse(row.content).visualEvidence?.kind||null})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0),photoEditorialRefresh:state.photoEditorialRefresh||null};
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});
  if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));

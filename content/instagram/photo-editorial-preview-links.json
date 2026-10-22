@@ -1,0 +1,65 @@
+{
+  "createdAt": "2026-10-22T17:27:05.594Z",
+  "carousels": 6,
+  "slides": 19,
+  "covers": [
+    {
+      "id": "local-rowdies-shield-20261022",
+      "url": "https://framerusercontent.com/images/sCdQkCs1BYVCONFXduiKiWCoaE.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/sCdQkCs1BYVCONFXduiKiWCoaE.jpg",
+        "https://framerusercontent.com/images/dGNoWXscZw1Qs1CmLnFqZ3FpZw8.jpg",
+        "https://framerusercontent.com/images/MRXVkksYOwrw7JRwRMNFjKoEaU.jpg"
+      ]
+    },
+    {
+      "id": "local-puerta-four-20261022",
+      "url": "https://framerusercontent.com/images/VHicnlxx9hz9tlRcQfoXbwdLQ.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/VHicnlxx9hz9tlRcQfoXbwdLQ.jpg",
+        "https://framerusercontent.com/images/2VKbQlskr7IVdQg1AOSif0pi80.jpg",
+        "https://framerusercontent.com/images/8LsNonANglhGBi3r0guNd4Nfr8g.jpg"
+      ]
+    },
+    {
+      "id": "local-weston-club-20261022",
+      "url": "https://framerusercontent.com/images/1Erneaom6ViBvnQeZh4Xfm7y5cA.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/1Erneaom6ViBvnQeZh4Xfm7y5cA.jpg",
+        "https://framerusercontent.com/images/MRnhGba6yFp6WsNjrl6mLogqKA.jpg",
+        "https://framerusercontent.com/images/1pZK4nuz3FSbyJCNZoT5EH6uPek.jpg"
+      ]
+    },
+    {
+      "id": "local-fkk-programs-20261022",
+      "url": "https://framerusercontent.com/images/CVfDMaqxiq84LePtTDk0W75KAfw.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/CVfDMaqxiq84LePtTDk0W75KAfw.jpg",
+        "https://framerusercontent.com/images/ktIGAYaPTNrSIzw1uBbm4OzSIOU.jpg",
+        "https://framerusercontent.com/images/xkWGETAxjLUii6d9lODSdy5aY.jpg",
+        "https://framerusercontent.com/images/9WiVeS97fIcJX0ZXvyNSUO8kFE.jpg"
+      ]
+    },
+    {
+      "id": "local-weston-coach-20261022",
+      "url": "https://framerusercontent.com/images/2K1ltwpo8O1diSvW0Gmw8cDE.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/2K1ltwpo8O1diSvW0Gmw8cDE.jpg",
+        "https://framerusercontent.com/images/txXjmjxi9usrL5QZkWsiI4bXls.jpg",
+        "https://framerusercontent.com/images/OPiDBtYxoedg8Tau3a0TcJImUQ.jpg"
+      ]
+    },
+    {
+      "id": "local-rowdies-playoff-20261022",
+      "url": "https://framerusercontent.com/images/N3ZW2leEiifM6c7CD3vXWT6DnaQ.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/N3ZW2leEiifM6c7CD3vXWT6DnaQ.jpg",
+        "https://framerusercontent.com/images/E5pah9IuwhOjp0p1erkDypBDyDE.jpg",
+        "https://framerusercontent.com/images/aATVyrHpmys9aCT44333Yhaeo.jpg"
+      ]
+    }
+  ],
+  "overview": "https://framerusercontent.com/images/8L8yIv5Lchcpp4ihU9wP33kbM.jpg",
+  "pdf": "https://framerusercontent.com/assets/qt6eOrG9v4teUGlp59y3Ne73GVE.pdf",
+  "video": "https://framerusercontent.com/assets/lVTZ42FSQJasddbqffIAfgaUw.mp4"
+}

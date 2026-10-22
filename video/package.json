@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "studio": "remotion studio src/index.tsx",
+    "studio": "remotion studio src/index.tsx --props=public/generated/input-props.json",
     "render": "node render.mjs",
     "still": "node render.mjs --still"
   },

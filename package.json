@@ -24,7 +24,9 @@
     "opportunities:automate": "node scripts/automate-opportunities.mjs",
     "automation:status": "node scripts/check-automation-status.mjs",
     "instagram:chat": "node scripts/chat-instagram.mjs",
-    "instagram:github": "node scripts/github-instagram.mjs"
+    "instagram:github": "node scripts/github-instagram.mjs",
+    "content:photos": "node scripts/build-photo-editorial.mjs",
+    "content:video": "npm --prefix video run render"
   },
   "dependencies": {
     "framer-api": "5.1.0",
