@@ -68,3 +68,9 @@ For a coach feature, ask three real questions: what a first session looks like, 
 ## Video preview
 
 An isolated Remotion project is installed under `video/`, with a rendered 18-second vertical player-story preview under `previews/video/`. It uses locally staged assets, the same official facts, Cancha typography and original animation. There is no audio or match footage. It has not been posted as a Reel; the current automatic publisher supports image feed posts and is unchanged in that respect.
+
+## Execution receipt
+
+[GitHub run 39803704612](https://github.com/titodv41/cancha-automation/actions/runs/39803704612) succeeded using implementation commit `2b9ee9e`. All seven official-source checks also passed on the GitHub runner. The saved queue confirms the standing plan is enabled, with `local-rowdies-shield-20261022` Approved for **October 22, 2026 at 18:00 America/New_York (22:00 UTC)**. The other six batch IDs are Draft, available for the next daily approval windows. No new post was published during the import, and no uncertain publication was present. GitHub timing is approximate; the normal publisher performs another source check and writes the actual Meta receipt.
+
+Validation: 147 Node tests passed; all seven hosted JPEGs decoded at 1080×1350 with recorded public checksums; layouts were visually inspected. The video decoded as H.264, 1080×1920, 30fps, exactly 18 seconds, 1,741,394 bytes, with three inspected scene stills. The Framer website and CMS records were not changed by this editorial work.
