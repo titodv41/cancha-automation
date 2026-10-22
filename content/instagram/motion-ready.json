@@ -88,7 +88,7 @@
     "editorialSourceId": "weston-u15-club-clip-20261022",
     "officialSourceUrl": "https://www.westonfc.org/",
     "sourceHash": "78719d3978232f95baa15637305800199d0f9c6eb2abde99b1a9daa6d0c31547",
-    "factsCheckedAt": "2026-10-22T19:06:03.666Z",
+    "factsCheckedAt": "2026-10-22T19:20:57.716Z",
     "rights": "Owner confirms club media permissions are handled. Exact public club post and original footage checksum recorded. Original Cancha animation, beat and sound effects. Generic synthetic off-screen Kokoro narrator (Apache-2.0 model); not a player or coach quotation.",
     "footage": [
       {
@@ -121,8 +121,8 @@
     "assetUrl": "https://framerusercontent.com/images/n1NuDDKbyCQn6Sk8UYsqwQFKa0.jpg",
     "assetChecksum": "d76e9997041f0a0735b1d469c46f805e5ca7c3c26756afb9d24536e2848a8351",
     "reel": {
-      "assetUrl": "https://framerusercontent.com/assets/evABv7PFqUve3TnXziHIznAmSw.mp4",
-      "assetChecksum": "17e32a14dc1154abeafd8b2eea7af6d7149d27d89674d256235b6a3ca1a13ab7",
+      "assetUrl": "https://framerusercontent.com/assets/f0S7B3bbOELkUZbjbulk8W3Xq4.mp4",
+      "assetChecksum": "0ecb6bc3f08fa739626590256afa2939ebeecb6271d0a0e03c79dfd4ccdb8bd6",
       "width": 1080,
       "height": 1920,
       "durationSeconds": 22,
@@ -136,8 +136,8 @@
       "sourceUrl": "https://www.westonfc.org/",
       "sourceHash": "78719d3978232f95baa15637305800199d0f9c6eb2abde99b1a9daa6d0c31547",
       "assetChecksum": "d76e9997041f0a0735b1d469c46f805e5ca7c3c26756afb9d24536e2848a8351",
-      "videoChecksum": "17e32a14dc1154abeafd8b2eea7af6d7149d27d89674d256235b6a3ca1a13ab7",
-      "renderedAt": "2026-10-22T19:05:50.210Z"
+      "videoChecksum": "0ecb6bc3f08fa739626590256afa2939ebeecb6271d0a0e03c79dfd4ccdb8bd6",
+      "renderedAt": "2026-10-22T19:19:33.709Z"
     }
   }
 ]

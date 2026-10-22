@@ -28,7 +28,7 @@ node scripts/prepare-motion-queue.mjs
 gh workflow run github-instagram.yml --ref main -f action=refresh-motion-stories
 ```
 
-Setup requires Python 3.10+, pip, the GitHub CLI and ffmpeg; rendering requires Chromium. No shell installer is downloaded or executed. Python packages are isolated, and the model release files are pinned by SHA-256 in `video/audio/model-lock.json`. Environment overrides: `CANCHA_VOICE_PYTHON`, `CANCHA_VOICE_MODELS`, `CANCHA_BROWSER_EXECUTABLE`.
+Setup requires Python 3.12+, pip, the GitHub CLI and ffmpeg; rendering requires Chromium. No shell installer is downloaded or executed. Python packages are isolated, and the model release files are pinned by SHA-256 in `video/audio/model-lock.json`. Environment overrides: `CANCHA_VOICE_PYTHON`, `CANCHA_VOICE_MODELS`, `CANCHA_BROWSER_EXECUTABLE`.
 
 The current motion template deliberately uses 18 seconds of footage inside a 22-second story. Configure topic, brand, city, factual result, title, narration and exact source in `motion-stories.json`. Add its exact source descriptor to `local-editorial-sources.json`. The design hash binds the story, brand, renderer and audio generator to the render; changes require a new render. Private downloads/model/audio intermediates stay out of Git. Only public asset URLs and evidence enter the queue. Copy this workflow to another project with that project's own sources, account identity, credentials and authorization.
 
@@ -84,3 +84,15 @@ The ready-file upserts preserve other reviewed films. Both live-footage films an
 ## Delivery audit
 
 `video/audit-output.mjs` checks the actual output, not only the render options: 1080×1920, 30 fps, 8-bit 4:2:0 H.264, stereo AAC at 48 kHz, expected duration, public-asset size limit and actual loudness/true peak. Full-range `yuvj420p` is accepted alongside `yuv420p`; the former is a full-range 4:2:0 signal, not a different-resolution or higher-bit-depth format. Rendering and Meta processing accepted that output. The CLI also rejects stale story/brand/renderer/model hashes or a queued MP4 that differs from the audited render. Phone playback is inspected separately. Numbers are delivery checks, not a substitute for listening to the tone or judging the edit.
+
+## Free voice comparison actually run
+
+After the creative revision, we installed Chatterbox at repository commit `5de7a54aa4e5e2baadb0182dde554908b48b85c2` in a separate `/tmp/cancha-chatterbox-venv`, with CPU-only PyTorch 2.6.0 and torchaudio 2.6.0. We tested the upstream Nano weights at Hugging Face revision `71ccd1d0081b430592cea481f4307e764e07bc64` using the built-in generic voice; no person recording or clone reference was supplied, and its watermark stayed enabled. This was a free local trial, not a connected paid provider.
+
+The trial produced 31.8 seconds for a short sample, including roughly 25.8 seconds of trailing silence. A local Whisper tiny.en readback appeared to omit the closing question. That output fails the short-film production check and was not imported into the queue. This is the result of this particular pinned Nano/default-voice trial, not a claim that every Chatterbox model or reference configuration has the same behavior.
+
+We retained the full-precision Kokoro Heart/Bella blend for both finished films. A local readback of the mixed Miami explainer recovered its planned-stadium facts and question. The Weston readback did not recognize the spoken brand ending reliably, so the final CTA was simplified to “Find your next club. Link in bio.” and the score was spoken as “two to zero.” Readback is a pronunciation/omission check, not a human listening test or a naturalness score. The public previews let the owner judge the tone directly.
+
+The experimental Chatterbox/Whisper environments and model downloads remain private, rebuildable workspace files. They are not added to the standard production dependencies, scheduled jobs, or a paid host. The documented production path still installs the smaller pinned Kokoro model.
+
+The repository-local Codex entry is `.agents/skills/cancha-motion/SKILL.md` (invoke `cancha-motion` in a session that loads repository skills). Its canonical workflow is `skills/soccer-motion/SKILL.md`; other coding assistants can read that file directly. Setup was tested with Python 3.12, as required by the pinned NumPy dependency.
