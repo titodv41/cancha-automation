@@ -73,12 +73,17 @@ try{
   for(const sample of drafts){
    const previous=state.motionPreflights[sample.id]||state.motionPreflight;
    if(previous?.assetChecksum===sample.reel.assetChecksum&&previous?.status==='FINISHED'){state.motionPreflights[sample.id]=previous;continue;}
-   const media=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})}),container=await media.create(sample);let status='IN_PROGRESS';
-   for(let check=0;check<20;check++){status=await media.status(container);if(status!=='IN_PROGRESS')break;await new Promise(resolve=>setTimeout(resolve,2000))}
-   if(status!=='FINISHED')throw Error('Reviewed motion processing not ready: '+status);
-   // Processing only: never publish this container or retain its expiring ID.
+   const media=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});
+   state.motionPreflightPending||={};const pending=state.motionPreflightPending[sample.id];
+   const reusable=pending?.assetChecksum===sample.reel.assetChecksum&&Date.now()-Date.parse(pending.createdAt)<23*3600000;
+   const container=reusable?pending.containerId:await media.create(sample);let status='IN_PROGRESS';
+   state.motionPreflightPending[sample.id]={assetChecksum:sample.reel.assetChecksum,containerId:container,createdAt:reusable?pending.createdAt:new Date().toISOString()};await checkpoint();
+   for(let check=0;check<60;check++){status=await media.status(container);if(status!=='IN_PROGRESS')break;await new Promise(resolve=>setTimeout(resolve,3000))}
+   if(status!=='FINISHED'){if(status!=='IN_PROGRESS')delete state.motionPreflightPending[sample.id];await checkpoint();throw Error('Reviewed motion processing not ready: '+status)}
+   // Processing only: the pending ID stays in encrypted state and is discarded
+   // when finished. The scheduled publisher always creates a fresh container.
    state.motionPreflight={assetChecksum:sample.reel.assetChecksum,status,checkedAt:new Date().toISOString(),published:false,freshContainerAtSchedule:true};
-   state.motionPreflights[sample.id]=state.motionPreflight;
+   state.motionPreflights[sample.id]=state.motionPreflight;delete state.motionPreflightPending[sample.id];await checkpoint();
   }
   state.motionEditorialRefresh=refreshMotionEditorial(db,drafts);
   state.motionRevision='2026-10-22';await checkpoint();
