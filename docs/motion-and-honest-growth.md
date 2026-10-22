@@ -61,7 +61,7 @@ The owner requested a livelier track, less mechanical delivery, no “reported b
 Reviewed original repositories:
 
 - [Kokoro ONNX](https://github.com/thewh1teagle/kokoro-onnx): selected and installed locally; lightweight CPU inference, voice blending and full-precision model. No voice cloning.
-- [Chatterbox](https://github.com/resemble-ai/chatterbox): expressive alternatives include Turbo and CPU-oriented Nano; brings a separate PyTorch/Transformers/decoder stack. Not installed in this revision; remains a next candidate if this voice does not meet the creative bar.
+- [Chatterbox](https://github.com/resemble-ai/chatterbox): expressive alternatives include Turbo and CPU-oriented Nano; brings a separate PyTorch/Transformers/decoder stack. Installed and benchmarked separately as described below; the trial is not enabled in production.
 - [OpenMontage](https://github.com/calesthio/OpenMontage): broader orchestration around Remotion/FFmpeg, providers, narration and media research. Its default free narrator is Piper; installing it alone does not deliver a premium voice. Keep the existing working pipeline and use selected production principles without adding a second orchestrator or paid providers.
 - [Remotion official skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion-best-practices): consulted creation, markup, timing, transitions, audio and voiceover guidance. Existing pinned Remotion 4.0.537 remains in place. Frame-driven easing, measured narration timing, actual-media inspection and source-editable compositions are applied. The owner has already authorized rendered public previews and local free narration, so the generic skill defaults do not override those preferences.
 
