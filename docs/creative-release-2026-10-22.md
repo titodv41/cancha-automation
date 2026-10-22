@@ -1,5 +1,7 @@
 # Cancha creative release — October 22, 2026
 
+**Superseded later October 22:** The owner rejected both videos below. They were never published, are retired Drafts and are blocked by the editorial policy and publish gate. Preserve the carousel design. [Current direction, premium voice setup and new visual preview](premium-voice-and-club-cut.md). The delivery checks below are historical technical checks, not owner creative approval.
+
 The approved photo-carousel design is preserved. Two reviewed video formats are now in the connected GitHub content bank as Drafts, ready for the standing plan's source checks and selection. They are not publication receipts.
 
 | Preview | Content | Audio / motion |

@@ -1,0 +1,19 @@
+{
+  "id": "weston-club-cut-v3-20261022",
+  "status": "Visual preview — narration and owner creative review pending",
+  "editorialSourceId": "weston-u15-club-clip-20261022",
+  "sourceStory": "content/instagram/motion-stories.json",
+  "sourcePage": "https://www.westonfc.org/",
+  "permalink": "https://www.instagram.com/p/Dex6anEIGnc/",
+  "authorization": "owner-cleared-2026-10-22",
+  "clipChecksum": "a7ce09f18f6d81954dcf8749a9a3cd31d6f13ab06f70bd69ed598d1d4c486552",
+  "crestUrl": "https://static.wixstatic.com/media/287b2a_e95df59d68e745debf52a97e48d066c2~mv2.png",
+  "clipStart": 8,
+  "clipSeconds": 16,
+  "durationSeconds": 20,
+  "narrationOffset": 0.25,
+  "script": "Weston, Florida. The under fifteens take the win. Two nil, in MLS NEXT. You don't need a packed stadium to find a team worth watching. Who's doing good things at your local club? Give us a name. We want to hear about them.",
+  "spokenDirection": "A friend who follows Florida soccer. Interested, relaxed and clear. Read complete thoughts; don't imitate a sportscaster, shout, or add 'reported by'. Audition before selecting a voice.",
+  "theme": {"clubBlue": "#91d8f4", "ink": "#071d17"},
+  "music": {"bpm": 126, "style": "original-house", "openGain": 0.78, "duckedGain": 0.3}
+}

@@ -1,0 +1,23 @@
+{
+  "id": "weston-club-cut-v3-20261022",
+  "videoUrl": "https://framerusercontent.com/assets/DFiIkJrL4EoEO7T6hJSOe9LhA.mp4",
+  "storyboardUrl": "https://framerusercontent.com/images/uUgD85n3IEWB9DMKAoqdRTWbEnc.jpg",
+  "posterUrl": "https://framerusercontent.com/images/46XxgPJGENUHIhmO5KaHDBzqQ.jpg",
+  "voiceStatus": "Not generated — music-only visual preview",
+  "publication": "Preview only — never imported into the publishing queue",
+  "sha256": "6dabc9427dc3bfea389d2d29bb2c373438ffd72db00887790c4a4c667005119f",
+  "checks": {
+    "sha256": "6dabc9427dc3bfea389d2d29bb2c373438ffd72db00887790c4a4c667005119f",
+    "bytes": 16602762,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 20,
+    "channels": 2,
+    "sampleRate": 48000,
+    "integratedLUFS": -15.45,
+    "truePeakDb": -1.37,
+    "passed": true
+  },
+  "hostedAt": "2026-10-22T23:38:33.119Z"
+}

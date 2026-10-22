@@ -1,0 +1,52 @@
+name: Cancha voice auditions
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Check is read-only; audition generates two capped samples. Neither publishes.'
+        type: choice
+        default: check
+        options: [check, audition]
+permissions:
+  contents: read
+concurrency:
+  group: cancha-premium-voice
+  cancel-in-progress: false
+jobs:
+  audition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - uses: actions/cache/restore@v4
+        id: ledger
+        with:
+          path: private-data/premium-voice/ledger
+          key: cancha-premium-voice-ledger-${{ github.run_id }}
+          restore-keys: cancha-premium-voice-ledger-
+      - name: Check account or generate two private auditions
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ACTION: ${{ inputs.action }}
+        run: node scripts/premium-voice.mjs "$ACTION"
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: private-data/premium-voice/ledger
+          key: cancha-premium-voice-ledger-${{ github.run_id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cancha-voice-${{ github.run_id }}
+          path: private-data/premium-voice/
+          if-no-files-found: ignore
+          retention-days: 7
+    # Never attach this paid service to a cron. Provider key quota is the hard
+    # billing limit; the cached ledger is additional protection, not a guarantee.

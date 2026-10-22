@@ -29,7 +29,10 @@
     "content:video": "npm --prefix video run render",
     "content:voice-setup": "node video/audio/setup.mjs",
     "content:motion": "node video/render-motion.mjs",
-    "content:explainer": "node video/render-explainer.mjs"
+    "content:explainer": "node video/render-explainer.mjs",
+    "content:voice-check": "node scripts/premium-voice.mjs check",
+    "content:voice-audition": "node scripts/premium-voice.mjs audition",
+    "content:club-cut": "node video/render-club-cut.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",

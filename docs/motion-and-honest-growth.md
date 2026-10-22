@@ -1,5 +1,7 @@
 # Real urgency, clips and a reusable audio workflow
 
+**Current status, later October 22:** The owner rejected the Kokoro voice and both finished video designs. Keep those examples as historical experiments, not production defaults. Reels are held; carousels remain enabled. Follow [premium voice and the new Club Cut](premium-voice-and-club-cut.md), using a music-only preview until the owner's premium key is configured. No paid account or generation was purchased during this revision.
+
 Cancha can build anticipation with real scale, actual local moments and an invitation to help build the directory. It has no evidenced active-member count or club partnerships. Directory profiles must never be presented as registered members or partners. The homepage now displays the actual public CMS profile total, links to a dated Rowdies match, and invites clubs to list while Cancha builds Florida coverage. The event teaser hides after kickoff or its 72-hour review window. No fake visitors, member avatars, ticket scarcity or restarting countdown was added.
 
 `config/growth-content-policy.json` records this direction for future website copy and social posts. An organizer's event date and a registration deadline are different facts. Use “registration closes” or “last places” only with explicit current organizer evidence.
