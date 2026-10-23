@@ -1,3 +1,4 @@
+import{readFileSync}from'node:fs';
 import {officialHeaderLogo} from './club-logo.mjs';
 export {officialHeaderLogo} from './club-logo.mjs';
 import {createHash} from 'node:crypto';
@@ -6,6 +7,8 @@ import {clubWebsiteIdentity} from './fysa-club-discovery.mjs';
 import {validCarousel} from './instagram-media.mjs';
 
 const sha=s=>createHash('sha256').update(s).digest('hex');
+export function directoryDisplayName(name){return String(name).replace(/(?:,?\s+(?:Inc(?:orporated)?|LLC|Ltd|Corp(?:oration)?)\.?)+$/i,'').trim()}
+export function directoryLayoutRevision(){const layout=readFileSync(new URL('../scripts/directory-guide-layout.mjs',import.meta.url)),brand=JSON.parse(readFileSync(new URL('../content/instagram/photo-editorial.json',import.meta.url))).brand;const assets=[brand.displayFont,brand.bodyFont,brand.bodyBoldFont,brand.logo].map(p=>readFileSync(new URL('../'+p,import.meta.url)));return sha(Buffer.concat([layout,Buffer.from(JSON.stringify(brand)),...assets]))}
 export const normalized=s=>String(s||'').normalize('NFKC').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 export function publicEditorialUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&u.hostname.includes('.')&&!/^(?:\d+\.){3}\d+$/.test(u.hostname)&&!u.hostname.includes(':')&&!/(?:^|\.)(?:localhost|local|internal|test|invalid)$/.test(u.hostname)?u:null}catch{return null}}
 const tags=[['Beginner',/\bbeginner\b/i],['Recreational',/\brecreation(?:al)?\b/i],['Academy',/\bacadem(?:y|ies)\b/i],['Competitive',/\bcompetitive\b/i],['Goalkeeper training',/\bgoalkeep(?:er|ing)\b/i],['Training',/\btraining\b/i]];

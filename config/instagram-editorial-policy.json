@@ -49,5 +49,6 @@
   "approvedNarrativeDraftIds": [
     "ftl-mens-narrative-20261023"
   ],
-  "lateSlotGraceMinutes": 90
+  "lateSlotGraceMinutes": 90,
+  "requireCurrentDirectoryStyle": true
 }

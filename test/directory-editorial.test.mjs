@@ -1,5 +1,5 @@
 import test from'node:test';import assert from'node:assert/strict';
-import{directoryEligible,directoryClaims,directorySourceHash,officialHeaderLogo,validDirectoryGuide,confirmDirectorySource,selectDirectoryProfiles}from'../server/directory-editorial.mjs';
+import{directoryDisplayName,directoryLayoutRevision,directoryEligible,directoryClaims,directorySourceHash,officialHeaderLogo,validDirectoryGuide,confirmDirectorySource,selectDirectoryProfiles}from'../server/directory-editorial.mjs';
 import{approvedOriginalCreative}from'../server/social-creative.mjs';import{contentHash}from'../server/instagram-queue.mjs';import{passesCarouselPolicy}from'../server/carousel-quality.mjs';
 const site='https://fixtureclub.org/',html='<html><head><title>Fixture FC</title></head><body><header><a href="/"><img src="/logo.png" alt="Fixture FC logo"></a></header><main><h1>Fixture FC</h1><p>Miami academy and competitive soccer.</p></main></body></html>';
 const profile=()=>({entity:'profile',kind:'Club',slug:'fixture-fc',href:'/clubs/fixture-fc',name:'Fixture FC',city:'Miami',region:'South Florida',website:site,checkedOn:'2026-10-23',programs:'Academy · Competitive · Goalkeeper training',levelLabel:'Competitive',image:site+'logo.png',imageIdentity:'a'.repeat(64),badgeSource:'official-site-logo'});
@@ -36,3 +36,5 @@ test('club selection rotates regions, respects reserved subjects and suppresses 
  const recent=[{status:'Published',published_at:'2026-10-22T22:00:00Z',content:{directoryProfile:{website:items[0].website}}},{status:'Draft',content:{factsCheckedAt:'2026-10-23T12:00:00Z',visualEvidence:{subjectKey:'directory:'+items[1].slug}}}];
  const remaining=selectDirectoryProfiles({items},recent,{today:'2026-10-23'});assert.deepEqual(remaining.map(p=>p.slug),['club-2']);
 });
+
+test('consumer-facing club names omit corporate suffixes while keeping the source name and meaningful club words intact',()=>{assert.equal(directoryDisplayName('AC Delray Inc.'),'AC Delray');assert.equal(directoryDisplayName('Azzurri Storm Soccer Inc.'),'Azzurri Storm Soccer');assert.equal(directoryDisplayName('Weston FC'),'Weston FC');assert.match(directoryLayoutRevision(),/^[a-f0-9]{64}$/)});
