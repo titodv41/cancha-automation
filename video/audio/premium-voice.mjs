@@ -36,7 +36,10 @@ export function elevenClient({key, fetchImpl}) {
       // known machine error codes and the fixed API path are safe diagnostics.
       const codes=new Set(['invalid_api_key','missing_permission','missing_permissions','insufficient_permissions','quota_exceeded','invalid_request','invalid_value','unauthorized','user_not_found','resource_not_found','detected_unusual_activity','payment_required']);
       const type=(response.headers.get('content-type')||'').split(';')[0];
-      let code;try{const value=await response.json(),status=value?.detail?.status||value?.error?.code;if(codes.has(status))code=status}catch{}
+      let code;try{const value=await response.json(),status=value?.detail?.code||value?.detail?.status||value?.error?.code||value?.code;
+       // Enum-like machine identifiers are safe; exclude keys and key prefixes.
+       if(codes.has(status)||typeof status==='string'&&/^[a-z][a-z_-]{2,59}$/.test(status)&&!/^sk[_-]/.test(status)&&!key.includes(status))code=status;
+      }catch{}
       throw Error('Voice service returned HTTP '+response.status+' at '+path.split('?')[0]+(code?' ('+code+')':'')+(/^[a-z]+\/[a-z0-9.+-]+$/.test(type)?' ['+type+']':'')+'. Provider error bodies are withheld to protect credentials.');
     }
     try { return await response.json(); } catch { throw Error('Voice service returned invalid JSON; no automatic generation retry.'); }
