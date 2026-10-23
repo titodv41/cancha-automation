@@ -13,8 +13,9 @@ import {auditVideo} from './audit-output.mjs';
 
 const arg=name=>{const i=process.argv.indexOf(name);return i<0?null:process.argv[i+1]},root=resolve(import.meta.dirname,'..');
 const voiceFile=arg('--voice'),timingFile=arg('--timing');if(!voiceFile||!timingFile)throw Error('Use --voice and --timing from the successful ElevenLabs audition artifact. No local narrator fallback.');
-const sha=b=>createHash('sha256').update(b).digest('hex'),storyPath='content/instagram/story-narration.json';
-const story=JSON.parse(await readFile(storyPath)),media=JSON.parse(await readFile('content/instagram/single-story.json')),timing=JSON.parse(await readFile(timingFile)),{brand}=JSON.parse(await readFile('content/instagram/photo-editorial.json'));
+const sha=b=>createHash('sha256').update(b).digest('hex'),storyPath=arg('--story')||'content/instagram/story-narration.json';
+const story=JSON.parse(await readFile(storyPath)),media=JSON.parse(await readFile(arg('--media')||'content/instagram/single-story.json')),timing=JSON.parse(await readFile(timingFile)),{brand}=JSON.parse(await readFile('content/instagram/photo-editorial.json'));
+if(!story.visuals?.opening?.title||!/^[0-9]{4}$/.test(story.visuals?.season?.year||'')||!story.visuals?.footageContext)throw Error('A reviewed visual map is required');
 const voiceBytes=await readFile(voiceFile),audioSha256=sha(voiceBytes),audioSeconds=Number(execFileSync('ffprobe',['-v','error','-show_entries','format=duration','-of','default=noprint_wrappers=1:nokey=1',voiceFile],{encoding:'utf8'}));
 const edit=narrativeTimeline(story,timing,{audioSha256,audioSeconds}),assets=resolve('video/public/generated/narrative-story'),out=resolve('previews/narrative-story');
 await mkdir(assets,{recursive:true});await mkdir(out,{recursive:true});
@@ -30,7 +31,7 @@ execFileSync(process.execPath,['video/audio/soundtrack.mjs',join(assets,'story.j
 const temp=await mkdtemp(join(tmpdir(),'cancha-narrative-'));
 try{
  const serveUrl=await bundle({entryPoint:resolve('video/src/index.tsx'),publicDir:resolve('video/public'),outDir:join(temp,'bundle'),enableCaching:false});
- const common={serveUrl,browserExecutable:process.env.CANCHA_BROWSER_EXECUTABLE||'/usr/bin/chromium',inputProps:{brand,edit,audio:'generated/narrative-story/soundtrack.wav',groups:timing.groups}};
+ const common={serveUrl,browserExecutable:process.env.CANCHA_BROWSER_EXECUTABLE||'/usr/bin/chromium',inputProps:{brand,edit,visuals:story.visuals,audio:'generated/narrative-story/soundtrack.wav',groups:timing.groups}};
  const composition=await selectComposition({...common,id:'NarrativeStory'}),frames=[...new Set([0,...edit.scenes.flatMap(s=>[Math.floor((s.start+.5)*30),Math.floor((s.start+.12)*30)])])];
  for(const frame of frames)await renderStill({...common,composition,frame,imageFormat:'jpeg',output:join(out,'frame-'+frame+'.jpg')});
  if(process.argv.includes('--still')){await writeFile(join(out,'storyboard.json'),JSON.stringify({edit,voice:timing.voice,frames,audioSha256},null,2));console.log('Actual-voice storyboard rendered; no MP4 or publication.');}
@@ -38,8 +39,8 @@ try{
   const output=join(out,story.id+'-'+timing.voice.toLowerCase()+'.mp4');let last=-1;
   await renderMedia({...common,composition,outputLocation:output,codec:'h264',audioCodec:'aac',crf:25,pixelFormat:'yuv420p',concurrency:2,onProgress:({progress})=>{const n=Math.floor(progress*4);if(n>last){last=n;console.log('Narrative '+Math.round(progress*100)+'%')}}});
   await masterVideo(output,{audioFile:join(assets,'soundtrack.wav'),durationSeconds:edit.durationSeconds,truePeakTargetDb:-3.5});const checks=await auditVideo(output,edit.durationSeconds),code={};
-  for(const p of ['video/src/NarrativeStory.tsx','video/render-narrative-story.mjs','video/audio/narrative-timing.mjs','video/audio/soundtrack.mjs','video/audio/master-video.mjs',brand.displayFont,brand.bodyFont,...(brand.bodyBoldFont?[brand.bodyBoldFont]:[]),brand.logo])code[p]=sha(await readFile(p));
-  const report={id:story.id,voice:timing.voice,provider:'elevenlabs',model:timing.model,creativeStatus:'Owner-requested preview only; no Instagram import or publication',file:output,sha256:sha(await readFile(output)),storyPath,storyHash:sha(await readFile(storyPath)),sourceHash:localStoryHash(source),audioSha256,code,checks,edit,renderedAt:new Date().toISOString(),syntheticNarration:true,originalMusic:true,sourceClipAudioUsed:false};
+  for(const p of ['video/src/index.tsx','video/src/NarrativeStory.tsx','video/render-narrative-story.mjs','video/audio/narrative-timing.mjs','video/audio/soundtrack.mjs','video/audio/master-video.mjs',brand.displayFont,brand.bodyFont,...(brand.bodyBoldFont?[brand.bodyBoldFont]:[]),brand.logo])code[p]=sha(await readFile(p));
+  const report={id:story.id,voice:timing.voice,provider:'elevenlabs',model:timing.model,creativeStatus:process.argv.includes('--production')?'Prepared for owner-authorized queue selection; renderer never publishes':'Owner-requested preview only; no Instagram import or publication',file:output,sha256:sha(await readFile(output)),storyPath,storyHash:sha(await readFile(storyPath)),sourceHash:localStoryHash(source),brandHash:sha(Buffer.from(JSON.stringify(brand))),audioSha256,code,checks,edit,renderedAt:new Date().toISOString(),syntheticNarration:true,originalMusic:true,sourceClipAudioUsed:false};
   await writeFile(join(out,'report-'+timing.voice.toLowerCase()+'.json'),JSON.stringify(report,null,2));console.log('Narrated story rendered and audited; not scheduled or published.');
  }
 }finally{await rm(temp,{recursive:true,force:true})}

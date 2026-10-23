@@ -3,7 +3,7 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "Distinct official photos, useful club information and two reviewed actual-product screenshots. Reserve at least one carousel before a product post. Reels remain held for owner review; preserve publication receipts.",
+  "reason": "Owner chose Chris, moving club-film backgrounds, brand-family secondary type and automatic two-slot daily production. New approved narrative recipe is eligible; rejected legacy Reels remain held. Automatic directory guides use official header badges plus actual profile captures. Preserve receipts and never repeat uncertain publication.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
@@ -41,5 +41,13 @@
     "product-nearby-20261023",
     "product-age-fit-20261023"
   ],
-  "maxWeeklyProductPosts": 2
+  "maxWeeklyProductPosts": 2,
+  "dailyDirectoryEnabled": true,
+  "dailyDirectoryMaximumNew": 2,
+  "dailyDirectoryBuffer": 6,
+  "preferredVoice": "Chris",
+  "approvedNarrativeDraftIds": [
+    "ftl-mens-narrative-20261023"
+  ],
+  "lateSlotGraceMinutes": 90
 }

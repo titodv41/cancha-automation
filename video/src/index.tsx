@@ -1,3 +1,4 @@
+import narrativeManifest from '../../content/instagram/story-narration.json';
 import {NarrativeStory} from './NarrativeStory';
 import {SingleStory} from './SingleStory';
 import singleStory from '../../content/instagram/single-story.json';
@@ -50,5 +51,5 @@ const Root=()=> <><Composition id="PhotoStory" component={Story} durationInFrame
 const ExtendedRoot=()=> <><Root/><Composition id="ClubCut" component={ClubCut} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:clubCut,clip:'generated/club-cut/clip.mp4',poster:'generated/club-cut/poster.jpg',crest:'generated/club-cut/crest.png',audio:'generated/club-cut/soundtrack.wav',groups:[]}}/></>;
 const AllRoot=()=> <><ExtendedRoot/><Composition id="CommunityCut" component={CommunityCut} durationInFrames={525} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:communityCut,clip:'generated/community-cut/clip.mp4',audio:'generated/community-cut/audio.wav'}}/></>;
 const StoryRoot=()=> <><AllRoot/><Composition id="SingleStory" component={SingleStory} durationInFrames={Math.round(singleStory.durationSeconds*30)} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:singleStory,audio:'generated/single-story/music/soundtrack.wav'}}/></>;
-const NarrativeRoot=()=> <><StoryRoot/><Composition id="NarrativeStory" component={NarrativeStory} durationInFrames={960} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,edit:{durationSeconds:32,scenes:[]},audio:'generated/narrative-story/soundtrack.wav',groups:[]}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.edit.durationSeconds*30)})}/></>;
+const NarrativeRoot=()=> <><StoryRoot/><Composition id="NarrativeStory" component={NarrativeStory} durationInFrames={960} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,visuals:narrativeManifest.visuals,edit:{durationSeconds:32,scenes:[]},audio:'generated/narrative-story/soundtrack.wav',groups:[]}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.edit.durationSeconds*30)})}/></>;
 registerRoot(NarrativeRoot);

@@ -21,5 +21,54 @@
     "https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/",
     "https://www.ftlutd.com/news/2026/10/15/fort-lauderdale-united-fc-names-aly-hassan-usl-league-one-gm/"
   ],
-  "status": "New script; ElevenLabs private audition pending secure key. Rejected Pocket voice is not a fallback."
+  "status": "Chris selected by owner; cached ElevenLabs narration reused for the owner-authorized moving-footage production recipe.",
+  "visuals": {
+    "headerTag": "FLORIDA SOCCER",
+    "footageContext": "Women play now. Men start in 2027.",
+    "opening": {
+      "chip": "Broward’s next men’s pro team",
+      "title": "FORT LAUDERDALE.\nUNITED."
+    },
+    "season": {
+      "label": "Men’s USL League One",
+      "term": "SPRING",
+      "year": "2027",
+      "title": "A NEW TEAM\nTO FOLLOW."
+    },
+    "ground": {
+      "chip": "Davie, Florida",
+      "title": "ONE\nHOME GROUND.",
+      "subtitle": "Amerant Bank Field · NSU campus"
+    },
+    "community": {
+      "chip": "Women’s team · Already playing",
+      "title": "GET TO KNOW\nTHE CLUB."
+    },
+    "visit": {
+      "chip": "Start with the women’s match schedule",
+      "title": "WHO ARE\nYOU BRINGING?"
+    }
+  },
+  "sceneAnchors": [
+    [
+      "opening",
+      null
+    ],
+    [
+      "season",
+      "Their new"
+    ],
+    [
+      "ground",
+      "They’ll share"
+    ],
+    [
+      "community",
+      "That gives"
+    ],
+    [
+      "visit",
+      "You can go"
+    ]
+  ]
 }

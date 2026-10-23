@@ -43,7 +43,9 @@
     "content:eleven-free-audition": "node scripts/premium-voice.mjs free-audition",
     "content:products": "node scripts/build-product-editorial.mjs",
     "content:narrative": "node video/render-narrative-story.mjs",
-    "content:narrative-share": "node scripts/share-narrative-story.mjs"
+    "content:narrative-share": "node scripts/share-narrative-story.mjs",
+    "content:directory": "node scripts/prepare-directory-editorial.mjs",
+    "content:production-video": "node scripts/prepare-narrative-editorial.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",

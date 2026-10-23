@@ -12,3 +12,7 @@ test('a league member list is not a club-branded website and association/program
 test('automated badges must identify the actual club, not merely be the first logo on a page',()=>{assert.equal(officialLogoCandidate('<img alt="Logo" src="/logo.png">','https://example.org/','Example Soccer Club'),null);assert.equal(officialLogoCandidate('<img alt="Example Soccer Club logo" src="/logo.png">','https://example.org/','Example Soccer Club'),'https://example.org/logo.png')});
 
 test('a club hostname cannot make an unrelated sponsor logo identify the club',()=>{assert.equal(officialLogoCandidate('<img alt="Logo" src="https://examplesoccerclub.org/images/business-logo.png">','https://examplesoccerclub.org/','Example Soccer Club'),null)});
+test('the homepage header badge takes precedence over a sponsor logo whose filename contains the club city',()=>{
+ const html='<title>Auburndale Youth SC</title><header><a href="/"><img src="/home/logo.png"></a></header><a href="https://camp.example/"><img alt="Auburndale logo" src="/sponsors/auburndale-logo.png"></a>';
+ assert.equal(officialLogoCandidate(html,'https://auburndalescream.com/','Auburndale Youth SC'),'https://auburndalescream.com/home/logo.png');
+});

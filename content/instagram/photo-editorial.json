@@ -8,16 +8,16 @@
     "orange": "#f55b32",
     "logo": "content/instagram/local-stories/assets/cancha.png",
     "displayFont": "content/instagram/local-stories/assets/display.woff2",
-    "bodyFont": "content/instagram/local-stories/assets/barlow-600.woff2",
+    "bodyFont": "content/instagram/local-stories/assets/condensed-600.woff2",
     "secondaryTypography": {
-      "family": "Barlow",
+      "family": "Barlow Condensed",
       "bodyWeight": 600,
-      "labelWeight": 700,
-      "minimumPx": 29,
+      "labelWeight": 600,
+      "minimumPx": 32,
       "referenceCanvas": 1080,
-      "websiteFontConfig": "config/discovery-fonts.json"
+      "note": "Upright semibold from the same family as the italic Cancha headline."
     },
-    "bodyBoldFont": "content/instagram/local-stories/assets/barlow-700.woff2"
+    "bodyBoldFont": "content/instagram/local-stories/assets/condensed-600.woff2"
   },
   "authorization": "owner-cleared-2026-10-22",
   "posts": [

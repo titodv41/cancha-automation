@@ -22,3 +22,8 @@ audit/official-pages/
 
 /previews/narrative-story/
 /previews/product-stories/
+
+/previews/directory-guides/
+
+# Production videos are delivered through encrypted queue state.
+/content/instagram/narrative-editorial-ready.json

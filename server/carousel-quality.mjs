@@ -1,3 +1,4 @@
+import {validDirectoryGuide} from './directory-editorial.mjs';
 // A new crop or rendered slide is not a new source photograph.
 export function distinctCarouselPhotos(content) {
   if(!Array.isArray(content?.slides)||content.slides.length<2||!Array.isArray(content.photos))return false;
@@ -13,5 +14,6 @@ export function distinctCarouselPhotos(content) {
   return true;
 }
 export function passesCarouselPolicy(content,policy={}){
+  if(content?.visualEvidence?.kind==='directory-guide')return policy.dailyDirectoryEnabled===true&&validDirectoryGuide(content);
   return !policy.requireDistinctCarouselPhotos||!content?.slides?.length||distinctCarouselPhotos(content);
 }

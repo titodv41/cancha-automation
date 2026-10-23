@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "newDirectoryGuidesPerRun": 2,
+  "directoryDraftBuffer": 6,
+  "maximumCandidateSites": 18,
+  "minimumDaysBetweenClubFeatures": 30,
+  "maximumVideoRendersPerRun": 1,
+  "preferredVoice": "Chris",
+  "automaticNewTts": false,
+  "paidServicesEnabled": false,
+  "queueOnShortage": "Skip the empty slot and report a shortage; never repeat an old asset or invent a listing.",
+  "reelRecipeIds": [
+    "ftl-mens-narrative-20261023"
+  ]
+}

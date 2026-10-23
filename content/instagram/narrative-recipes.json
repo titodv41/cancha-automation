@@ -1,0 +1,21 @@
+[
+  {
+    "id": "ftl-mens-narrative-20261023",
+    "revision": "2026-10-23-motion-background",
+    "storyPath": "content/instagram/story-narration.json",
+    "mediaPath": "content/instagram/single-story.json",
+    "voice": "Chris",
+    "sourceId": "ftl-mens-expansion-20261023",
+    "assets": {
+      "audio": {
+        "url": "https://framerusercontent.com/assets/3FjYmhX78ktAoNW9PVDEtERB4.mp3",
+        "sha256": "33541b295aecc33f1329527beb57f218d61889ab1a66db25db7451d0bcd4501f"
+      },
+      "timing": {
+        "url": "https://framerusercontent.com/assets/u9V35W1cm5laCqyQZUKctKe8KtM.json",
+        "sha256": "4d6cb95ab0d9204d63ad77a0656d9e7124ef9c306c3ac08a3a5f47d0579800ca"
+      }
+    },
+    "ownerDirection": "Use Chris, moving real club footage behind Cancha overlays, and automatic selection within the existing two daily feed slots."
+  }
+]

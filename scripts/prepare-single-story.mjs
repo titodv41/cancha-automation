@@ -6,7 +6,7 @@ import {localStoryDescriptor} from '../server/local-story-source.mjs';
 
 // Download only the exact, reviewed public source media. Inherits the managed
 // proxy and CA; never follows an unreviewed redirect or executes source content.
-const root=resolve(import.meta.dirname,'..'),story=JSON.parse(await readFile(resolve(root,'content/instagram/single-story.json')));
+const root=resolve(import.meta.dirname,'..'),story=JSON.parse(await readFile(resolve(root,process.argv[2]||'content/instagram/single-story.json')));
 const reviewed=localStoryDescriptor(story.editorialSourceId);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 for(const asset of [...story.assets,story.clip]) {

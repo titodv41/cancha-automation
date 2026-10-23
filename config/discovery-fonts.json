@@ -23,7 +23,16 @@
     "sha256": "b17a0ee295659b28279ff690a24d08d47a4e9245e5f8579b0ecad81621f54612",
     "weights": "700 italic",
     "originalSourceSha256": "5e5c01d3260d47223cbf28a3dc9109099a2abeb3cbf8199ddf13164f7ccf98ce",
-    "assetFormat": "woff2 (Framer conversion of the downloaded TTF)"
+    "assetFormat": "woff2 (Framer conversion of the downloaded TTF)",
+    "secondary": {
+      "url": "https://framerusercontent.com/assets/WfPTiEUsmyk5x2IJKh53eR7D90.woff2",
+      "weight": 600,
+      "style": "normal",
+      "sha256": "835d6974e9cc030828dd22aad9e816057685fa172f54fee420501a56dd551bf4",
+      "originalSourceSha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-SemiBold.ttf",
+      "licenseFile": "assets/fonts/OFL-BarlowCondensed.txt"
+    }
   },
   "Barlow": {
     "license": "SIL Open Font License 1.1",

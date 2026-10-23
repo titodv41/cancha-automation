@@ -6,12 +6,15 @@ on:
         description: 'migrate once, then prepare/publish/review/pause/resume/command'
         type: choice
         default: review
-        options: [migrate, prepare, publish, review, pause, resume, command, reconnect, verify, insights, refresh-creative, refresh-community, refresh-local-stories, refresh-photo-stories, refresh-product-posts, refresh-motion-stories, repair-media]
+        options: [migrate, prepare, publish, review, pause, resume, command, reconnect, verify, insights, refresh-creative, refresh-community, refresh-local-stories, refresh-photo-stories, refresh-product-posts, refresh-motion-stories, repair-media, replenish]
       command_file:
         description: 'Repository JSON command path; only used for command'
         type: string
         default: 'content/instagram/chat-command.json'
   schedule:
+    # Independent social replenishment at 9:20 AM and 1:20 PM New York.
+    - cron: '20 13,17 * * *'
+    - cron: '20 14,18 * * *'
     # Prepare at 10 AM NY for 12:30 PM and 6 PM source-checked slots.
     # Publish after 6 PM; GitHub schedules are approximate and can be delayed.
     - cron: '7 14 * * *'
@@ -57,8 +60,13 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
         run: node scripts/check-preparation-needed.mjs >> "$GITHUB_OUTPUT"
-      - if: steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
+      - if: (steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'replenish'
         run: npx playwright install --with-deps chromium
+      - name: Install locked video renderer
+        if: steps.clock.outputs.action == 'replenish'
+        run: |
+          npm ci --prefix video
+          if ! command -v ffmpeg >/dev/null; then sudo apt-get update && sudo apt-get install -y ffmpeg; fi
       - uses: actions/cache/restore@v4
         if: steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
         with:
@@ -72,7 +80,7 @@ jobs:
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
           CANCHA_CONTROL_TOKEN: ${{ steps.clock.outputs.action == 'migrate' && secrets.CANCHA_CONTROL_TOKEN || '' }}
           META_PAGE_ACCESS_TOKEN: ${{ steps.clock.outputs.action == 'reconnect' && secrets.META_PAGE_ACCESS_TOKEN || '' }}
-          FRAMER_API_KEY: ${{ ((steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'repair-media') && secrets.FRAMER_API_KEY || '' }}
+          FRAMER_API_KEY: ${{ ((steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'repair-media' || steps.clock.outputs.action == 'replenish') && secrets.FRAMER_API_KEY || '' }}
           CANCHA_AUTOMATION_BACKEND: github
           CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
           CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
@@ -91,6 +99,8 @@ jobs:
             private-data/github-summary.json
             private-data/instagram-preview.html
             private-data/instagram-insights.json
+            private-data/narrative-production/report.json
+            private-data/daily-opportunities/*/directory-editorial/report.json
           retention-days: 7
           if-no-files-found: error
     # Never upload plaintext Meta tokens, decrypted state, contacts or CMS backups.
