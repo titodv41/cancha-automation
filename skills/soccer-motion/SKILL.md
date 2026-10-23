@@ -3,6 +3,9 @@ name: soccer-motion
 description: Create concise soccer films and animated explainers from verified official sources, with real subject media, conversational local narration and a reusable audited publishing path.
 ---
 
+**Latest owner direction, October 23 evening:** Chris is selected. Use moving real club footage under the graphics and the Cancha font family throughout (Barlow Condensed italic 700 headings, upright 600 supporting text). The owner explicitly requested automated production and two daily feed posts. The registered Chris narrative recipe may enter the standing plan; rejected legacy Reels stay held. Daily directory guides use official header badges and actual profile captures, without claiming two original photographs. See `docs/daily-content-production-2026-10-23.md`. Paid narration and automatic new TTS calls remain disabled. This supersedes older preview-only/font instructions below.
+
+
 **Current direction (October 23, later revision):** The owner rejected Pocket/Kokoro narration and chose ElevenLabs Free credits for private auditions. Follow `docs/creative-agency-workflow.md`. `paidGenerationEnabled` stays false. Use the capped `free-audition` workflow only after the secure repository key is available; never substitute a rejected voice. Write a complete spoken story that adds context beyond the screen headings. The earlier local-voice recommendations below are historical. New Reels remain preview-only during creative revisions.
 
 
