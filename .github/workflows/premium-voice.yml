@@ -3,10 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Check is read-only; audition generates two capped samples. Neither publishes.'
+        description: 'Check is read-only. Free-audition uses only a Free account; neither audition publishes.'
         type: choice
         default: check
-        options: [check, audition]
+        options: [check, free-audition, audition]
 permissions:
   contents: read
 concurrency:
@@ -28,7 +28,9 @@ jobs:
       - uses: actions/cache/restore@v4
         id: ledger
         with:
-          path: private-data/premium-voice/ledger
+          path: |
+            private-data/premium-voice/ledger
+            private-data/premium-voice/free-ledger
           key: cancha-premium-voice-ledger-${{ github.run_id }}
           restore-keys: cancha-premium-voice-ledger-
       - name: Check account or generate two private auditions
@@ -39,7 +41,9 @@ jobs:
       - uses: actions/cache/save@v4
         if: always()
         with:
-          path: private-data/premium-voice/ledger
+          path: |
+            private-data/premium-voice/ledger
+            private-data/premium-voice/free-ledger
           key: cancha-premium-voice-ledger-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
         if: always()
@@ -48,5 +52,5 @@ jobs:
           path: private-data/premium-voice/
           if-no-files-found: ignore
           retention-days: 7
-    # Never attach this paid service to a cron. Provider key quota is the hard
+    # Keep provider generation manual. Provider key quota is the hard
     # billing limit; the cached ledger is additional protection, not a guarantee.

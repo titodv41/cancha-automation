@@ -1,27 +1,51 @@
 {
-  "createdAt": "2026-10-23T16:27:16.565Z",
-  "carousels": 2,
-  "slides": 6,
+  "createdAt": "2026-10-23T17:43:24.592Z",
+  "carousels": 5,
+  "slides": 12,
   "covers": [
     {
       "id": "guide-florida-womens-matchdays-20261023",
-      "url": "https://framerusercontent.com/images/MgGlAPtDbrBOdvouiUpQPmFnIY.jpg",
+      "url": "https://framerusercontent.com/images/QaC6AoqHAU2Kdf6RWRjdrc1K8s.jpg",
       "slides": [
-        "https://framerusercontent.com/images/MgGlAPtDbrBOdvouiUpQPmFnIY.jpg",
-        "https://framerusercontent.com/images/RWmgEs8jiwoRod0aY92AehpCEF8.jpg",
-        "https://framerusercontent.com/images/0089kwnzRWh1TNLVhdFNjBQuExI.jpg",
-        "https://framerusercontent.com/images/cdxmPMWpVc3LSMhZp3aJ3UWAGC4.jpg"
+        "https://framerusercontent.com/images/QaC6AoqHAU2Kdf6RWRjdrc1K8s.jpg",
+        "https://framerusercontent.com/images/JYboQdsreqC874WGe1cuhD0SWHA.jpg",
+        "https://framerusercontent.com/images/sUEwmirUO9r0Anos5zOtUbWnQc.jpg",
+        "https://framerusercontent.com/images/ff0tYXb4IW4kbc5zeh1LXSBrQ.jpg"
       ]
     },
     {
       "id": "guide-fkk-first-season-20261023",
-      "url": "https://framerusercontent.com/images/pJhu7rgjLig8Nr5r7DxfYB40s.jpg",
+      "url": "https://framerusercontent.com/images/d5LT4R1zcghCK9cEPH8ph5X44Q.jpg",
       "slides": [
-        "https://framerusercontent.com/images/pJhu7rgjLig8Nr5r7DxfYB40s.jpg",
-        "https://framerusercontent.com/images/j7y0wx76PHTbYnVbvs9EJqbSm4.jpg"
+        "https://framerusercontent.com/images/d5LT4R1zcghCK9cEPH8ph5X44Q.jpg",
+        "https://framerusercontent.com/images/RrAh1gW2qPVcvzuYiY5DLEOQSg.jpg"
+      ]
+    },
+    {
+      "id": "guide-rowdies-al-lang-20261023",
+      "url": "https://framerusercontent.com/images/SUXwQAyRbKEj5tAmr33lMIxkgw.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/SUXwQAyRbKEj5tAmr33lMIxkgw.jpg",
+        "https://framerusercontent.com/images/VcmfhmHUnoPPh8VHSU4sDsNtaE.jpg"
+      ]
+    },
+    {
+      "id": "guide-orlando-matchday-20261023",
+      "url": "https://framerusercontent.com/images/14xDXLOqIpyNfd9ybyeWtFeo.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/14xDXLOqIpyNfd9ybyeWtFeo.jpg",
+        "https://framerusercontent.com/images/EPiUiAGWdMzNUovEe8KREpfE.jpg"
+      ]
+    },
+    {
+      "id": "guide-weston-programs-20261023",
+      "url": "https://framerusercontent.com/images/o3DVltxaDYgxSIyO2sL5OSh35o.jpg",
+      "slides": [
+        "https://framerusercontent.com/images/o3DVltxaDYgxSIyO2sL5OSh35o.jpg",
+        "https://framerusercontent.com/images/oZ500M3A2tbOqZwCofeF6OX9U.jpg"
       ]
     }
   ],
-  "overview": "https://framerusercontent.com/images/ZqQNlzpDMpe0TrDMFXSXj1yOCG8.jpg",
-  "pdf": "https://framerusercontent.com/assets/WCq4anJUdmTPD21HLbAwoOdNk.pdf"
+  "overview": "https://framerusercontent.com/images/MtZKAIuhBv4MruydvzW5A1HCxu0.jpg",
+  "pdf": "https://framerusercontent.com/assets/WQBueCAeSPDFb3t0Ul9By5SM64.pdf"
 }

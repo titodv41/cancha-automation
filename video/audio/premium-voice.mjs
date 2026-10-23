@@ -2,13 +2,23 @@ import {createHash} from 'node:crypto';
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {alignmentToWords, captionGroups} from './caption-timing.mjs';
 
-export function validateVoiceBatch(text, candidates, policy) {
-  if(policy.paidGenerationEnabled!==true)throw Error('Paid narration is disabled; the owner chose free options');
+export function validateVoiceBatch(text, candidates, policy, {mode='paid'}={}) {
+  if(mode==='free-preview') {
+    if(policy.freePreviewEnabled!==true||policy.paidGenerationEnabled!==false||policy.maxCharactersPerBatch>1500||policy.monthlyProjectCharacterBudget>1500)throw Error('Free preview needs its explicit capped policy; paid generation stays disabled');
+  } else if(mode!=='paid'||policy.paidGenerationEnabled!==true)throw Error('Paid narration is disabled; the owner chose free options');
   if (typeof text !== 'string' || !text.trim() || text.length > policy.maxCharactersPerRequest || /[<>\[\]]/.test(text)) throw Error('Use a short plain spoken script, without production instructions');
   if (!candidates.length || candidates.length > 2 || candidates.some(v => !policy.candidates.some(c => c.id === v.id))) throw Error('Choose one or two configured stock voices');
   if (text.length * candidates.length > policy.maxCharactersPerBatch) throw Error('Voice batch exceeds the character cap');
   if (policy.model !== 'eleven_v3' || policy.outputFormat !== 'mp3_44100_128') throw Error('Unreviewed voice model or format');
   return text.length * candidates.length;
+}
+
+export function validateFreePreviewAccount(account, characters) {
+  if(account?.subscription?.tier!=='free')throw Error('Free-only auditions require a Free account; no paid-plan credits will be used');
+  const {characterLimit,characterCount}=account.subscription;
+  if(!Number.isInteger(characters)||characters<1||characters>1500||!Number.isFinite(characterLimit)||!Number.isFinite(characterCount)||characterLimit-characterCount<characters)throw Error('Insufficient confirmed free credits for this audition');
+  if(account.voices?.some(v=>!v.available))throw Error('A selected stock voice is unavailable on this account');
+  return true;
 }
 
 // Injected transport is used by tests. Production allows this one HTTPS origin only.
@@ -37,8 +47,9 @@ export async function inspectVoiceAccount(api, policy) {
   return {model: policy.model, voices, subscription: {tier: subscription.tier, characterCount: subscription.character_count, characterLimit: subscription.character_limit, nextReset: subscription.next_character_count_reset_unix, overagesDisabled}};
 }
 
-export async function generateVoice({api, text, candidate, policy, ledgerDir, now = new Date(), offset = 0.25}) {
-  validateVoiceBatch(text, [candidate], policy);
+export async function generateVoice({api, text, candidate, policy, ledgerDir, now = new Date(), offset = 0.25, mode='paid', account=null}) {
+  validateVoiceBatch(text, [candidate], policy,{mode});
+  if(mode==='free-preview')validateFreePreviewAccount(account,text.length);
   if(!Number.isFinite(offset)||offset<0)throw Error('Invalid narration offset');
   await mkdir(ledgerDir, {recursive: true, mode: 0o700});
   const ledgerPath = ledgerDir + '/ledger.json';
@@ -68,7 +79,7 @@ export async function generateVoice({api, text, candidate, policy, ledgerDir, no
   const bytes=Buffer.from(result.audio_base64,'base64'),audioSha256=createHash('sha256').update(bytes).digest('hex');
   await writeFile(file, bytes, {mode: 0o600});
   const timingFile = ledgerDir + '/' + digest + '.json';
-  await writeFile(timingFile, JSON.stringify({provider: 'elevenlabs', model: policy.model, voice: candidate.name, script: text, audioSha256, offset, words, groups: captionGroups(words)}, null, 2), {mode: 0o600});
+  await writeFile(timingFile, JSON.stringify({provider: 'elevenlabs', model: policy.model, voice: candidate.name, script: text, audioSha256, offset, words, groups: captionGroups(words),use:mode==='free-preview'?'private-audition':'paid-audition',automaticPublication:false}, null, 2), {mode: 0o600});
   const completed = {status: 'complete', voice: candidate.name, file, timingFile, characters: text.length, month, audioSha256};
   ledger.requests[digest] = completed;
   await writeFile(ledgerPath, JSON.stringify(ledger, null, 2), {mode: 0o600});

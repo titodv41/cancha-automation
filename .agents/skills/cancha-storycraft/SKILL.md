@@ -3,6 +3,9 @@ name: cancha-storycraft
 description: Make one-subject Cancha soccer explainers with factual motion graphics, authentic subject media and readable typography.
 ---
 
+**Current direction (October 23, later revision):** The owner rejected Pocket/Kokoro narration and chose ElevenLabs Free credits for private auditions. Follow `docs/creative-agency-workflow.md`. `paidGenerationEnabled` stays false. Use the capped `free-audition` workflow only after the secure repository key is available; never substitute a rejected voice. Write a complete spoken story that adds context beyond the screen headings. The earlier local-voice recommendations below are historical. New Reels remain preview-only during creative revisions.
+
+
 Read `skills/soccer-motion/SKILL.md` and `docs/storycraft-workflow.md`. This project adapter applies selected official Remotion guidance pinned in `references.json`; consult those exact upstream references for timing, text measurement, local fonts and overlapping scenes. It does not install a second publishing service or authorize paid narration.
 
 1. Begin with one useful question and one subject. Establish what changed, the actual date, place and consequence from current official sources. Distinguish an expansion team from an existing club, a general manager from a coach, and a proposed event from a confirmed one. Register the exact supporting text before rendering.

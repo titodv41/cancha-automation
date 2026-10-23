@@ -1,0 +1,18 @@
+const esc=s=>String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+
+// Sports-programme layout: a real photograph with one solid-color fact panel.
+// Source notes remain in the caption/evidence rather than competing with copy.
+export function photoPanelHtml({brand,post,slide,index,asset,display,ui,logo}) {
+ const palette={lime:[brand.accent,brand.forest],forest:[brand.forest,brand.cream],orange:[brand.orange,'#062219'],cream:[brand.cream,brand.forest]};
+ const [paper,ink]=palette[slide.panelColor||'lime']||palette.lime;
+ const words=[slide.eyebrow,slide.title,slide.body,slide.label].filter(Boolean).join(' ').trim().split(/\s+/);
+ if(words.length>30)throw Error('Panel slide needs a shorter idea: '+post.id+'/'+index);
+ return `<!doctype html><html><head><style>
+ @font-face{font-family:Display;src:url('${display}');font-weight:700;font-style:italic}@font-face{font-family:UI;src:url('${ui}');font-weight:200 800}
+ *{box-sizing:border-box}html,body{width:1080px;height:1350px;margin:0}body{background:${brand.forest};color:${brand.cream};font:650 42px/1.18 UI,sans-serif;letter-spacing:-.6px;-webkit-font-smoothing:antialiased}main{position:relative;width:1080px;height:1350px;overflow:hidden}
+ .photo{position:absolute;left:28px;right:28px;top:28px;height:1010px;overflow:hidden;border-radius:24px}.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:${esc(slide.position||'50% 40%')}}.shade{position:absolute;inset:0;background:linear-gradient(180deg,#04251cc0,transparent 28%,transparent);pointer-events:none}
+ header{position:absolute;left:65px;right:65px;top:64px;display:flex;justify-content:space-between;align-items:center}.logo{width:191px;height:62px;overflow:hidden}.logo img{width:100%;height:100%;object-fit:cover;filter:brightness(0) invert(1)}.page-number{font-size:32px;font-weight:750;font-variant-numeric:tabular-nums}
+ .panel{position:absolute;left:46px;right:46px;top:790px;height:448px;border-radius:22px;background:${paper};color:${ink};box-shadow:0 12px 32px #06221933}.copy{position:absolute;left:80px;right:80px;top:819px;color:${ink}}.eyebrow{font-size:32px;font-weight:750;margin-bottom:18px;letter-spacing:-.4px}h1{margin:0;font:italic 700 ${slide.titleSize||112}px/.94 Display,sans-serif;letter-spacing:-1.2px;white-space:pre-line}.body{margin:20px 0 0;white-space:pre-line;font-size:40px;line-height:1.17;font-weight:650;letter-spacing:-.5px}.label{display:inline-block;margin-top:14px;padding:8px 12px;border:2px solid ${ink};border-radius:8px;font-size:30px;font-weight:750;line-height:1.1}
+ footer{position:absolute;left:64px;right:64px;bottom:39px;display:flex;gap:28px;justify-content:space-between;align-items:center;font-size:30px;line-height:1.1;font-weight:750}.arrow{font-size:30px;white-space:nowrap}.handle{white-space:nowrap}
+ </style></head><body><main><div class="photo"><img src="${asset.data}" alt="${esc(slide.altText)}"><div class="shade"></div></div><header><div class="logo"><img src="${logo}" alt="Cancha"></div><span class="page-number">${index+1} / ${post.slides.length}</span></header><div class="panel"></div><div class="copy"><div class="eyebrow">${esc(slide.eyebrow)}</div><h1>${esc(slide.title)}</h1>${slide.body?`<p class="body">${esc(slide.body)}</p>`:''}${slide.label?`<span class="label">${esc(slide.label)}</span>`:''}</div><footer><span class="handle">${esc(brand.handle)}</span><span class="arrow">${esc(slide.footer||'Florida soccer')}</span></footer></main></body></html>`;
+}

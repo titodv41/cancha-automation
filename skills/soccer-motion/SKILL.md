@@ -3,6 +3,9 @@ name: soccer-motion
 description: Create concise soccer films and animated explainers from verified official sources, with real subject media, conversational local narration and a reusable audited publishing path.
 ---
 
+**Current direction (October 23, later revision):** The owner rejected Pocket/Kokoro narration and chose ElevenLabs Free credits for private auditions. Follow `docs/creative-agency-workflow.md`. `paidGenerationEnabled` stays false. Use the capped `free-audition` workflow only after the secure repository key is available; never substitute a rejected voice. Write a complete spoken story that adds context beyond the screen headings. The earlier local-voice recommendations below are historical. New Reels remain preview-only during creative revisions.
+
+
 # Soccer motion
 
 **Latest direction:** Read [the community content reset](../../docs/community-content-reset.md). The owner now prefers free tools; paid narration is disabled. The repeated-photo carousel bank was also rejected and retired. Pocket TTS CPU auditions and local caption drafts have been tested, with no naturalness claim from ASR or delivery checks. Prefer actual contributor speech or useful club-film audio for UGC-style work. Do not restore Kokoro or unhold Reels merely because a file renders. This supersedes the earlier premium-provider decision below.

@@ -1,0 +1,13 @@
+# Cancha context
+
+Cancha helps Florida players, parents and local fans find clubs, places to play, coaching, current opportunities and soccer learning/career resources. Discovery and community are the focus. Smaller clubs should be easier to find. Broader sports, a phone app and operations tools are later hypotheses.
+
+Brand: Cancha italic Barlow Condensed headline/wordmark, forest #103f32, cream #f5f3e9, lime #d7ef86, orange #f55b32; Manrope supporting type. Preserve this identity. The owner now wants real subject photographs, clear color rectangles, very short text, readable supporting type and a strong image-led composition. Avoid a blog-page appearance, dense paragraphs and generic motivational/AI copy. Each carousel swipe supplies a useful new fact and a different real photograph.
+
+Video narration must have a hook, connected explanation and a local consequence. It must add context beyond the short on-screen headlines. The latest Pocket voice and literal slide-reading script were rejected. Owner requests ElevenLabs Free credits and will handle downstream licensing/use. Prepare private Free-only capped auditions; never buy/upgrade a plan or enable paid usage. A missing API key is a real dependency, not something a skill can supply. No fallback to rejected local voices. Keep technical/source notes outside artwork.
+
+Two daily Instagram feed slots (12:30 PM and 6 PM New York) are already owner-authorized, up to 14/week and four actual hours apart. Existing approval covers eligible carousels; do not ask again for routine scheduling. New Reels remain previews while the creative is being revised. Preserve Published/uncertain receipts. No fabricated membership, partnerships, quotes, visits, urgency or results. Do not send DMs, emails, comments or outreach based on generic skill recommendations.
+
+Actual checked CMS snapshot on October 23: 378 published club/place profiles; Opportunities 106 total, 84 Active, 14 Expired, 6 Pending, 2 Archived. Status counts are not independent verification counts. Daily supported-source publication is enabled. The October 23 pipeline completed with zero new additions: remaining club candidates failed identity/media checks; five employer boards returned HTTP 403 from Actions. Last recorded additions were October 22 (18 club profiles, nine automation-tagged opportunity records). Do not promise 50 new verified listings/day or a constantly researching chat.
+
+Instagram publisher and creative production are separate. A finite prepared bank is not unattended creative research. Insights permission is missing, so do not claim measured reach, retention or conversion improvements. Expand the actual reviewed bank and make shortages explicit. Skills are guidance, not guarantees of growth.

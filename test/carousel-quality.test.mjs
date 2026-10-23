@@ -17,3 +17,11 @@ test('publishing also stops an already-approved repeated-photo carousel or retir
  assert.equal(satisfiesDailyMediaMix({id:'old'},[],{retiredDraftIds:['old']}),false);
  assert.equal(passesCarouselPolicy(c,{}),true);
 });
+test('Squarespace content/v1 paths identify different originals, unlike Wix resize suffixes',()=>{
+ const c=make();
+ c.photos[0].originalUrl='https://images.squarespace-cdn.com/content/v1/site/photo-a/a.jpg';
+ c.photos[1].originalUrl='https://images.squarespace-cdn.com/content/v1/site/photo-b/b.jpg';
+ assert.equal(distinctCarouselPhotos(c),true);
+ c.photos[1].originalUrl=c.photos[0].originalUrl+'?format=1000w';
+ assert.equal(distinctCarouselPhotos(c),false);
+});

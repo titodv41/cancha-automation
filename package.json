@@ -39,7 +39,8 @@
     "content:single-story": "node video/render-single-story.mjs",
     "content:story-voice": "node scripts/free-content-tools.mjs story",
     "content:story-media": "node scripts/prepare-single-story.mjs",
-    "content:story-share": "node scripts/share-single-story.mjs"
+    "content:story-share": "node scripts/share-single-story.mjs",
+    "content:eleven-free-audition": "node scripts/premium-voice.mjs free-audition"
   },
   "dependencies": {
     "framer-api": "5.1.0",

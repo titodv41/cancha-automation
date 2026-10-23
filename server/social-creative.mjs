@@ -7,7 +7,8 @@ export function approvedSubjectPhoto(photo, row) {
   return photo.authorization==='owner-cleared-2026-10-22' && photo.publisher && photo.subject
    && localStoryDescriptor(row.editorialSourceId)?.documents.some(d=>d.url===photo.sourcePage) && /^[a-f0-9]{64}$/.test(photo.originalChecksum||'')
    && source.protocol==='https:' && image.protocol==='https:' && !image.username && !image.password
-   && (image.hostname===source.hostname || source.hostname==='www.westonfc.org' && image.hostname==='static.wixstatic.com');
+   && (image.hostname===source.hostname || source.hostname==='www.westonfc.org' && image.hostname==='static.wixstatic.com'
+    ||source.origin==='https://intercostadium.com'&&image.origin==='https://images.squarespace-cdn.com'&&image.pathname.startsWith('/content/v1/659482fdc6cca2537e44e3d5/'));
  } catch { return false; }
 }
 export function approvedSocialPhoto(photo){try{const url=new URL(photo.url),source=new URL(photo.sourcePage);return url.origin==='https://framerusercontent.com'&&/^\/images\/.+\.jpe?g$/i.test(url.pathname)&&!url.search&&!url.username&&!url.password&&source.origin==='https://commons.wikimedia.org'&&source.pathname.startsWith('/wiki/File:')&&/^[a-f0-9]{64}$/.test(photo.originalChecksum||'')&&!!photo.creator&&((photo.license==='CC0'&&photo.licenseUrl==='https://creativecommons.org/publicdomain/zero/1.0/deed.en')||(photo.license==='CC BY 2.0'&&photo.licenseUrl==='https://creativecommons.org/licenses/by/2.0/')||(photo.license==='CC BY 4.0'&&photo.licenseUrl==='https://creativecommons.org/licenses/by/4.0'))&&['photo-poster','photo-split'].includes(photo.layout);}catch{return false;}}

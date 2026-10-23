@@ -1,5 +1,7 @@
 # Reusable photo editorial workflow
 
+> Current revision: see [the creative agency workflow](creative-agency-workflow.md). The owner rejected the local narrators and requested capped ElevenLabs Free auditions. The five-guide photo bank and current queue status are recorded there; older counts and voice recommendations below are historical.
+
 **Superseded later October 22:** The owner rejected the repeated-photo bank below. Follow [the current community content reset](community-content-reset.md). The old six posts are retired; the replacement bank has two useful guides and six distinct original photos. Repeated originals, crops and URL variants are now blocked at render, scheduling and final publication. Paid voice generation is disabled. Historical commands/examples below do not authorize re-importing rejected work.
 
 The October 22 upgrade creates six photo carousels (19 slides) and a 15-second photo-led Puerta video. The media comes from the actual clubs and stories: Sporting JAX's match report and roster portrait, Rowdies match recap/supporter photography, FKK's program action photos, and Weston FC's field photograph and named coach biography. The owner confirmed that media permissions are handled. Publisher, exact photo URL, subject and original checksum are recorded in the manifest; no invented license or photographer credit is asserted.

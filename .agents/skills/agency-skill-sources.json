@@ -1,0 +1,66 @@
+{
+  "installedOn": "2026-10-23",
+  "purpose": "Owner-requested design, concise social storytelling and narration quality",
+  "files": [
+    {
+      "file": ".agents/skills/frontend-design/SKILL.md",
+      "url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/SKILL.md",
+      "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+    },
+    {
+      "file": ".agents/skills/frontend-design/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/LICENSE.txt",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "file": ".agents/skills/social/SKILL.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/social/SKILL.md",
+      "sha256": "dd4c01d0925f571562d4e8dea4af6b60bd9d491149187d94927e65280fad1bee"
+    },
+    {
+      "file": ".agents/skills/social/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/LICENSE",
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
+    },
+    {
+      "file": ".agents/skills/social/references/carousel-frameworks.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/social/references/carousel-frameworks.md",
+      "sha256": "e703aa530ec9f68cdf5b58e8e0d4d1a5cc3f22b9e2d3e3222f16a9763d423247"
+    },
+    {
+      "file": ".agents/skills/social/references/short-form-video.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/social/references/short-form-video.md",
+      "sha256": "ed0976bd7ac1f85b7b8c162087e346118f2cf0ef46b3ccafc6a7a329118987d1"
+    },
+    {
+      "file": ".agents/skills/social/references/platforms.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/social/references/platforms.md",
+      "sha256": "a070eda1f54bdba103a9c89613d83331fc5c53c9e8a48543e0198f1a2995cb0c"
+    },
+    {
+      "file": ".agents/skills/social/references/platform-limits.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/social/references/platform-limits.md",
+      "sha256": "6ecc6b40ff82b95c48906341f7d3c58337671d4d94f624c858764f1ed5a77c3c"
+    },
+    {
+      "file": ".agents/skills/copywriting/SKILL.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/copywriting/SKILL.md",
+      "sha256": "13c580c2432a4499e9dfdcf5d553df7aa6589e90cf5bd869fb4fbde5caf9f567"
+    },
+    {
+      "file": ".agents/skills/copywriting/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/LICENSE",
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
+    },
+    {
+      "file": ".agents/skills/copywriting/references/ai-tells.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/copywriting/references/ai-tells.md",
+      "sha256": "b98c3a19b3a75c714d69e80a0076e4c07244b0e833c2ce81ff2631224fb7f7b2"
+    },
+    {
+      "file": ".agents/skills/copywriting/references/copy-frameworks.md",
+      "url": "https://raw.githubusercontent.com/coreyhaines31/marketingskills/e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b/skills/copywriting/references/copy-frameworks.md",
+      "sha256": "352122944bf9e891ceb0e003adce41591d111e9d97057700626249919dfe430d"
+    }
+  ]
+}

@@ -3,6 +3,9 @@ name: photo-editorial
 description: Produce source-checked, subject-specific photo carousels and photo-led video using a reusable brand manifest, then deliver them through the authorized Instagram queue.
 ---
 
+**Current direction (October 23, later revision):** The owner rejected Pocket/Kokoro narration and chose ElevenLabs Free credits for private auditions. Follow `docs/creative-agency-workflow.md`. `paidGenerationEnabled` stays false. Use the capped `free-audition` workflow only after the secure repository key is available; never substitute a rejected voice. Write a complete spoken story that adds context beyond the screen headings. The earlier local-voice recommendations below are historical. New Reels remain preview-only during creative revisions.
+
+
 # Photo editorial workflow
 
 Read [the current content reset](../../docs/community-content-reset.md) first. The owner rejected repeated source photos and generic captions; the former six-carousel bank is retired. Every new slide must add a different useful answer and original subject photograph. Crops are not new photos. Use 2–6 slides as the material warrants; do not pad a two-slide answer with a recycled question slide. Use normal sentences and specific local facts. Inspect actual images for sponsor logos and wrong subjects. Current renderer/planner/publisher gates enforce diversity. This direction overrides older steps below that suggest a fixed 3–5-slide structure.

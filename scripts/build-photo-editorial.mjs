@@ -7,6 +7,8 @@ import {withProject} from './project-session.mjs';
 import {localStoryDescriptor, localStoryHash, confirmLocalStorySource} from '../server/local-story-source.mjs';
 import {approvedOriginalCreative} from '../server/social-creative.mjs';
 import {distinctCarouselPhotos} from '../server/carousel-quality.mjs';
+import {photoPanelHtml} from './photo-panel-layout.mjs';
+import {execFileSync} from 'node:child_process';
 
 // --upload explicitly publishes only media assets, never an Instagram post.
 const input=process.argv.find(a=>a.endsWith('.json'))||'content/instagram/photo-editorial.json';
@@ -28,10 +30,18 @@ try {
   const photos=[];
   for(const photo of post.photos){
    if(!source.documents.some(d=>d.url===photo.sourcePage))throw Error('Photo source is not in the reviewed story: '+photo.id);
-   const bytes=await session.html(photo.originalUrl,/image\/(jpeg|png)/,{maxBytes:15_000_000});
-   const checksum=hash(bytes);if(photo.originalChecksum&&photo.originalChecksum!==checksum)throw Error('Source photograph changed: '+photo.id);
-   const file=resolve(cache,photo.id+(bytes[0]===137?'.png':'.jpg'));await writeFile(file,bytes);
-   const photoData=`data:image/${bytes[0]===137?'png':'jpeg'};base64,${bytes.toString('base64')}`;
+   const bytes=await session.html(photo.originalUrl,/image\/(jpeg|png|webp)/,{maxBytes:15_000_000});
+   const format=bytes[0]===137?'png':bytes[0]===255&&bytes[1]===216?'jpeg':bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP'?'webp':null;
+   if(!format)throw Error('Unrecognized source image bytes: '+photo.id);
+   const checksum=hash(bytes);
+   if(photo.originalChecksum&&photo.originalChecksum!==checksum){
+    // Some official CDNs change JPEG metadata while preserving every decoded
+    // pixel. Only a previously reviewed, exact pixel hash permits that case.
+    const decoded=photo.originalPixelChecksum&&execFileSync('ffmpeg',['-v','error','-i','pipe:0','-map','0:v:0','-f','hash','-hash','sha256','pipe:1'],{input:bytes,encoding:'utf8',timeout:10000}).trim().replace(/^SHA256=/,'');
+    if(!decoded||decoded!==photo.originalPixelChecksum)throw Error('Source photograph changed: '+photo.id);
+   }
+   const file=resolve(cache,photo.id+'.'+(format==='jpeg'?'jpg':format));await writeFile(file,bytes);
+   const photoData=`data:image/${format};base64,${bytes.toString('base64')}`;
    await page.setContent(`<img src="${photoData}">`);
    const dimensions=await page.evaluate(async()=>{const i=document.querySelector('img');await i.decode();return{width:i.naturalWidth,height:i.naturalHeight}});
    localPhotos.set(photo.id,{file,data:photoData,photo,...dimensions});
@@ -47,7 +57,7 @@ try {
    const scale=crop?Math.max(1080/(asset.width*crop.width),frameHeight/(asset.height*crop.height)):1;
    const photoStyle=crop?`width:${asset.width*scale}px;height:${asset.height*scale}px;max-width:none;left:${(1080-asset.width*crop.width*scale)/2-asset.width*crop.x*scale}px;top:${(frameHeight-asset.height*crop.height*scale)/2-asset.height*crop.y*scale}px;`:`width:100%;height:100%;object-fit:cover;object-position:${esc(slide.position||'50% 50%')};`;
    const frameClass=crop?' cropped':'';
-   await page.setContent(`<!doctype html><html><head><style>
+   await page.setContent(slide.layout==='panel'?photoPanelHtml({brand,post,slide,index,asset,display,ui,logo}):`<!doctype html><html><head><style>
     @font-face{font-family:Display;src:url('${display}');font-weight:700;font-style:italic}@font-face{font-family:UI;src:url('${ui}');font-weight:500 800}
     *{box-sizing:border-box}html,body{width:1080px;height:1350px;margin:0}body{font:650 40px/1.28 UI,sans-serif;letter-spacing:-.5px;background:${brand.forest};color:${brand.cream};-webkit-font-smoothing:antialiased}
     main{position:relative;width:1080px;height:1350px;overflow:hidden;background:${split?brand.cream:brand.forest};color:${split?brand.forest:brand.cream}}

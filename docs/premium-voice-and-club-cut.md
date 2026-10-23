@@ -1,5 +1,7 @@
 # Premium voice and the Cancha Club Cut
 
+> Current revision: see [the creative agency workflow](creative-agency-workflow.md). The owner rejected the local narrators and requested capped ElevenLabs Free auditions. The five-guide photo bank and current queue status are recorded there; older counts and voice recommendations below are historical.
+
 **Later owner decision:** Free tools are preferred. Paid narration is now explicitly disabled in the policy and generation adapter. No ElevenLabs purchase/key setup is needed for the current task. Follow [the free tools and community content reset](community-content-reset.md). The optional setup below is dormant.
 
 The owner rejected the old Weston and Miami videos for robotic narration and generic visuals. Both remain unpublished Drafts and are now retired. `config/instagram-editorial-policy.json` disables motion selection, and the publish gate also rejects retired/held Reels. The approved photo-carousel work and standing two-slot plan are preserved. A successful Meta processing check is not creative approval.

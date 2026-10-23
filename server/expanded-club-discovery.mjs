@@ -49,3 +49,16 @@ export function expandedProfileIdentity(html,row){const d=documentOf(html),text=
  if(row.type==='Place')return branding.some(label=>key(label)===key(row.name));return null;
 }
 export function sharedOrganizationHost(website){try{const u=new URL(website);return !['www.soccershots.com','www.teamworkonline.com','app.teampass.com','www.facebook.com','www.fysa.com','clubs.bluesombrero.com'].includes(u.hostname)?u.hostname.replace(/^www\./,''):null}catch{return null}}
+
+// The locator is a discovery lead, not enrollment evidence. Regional pages can
+// independently establish a provider profile when its locator response changes.
+export function soccerShotsRegionalProfile(html,seed,{today,locations={}}={}){
+ const u=new URL(seed.website),loc=locationFor(seed.city,locations);
+ if(u.origin!=='https://www.soccershots.com'||!/^\/[a-z]+\/$/.test(u.pathname)||!loc||loc.county!==seed.county||!seed.name?.startsWith('Soccer Shots — '))throw Error('Unreviewed regional provider seed');
+ const d=documentOf(html),text=clean(d.body.textContent),row={...seed,sourceKind:'soccer-shots-franchise'};
+ if(expandedProfileIdentity(html,row)!==true||!/18 months/i.test(text)||!/(?:8 years|8 year|18 months\s*[-–]\s*8)/i.test(text))throw Error('Regional provider identity or age evidence changed');
+ const candidates=[seed.city,seed.county,...(seed.serviceCities||[])].map(key).filter(x=>x.length>3);
+ if(!candidates.some(x=>key(text).includes(x)))throw Error('Regional provider geography could not be confirmed');
+ const {places,school,contact,email,...publicSeed}=seed;
+ return {...publicSeed,sourceKind:'soccer-shots-franchise',checkedOn:today,sourceIdentity:u.pathname,originalImage:SOCCER_SHOTS_LOGO,requireBadge:true,sponsored:false,placementPriority:0,sources:[{url:seed.website,textChecksum:createHash('sha256').update(html).digest('hex')},{url:SOCCER_SHOTS_DIRECTORY}],accessNotes:'Choose a class with the provider and confirm ages, dates, fees and availability. Some school or childcare sessions are restricted to enrolled children. This regional profile does not expose private-school venues or establish open registration.'};
+}

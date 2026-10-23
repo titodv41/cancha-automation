@@ -41,7 +41,8 @@
           "subject": "Tampa Bay Sun players in a real pitchside team huddle",
           "originalChecksum": "617d177e017352d5c1add1245f3afc7de9ec0325027fa75f89492dfde801e671",
           "visuallyInspected": true,
-          "reviewNote": "Rechecked 2026-10-23 after JPEG byte change; viewed again and decoded-pixel SHA-256 exactly matches prior source (b484daa180953e5303147e64751a4e76fe854ce5bc26968676ac57d3b917eb84)."
+          "reviewNote": "Rechecked 2026-10-23 after JPEG byte change; viewed again and decoded-pixel SHA-256 exactly matches prior source (b484daa180953e5303147e64751a4e76fe854ce5bc26968676ac57d3b917eb84).",
+          "originalPixelChecksum": "b484daa180953e5303147e64751a4e76fe854ce5bc26968676ac57d3b917eb84"
         },
         {
           "id": "sun-ground",
@@ -73,48 +74,54 @@
       ],
       "slides": [
         {
-          "layout": "cover",
+          "layout": "panel",
           "photoId": "sun-cover",
-          "eyebrow": "Florida matchday guide",
-          "title": "YOUR NEXT\nMATCH NIGHT.",
-          "label": "3 women’s pro clubs",
+          "eyebrow": "Florida matchdays",
+          "title": "PICK A\nMATCH NIGHT",
+          "label": null,
           "position": "50% 45%",
-          "footer": "Tampa · Jacksonville · Davie",
+          "footer": "3 women’s pro clubs",
           "readerValue": "Discover three professional women’s clubs and compare their actual home grounds.",
-          "altText": "Real Tampa Bay Sun players in a pitchside huddle. Cancha’s guide compares three Florida women’s professional soccer clubs."
+          "altText": "Real Tampa Bay Sun players in a pitchside huddle. Cancha’s guide compares three Florida women’s professional soccer clubs.",
+          "body": "Tampa · Jacksonville · Davie",
+          "panelColor": "lime"
         },
         {
-          "layout": "split",
+          "layout": "panel",
           "photoId": "sun-ground",
           "eyebrow": "Tampa",
           "title": "TAMPA BAY\nSUN FC",
-          "body": "Suncoast Credit Union Field\nParking is cashless. Check the\nclub’s stadium guide before you go.",
+          "body": "Suncoast Credit Union Field\nParking is cashless.",
           "position": "45% 55%",
           "footer": "tampabaysunfc.com",
           "readerValue": "Identify Tampa Bay Sun’s current home ground and the cashless parking policy.",
-          "altText": "A Tampa Bay Sun corner flag at sunset. Home ground: Suncoast Credit Union Field in Tampa; parking uses cashless transactions."
+          "altText": "A Tampa Bay Sun corner flag at sunset. Home ground: Suncoast Credit Union Field in Tampa; parking uses cashless transactions.",
+          "panelColor": "lime"
         },
         {
-          "layout": "split",
+          "layout": "panel",
           "photoId": "jax-women",
           "eyebrow": "Jacksonville",
           "title": "SPORTING\nJAX",
-          "body": "Hodges Stadium\nNext home: Oct 31 · 2 PM ET\nAgainst Brooklyn FC.",
+          "body": "Oct 31 · 2 PM ET\nHodges Stadium · vs Brooklyn",
           "position": "55% 36%",
           "footer": "sportingjax.com",
           "readerValue": "Identify Sporting JAX’s home venue, next home date, kickoff and opponent.",
-          "altText": "Sporting JAX women celebrating together. The club returns to Hodges Stadium against Brooklyn FC on October 31 at 2 PM Eastern."
+          "altText": "Sporting JAX women celebrating together. The club returns to Hodges Stadium against Brooklyn FC on October 31 at 2 PM Eastern.",
+          "panelColor": "lime"
         },
         {
-          "layout": "split",
+          "layout": "panel",
           "photoId": "ftl-women",
-          "eyebrow": "Davie · Broward County",
+          "eyebrow": "Davie",
           "title": "FORT LAUDERDALE\nUNITED",
-          "body": "Amerant Bank Field · NSU campus\n7510 SW 30th St, Davie\nHome dates: FTLUTD.com",
+          "body": "Amerant Bank Field\nOn the NSU campus",
           "position": "50% 30%",
-          "footer": "Have you been to a game?",
+          "footer": "ftlutd.com",
           "readerValue": "Clarify that Fort Lauderdale United’s home ground is on NSU’s campus in Davie, with its actual street address.",
-          "altText": "Fort Lauderdale United women in a team huddle. The club plays at Amerant Bank Field on NSU’s campus, 7510 SW 30th Street in Davie."
+          "altText": "Fort Lauderdale United women in a team huddle. The club plays at Amerant Bank Field on NSU’s campus, 7510 SW 30th Street in Davie.",
+          "titleSize": 104,
+          "panelColor": "lime"
         }
       ]
     },
@@ -153,26 +160,216 @@
       ],
       "slides": [
         {
-          "layout": "split",
+          "layout": "panel",
           "photoId": "fkk-developmental",
-          "eyebrow": "Florida Kraze Krush · Orlando area",
-          "title": "U7–U8.\nDEVELOPMENTAL.",
-          "body": "Two local practice sites.\nSmall-sided games. No goalkeepers.\nFall 2026 registration is closed.",
+          "eyebrow": "Florida Kraze Krush · U7–U8",
+          "title": "FIRST\nSEASON?",
+          "body": "Small-sided games. No goalkeepers.",
           "position": "45% 38%",
           "footer": "Winter Springs · Oviedo",
           "readerValue": "Identify the younger developmental age band, local sites, small-sided format, no-goalkeeper rule and closed Fall status.",
-          "altText": "Actual youth action from FKK’s Developmental program. U7–U8; local practice sites, small-sided games with no goalkeeper. Fall registration is closed."
+          "altText": "Actual youth action from FKK’s Developmental program. U7–U8; local practice sites, small-sided games with no goalkeeper. Fall registration is closed.",
+          "label": "Fall registration closed",
+          "panelColor": "cream"
         },
         {
-          "layout": "split",
+          "layout": "panel",
           "photoId": "fkk-recreational",
-          "eyebrow": "Before you register · Ask about travel",
-          "title": "U9–U19.\nRECREATIONAL.",
-          "body": "Some groups play away games.\nAsk which format fits your family.\nSpring 2027 starts on a waitlist.",
+          "eyebrow": "Florida Kraze Krush · U9–U19",
+          "title": "CHECK THE\nCOMMITMENT",
+          "body": "Ask about away-game travel.",
           "position": "50% 38%",
           "footer": "floridakrazekrush.com",
           "readerValue": "Clarify that recreational soccer can include away-game travel and identify the Spring 2027 waitlist.",
-          "altText": "Actual youth players from FKK’s Recreational program. U9–U19; some groups play away games, while others are in-house. Spring 2027 registration begins on a waitlist."
+          "altText": "Actual youth players from FKK’s Recreational program. U9–U19; some groups play away games, while others are in-house. Spring 2027 registration begins on a waitlist.",
+          "label": "Spring 2027 starts with a waitlist",
+          "panelColor": "cream"
+        }
+      ]
+    },
+    {
+      "id": "guide-rowdies-al-lang-20261023",
+      "organization": "Tampa Bay Rowdies",
+      "editorialSourceId": "rowdies-al-lang-guide-20261023",
+      "sourceType": "brand",
+      "topic": "community",
+      "editorialBrief": {
+        "audience": "Soccer fans around Tampa Bay",
+        "readerQuestion": "Where do the Rowdies play, and what makes their ground worth knowing?",
+        "usefulOutcome": "Find Al Lang in downtown St. Petersburg and learn its baseball-to-soccer history.",
+        "copyDirection": "Specific local detail, short sentences and one honest question."
+      },
+      "caption": "The Tampa Bay Rowdies play across the bay, right on the waterfront in downtown St. Petersburg.\n\nAl Lang was a baseball ground before the Rowdies made it home in 2011. Their first match there was on April 9, a 1–0 win over Montreal.\n\nIf you’ve been to Al Lang, which section would you recommend to someone going for the first time?\n\nGround history and club information:\nhttps://www.rowdiessoccer.com/al-lang-stadium/\n\n#TampaBayRowdies #StPeteSoccer",
+      "photos": [
+        {
+          "id": "rowdies-waterfront",
+          "originalUrl": "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/04/DJI_20240316201911_0532_D-1.jpg?w=1080",
+          "sourcePage": "https://www.rowdiessoccer.com/al-lang-stadium/",
+          "publisher": "Tampa Bay Rowdies",
+          "subject": "A real aerial view of Al Lang Stadium at night",
+          "originalChecksum": "8ab8749017794f2c5a4094a7b11abe974624020956d485d6b360f91df8099767",
+          "visuallyInspected": true
+        },
+        {
+          "id": "rowdies-stands",
+          "originalUrl": "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/04/381A9746.jpg?w=1080",
+          "sourcePage": "https://www.rowdiessoccer.com/al-lang-stadium/",
+          "publisher": "Tampa Bay Rowdies",
+          "subject": "A real match-night view of the pitch and stands at Al Lang",
+          "originalChecksum": "b94ffe1b81f0aa8f498ced3ee9cd5c0120407c7089bba1080c242b65ab1e8d6b",
+          "visuallyInspected": true
+        }
+      ],
+      "slides": [
+        {
+          "layout": "panel",
+          "photoId": "rowdies-waterfront",
+          "eyebrow": "Tampa Bay Rowdies",
+          "title": "ST. PETE.\nMATCH NIGHT.",
+          "body": "Al Lang Stadium · Downtown waterfront",
+          "panelColor": "lime",
+          "footer": "rowdiessoccer.com",
+          "readerValue": "Locate the Rowdies in St. Petersburg rather than Tampa.",
+          "altText": "Night aerial of Al Lang Stadium and downtown St. Petersburg. Cancha identifies the Rowdies’ waterfront home ground.",
+          "position": "50% 50%"
+        },
+        {
+          "layout": "panel",
+          "photoId": "rowdies-stands",
+          "eyebrow": "Know your ground",
+          "title": "BASEBALL PAST.\nSOCCER HOME.",
+          "body": "The Rowdies moved here in 2011.",
+          "panelColor": "lime",
+          "footer": "Al Lang Stadium",
+          "readerValue": "Learn how a former baseball ground became the Rowdies’ home.",
+          "altText": "Actual crowd and pitch at Al Lang Stadium. The Rowdies have played here since 2011.",
+          "position": "50% 50%",
+          "titleSize": 104
+        }
+      ]
+    },
+    {
+      "id": "guide-orlando-matchday-20261023",
+      "organization": "Orlando City and Orlando Pride",
+      "editorialSourceId": "orlando-ground-guide-20261023",
+      "sourceType": "brand",
+      "topic": "community",
+      "editorialBrief": {
+        "audience": "Central Florida fans choosing a first local professional match",
+        "readerQuestion": "Can I watch Orlando City and Orlando Pride at the same ground?",
+        "usefulOutcome": "Identify both clubs, their leagues and their shared downtown stadium.",
+        "copyDirection": "A useful ground guide with two short facts, no attendance or availability claims."
+      },
+      "caption": "Two teams to follow in downtown Orlando: City in MLS and Pride in the NWSL. Both play at Inter.co Stadium in downtown Orlando.\n\nThe ground opened in March 2017. If it’s been a while since your last match, you may remember it under an earlier name.\n\nCity, Pride, or both? And what’s your pre-match stop nearby?\n\nStadium information:\nhttps://intercostadium.com/\n\n#OrlandoCity #OrlandoPride",
+      "photos": [
+        {
+          "id": "orlando-night-fireworks",
+          "originalUrl": "https://images.squarespace-cdn.com/content/v1/659482fdc6cca2537e44e3d5/a93aa686-9aa9-426a-85fb-5e3de4ab8bef/jrepercity-67.jpg",
+          "sourcePage": "https://intercostadium.com/",
+          "publisher": "Inter.co Stadium",
+          "subject": "A real Orlando stadium match-night scene with supporters and fireworks",
+          "originalChecksum": "d9e22f3f98952bc69a9b087480767fce1a9ca4d6bc45db55966705b9fe8ada08",
+          "visuallyInspected": true,
+          "originalPixelChecksum": "18a41372b5def79aa9ab7c30bb518f305cade2a228212e601632b6bbe351f08e",
+          "reviewNote": "Viewed 2026-10-23. Official CDN metadata varies; decoded-pixel checksum independently matches the inspected original and a second fetch."
+        },
+        {
+          "id": "orlando-sunset-tifo",
+          "originalUrl": "https://images.squarespace-cdn.com/content/v1/659482fdc6cca2537e44e3d5/53508ae8-2b89-4f8c-b8ca-4088937818ba/Tifo-from-remote-3+%282%29.jpg",
+          "sourcePage": "https://intercostadium.com/",
+          "publisher": "Inter.co Stadium",
+          "subject": "A real Orlando City match and supporters’ tifo at sunset",
+          "originalChecksum": "8820eff11d732604a6ae3f488ca9f116d733ab97c742cbbabcea9105c307c54e",
+          "visuallyInspected": true,
+          "originalPixelChecksum": "dfc9b87262624df650895485f4ae1cf8a39047b37bf21c10fe07f2b13d58f59a",
+          "reviewNote": "Viewed 2026-10-23. Official CDN metadata varies; decoded-pixel checksum independently matches the inspected original and a second fetch."
+        }
+      ],
+      "slides": [
+        {
+          "layout": "panel",
+          "photoId": "orlando-night-fireworks",
+          "eyebrow": "Orlando",
+          "title": "YOUR DOWNTOWN\nMATCH NIGHT.",
+          "body": "Inter.co Stadium · Downtown Orlando",
+          "panelColor": "cream",
+          "footer": "Orlando, Florida",
+          "readerValue": "Locate Orlando’s shared soccer stadium downtown.",
+          "altText": "Actual packed Orlando stadium with fireworks. The ground is Inter.co Stadium in downtown Orlando.",
+          "position": "50% 58%",
+          "titleSize": 104
+        },
+        {
+          "layout": "panel",
+          "photoId": "orlando-sunset-tifo",
+          "eyebrow": "One ground · Two soccer clubs",
+          "title": "CITY +\nPRIDE.",
+          "body": "MLS and NWSL. Same downtown ground.",
+          "panelColor": "cream",
+          "footer": "intercostadium.com",
+          "readerValue": "Learn that Orlando City and Orlando Pride share a venue.",
+          "altText": "Actual Orlando City match with supporters’ tifo. City in MLS and Pride in NWSL share Inter.co Stadium.",
+          "position": "50% 72%"
+        }
+      ]
+    },
+    {
+      "id": "guide-weston-programs-20261023",
+      "organization": "Weston FC",
+      "editorialSourceId": "weston-program-guide-20261023",
+      "sourceType": "brand",
+      "topic": "community",
+      "editorialBrief": {
+        "audience": "Players and parents in western Broward comparing clubs",
+        "readerQuestion": "What can I find at Weston FC, and what should I ask before an evaluation?",
+        "usefulOutcome": "Find the official boys and girls program pages and ask about age groups, team level and training venue.",
+        "copyDirection": "Club-specific photography, concise questions, no invented opening or roster offer."
+      },
+      "caption": "Looking at Weston FC? Start with the program pages, then ask about the team for your age group.\n\nThe club has boys’ and girls’ programs. Its boys’ page lists MLS NEXT, UPSL and other leagues; that doesn’t mean every team plays at the same level or has spaces available.\n\nBefore an evaluation, ask which team you’re being considered for, where it trains and what the season costs. Those answers matter more than a league badge on its own.\n\nBoys: https://www.westonfc.org/about-1-1\nGirls: https://www.westonfc.org/about-1-2\n\n#WestonFC #BrowardSoccer",
+      "photos": [
+        {
+          "id": "weston-circle-warmup",
+          "originalUrl": "https://static.wixstatic.com/media/287b2a_01275a4524774989aee27c53389d99cdf000.jpg",
+          "sourcePage": "https://www.westonfc.org/",
+          "publisher": "Weston FC",
+          "subject": "Actual Weston FC training warm-up viewed from above",
+          "originalChecksum": "09f139483c7aef947603e0abdd6ff79bd7d3428d3e56b4d0c21e7bd852d78ccf",
+          "visuallyInspected": true
+        },
+        {
+          "id": "weston-girls-training",
+          "originalUrl": "https://static.wixstatic.com/media/287b2a_388b9947a3114840802d7cadb378b558~mv2.jpg",
+          "sourcePage": "https://www.westonfc.org/",
+          "publisher": "Weston FC",
+          "subject": "An actual player in Weston FC kit during training",
+          "originalChecksum": "c55354d4b733954182908420a01299b264074ac3a4713168189e1c6d5b510352",
+          "visuallyInspected": true
+        }
+      ],
+      "slides": [
+        {
+          "layout": "panel",
+          "photoId": "weston-circle-warmup",
+          "eyebrow": "Weston FC · Broward",
+          "title": "WESTON\nFC.",
+          "body": "Boys’ and girls’ programs in Weston.",
+          "panelColor": "orange",
+          "footer": "westonfc.org",
+          "readerValue": "Discover a real local club and its two program routes.",
+          "altText": "Actual overhead photo of a Weston FC warm-up. The club offers boys’ and girls’ programs.",
+          "position": "50% 42%"
+        },
+        {
+          "layout": "panel",
+          "photoId": "weston-girls-training",
+          "eyebrow": "Before an evaluation",
+          "title": "WHICH TEAM\nFITS YOU?",
+          "body": "Ask about age group, level and venue.",
+          "panelColor": "orange",
+          "footer": "Weston, Florida",
+          "readerValue": "Use three specific questions to compare the actual team being offered.",
+          "altText": "An actual Weston FC player at training. Cancha suggests asking about the team’s age group, level and venue.",
+          "position": "50% 30%"
         }
       ]
     }

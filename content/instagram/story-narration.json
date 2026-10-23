@@ -1,0 +1,25 @@
+{
+  "id": "ftl-mens-narrative-20261023",
+  "editorialSourceId": "ftl-mens-expansion-20261023",
+  "narrationOffset": 0.25,
+  "script": "If you’re in Broward and want a local men’s pro team to follow, put Fort Lauderdale United on your list. Their new USL League One side is set to start in spring twenty twenty-seven. They’ll share Amerant Bank Field in Davie with the women’s team, which is already playing. That gives fans a way to get to know the club before the men’s season begins. You can go to a women’s match now, learn the ground, and decide who you’re bringing back next spring.",
+  "targetSeconds": 32,
+  "spokenStyle": "A knowledgeable local friend explaining why this matters; conversational, unhurried, no sales-announcer voice.",
+  "onScreen": [
+    "Fort Lauderdale United",
+    "Men’s pro team",
+    "Spring 2027",
+    "Davie",
+    "Women playing now"
+  ],
+  "narrationAdds": [
+    "Who this is useful for: local Broward fans",
+    "The women’s team already plays at the shared venue",
+    "Fans can get to know the club before the men’s first season"
+  ],
+  "evidence": [
+    "https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/",
+    "https://www.ftlutd.com/news/2026/10/15/fort-lauderdale-united-fc-names-aly-hassan-usl-league-one-gm/"
+  ],
+  "status": "New script; ElevenLabs private audition pending secure key. Rejected Pocket voice is not a fallback."
+}

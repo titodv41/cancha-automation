@@ -1,5 +1,7 @@
 # Community content reset — October 22, 2026, New York
 
+> Current revision: see [the creative agency workflow](creative-agency-workflow.md). The owner rejected the local narrators and requested capped ElevenLabs Free auditions. The five-guide photo bank and current queue status are recorded there; older counts and voice recommendations below are historical.
+
 **October 23 update:** The accepted carousel structure now uses heavier Manrope secondary type. A focused 24-second FTL men’s expansion explainer, optional free narration audition, reusable project skill and verified queue result are documented in [storycraft](storycraft-workflow.md). Those current instructions supersede the older body-font and preview defaults below.
 
 The live queue confirmed that `local-rowdies-shield-20261022` was published with three crops of one photograph (receipt `17951303991338060`). That was a creative failure. Every post in the former six-carousel bank repeated source photos. Its remaining drafts are retired; published receipts are preserved. The old manifest is archived in `content/instagram/archive/photo-editorial-rejected-20261022.json` as evidence, not a reusable bank.

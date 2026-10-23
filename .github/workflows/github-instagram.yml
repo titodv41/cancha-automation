@@ -16,6 +16,9 @@ on:
     # Publish after 6 PM; GitHub schedules are approximate and can be delayed.
     - cron: '7 14 * * *'
     - cron: '7 15 * * *'
+    # Noon fallback checks whether preparation completed today before doing work.
+    - cron: '17 16 * * *'
+    - cron: '17 17 * * *'
     - cron: '7 22 * * *'
     - cron: '7 23 * * *'
     # Midday/evening checks; plan caps and four-hour spacing protect delayed runs.
@@ -48,7 +51,13 @@ jobs:
           cache: npm
       - if: steps.clock.outputs.action != ''
         run: npm ci
-      - if: steps.clock.outputs.action == 'prepare'
+      - id: preparation
+        if: steps.clock.outputs.action == 'prepare'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+        run: node scripts/check-preparation-needed.mjs >> "$GITHUB_OUTPUT"
+      - if: steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
         run: npx playwright install --with-deps chromium
       - name: Run private automation
         if: steps.clock.outputs.action != ''
@@ -57,11 +66,11 @@ jobs:
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
           CANCHA_CONTROL_TOKEN: ${{ steps.clock.outputs.action == 'migrate' && secrets.CANCHA_CONTROL_TOKEN || '' }}
           META_PAGE_ACCESS_TOKEN: ${{ steps.clock.outputs.action == 'reconnect' && secrets.META_PAGE_ACCESS_TOKEN || '' }}
-          FRAMER_API_KEY: ${{ (steps.clock.outputs.action == 'prepare' || steps.clock.outputs.action == 'repair-media') && secrets.FRAMER_API_KEY || '' }}
+          FRAMER_API_KEY: ${{ ((steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'repair-media') && secrets.FRAMER_API_KEY || '' }}
           CANCHA_AUTOMATION_BACKEND: github
           CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
           CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
-          ACTION: ${{ steps.clock.outputs.action }}
+          ACTION: ${{ steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'false' && 'review' || steps.clock.outputs.action }}
         run: node scripts/github-instagram.mjs "$ACTION"
       - uses: actions/upload-artifact@v4
         if: success() && steps.clock.outputs.action != ''

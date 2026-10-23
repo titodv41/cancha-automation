@@ -1,11 +1,12 @@
 import {readFile, writeFile, mkdir} from 'node:fs/promises';
 import {fetch, ProxyAgent} from 'undici';
-import {elevenClient, inspectVoiceAccount, generateVoice, validateVoiceBatch} from '../video/audio/premium-voice.mjs';
+import {elevenClient, inspectVoiceAccount, generateVoice, validateVoiceBatch,validateFreePreviewAccount} from '../video/audio/premium-voice.mjs';
 
-const policy = JSON.parse(await readFile('config/premium-voice.json'));
-const story = JSON.parse(await readFile('content/instagram/club-cut.json'));
 const action = process.argv[2] || 'check';
-if (!['check', 'audition'].includes(action)) throw Error('Use check or audition');
+if (!['check', 'audition','free-audition'].includes(action)) throw Error('Use check, audition or free-audition');
+const free=action==='free-audition';
+const policy = JSON.parse(await readFile(free?'config/elevenlabs-free-preview.json':'config/premium-voice.json'));
+const story = JSON.parse(await readFile(free?'content/instagram/story-narration.json':'content/instagram/club-cut.json'));
 if(action==='audition'&&policy.paidGenerationEnabled!==true)throw Error('Paid narration is disabled; use the free voice auditions');
 const out = 'private-data/premium-voice';
 await mkdir(out, {recursive: true, mode: 0o700});
@@ -15,14 +16,16 @@ try {
   const account = await inspectVoiceAccount(api, policy);
   await writeFile(out + '/account-check.json', JSON.stringify(account, null, 2), {mode: 0o600});
   console.log('Voice account checked. Candidate availability: ' + account.voices.map(v => v.name + '=' + v.available).join(', '));
-  if (action === 'audition') {
-    if (account.subscription.tier === 'free') throw Error('Commercial voice requires a paid commercial plan');
-    if (!account.subscription.overagesDisabled) throw Error('Set the provider usage-based credit limit to zero before generation');
-    const count = validateVoiceBatch(story.script, policy.candidates, policy);
+  if (action === 'audition'||free) {
+    if (!free&&account.subscription.tier === 'free') throw Error('Use free-audition for private Free-tier voice tests');
+    if (!free&&!account.subscription.overagesDisabled) throw Error('Set the provider usage-based credit limit to zero before generation');
+    const mode=free?'free-preview':'paid';
+    const count = validateVoiceBatch(story.script, policy.candidates, policy,{mode});
+    if(free)validateFreePreviewAccount(account,count);
     if (!Number.isFinite(account.subscription.characterLimit) || !Number.isFinite(account.subscription.characterCount) || account.subscription.characterLimit - account.subscription.characterCount < count) throw Error('Insufficient confirmed plan credits');
     if (account.voices.some(v => !v.available)) throw Error('A configured stock voice is unavailable; select a voice after reviewing the account check');
     const results = [];
-    for (const candidate of policy.candidates) results.push(await generateVoice({api, text: story.script, candidate, policy, ledgerDir: out + '/ledger', offset: story.narrationOffset}));
+    for (const candidate of policy.candidates) results.push(await generateVoice({api, text: story.script, candidate, policy, ledgerDir: out + (free?'/free-ledger':'/ledger'), offset: story.narrationOffset,mode,account}));
     await writeFile(out + '/auditions.json', JSON.stringify({storyId: story.id, results}, null, 2), {mode: 0o600});
     console.log('Two private auditions prepared. Nothing scheduled or published.');
   }

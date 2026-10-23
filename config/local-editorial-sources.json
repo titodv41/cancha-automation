@@ -298,5 +298,69 @@
         ]
       }
     ]
+  },
+  {
+    "id": "rowdies-al-lang-guide-20261023",
+    "kind": "ground-guide",
+    "reviewedOn": "2026-10-23",
+    "validUntil": "2026-11-07T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://www.rowdiessoccer.com/al-lang-stadium/",
+        "facts": [
+          "The Rowdies have called Al Lang Stadium home since the 2011 season",
+          "downtown St. Petersburg",
+          "first match at Al Lang on April 9, 2011",
+          "spring training baseball"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "orlando-ground-guide-20261023",
+    "kind": "ground-guide",
+    "reviewedOn": "2026-10-23",
+    "validUntil": "2026-11-07T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://intercostadium.com/",
+        "facts": [
+          "OPENED IN MARCH 2017",
+          "ORLANDO CITY OF MAJOR LEAGUE SOCCER (MLS)",
+          "ORLANDO PRIDE OF THE NATIONAL WOMEN’S SOCCER LEAGUE (NWSL)",
+          "heart of Downtown Orlando"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weston-program-guide-20261023",
+    "kind": "club-guide",
+    "reviewedOn": "2026-10-23",
+    "validUntil": "2026-11-07T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://www.westonfc.org/",
+        "facts": [
+          "BOYS PROGRAM",
+          "GIRLS PROGRAM",
+          "@westonfc_fl"
+        ]
+      },
+      {
+        "url": "https://www.westonfc.org/about-1-1",
+        "facts": [
+          "BOYS PROGRAM",
+          "MLS NEXT",
+          "UPSL"
+        ]
+      },
+      {
+        "url": "https://www.westonfc.org/about-1-2",
+        "facts": [
+          "GIRLS PROGRAM"
+        ]
+      }
+    ]
   }
 ]

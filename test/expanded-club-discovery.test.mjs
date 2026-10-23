@@ -1,5 +1,5 @@
 import test from'node:test';import assert from'node:assert/strict';
-import{parseFasaLeagues,parseSoccerShotsLocations,parseOrlandoSoccerFields,expandedProfileIdentity,sharedOrganizationHost}from'../server/expanded-club-discovery.mjs';
+import{parseFasaLeagues,parseSoccerShotsLocations,parseOrlandoSoccerFields,expandedProfileIdentity,sharedOrganizationHost,soccerShotsRegionalProfile}from'../server/expanded-club-discovery.mjs';
 import{discoveryAgeEvidence}from'../server/discovery-ages.mjs';
 import{profileAgeEvidence}from'../server/club-taxonomy.mjs';
 import{discoveryLevels}from'../server/discovery-catalog.mjs';
@@ -15,3 +15,15 @@ test('shared platforms do not collapse separate franchise profiles, while standa
 test('an explicit provider-wide age bound routes young children without narrowing a multi-program club to one class',()=>{assert.deepEqual(profileAgeEvidence({entity:'profile',ages:'Provider-wide ages 2–8; younger toddler classes also offered.',audience:'Youth'}).ranges,[{min:2,max:8}]);assert.equal(discoveryAgeEvidence({entity:'profile',ages:'One program for ages 4–14. Adult teams also offered.',audience:'Youth · Adult'}).kind,'programs')});
 
 test('introductory youth programs participate in the Beginner filter without claiming competitive or academy status',()=>{assert.deepEqual(discoveryLevels('Introductory youth soccer','Preschool soccer'),['Beginner']);});
+
+test('regional provider fallback needs live identity, age and geography evidence and omits private venue/contact fields',()=>{
+ const seed={name:'Soccer Shots — Central Florida',city:'Orlando',county:'Orange',website:'https://www.soccershots.com/centralflorida/',type:'Club',serviceCities:['Orlando'],school:'Private School',contact:'Secret contact',email:'private@example.test'};
+ const page=html('<h1>Soccer Shots Central Florida</h1><p>Orlando programs for ages 18 months to 8 years.</p>');
+ const row=soccerShotsRegionalProfile(page,seed,{today,locations});
+ assert.equal(row.checkedOn,today);assert.equal(row.website,seed.website);assert.equal(row.openConfirmed,undefined);
+ assert(!JSON.stringify(row).includes('private@example.test'));assert(!JSON.stringify(row).includes('Private School'));
+ assert.throws(()=>soccerShotsRegionalProfile(page,{...seed,county:'Miami-Dade'},{today,locations}));
+ assert.throws(()=>soccerShotsRegionalProfile(page,{...seed,website:'https://lookalike.example/centralflorida/'},{today,locations}));
+ assert.throws(()=>soccerShotsRegionalProfile(page.replace('18 months','18 years'),seed,{today,locations}));
+ assert.throws(()=>soccerShotsRegionalProfile(page.replace('Central Florida','Tampa Bay'),seed,{today,locations}));
+});

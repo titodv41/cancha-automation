@@ -6,7 +6,7 @@ export function distinctCarouselPhotos(content) {
     const matches=content.photos.filter(p=>p.id===slide.photoId);
     if(matches.length!==1)return false;
     const photo=matches[0];let url;
-    try{const u=new URL(photo.originalUrl);url=u.origin+u.pathname.split('/v1/')[0];}catch{return false;}
+    try{const u=new URL(photo.originalUrl);url=u.origin+(u.hostname==='static.wixstatic.com'?u.pathname.split('/v1/')[0]:u.pathname);}catch{return false;}
     if(!/^[a-f0-9]{64}$/.test(photo.originalChecksum||'')||checksums.has(photo.originalChecksum)||urls.has(url)||ids.has(photo.id))return false;
     checksums.add(photo.originalChecksum);urls.add(url);ids.add(photo.id);
   }

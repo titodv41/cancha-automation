@@ -4,6 +4,7 @@ export function scheduledAction({event,requested,cron,now=new Date()}){
  if(['37 0-4,22-23 * * *','37 0-4,16-23 * * *'].includes(cron)){const hour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'}).format(now));return hour>=(cron==='37 0-4,22-23 * * *'?18:12)?'publish':'';}
  const offset=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',timeZoneName:'shortOffset'}).formatToParts(now).find(x=>x.type==='timeZoneName').value;
  const daylight=offset==='GMT-4';
+ if(cron===(daylight?'17 16 * * *':'17 17 * * *'))return 'prepare';
  if(cron===(daylight?'7 14 * * *':'7 15 * * *'))return 'prepare';
  if(cron===(daylight?'7 22 * * *':'7 23 * * *'))return 'publish';
  return '';

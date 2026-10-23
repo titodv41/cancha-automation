@@ -4,7 +4,7 @@ import {mkdtemp, rm, readFile, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {alignmentToWords,captionGroups} from '../video/audio/caption-timing.mjs';
-import {validateVoiceBatch,elevenClient,inspectVoiceAccount,generateVoice} from '../video/audio/premium-voice.mjs';
+import {validateVoiceBatch,validateFreePreviewAccount,elevenClient,inspectVoiceAccount,generateVoice} from '../video/audio/premium-voice.mjs';
 const policy={...JSON.parse(await readFile(new URL('../config/premium-voice.json',import.meta.url))),paidGenerationEnabled:true},voice=policy.candidates[0];
 const text='Weston won. Two nil.';
 const alignment={characters:[...text],character_start_times_seconds:[...text].map((_,i)=>i*.1),character_end_times_seconds:[...text].map((_,i)=>(i+1)*.1)};
@@ -60,5 +60,24 @@ test('an uncertain charge is reserved and cannot be automatically retried',async
   await assert.rejects(generateVoice(args),/timeout/);await assert.rejects(generateVoice(args),/pending or uncertain/);assert.equal(calls,1);
   const ledger=JSON.parse(await readFile(join(dir,'ledger.json')));assert.equal(Object.values(ledger.months)[0],text.length);
   await assert.rejects(generateVoice({...args,text:'Different script.',policy:{...policy,monthlyProjectCharacterBudget:text.length}}),/budget reached/);
+ }finally{await rm(dir,{recursive:true,force:true})}
+});
+
+test('Free auditions cannot consume paid-plan credits, exceed the cap or enable paid generation',async()=>{
+ const freePolicy={...policy,paidGenerationEnabled:false,freePreviewEnabled:true,monthlyProjectCharacterBudget:1500};
+ const account={voices:[{available:true}],subscription:{tier:'free',characterCount:10,characterLimit:10000}};
+ assert.equal(validateVoiceBatch(text,[voice],freePolicy,{mode:'free-preview'}),text.length);
+ assert.equal(validateFreePreviewAccount(account,text.length),true);
+ assert.throws(()=>validateVoiceBatch(text,[voice],{...freePolicy,paidGenerationEnabled:true},{mode:'free-preview'}));
+ assert.throws(()=>validateVoiceBatch(text,[voice],{...freePolicy,monthlyProjectCharacterBudget:1501},{mode:'free-preview'}));
+ const dir=await mkdtemp(join(tmpdir(),'cancha-free-preview-'));let calls=0;
+ try {
+  const args={api:async()=>{calls++;return sample},text,candidate:voice,policy:freePolicy,ledgerDir:dir,mode:'free-preview',account};
+  await assert.rejects(generateVoice({...args,account:{...account,subscription:{...account.subscription,tier:'starter'}}}),/Free account/);
+  await assert.rejects(generateVoice({...args,account:{...account,subscription:{...account.subscription,characterLimit:10}}}),/free credits/);
+  assert.equal(calls,0);
+  const first=await generateVoice(args),cached=await generateVoice(args);
+  assert.equal(calls,1);assert.equal(cached.cached,true);
+  assert.equal(JSON.parse(await readFile(first.timingFile)).automaticPublication,false);
  }finally{await rm(dir,{recursive:true,force:true})}
 });

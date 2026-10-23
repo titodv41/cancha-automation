@@ -1,5 +1,7 @@
 # Cancha storycraft — October 23, 2026
 
+> Current revision: see [the creative agency workflow](creative-agency-workflow.md). The owner rejected the local narrators and requested capped ElevenLabs Free auditions. The five-guide photo bank and current queue status are recorded there; older counts and voice recommendations below are historical.
+
 The owner likes the current carousel direction and latest real-footage film, but wants the smaller type to have character and every video to explain one real subject. This change preserves the italic Cancha display font, forest/cream palette, distinct-photo gates and publishing limits. Secondary typography uses the same licensed Manrope family already available on Cancha’s website: 650 body, 750 labels, larger type, sentence case and tighter tracking. Carousel body is 42 px; footer/page labels are at least 29 px on a 1080 px canvas. Source notes stay in evidence/caption links, not as artwork fine print.
 
 ## The actual story
