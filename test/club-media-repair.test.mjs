@@ -5,3 +5,11 @@ test('reviewed sponsor-image repair clears only the exact bad asset and preserve
 test('a replacement owner image is not removed by a historical media exclusion',async()=>{const x=fixture('https://framerusercontent.com/images/owner-replacement.png');assert.equal(await repairReviewedClubMedia(x.f),0);assert.equal(x.writes(),0)});
 
 test('media guards ignore row order and server timestamps but detect any editable field change',()=>{const a={id:'a',slug:'a',draft:false,updatedAt:'one',fieldData:{title:{type:'string',value:'Original'}}},b={id:'b',slug:'b',draft:false,fieldData:{}};assert.equal(mediaSnapshot([a,b]),mediaSnapshot([b,{...a,updatedAt:'two'}]));assert.notEqual(mediaSnapshot([a]),mediaSnapshot([{...a,fieldData:{title:{type:'string',value:'Owner edit'}}}]))});
+
+test('a reviewed replacement updates only the exact prior image and keeps every listing fact',async()=>{
+ const x=fixture(),replacement='https://framerusercontent.com/images/reviewed-field.jpg';let verified=0;
+ const rules=[{slug:'plant-city-fc',assetUrl:bad,replacementUrl:replacement,replacementChecksum:'a'.repeat(64)}];
+ assert.equal(await repairReviewedClubMedia(x.f,{rules,verifyReplacement:async r=>{assert.equal(r.replacementUrl,replacement);verified++}}),1);
+ assert.equal(verified,1);assert.equal(x.rows()[0].fieldData.image.value,replacement);assert.equal(x.rows()[0].fieldData.title.value,'Plant City FC');assert.equal(x.rows()[0].fieldData.status.value,'Published');
+ assert.equal(await repairReviewedClubMedia(x.f,{rules,verifyReplacement:async()=>{throw Error('must not fetch again')}}),0);
+});

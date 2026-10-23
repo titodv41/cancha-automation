@@ -118,5 +118,45 @@
     "slug": "osheas-fc",
     "assetUrl": "https://framerusercontent.com/images/Fxc2Qjho7foiQfjsBYrcCiqGdjY.jpg",
     "reason": "Irish pub wordmark; a distinct team identifying badge is not established."
+  },
+  {
+    "slug": "jack-puryear-sports-complex",
+    "assetUrl": "https://framerusercontent.com/images/5aXYbcFAHtr5jMHd8P5lZQlcuI.jpg",
+    "replacementUrl": "https://framerusercontent.com/images/UWDdjDdQX8dM0P8LJFrZhUi4GF4.jpg",
+    "replacementChecksum": "3f62479d935f86a71881d7acd443f0ceebe15e2ecf3e54ff85321e58314d9746",
+    "sourcePage": "https://www.stpeteparksrec.org/business_detail_T11_R12.php",
+    "sourceImage": "https://cms3.revize.com/revize/stpetersburgparks/images/sports/jackpuryear/slideshow/2.jpg?t=202501140953090",
+    "sourceImageChecksum": "74292659fc44110e2f2056821a46a41af0f00c40e4b70c8fe0f533c9d7d071f8",
+    "reason": "Use the actual soccer field shown in the same official venue gallery rather than its court/baseball view."
+  },
+  {
+    "slug": "lakewood-sports-complex",
+    "assetUrl": "https://framerusercontent.com/images/6viCJkZHuVenkYlZ9qkgWgRcMSU.jpg",
+    "replacementUrl": "https://framerusercontent.com/images/UTBArLVzlX6qHpy4uEiYtvh1esI.png",
+    "replacementChecksum": "b641afb5d9489224821bbbb55a6a8b3cd106d732bb9c42315888412b04c9b509",
+    "sourcePage": "https://www.stpeteparksrec.org/business_detail_T11_R17.php",
+    "sourceImage": "https://cms3.revize.com/revize/stpetersburgparks/Park-and-Rec-Logo_BLACK.png",
+    "sourceImageChecksum": "ba3dd99d868f23f3316f6fc1214e179dc5ec37d5a1ff701bc43047524188d4ac",
+    "reason": "The official page reuses images named for Lake Vista. Use the identifying city parks logo instead of implying a different park is Lakewood."
+  },
+  {
+    "slug": "woodlawn-sports-complex",
+    "assetUrl": "https://framerusercontent.com/images/Il39UZKBjkMn9hcSUpHjaZZv14c.jpg",
+    "replacementUrl": "https://framerusercontent.com/images/drb6JijtNidomaT844U9Xtwln68.jpg",
+    "replacementChecksum": "ec1b55df4925432ff5daa14ea10304a43203af9a431dba987b289bc5d567791c",
+    "sourcePage": "https://www.stpeteparksrec.org/business_detail_T11_R23.php",
+    "sourceImage": "https://cms3.revize.com/revize/stpetersburgparks/images/sports/woodlawn/slideshow/2.jpg?t=202501140953090",
+    "sourceImageChecksum": "0cce9a7cd4e5a97c95593feb6f8f4fa708e6d12886a6f7e1035b61a4e7b16960",
+    "reason": "Use the actual soccer field shown in the same official venue gallery rather than its court/baseball view."
+  },
+  {
+    "slug": "county-pines-recreational-complex-at-samuel-friedland-park",
+    "assetUrl": "https://framerusercontent.com/images/CrDoYMnqUCSmQE8GFUKPTwvdY.jpg",
+    "replacementUrl": "https://framerusercontent.com/images/XcSeZlKB3SCBgBFf1lo4gD2lQ.png",
+    "replacementChecksum": "35f8e93c4b20555dca19db887243c9ecfdd17ca3a4a078895377fc632c55266e",
+    "sourcePage": "https://discover.pbc.gov/parks/Locations/County-Pines.aspx",
+    "sourceImage": "https://discover.pbc.gov/parks/SiteImages/Homepage/Parks-logo-sm.png",
+    "sourceImageChecksum": "4e149e323328ae9a9089c99db0825a575896fb94a812e5dca0182801e1739e52",
+    "reason": "Use the parks department identity rather than a baseball-field photo for this soccer-field profile."
   }
 ]

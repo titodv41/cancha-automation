@@ -21,7 +21,7 @@ export function municipalParkLeads(kind,html){
  const unique=leads.filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i);
  if(unique.length<5||unique.length>(kind==='stpete'?60:180))throw Error('Municipal directory shape changed');return unique;
 }
-export function municipalSoccerProfile(html,lead,{today}={}){
+export function municipalSoccerProfile(html,lead,{today,mediaOverrides=null}={}){
  const {kind,url}=lead;if(!allowed(kind,url)||!/^\d{4}-\d{2}-\d{2}$/.test(today||''))throw Error('Unreviewed municipal source or date');
  const d=doc(html);let name,address,city,county,photo,amenities,content,imageUse='official-venue-photo';
  if(kind==='miami'){
@@ -51,8 +51,13 @@ export function municipalSoccerProfile(html,lead,{today}={}){
   if(photo){const original=new URL(photo,url);if(original.origin==='https://www.stpeteparksrec.org')photo='https://cms3.revize.com/revize/stpetersburgparks'+original.pathname+original.search}
   if(!address||!name||lead.nameHint&&key(lead.nameHint)!==key(name))throw Error('City complex identity or address changed');
  }
+ if(mediaOverrides){
+  const raw=parseHTML(html).document,override=mediaOverrides[url],agencyAlt={miami:'City of Miami - Logo',pbc:'Parks Logo',stpete:'navigation logo'}[kind];
+  if(!override||override.mode==='agency'){photo=[...raw.querySelectorAll('img[src]')].find(i=>i.getAttribute('alt')===agencyAlt)?.getAttribute('src');imageUse='official-municipal-logo'}
+  else{const normalize=s=>{const u=new URL(s,url);if(kind==='stpete'&&u.origin==='https://www.stpeteparksrec.org')return'https://cms3.revize.com/revize/stpetersburgparks'+u.pathname;return u.origin+u.pathname};if(![...raw.querySelectorAll('img[src]')].some(i=>normalize(i.getAttribute('src'))===normalize(override.url)))throw Error('Reviewed venue photo no longer appears on the official page');photo=override.url;imageUse='official-venue-photo'}
+ }
  if(!name||name.length>180||!photo)throw Error('Municipal venue needs its actual name and photograph');
- const image=new URL(photo,url),officialCityCdn=kind==='stpete'&&image.origin==='https://cms3.revize.com'&&image.pathname.startsWith('/revize/stpetersburgparks/images/sports/');
+ const image=new URL(photo,url),officialCityCdn=kind==='stpete'&&image.origin==='https://cms3.revize.com'&&(image.pathname.startsWith('/revize/stpetersburgparks/images/sports/')||image.pathname==='/revize/stpetersburgparks/Park-and-Rec-Logo_BLACK.png');
  if(image.protocol!=='https:'||image.origin!==new URL(url).origin&&!officialCityCdn)throw Error('Venue photograph host changed');
  const text=clean(content.textContent),closed=/\b(?:closed|closure|construction)\b/i.test(text),notice=closed?'Check current field closures and construction notices on the official park page before visiting. ':'';
  return {slug:slug(name),name,type:'Place',city,county,region:floridaRegion(county),website:url,checkedOn:today,

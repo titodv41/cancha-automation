@@ -1,11 +1,16 @@
 import{readFile,writeFile,mkdir}from'node:fs/promises';import{sendPrivate}from'./automation-service-client.mjs';
+import{createHash}from'node:crypto';import{sourceSession}from'./source-session.mjs';
 const stable=x=>Array.isArray(x)?x.map(stable):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,stable(x[k])])):x;
 export const mediaSnapshot=items=>JSON.stringify(items.map(x=>({id:x.id,slug:x.slug,draft:x.draft,fieldData:stable(x.fieldData)})).sort((a,b)=>a.id.localeCompare(b.id)));
-export async function repairReviewedClubMedia(f,{durable=false}={}){
- const exclusions=JSON.parse(await readFile('config/club-media-exclusions.json')),c=(await f.getCollections()).find(x=>x.name==='Clubs');if(!c)return 0;const fields=await c.getFields(),image=fields.find(x=>x.name==='Image'),before=await c.getItems();
- const rows=before.filter(x=>exclusions.some(e=>e.slug===x.slug&&e.assetUrl===x.fieldData[image.id]?.value?.url));if(!rows.length)return 0;
+const imageUrl=v=>typeof v==='string'?v:v?.url||null;
+async function verifiedReplacement(rule){const url=new URL(rule.replacementUrl);if(url.origin!=='https://framerusercontent.com'||!url.pathname.startsWith('/images/')||url.search||! /^[a-f0-9]{64}$/.test(rule.replacementChecksum||''))throw Error('Reviewed replacement identity is invalid');const session=sourceSession();try{const bytes=await session.html(url.href,/image\/(png|jpeg|webp)/,{maxBytes:4000000});if(createHash('sha256').update(bytes).digest('hex')!==rule.replacementChecksum)throw Error('Reviewed replacement bytes changed')}finally{await session.close()}}
+export async function repairReviewedClubMedia(f,{durable=false,rules=null,verifyReplacement=verifiedReplacement}={}){
+ const exclusions=rules||JSON.parse(await readFile('config/club-media-exclusions.json')),c=(await f.getCollections()).find(x=>x.name==='Clubs');if(!c)return 0;const fields=await c.getFields(),image=fields.find(x=>x.name==='Image'),before=await c.getItems();
+ const matches=new Map(before.map(x=>[x.id,exclusions.find(e=>e.slug===x.slug&&e.assetUrl===imageUrl(x.fieldData[image.id]?.value))]).filter(([,e])=>e));
+ const rows=before.filter(x=>matches.has(x.id));if(!rows.length)return 0;
+ for(const rule of matches.values())if(rule.replacementUrl)await verifyReplacement(rule);
  const snapshot={projectId:'GU8EIeQXaRbty0S23thu',collectionName:'Clubs',capturedAt:new Date().toISOString(),fields,items:before},dir='backups/club-media-'+Date.now();await mkdir(dir,{recursive:true,mode:0o700});await writeFile(dir+'/clubs.json',JSON.stringify(snapshot),{mode:0o600});if(durable)await sendPrivate('/automation/opportunity-backup',snapshot);
- if(mediaSnapshot(await c.getItems())!==mediaSnapshot(before))throw Error('Clubs changed before reviewed media correction');await c.addItems(rows.map(x=>({id:x.id,slug:x.slug,fieldData:{[image.id]:{type:'image',value:null}}})));
- const after=await c.getItems();for(const old of before){const row=after.find(x=>x.id===old.id);if(!row||row.slug!==old.slug||row.draft!==old.draft)throw Error('Media correction changed identity');for(const[k,v]of Object.entries(old.fieldData))if(k!==image.id&&JSON.stringify(row.fieldData[k])!==JSON.stringify(v))throw Error('Media correction changed listing facts');if(rows.some(x=>x.id===old.id)&&row.fieldData[image.id]?.value)throw Error('Reviewed incorrect image was not cleared')}
+ if(mediaSnapshot(await c.getItems())!==mediaSnapshot(before))throw Error('Clubs changed before reviewed media correction');await c.addItems(rows.map(x=>({id:x.id,slug:x.slug,fieldData:{[image.id]:{type:'image',value:matches.get(x.id).replacementUrl||null}}})));
+ const after=await c.getItems();if(after.length!==before.length)throw Error('Media correction changed item count');for(const old of before){const row=after.find(x=>x.id===old.id);if(!row||row.slug!==old.slug||row.draft!==old.draft)throw Error('Media correction changed identity');for(const[k,v]of Object.entries(old.fieldData))if(k!==image.id&&JSON.stringify(row.fieldData[k])!==JSON.stringify(v))throw Error('Media correction changed listing facts');if(matches.has(old.id)&&imageUrl(row.fieldData[image.id]?.value)!==(matches.get(old.id).replacementUrl||null))throw Error('Reviewed replacement was not applied')}
  return rows.length;
 }

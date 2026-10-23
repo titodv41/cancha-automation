@@ -15,7 +15,7 @@ export async function municipalSoccerSources({today,existing=[]}={}){
   const ordered=[...candidates.filter(r=>prioritized.has(r.url)),...candidates.filter(r=>!prioritized.has(r.url)).sort((a,b)=>((dateNumber+leads.indexOf(a))%leads.length)-((dateNumber+leads.indexOf(b))%leads.length))];
   const due=ordered.filter(r=>{const c=cache[r.url];return !c||c.checkedOn>today||Date.parse(today)-Date.parse(c.checkedOn)>=config.recheckDays*86400000||c.status==='available'}).slice(0,config.maximumDetailPages);
   for(let i=0;i<due.length;i+=4){await Promise.allSettled(due.slice(i,i+4).map(async lead=>{try{
-   const bytes=await session.html(lead.url,/html/i,{timeoutMs:12000,followCanonical:true,maxBytes:2000000}),row=municipalSoccerProfile(bytes.toString(),lead,{today});cache[lead.url]={checkedOn:today,status:row?'available':'no-soccer-field-evidence'};if(row)rows.push(row);
+   const bytes=await session.html(lead.url,/html/i,{timeoutMs:12000,followCanonical:true,maxBytes:2000000}),row=municipalSoccerProfile(bytes.toString(),lead,{today,mediaOverrides:config.mediaOverrides||{}});cache[lead.url]={checkedOn:today,status:row?'available':'no-soccer-field-evidence'};if(row)rows.push(row);
   }catch(e){cache[lead.url]={checkedOn:today,status:'blocked'};blocked.push({url:lead.url,reason:e.message})}}))}
   await mkdir('private-data/municipal-source-cache',{recursive:true,mode:0o700});await writeFile(path,JSON.stringify(cache),{mode:0o600});
   sources.push({kind:'municipal-details',available:true,checked:due.length,eligible:rows.length,cached:ordered.length-due.length});

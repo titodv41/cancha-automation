@@ -19,5 +19,57 @@
     "https://www.stpeteparksrec.org/business_detail_T11_R17.php",
     "https://www.stpeteparksrec.org/business_detail_T11_R21.php",
     "https://www.stpeteparksrec.org/business_detail_T11_R23.php"
-  ]
+  ],
+  "mediaOverrides": {
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Juan-Pablo-Duarte-Park": {
+      "mode": "photo",
+      "url": "https://www.miami.gov/files/sharedassets/public/v/1/parks/juan-pablo-duarte-park_1.jpg?dimension=pageimage&w=1200"
+    },
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Esther-Mae-Armbrister-Park": {
+      "mode": "agency"
+    },
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Henderson-Park": {
+      "mode": "photo",
+      "url": "https://www.miami.gov/files/sharedassets/public/v/1/parks/henderson.jpg?dimension=pageimage&w=1200"
+    },
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Robert-King-High-Park": {
+      "mode": "agency"
+    },
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Little-Haiti-Soccer-Park": {
+      "mode": "photo",
+      "url": "https://www.miami.gov/files/sharedassets/public/v/1/parks/little-haiti-soccer-park.jpg?dimension=pageimage&w=1200"
+    },
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Charles-Hadley-Park": {
+      "mode": "agency"
+    },
+    "https://www.miami.gov/Parks-Public-Places/Parks-Directory/Athalie-Range-Park": {
+      "mode": "agency"
+    },
+    "https://discover.pbc.gov/parks/Locations/County-Pines.aspx": {
+      "mode": "agency"
+    },
+    "https://discover.pbc.gov/parks/Locations/Westgate.aspx": {
+      "mode": "photo",
+      "url": "https://discover.pbc.gov/parks/SiteImages/Parks/Westgate/01.jpg"
+    },
+    "https://www.stpeteparksrec.org/business_detail_T11_R3.php": {
+      "mode": "photo",
+      "url": "https://cms3.revize.com/revize/stpetersburgparks/images/sports/azalea/slideshow/1.jpg?t=202501140953070"
+    },
+    "https://www.stpeteparksrec.org/business_detail_T11_R12.php": {
+      "mode": "photo",
+      "url": "https://cms3.revize.com/revize/stpetersburgparks/images/sports/jackpuryear/slideshow/2.jpg?t=202501140953090"
+    },
+    "https://www.stpeteparksrec.org/business_detail_T11_R17.php": {
+      "mode": "agency"
+    },
+    "https://www.stpeteparksrec.org/business_detail_T11_R21.php": {
+      "mode": "photo",
+      "url": "https://cms3.revize.com/revize/stpetersburgparks/images/sports/walterfuller/slideshow/1.jpg?t=202501140953070"
+    },
+    "https://www.stpeteparksrec.org/business_detail_T11_R23.php": {
+      "mode": "photo",
+      "url": "https://cms3.revize.com/revize/stpetersburgparks/images/sports/woodlawn/slideshow/2.jpg?t=202501140953090"
+    }
+  }
 }
