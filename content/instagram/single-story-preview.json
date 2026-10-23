@@ -1,0 +1,39 @@
+{
+  "createdAt": "2026-10-23T16:37:38.312Z",
+  "creativeStatus": "Preview only; no Instagram import or publication",
+  "versions": [
+    {
+      "mode": "music",
+      "url": "https://framerusercontent.com/assets/1pyol09cxYiN5OXgZF1lpuakp6s.mp4",
+      "sha256": "fc73ac4711814daa396717b381648bb09f5b98c2230c5a76dcec0ed0a7bf105d",
+      "bytes": 6447583,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "durationSeconds": 24,
+      "channels": 2,
+      "sampleRate": 48000,
+      "integratedLUFS": -15.84,
+      "truePeakDb": -1.99,
+      "passed": true,
+      "syntheticNarration": false
+    },
+    {
+      "mode": "voice",
+      "url": "https://framerusercontent.com/assets/4ngRUchMwbXBH27Km1CFfYcBL8.mp4",
+      "sha256": "2c9e17890e289a8f66c03e424f1a2bd33f12beeb594c35c62f3a17bdb3f6f0e6",
+      "bytes": 6438181,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "durationSeconds": 24,
+      "channels": 2,
+      "sampleRate": 48000,
+      "integratedLUFS": -16.74,
+      "truePeakDb": -2.54,
+      "passed": true,
+      "syntheticNarration": true
+    }
+  ],
+  "poster": "https://framerusercontent.com/images/acoktHl87Z7skQsw9KdMqeByjCs.jpg"
+}

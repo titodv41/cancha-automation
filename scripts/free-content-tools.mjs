@@ -16,7 +16,8 @@ if(action==='setup'){
  install(voiceEnv,['-r','video/audio/free-voice-requirements.txt']);
  install(captionEnv,['-r','video/audio/caption-requirements.txt']);
 }else if(action==='audition')run(join(voiceEnv,'bin/python'),['video/audio/free-voice-auditions.py']);
+else if(action==='story')run(join(voiceEnv,'bin/python'),['video/audio/free-story-voice.py',...args]);
 else if(action==='transcribe'){
  if(!args.length)throw Error('Supply local audio/video paths for editable caption drafts');
  run(join(captionEnv,'bin/python'),['video/audio/transcribe-local.py',...args]);
-}else throw Error('Use setup, audition or transcribe');
+}else throw Error('Use setup, audition, story or transcribe');

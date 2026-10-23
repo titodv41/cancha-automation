@@ -35,7 +35,11 @@
     "content:club-cut": "node video/render-club-cut.mjs",
     "content:free-setup": "node scripts/free-content-tools.mjs setup",
     "content:free-voice": "node scripts/free-content-tools.mjs audition",
-    "content:captions": "node scripts/free-content-tools.mjs transcribe"
+    "content:captions": "node scripts/free-content-tools.mjs transcribe",
+    "content:single-story": "node video/render-single-story.mjs",
+    "content:story-voice": "node scripts/free-content-tools.mjs story",
+    "content:story-media": "node scripts/prepare-single-story.mjs",
+    "content:story-share": "node scripts/share-single-story.mjs"
   },
   "dependencies": {
     "framer-api": "5.1.0",

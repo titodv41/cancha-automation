@@ -25,7 +25,7 @@ for(let i=0;i<length;i++){
  const note=root*2*Math.pow(2,notes[step%notes.length]/12),pluckTime=t%(beat/2),pluck=(sine(note,t)+.23*sine(note*2,t))*.042*Math.exp(-pluckTime*15)*sidechain;
  duck+=(active[i]?1-duck:-duck)*(active[i]?1/(sr*.035):1/(sr*.18));
  const musicGain=(story.music?.openGain||.85)*(1-duck)+(story.music?.duckedGain||.42)*duck;
- let effects=0;for(const at of[.9,5.6,10.4,15.3,18.6]){const d=t-at;if(d>-.12&&d<.16)effects+=brightNoise*.035*Math.sin(Math.PI*(d+.12)/.28)}
+ let effects=0;for(const at of(story.music?.transitionSeconds||[.9,5.6,10.4,15.3,18.6])){const d=t-at;if(d>-.12&&d<.16)effects+=brightNoise*.035*Math.sin(Math.PI*(d+.12)/.28)}
  const center=(kick+clap+hats+bass+chord)*musicGain*fade+effects,pan=Math.sin(step*1.7)*.52;
  const l=voice[i]+center+pluck*(1-pan)*musicGain*fade,r=voice[i]+center+pluck*(1+pan)*musicGain*fade;
  for(const [c,v]of[[0,l],[1,r]]){peak=Math.max(peak,Math.abs(v));wav.writeInt16LE(Math.round(Math.max(-.98,Math.min(.98,v))*32767),44+i*4+c*2)}

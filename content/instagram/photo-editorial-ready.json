@@ -19,8 +19,9 @@
         "sourcePage": "https://www.tampabaysunfc.com/",
         "publisher": "Tampa Bay Sun FC",
         "subject": "Tampa Bay Sun players in a real pitchside team huddle",
-        "originalChecksum": "5a44de8ee2cd403504d6d0399fe5f22d98455e643c4d29b3038d1cb10550e8d9",
+        "originalChecksum": "617d177e017352d5c1add1245f3afc7de9ec0325027fa75f89492dfde801e671",
         "visuallyInspected": true,
+        "reviewNote": "Rechecked 2026-10-23 after JPEG byte change; viewed again and decoded-pixel SHA-256 exactly matches prior source (b484daa180953e5303147e64751a4e76fe854ce5bc26968676ac57d3b917eb84).",
         "authorization": "owner-cleared-2026-10-22"
       },
       {
@@ -56,36 +57,36 @@
     ],
     "slides": [
       {
-        "assetUrl": "https://framerusercontent.com/images/89JVRMtCOhmvkYSxCQm2haAo.jpg",
-        "assetChecksum": "09e1905de87af0748aabe1e6d0562e5a90971172920e028621aeef806b244dfc",
-        "renderChecksum": "87977233ee480dcc2e44c867aff92598e7b4f9122e25416d5532dcac713d42ba",
+        "assetUrl": "https://framerusercontent.com/images/MgGlAPtDbrBOdvouiUpQPmFnIY.jpg",
+        "assetChecksum": "455e13539b23200928ff2f58a9761809380831e3c3037002d0d544c827d7449a",
+        "renderChecksum": "4ae3189bdad9b23cd19a1a5264a4027497a036efbd62ae3996f82fee024f85c2",
         "width": 1080,
         "height": 1350,
         "photoId": "sun-cover",
         "altText": "Real Tampa Bay Sun players in a pitchside huddle. Cancha’s guide compares three Florida women’s professional soccer clubs."
       },
       {
-        "assetUrl": "https://framerusercontent.com/images/c66BC41TuQu92iqiaoVHtkFYCbc.jpg",
-        "assetChecksum": "20a58dacc3bcf89cad71b974282ea313c45f7d829d9e8cddfbfbf602668b14bd",
-        "renderChecksum": "61f617771cb831a32fc13766c6b66bb2bffc224f3c84aa2f10c15b5c71720974",
+        "assetUrl": "https://framerusercontent.com/images/RWmgEs8jiwoRod0aY92AehpCEF8.jpg",
+        "assetChecksum": "ec02c0b89cad80023182e1971108d85404c4d5c00b1fc7669a041d83e9965a10",
+        "renderChecksum": "0ec1820854cf9cf49704de0dfaf9eaf71aa8d5be4b2c26e10c20f68f8e8f0e79",
         "width": 1080,
         "height": 1350,
         "photoId": "sun-ground",
         "altText": "A Tampa Bay Sun corner flag at sunset. Home ground: Suncoast Credit Union Field in Tampa; parking uses cashless transactions."
       },
       {
-        "assetUrl": "https://framerusercontent.com/images/z0vLqp0Wim0pX6wKmEgvC7kkMxQ.jpg",
-        "assetChecksum": "0f1bd826fd1019e104f870233ae61fbdc378682c4813486ec6f5a109d1e9b02a",
-        "renderChecksum": "bd92badcecd3f3e1add98180c6be8c774a185b1560afd1f589d242c9851837a7",
+        "assetUrl": "https://framerusercontent.com/images/0089kwnzRWh1TNLVhdFNjBQuExI.jpg",
+        "assetChecksum": "9e90ae1069acf027f9fe73124c9f7b452740918bb0c6913368afebdda4dcc20e",
+        "renderChecksum": "950c5ee5e857eee0d360a1c7c4eaab61125b12b1cd5252668b1afcf5f9004a45",
         "width": 1080,
         "height": 1350,
         "photoId": "jax-women",
         "altText": "Sporting JAX women celebrating together. The club returns to Hodges Stadium against Brooklyn FC on October 31 at 2 PM Eastern."
       },
       {
-        "assetUrl": "https://framerusercontent.com/images/YhYEfB1jWr04iu2EuuUSq2zzk.jpg",
-        "assetChecksum": "cef4f2c5fab5981c047982867991d6f4a99353aee107b0cbb864b9a15aad3434",
-        "renderChecksum": "a8c0f38ac3bc7fb44f3de0757f5b7627da7c569d5e711bf3aae184cbc0017124",
+        "assetUrl": "https://framerusercontent.com/images/cdxmPMWpVc3LSMhZp3aJ3UWAGC4.jpg",
+        "assetChecksum": "1956b1cf5f50acd2b9e86b76915cca16298f52d0eb03955ef258aad2bcb6cfde",
+        "renderChecksum": "ef269dae93823c291835a3f103ded15f3b90fea308ed44f7cb12498a6500615f",
         "width": 1080,
         "height": 1350,
         "photoId": "ftl-women",
@@ -100,9 +101,9 @@
     "sourceHash": "40fe96265de12680185082b8f168886bb71747ccc32d590a9fd6e97a21bd2c19",
     "headline": "YOUR NEXT\nMATCH NIGHT.",
     "altText": "Real Tampa Bay Sun players in a pitchside huddle. Cancha’s guide compares three Florida women’s professional soccer clubs.",
-    "assetUrl": "https://framerusercontent.com/images/89JVRMtCOhmvkYSxCQm2haAo.jpg",
-    "assetChecksum": "09e1905de87af0748aabe1e6d0562e5a90971172920e028621aeef806b244dfc",
-    "factsCheckedAt": "2026-10-23T01:01:38.449Z",
+    "assetUrl": "https://framerusercontent.com/images/MgGlAPtDbrBOdvouiUpQPmFnIY.jpg",
+    "assetChecksum": "455e13539b23200928ff2f58a9761809380831e3c3037002d0d544c827d7449a",
+    "factsCheckedAt": "2026-10-23T16:26:02.997Z",
     "rights": "Owner confirms media permissions are handled (2026-10-22). Official publisher, exact source URL, subject, original checksum and photo crop are recorded per asset. Original Cancha design and copy. No invented interview or affiliation.",
     "visualEvidence": {
       "creator": "Cancha",
@@ -110,9 +111,9 @@
       "subjectKey": "florida-womens-matchday-guide-20261023",
       "sourceUrl": "https://www.tampabaysunfc.com/matchday/stadium-policies/",
       "sourceHash": "40fe96265de12680185082b8f168886bb71747ccc32d590a9fd6e97a21bd2c19",
-      "renderedAt": "2026-10-23T01:01:38.449Z",
-      "assetChecksum": "09e1905de87af0748aabe1e6d0562e5a90971172920e028621aeef806b244dfc",
-      "renderChecksum": "87977233ee480dcc2e44c867aff92598e7b4f9122e25416d5532dcac713d42ba"
+      "renderedAt": "2026-10-23T16:26:02.997Z",
+      "assetChecksum": "455e13539b23200928ff2f58a9761809380831e3c3037002d0d544c827d7449a",
+      "renderChecksum": "4ae3189bdad9b23cd19a1a5264a4027497a036efbd62ae3996f82fee024f85c2"
     }
   },
   {
@@ -152,18 +153,18 @@
     ],
     "slides": [
       {
-        "assetUrl": "https://framerusercontent.com/images/zKEpZmUOLrSWjD4En05DHDv8H4.jpg",
-        "assetChecksum": "5cac9b228c4bbf12c8b634cd40cf0d5afcff6ad764cc8083b384ae4e956135b5",
-        "renderChecksum": "be1ba985414f523ae48593c4dc9d95e9d53ed5c5a264aa2d1a3903cb08457beb",
+        "assetUrl": "https://framerusercontent.com/images/pJhu7rgjLig8Nr5r7DxfYB40s.jpg",
+        "assetChecksum": "4d36d2fe2f07ef59626e2814baf4068b0e1f3ed152b52490a6578d100825a4cd",
+        "renderChecksum": "774725f326c5788007ec1ce217d1593b3dc862bc044e6bb53ee6f6c1fef5cb61",
         "width": 1080,
         "height": 1350,
         "photoId": "fkk-developmental",
         "altText": "Actual youth action from FKK’s Developmental program. U7–U8; local practice sites, small-sided games with no goalkeeper. Fall registration is closed."
       },
       {
-        "assetUrl": "https://framerusercontent.com/images/PFBgenZmeE4jpuP7Md2kRiord8.jpg",
-        "assetChecksum": "e60d29d529aa6f6e1a53419a5c81b293ed7aee26e9e592671056a317d203198c",
-        "renderChecksum": "42c1df8bbf6a7b2435b68bdb32e438d8e20a36f469fa36f54f9d74600e63d5dd",
+        "assetUrl": "https://framerusercontent.com/images/j7y0wx76PHTbYnVbvs9EJqbSm4.jpg",
+        "assetChecksum": "1b1bcc01cee36e211a7c51bec76453dcebdc266ed7fcd3d66b54a9acca051f0d",
+        "renderChecksum": "08e07e29aa6ec42793b8cf19f7ce5ea047b6535afa6ec8c76df8bbfeb598747f",
         "width": 1080,
         "height": 1350,
         "photoId": "fkk-recreational",
@@ -178,9 +179,9 @@
     "sourceHash": "5db53030efa6b7101a7e0d468b3a50e950affe5cb9c73e0fa206abdb65ec590d",
     "headline": "U7–U8.\nDEVELOPMENTAL.",
     "altText": "Actual youth action from FKK’s Developmental program. U7–U8; local practice sites, small-sided games with no goalkeeper. Fall registration is closed.",
-    "assetUrl": "https://framerusercontent.com/images/zKEpZmUOLrSWjD4En05DHDv8H4.jpg",
-    "assetChecksum": "5cac9b228c4bbf12c8b634cd40cf0d5afcff6ad764cc8083b384ae4e956135b5",
-    "factsCheckedAt": "2026-10-23T01:01:39.599Z",
+    "assetUrl": "https://framerusercontent.com/images/pJhu7rgjLig8Nr5r7DxfYB40s.jpg",
+    "assetChecksum": "4d36d2fe2f07ef59626e2814baf4068b0e1f3ed152b52490a6578d100825a4cd",
+    "factsCheckedAt": "2026-10-23T16:26:03.715Z",
     "rights": "Owner confirms media permissions are handled (2026-10-22). Official publisher, exact source URL, subject, original checksum and photo crop are recorded per asset. Original Cancha design and copy. No invented interview or affiliation.",
     "visualEvidence": {
       "creator": "Cancha",
@@ -188,9 +189,9 @@
       "subjectKey": "fkk-parent-fit-20261023",
       "sourceUrl": "https://floridakrazekrush.com/developmental/",
       "sourceHash": "5db53030efa6b7101a7e0d468b3a50e950affe5cb9c73e0fa206abdb65ec590d",
-      "renderedAt": "2026-10-23T01:01:39.599Z",
-      "assetChecksum": "5cac9b228c4bbf12c8b634cd40cf0d5afcff6ad764cc8083b384ae4e956135b5",
-      "renderChecksum": "be1ba985414f523ae48593c4dc9d95e9d53ed5c5a264aa2d1a3903cb08457beb"
+      "renderedAt": "2026-10-23T16:26:03.715Z",
+      "assetChecksum": "4d36d2fe2f07ef59626e2814baf4068b0e1f3ed152b52490a6578d100825a4cd",
+      "renderChecksum": "774725f326c5788007ec1ce217d1593b3dc862bc044e6bb53ee6f6c1fef5cb61"
     }
   }
 ]

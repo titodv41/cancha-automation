@@ -1,0 +1,50 @@
+{
+  "repository": "remotion-dev/skills",
+  "commit": "6c67adcd9cdbe6eb84d76342da89b225f9161cb2",
+  "reviewedOn": "2026-10-23",
+  "installedRuntime": "4.0.537",
+  "upstreamGuideVersion": "4.0.538",
+  "note": "Project adapter; selected guides reviewed, not an automatic runtime upgrade or a copy of upstream code.",
+  "references": [
+    {
+      "path": "remotion-create/REFERENCE.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-create/REFERENCE.md",
+      "sha256": "1a7afecc8277a629de0d12efad2dfeb6d0a9f49bd8c19375b9a9c738098c4935"
+    },
+    {
+      "path": "remotion-create/video-layout.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-create/video-layout.md",
+      "sha256": "7ad94c22e3ad87671292ebb9b22f234c544d6c7fed13f8cb112b84b0f7077d4c"
+    },
+    {
+      "path": "remotion-markup/REFERENCE.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-markup/REFERENCE.md",
+      "sha256": "343ff8e312423a3fd4b1b674b17f8f744fb985d00024ec35de17025c212f0926"
+    },
+    {
+      "path": "remotion-markup/timing.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-markup/timing.md",
+      "sha256": "48047e758b96aea519916479ede62b832bf51f982924978e091c37f569ab4bac"
+    },
+    {
+      "path": "remotion-markup/transitions.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-markup/transitions.md",
+      "sha256": "ab1f33f5ecbca6c12c5dbb3c2845189a036fdf782e13a820d28780bd18dd0707"
+    },
+    {
+      "path": "remotion-markup/measuring-text.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-markup/measuring-text.md",
+      "sha256": "4bed81d1ea818db3975f878152dc24ecbc17e163117dcab10761dc8690c33f0c"
+    },
+    {
+      "path": "remotion-markup/local-fonts.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-markup/local-fonts.md",
+      "sha256": "fcad2a2e3a05419d4555c59a75454c4891455dbea91ad596c1095e2887d26a11"
+    },
+    {
+      "path": "remotion-markup/sequencing.md",
+      "url": "https://github.com/remotion-dev/skills/blob/6c67adcd9cdbe6eb84d76342da89b225f9161cb2/skills/remotion-best-practices/remotion-markup/sequencing.md",
+      "sha256": "59f2349b125314188506cca8ea8d1386db0fa5031594569577bf1b4a555696c8"
+    }
+  ]
+}

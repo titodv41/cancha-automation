@@ -1,0 +1,100 @@
+{
+  "id": "ftl-mens-2027-explainer-20261023",
+  "editorialSourceId": "ftl-mens-expansion-20261023",
+  "topic": "What is Fort Lauderdale United adding in 2027?",
+  "durationSeconds": 24,
+  "year": "2027",
+  "season": "Spring",
+  "theme": {
+    "accent": "#a6e7da",
+    "navy": "#062f79"
+  },
+  "assets": [
+    {
+      "id": "debut",
+      "file": "private-data/story-upgrade/research/debut.png",
+      "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/09/League-One_Debut_1920x1080.png",
+      "sourcePage": "https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/",
+      "sha256": "6561fe0805018eb760c9cc896f91bbe3c8a7eb4b0a043a531f391c404513b4f2",
+      "visuallyInspected": true
+    },
+    {
+      "id": "hassan",
+      "file": "private-data/story-upgrade/research/hassan.png",
+      "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/Aly_Hassan_Headshot_2026.png",
+      "sourcePage": "https://www.ftlutd.com/news/2026/10/15/fort-lauderdale-united-fc-names-aly-hassan-usl-league-one-gm/",
+      "sha256": "05f3f7935cfa3e25c7d88ce5e9513a9812dcdb6fb9d124663100dd928bcc3f94",
+      "visuallyInspected": true
+    },
+    {
+      "id": "stadium",
+      "file": "private-data/story-upgrade/research/stadium.png",
+      "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2024/10/Stadium-2.png",
+      "sourcePage": "https://www.ftlutd.com/stadium/",
+      "sha256": "2c109b99feea24625feeb713d33d133e1c994ed3e009b32a23ce6a842147aa35",
+      "visuallyInspected": true
+    },
+    {
+      "id": "crest",
+      "file": "private-data/story-upgrade/research/crest.png",
+      "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2024/03/FTL-UTD-identity-2-1.png",
+      "sourcePage": "https://www.ftlutd.com/",
+      "sha256": "f01a99acea8e6b81140c6741e7db5b289167676ff2f25ddeb920e6914b3cd65f",
+      "visuallyInspected": true
+    }
+  ],
+  "clip": {
+    "file": "private-data/editorial-reset-2026-10-23/ftl-source.mp4",
+    "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/FTLUTD-Website-Main-Narrow-1.mp4",
+    "sourcePage": "https://www.ftlutd.com/",
+    "sha256": "0322b771f04ac7b174668b72b1f4f9e22091a82378276b21c23280a25489612c",
+    "context": "Existing women’s professional team only; final comparison scene, not a men’s roster or match."
+  },
+  "authorization": "owner-cleared-2026-10-22",
+  "voice": {
+    "provider": "local-pocket-tts",
+    "preset": "marius",
+    "reviewStatus": "Audition; not accepted narration",
+    "cues": [
+      {
+        "start": 0.25,
+        "end": 4,
+        "text": "Fort Lauderdale United is adding a men's pro team."
+      },
+      {
+        "start": 4.05,
+        "end": 8,
+        "text": "USL League One. Spring twenty twenty-seven."
+      },
+      {
+        "start": 8.25,
+        "end": 12.8,
+        "text": "They'll play at Amerant Bank Field, in Davie."
+      },
+      {
+        "start": 12.9,
+        "end": 16.8,
+        "text": "Aly Hassan is the general manager."
+      },
+      {
+        "start": 17,
+        "end": 23.7,
+        "text": "The women already play here. Who's coming to the first men's home game?"
+      }
+    ]
+  },
+  "music": {
+    "bpm": 126,
+    "style": "original-house",
+    "openGain": 0.82,
+    "duckedGain": 0.19,
+    "transitionSeconds": [
+      4,
+      8.2,
+      12.8,
+      16.8
+    ]
+  },
+  "caption": "Fort Lauderdale United’s men’s team is set to join USL League One in spring 2027. Home games will be at Amerant Bank Field on the NSU campus in Davie, shared with the women’s team. Aly Hassan is the general manager.\n\nWho would you bring to the first men’s home game?\n\nClub announcement: https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/\n#FortLauderdale #BrowardSoccer #USLLeagueOne",
+  "creativeStatus": "Preview only. Music-only primary; optional local synthetic preset audition. No roster, opening fixture or Cancha affiliation implied."
+}

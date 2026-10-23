@@ -1,3 +1,5 @@
+import {SingleStory} from './SingleStory';
+import singleStory from '../../content/instagram/single-story.json';
 import {MotionStory} from './MotionStory';
 import {NewsExplainer} from './NewsExplainer';
 import {ClubCut} from './ClubCut';
@@ -46,4 +48,5 @@ const Story=({brand,beats,photos}:StoryProps)=>{
 const Root=()=> <><Composition id="PhotoStory" component={Story} durationInFrames={450} fps={30} width={1080} height={1920} defaultProps={defaults}/><Composition id="MotionStory" component={MotionStory} durationInFrames={660} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:motionManifest.stories[0],clip:'generated/motion/club-clip.mp4',audio:'generated/motion/soundtrack.wav'}}/><Composition id="NewsExplainer" component={NewsExplainer} durationInFrames={720} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:explainerManifest.stories[0],media:{'stadium-plan':'generated/explainer/stadium-plan.png','club-crest':'generated/explainer/club-crest.png'},audio:'generated/explainer/soundtrack.wav'}}/></>;
 const ExtendedRoot=()=> <><Root/><Composition id="ClubCut" component={ClubCut} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:clubCut,clip:'generated/club-cut/clip.mp4',poster:'generated/club-cut/poster.jpg',crest:'generated/club-cut/crest.png',audio:'generated/club-cut/soundtrack.wav',groups:[]}}/></>;
 const AllRoot=()=> <><ExtendedRoot/><Composition id="CommunityCut" component={CommunityCut} durationInFrames={525} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:communityCut,clip:'generated/community-cut/clip.mp4',audio:'generated/community-cut/audio.wav'}}/></>;
-registerRoot(AllRoot);
+const StoryRoot=()=> <><AllRoot/><Composition id="SingleStory" component={SingleStory} durationInFrames={Math.round(singleStory.durationSeconds*30)} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:singleStory,audio:'generated/single-story/music/soundtrack.wav'}}/></>;
+registerRoot(StoryRoot);

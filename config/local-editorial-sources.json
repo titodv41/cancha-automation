@@ -260,5 +260,43 @@
         ]
       }
     ]
+  },
+  {
+    "id": "ftl-mens-expansion-20261023",
+    "kind": "club-expansion",
+    "publishedOn": "2026-09-30",
+    "reviewedOn": "2026-10-23",
+    "validUntil": "2026-11-07T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/",
+        "facts": [
+          "Fort Lauderdale United FC is joining USL League One in Spring 2027",
+          "sharing the stadium with our women’s professional team",
+          "Amerant Bank Field"
+        ]
+      },
+      {
+        "url": "https://www.ftlutd.com/news/2026/10/15/fort-lauderdale-united-fc-names-aly-hassan-usl-league-one-gm/",
+        "facts": [
+          "Aly Alberto Hassan General Manager",
+          "set to begin play in Spring 2027 at Amerant Bank Field at Nova Southeastern University"
+        ]
+      },
+      {
+        "url": "https://www.ftlutd.com/stadium/",
+        "facts": [
+          "AMERANT BANK FIELD",
+          "7510 SW 30th St, Davie, FL 33314"
+        ]
+      },
+      {
+        "url": "https://www.ftlutd.com/",
+        "facts": [
+          "Fort Lauderdale United",
+          "Women’s Tickets"
+        ]
+      }
+    ]
   }
 ]
