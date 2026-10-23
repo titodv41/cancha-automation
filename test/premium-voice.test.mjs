@@ -31,7 +31,7 @@ test('paid batches reject excess length, unknown voices and unreviewed models',(
 test('credentials go only to the exact provider origin and errors are sanitized',async()=>{
  let seen;
  const api=elevenClient({key:'test-secret',fetchImpl:async(u,o)=>{seen={u,o};return new Response('secret provider diagnostics',{status:403})}});
- await assert.rejects(api('/v1/voices'),/^Error: Voice service returned HTTP 403\./);
+ await assert.rejects(api('/v1/voices'),/^Error: Voice service returned HTTP 403 at \/v1\/voices/);
  assert.equal(seen.u,'https://api.elevenlabs.io/v1/voices');assert.equal(seen.o.redirect,'error');assert.equal(seen.o.headers['xi-api-key'],'test-secret');
  await assert.rejects(api('/v1/voices/../../elsewhere'),/Unapproved/);
 });
@@ -40,6 +40,14 @@ test('subscription entitlement is not confused with enabling overage billing',as
  const api=async path=>path==='/v1/models'?[{model_id:'eleven_v3',can_do_text_to_speech:true}]:path==='/v1/voices'?{voices:policy.candidates.map(v=>({voice_id:v.id}))}:{tier:'starter',can_extend_character_limit:true,max_credit_limit_extension:0,character_count:0,character_limit:30000};
  const result=await inspectVoiceAccount(api,policy);assert.equal(result.subscription.overagesDisabled,true);
  const unknown=await inspectVoiceAccount(async p=>p==='/v1/user/subscription'?{tier:'starter',can_extend_character_limit:false}:api(p),policy);assert.equal(unknown.subscription.overagesDisabled,false);
+});
+test('account diagnostics name the endpoint and known error code without exposing provider messages',async()=>{
+ let header;
+ const api=elevenClient({key:'  test-secret\n',fetchImpl:async(u,o)=>{header=o.headers['xi-api-key'];return Response.json({detail:{status:'missing_permission',message:'echo test-secret'}},{status:400})}});
+ await assert.rejects(api('/v1/user/subscription'),e=>e.message.includes('/v1/user/subscription (missing_permission)')&&!e.message.includes('test-secret'));
+ assert.equal(header,'test-secret');
+ const unsafe=elevenClient({key:'test-secret',fetchImpl:async()=>Response.json({detail:{status:'test-secret',message:'test-secret'}},{status:400})});
+ await assert.rejects(unsafe('/v1/models'),e=>!e.message.includes('test-secret'));
 });
 
 test('a successful generation caches audio and timing without a second charge',async()=>{

@@ -23,14 +23,21 @@ export function validateFreePreviewAccount(account, characters) {
 
 // Injected transport is used by tests. Production allows this one HTTPS origin only.
 export function elevenClient({key, fetchImpl}) {
-  if (!key) throw Error('Configure ELEVENLABS_API_KEY as a secret first');
+  if (!key?.trim()) throw Error('Configure ELEVENLABS_API_KEY as a secret first');
+  key=key.trim();
   return async (path, body) => {
     if (!/^\/v1\/(voices|models|user\/subscription|text-to-speech\/[A-Za-z0-9]+\/with-timestamps)(\?|$)/.test(path)) throw Error('Unapproved voice endpoint');
     if (body && !path.startsWith('/v1/text-to-speech/')) throw Error('Only speech generation may use POST');
     let response;
     try { response = await fetchImpl('https://api.elevenlabs.io' + path, {method: body ? 'POST' : 'GET', headers: {'xi-api-key': key, ...(body ? {'content-type': 'application/json'} : {})}, ...(body ? {body: JSON.stringify(body)} : {}), redirect: 'error', signal: AbortSignal.timeout(body ? 120000 : 25000)}); }
     catch { throw Error('Voice request did not complete. Do not automatically retry a generation.'); }
-    if (!response.ok) { await response.body?.cancel(); throw Error('Voice service returned HTTP ' + response.status + '. Provider error bodies are withheld to protect credentials.'); }
+    if (!response.ok) {
+      // Never log a provider message/body: it can echo submitted values. Only
+      // known machine error codes and the fixed API path are safe diagnostics.
+      const codes=new Set(['invalid_api_key','missing_permission','missing_permissions','insufficient_permissions','quota_exceeded','invalid_request','invalid_value','unauthorized','user_not_found','resource_not_found','detected_unusual_activity','payment_required']);
+      let code;try{const value=await response.json(),status=value?.detail?.status||value?.error?.code;if(codes.has(status))code=status}catch{}
+      throw Error('Voice service returned HTTP '+response.status+' at '+path.split('?')[0]+(code?' ('+code+')':'')+'. Provider error bodies are withheld to protect credentials.');
+    }
     try { return await response.json(); } catch { throw Error('Voice service returned invalid JSON; no automatic generation retry.'); }
   };
 }
