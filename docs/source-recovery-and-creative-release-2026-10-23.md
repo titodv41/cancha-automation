@@ -38,4 +38,8 @@ For another project, replace the audience/brand/source manifests, fonts, media a
 
 194 tests pass, including the two narrated-timing checks and four product workflow checks (identity, hosted bytes, receipt protection, carousel reservation and weekly promotional cap). The new municipal parser and exact-image replacement have eight additional checks within that total. Browser review covered all 12 carousel slides, both actual-product posters, mobile MP4 playback and a new live venue page. The venue page had no horizontal overflow; a localStorage access-denied error appeared in the headless browser and is recorded as a browser/environment limitation, rather than silently claimed error-free.
 
-Queue import receipts will be recorded below after deployment.
+## Live queue receipts
+
+- [Carousel refresh 40007357568](https://github.com/titodv41/cancha-automation/actions/runs/40007357568) succeeded on `fbc6c30`: all five guides updated; the women’s guide retained October 23 at 22:00 UTC (6 PM New York); four other guides remain eligible Drafts. Seven Published receipts were preserved; zero uncertain publications.
+- [Product import 40007549712](https://github.com/titodv41/cancha-automation/actions/runs/40007549712) succeeded on the same revision: the two actual-directory posts entered as Drafts for the standing plan. The imported state still has the daily schedule enabled. Draft means prepared for automatic selection in the source-freshness window; it does not mean every future post is already scheduled or published.
+- Fourteen hosted design images were fetched and decoded at a 390-pixel phone width, all at the required 1080×1350 source dimensions. Both public narrative MP4s played and allowed seeking to their final scene. No new Reel was imported, scheduled or published.
