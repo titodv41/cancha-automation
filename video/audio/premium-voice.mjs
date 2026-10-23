@@ -35,8 +35,9 @@ export function elevenClient({key, fetchImpl}) {
       // Never log a provider message/body: it can echo submitted values. Only
       // known machine error codes and the fixed API path are safe diagnostics.
       const codes=new Set(['invalid_api_key','missing_permission','missing_permissions','insufficient_permissions','quota_exceeded','invalid_request','invalid_value','unauthorized','user_not_found','resource_not_found','detected_unusual_activity','payment_required']);
+      const type=(response.headers.get('content-type')||'').split(';')[0];
       let code;try{const value=await response.json(),status=value?.detail?.status||value?.error?.code;if(codes.has(status))code=status}catch{}
-      throw Error('Voice service returned HTTP '+response.status+' at '+path.split('?')[0]+(code?' ('+code+')':'')+'. Provider error bodies are withheld to protect credentials.');
+      throw Error('Voice service returned HTTP '+response.status+' at '+path.split('?')[0]+(code?' ('+code+')':'')+(/^[a-z]+\/[a-z0-9.+-]+$/.test(type)?' ['+type+']':'')+'. Provider error bodies are withheld to protect credentials.');
     }
     try { return await response.json(); } catch { throw Error('Voice service returned invalid JSON; no automatic generation retry.'); }
   };
@@ -44,7 +45,9 @@ export function elevenClient({key, fetchImpl}) {
 
 export async function inspectVoiceAccount(api, policy) {
   // Current official voice search is v2; the former v1 listing returns 400.
-  const [modelRows, firstVoicePage, subscription] = await Promise.all([api('/v1/models'), api('/v2/voices?page_size=100'), api('/v1/user/subscription')]);
+  const checks=await Promise.allSettled([api('/v1/models'),api('/v2/voices?page_size=100'),api('/v1/user/subscription')]);
+  const failures=checks.filter(r=>r.status==='rejected');if(failures.length)throw Error(failures.map(r=>r.reason.message).join(' | '));
+  const [modelRows,firstVoicePage,subscription]=checks.map(r=>r.value);
   const voiceRows=[...(firstVoicePage.voices||[])];let voicePage=firstVoicePage;
   for(let page=0;voicePage.has_more&&page<4&&!policy.candidates.every(v=>voiceRows.some(r=>r.voice_id===v.id));page++){
     if(typeof voicePage.next_page_token!=='string'||!voicePage.next_page_token)throw Error('Voice search pagination changed');
