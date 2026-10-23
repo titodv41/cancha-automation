@@ -5,6 +5,10 @@ description: Produce source-checked, subject-specific photo carousels and photo-
 
 # Photo editorial workflow
 
+Read [the current content reset](../../docs/community-content-reset.md) first. The owner rejected repeated source photos and generic captions; the former six-carousel bank is retired. Every new slide must add a different useful answer and original subject photograph. Crops are not new photos. Use 2–6 slides as the material warrants; do not pad a two-slide answer with a recycled question slide. Use normal sentences and specific local facts. Inspect actual images for sponsor logos and wrong subjects. Current renderer/planner/publisher gates enforce diversity. This direction overrides older steps below that suggest a fixed 3–5-slide structure.
+
+Paid voice generation is disabled. Free Pocket TTS CPU auditions and local faster-whisper caption drafts are tested. Prefer actual contributor speech and usable source sound for UGC. The old Kokoro voice is not a fallback. A working file or transcript cannot establish a human tone. New Reels remain preview-only while the current video hold applies; do not follow the old motion-import step until the new direction is accepted. Never present a club-film re-edit as Cancha-shot UGC or invent an interview.
+
 Use when the owner asks for posts about identifiable clubs, people, events or news. Read `config/growth-content-policy.json`: directory profiles are not members or partners; urgency must come from genuine dates, availability or an early-building invitation. Follow the current owner's scope and publishing instructions. The Cancha owner confirms handling permissions for this project’s subject media (recorded October 22, 2026); the recorded reference is `owner-cleared-2026-10-22`. This is not a license claim or a grant for a different project.
 
 1. Read `docs/photo-editorial-workflow.md`, the current editorial policy and account identity. Inspect the real queue before changing scheduled work. Preserve published and uncertain publication receipts.

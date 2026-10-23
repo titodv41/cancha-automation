@@ -6,6 +6,7 @@ const policy = JSON.parse(await readFile('config/premium-voice.json'));
 const story = JSON.parse(await readFile('content/instagram/club-cut.json'));
 const action = process.argv[2] || 'check';
 if (!['check', 'audition'].includes(action)) throw Error('Use check or audition');
+if(action==='audition'&&policy.paidGenerationEnabled!==true)throw Error('Paid narration is disabled; use the free voice auditions');
 const out = 'private-data/premium-voice';
 await mkdir(out, {recursive: true, mode: 0o700});
 const dispatcher = process.env.HTTPS_PROXY ? new ProxyAgent({uri: process.env.HTTPS_PROXY, ...(process.env.SSL_CERT_FILE ? {requestTls: {ca: await readFile(process.env.SSL_CERT_FILE)}} : {})}) : undefined;

@@ -3,6 +3,7 @@ import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {alignmentToWords, captionGroups} from './caption-timing.mjs';
 
 export function validateVoiceBatch(text, candidates, policy) {
+  if(policy.paidGenerationEnabled!==true)throw Error('Paid narration is disabled; the owner chose free options');
   if (typeof text !== 'string' || !text.trim() || text.length > policy.maxCharactersPerRequest || /[<>\[\]]/.test(text)) throw Error('Use a short plain spoken script, without production instructions');
   if (!candidates.length || candidates.length > 2 || candidates.some(v => !policy.candidates.some(c => c.id === v.id))) throw Error('Choose one or two configured stock voices');
   if (text.length * candidates.length > policy.maxCharactersPerBatch) throw Error('Voice batch exceeds the character cap');

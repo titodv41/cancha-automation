@@ -1,0 +1,27 @@
+{
+  "id": "ftl-community-cut-20261023",
+  "videoUrl": "https://framerusercontent.com/assets/Waq6CJ0N8Kx7Fkgz6W1s4Pyn4.mp4",
+  "posterUrl": "https://framerusercontent.com/images/oR82oL8226ljA6imDCYqk1zRNw.jpg",
+  "checks": {
+    "sha256": "ef7499f1efeaa0d59093854c24da73a2eeffcb0b9fd65d66c406bbb8191b831d",
+    "bytes": 10590448,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 17.5,
+    "channels": 2,
+    "sampleRate": 48000,
+    "integratedLUFS": -15.45,
+    "truePeakDb": -0.86,
+    "passed": true
+  },
+  "sourcePage": "https://www.ftlutd.com/",
+  "sourceVideoUrl": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/FTLUTD-Website-Main-Narrow-1.mp4",
+  "sourceVideoSha256": "0322b771f04ac7b174668b72b1f4f9e22091a82378276b21c23280a25489612c",
+  "sourceAudioUsed": false,
+  "sourceAudioMaxDb": -91,
+  "originalMusic": true,
+  "musicBPM": 126,
+  "syntheticNarration": false,
+  "status": "Preview only — actual club film with original Cancha music, no synthetic narrator. The source audio track is silent and unused. Not filmed by Cancha; no new interview or match-date claim."
+}

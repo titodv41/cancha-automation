@@ -1,0 +1,112 @@
+{
+  "id": "local-puerta-four-20261022",
+  "organization": "Sporting JAX",
+  "editorialSourceId": "puerta-four-goals-20261016",
+  "sourceType": "brand",
+  "topic": "storytelling",
+  "caption": "Four goals. One match. Ashlyn Puerta is 19.\n\nShe scored all four in Sporting JAX’s 4–1 win over Fort Lauderdale United, setting a Gainbridge Super League single-match scoring record, according to the club’s October 16 report.\n\nWhich Florida player should we watch next? Give us a name and a club.\n\nhttps://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/\n\n#AshlynPuerta #SportingJAX #WomensSoccer #FloridaSoccer",
+  "photos": [
+    {
+      "id": "puerta-celebration",
+      "originalUrl": "https://www.sportingjax.com/wp-content/uploads/sites/75/2026/10/10.16.26-featured-image.png",
+      "sourcePage": "https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/",
+      "publisher": "Sporting JAX",
+      "subject": "Ashlyn Puerta celebrating, as pictured in Sporting JAX’s October 16 match report",
+      "originalChecksum": "5da3a90643145911cce9c0f2f7c5e2aa80a3f835a6ef70d361c8e6feee2d8bc3",
+      "authorization": "owner-cleared-2026-10-22"
+    },
+    {
+      "id": "puerta-portrait",
+      "originalUrl": "https://www.sportingjax.com/wp-content/uploads/sites/75/2025/07/Puerta-2026-headshot.png",
+      "sourcePage": "https://www.sportingjax.com/roster/ashlyn-puerta/",
+      "publisher": "Sporting JAX",
+      "subject": "Ashlyn Puerta official roster portrait",
+      "originalChecksum": "609a4153c0d211ff9042f5fcc58719912ce4ff26528ae5fb495531270667a051",
+      "authorization": "owner-cleared-2026-10-22"
+    }
+  ],
+  "slides": [
+    {
+      "assetUrl": "https://framerusercontent.com/images/VHicnlxx9hz9tlRcQfoXbwdLQ.jpg",
+      "assetChecksum": "5e41733f4a082263f92f4da4bb2bb0a2164fafd8b022c4bc50ec39619eeccd4e",
+      "renderChecksum": "949db01a591643fda196cb2b9b4de39e99e3731485e0480f1ea7dfa993304b93",
+      "width": 1080,
+      "height": 1350,
+      "photoId": "puerta-celebration",
+      "altText": "Ashlyn Puerta celebrates in the real photograph from Sporting JAX’s October 16 match report. She scored four goals at age 19."
+    },
+    {
+      "assetUrl": "https://framerusercontent.com/images/2VKbQlskr7IVdQg1AOSif0pi80.jpg",
+      "assetChecksum": "ce8bccbdf6b210637030df6a759888dd4842640bb6ed815b3b34cb3647a46476",
+      "renderChecksum": "32a16b3de8d5368731bb4e030e5ff1fd113270b8e3baa06c2419e273780722e5",
+      "width": 1080,
+      "height": 1350,
+      "photoId": "puerta-portrait",
+      "altText": "Ashlyn Puerta’s official Sporting JAX roster portrait with the 4–1 Fort Lauderdale United result and her single-match scoring record."
+    },
+    {
+      "assetUrl": "https://framerusercontent.com/images/8LsNonANglhGBi3r0guNd4Nfr8g.jpg",
+      "assetChecksum": "131f0be2ac43398c3013a918491b3d61547745ca1f7c24a3f980a2a4376eb354",
+      "renderChecksum": "38ab093e33d968f66f74d0cd4dd071dbd2b9b7715b15f8ba277012819c88d2c2",
+      "width": 1080,
+      "height": 1350,
+      "photoId": "puerta-celebration",
+      "altText": "Puerta celebrating above Cancha’s question asking the community to recommend another Florida soccer player and their club."
+    }
+  ],
+  "video": {
+    "durationSeconds": 15,
+    "beats": [
+      {
+        "start": 0,
+        "end": 120,
+        "photoId": "puerta-celebration",
+        "position": "53% 32%",
+        "eyebrow": "JACKSONVILLE · OCT 16",
+        "title": "FOUR GOALS.\nSHE’S 19.",
+        "body": "ASHLYN PUERTA · SPORTING JAX"
+      },
+      {
+        "start": 120,
+        "end": 285,
+        "photoId": "puerta-portrait",
+        "position": "50% 30%",
+        "eyebrow": "GAINBRIDGE SUPER LEAGUE",
+        "title": "JAX 4–1\nFORT LAUDERDALE.",
+        "body": "All four: Puerta. A single-match scoring record.",
+        "layout": "portrait"
+      },
+      {
+        "start": 285,
+        "end": 450,
+        "photoId": "puerta-celebration",
+        "position": "48% 30%",
+        "eyebrow": "YOUR LOCAL WATCHLIST",
+        "title": "WHO SHOULD\nWE WATCH NEXT?",
+        "body": "A Florida player. Their club. Tell us why."
+      }
+    ]
+  },
+  "format": "feed",
+  "creativeKind": "photo-carousel",
+  "creativeVersion": "cancha-local-v2",
+  "editorialOrganization": "Sporting JAX",
+  "officialSourceUrl": "https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/",
+  "sourceHash": "7d71f8a461095e44f14fcd1bcc6059499ec3216490070cb9cf25f7e2c322de1a",
+  "headline": "FOUR GOALS.\nSHE’S 19.",
+  "altText": "Ashlyn Puerta celebrates in the real photograph from Sporting JAX’s October 16 match report. She scored four goals at age 19.",
+  "assetUrl": "https://framerusercontent.com/images/VHicnlxx9hz9tlRcQfoXbwdLQ.jpg",
+  "assetChecksum": "5e41733f4a082263f92f4da4bb2bb0a2164fafd8b022c4bc50ec39619eeccd4e",
+  "factsCheckedAt": "2026-10-22T17:21:50.386Z",
+  "rights": "Owner confirms media permissions are handled (2026-10-22). Official publisher, exact source URL, subject, original checksum and photo crop are recorded per asset. Original Cancha design and copy. No invented interview or affiliation.",
+  "visualEvidence": {
+    "creator": "Cancha",
+    "kind": "photo-carousel",
+    "subjectKey": "puerta-four-goals-20261016",
+    "sourceUrl": "https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/",
+    "sourceHash": "7d71f8a461095e44f14fcd1bcc6059499ec3216490070cb9cf25f7e2c322de1a",
+    "renderedAt": "2026-10-22T17:21:50.386Z",
+    "assetChecksum": "5e41733f4a082263f92f4da4bb2bb0a2164fafd8b022c4bc50ec39619eeccd4e",
+    "renderChecksum": "949db01a591643fda196cb2b9b4de39e99e3731485e0480f1ea7dfa993304b93"
+  }
+}

@@ -26,13 +26,16 @@
     "instagram:chat": "node scripts/chat-instagram.mjs",
     "instagram:github": "node scripts/github-instagram.mjs",
     "content:photos": "node scripts/build-photo-editorial.mjs",
-    "content:video": "npm --prefix video run render",
+    "content:video": "node video/render-community-cut.mjs",
     "content:voice-setup": "node video/audio/setup.mjs",
     "content:motion": "node video/render-motion.mjs",
     "content:explainer": "node video/render-explainer.mjs",
     "content:voice-check": "node scripts/premium-voice.mjs check",
     "content:voice-audition": "node scripts/premium-voice.mjs audition",
-    "content:club-cut": "node video/render-club-cut.mjs"
+    "content:club-cut": "node video/render-club-cut.mjs",
+    "content:free-setup": "node scripts/free-content-tools.mjs setup",
+    "content:free-voice": "node scripts/free-content-tools.mjs audition",
+    "content:captions": "node scripts/free-content-tools.mjs transcribe"
   },
   "dependencies": {
     "framer-api": "5.1.0",

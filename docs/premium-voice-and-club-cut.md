@@ -1,5 +1,7 @@
 # Premium voice and the Cancha Club Cut
 
+**Later owner decision:** Free tools are preferred. Paid narration is now explicitly disabled in the policy and generation adapter. No ElevenLabs purchase/key setup is needed for the current task. Follow [the free tools and community content reset](community-content-reset.md). The optional setup below is dormant.
+
 The owner rejected the old Weston and Miami videos for robotic narration and generic visuals. Both remain unpublished Drafts and are now retired. `config/instagram-editorial-policy.json` disables motion selection, and the publish gate also rejects retired/held Reels. The approved photo-carousel work and standing two-slot plan are preserved. A successful Meta processing check is not creative approval.
 
 The new `ClubCut` is a separate 20-second **preview**, using the actual Weston match footage, a large official crest, club blue alongside Cancha's forest/lime, the existing Barlow Condensed Bold Italic display font, the actual Cancha wordmark, larger action, brief result graphics and short wipes. It has no “reported by” voice line, fake speaker or on-design production fine print. It is not imported into the queue. Without a premium voice it contains original music only; don't call that a narrated preview.

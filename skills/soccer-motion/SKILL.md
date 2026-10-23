@@ -5,6 +5,8 @@ description: Create concise soccer films and animated explainers from verified o
 
 # Soccer motion
 
+**Latest direction:** Read [the community content reset](../../docs/community-content-reset.md). The owner now prefers free tools; paid narration is disabled. The repeated-photo carousel bank was also rejected and retired. Pocket TTS CPU auditions and local caption drafts have been tested, with no naturalness claim from ASR or delivery checks. Prefer actual contributor speech or useful club-film audio for UGC-style work. Do not restore Kokoro or unhold Reels merely because a file renders. This supersedes the earlier premium-provider decision below.
+
 Use for Cancha's club clips, match moments and soccer news explainers. Preserve the approved photo-carousel style; do not rebuild the brand or expand the daily publishing cap. Read `docs/motion-and-honest-growth.md`, `config/growth-content-policy.json` and the current editorial policy first.
 
 **Current owner decision, October 22:** Both Kokoro-narrated Weston/Miami cuts were rejected for voice and visual quality. They are retired and `allowMotionStories` is false. The owner chose a small-cost premium voice service. Follow [the premium voice and new cut workflow](../../docs/premium-voice-and-club-cut.md). Do not treat delivery-format tests, ASR readback or provider marketing as proof of a natural voice. Keep new Reels out of automatic selection until the owner accepts the new direction; preserve the photo carousels.

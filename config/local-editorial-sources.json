@@ -159,5 +159,106 @@
         ]
       }
     ]
+  },
+  {
+    "id": "florida-womens-matchday-guide-20261023",
+    "kind": "matchday-guide",
+    "reviewedOn": "2026-10-22",
+    "validUntil": "2026-10-31T17:00:00Z",
+    "documents": [
+      {
+        "url": "https://www.tampabaysunfc.com/matchday/stadium-policies/",
+        "facts": [
+          "Suncoast Credit Union Field",
+          "All parking lots are utilizing cashless and contactless transactions"
+        ]
+      },
+      {
+        "url": "https://www.tampabaysunfc.com/",
+        "facts": [
+          "Tampa Bay Sun"
+        ]
+      },
+      {
+        "url": "https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/",
+        "facts": [
+          "Hodges Stadium",
+          "Gainbridge Super League",
+          "Saturday, October 31 at 2 p.m."
+        ]
+      },
+      {
+        "url": "https://www.sportingjax.com/",
+        "facts": [
+          "Sporting JAX",
+          "WOMEN’S GAINBRIDGE SUPER LEAGUE SEASON TICKETS"
+        ]
+      },
+      {
+        "url": "https://www.ftlutd.com/stadium/",
+        "facts": [
+          "AMERANT BANK FIELD",
+          "7510 SW 30th St, Davie, FL 33314"
+        ]
+      },
+      {
+        "url": "https://www.ftlutd.com/",
+        "facts": [
+          "Fort Lauderdale United",
+          "Women’s Tickets"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fkk-parent-fit-20261023",
+    "kind": "parent-guide",
+    "reviewedOn": "2026-10-22",
+    "validUntil": "2026-10-30T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://floridakrazekrush.com/developmental/",
+        "facts": [
+          "U7 - U8",
+          "There is no goalkeeper",
+          "REGISTRATION FOR FALL 2026 IS NOW CLOSED",
+          "CENTRAL WINDS PARK",
+          "SHANE KELLY PARK"
+        ]
+      },
+      {
+        "url": "https://floridakrazekrush.com/rec/",
+        "facts": [
+          "U9 - U19",
+          "Some travel for games may be in Cocoa or Ocala",
+          "FALL Registration is CLOSED/FULL",
+          "waitlisted",
+          "Spring 2027"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ftl-community-film-20261023",
+    "kind": "club-film",
+    "reviewedOn": "2026-10-22",
+    "validUntil": "2026-10-30T00:00:00Z",
+    "documents": [
+      {
+        "url": "https://www.ftlutd.com/",
+        "facts": [
+          "Fort Lauderdale United",
+          "Women’s Tickets"
+        ]
+      },
+      {
+        "url": "https://www.ftlutd.com/stadium/",
+        "facts": [
+          "AMERANT BANK FIELD",
+          "NSU Florida",
+          "7510 SW 30th St, Davie, FL 33314"
+        ]
+      }
+    ]
   }
 ]

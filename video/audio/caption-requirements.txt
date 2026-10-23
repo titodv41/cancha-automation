@@ -1,0 +1,2 @@
+# Separate environment: the speech recognizer does not need PyTorch or a GPU.
+faster-whisper==1.2.1

@@ -25,7 +25,10 @@
     "local-weston-coach-20261022",
     "local-rowdies-playoff-20261022"
   ],
-  "curatedDraftIds": [],
+  "curatedDraftIds": [
+    "guide-florida-womens-matchdays-20261023",
+    "guide-fkk-first-season-20261023"
+  ],
   "requireSubjectPhotos": true,
   "allowMotionStories": false,
   "minimumDailyCarousels": 1,

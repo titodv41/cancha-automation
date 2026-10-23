@@ -1,0 +1,11 @@
+{
+  "status": "Briefs only — actual creator recordings needed; not scheduled",
+  "capture": {"orientation": "vertical", "durationSeconds": "20–30", "audio": "Actual contributor voice; retain useful field atmosphere", "delivery": "Existing private Cancha submission/email route; include club, location and current public link"},
+  "briefs": [
+    {"series": "First session", "contributor": "A real coach", "question": "Who is this session for, and what should a first-timer bring?", "shots": ["The actual answer", "Training", "Ground entrance"], "outcome": "Know age/level, place and how to join"},
+    {"series": "Why I play here", "contributor": "A real player or parent", "question": "What made this club a good fit for you?", "shots": ["The actual answer", "One specific thing mentioned", "Club context"], "outcome": "A real experience to help others compare clubs"},
+    {"series": "First match night", "contributor": "An actual fan", "question": "What should a first-timer know about getting here and watching?", "shots": ["Entrance", "One practical tip", "Crowd or play"], "outcome": "Reduce uncertainty about a real local matchday"},
+    {"series": "After-work soccer", "contributor": "An actual adult pickup organizer", "question": "What is the level, how does joining work and when is the next session?", "shots": ["Organizer explains", "Actual adult session", "Ground context"], "outcome": "Know whether an actual group fits; public invite needs organizer approval"},
+    {"series": "Coach explains", "contributor": "A real coach", "question": "What is one thing a beginner can work on this week?", "shots": ["Demonstration", "Close movement view", "One concise explanation"], "outcome": "Learn one practical skill; no invented credentials or testimony"}
+  ]
+}

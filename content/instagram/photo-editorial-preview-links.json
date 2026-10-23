@@ -1,65 +1,27 @@
 {
-  "createdAt": "2026-10-22T17:32:36.316Z",
-  "carousels": 6,
-  "slides": 19,
+  "createdAt": "2026-10-23T01:03:20.128Z",
+  "carousels": 2,
+  "slides": 6,
   "covers": [
     {
-      "id": "local-rowdies-shield-20261022",
-      "url": "https://framerusercontent.com/images/sCdQkCs1BYVCONFXduiKiWCoaE.jpg",
+      "id": "guide-florida-womens-matchdays-20261023",
+      "url": "https://framerusercontent.com/images/89JVRMtCOhmvkYSxCQm2haAo.jpg",
       "slides": [
-        "https://framerusercontent.com/images/sCdQkCs1BYVCONFXduiKiWCoaE.jpg",
-        "https://framerusercontent.com/images/dGNoWXscZw1Qs1CmLnFqZ3FpZw8.jpg",
-        "https://framerusercontent.com/images/MRXVkksYOwrw7JRwRMNFjKoEaU.jpg"
+        "https://framerusercontent.com/images/89JVRMtCOhmvkYSxCQm2haAo.jpg",
+        "https://framerusercontent.com/images/c66BC41TuQu92iqiaoVHtkFYCbc.jpg",
+        "https://framerusercontent.com/images/z0vLqp0Wim0pX6wKmEgvC7kkMxQ.jpg",
+        "https://framerusercontent.com/images/YhYEfB1jWr04iu2EuuUSq2zzk.jpg"
       ]
     },
     {
-      "id": "local-puerta-four-20261022",
-      "url": "https://framerusercontent.com/images/VHicnlxx9hz9tlRcQfoXbwdLQ.jpg",
+      "id": "guide-fkk-first-season-20261023",
+      "url": "https://framerusercontent.com/images/zKEpZmUOLrSWjD4En05DHDv8H4.jpg",
       "slides": [
-        "https://framerusercontent.com/images/VHicnlxx9hz9tlRcQfoXbwdLQ.jpg",
-        "https://framerusercontent.com/images/2VKbQlskr7IVdQg1AOSif0pi80.jpg",
-        "https://framerusercontent.com/images/8LsNonANglhGBi3r0guNd4Nfr8g.jpg"
-      ]
-    },
-    {
-      "id": "local-weston-club-20261022",
-      "url": "https://framerusercontent.com/images/1Erneaom6ViBvnQeZh4Xfm7y5cA.jpg",
-      "slides": [
-        "https://framerusercontent.com/images/1Erneaom6ViBvnQeZh4Xfm7y5cA.jpg",
-        "https://framerusercontent.com/images/MRnhGba6yFp6WsNjrl6mLogqKA.jpg",
-        "https://framerusercontent.com/images/1pZK4nuz3FSbyJCNZoT5EH6uPek.jpg"
-      ]
-    },
-    {
-      "id": "local-fkk-programs-20261022",
-      "url": "https://framerusercontent.com/images/CVfDMaqxiq84LePtTDk0W75KAfw.jpg",
-      "slides": [
-        "https://framerusercontent.com/images/CVfDMaqxiq84LePtTDk0W75KAfw.jpg",
-        "https://framerusercontent.com/images/ktIGAYaPTNrSIzw1uBbm4OzSIOU.jpg",
-        "https://framerusercontent.com/images/xkWGETAxjLUii6d9lODSdy5aY.jpg",
-        "https://framerusercontent.com/images/9WiVeS97fIcJX0ZXvyNSUO8kFE.jpg"
-      ]
-    },
-    {
-      "id": "local-weston-coach-20261022",
-      "url": "https://framerusercontent.com/images/2K1ltwpo8O1diSvW0Gmw8cDE.jpg",
-      "slides": [
-        "https://framerusercontent.com/images/2K1ltwpo8O1diSvW0Gmw8cDE.jpg",
-        "https://framerusercontent.com/images/txXjmjxi9usrL5QZkWsiI4bXls.jpg",
-        "https://framerusercontent.com/images/OPiDBtYxoedg8Tau3a0TcJImUQ.jpg"
-      ]
-    },
-    {
-      "id": "local-rowdies-playoff-20261022",
-      "url": "https://framerusercontent.com/images/N3ZW2leEiifM6c7CD3vXWT6DnaQ.jpg",
-      "slides": [
-        "https://framerusercontent.com/images/N3ZW2leEiifM6c7CD3vXWT6DnaQ.jpg",
-        "https://framerusercontent.com/images/E5pah9IuwhOjp0p1erkDypBDyDE.jpg",
-        "https://framerusercontent.com/images/aATVyrHpmys9aCT44333Yhaeo.jpg"
+        "https://framerusercontent.com/images/zKEpZmUOLrSWjD4En05DHDv8H4.jpg",
+        "https://framerusercontent.com/images/PFBgenZmeE4jpuP7Md2kRiord8.jpg"
       ]
     }
   ],
-  "overview": "https://framerusercontent.com/images/ix97okGTbXDU18fBzlBGLl7qE.jpg",
-  "pdf": "https://framerusercontent.com/assets/reAPbz4yCqW7Pm5s3y0FOukRnBQ.pdf",
-  "video": "https://framerusercontent.com/assets/lVTZ42FSQJasddbqffIAfgaUw.mp4"
+  "overview": "https://framerusercontent.com/images/B40nfKd8ihrvOm42R5g2L1kpo.jpg",
+  "pdf": "https://framerusercontent.com/assets/o6lVaR0Brm5PWjJ4fvgSq8rW7Ig.pdf"
 }

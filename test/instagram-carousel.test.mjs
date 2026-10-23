@@ -14,10 +14,12 @@ const bytes=Buffer.from([255,216,255,217]),checksum=createHash('sha256').update(
 const source=localStoryDescriptor('rowdies-shield-20261018');
 const row=()=>{const slides=[1,2,3].map(n=>({assetUrl:`https://framerusercontent.com/images/slide-${n}.jpg`,assetChecksum:checksum,altText:`Real club photo, slide ${n}`,width:1080,height:1350,photoId:'result'}));return {id:'carousel',format:'feed',caption:'A real local result.',altText:'Club result',assetUrl:slides[0].assetUrl,assetChecksum:checksum,slides,sourceType:'news',factsCheckedAt:new Date().toISOString(),editorialSourceId:source.id,officialSourceUrl:source.documents[0].url,sourceHash:localStoryHash(source),creativeVersion:'cancha-local-v2',rights:'Owner-cleared photo and original layout',photos:[{id:'result',authorization:'owner-cleared-2026-10-22',publisher:'Tampa Bay Rowdies',subject:'Club match recap',sourcePage:source.documents[0].url,originalUrl:'https://www.rowdiessoccer.com/wp-content/uploads/result.jpg',originalChecksum:'a'.repeat(64)}],visualEvidence:{creator:'Cancha',kind:'photo-carousel',subjectKey:source.id,sourceUrl:source.documents[0].url,sourceHash:localStoryHash(source),renderedAt:new Date().toISOString(),assetChecksum:checksum}};};
 const queue=()=>{const dir=mkdtempSync(join(tmpdir(),'cancha-carousel-'));return {db:openQueue(join(dir,'queue.sqlite')),close(){this.db.close();rmSync(dir,{recursive:true})}}};
-test('carousel approval binds slide order and photos while preserving existing single-image hashes',()=>{
+test('carousel approval binds slide order and photos while preserving existing single-image hashes',t=>{
+ const clock=t.mock.method(Date,'now',()=>Date.parse('2026-10-22T23:00:00Z'));
  const legacy=JSON.parse(readFileSync('content/instagram/local-stories-ready.json')).find(p=>p.id==='local-rowdies-shield-20261022');
  assert.equal(contentHash(legacy),'5f43afcac9808c8694c19e26d2fb735c3f90c8031ea7326812f5ba0c154e9be8');
- const storyboard=JSON.parse(readFileSync('content/instagram/photo-editorial-ready.json')).find(p=>p.id==='local-puerta-four-20261022');assert(storyboard.video.beats.length);assert.equal(contentHash(storyboard),'021d58d86c5857635728642e3d2ba0905bbbc7583a3ce226d169dc2980a68aa3');assert(validPostImage(storyboard));assert(approvedOriginalCreative(storyboard));
+ const storyboard=JSON.parse(readFileSync('test/fixtures/legacy-puerta-carousel.json'));assert(storyboard.video.beats.length);assert.equal(contentHash(storyboard),'021d58d86c5857635728642e3d2ba0905bbbc7583a3ce226d169dc2980a68aa3');assert(validPostImage(storyboard));assert(approvedOriginalCreative(storyboard));
+ clock.mock.restore();
  const r=row();assert(approvedOriginalCreative(r));assert(validPostImage(r));
  assert.notEqual(contentHash(r),contentHash({...r,slides:[r.slides[0],r.slides[2],r.slides[1]]}));
  assert.notEqual(contentHash(r),contentHash({...r,photos:[{...r.photos[0],subject:'Other subject'}]}));

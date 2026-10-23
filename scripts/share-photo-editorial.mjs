@@ -16,13 +16,16 @@ try {
  await page.setContent(`<style>body{margin:0;padding:24px;background:#dce2d6;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;align-content:start;grid-auto-rows:min-content}img{width:100%;display:block;border-radius:6px}</style>${images.filter(i=>i.slide===i.row.slides[0]).map(i=>`<img src="${i.data}">`).join('')}`);
  await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode())));
  await page.screenshot({path:dir+'/covers.jpg',fullPage:true,type:'jpeg',quality:94});
+ await page.setContent(`<style>body{margin:0;padding:18px;background:#dce2d6;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start;align-content:start;grid-auto-rows:min-content}img{width:100%;display:block}</style>${images.map(i=>`<img src="${i.data}">`).join('')}`);
+ await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode())));
+ await page.screenshot({path:dir+'/gallery.jpg',fullPage:true,type:'jpeg',quality:95});
  const links={createdAt:new Date().toISOString(),carousels:rows.length,slides:images.length,covers:rows.map(r=>({id:r.id,url:r.assetUrl,slides:r.slides.map(s=>s.assetUrl)}))};
  await withProject(async f=>{
-  const cover=await readFile(dir+'/covers.jpg');links.overview=(await f.uploadImage({name:'cancha-photo-carousel-covers',image:{bytes:new Uint8Array(cover),mimeType:'image/jpeg'}})).url;
+  const cover=await readFile(dir+'/gallery.jpg');links.overview=(await f.uploadImage({name:'cancha-photo-carousel-all-slides',image:{bytes:new Uint8Array(cover),mimeType:'image/jpeg'}})).url;
   const pdf=await readFile(dir+'/cancha-photo-carousels.pdf');links.pdf=(await f.uploadFile({name:'cancha-photo-carousels.pdf',file:{bytes:new Uint8Array(pdf),mimeType:'application/pdf'}})).url;
-  const report=JSON.parse(await readFile('previews/video/photo-story-report.json'));if(!/^[a-z0-9-]+\.mp4$/.test(report.file)||!rows.some(r=>r.id===report.story&&r.sourceHash===report.sourceHash))throw Error('Video source proof missing');const video=await readFile('previews/video/'+report.file);if(createHash('sha256').update(video).digest('hex')!==report.sha256)throw Error('Video bytes changed');links.video=(await f.uploadFile({name:'cancha-puerta-photo-story.mp4',file:{bytes:new Uint8Array(video),mimeType:'video/mp4'}})).url;
+  if(process.argv.includes('--include-video')){const report=JSON.parse(await readFile('previews/video/photo-story-report.json'));if(!/^[a-z0-9-]+\.mp4$/.test(report.file)||!rows.some(r=>r.id===report.story&&r.sourceHash===report.sourceHash))throw Error('Video source proof missing');const video=await readFile('previews/video/'+report.file);if(createHash('sha256').update(video).digest('hex')!==report.sha256)throw Error('Video bytes changed');links.video=(await f.uploadFile({name:'cancha-photo-story-preview.mp4',file:{bytes:new Uint8Array(video),mimeType:'video/mp4'}})).url;}
  });
  // Test links outside the SDK before sharing them with the owner.
- for(const [key,type]of [['overview',/image\/jpeg/],['pdf',/application\/pdf/],['video',/video\/mp4/]]){const bytes=await session.html(links[key],type,{maxBytes:20_000_000});if(!bytes.length)throw Error('Empty public preview '+key);}
+ for(const [key,type]of [['overview',/image\/jpeg/],['pdf',/application\/pdf/],...(links.video?[['video',/video\/mp4/]]:[])]){const bytes=await session.html(links[key],type,{maxBytes:20_000_000});if(!bytes.length)throw Error('Empty public preview '+key);}
  await writeFile('content/instagram/photo-editorial-preview-links.json',JSON.stringify(links,null,2)+'\n');console.log(JSON.stringify({overview:links.overview,pdf:links.pdf,video:links.video}));
 } finally {await browser.close();await session.close()}

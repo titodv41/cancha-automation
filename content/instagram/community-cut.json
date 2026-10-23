@@ -1,0 +1,18 @@
+{
+  "id": "ftl-community-cut-20261023",
+  "editorialSourceId": "ftl-community-film-20261023",
+  "sourcePage": "https://www.ftlutd.com/",
+  "sourceVideoUrl": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/FTLUTD-Website-Main-Narrow-1.mp4",
+  "originalSha256": "0322b771f04ac7b174668b72b1f4f9e22091a82378276b21c23280a25489612c",
+  "authorization": "owner-cleared-2026-10-22",
+  "sourceFile": "private-data/editorial-reset-2026-10-23/ftl-source.mp4",
+  "durationSeconds": 17.5,
+  "theme": {"accent": "#86dbef"},
+  "music": {"bpm": 126, "style": "original-house", "openGain": 0.82, "duckedGain": 0.3},
+  "cues": [
+    {"start": 0.1, "end": 3.1, "title": "FTL\nUNITED.", "body": "FORT LAUDERDALE · WOMEN’S PRO SOCCER"},
+    {"start": 5.5, "end": 9.7, "title": "MATCHDAY\nIN DAVIE.", "body": "Amerant Bank Field · NSU campus"},
+    {"start": 12.7, "end": 17.5, "title": "WHO DO YOU\nGO WITH?", "body": "Home dates + tickets: FTLUTD.com"}
+  ],
+  "creativeStatus": "Preview only — actual club film with original Cancha music, no synthetic narrator. The source audio track is silent and unused. Not filmed by Cancha; no new interview or match-date claim."
+}

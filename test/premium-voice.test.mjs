@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {alignmentToWords,captionGroups} from '../video/audio/caption-timing.mjs';
 import {validateVoiceBatch,elevenClient,inspectVoiceAccount,generateVoice} from '../video/audio/premium-voice.mjs';
-const policy=JSON.parse(await readFile(new URL('../config/premium-voice.json',import.meta.url))),voice=policy.candidates[0];
+const policy={...JSON.parse(await readFile(new URL('../config/premium-voice.json',import.meta.url))),paidGenerationEnabled:true},voice=policy.candidates[0];
 const text='Weston won. Two nil.';
 const alignment={characters:[...text],character_start_times_seconds:[...text].map((_,i)=>i*.1),character_end_times_seconds:[...text].map((_,i)=>(i+1)*.1)};
 const sample={audio_base64:Buffer.alloc(100,1).toString('base64'),normalized_alignment:alignment};
@@ -20,6 +20,7 @@ test('captions preserve actual word timing, punctuation and speech offset',()=>{
 });
 
 test('paid batches reject excess length, unknown voices and unreviewed models',()=>{
+ assert.throws(()=>validateVoiceBatch(text,[voice],{...policy,paidGenerationEnabled:false}),/Paid narration is disabled/);
  assert.equal(validateVoiceBatch(text,[voice],policy),text.length);
  assert.throws(()=>validateVoiceBatch('a'.repeat(651),[voice],policy));
  assert.throws(()=>validateVoiceBatch(text,[{id:'other'}],policy));

@@ -1,0 +1,32 @@
+{
+  "provider": "local Pocket TTS",
+  "package": "4.0.1",
+  "model": "english_2026-10",
+  "modelLicense": "CC BY 4.0",
+  "codeLicense": "MIT",
+  "cpuOnly": true,
+  "paidApiCalls": 0,
+  "cloningUsed": false,
+  "script": "Looking for women's soccer near you? Tampa Bay Sun play in Tampa. Sporting Jacks are in Jacksonville. And Fort Lauderdale United play in Davie, on the Nova Southeastern campus. All three are professional clubs. Check the next home date before you go.",
+  "samples": [
+    {
+      "voice": "marius",
+      "url": "https://framerusercontent.com/assets/A2cCWvl3LyLI302KFEQ7N0Pd0M.mp3",
+      "durationSeconds": 15.04,
+      "generationSeconds": 5.3,
+      "sha256": "041013dd975075466e67ed453fcad0e2bf1d6f248995ce58d8ab0bd257d2ecb5",
+      "presetSource": "hf://kyutai/tts-voices/voice-donations/Selfie.wav",
+      "presetLicense": "CC0"
+    },
+    {
+      "voice": "caro_davy",
+      "url": "https://framerusercontent.com/assets/kiFrBBRMnxUFJ4qQxbcVF8lYrNw.mp3",
+      "durationSeconds": 19.2,
+      "generationSeconds": 6.08,
+      "sha256": "8c3eca8bccfd663aeb506f110e73c1a89a4c2f5cad4818e1524faa6fc777590a",
+      "presetSource": "hf://kyutai/tts-voices/voice-zero/caro_davy.wav",
+      "presetLicense": "CC0"
+    }
+  ],
+  "status": "Auditions only; not queued for Instagram"
+}

@@ -1,0 +1,362 @@
+{
+  "brand": {
+    "name": "Cancha",
+    "handle": "@wearecancha",
+    "forest": "#103f32",
+    "cream": "#f5f3e9",
+    "accent": "#d7ef86",
+    "orange": "#f55b32",
+    "logo": "content/instagram/local-stories/assets/cancha.png",
+    "displayFont": "content/instagram/local-stories/assets/display.woff2",
+    "bodyFont": "content/instagram/local-stories/assets/ui.woff2"
+  },
+  "authorization": "owner-cleared-2026-10-22",
+  "posts": [
+    {
+      "id": "local-rowdies-shield-20261022",
+      "organization": "Tampa Bay Rowdies",
+      "editorialSourceId": "rowdies-shield-20261018",
+      "sourceType": "news",
+      "topic": "news",
+      "caption": "88th minute. Sebastian Cruz. The Shield stays in Tampa Bay.\n\nThe Rowdies beat Detroit 1–0 to secure the 2026 USL Championship Players’ Shield and home-field advantage throughout the playoffs.\n\nNext: Al Lang, October 30, 7:30 PM ET. Who’s going?\n\nhttps://www.rowdiessoccer.com/news/2026/10/18/rowdies-claim-players-shield-in-1-0-victory-over-detroit/\n\n#TampaBayRowdies #USLChampionship #FloridaSoccer",
+      "photos": [
+        {
+          "id": "rowdies-result",
+          "originalUrl": "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/10/TBRvsDET-Recap-10.17.26_1920x1080.jpg",
+          "sourcePage": "https://www.rowdiessoccer.com/news/2026/10/18/rowdies-claim-players-shield-in-1-0-victory-over-detroit/",
+          "publisher": "Tampa Bay Rowdies",
+          "subject": "Rowdies players pictured in the club’s Detroit match recap graphic",
+          "crop": {
+            "x": 0.052,
+            "y": 0.14,
+            "width": 0.574,
+            "height": 0.705
+          },
+          "originalChecksum": "27b35bea288493444ca6097f8a0f410203817c27f9e31c0ef4688cc050413227"
+        }
+      ],
+      "slides": [
+        {
+          "layout": "cover",
+          "photoId": "rowdies-result",
+          "eyebrow": "TAMPA BAY · OCT 18, 2026",
+          "title": "THE SHIELD.\nTAMPA BAY’S.",
+          "label": "ROWDIES 1–0 DETROIT",
+          "position": "50% 48%",
+          "altText": "Rowdies players from the club’s Detroit match recap. Tampa Bay won the regular-season Players’ Shield after a 1–0 victory."
+        },
+        {
+          "layout": "split",
+          "photoId": "rowdies-result",
+          "eyebrow": "THE DECIDING MOMENT",
+          "title": "88TH MINUTE.\nSEBASTIAN CRUZ.",
+          "body": "One goal. The regular-season Shield. Home-field advantage for the playoffs.",
+          "position": "50% 45%",
+          "altText": "A closer view of the Rowdies match recap photograph with the result: Sebastian Cruz scored the 88th-minute winner."
+        },
+        {
+          "layout": "question",
+          "photoId": "rowdies-result",
+          "eyebrow": "NEXT STOP · AL LANG",
+          "title": "WHO’S GOING\nTO THE PLAYOFFS?",
+          "body": "October 30 · 7:30 PM ET\nTag your matchday crew.",
+          "position": "55% 40%",
+          "altText": "Rowdies match recap photograph above an invitation to their October 30 home playoff game at Al Lang, 7:30 PM Eastern."
+        }
+      ]
+    },
+    {
+      "id": "local-puerta-four-20261022",
+      "organization": "Sporting JAX",
+      "editorialSourceId": "puerta-four-goals-20261016",
+      "sourceType": "brand",
+      "topic": "storytelling",
+      "caption": "Four goals. One match. Ashlyn Puerta is 19.\n\nShe scored all four in Sporting JAX’s 4–1 win over Fort Lauderdale United, setting a Gainbridge Super League single-match scoring record, according to the club’s October 16 report.\n\nWhich Florida player should we watch next? Give us a name and a club.\n\nhttps://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/\n\n#AshlynPuerta #SportingJAX #WomensSoccer #FloridaSoccer",
+      "photos": [
+        {
+          "id": "puerta-celebration",
+          "originalUrl": "https://www.sportingjax.com/wp-content/uploads/sites/75/2026/10/10.16.26-featured-image.png",
+          "sourcePage": "https://www.sportingjax.com/news/2026/10/16/puertas-record-breaking-four-goals-lift-women-over-fort-lauderdale/",
+          "publisher": "Sporting JAX",
+          "subject": "Ashlyn Puerta celebrating, as pictured in Sporting JAX’s October 16 match report",
+          "originalChecksum": "5da3a90643145911cce9c0f2f7c5e2aa80a3f835a6ef70d361c8e6feee2d8bc3"
+        },
+        {
+          "id": "puerta-portrait",
+          "originalUrl": "https://www.sportingjax.com/wp-content/uploads/sites/75/2025/07/Puerta-2026-headshot.png",
+          "sourcePage": "https://www.sportingjax.com/roster/ashlyn-puerta/",
+          "publisher": "Sporting JAX",
+          "subject": "Ashlyn Puerta official roster portrait",
+          "originalChecksum": "609a4153c0d211ff9042f5fcc58719912ce4ff26528ae5fb495531270667a051"
+        }
+      ],
+      "slides": [
+        {
+          "layout": "cover",
+          "photoId": "puerta-celebration",
+          "eyebrow": "JACKSONVILLE · OCT 16, 2026",
+          "title": "FOUR GOALS.\nSHE’S 19.",
+          "label": "ASHLYN PUERTA · SPORTING JAX",
+          "position": "53% 30%",
+          "altText": "Ashlyn Puerta celebrates in the real photograph from Sporting JAX’s October 16 match report. She scored four goals at age 19."
+        },
+        {
+          "layout": "split",
+          "photoId": "puerta-portrait",
+          "eyebrow": "A RECORD NIGHT",
+          "title": "JAX 4–1\nFORT LAUDERDALE.",
+          "body": "All four: Puerta.\nA single-match Gainbridge Super League scoring record.",
+          "position": "50% 30%",
+          "altText": "Ashlyn Puerta’s official Sporting JAX roster portrait with the 4–1 Fort Lauderdale United result and her single-match scoring record."
+        },
+        {
+          "layout": "question",
+          "photoId": "puerta-celebration",
+          "eyebrow": "YOUR LOCAL WATCHLIST",
+          "title": "WHO SHOULD\nWE WATCH NEXT?",
+          "body": "A Florida player. Their club.\nTell us why.",
+          "position": "53% 35%",
+          "altText": "Puerta celebrating above Cancha’s question asking the community to recommend another Florida soccer player and their club."
+        }
+      ],
+      "video": {
+        "durationSeconds": 15,
+        "beats": [
+          {
+            "start": 0,
+            "end": 120,
+            "photoId": "puerta-celebration",
+            "position": "53% 32%",
+            "eyebrow": "JACKSONVILLE · OCT 16",
+            "title": "FOUR GOALS.\nSHE’S 19.",
+            "body": "ASHLYN PUERTA · SPORTING JAX"
+          },
+          {
+            "start": 120,
+            "end": 285,
+            "photoId": "puerta-portrait",
+            "position": "50% 30%",
+            "eyebrow": "GAINBRIDGE SUPER LEAGUE",
+            "title": "JAX 4–1\nFORT LAUDERDALE.",
+            "body": "All four: Puerta. A single-match scoring record.",
+            "layout": "portrait"
+          },
+          {
+            "start": 285,
+            "end": 450,
+            "photoId": "puerta-celebration",
+            "position": "48% 30%",
+            "eyebrow": "YOUR LOCAL WATCHLIST",
+            "title": "WHO SHOULD\nWE WATCH NEXT?",
+            "body": "A Florida player. Their club. Tell us why."
+          }
+        ]
+      }
+    },
+    {
+      "id": "local-weston-club-20261022",
+      "organization": "Weston FC",
+      "editorialSourceId": "weston-club-notes-20261022",
+      "sourceType": "brand",
+      "topic": "community",
+      "caption": "Know these fields?\n\nWeston FC has been part of the local game since 1998. The club lists competitive youth programs for ages 7–19, with Vista Park and Weston Regional Park as its home fields.\n\nPlayed here? Tell a new family one thing you wish you’d known.\n\nCompare clubs on Cancha. Link in bio.\nhttps://www.westonfc.org/about\n\n#WestonFC #WestonFlorida #YouthSoccer #FloridaSoccer",
+      "photos": [
+        {
+          "id": "weston-fields",
+          "originalUrl": "https://static.wixstatic.com/media/287b2a_4dcf05673a8448f883ffaaca16bb6349~mv2.jpg",
+          "sourcePage": "https://www.westonfc.org/about",
+          "publisher": "Weston FC",
+          "subject": "Aerial field photograph published on Weston FC’s About page; exact individual field not identified",
+          "originalChecksum": "2d8958eb21778d07b0ce643a800fb150b37cbb68275283ccbfc1f5932c13e3ef"
+        }
+      ],
+      "slides": [
+        {
+          "layout": "cover",
+          "photoId": "weston-fields",
+          "eyebrow": "WESTON · CLUB NOTES",
+          "title": "KNOW\nTHESE FIELDS?",
+          "label": "WESTON FC · SINCE 1998",
+          "position": "50% 48%",
+          "altText": "An aerial soccer field photograph from Weston FC’s About page, with the question: Know these fields?"
+        },
+        {
+          "layout": "split",
+          "photoId": "weston-fields",
+          "eyebrow": "WESTON FC",
+          "title": "LOCAL FIELDS.\nA NEW TEAM?",
+          "body": "Competitive youth soccer · Ages 7–19\nVista Park + Weston Regional Park",
+          "position": "50% 65%",
+          "altText": "Weston FC’s field photograph and club details: competitive youth programs, ages 7–19, Vista Park and Weston Regional Park."
+        },
+        {
+          "layout": "question",
+          "photoId": "weston-fields",
+          "eyebrow": "PLAYED HERE?",
+          "title": "HELP THE\nNEXT FAMILY.",
+          "body": "What should they know\nbefore their first session?",
+          "position": "50% 40%",
+          "altText": "Weston field photography with a question inviting families to share practical advice about their first club session."
+        }
+      ]
+    },
+    {
+      "id": "local-fkk-programs-20261022",
+      "organization": "Florida Kraze Krush",
+      "editorialSourceId": "fkk-program-notes-20261022",
+      "sourceType": "brand",
+      "topic": "community",
+      "caption": "First club near Winter Springs or Oviedo? Two FKK programs to compare.\n\nU7–U8: Developmental.\nU9–U19: Recreational.\n\nFall 2026 registration is closed. The recreational page lists a Spring 2027 waitlist; check the age chart and current availability with FKK.\n\nParents: what made your child’s first season click?\n\nhttps://floridakrazekrush.com/developmental/\nhttps://floridakrazekrush.com/rec/\n\n#FloridaKrazeKrush #Oviedo #WinterSprings #OrlandoSoccer",
+      "photos": [
+        {
+          "id": "fkk-developmental",
+          "originalUrl": "https://floridakrazekrush.com/wp-content/uploads/2025/12/Dev_Banner06.jpg",
+          "sourcePage": "https://floridakrazekrush.com/developmental/",
+          "publisher": "Florida Kraze Krush",
+          "subject": "Youth players competing for the ball in FKK’s Developmental program photography",
+          "originalChecksum": "d32a3c473cc68262aaf2aba200f853d1c5ac9fb4d9758b9b0c97687869cbf505"
+        },
+        {
+          "id": "fkk-recreational",
+          "originalUrl": "https://floridakrazekrush.com/wp-content/uploads/2023/07/Rec_banner12.jpg",
+          "sourcePage": "https://floridakrazekrush.com/rec/",
+          "publisher": "Florida Kraze Krush",
+          "subject": "Youth players in FKK’s Recreational program photography",
+          "originalChecksum": "968676265abcf9ea833fcff2d09ad8a27000101af3fad7576acf65e8d1af790d"
+        }
+      ],
+      "slides": [
+        {
+          "layout": "split",
+          "photoId": "fkk-developmental",
+          "eyebrow": "WINTER SPRINGS + OVIEDO",
+          "title": "FIRST CLUB?\nSTART HERE.",
+          "body": "Two Florida Kraze Krush programs\nfor families to compare.",
+          "position": "50% 50%",
+          "altText": "Real youth soccer action from FKK’s Developmental page. A guide to two programs near Winter Springs and Oviedo."
+        },
+        {
+          "layout": "split",
+          "photoId": "fkk-developmental",
+          "eyebrow": "FLORIDA KRAZE KRUSH",
+          "title": "U7–U8.\nDEVELOPMENTAL.",
+          "body": "Central Winds Park + Shane Kelly Park\nCheck the club’s age chart.",
+          "position": "45% 50%",
+          "altText": "Young FKK players challenging for the ball. Developmental covers U7–U8 and lists Central Winds Park and Shane Kelly Park."
+        },
+        {
+          "layout": "split",
+          "photoId": "fkk-recreational",
+          "eyebrow": "FLORIDA KRAZE KRUSH",
+          "title": "U9–U19.\nRECREATIONAL.",
+          "body": "Fall 2026 is closed.\nSpring 2027: waitlist listed.",
+          "position": "50% 50%",
+          "altText": "Actual youth players from FKK’s Recreational program page. U9–U19, Fall 2026 closed and Spring 2027 waitlist listed."
+        },
+        {
+          "layout": "question",
+          "photoId": "fkk-recreational",
+          "eyebrow": "PARENTS · YOUR TURN",
+          "title": "WHAT MADE\nTHE FIRST\nSEASON CLICK?",
+          "body": "The coach? A friend?\nA shorter drive?",
+          "position": "50% 50%",
+          "altText": "FKK’s recreational soccer photography above a question asking parents what made their child’s first soccer season work well."
+        }
+      ]
+    },
+    {
+      "id": "local-weston-coach-20261022",
+      "organization": "Weston FC",
+      "editorialSourceId": "weston-luis-mendoza-20261022",
+      "sourceType": "brand",
+      "topic": "storytelling",
+      "caption": "Who shapes a club’s training?\n\nWeston FC lists Luis Mendoza as Boys Technical Director, directing the technical side of its boys’ programs.\n\nWhen you compare clubs, ask: what will players work on, how do coaches give feedback, and who helps if the group isn’t the right fit?\n\nCoaches and parents: what question would you add?\nhttps://www.westonfc.org/copy-of-admin-staff\n\n#WestonFC #SoccerCoaching #YouthSoccer",
+      "photos": [
+        {
+          "id": "luis-mendoza",
+          "originalUrl": "https://static.wixstatic.com/media/287b2a_33f6f2cd9aff4651bb7c42041e4a74ce~mv2.jpg",
+          "sourcePage": "https://www.westonfc.org/copy-of-admin-staff",
+          "publisher": "Weston FC",
+          "subject": "Luis Mendoza portrait adjacent to his named Technical Director biography on Weston FC’s staff page",
+          "originalChecksum": "6e63decfd05e3e96ec05a24f9c53cfd5b5c7da9f191c6fb66777aeb6e0688f8a"
+        }
+      ],
+      "slides": [
+        {
+          "layout": "cover",
+          "photoId": "luis-mendoza",
+          "eyebrow": "WESTON FC · COACH NOTES",
+          "title": "LUIS\nMENDOZA.",
+          "label": "BOYS TECHNICAL DIRECTOR",
+          "position": "50% 32%",
+          "altText": "Actual portrait of Luis Mendoza from his Weston FC staff biography, identified as Boys Technical Director."
+        },
+        {
+          "layout": "split",
+          "photoId": "luis-mendoza",
+          "eyebrow": "BEFORE YOU JOIN A CLUB",
+          "title": "ASK ABOUT\nTHE TRAINING.",
+          "body": "What will players work on?\nHow do coaches give feedback?",
+          "position": "50% 20%",
+          "altText": "Luis Mendoza’s official staff portrait alongside two original Cancha questions families can ask when comparing clubs; these are not attributed quotations."
+        },
+        {
+          "layout": "question",
+          "photoId": "luis-mendoza",
+          "eyebrow": "COACHES + PARENTS",
+          "title": "WHAT WOULD\nYOU ASK?",
+          "body": "Add the question you wish\nyou’d asked sooner.",
+          "position": "50% 25%",
+          "altText": "Luis Mendoza’s portrait above Cancha’s question inviting parents and coaches to suggest questions to ask a club."
+        }
+      ]
+    },
+    {
+      "id": "local-rowdies-playoff-20261022",
+      "organization": "Tampa Bay Rowdies",
+      "editorialSourceId": "rowdies-playoff-20261030",
+      "sourceType": "brand",
+      "topic": "community",
+      "caption": "Friday night at Al Lang.\n\nThe Rowdies open their home playoff run on October 30 at 7:30 PM ET. Check the club for match details and tickets.\n\nFirst-timers: what do you want to know? Regulars: drop one matchday tip.\n\nhttps://www.rowdiessoccer.com/news/2026/09/27/rowdies-to-open-2026-playoffs-at-home-on-october-30/\n\n#TampaBayRowdies #AlLangStadium #StPete #FloridaSoccer",
+      "photos": [
+        {
+          "id": "rowdies-supporters",
+          "originalUrl": "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2023/02/TBR-Flag.jpg",
+          "sourcePage": "https://www.rowdiessoccer.com/news/2026/09/27/rowdies-to-open-2026-playoffs-at-home-on-october-30/",
+          "publisher": "Tampa Bay Rowdies",
+          "subject": "Rowdies supporters and flags in the club’s archive header photograph; not a photograph of the upcoming playoff match",
+          "originalChecksum": "50ee9b656af0264f1dff6196b5484958e8f5d75b2273e2e8be4bcc0ed043eb2e"
+        }
+      ],
+      "slides": [
+        {
+          "layout": "cover",
+          "photoId": "rowdies-supporters",
+          "eyebrow": "ST. PETERSBURG · MATCHDAY",
+          "title": "FRIDAY\nAT AL LANG.",
+          "label": "OCT 30 · 7:30 PM ET",
+          "position": "48% 50%",
+          "altText": "Rowdies supporters wave flags in the club’s archive photograph. Upcoming home playoff match: October 30, 7:30 PM Eastern, Al Lang Stadium."
+        },
+        {
+          "layout": "split",
+          "photoId": "rowdies-supporters",
+          "eyebrow": "BRING YOUR PEOPLE",
+          "title": "LOCAL CLUB.\nPLAYOFF NIGHT.",
+          "body": "Tampa Bay Rowdies · Al Lang Stadium\nCheck official match and ticket details.",
+          "position": "55% 45%",
+          "altText": "Rowdies supporters’ flags above details for the October 30 home playoff game at Al Lang Stadium."
+        },
+        {
+          "layout": "question",
+          "photoId": "rowdies-supporters",
+          "eyebrow": "AL LANG REGULARS",
+          "title": "GIVE A\nFIRST-TIMER\nONE TIP.",
+          "body": "Where to stand? When to arrive?\nWhat should they know?",
+          "position": "45% 50%",
+          "altText": "A Rowdies supporters photograph with an invitation for regular fans to share practical advice for first-time match visitors."
+        }
+      ]
+    }
+  ]
+}
