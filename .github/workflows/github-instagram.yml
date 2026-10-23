@@ -59,6 +59,12 @@ jobs:
         run: node scripts/check-preparation-needed.mjs >> "$GITHUB_OUTPUT"
       - if: steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
         run: npx playwright install --with-deps chromium
+      - uses: actions/cache/restore@v4
+        if: steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
+        with:
+          path: private-data/municipal-source-cache
+          key: cancha-municipal-sources-${{ github.run_id }}
+          restore-keys: cancha-municipal-sources-
       - name: Run private automation
         if: steps.clock.outputs.action != ''
         env:
@@ -72,6 +78,11 @@ jobs:
           CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
           ACTION: ${{ steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'false' && 'review' || steps.clock.outputs.action }}
         run: node scripts/github-instagram.mjs "$ACTION"
+      - uses: actions/cache/save@v4
+        if: always() && steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
+        with:
+          path: private-data/municipal-source-cache
+          key: cancha-municipal-sources-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
         if: success() && steps.clock.outputs.action != ''
         with:
