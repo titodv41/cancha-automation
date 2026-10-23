@@ -1,0 +1,20 @@
+{
+  "createdAt": "2026-10-23T18:49:14.033Z",
+  "url": "https://framerusercontent.com/assets/Dys5SXt31jDnVpJqabxAq9r3Cc.mp4",
+  "voice": "Jessica",
+  "provider": "elevenlabs",
+  "model": "eleven_v3",
+  "syntheticNarration": true,
+  "creativeStatus": "Owner-requested preview only; no Instagram import or publication",
+  "sha256": "0d12ca4ac86f931a882464eff2dd663e1914c121c7f8af267b3e9cb2d40514fb",
+  "bytes": 5906486,
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "durationSeconds": 29.366667,
+  "channels": 2,
+  "sampleRate": 48000,
+  "integratedLUFS": -14.1,
+  "truePeakDb": -3.45,
+  "passed": true
+}

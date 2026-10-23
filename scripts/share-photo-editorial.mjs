@@ -4,7 +4,7 @@ import {openBrowser} from './browser-session.mjs';
 import {withProject} from './project-session.mjs';
 import {sourceSession} from './source-session.mjs';
 
-const rows=JSON.parse(await readFile('content/instagram/photo-editorial-ready.json'));
+const photoRows=JSON.parse(await readFile('content/instagram/photo-editorial-ready.json')),productRows=process.argv.includes('--include-products')?JSON.parse(await readFile('content/instagram/product-editorial-ready.json')):[],rows=[...photoRows,...productRows.map(r=>({...r,slides:[{assetUrl:r.assetUrl,assetChecksum:r.assetChecksum,altText:r.altText}]}))];
 const dir='previews/photo-editorial',session=sourceSession(),{browser,page}=await openBrowser({width:1260,height:1600});
 const data=b=>'data:image/jpeg;base64,'+b.toString('base64'),images=[];
 try {
@@ -19,7 +19,7 @@ try {
  await page.setContent(`<style>body{margin:0;padding:18px;background:#dce2d6;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start;align-content:start;grid-auto-rows:min-content}img{width:100%;display:block}</style>${images.map(i=>`<img src="${i.data}">`).join('')}`);
  await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode())));
  await page.screenshot({path:dir+'/gallery.jpg',fullPage:true,type:'jpeg',quality:95});
- const links={createdAt:new Date().toISOString(),carousels:rows.length,slides:images.length,covers:rows.map(r=>({id:r.id,url:r.assetUrl,slides:r.slides.map(s=>s.assetUrl)}))};
+ const links={createdAt:new Date().toISOString(),carousels:photoRows.length,productPosts:productRows.length,slides:images.length,covers:rows.map(r=>({id:r.id,url:r.assetUrl,slides:r.slides.map(s=>s.assetUrl)}))};
  await withProject(async f=>{
   const cover=await readFile(dir+'/gallery.jpg');links.overview=(await f.uploadImage({name:'cancha-photo-carousel-all-slides',image:{bytes:new Uint8Array(cover),mimeType:'image/jpeg'}})).url;
   const pdf=await readFile(dir+'/cancha-photo-carousels.pdf');links.pdf=(await f.uploadFile({name:'cancha-photo-carousels.pdf',file:{bytes:new Uint8Array(pdf),mimeType:'application/pdf'}})).url;

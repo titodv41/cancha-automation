@@ -1,0 +1,64 @@
+[
+  {
+    "id": "product-nearby-20261023",
+    "format": "feed",
+    "sourceType": "brand",
+    "topic": "update",
+    "creativeKind": "product-demo",
+    "creativeVersion": "cancha-local-v2",
+    "caption": "Looking for a soccer club near you? Start with your city or ZIP code on Cancha, then narrow it down by age or level if you need to.\n\nYou can open a club profile and follow its official website to ask about teams, fees and places.\n\nTry it from the link in our bio. Which Florida city should we cover more closely?\n\n#FloridaSoccer #LocalSoccer",
+    "altText": "Cancha’s actual Florida soccer directory, captured with a Miami ZIP-code search. The poster reads: Your next club. A little closer. Start with a city or ZIP code.",
+    "factsCheckedAt": "2026-10-23T18:50:13.623Z",
+    "headline": "YOUR NEXT CLUB.\nA LITTLE CLOSER.",
+    "assetUrl": "https://framerusercontent.com/images/7lBHJHAbhem78k8stkIN0bjpp8.jpg",
+    "assetChecksum": "66831a37346244686fe44b8c04df6563512b9c75e3f45ee75815f7cf78c11fde",
+    "rights": "Original Cancha design and actual public Cancha directory capture. No invented users, partnership or availability claims.",
+    "screenshot": {
+      "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?near=33138&view=list",
+      "capturedAt": "2026-10-23T18:50:13.623Z",
+      "width": 1100,
+      "height": 900,
+      "assetUrl": "https://framerusercontent.com/images/chNxEyrlevHq6FbGw7vSdnQ4qPQ.png",
+      "assetChecksum": "a30c5b2fa22162a902b2a5588d8fe2f28f1f82f4e8c0c99b1b64e3860b589cd9"
+    },
+    "visualEvidence": {
+      "creator": "Cancha",
+      "kind": "product-demo",
+      "subjectKey": "product-nearby-20261023",
+      "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?near=33138&view=list",
+      "renderedAt": "2026-10-23T18:50:13.704Z",
+      "assetChecksum": "66831a37346244686fe44b8c04df6563512b9c75e3f45ee75815f7cf78c11fde"
+    }
+  },
+  {
+    "id": "product-age-fit-20261023",
+    "format": "feed",
+    "sourceType": "brand",
+    "topic": "update",
+    "creativeKind": "product-demo",
+    "creativeVersion": "cancha-local-v2",
+    "caption": "A 14-year-old trying soccer for the first time and an adult looking for a competitive team need different options.\n\nOn Cancha, age and level are optional filters. Start with your area, add what matters, and check the club’s own program details before signing up.\n\nThis is the actual directory with an Orlando-area search. Find it through the link in our bio.\n\n#OrlandoSoccer #YouthSoccer",
+    "altText": "A real capture of Cancha’s soccer directory with an Orlando-area search and age and level parameters. The poster reads: Start with their age. Then choose the kind of soccer they want.",
+    "factsCheckedAt": "2026-10-23T18:50:25.327Z",
+    "headline": "START WITH\nTHEIR AGE.",
+    "assetUrl": "https://framerusercontent.com/images/j7QqKZ0LKPjcDsySgU9ucdqgkWU.jpg",
+    "assetChecksum": "8f430ddd3f66d1c6d5fea32a38046566418bd414f6b8b9a2ef8e4e435bd57ce5",
+    "rights": "Original Cancha design and actual public Cancha directory capture. No invented users, partnership or availability claims.",
+    "screenshot": {
+      "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?near=32801&playerAge=14&level=Recreational&view=list",
+      "capturedAt": "2026-10-23T18:50:25.327Z",
+      "width": 1100,
+      "height": 900,
+      "assetUrl": "https://framerusercontent.com/images/aNIspEXaIKX1nFuPfS8JCtmheQ.png",
+      "assetChecksum": "91963155490dbc291e1ef85a60cf463253c15559a0585d0d3c35aa0a9a65dc8d"
+    },
+    "visualEvidence": {
+      "creator": "Cancha",
+      "kind": "product-demo",
+      "subjectKey": "product-age-fit-20261023",
+      "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?near=32801&playerAge=14&level=Recreational&view=list",
+      "renderedAt": "2026-10-23T18:50:25.417Z",
+      "assetChecksum": "8f430ddd3f66d1c6d5fea32a38046566418bd414f6b8b9a2ef8e4e435bd57ce5"
+    }
+  }
+]

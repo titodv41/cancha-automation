@@ -1,0 +1,20 @@
+{
+  "createdAt": "2026-10-23T18:45:35.811Z",
+  "url": "https://framerusercontent.com/assets/8fgbuEfnHyC9qauGvorwAAKe64.mp4",
+  "voice": "Chris",
+  "provider": "elevenlabs",
+  "model": "eleven_v3",
+  "syntheticNarration": true,
+  "creativeStatus": "Owner-requested preview only; no Instagram import or publication",
+  "sha256": "425b7afc5edfe928e46abf1781ef6c120de74899c9d7825d8d273e7516f333c9",
+  "bytes": 5388805,
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "durationSeconds": 25.766667,
+  "channels": 2,
+  "sampleRate": 48000,
+  "integratedLUFS": -14.76,
+  "truePeakDb": -3.33,
+  "passed": true
+}

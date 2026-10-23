@@ -2,13 +2,13 @@ const esc=s=>String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replac
 
 // Sports-programme layout: a real photograph with one solid-color fact panel.
 // Source notes remain in the caption/evidence rather than competing with copy.
-export function photoPanelHtml({brand,post,slide,index,asset,display,ui,logo}) {
+export function photoPanelHtml({brand,post,slide,index,asset,display,ui,uiBold,logo}) {
  const palette={lime:[brand.accent,brand.forest],forest:[brand.forest,brand.cream],orange:[brand.orange,'#062219'],cream:[brand.cream,brand.forest]};
  const [paper,ink]=palette[slide.panelColor||'lime']||palette.lime;
  const words=[slide.eyebrow,slide.title,slide.body,slide.label].filter(Boolean).join(' ').trim().split(/\s+/);
  if(words.length>30)throw Error('Panel slide needs a shorter idea: '+post.id+'/'+index);
  return `<!doctype html><html><head><style>
- @font-face{font-family:Display;src:url('${display}');font-weight:700;font-style:italic}@font-face{font-family:UI;src:url('${ui}');font-weight:200 800}
+ @font-face{font-family:Display;src:url('${display}');font-weight:700;font-style:italic}@font-face{font-family:UI;src:url('${ui}');font-weight:600}@font-face{font-family:UI;src:url('${uiBold||ui}');font-weight:700}
  *{box-sizing:border-box}html,body{width:1080px;height:1350px;margin:0}body{background:${brand.forest};color:${brand.cream};font:650 42px/1.18 UI,sans-serif;letter-spacing:-.6px;-webkit-font-smoothing:antialiased}main{position:relative;width:1080px;height:1350px;overflow:hidden}
  .photo{position:absolute;left:28px;right:28px;top:28px;height:1010px;overflow:hidden;border-radius:24px}.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:${esc(slide.position||'50% 40%')}}.shade{position:absolute;inset:0;background:linear-gradient(180deg,#04251cc0,transparent 28%,transparent);pointer-events:none}
  header{position:absolute;left:65px;right:65px;top:64px;display:flex;justify-content:space-between;align-items:center}.logo{width:191px;height:62px;overflow:hidden}.logo img{width:100%;height:100%;object-fit:cover;filter:brightness(0) invert(1)}.page-number{font-size:32px;font-weight:750;font-variant-numeric:tabular-nums}

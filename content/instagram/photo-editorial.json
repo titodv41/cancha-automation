@@ -8,14 +8,16 @@
     "orange": "#f55b32",
     "logo": "content/instagram/local-stories/assets/cancha.png",
     "displayFont": "content/instagram/local-stories/assets/display.woff2",
-    "bodyFont": "content/instagram/local-stories/assets/manrope.woff2",
+    "bodyFont": "content/instagram/local-stories/assets/barlow-600.woff2",
     "secondaryTypography": {
-      "family": "Manrope",
-      "bodyWeight": 650,
-      "labelWeight": 750,
+      "family": "Barlow",
+      "bodyWeight": 600,
+      "labelWeight": 700,
       "minimumPx": 29,
-      "referenceCanvas": 1080
-    }
+      "referenceCanvas": 1080,
+      "websiteFontConfig": "config/discovery-fonts.json"
+    },
+    "bodyBoldFont": "content/instagram/local-stories/assets/barlow-700.woff2"
   },
   "authorization": "owner-cleared-2026-10-22",
   "posts": [
@@ -160,30 +162,50 @@
       ],
       "slides": [
         {
-          "layout": "panel",
+          "layout": "program",
           "photoId": "fkk-developmental",
           "eyebrow": "Florida Kraze Krush · U7–U8",
           "title": "FIRST\nSEASON?",
-          "body": "Small-sided games. No goalkeepers.",
+          "body": "Start with the program that fits their age.",
           "position": "45% 38%",
           "footer": "Winter Springs · Oviedo",
           "readerValue": "Identify the younger developmental age band, local sites, small-sided format, no-goalkeeper rule and closed Fall status.",
           "altText": "Actual youth action from FKK’s Developmental program. U7–U8; local practice sites, small-sided games with no goalkeeper. Fall registration is closed.",
-          "label": "Fall registration closed",
-          "panelColor": "cream"
+          "panelColor": "cream",
+          "titleSize": 118,
+          "facts": [
+            {
+              "label": "Developmental",
+              "value": "U7–U8"
+            },
+            {
+              "label": "Fall 2026",
+              "value": "Registration closed"
+            }
+          ]
         },
         {
-          "layout": "panel",
+          "layout": "program",
           "photoId": "fkk-recreational",
           "eyebrow": "Florida Kraze Krush · U9–U19",
           "title": "CHECK THE\nCOMMITMENT",
-          "body": "Ask about away-game travel.",
+          "body": "Ask about travel before signing up.",
           "position": "50% 38%",
           "footer": "floridakrazekrush.com",
           "readerValue": "Clarify that recreational soccer can include away-game travel and identify the Spring 2027 waitlist.",
           "altText": "Actual youth players from FKK’s Recreational program. U9–U19; some groups play away games, while others are in-house. Spring 2027 registration begins on a waitlist.",
-          "label": "Spring 2027 starts with a waitlist",
-          "panelColor": "cream"
+          "panelColor": "cream",
+          "titleSize": 118,
+          "facts": [
+            {
+              "label": "Recreational",
+              "value": "U9–U19"
+            },
+            {
+              "label": "Spring 2027",
+              "value": "Waitlist first"
+            }
+          ]
         }
       ]
     },
@@ -222,19 +244,30 @@
       ],
       "slides": [
         {
-          "layout": "panel",
+          "layout": "field-notes",
           "photoId": "rowdies-waterfront",
           "eyebrow": "Tampa Bay Rowdies",
-          "title": "ST. PETE.\nMATCH NIGHT.",
-          "body": "Al Lang Stadium · Downtown waterfront",
+          "title": "AL LANG.\nAFTER DARK.",
+          "body": "The Rowdies’ waterfront ground.",
           "panelColor": "lime",
           "footer": "rowdiessoccer.com",
           "readerValue": "Locate the Rowdies in St. Petersburg rather than Tampa.",
           "altText": "Night aerial of Al Lang Stadium and downtown St. Petersburg. Cancha identifies the Rowdies’ waterfront home ground.",
-          "position": "50% 50%"
+          "position": "50% 50%",
+          "titleSize": 120,
+          "facts": [
+            {
+              "label": "Location",
+              "value": "Downtown St. Pete"
+            },
+            {
+              "label": "Club",
+              "value": "Tampa Bay Rowdies"
+            }
+          ]
         },
         {
-          "layout": "panel",
+          "layout": "field-notes",
           "photoId": "rowdies-stands",
           "eyebrow": "Know your ground",
           "title": "BASEBALL PAST.\nSOCCER HOME.",
@@ -244,7 +277,17 @@
           "readerValue": "Learn how a former baseball ground became the Rowdies’ home.",
           "altText": "Actual crowd and pitch at Al Lang Stadium. The Rowdies have played here since 2011.",
           "position": "50% 50%",
-          "titleSize": 104
+          "titleSize": 104,
+          "facts": [
+            {
+              "label": "First Rowdies match",
+              "value": "April 9, 2011"
+            },
+            {
+              "label": "Result",
+              "value": "1–0 vs Montreal"
+            }
+          ]
         }
       ]
     },
@@ -271,7 +314,8 @@
           "originalChecksum": "d9e22f3f98952bc69a9b087480767fce1a9ca4d6bc45db55966705b9fe8ada08",
           "visuallyInspected": true,
           "originalPixelChecksum": "18a41372b5def79aa9ab7c30bb518f305cade2a228212e601632b6bbe351f08e",
-          "reviewNote": "Viewed 2026-10-23. Official CDN metadata varies; decoded-pixel checksum independently matches the inspected original and a second fetch."
+          "reviewNote": "Viewed 2026-10-23. Official CDN metadata varies; decoded-pixel checksum independently matches the inspected original and a second fetch. Exact reviewed original mirrored without re-encoding to preserve a reproducible source asset.",
+          "reviewedMirrorUrl": "https://framerusercontent.com/assets/eoLcmb89CgcbI0i3fy0vAHmoe4.webp"
         },
         {
           "id": "orlando-sunset-tifo",
@@ -282,34 +326,56 @@
           "originalChecksum": "8820eff11d732604a6ae3f488ca9f116d733ab97c742cbbabcea9105c307c54e",
           "visuallyInspected": true,
           "originalPixelChecksum": "dfc9b87262624df650895485f4ae1cf8a39047b37bf21c10fe07f2b13d58f59a",
-          "reviewNote": "Viewed 2026-10-23. Official CDN metadata varies; decoded-pixel checksum independently matches the inspected original and a second fetch."
+          "reviewNote": "Viewed 2026-10-23. Official CDN metadata varies; decoded-pixel checksum independently matches the inspected original and a second fetch. Exact reviewed original mirrored without re-encoding to preserve a reproducible source asset.",
+          "reviewedMirrorUrl": "https://framerusercontent.com/assets/06Ne0MEP6KyveSPfNFys9Udk.webp"
         }
       ],
       "slides": [
         {
-          "layout": "panel",
+          "layout": "field-notes",
           "photoId": "orlando-night-fireworks",
           "eyebrow": "Orlando",
-          "title": "YOUR DOWNTOWN\nMATCH NIGHT.",
-          "body": "Inter.co Stadium · Downtown Orlando",
+          "title": "DOWNTOWN\nORLANDO.",
+          "body": "Two soccer clubs. One home ground.",
           "panelColor": "cream",
           "footer": "Orlando, Florida",
           "readerValue": "Locate Orlando’s shared soccer stadium downtown.",
           "altText": "Actual packed Orlando stadium with fireworks. The ground is Inter.co Stadium in downtown Orlando.",
           "position": "50% 58%",
-          "titleSize": 104
+          "titleSize": 124,
+          "facts": [
+            {
+              "label": "Home ground",
+              "value": "Inter.co Stadium"
+            },
+            {
+              "label": "Opened",
+              "value": "March 2017"
+            }
+          ]
         },
         {
-          "layout": "panel",
+          "layout": "field-notes",
           "photoId": "orlando-sunset-tifo",
           "eyebrow": "One ground · Two soccer clubs",
           "title": "CITY +\nPRIDE.",
-          "body": "MLS and NWSL. Same downtown ground.",
+          "body": "Find a match at Inter.co Stadium.",
           "panelColor": "cream",
           "footer": "intercostadium.com",
           "readerValue": "Learn that Orlando City and Orlando Pride share a venue.",
           "altText": "Actual Orlando City match with supporters’ tifo. City in MLS and Pride in NWSL share Inter.co Stadium.",
-          "position": "50% 72%"
+          "position": "50% 72%",
+          "titleSize": 124,
+          "facts": [
+            {
+              "label": "Orlando City",
+              "value": "MLS"
+            },
+            {
+              "label": "Orlando Pride",
+              "value": "NWSL"
+            }
+          ]
         }
       ]
     },
@@ -348,28 +414,56 @@
       ],
       "slides": [
         {
-          "layout": "panel",
+          "layout": "club-card",
           "photoId": "weston-circle-warmup",
           "eyebrow": "Weston FC · Broward",
           "title": "WESTON\nFC.",
-          "body": "Boys’ and girls’ programs in Weston.",
+          "body": "A club to know in western Broward.",
           "panelColor": "orange",
           "footer": "westonfc.org",
           "readerValue": "Discover a real local club and its two program routes.",
           "altText": "Actual overhead photo of a Weston FC warm-up. The club offers boys’ and girls’ programs.",
-          "position": "50% 42%"
+          "position": "50% 42%",
+          "titleSize": 124,
+          "facts": [
+            {
+              "label": "Programs",
+              "value": "Boys + girls"
+            },
+            {
+              "label": "Location",
+              "value": "Weston, FL"
+            }
+          ],
+          "rail": "CLUB\nFILE\n001."
         },
         {
-          "layout": "panel",
+          "layout": "club-card",
           "photoId": "weston-girls-training",
           "eyebrow": "Before an evaluation",
           "title": "WHICH TEAM\nFITS YOU?",
-          "body": "Ask about age group, level and venue.",
+          "body": "Three questions for your evaluation.",
           "panelColor": "orange",
           "footer": "Weston, Florida",
           "readerValue": "Use three specific questions to compare the actual team being offered.",
           "altText": "An actual Weston FC player at training. Cancha suggests asking about the team’s age group, level and venue.",
-          "position": "50% 30%"
+          "position": "50% 30%",
+          "titleSize": 114,
+          "facts": [
+            {
+              "label": "01",
+              "value": "Age group?"
+            },
+            {
+              "label": "02",
+              "value": "Team level?"
+            },
+            {
+              "label": "03",
+              "value": "Training venue?"
+            }
+          ],
+          "rail": "FIND\nYOUR\nFIT."
         }
       ]
     }

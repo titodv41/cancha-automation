@@ -11,6 +11,10 @@ The owner wants concise photo carousels, stronger colored panels and a real spok
 
 The actual upstream files and licenses are installed in the repository, with pinned revisions and SHA-256 hashes in `agency-skill-sources.json`. These skills guide production; they are not a background content-generation service. No outreach or paid service is authorized by their generic advice. `.agents/product-marketing.md` records Cancha’s specific audience and direction.
 
+## Current release — October 23, 2026
+
+The replacement ElevenLabs key works. See [the source recovery and creative release](source-recovery-and-creative-release-2026-10-23.md) for current public previews, actual import counts and workflow receipts. Historical results below describe the earlier run and are superseded by that release.
+
 ## Carousel production
 
 The bank contains five guides: Florida women’s matchdays, FKK parent questions, the Rowdies’ Al Lang ground, Orlando City/Pride’s shared ground, and Weston FC programs. Twelve slides use twelve distinct source photographs. Each panel has at most 30 words, one headline and a short useful fact/question. Source links belong in captions/evidence rather than artwork fine print.
@@ -18,7 +22,7 @@ The bank contains five guides: Florida women’s matchdays, FKK parent questions
 1. Choose a real reader question, subject and useful outcome. Check current official sources; distinguish a club profile from an open registration offer.
 2. Register exact supporting text and an expiry in `config/local-editorial-sources.json`.
 3. Select and inspect different original photos for every slide. Record publisher, exact URL, subject and checksum. A different crop is not a new photograph. Discard dated flyers or undersized images.
-4. Write the caption and slides in `content/instagram/photo-editorial.json`. Use the `panel` layout for the new color-card direction.
+4. Write the caption and slides in `content/instagram/photo-editorial.json`. Choose `panel` (photo + fact card), `program` (age/program comparison), `field-notes` (ground guide) or `club-card` (smaller inset photo + useful questions). Use the website’s Barlow 600/700 for supporting copy and Barlow Condensed bold italic for headlines. Keep the display font, palette and logo consistent; vary the composition with the subject.
 5. Run `npm run content:photos`. Inspect all slides at full size and phone size. The renderer checks source freshness, identity, distinct originals, resolution, font loading and text overflow. A supported official CDN may serve WebP even when its URL ends in JPEG; the source bytes and actual format are checked.
 6. Run `npm run content:photos -- --upload`, then `node scripts/share-photo-editorial.mjs`. This uploads review media, not an Instagram post.
 7. Commit/push reviewed assets and dispatch `github-instagram.yml` with `action=refresh-photo-stories`. This updates only future untouched drafts/standing approvals and preserves slots and publication receipts. Inspect the private status artifact.
@@ -41,7 +45,7 @@ The manual `premium-voice.yml` workflow supports:
 
 Auditions never schedule or publish. Requests are reserved before a provider call, successful audio is cached and hash-bound to the script/timing, and uncertain calls cannot be retried automatically. A Free-only guard prevents spending paid-plan credits. Free availability and usable stock voices must be confirmed against the actual account; the script does not create an account or grant credits. Keep entitlement information with the account records; a technical preview is not a licensing certification.
 
-After a successful audition, download the private `cancha-voice-RUN_ID` artifact and build the edit against actual audio/word timings. Do not call a voice natural merely because it passed codec or transcription checks. No new ElevenLabs narration exists until that workflow actually succeeds.
+After a successful audition, download the private `cancha-voice-RUN_ID` artifact and build the edit against actual audio/word timings. Do not call a voice natural merely because it passed codec or transcription checks. The October 23 replacement key passed; Free audition 40002949357 generated both samples. See the current release for actual narrated MP4s. This success does not enable unattended voice generation.
 
 ## Website automation: verified behavior and repair
 
@@ -62,7 +66,7 @@ Employer-board 403s and UPSL directory 403s remain blockers. Twenty-eight opport
 - [Full-size carousel PDF](https://framerusercontent.com/assets/WQBueCAeSPDFb3t0Ul9By5SM64.pdf) and [all-slide gallery](https://framerusercontent.com/images/MtZKAIuhBv4MruydvzW5A1HCxu0.jpg) are public and were fetched back successfully.
 - [Queue refresh 39997528005](https://github.com/titodv41/cancha-automation/actions/runs/39997528005) succeeded: five guides updated, seven existing Published receipts preserved, zero uncertain publications. The women’s matchday guide retained its October 23, 6 PM New York slot; the other four guides remain Drafts available to the standing plan. Imported does not mean already published or all future slots scheduled.
 - [Preparation 39997530689](https://github.com/titodv41/cancha-automation/actions/runs/39997530689) exercised the new daily completion marker and completed successfully. **Zero new club profiles and zero opportunities were added.** Framer returned a publication receipt; that does not establish listing growth. A subsequent live CMS read still found 378 club/place profiles. The existing Opportunities snapshot remains 106 total / 84 Active. The run preserved encrypted backups and exposed the source blockers in its status artifact.
-- [Voice check 39997532807](https://github.com/titodv41/cancha-automation/actions/runs/39997532807) is blocked by missing `ELEVENLABS_API_KEY`. No provider generation, paid-plan change, new narrated MP4 or Reel publication occurred. The user said they would save the key; that is not evidence it has been configured.
+- Historical result, now resolved: [Voice check 39997532807](https://github.com/titodv41/cancha-automation/actions/runs/39997532807) is blocked by missing `ELEVENLABS_API_KEY`. No provider generation, paid-plan change, new narrated MP4 or Reel publication occurred. The user said they would save the key; that is not evidence it has been configured.
 
 ## Learning and reuse
 

@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": "product-nearby-20261023",
+      "headline": "YOUR NEXT CLUB.\nA LITTLE CLOSER.",
+      "body": "Start with a city or ZIP code.",
+      "chip": "Florida soccer, on Cancha",
+      "theme": "forest",
+      "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?near=33138&view=list",
+      "caption": "Looking for a soccer club near you? Start with your city or ZIP code on Cancha, then narrow it down by age or level if you need to.\n\nYou can open a club profile and follow its official website to ask about teams, fees and places.\n\nTry it from the link in our bio. Which Florida city should we cover more closely?\n\n#FloridaSoccer #LocalSoccer",
+      "altText": "Cancha’s actual Florida soccer directory, captured with a Miami ZIP-code search. The poster reads: Your next club. A little closer. Start with a city or ZIP code."
+    },
+    {
+      "id": "product-age-fit-20261023",
+      "headline": "START WITH\nTHEIR AGE.",
+      "body": "Then choose the kind of soccer they want.",
+      "chip": "City + age + level",
+      "theme": "cream",
+      "sourceUrl": "https://pioneering-friday-005497.framer.app/clubs?near=32801&playerAge=14&level=Recreational&view=list",
+      "caption": "A 14-year-old trying soccer for the first time and an adult looking for a competitive team need different options.\n\nOn Cancha, age and level are optional filters. Start with your area, add what matters, and check the club’s own program details before signing up.\n\nThis is the actual directory with an Orlando-area search. Find it through the link in our bio.\n\n#OrlandoSoccer #YouthSoccer",
+      "altText": "A real capture of Cancha’s soccer directory with an Orlando-area search and age and level parameters. The poster reads: Start with their age. Then choose the kind of soccer they want."
+    }
+  ]
+}

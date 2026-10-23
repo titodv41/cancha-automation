@@ -8,6 +8,7 @@ import {localStoryDescriptor, localStoryHash, confirmLocalStorySource} from '../
 import {approvedOriginalCreative} from '../server/social-creative.mjs';
 import {distinctCarouselPhotos} from '../server/carousel-quality.mjs';
 import {photoPanelHtml} from './photo-panel-layout.mjs';
+import {photoCardHtml} from './photo-card-layout.mjs';
 import {execFileSync} from 'node:child_process';
 
 // --upload explicitly publishes only media assets, never an Instagram post.
@@ -18,7 +19,7 @@ await mkdir(out,{recursive:true}); await mkdir(cache,{recursive:true,mode:0o700}
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const esc=s=>String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const data=async(p,mime)=>`data:${mime};base64,${(await readFile(p)).toString('base64')}`;
-const display=await data(brand.displayFont,'font/woff2'),ui=await data(brand.bodyFont,'font/woff2'),logo=await data(brand.logo,'image/png');
+const display=await data(brand.displayFont,'font/woff2'),ui=await data(brand.bodyFont,'font/woff2'),uiBold=await data(brand.bodyBoldFont||brand.bodyFont,'font/woff2'),logo=await data(brand.logo,'image/png');
 const session=sourceSession(), {browser,page}=await openBrowser({width:1080,height:1350});
 const ready=[], checks=[], localPhotos=new Map();
 try {
@@ -30,15 +31,17 @@ try {
   const photos=[];
   for(const photo of post.photos){
    if(!source.documents.some(d=>d.url===photo.sourcePage))throw Error('Photo source is not in the reviewed story: '+photo.id);
-   const bytes=await session.html(photo.originalUrl,/image\/(jpeg|png|webp)/,{maxBytes:15_000_000});
+   if(photo.reviewedMirrorUrl){const u=new URL(photo.reviewedMirrorUrl);if(u.origin!=='https://framerusercontent.com'||!u.pathname.startsWith('/assets/')||u.search)throw Error('Reviewed original mirror must be a Framer asset');}
+   const bytes=await session.html(photo.reviewedMirrorUrl||photo.originalUrl,/image\/(jpeg|png|webp)/,{maxBytes:15_000_000});
    const format=bytes[0]===137?'png':bytes[0]===255&&bytes[1]===216?'jpeg':bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP'?'webp':null;
    if(!format)throw Error('Unrecognized source image bytes: '+photo.id);
    const checksum=hash(bytes);
+   if(photo.reviewedMirrorUrl&&photo.originalChecksum!==checksum)throw Error('Exact reviewed original mirror changed: '+photo.id);
    if(photo.originalChecksum&&photo.originalChecksum!==checksum){
     // Some official CDNs change JPEG metadata while preserving every decoded
     // pixel. Only a previously reviewed, exact pixel hash permits that case.
     const decoded=photo.originalPixelChecksum&&execFileSync('ffmpeg',['-v','error','-i','pipe:0','-map','0:v:0','-f','hash','-hash','sha256','pipe:1'],{input:bytes,encoding:'utf8',timeout:10000}).trim().replace(/^SHA256=/,'');
-    if(!decoded||decoded!==photo.originalPixelChecksum)throw Error('Source photograph changed: '+photo.id);
+    if(!decoded||decoded!==photo.originalPixelChecksum)throw Error('Source photograph changed: '+photo.id+' '+checksum+' decoded '+decoded);
    }
    const file=resolve(cache,photo.id+'.'+(format==='jpeg'?'jpg':format));await writeFile(file,bytes);
    const photoData=`data:image/${format};base64,${bytes.toString('base64')}`;
@@ -57,7 +60,7 @@ try {
    const scale=crop?Math.max(1080/(asset.width*crop.width),frameHeight/(asset.height*crop.height)):1;
    const photoStyle=crop?`width:${asset.width*scale}px;height:${asset.height*scale}px;max-width:none;left:${(1080-asset.width*crop.width*scale)/2-asset.width*crop.x*scale}px;top:${(frameHeight-asset.height*crop.height*scale)/2-asset.height*crop.y*scale}px;`:`width:100%;height:100%;object-fit:cover;object-position:${esc(slide.position||'50% 50%')};`;
    const frameClass=crop?' cropped':'';
-   await page.setContent(slide.layout==='panel'?photoPanelHtml({brand,post,slide,index,asset,display,ui,logo}):`<!doctype html><html><head><style>
+   await page.setContent(['program','field-notes','club-card'].includes(slide.layout)?photoCardHtml({brand,post,slide,index,asset,display,ui,uiBold,logo}):slide.layout==='panel'?photoPanelHtml({brand,post,slide,index,asset,display,ui,uiBold,logo}):`<!doctype html><html><head><style>
     @font-face{font-family:Display;src:url('${display}');font-weight:700;font-style:italic}@font-face{font-family:UI;src:url('${ui}');font-weight:500 800}
     *{box-sizing:border-box}html,body{width:1080px;height:1350px;margin:0}body{font:650 40px/1.28 UI,sans-serif;letter-spacing:-.5px;background:${brand.forest};color:${brand.cream};-webkit-font-smoothing:antialiased}
     main{position:relative;width:1080px;height:1350px;overflow:hidden;background:${split?brand.cream:brand.forest};color:${split?brand.forest:brand.cream}}
@@ -73,9 +76,9 @@ try {
    await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode()));});
    const quality=await page.evaluate(()=>{
     const bounds=e=>e.getBoundingClientRect(),footer=bounds(document.querySelector('footer'));
-    const text=[...document.querySelectorAll('.copy,.body,h1,.label')];
+    const text=[...document.querySelectorAll('.copy,.body,h1,.label,.fact')];
     const footerParts=[...document.querySelectorAll('footer>span')].map(bounds);
-    return {overflow:text.some(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1021||bounds(e).bottom>footer.top-18)||footerParts[0].right+28>footerParts[1].left,images:[...document.images].map(i=>({width:i.naturalWidth,height:i.naturalHeight})),fonts:document.fonts.check('italic 700 150px Display')&&document.fonts.check('650 42px UI'),secondaryFontMinimum:Math.min(...[...document.querySelectorAll('.eyebrow,.page-number,.label,.body,footer,.arrow')].map(e=>parseFloat(getComputedStyle(e).fontSize)))};
+    return {violations:text.filter(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1021||bounds(e).bottom>footer.top-18).map(e=>({selector:e.className||e.tagName,text:e.textContent,bottom:bounds(e).bottom,right:bounds(e).right,scroll:e.scrollWidth,width:e.clientWidth})),overflow:text.some(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1021||bounds(e).bottom>footer.top-18)||footerParts[0].right+28>footerParts[1].left,images:[...document.images].map(i=>({width:i.naturalWidth,height:i.naturalHeight})),fonts:document.fonts.check('italic 700 150px Display')&&document.fonts.check('650 42px UI'),secondaryFontMinimum:Math.min(...[...document.querySelectorAll('.eyebrow,.page-number,.label,.body,.fact span,.fact b,footer,.arrow')].map(e=>parseFloat(getComputedStyle(e).fontSize)))};
    });
    if(quality.overflow||!quality.fonts)throw Error('Layout failed: '+post.id+'/'+index+' '+JSON.stringify(quality));
    if(quality.images[0].width<800||quality.images[0].height<600)throw Error('Insufficient photo resolution: '+slide.photoId);

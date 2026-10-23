@@ -3,7 +3,7 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "Owner rejected repeated source images and generic captions. Legacy repeated-photo drafts are retired. Require distinct original photos and useful slide-by-slide information; Reels remain held. Preserve publication receipts.",
+  "reason": "Distinct official photos, useful club information and two reviewed actual-product screenshots. Reserve at least one carousel before a product post. Reels remain held for owner review; preserve publication receipts.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
@@ -36,5 +36,10 @@
   "allowMotionStories": false,
   "minimumDailyCarousels": 1,
   "videoCreativeReviewRequired": true,
-  "requireDistinctCarouselPhotos": true
+  "requireDistinctCarouselPhotos": true,
+  "productDemoDraftIds": [
+    "product-nearby-20261023",
+    "product-age-fit-20261023"
+  ],
+  "maxWeeklyProductPosts": 2
 }

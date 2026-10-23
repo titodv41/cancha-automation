@@ -1,3 +1,4 @@
+import {verifyProductAssets,refreshProductEditorial} from '../server/product-editorial.mjs';
 import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
 import {satisfiesDailyMediaMix} from '../server/instagram-media-mix.mjs';
 import {refreshPhotoEditorial} from '../server/photo-editorial-refresh.mjs';
@@ -19,7 +20,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-motion-stories','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -63,7 +64,12 @@ try{
   const drafts=JSON.parse(await readFile('content/instagram/photo-editorial-ready.json'));
   // Check the whole batch before any queue write. Public assets carry no Meta token.
   for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Reviewed local story blocked: '+draft.id);await verifyCarouselAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});}
-  const result=refreshPhotoEditorial(db,drafts);state.photoEditorialRevision='2026-10-23-panels';state.photoEditorialRefresh=result;await checkpoint();console.log(JSON.stringify({photoEditorial:result}));
+  const result=refreshPhotoEditorial(db,drafts);state.photoEditorialRevision='2026-10-23-card-mix';state.photoEditorialRefresh=result;await checkpoint();console.log(JSON.stringify({photoEditorial:result}));
+ }
+ if(mode==='refresh-product-posts'){
+  const drafts=JSON.parse(await readFile('content/instagram/product-editorial-ready.json'));
+  for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Cancha directory is unavailable');await verifyProductAssets(draft,localPolicy,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});}
+  state.productEditorialRefresh=refreshProductEditorial(db,drafts,localPolicy);await checkpoint();console.log(JSON.stringify({productEditorial:state.productEditorialRefresh}));
  }
  if(mode==='refresh-motion-stories'){
   if(!localPolicy.allowMotionStories||localPolicy.videoCreativeReviewRequired)throw Error('Reviewed motion import paused while the owner reviews the new video direction');
@@ -127,9 +133,9 @@ try{
   await checkpoint();
   const publisher=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.
-  const due=db.prepare("SELECT content FROM instagram_queue WHERE status IN ('Approved','Preparing') AND scheduled_at<=? ORDER BY scheduled_at LIMIT 1").get(new Date().toISOString());const mixAllowed=!due||satisfiesDailyMediaMix(JSON.parse(due.content),db.prepare('SELECT * FROM instagram_queue').all(),localPolicy);if(mayPublish&&mixAllowed)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
+  const due=db.prepare("SELECT content FROM instagram_queue WHERE status IN ('Approved','Preparing') AND scheduled_at<=? ORDER BY scheduled_at LIMIT 1").get(new Date().toISOString());const mixAllowed=!due||satisfiesDailyMediaMix(JSON.parse(due.content),db.prepare('SELECT * FROM instagram_queue').all(),localPolicy);if(mayPublish&&mixAllowed&&due&&JSON.parse(due.content).visualEvidence?.kind==='product-demo')await verifyProductAssets(JSON.parse(due.content),localPolicy,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});if(mayPublish&&mixAllowed)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
  }
- const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,websitePreparation:state.dailyPreparation||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note,slideCount:JSON.parse(row.content).slides?.length||1,videoSeconds:JSON.parse(row.content).reel?.durationSeconds||null,creativeKind:JSON.parse(row.content).visualEvidence?.kind||null})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0),photoEditorialRefresh:state.photoEditorialRefresh||null,motionPreflight:state.motionPreflight||null,motionPreflights:state.motionPreflights||{},motionEditorialRefresh:state.motionEditorialRefresh||null};
+ const rows=db.prepare('SELECT * FROM instagram_queue ORDER BY scheduled_at,id').all();const summary={growth:state.growth||null,websitePreparation:state.dailyPreparation||null,scheduledAutomationEnabled:process.env.CANCHA_SCHEDULE_BACKEND==='github',backend:'github',action:mode,meta:{connected:true,username:connection.username,accountType:connection.accountType},plan:readPlan(db),queue:rows.map(row=>({id:row.id,version:queueVersion(row),status:row.status,scheduledAt:row.scheduled_at,publishedId:row.published_id,note:row.note,slideCount:JSON.parse(row.content).slides?.length||1,videoSeconds:JSON.parse(row.content).reel?.durationSeconds||null,creativeKind:JSON.parse(row.content).visualEvidence?.kind||null})),privateSubmissionsBackedUp:state.submissions?.rows?.length||0,cmsBackups:(state.cmsBackupRefs?.length||0)+(state.cmsBackups?.length||0),photoEditorialRefresh:state.photoEditorialRefresh||null,productEditorialRefresh:state.productEditorialRefresh||null,motionPreflight:state.motionPreflight||null,motionPreflights:state.motionPreflights||{},motionEditorialRefresh:state.motionEditorialRefresh||null};
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});
  if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));
