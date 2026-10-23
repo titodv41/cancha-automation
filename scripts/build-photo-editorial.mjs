@@ -6,6 +6,7 @@ import {openBrowser} from './browser-session.mjs';
 import {withProject} from './project-session.mjs';
 import {localStoryDescriptor, localStoryHash, confirmLocalStorySource} from '../server/local-story-source.mjs';
 import {approvedOriginalCreative} from '../server/social-creative.mjs';
+import {distinctCarouselPhotos} from '../server/carousel-quality.mjs';
 
 // --upload explicitly publishes only media assets, never an Instagram post.
 const input=process.argv.find(a=>a.endsWith('.json'))||'content/instagram/photo-editorial.json';
@@ -36,6 +37,7 @@ try {
    localPhotos.set(photo.id,{file,data:photoData,photo,...dimensions});
    photos.push({...photo,originalChecksum:checksum,authorization:manifest.authorization});
   }
+  if(!distinctCarouselPhotos({...post,photos}))throw Error('Each slide needs a distinct original subject photo: '+post.id);
   const slides=[];
   for(const [index,slide] of post.slides.entries()){
    const asset=localPhotos.get(slide.photoId);if(!asset)throw Error('Unknown photo '+slide.photoId);

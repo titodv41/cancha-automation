@@ -1,0 +1,17 @@
+// A new crop or rendered slide is not a new source photograph.
+export function distinctCarouselPhotos(content) {
+  if(!Array.isArray(content?.slides)||content.slides.length<2||!Array.isArray(content.photos))return false;
+  const checksums=new Set(),urls=new Set(),ids=new Set();
+  for(const slide of content.slides){
+    const matches=content.photos.filter(p=>p.id===slide.photoId);
+    if(matches.length!==1)return false;
+    const photo=matches[0];let url;
+    try{const u=new URL(photo.originalUrl);url=u.origin+u.pathname.split('/v1/')[0];}catch{return false;}
+    if(!/^[a-f0-9]{64}$/.test(photo.originalChecksum||'')||checksums.has(photo.originalChecksum)||urls.has(url)||ids.has(photo.id))return false;
+    checksums.add(photo.originalChecksum);urls.add(url);ids.add(photo.id);
+  }
+  return true;
+}
+export function passesCarouselPolicy(content,policy={}){
+  return !policy.requireDistinctCarouselPhotos||!content?.slides?.length||distinctCarouselPhotos(content);
+}

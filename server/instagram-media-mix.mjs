@@ -1,5 +1,7 @@
 import {dateInNewYork} from './offer-expiry.mjs';
+import {passesCarouselPolicy} from './carousel-quality.mjs';
 export function satisfiesDailyMediaMix(candidate,rows,policy,{now=Date.now()}={}) {
+ if(policy.retiredDraftIds?.includes(candidate?.id)||!passesCarouselPolicy(candidate,policy))return false;
  if(!candidate?.reel)return true;
  if(policy.allowMotionStories===false||policy.retiredDraftIds?.includes(candidate.id))return false;
  if(!policy.minimumDailyCarousels)return true;

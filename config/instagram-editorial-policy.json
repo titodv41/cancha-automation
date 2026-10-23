@@ -3,7 +3,7 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "Owner rejected the current video voice and visual treatment. Keep the approved photo-carousels running. Hold all Reels until a new Cancha-branded direction and narration meet the owner’s bar.",
+  "reason": "Owner rejected repeated source images and generic captions. Legacy repeated-photo drafts are retired. Require distinct original photos and useful slide-by-slide information; Reels remain held. Preserve publication receipts.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
@@ -17,9 +17,7 @@
     "community-coach-questions-20261022",
     "local-miami-stadium-20261022",
     "motion-weston-u15-20261022",
-    "explainer-miami-homestead-20261022"
-  ],
-  "curatedDraftIds": [
+    "explainer-miami-homestead-20261022",
     "local-rowdies-shield-20261022",
     "local-puerta-four-20261022",
     "local-fkk-programs-20261022",
@@ -27,8 +25,10 @@
     "local-weston-coach-20261022",
     "local-rowdies-playoff-20261022"
   ],
+  "curatedDraftIds": [],
   "requireSubjectPhotos": true,
   "allowMotionStories": false,
   "minimumDailyCarousels": 1,
-  "videoCreativeReviewRequired": true
+  "videoCreativeReviewRequired": true,
+  "requireDistinctCarouselPhotos": true
 }
