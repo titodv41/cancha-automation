@@ -26,7 +26,7 @@ export function elevenClient({key, fetchImpl}) {
   if (!key?.trim()) throw Error('Configure ELEVENLABS_API_KEY as a secret first');
   key=key.trim();
   return async (path, body) => {
-    if (!/^\/v1\/(voices|models|user\/subscription|text-to-speech\/[A-Za-z0-9]+\/with-timestamps)(\?|$)/.test(path)) throw Error('Unapproved voice endpoint');
+    if (!/^\/v1\/(voices|models|user\/subscription|text-to-speech\/[A-Za-z0-9]+\/with-timestamps)(\?|$)/.test(path)&&!/^\/v2\/voices\?page_size=100(?:&next_page_token=[A-Za-z0-9_%.-]+)?$/.test(path)) throw Error('Unapproved voice endpoint');
     if (body && !path.startsWith('/v1/text-to-speech/')) throw Error('Only speech generation may use POST');
     let response;
     try { response = await fetchImpl('https://api.elevenlabs.io' + path, {method: body ? 'POST' : 'GET', headers: {'xi-api-key': key, ...(body ? {'content-type': 'application/json'} : {})}, ...(body ? {body: JSON.stringify(body)} : {}), redirect: 'error', signal: AbortSignal.timeout(body ? 120000 : 25000)}); }
@@ -43,10 +43,16 @@ export function elevenClient({key, fetchImpl}) {
 }
 
 export async function inspectVoiceAccount(api, policy) {
-  const [modelRows, voiceResult, subscription] = await Promise.all([api('/v1/models'), api('/v1/voices'), api('/v1/user/subscription')]);
+  // Current official voice search is v2; the former v1 listing returns 400.
+  const [modelRows, firstVoicePage, subscription] = await Promise.all([api('/v1/models'), api('/v2/voices?page_size=100'), api('/v1/user/subscription')]);
+  const voiceRows=[...(firstVoicePage.voices||[])];let voicePage=firstVoicePage;
+  for(let page=0;voicePage.has_more&&page<4&&!policy.candidates.every(v=>voiceRows.some(r=>r.voice_id===v.id));page++){
+    if(typeof voicePage.next_page_token!=='string'||!voicePage.next_page_token)throw Error('Voice search pagination changed');
+    voicePage=await api('/v2/voices?page_size=100&next_page_token='+encodeURIComponent(voicePage.next_page_token));voiceRows.push(...(voicePage.voices||[]));
+  }
   if (!Array.isArray(modelRows) || !modelRows.some(m => m.model_id === policy.model && m.can_do_text_to_speech)) throw Error('Selected timestamp-capable TTS model is not available');
   const voices = policy.candidates.map(v => {
-    const match = voiceResult.voices?.find(x => x.voice_id === v.id);
+    const match = voiceRows.find(x => x.voice_id === v.id);
     return {...v, available: Boolean(match), ...(match?.preview_url?.startsWith('https://') ? {previewUrl: match.preview_url} : {})};
   });
   // Explicitly select safe fields; never persist the /user response or API credentials.

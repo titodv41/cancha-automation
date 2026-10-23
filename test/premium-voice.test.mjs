@@ -37,7 +37,7 @@ test('credentials go only to the exact provider origin and errors are sanitized'
 });
 
 test('subscription entitlement is not confused with enabling overage billing',async()=>{
- const api=async path=>path==='/v1/models'?[{model_id:'eleven_v3',can_do_text_to_speech:true}]:path==='/v1/voices'?{voices:policy.candidates.map(v=>({voice_id:v.id}))}:{tier:'starter',can_extend_character_limit:true,max_credit_limit_extension:0,character_count:0,character_limit:30000};
+ const api=async path=>path==='/v1/models'?[{model_id:'eleven_v3',can_do_text_to_speech:true}]:path==='/v2/voices?page_size=100'?{voices:policy.candidates.map(v=>({voice_id:v.id}))}:{tier:'starter',can_extend_character_limit:true,max_credit_limit_extension:0,character_count:0,character_limit:30000};
  const result=await inspectVoiceAccount(api,policy);assert.equal(result.subscription.overagesDisabled,true);
  const unknown=await inspectVoiceAccount(async p=>p==='/v1/user/subscription'?{tier:'starter',can_extend_character_limit:false}:api(p),policy);assert.equal(unknown.subscription.overagesDisabled,false);
 });
