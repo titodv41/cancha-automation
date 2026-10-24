@@ -4,11 +4,21 @@ import {mkdtemp, rm, readFile, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {alignmentToWords,captionGroups} from '../video/audio/caption-timing.mjs';
-import {validateVoiceBatch,validateFreePreviewAccount,elevenClient,inspectVoiceAccount,generateVoice} from '../video/audio/premium-voice.mjs';
+import {validateVoiceBatch,validateFreePreviewAccount,elevenClient,inspectVoiceAccount,generateVoice,selectVoiceCandidates} from '../video/audio/premium-voice.mjs';
 const policy={...JSON.parse(await readFile(new URL('../config/premium-voice.json',import.meta.url))),paidGenerationEnabled:true},voice=policy.candidates[0];
 const text='Weston won. Two nil.';
 const alignment={characters:[...text],character_start_times_seconds:[...text].map((_,i)=>i*.1),character_end_times_seconds:[...text].map((_,i)=>(i+1)*.1)};
 const sample={audio_base64:Buffer.alloc(100,1).toString('base64'),normalized_alignment:alignment};
+
+test('the selected voice alone consumes the batch budget; unknown voices never fall back or generate both',()=>{
+ const selected=selectVoiceCandidates(policy);
+ assert.deepEqual(selected.map(v=>v.name),['Chris']);
+ assert.equal(validateVoiceBatch(text,selected,policy),text.length);
+ assert.equal(validateVoiceBatch(text,selectVoiceCandidates(policy,'both'),policy),text.length*2);
+ assert.deepEqual(selectVoiceCandidates(policy,'Jessica').map(v=>v.name),['Jessica']);
+ assert.throws(()=>selectVoiceCandidates(policy,'invented'));
+ assert.throws(()=>selectVoiceCandidates(policy,''));
+});
 
 test('captions preserve actual word timing, punctuation and speech offset',()=>{
  const words=alignmentToWords(alignment,.25);

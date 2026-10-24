@@ -2,6 +2,12 @@ import {createHash} from 'node:crypto';
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {alignmentToWords, captionGroups} from './caption-timing.mjs';
 
+export function selectVoiceCandidates(policy, name = 'Chris') {
+  const selected = name === 'both' ? policy.candidates : policy.candidates.filter(v => v.name === name);
+  if (!selected.length || (name !== 'both' && selected.length !== 1)) throw Error('Select Chris, Jessica or both from the configured stock voices');
+  return selected;
+}
+
 export function validateVoiceBatch(text, candidates, policy, {mode='paid'}={}) {
   if(mode==='free-preview') {
     if(policy.freePreviewEnabled!==true||policy.paidGenerationEnabled!==false||policy.maxCharactersPerBatch>1500||policy.monthlyProjectCharacterBudget>1500)throw Error('Free preview needs its explicit capped policy; paid generation stays disabled');

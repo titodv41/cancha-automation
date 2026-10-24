@@ -7,6 +7,11 @@ on:
         type: choice
         default: check
         options: [check, free-audition, audition]
+      voice:
+        description: 'Chris is selected for Cancha. Generate only the requested stock voice.'
+        type: choice
+        default: Chris
+        options: [Chris, Jessica, both]
 permissions:
   contents: read
 concurrency:
@@ -33,10 +38,11 @@ jobs:
             private-data/premium-voice/free-ledger
           key: cancha-premium-voice-ledger-${{ github.run_id }}
           restore-keys: cancha-premium-voice-ledger-
-      - name: Check account or generate two private auditions
+      - name: Check account or generate selected private audition
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ACTION: ${{ inputs.action }}
+          CANCHA_VOICE_CANDIDATE: ${{ inputs.voice || 'Chris' }}
         run: node scripts/premium-voice.mjs "$ACTION"
       - uses: actions/cache/save@v4
         if: always()

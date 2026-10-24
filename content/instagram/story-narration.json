@@ -2,9 +2,9 @@
   "id": "ftl-mens-narrative-20261023",
   "editorialSourceId": "ftl-mens-expansion-20261023",
   "narrationOffset": 0.25,
-  "script": "If you’re in Broward and want a local men’s pro team to follow, put Fort Lauderdale United on your list. Their new USL League One side is set to start in spring twenty twenty-seven. They’ll share Amerant Bank Field in Davie with the women’s team, which is already playing. That gives fans a way to get to know the club before the men’s season begins. You can go to a women’s match now, learn the ground, and decide who you’re bringing back next spring.",
-  "targetSeconds": 32,
-  "spokenStyle": "A knowledgeable local friend explaining why this matters; conversational, unhurried, no sales-announcer voice.",
+  "script": "Broward, meet your next men’s pro team. Fort Lauderdale United joins USL League One in spring twenty twenty-seven. They’ll play at Amerant Bank Field in Davie. The women already play there, so you can get to know the club now. Who’s coming with you?",
+  "targetSeconds": 17,
+  "spokenStyle": "A friend with one useful local update. Direct first sentence, connected explanation, a natural question at the end. Conversational Chris delivery; no sales voice or attribution filler.",
   "onScreen": [
     "Fort Lauderdale United",
     "Men’s pro team",
@@ -21,32 +21,32 @@
     "https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/",
     "https://www.ftlutd.com/news/2026/10/15/fort-lauderdale-united-fc-names-aly-hassan-usl-league-one-gm/"
   ],
-  "status": "Chris selected by owner; cached ElevenLabs narration reused for the owner-authorized moving-footage production recipe.",
+  "status": "Shorter Chris revision requested by owner; new matching narration required before rendering. Earlier audio cannot be used with this script.",
   "visuals": {
-    "headerTag": "FLORIDA SOCCER",
-    "footageContext": "Women play now. Men start in 2027.",
+    "headerTag": "BROWARD, FL",
+    "footageContext": "Women’s footage · Men debut spring 2027",
     "opening": {
-      "chip": "Broward’s next men’s pro team",
-      "title": "FORT LAUDERDALE.\nUNITED."
+      "chip": "Fort Lauderdale United",
+      "title": "YOUR NEXT\nLOCAL TEAM."
     },
     "season": {
       "label": "Men’s USL League One",
       "term": "SPRING",
       "year": "2027",
-      "title": "A NEW TEAM\nTO FOLLOW."
+      "title": ""
     },
     "ground": {
       "chip": "Davie, Florida",
-      "title": "ONE\nHOME GROUND.",
+      "title": "IN DAVIE.",
       "subtitle": "Amerant Bank Field · NSU campus"
     },
     "community": {
-      "chip": "Women’s team · Already playing",
-      "title": "GET TO KNOW\nTHE CLUB."
+      "chip": "Get to know the club now",
+      "title": "THE WOMEN\nPLAY NOW."
     },
     "visit": {
-      "chip": "Start with the women’s match schedule",
-      "title": "WHO ARE\nYOU BRINGING?"
+      "chip": "Your matchday group",
+      "title": "WHO’S\nCOMING?"
     }
   },
   "sceneAnchors": [
@@ -56,19 +56,19 @@
     ],
     [
       "season",
-      "Their new"
+      "Fort Lauderdale"
     ],
     [
       "ground",
-      "They’ll share"
+      "They’ll play"
     ],
     [
       "community",
-      "That gives"
+      "The women"
     ],
     [
       "visit",
-      "You can go"
+      "Who’s coming"
     ]
   ]
 }
