@@ -1,3 +1,4 @@
+import{automatedNewsAllowed}from'./automated-news-video.mjs';
 import{approvedOriginalCreative}from'./social-creative.mjs';
 import{localStoryDescriptor}from'./local-story-source.mjs';
 import{directoryLayoutRevision}from'./directory-editorial.mjs';
@@ -11,7 +12,7 @@ export function contentReadiness(rows,policy,{now=Date.now()}={}){
   if(c.editorialSourceId&&now>=Date.parse(localStoryDescriptor(c.editorialSourceId)?.validUntil||''))return false;
   const kind=c.visualEvidence.kind;
   if(kind==='directory-guide')return policy.dailyDirectoryEnabled&&(!style||c.visualEvidence.layoutRevision===style)&&now-Date.parse(c.directoryProfile.checkedOn)<=31*86400000;
-  return kind==='photo-carousel'||kind==='narrative-story'&&narrativeAllowed(c,policy);
+  return kind==='news-film'&&automatedNewsAllowed(c,policy)&&now<Date.parse(c.newsEntry.expiresAt)||kind==='photo-carousel'||kind==='narrative-story'&&narrativeAllowed(c,policy);
  });
  const carousels=ready.filter(r=>{const c=typeof r.content==='string'?JSON.parse(r.content):r.content;return c.slides?.length>=2}).length;
  return{ready:ready.length,carousels,minimumReady:2,shortage:ready.length<2||carousels<1};

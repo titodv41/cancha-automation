@@ -20,3 +20,4 @@ test('social preparation runs independently before both daily slots and follows 
  assert.equal(scheduledAction({event:'schedule',cron:'20 14,18 * * *',now:new Date('2026-10-24T14:20:00Z')}),'');
  assert.equal(scheduledAction({event:'schedule',cron:'20 14,18 * * *',now:new Date('2026-12-24T18:20:00Z')}),'replenish');
 });
+test('single-set production triggers avoid DST duplicates and publication checks work in either season',()=>{for(const at of['2026-10-24T13:23:00Z','2026-12-24T13:23:00Z'])assert.equal(scheduledAction({event:'schedule',cron:'23 13,17 * * *',now:new Date(at)}),'replenish');for(const at of['2026-10-24T16:41:00Z','2026-12-24T17:41:00Z'])assert.equal(scheduledAction({event:'schedule',cron:'11,41 0-3,16-23 * * *',now:new Date(at)}),'publish');assert.equal(scheduledAction({event:'schedule',cron:'11,41 0-3,16-23 * * *',now:new Date('2026-12-24T16:41:00Z')}),'')});

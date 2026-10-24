@@ -81,6 +81,11 @@ test('an uncertain charge is reserved and cannot be automatically retried',async
  }finally{await rm(dir,{recursive:true,force:true})}
 });
 
+test('automatic narration cannot call the provider before its durable reservation succeeds',async()=>{
+ const dir=await mkdtemp(join(tmpdir(),'cancha-durable-voice-'));let calls=0;
+ try{await assert.rejects(generateVoice({api:async()=>{calls++;return sample},text,candidate:voice,policy,ledgerDir:dir,onLedgerSave:async()=>{throw Error('durable reservation unavailable')}}),/durable reservation unavailable/);assert.equal(calls,0);const ledger=JSON.parse(await readFile(join(dir,'ledger.json')));assert.equal(Object.values(ledger.requests)[0].status,'pending');}finally{await rm(dir,{recursive:true,force:true})}
+});
+
 test('Free auditions cannot consume paid-plan credits, exceed the cap or enable paid generation',async()=>{
  const freePolicy={...policy,paidGenerationEnabled:false,freePreviewEnabled:true,monthlyProjectCharacterBudget:1500};
  const account={voices:[{available:true}],subscription:{tier:'free',characterCount:10,characterLimit:10000}};

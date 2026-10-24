@@ -5,7 +5,7 @@ import {satisfiesDailyMediaMix} from '../server/instagram-media-mix.mjs';
 import {refreshPhotoEditorial} from '../server/photo-editorial-refresh.mjs';
 import {verifyCarouselAssets,verifyReelAssets} from '../server/instagram-media.mjs';
 import {expiredPublishingDay} from '../server/github-publish-window.mjs';
-import{collectInstagramInsights,instagramLearning,learningSnapshot}from'../server/instagram-insights.mjs';
+import{collectInstagramInsights,instagramLearning,learningSnapshot,techniqueLearning}from'../server/instagram-insights.mjs';
 import{approvedOriginalCreative,shouldActivateLocalCreative}from'../server/social-creative.mjs';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {runSubprocess} from './subprocess.mjs';
@@ -100,10 +100,10 @@ try{
  if(mode==='replenish'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs the existing Framer secret');
   const reports={};
-  for(const [key,script]of [['directory','scripts/prepare-directory-editorial.mjs'],['narrative','scripts/prepare-narrative-editorial.mjs']]){const run=await runSubprocess(process.execPath,[script],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)reports[key]={blocked:true};}
+  for(const [key,script]of [['newsSources','scripts/refresh-local-updates.mjs'],['directory','scripts/prepare-directory-editorial.mjs'],['narrative','scripts/prepare-narrative-editorial.mjs'],['automaticNews','scripts/prepare-automatic-news.mjs']]){const run=await runSubprocess(process.execPath,[script],{stdio:'inherit',env:{...process.env,CANCHA_AUTOMATION_BACKEND:'github'}});if(run.status!==0)reports[key]={blocked:true};}
   phase='reload-content';db.close();db=openQueue(join(dir,'content.sqlite'));await client.close();client=githubStateClient();state=await client.load();restoreState(db,state);
   const directoryReport=JSON.parse(await readFile('private-data/daily-opportunities/'+dateInNewYork()+'/directory-editorial/report.json').catch(()=>'null')),narrativeReport=JSON.parse(await readFile('private-data/narrative-production/report.json').catch(()=>'null'));
-  state.contentPreparation={checkedAt:new Date().toISOString(),directory:directoryReport?{prepared:directoryReport.prepared,delivered:directoryReport.delivered,availableBefore:directoryReport.availableBefore,blocked:directoryReport.blocked}:reports.directory||null,narrative:narrativeReport,...reports};await checkpoint();
+  state.contentPreparation={checkedAt:new Date().toISOString(),directory:directoryReport?{prepared:directoryReport.prepared,delivered:directoryReport.delivered,availableBefore:directoryReport.availableBefore,blocked:directoryReport.blocked}:reports.directory||null,narrative:narrativeReport,automaticNews:JSON.parse(await readFile('private-data/automatic-news/report.json').catch(()=>'null')),processFailures:reports};await checkpoint();
  }
  if(mode==='prepare'){
   if(!process.env.FRAMER_API_KEY)throw Error('Daily preparation needs FRAMER_API_KEY in GitHub Actions secrets');
@@ -121,7 +121,7 @@ try{
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='insights'){
   const report=await collectInstagramInsights(connection,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
-  state.instagramInsights=[...(state.instagramInsights||[]).slice(-34),learningSnapshot(report)];const learning=instagramLearning(state.instagramInsights);report.topicComparison=learning.topicComparison;report.ageCohortHours=learning.ageCohortHours;report.learningNote=learning.note||'Comparable cohort found; topic preference is an experiment, not proof of causation or guaranteed reach.';await checkpoint();await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/instagram-insights.json',JSON.stringify(report,null,2),{mode:0o600});console.log(JSON.stringify({readOnlyInsights:true,status:report.status,posts:report.posts.length,requiredPermission:report.requiredPermission,comparableTopics:learning.topicComparison.length}));
+  state.instagramInsights=[...(state.instagramInsights||[]).slice(-34),learningSnapshot(report)];const learning=instagramLearning(state.instagramInsights);report.topicComparison=learning.topicComparison;report.techniqueLearning=techniqueLearning(state.instagramInsights);report.ageCohortHours=learning.ageCohortHours;report.learningNote=learning.note||'Comparable cohort found; topic preference is an experiment, not proof of causation or guaranteed reach.';await checkpoint();await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/instagram-insights.json',JSON.stringify(report,null,2),{mode:0o600});console.log(JSON.stringify({readOnlyInsights:true,status:report.status,posts:report.posts.length,requiredPermission:report.requiredPermission,comparableTopics:learning.topicComparison.length}));
  }
  if(mode==='reconnect'){
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
@@ -148,6 +148,7 @@ try{
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/github-summary.json',JSON.stringify(summary,null,2),{mode:0o600});
  if(mode==='review')await writeFile('private-data/instagram-preview.html',instagramPreview(rows,summary.plan),{mode:0o600});
  console.log(JSON.stringify({backend:summary.backend,action:mode,connected:summary.meta.username,planEnabled:summary.plan?.enabled,posts:rows.length,published:rows.filter(row=>row.status==='Published').length,requiresReconciliation:rows.filter(row=>['Publishing','Needs reconciliation'].includes(row.status)).length}));
+ if(mode==='replenish'&&state.contentPreparation.automaticNews?.status==='blocked'){console.error('Automatic narration needs attention; read the retained production report. Other content and publishing remain independent.');process.exitCode=1;}
  if(mode==='replenish'&&readPlan(db)?.enabled&&state.contentPreparation.shortage){console.error('Content shortage: fewer than two usable community posts or no ready carousel. Sources and queue evidence are saved; no filler or publication retry was created.');process.exitCode=1;}
  if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Cancha Instagram\n\n'+JSON.stringify(summary,null,2)+'\n',{flag:'a'});
 }catch(error){console.error(JSON.stringify({phase,errorType:error.constructor.name,code:error.code||null,subcode:error.subcode||null,httpStatus:error.httpStatus||null,frames:String(error.stack||'').split('\n').slice(1,3)}));const message=String(error.message);console.error(/^(Configure|GitHub state|Read current|Encrypted state|State file|Unsupported|GitHub state already|Migration needs|Render migration|No migrated|Expected Cancha|Daily preparation|Command rejected|Reviewed local story|Reviewed motion)/.test(message)?message:'Automation stopped safely; inspect configuration and durable state. No automatic retry of uncertain publication.');process.exitCode=1;}finally{db?.close();await client?.close();await dispatcher?.close();if(dir)await rm(dir,{recursive:true,force:true});}

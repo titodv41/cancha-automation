@@ -1,6 +1,9 @@
 import {pathToFileURL} from 'node:url';import {resolve} from 'node:path';
 export function scheduledAction({event,requested,cron,now=new Date()}){
  if(event==='workflow_dispatch')return requested;
+ if(cron==='23 13,17 * * *')return 'replenish';
+ if(['9 14 * * *','19 16 * * *'].includes(cron))return 'prepare';
+ if(cron==='11,41 0-3,16-23 * * *'){const hour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'}).format(now));return hour>=12?'publish':'';}
  if(['37 0-4,22-23 * * *','37 0-4,16-23 * * *'].includes(cron)){const hour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',hourCycle:'h23'}).format(now));return hour>=(cron==='37 0-4,22-23 * * *'?18:12)?'publish':'';}
  const offset=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',timeZoneName:'shortOffset'}).formatToParts(now).find(x=>x.type==='timeZoneName').value;
  const daylight=offset==='GMT-4';

@@ -1,0 +1,6 @@
+[
+  {"id":"sporting-jax","organization":"Sporting JAX","city":"Jacksonville","region":"North Florida","indexUrl":"https://www.sportingjax.com/news/","host":"www.sportingjax.com"},
+  {"id":"fort-lauderdale-united","organization":"Fort Lauderdale United","city":"Davie","region":"South Florida","indexUrl":"https://www.ftlutd.com/news/","host":"www.ftlutd.com"},
+  {"id":"tampa-bay-rowdies","organization":"Tampa Bay Rowdies","city":"St. Petersburg","region":"Tampa Bay","indexUrl":"https://www.rowdiessoccer.com/news/","host":"www.rowdiessoccer.com"},
+  {"id":"tampa-bay-sun","organization":"Tampa Bay Sun FC","city":"Tampa","region":"Tampa Bay","indexUrl":"https://www.tampabaysunfc.com/news/","host":"www.tampabaysunfc.com"}
+]

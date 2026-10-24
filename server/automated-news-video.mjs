@@ -1,0 +1,16 @@
+import {validReel} from './instagram-media.mjs';
+import {localNewsSources,officialNewsUrl,updateSourceHash,confirmLocalUpdate} from './local-updates.mjs';
+import {validAutomaticScript,NEWS_TECHNIQUES} from './automatic-story.mjs';
+export function validAutomatedNewsVideo(row){
+ const e=row.visualEvidence,a=row.audioEvidence,n=row.newsEntry,source=localNewsSources.find(s=>s.id===n?.sourceId);
+ if(e?.kind!=='news-film'||!source||!officialNewsUrl(n.url,source)||n.sourceHash!==updateSourceHash(n)||!validAutomaticScript(row.spokenStory,n)||!row.reel||!validReel(row))return false;
+ return row.officialSourceUrl===n.url&&row.sourceHash===n.sourceHash&&e.sourceHash===n.sourceHash&&e.sourceUrl===n.url&&e.videoChecksum===row.reel.assetChecksum
+  &&a?.provider==='elevenlabs'&&a.voice==='Chris'&&a.model==='eleven_v3'&&a.syntheticNarration===true&&a.originalMusic===true&&a.sourceClipAudioUsed===false&&a.ownerUseAuthorization==='owner-chat-2026-10-24-automatic-stories'&&/^[a-f0-9]{64}$/.test(a.audioSha256||'')&&a.scriptHash===row.spokenStory.scriptHash
+  &&NEWS_TECHNIQUES.includes(row.creativeTechnique)&&row.subjectMedia?.length>0&&row.subjectMedia.every(m=>['clip','photo'].includes(m.kind)&&m.sourcePage===n.url&&m.authorization==='owner-cleared-2026-10-22'&&/^[a-f0-9]{64}$/.test(m.sha256||'')&&(m.kind==='clip'?n.clips:n.photos).includes(m.originalUrl));
+}
+export const automatedNewsAllowed=(row,policy)=>policy.automatedNewsVideoEnabled===true&&validAutomatedNewsVideo(row);
+export async function confirmAutomatedNewsVideo(row,options={}){
+ if(!validAutomatedNewsVideo(row))return false;
+ const fetchHtml=options.fetchHtml||(async url=>{const response=await (options.fetchImpl||fetch)(url,{redirect:'error',signal:AbortSignal.timeout(20000)});if(!response.ok||!/text\/html/.test(response.headers.get('content-type')||''))throw Error('Official news source unavailable');const reader=response.body.getReader(),chunks=[];let bytes=0;try{while(true){const r=await reader.read();if(r.done)break;bytes+=r.value.length;if(bytes>2000000)throw Error('Official news source too large');chunks.push(Buffer.from(r.value))}}finally{await reader.cancel()}return Buffer.concat(chunks)});
+ return confirmLocalUpdate(row.newsEntry,{fetchHtml,now:options.now});
+}

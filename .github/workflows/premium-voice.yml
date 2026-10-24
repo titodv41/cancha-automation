@@ -13,9 +13,9 @@ on:
         default: Chris
         options: [Chris, Jessica, both]
 permissions:
-  contents: read
+  contents: write
 concurrency:
-  group: cancha-premium-voice
+  group: cancha-private-automation
   cancel-in-progress: false
 jobs:
   audition:
@@ -41,6 +41,9 @@ jobs:
       - name: Check account or generate selected private audition
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: github
           ACTION: ${{ inputs.action }}
           CANCHA_VOICE_CANDIDATE: ${{ inputs.voice || 'Chris' }}
         run: node scripts/premium-voice.mjs "$ACTION"
@@ -58,5 +61,5 @@ jobs:
           path: private-data/premium-voice/
           if-no-files-found: ignore
           retention-days: 7
-    # Keep provider generation manual. Provider key quota is the hard
-    # billing limit; the cached ledger is additional protection, not a guarantee.
+    # Auditions stay manual. Automatic news uses the same durable ledger
+    # and unchanged Free-only cap; neither workflow enables paid usage.

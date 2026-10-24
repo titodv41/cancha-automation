@@ -12,20 +12,13 @@ on:
         type: string
         default: 'content/instagram/chat-command.json'
   schedule:
-    # Independent social replenishment at 9:20 AM and 1:20 PM New York.
-    - cron: '20 13,17 * * *'
-    - cron: '20 14,18 * * *'
-    # Prepare at 10 AM NY for 12:30 PM and 6 PM source-checked slots.
-    # Publish after 6 PM; GitHub schedules are approximate and can be delayed.
-    - cron: '7 14 * * *'
-    - cron: '7 15 * * *'
-    # Noon fallback checks whether preparation completed today before doing work.
-    - cron: '17 16 * * *'
-    - cron: '17 17 * * *'
-    - cron: '7 22 * * *'
-    - cron: '7 23 * * *'
-    # Midday/evening checks; plan caps and four-hour spacing protect delayed runs.
-    - cron: '37 0-4,16-23 * * *'
+    # One set of UTC production triggers avoids duplicate DST jobs cancelling
+    # a useful pending run. Feed slots remain 12:30 and 18:00 New York.
+    - cron: '23 13,17 * * *'
+    - cron: '9 14 * * *'
+    - cron: '19 16 * * *'
+    # Check publication twice an hour; actual spacing/day/week caps still apply.
+    - cron: '11,41 0-3,16-23 * * *'
 permissions:
   contents: write
 concurrency:
@@ -81,6 +74,7 @@ jobs:
           CANCHA_CONTROL_TOKEN: ${{ steps.clock.outputs.action == 'migrate' && secrets.CANCHA_CONTROL_TOKEN || '' }}
           META_PAGE_ACCESS_TOKEN: ${{ steps.clock.outputs.action == 'reconnect' && secrets.META_PAGE_ACCESS_TOKEN || '' }}
           FRAMER_API_KEY: ${{ ((steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'repair-media' || steps.clock.outputs.action == 'replenish') && secrets.FRAMER_API_KEY || '' }}
+          ELEVENLABS_API_KEY: ${{ steps.clock.outputs.action == 'replenish' && secrets.ELEVENLABS_API_KEY || '' }}
           CANCHA_AUTOMATION_BACKEND: github
           CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
           CANCHA_COMMAND_FILE: ${{ inputs.command_file }}
@@ -100,6 +94,9 @@ jobs:
             private-data/instagram-preview.html
             private-data/instagram-insights.json
             private-data/narrative-production/report.json
+            private-data/automatic-news/report.json
+            private-data/automatic-news/voice/
+            private-data/local-updates/report.json
             private-data/daily-opportunities/*/directory-editorial/report.json
           retention-days: 7
           if-no-files-found: error

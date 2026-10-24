@@ -12,7 +12,7 @@ export async function collectInstagramInsights(connection,published,{fetchImpl=f
  const version=/^v\d+\.\d+$/.test(connection.version||'')?connection.version:'v26.0';
  for(const row of published.slice(-30)){
   if(!/^\d+$/.test(row.published_id||''))continue;let content;try{content=JSON.parse(row.content)}catch{continue}
-  const post={id:row.id,mediaId:row.published_id,publishedAt:row.published_at||row.scheduled_at,topic:content.topic||content.sourceType,format:content.format,metrics:{}};
+  const post={id:row.id,mediaId:row.published_id,publishedAt:row.published_at||row.scheduled_at,topic:content.topic||content.sourceType,format:content.format,technique:content.creativeTechnique||null,metrics:{}};
   for(const metric of metrics){
    const url=new URL(`https://graph.facebook.com/${version}/${row.published_id}/insights`);url.searchParams.set('metric',metric);
    let response,data;try{response=await fetchImpl(url,{headers:{Authorization:'Bearer '+connection.pageToken},redirect:'error',signal:AbortSignal.timeout(20000)});data=await response.json()}catch{result.unavailableMetrics.push({post:row.id,metric,reason:'Network or invalid response'});continue}
@@ -23,4 +23,16 @@ export async function collectInstagramInsights(connection,published,{fetchImpl=f
  }
  result.recommendations.push('A single collection is not enough evidence to select a winning topic. Compare accumulated snapshots at similar post ages before changing the mix.');
  if(!result.posts.length)result.status='no_published_posts';else if(result.posts.every(p=>!Object.keys(p.metrics).length))result.status='metrics_unavailable';return result;
+}
+
+export function techniqueLearning(reports){
+ const snapshots=new Map();
+ for(const report of [...reports].sort((a,b)=>Date.parse(a.collectedAt)-Date.parse(b.collectedAt)))for(const p of report.posts||[]){
+  const age=(Date.parse(report.collectedAt)-Date.parse(p.publishedAt))/3600000;
+  if(age<48||age>=96||!p.technique||!(p.metrics?.reach>=20)||!Number.isFinite(p.metrics.saved)||!Number.isFinite(p.metrics.shares))continue;
+  if(!snapshots.has(p.id))snapshots.set(p.id,p);
+ }
+ const groups={};for(const p of snapshots.values())(groups[p.technique]||=[]).push((p.metrics.saved+p.metrics.shares)/p.metrics.reach*100);
+ const comparisons=Object.entries(groups).filter(([,posts])=>posts.length>=5).map(([technique,values])=>({technique,posts:values.length,savesAndSharesPer100Reached:values.reduce((a,b)=>a+b,0)/values.length})).sort((a,b)=>b.savesAndSharesPer100Reached-a.savesAndSharesPer100Reached);
+ return{comparisons:comparisons.length>=2?comparisons:[],metric:'saves + shares per 100 reached',ageWindowHours:[48,96],minimumIndependentPostsPerTechnique:5,status:comparisons.length>=2?'comparable-samples':'insufficient-evidence'};
 }

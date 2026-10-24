@@ -1,3 +1,4 @@
+import{chromium}from'playwright';
 import {bundle} from '@remotion/bundler';
 import {renderMedia,renderStill,selectComposition} from '@remotion/renderer';
 import {readFile,writeFile,mkdir,copyFile,mkdtemp,rm} from 'node:fs/promises';
@@ -31,7 +32,7 @@ execFileSync(process.execPath,['video/audio/soundtrack.mjs',join(assets,'story.j
 const temp=await mkdtemp(join(tmpdir(),'cancha-narrative-'));
 try{
  const serveUrl=await bundle({entryPoint:resolve('video/src/index.tsx'),publicDir:resolve('video/public'),outDir:join(temp,'bundle'),enableCaching:false});
- const common={serveUrl,browserExecutable:process.env.CANCHA_BROWSER_EXECUTABLE||'/usr/bin/chromium',inputProps:{brand,edit,visuals:story.visuals,audio:'generated/narrative-story/soundtrack.wav',groups:timing.groups}};
+ const common={serveUrl,browserExecutable:process.env.CANCHA_BROWSER_EXECUTABLE||chromium.executablePath(),inputProps:{brand,edit,visuals:story.visuals,audio:'generated/narrative-story/soundtrack.wav',groups:timing.groups}};
  const composition=await selectComposition({...common,id:'NarrativeStory'}),frames=[...new Set([0,...edit.scenes.flatMap(s=>[Math.floor((s.start+.5)*30),Math.floor((s.start+.12)*30)])])];
  for(const frame of frames)await renderStill({...common,composition,frame,imageFormat:'jpeg',output:join(out,'frame-'+frame+'.jpg')});
  if(process.argv.includes('--still')){await writeFile(join(out,'storyboard.json'),JSON.stringify({edit,voice:timing.voice,frames,audioSha256},null,2));console.log('Actual-voice storyboard rendered; no MP4 or publication.');}

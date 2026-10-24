@@ -6,10 +6,11 @@
   "minimumDaysBetweenClubFeatures": 30,
   "maximumVideoRendersPerRun": 1,
   "preferredVoice": "Chris",
-  "automaticNewTts": false,
+  "automaticNewTts": true,
   "paidServicesEnabled": false,
   "queueOnShortage": "Skip the empty slot and report a shortage; never repeat an old asset or invent a listing.",
   "reelRecipeIds": [
     "ftl-mens-narrative-20261023"
-  ]
+  ],
+  "automaticVoicePolicy": "Free-only, durable reservation, 1500 characters/month; no paid usage or automatic uncertain retry."
 }

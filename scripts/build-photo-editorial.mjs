@@ -78,10 +78,12 @@ try {
     const bounds=e=>e.getBoundingClientRect(),footer=bounds(document.querySelector('footer'));
     const text=[...document.querySelectorAll('.copy,.body,h1,.label,.fact')];
     const footerParts=[...document.querySelectorAll('footer>span')].map(bounds);
-    return {violations:text.filter(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1021||bounds(e).bottom>footer.top-18).map(e=>({selector:e.className||e.tagName,text:e.textContent,bottom:bounds(e).bottom,right:bounds(e).right,scroll:e.scrollWidth,width:e.clientWidth})),overflow:text.some(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1021||bounds(e).bottom>footer.top-18)||footerParts[0].right+28>footerParts[1].left,images:[...document.images].map(i=>({width:i.naturalWidth,height:i.naturalHeight})),fonts:document.fonts.check('italic 700 150px Display')&&document.fonts.check('650 42px UI'),secondaryFontMinimum:Math.min(...[...document.querySelectorAll('.eyebrow,.page-number,.label,.body,.fact span,.fact b,footer,.arrow')].map(e=>parseFloat(getComputedStyle(e).fontSize)))};
+    const photo=bounds(document.querySelector('.photo')),copy=bounds(document.querySelector('.copy'));
+    const overlap=copy.left<photo.right&&copy.right>photo.left&&copy.top<photo.bottom&&copy.bottom>photo.top;
+    return {overlap,photoHeight:photo.height,violations:text.filter(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1040||bounds(e).bottom>footer.top-18).map(e=>({selector:e.className||e.tagName,text:e.textContent,bottom:bounds(e).bottom,right:bounds(e).right,scroll:e.scrollWidth,width:e.clientWidth})),overflow:text.some(e=>e.scrollWidth>e.clientWidth+1||bounds(e).right>1040||bounds(e).bottom>footer.top-18)||footerParts[0].right+28>footerParts[1].left,images:[...document.images].map(i=>({width:i.naturalWidth,height:i.naturalHeight})),fonts:document.fonts.check('italic 700 150px Display')&&document.fonts.check('700 42px UI'),secondaryFontMinimum:Math.min(...[...document.querySelectorAll('.eyebrow,.page-number,.label,.body,.fact span,.fact b,footer,.arrow')].map(e=>parseFloat(getComputedStyle(e).fontSize)))};
    });
-   if(quality.overflow||!quality.fonts)throw Error('Layout failed: '+post.id+'/'+index+' '+JSON.stringify(quality));
-   if(quality.images[0].width<800||quality.images[0].height<600)throw Error('Insufficient photo resolution: '+slide.photoId);
+   if(quality.overflow||quality.overlap||quality.photoHeight<300||!quality.fonts)throw Error('Layout failed: '+post.id+'/'+index+' '+JSON.stringify(quality));
+   if(asset.width<800||asset.height<600)throw Error('Insufficient photo resolution: '+slide.photoId);
    const file=resolve(out,`${post.id}-${index+1}.jpg`);await page.screenshot({path:file,type:'jpeg',quality:96});
    const renderChecksum=hash(await readFile(file));slides.push({assetUrl:null,assetChecksum:renderChecksum,renderChecksum,width:1080,height:1350,photoId:slide.photoId,altText:slide.altText});
    checks.push({id:post.id,slide:index+1,file,renderChecksum,...quality});

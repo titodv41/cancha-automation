@@ -1,0 +1,63 @@
+{
+  "enabled": true,
+  "voice": "Chris",
+  "freeOnly": true,
+  "monthlyCharacterBudget": 1500,
+  "maximumCharactersPerStory": 320,
+  "maximumNewStoriesPerDay": 1,
+  "draftBuffer": 2,
+  "sourceAgeDays": 7,
+  "minimumDaysBetweenSameClub": 2,
+  "techniques": [
+    "match-board",
+    "newsroom",
+    "club-film"
+  ],
+  "paidUsageEnabled": false,
+  "automaticRetries": false,
+  "baseline": {
+    "month": "2026-10",
+    "reservedCharacters": 1153,
+    "recordedManualAuditions": 3,
+    "requests": [
+      {
+        "digest": "5eeb3d36662eb8fa05c98db3b1b1370b8e1eb40d6e0b199aebc519aa705f5a1b",
+        "voice": "Chris",
+        "characters": 452,
+        "audioSha256": "33541b295aecc33f1329527beb57f218d61889ab1a66db25db7451d0bcd4501f",
+        "hostedAssets": {
+          "audio": {
+            "url": "https://framerusercontent.com/assets/3FjYmhX78ktAoNW9PVDEtERB4.mp3",
+            "sha256": "33541b295aecc33f1329527beb57f218d61889ab1a66db25db7451d0bcd4501f"
+          },
+          "timing": {
+            "url": "https://framerusercontent.com/assets/u9V35W1cm5laCqyQZUKctKe8KtM.json",
+            "sha256": "4d6cb95ab0d9204d63ad77a0656d9e7124ef9c306c3ac08a3a5f47d0579800ca"
+          }
+        }
+      },
+      {
+        "digest": "4713b27eff60fa4ed8db9e94027cf579ed1c08f94eb3878e033e3a037865d810",
+        "voice": "Jessica",
+        "characters": 452,
+        "audioSha256": "b0891ff83eb87a87a6d844e3ac6c82efbe1472d9df90d3d4890dcb27c87268b3"
+      },
+      {
+        "digest": "f31a4d9c05dbbb3945bed9ab556779241dc5907e333b8bafeca2e61a4c2e8894",
+        "voice": "Chris",
+        "characters": 249,
+        "audioSha256": "24c8707f7d5b3afb6e1da44fca05e61f60cfe03c8b544cb6e17e2abf6e23da96",
+        "hostedAssets": {
+          "audio": {
+            "url": "https://framerusercontent.com/assets/UBnDU3hu71trMLyhFUAB4xN3IRc.mp3",
+            "sha256": "24c8707f7d5b3afb6e1da44fca05e61f60cfe03c8b544cb6e17e2abf6e23da96"
+          },
+          "timing": {
+            "url": "https://framerusercontent.com/assets/krujNWPFNydUg2TSLrWNAOJHWc.json",
+            "sha256": "bdaef95dbcba8af3d0c7b7134d67822bc4bc9891251048ea1274cd04ab7c6245"
+          }
+        }
+      }
+    ]
+  }
+}

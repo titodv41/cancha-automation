@@ -72,7 +72,7 @@ export async function inspectVoiceAccount(api, policy) {
   return {model: policy.model, voices, subscription: {tier: subscription.tier, characterCount: subscription.character_count, characterLimit: subscription.character_limit, nextReset: subscription.next_character_count_reset_unix, overagesDisabled}};
 }
 
-export async function generateVoice({api, text, candidate, policy, ledgerDir, now = new Date(), offset = 0.25, mode='paid', account=null}) {
+export async function generateVoice({api, text, candidate, policy, ledgerDir, now = new Date(), offset = 0.25, mode='paid', account=null,onLedgerSave=null}) {
   validateVoiceBatch(text, [candidate], policy,{mode});
   if(mode==='free-preview')validateFreePreviewAccount(account,text.length);
   if(!Number.isFinite(offset)||offset<0)throw Error('Invalid narration offset');
@@ -80,6 +80,7 @@ export async function generateVoice({api, text, candidate, policy, ledgerDir, no
   const ledgerPath = ledgerDir + '/ledger.json';
   let ledger;
   try { ledger = JSON.parse(await readFile(ledgerPath, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') throw e; ledger = {months: {}, requests: {}}; }
+  const persist=async()=>{await writeFile(ledgerPath,JSON.stringify(ledger,null,2),{mode:0o600});if(onLedgerSave)await onLedgerSave(structuredClone(ledger));};
   const body = {text, model_id: policy.model, voice_settings: policy.voiceSettings, seed: 20261022, language_code: 'en'};
   const digest = createHash('sha256').update(JSON.stringify({candidate: candidate.id, format: policy.outputFormat, body})).digest('hex');
   const month = now.toISOString().slice(0, 7), existing = ledger.requests[digest];
@@ -96,7 +97,7 @@ export async function generateVoice({api, text, candidate, policy, ledgerDir, no
   // Reserve before the chargeable call; failed/uncertain calls remain reserved and cannot retry.
   ledger.months[month] = reserved + text.length;
   ledger.requests[digest] = {status: 'pending', characters: text.length, voice: candidate.name, month};
-  await writeFile(ledgerPath, JSON.stringify(ledger, null, 2), {mode: 0o600});
+  await persist();
   const result = await api('/v1/text-to-speech/' + candidate.id + '/with-timestamps?output_format=' + policy.outputFormat, body);
   const words = alignmentToWords(result.normalized_alignment || result.alignment, offset);
   if (typeof result.audio_base64 !== 'string' || result.audio_base64.length < 100 || result.audio_base64.length > 15_000_000 || !/^[A-Za-z0-9+/=\r\n]+$/.test(result.audio_base64)) throw Error('Invalid voice audio; generation remains reserved');
@@ -107,6 +108,6 @@ export async function generateVoice({api, text, candidate, policy, ledgerDir, no
   await writeFile(timingFile, JSON.stringify({provider: 'elevenlabs', model: policy.model, voice: candidate.name, script: text, audioSha256, offset, words, groups: captionGroups(words),use:mode==='free-preview'?'private-audition':'paid-audition',automaticPublication:false}, null, 2), {mode: 0o600});
   const completed = {status: 'complete', voice: candidate.name, file, timingFile, characters: text.length, month, audioSha256};
   ledger.requests[digest] = completed;
-  await writeFile(ledgerPath, JSON.stringify(ledger, null, 2), {mode: 0o600});
+  await persist();
   return {...completed, cached: false};
 }

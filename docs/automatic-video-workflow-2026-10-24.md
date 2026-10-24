@@ -1,0 +1,54 @@
+# Automatic Cancha video production — October 24
+
+The owner authorized automatic scripts and Chris narration, asked for useful endings, less repeated presentation, collision-free carousels, a quieter brand disclosure and current club news/dates on the website. This release replaces the previous manual-script/manual-TTS boundary within the existing Free-only budget.
+
+## What the producer does
+
+The scheduled replenishment action discovers recent articles on four official Florida club news archives, checks dates and publisher identity, and extracts the actual article paragraphs and subject media. The RSS feeds were checked and found stale; they are not treated as current news.
+
+Scripts are generated automatically through a constrained source-based copy editor. It selects complete factual sentences, removes datelines and nonessential record tables, puts a comeback deficit before the result, and speaks football score numbers naturally. Evidence retains the exact source sentences and the permitted copy edits. No outside language-model account, invented quote, first-person club claim or compulsory engagement question is needed. Unsupported previews, sponsor announcements, incomplete stories and unavailable media do not enter narration.
+
+The first current example is the Sporting JAX women's 3–3 comeback at Lexington. Its official report includes the actual goal clips. The generated spoken story is:
+
+> Lexington took a two nil lead in the first sixteen minutes. The Sporting JAX women’s team came back to earn a three all draw against Lexington SC.
+
+This is generated from the article, rather than a manually stored episode script. At most one new story is created per New York day, targeting two pending video drafts. Stories are deduplicated by official article ID; recent club subjects are rotated. The existing two daily feed slots and actual-carousel-first rule remain.
+
+## Narration and costs
+
+The existing ElevenLabs key is supplied only to the replenishment step. The account must be Free. Chris is the only automatic voice. Paid generation, paid-tier credits, upgrades and automatic retries of uncertain requests remain disabled. The October project limit remains **1,500 characters**, with a baseline of **1,153** already used by the earlier auditions.
+
+A reservation is saved to encrypted GitHub state before any provider request. Completed narration and provider timing are checksum-bound and cached as hosted assets. A missing cache or uncertain reservation stops generation rather than buying another take. The manual audition workflow shares the same ledger and concurrency group. Its prior recorded usage is preserved even if an Actions cache is missing. Voice files are retained in private artifacts for recovery; credentials are never artifacts.
+
+The automation can operate only within this allowance. Continuous daily narration needs a sufficient free allowance or a separately agreed budget; this release does not raise the key quota or project cap silently. Carousels and the website remain independent when narration is blocked.
+
+## Visual production and improvement
+
+- Three bounded techniques: a match scoreboard, a lighter newsroom layout and a video-first club film. The production mix tracks technique usage, rather than making every episode identical.
+- Actual official subject video is preferred. File identity, size, duration, dimensions and source origin are checked. Generic stock loops are excluded. For longer clips, source audio energy suggests a lively window; this is an editing heuristic, not a claim that software recognizes goals semantically.
+- Source video keeps its full frame in a dedicated media region. Brand, headline, imagery, score facts and captions have separate regions. A silent visual preflight checks the loaded fonts and overlap before narration is generated. Final captions use actual provider alignment; score reveals follow the result sentence.
+- The 1080×1920 output has original music, selected Chris narration and H.264/AAC delivery checks. The same master can later be adapted for TikTok. No TikTok account is connected or published to in this release.
+- Format learning compares independent posts in the same 48–96-hour age window, using saves and shares per 100 accounts reached. It needs at least five posts in each of two techniques; otherwise production rotates the approved techniques. It never rewrites code, changes the brand or treats one post as proof.
+- The live insights check still requires `instagram_manage_insights`. Permission errors are recorded as missing data, not zero engagement. Performance-driven selection cannot start until that access and comparable samples exist.
+
+The old Fort Lauderdale closing question is removed by trimming the accepted Chris recording at its sentence boundary, with no new TTS request. Only an untouched future owner-authorized standing-plan approval may receive the revised media; its slot is retained. Published, manually approved, dispatched and uncertain work is protected.
+
+## Carousel repair
+
+Photo panels and fact cards now use normal-flow grid regions. Long copy moves the image region instead of occupying the same coordinates. The renderer rejects text/image intersections, footer overflow and an image region below the minimum size. Font and exact original-photo diversity checks remain. This addresses the layout cause rather than repeatedly changing a font size or a crop.
+
+## Website
+
+The prominent brand sponsorship note is moved to an expandable footer section. “Gear & brands” remains a group of independent official links.
+
+The home page has a compact “From the clubs” news rail and a dates tab when a verified future local date exists. The first date is the Rowdies–Sporting JAX match at Al Lang, October 24 at 7:30 PM Eastern. A date needs an explicit official kickoff, a matching Florida city, and a future start. It hides at kickoff. News expires unless the source is rechecked. Only public fields enter the existing compact catalog module; no extra CMS collection, private contact exposure or hosting service is added.
+
+The existing daily website pipeline refreshes these sources before publication. Code/CMS backups and the release contract protect the existing listings, routes and form destinations.
+
+## Scheduling reliability
+
+Production now uses one set of UTC triggers instead of overlapping summer/winter jobs. Twice-hourly publication checks retain the same New York feed slots and spacing/week/day limits. GitHub may still delay jobs. Source shortages and narration budget issues remain explicit production reports; no fake filler or uncertain-publication retry is introduced.
+
+## Verification and receipts
+
+Unit tests and production/browser receipts are recorded below after the hosted run is checked.

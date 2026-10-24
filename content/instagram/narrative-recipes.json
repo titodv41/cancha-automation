@@ -2,19 +2,19 @@
   {
     "id": "ftl-mens-narrative-20261023",
     "sourceId": "ftl-mens-expansion-20261023",
-    "revision": "2026-10-23-short-hook",
+    "revision": "2026-10-24-factual-ending",
     "storyPath": "content/instagram/story-narration.json",
     "mediaPath": "content/instagram/single-story.json",
     "socialPath": "content/instagram/narrative-social.json",
     "voice": "Chris",
     "assets": {
       "audio": {
-        "url": "https://framerusercontent.com/assets/UBnDU3hu71trMLyhFUAB4xN3IRc.mp3",
-        "sha256": "24c8707f7d5b3afb6e1da44fca05e61f60cfe03c8b544cb6e17e2abf6e23da96"
+        "url": "https://framerusercontent.com/assets/MOwh8GsNzeOU1m6IXV7Qnn9lA4.mp3",
+        "sha256": "e352a10786ce2c9a254ce52ac882559808ac510e1341627b9c98248b2a07825a"
       },
       "timing": {
-        "url": "https://framerusercontent.com/assets/krujNWPFNydUg2TSLrWNAOJHWc.json",
-        "sha256": "bdaef95dbcba8af3d0c7b7134d67822bc4bc9891251048ea1274cd04ab7c6245"
+        "url": "https://framerusercontent.com/assets/mRo5pQtAQU0N4jGn7Bvpveh3oI.json",
+        "sha256": "b550141d4b2237029fe9b5be67da001398b4c076af8bb94a23907f419b6d7212"
       }
     },
     "ownerDirection": "Use Chris, moving real club footage behind Cancha overlays, and automatic selection within the existing two daily feed slots."

@@ -3,7 +3,7 @@
   "syndicatedHeadlinePostsEnabled": false,
   "localEditorialEnabled": true,
   "requiredCreativeVersion": "cancha-local-v2",
-  "reason": "Owner chose Chris, moving club-film backgrounds, brand-family secondary type and automatic two-slot daily production. New approved narrative recipe is eligible; rejected legacy Reels remain held. Automatic directory guides use official header badges plus actual profile captures. Preserve receipts and never repeat uncertain publication.",
+  "reason": "Owner authorized automated source-backed scripts and Chris narration on October 24. Use measured subject media, varied layouts and factual endings. Preserve the daily carousel and publication receipts; rejected old voices remain held.",
   "cutoverRequestedAt": "2026-10-19T15:45:00.000Z",
   "communityFirst": true,
   "communityWeeklyTarget": 4,
@@ -50,5 +50,6 @@
     "ftl-mens-narrative-20261023"
   ],
   "lateSlotGraceMinutes": 90,
-  "requireCurrentDirectoryStyle": true
+  "requireCurrentDirectoryStyle": true,
+  "automatedNewsVideoEnabled": true
 }
