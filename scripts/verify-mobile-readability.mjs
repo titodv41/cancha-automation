@@ -4,9 +4,17 @@ import {mkdir,writeFile} from 'node:fs/promises';
 const out='private-data/mobile-readability-check';
 await mkdir(out,{recursive:true,mode:0o700});
 const checks=[];
+const thirdPartyNotices=[];
 for(const width of [320,390,1440]){
- const{browser,page}=await openBrowser({width,height:900}),errors=[];
- page.on('pageerror',e=>errors.push(e.message));
+ const{browser,context,page}=await openBrowser({width,height:900}),errors=[];
+ await context.exposeBinding('__canchaReadingError',({frame},row)=>{
+  const source=new URL(frame.url());
+  // Confirmed in Framer's separate editor iframe; do not confuse it with
+  // an exception in Cancha's search, filters or map. All other errors fail.
+  if(source.origin==='https://framer.com'&&source.pathname==='/edit'&&row.message.includes('localStorage')&&row.message.includes('Access is denied'))thirdPartyNotices.push({width,origin:source.origin,path:source.pathname,message:row.message});
+  else errors.push(row.message);
+ });
+ await context.addInitScript(()=>addEventListener('error',e=>window.__canchaReadingError({message:e.message}).catch(()=>{})));
  try{
   for(const route of ['/','/clubs','/explore']){
    await page.goto('https://pioneering-friday-005497.framer.app'+route,{waitUntil:'networkidle'});
@@ -30,6 +38,11 @@ for(const width of [320,390,1440]){
     await page.getByRole('dialog').waitFor({state:'hidden'});
     await page.getByRole('button',{name:'Clear filters',exact:true}).click();
     await page.waitForFunction(text=>document.querySelector('.sd-count')?.textContent===text,before);
+    // Wide screens start in map mode; phones start in list mode.
+    if(await page.getByRole('button',{name:'List view',exact:true}).count()){
+     await page.getByRole('button',{name:'List view',exact:true}).click();
+     await page.getByRole('region',{name:'City overview map'}).waitFor({state:'hidden'});
+    }
     await page.getByRole('button',{name:'Map view',exact:true}).click();
     await page.getByRole('region',{name:'City overview map'}).waitFor();
     await page.getByRole('button',{name:'List view',exact:true}).click();
@@ -37,9 +50,10 @@ for(const width of [320,390,1440]){
    }
    await page.screenshot({path:out+'/'+(route==='/'?'home':route.slice(1))+'-'+width+'.png',fullPage:false});
    checks.push({route,width,...reading,passed:true});
+   await writeFile(out+'/report.json',JSON.stringify({complete:false,checks,thirdPartyNotices},null,2),{mode:0o600});
   }
   if(errors.length)throw Error(errors.join('; '));
  }finally{await browser.close()}
 }
-await writeFile(out+'/report.json',JSON.stringify({checkedAt:new Date().toISOString(),passed:true,checks},null,2),{mode:0o600});
+await writeFile(out+'/report.json',JSON.stringify({checkedAt:new Date().toISOString(),passed:true,checks,thirdPartyNotices},null,2),{mode:0o600});
 console.log(JSON.stringify({passed:true,viewports:[320,390,1440],pages:['/','/clubs','/explore'],checks:checks.length,categoryResetDialogAndMapPassed:true}));
