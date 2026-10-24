@@ -2,6 +2,8 @@
 
 Last checked October 24, 2026 at 7:26 PM New York. [Read-only run 40142759333](https://github.com/titodv41/cancha-automation/actions/runs/40142759333) returned `permission_required`, requiring **`instagram_manage_insights`**. Zero posts returned metrics. Some older media also returned error 100; that is not a zero engagement result. A green workflow means the diagnostic completed, not that Meta granted Insights.
 
+The guarded connection was also exercised live at 7:32 PM: [run 40143137258](https://github.com/titodv41/cancha-automation/actions/runs/40143137258) returned **`META_INSIGHTS_TOKEN_MISSING`**, `connectionUpdated: false`, `publishingAttempted: false`. The replacement-token repository secret is absent from this workflow. The existing publishing connection remains in encrypted state. [Automation checks 40143121269](https://github.com/titodv41/cancha-automation/actions/runs/40143121269) passed; all **237 local tests** passed as well.
+
 Publishing is already connected. Keep the existing **Instagram API with Facebook Login** integration, Cancha Automation app and encrypted GitHub state. There is no need for Render, a new app, another paid service, or an Instagram password. The account step below must be done by its owner inside Meta; Codex cannot approve permissions on the owner's behalf.
 
 ## One-time owner steps
