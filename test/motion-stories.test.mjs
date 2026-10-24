@@ -4,7 +4,7 @@ import{localStoryDescriptor,localStoryHash,confirmLocalStorySource}from'../serve
 import{validReel,verifyReelAssets}from'../server/instagram-media.mjs';
 import{metaPublisher,contentHash,openQueue,saveDraft,approve}from'../server/instagram-queue.mjs';
 import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
-import{mkdtempSync,rmSync,readFileSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';
+import{mkdtempSync,rmSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';
 import{satisfiesDailyMediaMix}from'../server/instagram-media-mix.mjs';
 import{approvedOriginalCreative}from'../server/social-creative.mjs';
 const source=localStoryDescriptor('weston-u15-club-clip-20261022'),doc=source.documents[0];
@@ -56,6 +56,6 @@ test('motion revisions keep untouched standing-plan slots and preserve manual or
 
 test('a shortened accepted narrative keeps its future standing-plan slot but never replaces a dispatched container',()=>{
  const dir=mkdtempSync(join(tmpdir(),'narrative-refresh-')),db=openQueue(join(dir,'queue.sqlite')),now=Date.now(),scheduledAt=new Date(now+86400000).toISOString();
- const fixture=JSON.parse(readFileSync(new URL('../content/instagram/narrative-editorial-ready.json',import.meta.url)))[0],item={...fixture,factsCheckedAt:new Date(now).toISOString(),visualEvidence:{...fixture.visualEvidence,renderedAt:new Date(now).toISOString()}},revised={...item,caption:'A factual ending without the generic closing question.'};
+ const n=localStoryDescriptor('ftl-mens-expansion-20261023'),url=n.documents[0].url,hash=localStoryHash(n),item={...reel,editorialSourceId:n.id,officialSourceUrl:url,sourceHash:hash,factsCheckedAt:new Date(now).toISOString(),creativeVersion:'cancha-local-v2',rights:'Owner-cleared footage and selected Chris narration.',footage:[{sourcePage:url,authorization:'owner-cleared-2026-10-22',publisher:'Fort Lauderdale United',subject:'Club film',originalChecksum:'a'.repeat(64)}],audioEvidence:{provider:'elevenlabs',voice:'Chris',model:'eleven_v3',syntheticNarration:true,originalMusic:true,sourceClipAudioUsed:false,ownerUseAuthorization:'owner-chat-2026-10-23-chris-production',audioSha256:'a'.repeat(64)},visualEvidence:{creator:'Cancha',kind:'narrative-story',subjectKey:n.id,sourceUrl:url,sourceHash:hash,assetChecksum:reel.assetChecksum,videoChecksum:reel.reel.assetChecksum,renderedAt:new Date(now).toISOString()}},revised={...item,caption:'A factual ending without the generic closing question.'};
  try{assert(approvedOriginalCreative(item));saveDraft(db,item);approve(db,item.id,{reviewer:'Cancha owner-authorized standing plan',scheduledAt,now,allowSourceRecheck:true});assert.equal(refreshMotionEditorial(db,[revised],{now}).rescheduled.length,1);const stored=db.prepare('SELECT * FROM instagram_queue WHERE id=?').get(item.id);assert.equal(stored.scheduled_at,scheduledAt);assert.equal(stored.approved_hash,contentHash(revised));db.prepare('UPDATE instagram_queue SET container_id=? WHERE id=?').run('already-dispatched-container',item.id);assert.deepEqual(refreshMotionEditorial(db,[item],{now}).protected,[item.id]);}finally{db.close();rmSync(dir,{recursive:true,force:true})}
 });

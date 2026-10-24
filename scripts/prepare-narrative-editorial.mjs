@@ -37,5 +37,5 @@ try{
    row={...row,...socialFields,footage:row.footage.map(p=>({...p,publisher:social.footagePublisher,subject:social.footageSubject}))};if(!approvedOriginalCreative(row))throw Error('Narrative copy or source identity changed');result.links.push({id:row.id,videoUrl:row.reel.assetUrl,posterUrl:row.assetUrl,voice:row.audioEvidence.voice,durationSeconds:row.reel.durationSeconds,sha256:row.reel.assetChecksum,deliveryAudit:row.deliveryAudit||null,newTtsRequests:0});if(hosted){if(refreshApproval)result.approvalRefresh=await refreshNarrativeQueue(row);else await sendPrivate('/automation/drafts',[row]);result.delivered=true}
   }catch(error){result.blocked.push({id:recipe.id,reason:error.message})}
  }
- await writeFile(out+'/report.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+ await writeFile(out+'/report.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));if(result.blocked.length)process.exitCode=1;
 }finally{await session.close()}
