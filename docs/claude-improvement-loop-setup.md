@@ -98,3 +98,7 @@ The public reference packet is not a private analytics export. The repository is
 - [Claude Code usage and cost controls](https://code.claude.com/docs/en/costs)
 - [Official action source](https://github.com/anthropics/claude-code-action)
 - [Codex GitHub integration](https://learn.chatgpt.com/docs/third-party/github)
+
+### Live verification receipt
+
+[Connection check 40141627692](https://github.com/titodv41/cancha-automation/actions/runs/40141627692) completed successfully. It made **zero Claude requests** and confirmed `CLAUDE_CODE_OAUTH_TOKEN` is not configured in this workflow, included-only confirmation is false, and the loop remains disabled. [Automation checks 40141626593](https://github.com/titodv41/cancha-automation/actions/runs/40141626593) also passed on GitHub. No authenticated Claude/Codex exchange or improvement PR has been claimed. The remaining dependency is the owner's secure subscription-token setup, account billing-toggle confirmation and native Codex review setting.
