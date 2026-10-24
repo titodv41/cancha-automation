@@ -45,6 +45,14 @@ The Cancha repository is **public**. Keep the raw bookmark export and private ac
 
 Current publishing state and actual metrics must be checked from current reports, rather than inferred from these preview links. The prior release established automatic source-based script writing, capped Free-only Chris narration, three visual techniques, collision checks, current homepage news/dates and a footer brand disclosure. The existing 1,500-character monthly narration cap remains unless the owner changes the allowance. This research does not change it.
 
+## What the subscription does and does not connect
+
+The official new-customer pricing checked October 24 lists **Plus at $8/month without Grok Bot**, and **Premium at $30/month with Grok Bot** (USD web list prices, before tax). These are the unified X Subscription tiers; older X Premium branding refers to different plans. A roughly $9 offer cannot be assumed to include Bot access. See [current pricing](https://docs.x.ai/x-subscription/pricing) and [Bot entitlement](https://docs.x.ai/x-subscription/grok-bot).
+
+A subscription does not link this Codex chat to Grok or make this conversation run continuously. Unattended collaboration needs an actual scheduled handoff: collect current public site/creative evidence; have Grok return a structured review; hand specific changes to an authenticated implementation agent; test and release through the existing pipeline. Grok Bot routines can provide part of that workflow. An API reviewer is a separate usage-billed route. A continuously available Codex implementation agent and its authentication/usage allowance are additional setup, not established by this research or by purchasing a Grok plan. The existing website and Instagram automation remains in place.
+
+For a budget near $10, a bounded API review pilot may be more economical than a full Bot subscription, but actual token/search costs must be measured and an API budget agreed before requests. Direct private-bookmark access still needs authorized X access; public search alone cannot supply it. No provider account, paid call, routine or new agent was enabled here.
+
 ## API alternative
 
 A custom GitHub reviewer can call the xAI Responses API using a securely stored `XAI_API_KEY`, selected screenshots/source text and a bounded review prompt. This workspace currently has no callable Grok connector, and account/API access has not been verified. The GitHub integration could not list repository secret names (HTTP 403); that does not prove a key is absent.
