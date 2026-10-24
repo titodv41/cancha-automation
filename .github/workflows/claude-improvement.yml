@@ -13,8 +13,8 @@ on:
         type: string
         default: ''
   schedule:
-    # M/W/F at 9:30 AM New York during daylight time, 8:30 AM in winter.
-    - cron: '30 13 * * 1,3,5'
+    # Mon (website) and Thu (social templates) at 9:30 AM New York during daylight time, 8:30 AM in winter.
+    - cron: '30 13 * * 1,4'
   pull_request_review:
     types: [submitted]
 permissions:
@@ -62,7 +62,7 @@ jobs:
     needs: plan
     if: needs.plan.outputs.run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     permissions:
       contents: read
       actions: read
@@ -92,7 +92,7 @@ jobs:
         uses: anthropics/claude-code-action@925afb53776cf1a2b738c6bdbed37b4d4000ef13
         env:
           ANTHROPIC_API_KEY: ''
-          CLAUDE_CODE_MAX_OUTPUT_TOKENS: '4096'
+          CLAUDE_CODE_MAX_OUTPUT_TOKENS: '16000'
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ github.token }}
@@ -105,10 +105,11 @@ jobs:
           prompt: |
             Read private-data/claude-loop/input/packet.json. It contains the focused source,
             current reference images and, for a revision, the exact Codex feedback.
-            Read CLAUDE.md for brand and project constraints. Inspect at most two packet images
-            and one focused source file. Optionally perform one small web-research query.
-            Propose ONE small, useful visual presentation improvement, or return no-change.
-            This is a usage-bounded pilot, not the full creative-lead benchmark assignment.
+            Read CLAUDE.md for brand and project constraints. Inspect the packet images and the
+            focused source files. Up to three short web-research queries are allowed.
+            Act as Cancha's design lead: make the most valuable visible improvement you can
+            across the focused files in one pass (layout, hierarchy, copy, mobile readability,
+            conversion), or return no-change if nothing is clearly better.
             Preserve Cancha typography, colors, existing facts, routes, forms and sources.
             Do not change instructions, workflow settings, prices, quotas, credentials,
             publication policy, CMS data or other files. Do not call another agent.
@@ -118,7 +119,7 @@ jobs:
             validates scope and tests the change before staging a PR. No automatic merge.
           claude_args: >-
             --model sonnet
-            --effort low
+            --effort medium
             --max-turns ${{ needs.plan.outputs.turns }}
             --tools Read,Glob,Grep,WebSearch,WebFetch
             --allowedTools Read,Glob,Grep,WebSearch,WebFetch

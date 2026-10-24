@@ -11,13 +11,13 @@ try{
  plan.baseSha=main.object.sha;plan.number=number;plan.feedback=feedback;plan.sourceRef=plan.baseSha;
  if(plan.run&&action==='revise'){
   const p=pulls.find(p=>p.number===number),files=await g.api('/pulls/'+number+'/files?per_page=100');
-  if(files.length!==1||files.some(f=>!policy.allowedPaths.includes(f.filename)||f.status!=='modified'))throw Error('Existing PR exceeds the pilot presentation scope');
+  if(!files.length||files.length>policy.maximumChangedFiles||files.some(f=>!policy.allowedPaths.includes(f.filename)||f.status!=='modified'))throw Error('Existing PR exceeds the pilot presentation scope');
   await reserveRevision(g,number);plan.revisionReserved=true;
   plan.sourceRef=p.head.sha;plan.branch=p.head.ref;plan.focusPaths=files.map(f=>f.filename);
  }
- if(!plan.focusPaths){const day=new Date().getUTCDay();plan.focusPaths=day===1?['framer/CanchaHome.tsx']:day===5?['video/src/AutomaticNewsStory.tsx']:['scripts/photo-card-layout.mjs','scripts/photo-panel-layout.mjs'];}
+ if(!plan.focusPaths){const day=new Date().getUTCDay();plan.focusPaths=day===1?['framer/CanchaHome.tsx','framer/CanchaDiscovery.tsx','framer/CanchaDetail.tsx']:['video/src/AutomaticNewsStory.tsx','scripts/photo-card-layout.mjs','scripts/photo-panel-layout.mjs'];}
  await writeFile('private-data/claude-loop/plan.json',JSON.stringify(plan,null,2),{mode:0o600});
  if(process.env.GITHUB_OUTPUT)await appendFile(process.env.GITHUB_OUTPUT,'run='+plan.run+'\nbase_sha='+plan.baseSha+'\nturns='+(plan.turns||0)+'\n');
  console.log(JSON.stringify({action,willCallClaude:plan.run,reason:plan.reason,oauthConfigured:plan.authenticationConfigured,includedUsageConfirmed:plan.includedUsageConfirmed,initialRunsThisWeek:plan.initialRunsThisWeek}));
- if(process.env.GITHUB_STEP_SUMMARY)await appendFile(process.env.GITHUB_STEP_SUMMARY,'## Cancha Claude connection\n\n'+plan.reason+'\n\nSubscription token configured: '+plan.authenticationConfigured+'. Included-only settings confirmed: '+plan.includedUsageConfirmed+'. Initial runs this week: '+plan.initialRunsThisWeek+'/3. No API-key fallback.\n');
+ if(process.env.GITHUB_STEP_SUMMARY)await appendFile(process.env.GITHUB_STEP_SUMMARY,'## Cancha Claude connection\n\n'+plan.reason+'\n\nSubscription token configured: '+plan.authenticationConfigured+'. Included-only settings confirmed: '+plan.includedUsageConfirmed+'. Initial runs this week: '+plan.initialRunsThisWeek+'/'+policy.maximumInitialRunsPerWeek+'. No API-key fallback.\n');
 }finally{await g.close()}
