@@ -13,7 +13,7 @@ import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyA
 import {openQueue,saveDraft,dispatchDue,metaPublisher} from '../server/instagram-queue.mjs';
 import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs';
 import {renewMetaConnection} from '../server/meta-renewal.mjs';
-import {verifyMetaInsightsConnection} from '../server/meta-insights-connection.mjs';
+import {verifyMetaInsightsConnection,MetaInsightsConnectionError} from '../server/meta-insights-connection.mjs';
 import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
@@ -135,7 +135,7 @@ try{
    verified=await verifyMetaInsightsConnection(connection,process.env.META_PAGE_ACCESS_TOKEN,expected,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   }catch(error){
    const code=/^META_INSIGHTS_[A-Z_]+$/.test(error.code||'')?error.code:'META_INSIGHTS_CONNECTION_FAILED';
-   await writeFile('private-data/meta-insights-connection.json',JSON.stringify({checkedAt:new Date().toISOString(),status:'blocked',code,connectionUpdated:false,publishingAttempted:false},null,2),{mode:0o600});
+   await writeFile('private-data/meta-insights-connection.json',JSON.stringify({checkedAt:new Date().toISOString(),status:'blocked',code,diagnostic:error instanceof MetaInsightsConnectionError?error.diagnostic||null:null,connectionUpdated:false,publishingAttempted:false},null,2),{mode:0o600});
    if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Instagram Insights needs attention\n\n'+code+'. Inspect the connection receipt and follow docs/instagram-insights-connection.md. No publication was attempted.\n',{flag:'a'});
    throw error;
   }

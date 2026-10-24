@@ -39,7 +39,7 @@ test('a personal User token or wrong linked Instagram account cannot replace the
 });
 
 test('a readable account without Insights permission is rejected with no upstream token/error disclosure', async () => {
-  await assert.rejects(verifyMetaInsightsConnection(connection, 'new-fixture-token', expected, rows, {fetchImpl: fixture(url => url.pathname.endsWith('/insights') ? Response.json({error: {code: 200, message: 'new-fixture-token private details'}}, {status: 403}) : undefined)}), error => error.code === 'META_INSIGHTS_PERMISSION_REQUIRED' && !error.message.includes('fixture-token'));
+  await assert.rejects(verifyMetaInsightsConnection(connection, 'new-fixture-token', expected, rows, {fetchImpl: fixture(url => url.pathname.endsWith('/insights') ? Response.json({error: {code: 200, message: 'Requires instagram_manage_insights. new-fixture-token private details'}}, {status: 403}) : undefined)}), error => error.code === 'META_INSIGHTS_PERMISSION_REQUIRED' && error.diagnostic?.category === 'insights_permission' && !JSON.stringify(error).includes('fixture-token'));
   await assert.rejects(verifyMetaInsightsConnection(connection, 'new-fixture-token', expected, rows, {fetchImpl: fixture(url => url.pathname.endsWith('/me') ? Promise.reject(Error('new-fixture-token private details')) : undefined)}), error => error.code === 'META_INSIGHTS_IDENTITY_READ_FAILED' && !error.message.includes('fixture-token'));
   assert.equal(connection.pageToken, 'old-fixture-token');
 });

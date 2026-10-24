@@ -1,4 +1,13 @@
 const metrics=['reach','saved','shares','likes','comments','total_interactions'];
+// Preserve actionable permission names, never Meta's raw error text, URLs,
+// trace IDs, account details or token values.
+export function insightPermissionDiagnostic(error){
+ const names=['instagram_manage_insights','instagram_basic','instagram_content_publish','pages_read_engagement','pages_show_list','ads_management','ads_read','business_management'];
+ const message=typeof error?.message==='string'?error.message:'';
+ const mentionedPermissions=names.filter(name=>new RegExp('\\b'+name+'\\b','i').test(message));
+ return{code:Number.isInteger(error?.code)?error.code:null,subcode:Number.isInteger(error?.error_subcode)?error.error_subcode:null,
+  category:mentionedPermissions.some(name=>name==='ads_management'||name==='ads_read')?'business_manager_permission':mentionedPermissions.includes('instagram_manage_insights')?'insights_permission':/advanced access|app review|approved|access level/i.test(message)?'app_access_level':'permission_denied',mentionedPermissions};
+}
 // Keep only the age window used by comparisons in durable state. The private
 // report artifact retains the full read; daily snapshots must not grow forever.
 export function learningSnapshot(report){return{...report,posts:(report.posts||[]).filter(p=>{const age=(Date.parse(report.collectedAt)-Date.parse(p.publishedAt))/3600000;return age>=48&&age<192}),unavailableMetrics:[],recommendations:[]};}
@@ -16,7 +25,7 @@ export async function collectInstagramInsights(connection,published,{fetchImpl=f
   for(const metric of metrics){
    const url=new URL(`https://graph.facebook.com/${version}/${row.published_id}/insights`);url.searchParams.set('metric',metric);
    let response,data;try{response=await fetchImpl(url,{headers:{Authorization:'Bearer '+connection.pageToken},redirect:'error',signal:AbortSignal.timeout(20000)});data=await response.json()}catch{result.unavailableMetrics.push({post:row.id,metric,reason:'Network or invalid response'});continue}
-   if(!response.ok||data.error){const code=data.error?.code;if([10,200].includes(code)){result.status='permission_required';result.requiredPermission='instagram_manage_insights';result.posts.push(post);result.recommendations.push('Enable Instagram read-only insights access in the Meta app and reconnect securely. Publishing access does not imply insights access.');return result}if(code===190){result.status='connection_needs_attention';result.recommendations.push('The Meta connection needs a secure renewal. No publishing was attempted.');return result}result.unavailableMetrics.push({post:row.id,metric,reason:'Metric unavailable',code:code||response.status});continue}
+   if(!response.ok||data.error){const code=data.error?.code;if([10,200].includes(code)){result.status='permission_required';result.requiredPermission='instagram_manage_insights';result.permissionDiagnostic=insightPermissionDiagnostic(data.error);result.posts.push(post);result.recommendations.push('Enable Instagram read-only insights access in the Meta app and reconnect securely. Publishing access does not imply insights access.');return result}if(code===190){result.status='connection_needs_attention';result.recommendations.push('The Meta connection needs a secure renewal. No publishing was attempted.');return result}result.unavailableMetrics.push({post:row.id,metric,reason:'Metric unavailable',code:code||response.status});continue}
    const point=data.data?.find(x=>x.name===metric),value=point?.total_value?.value??point?.values?.at(-1)?.value;if(typeof value==='number'&&Number.isFinite(value))post.metrics[metric]=value;else result.unavailableMetrics.push({post:row.id,metric,reason:'No metric value'});
   }
   result.posts.push(post);

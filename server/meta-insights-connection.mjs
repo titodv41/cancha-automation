@@ -2,16 +2,17 @@ import {renewMetaConnection} from './meta-renewal.mjs';
 import {collectInstagramInsights} from './instagram-insights.mjs';
 
 export class MetaInsightsConnectionError extends Error {
-  constructor(code) {
+  constructor(code, diagnostic) {
     super(code);
     this.code = code;
+    this.diagnostic = diagnostic;
   }
 }
 
 // No connection is mutated, and every Meta request is a read. Only the caller
 // can checkpoint the returned connection after all checks pass.
 export async function verifyMetaInsightsConnection(connection, token, expected, published, {fetchImpl = fetch, now = new Date()} = {}) {
-  const fail = code => { throw new MetaInsightsConnectionError(code); };
+  const fail = (code, diagnostic) => { throw new MetaInsightsConnectionError(code, diagnostic); };
   if (!token) fail('META_INSIGHTS_TOKEN_MISSING');
   if (!/^v\d+\.\d+$/.test(connection?.version || '') || !/^\d+$/.test(expected?.pageId || '')
       || !/^\d+$/.test(expected?.instagramAccountId || '') || connection.pageId !== expected.pageId
@@ -45,7 +46,7 @@ export async function verifyMetaInsightsConnection(connection, token, expected, 
     .slice(-5);
   if (!recent.length) fail('META_INSIGHTS_NO_PUBLISHED_MEDIA');
   const report = await collectInstagramInsights(candidate, recent, {fetchImpl, now});
-  if (report.status === 'permission_required') fail('META_INSIGHTS_PERMISSION_REQUIRED');
+  if (report.status === 'permission_required') fail('META_INSIGHTS_PERMISSION_REQUIRED', report.permissionDiagnostic);
   if (report.status === 'connection_needs_attention') fail('META_INSIGHTS_TOKEN_EXPIRED');
   // A numeric zero is real data; an empty dataset is not. A verified token must
   // return the three metrics the learning comparisons actually require.
