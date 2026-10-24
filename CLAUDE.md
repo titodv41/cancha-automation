@@ -1,5 +1,9 @@
 # Cancha: context for a second assistant
 
+## Owner-assigned responsibilities — October 24, 2026
+
+Claude owns website UX/copy in `framer/`, Instagram creative direction (carousel/video templates, hooks and captions), and growth strategy. Codex owns pipelines, publishing, the CMS, source automation and infrastructure. Changes to the other assistant's area go through a PR reviewed by that assistant. Review Claude's forthcoming improvement-loop expansion PR; do not replace it with a competing implementation. Instagram Insights connection is Codex's current first priority. This ownership instruction supersedes older overlapping assignments below; existing source, credential, spending and publication safeguards still apply.
+
 Cancha helps people discover soccer clubs, places to play, coaches, current opportunities, learning and careers in Florida. Preserve the existing project, brand, working discovery tools and private email forms.
 
 Start with:

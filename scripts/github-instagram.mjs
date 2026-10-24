@@ -13,6 +13,7 @@ import {githubStateClient} from './github-state-client.mjs';import {fetch,ProxyA
 import {openQueue,saveDraft,dispatchDue,metaPublisher} from '../server/instagram-queue.mjs';
 import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs';
 import {renewMetaConnection} from '../server/meta-renewal.mjs';
+import {verifyMetaInsightsConnection} from '../server/meta-insights-connection.mjs';
 import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
@@ -21,7 +22,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -126,6 +127,24 @@ try{
  if(mode==='reconnect'){
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
   Object.assign(connection,await renewMetaConnection(connection,token,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})}));await checkpoint();
+ }
+ if(mode==='connect-insights'){
+  await mkdir('private-data',{recursive:true,mode:0o700});
+  let verified;
+  try{
+   verified=await verifyMetaInsightsConnection(connection,process.env.META_PAGE_ACCESS_TOKEN,expected,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
+  }catch(error){
+   const code=/^META_INSIGHTS_[A-Z_]+$/.test(error.code||'')?error.code:'META_INSIGHTS_CONNECTION_FAILED';
+   await writeFile('private-data/meta-insights-connection.json',JSON.stringify({checkedAt:new Date().toISOString(),status:'blocked',code,connectionUpdated:false,publishingAttempted:false},null,2),{mode:0o600});
+   if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Instagram Insights needs attention\n\n'+code+'. Inspect the connection receipt and follow docs/instagram-insights-connection.md. No publication was attempted.\n',{flag:'a'});
+   throw error;
+  }
+  Object.assign(connection,verified.connection);
+  state.instagramInsights=[...(state.instagramInsights||[]).slice(-34),learningSnapshot(verified.report)];
+  state.insightsConnection=verified.receipt;await checkpoint();
+  await writeFile('private-data/meta-insights-connection.json',JSON.stringify({...verified.receipt,connectionUpdated:true},null,2),{mode:0o600});
+  await writeFile('private-data/instagram-insights.json',JSON.stringify(verified.report,null,2),{mode:0o600});
+  if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Instagram Insights connected\n\nExact Cancha Page and Instagram identity verified. Reach, saves and shares read on '+verified.receipt.postsWithCoreMetrics+' post(s). The replacement Page token is now stored encrypted. No post was published.\n',{flag:'a'});
  }
  if(mode==='command'){
   // Reuse the authenticated command contract locally; receipts survive runs.

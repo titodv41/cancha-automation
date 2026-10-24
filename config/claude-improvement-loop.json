@@ -1,6 +1,6 @@
 {
   "enabled": false,
-  "includedUsageConfirmed": false,
+  "includedUsageConfirmed": true,
   "repository": "titodv41/cancha-automation",
   "timezone": "America/New_York",
   "authentication": "claude-pro-oauth-only",
