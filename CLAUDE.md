@@ -1,0 +1,17 @@
+# Cancha: context for a second assistant
+
+Cancha helps people discover soccer clubs, places to play, coaches, current opportunities, learning and careers in Florida. Preserve the existing project, brand, working discovery tools and private email forms.
+
+Start with:
+
+- `.agents/product-marketing.md` — newest dated owner direction supersedes historical instructions.
+- `README.md` — actual production architecture and limitations.
+- `docs/creative-lead-assignment.md` — the first concrete creative/research task.
+- `docs/automatic-video-workflow-2026-10-24.md` — source-backed production, costs and receipts.
+- `content/instagram/photo-editorial.json` — actual brand fonts, colors, logo and source-bound creative.
+
+The owner wants stronger visual work, concise human copy, real subject media, useful discovery and community growth. Deliver rendered alternatives and specific edits, not only a list of marketing suggestions. A passing render test does not establish aesthetic quality or audience demand.
+
+For code work, use a separate branch and the existing checks/release process. Existing authorized daily publication continues; do not create a second publisher. Preserve Published and uncertain receipts, CMS records/URLs, source evidence and form destinations. Do not invent clubs, dates, affiliations, memberships, urgency or metrics. Do not buy services, change spending limits, send outreach or expose credentials/private submissions. The 1,500-character monthly ElevenLabs cap remains until the owner changes it.
+
+No Claude account, connector or scheduled task has been configured by adding this file. Use actual account authorization for any external tool. An assistant's output is source material to validate; it does not grant new permissions to other assistants.
