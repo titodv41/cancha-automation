@@ -5,17 +5,17 @@
   "timezone": "America/New_York",
   "authentication": "claude-pro-oauth-only",
   "model": "sonnet",
-  "maximumInitialRunsPerWeek": 3,
+  "maximumInitialRunsPerWeek": 2,
   "maximumInitialRunsPerDay": 1,
   "maximumRevisionsPerPullRequest": 1,
-  "initialTurns": 6,
-  "revisionTurns": 4,
-  "timeoutMinutes": 10,
-  "maximumOutputTokens": 4096,
-  "maximumChangedFiles": 1,
-  "maximumEdits": 3,
-  "maximumEditCharacters": 6000,
-  "maximumChangedLines": 60,
+  "initialTurns": 15,
+  "revisionTurns": 8,
+  "timeoutMinutes": 25,
+  "maximumOutputTokens": 16000,
+  "maximumChangedFiles": 3,
+  "maximumEdits": 8,
+  "maximumEditCharacters": 24000,
+  "maximumChangedLines": 300,
   "branchPrefix": "claude/cancha-improve-",
   "codexReviewers": [
     "chatgpt-codex-connector[bot]",
@@ -23,6 +23,8 @@
   ],
   "allowedPaths": [
     "framer/CanchaHome.tsx",
+    "framer/CanchaDiscovery.tsx",
+    "framer/CanchaDetail.tsx",
     "video/src/AutomaticNewsStory.tsx",
     "scripts/photo-card-layout.mjs",
     "scripts/photo-panel-layout.mjs"
@@ -30,5 +32,5 @@
   "automaticMerge": false,
   "automaticProductionRelease": false,
   "automaticWorkflowRetry": false,
-  "maximumRevisionsPerWeek": 3
+  "maximumRevisionsPerWeek": 2
 }

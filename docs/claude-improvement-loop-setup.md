@@ -16,12 +16,12 @@ A bounded cycle:
 
 ## Usage controls
 
-- Maximum **three initial runs per New York week**, and one per day.
-- Maximum **one revision attempt per PR**, with a maximum three revision attempts per week.
-- Initial pass: **6 model turns**. Revision: **4 turns**.
-- Sonnet, at most 4,096 output tokens per response, and a 10-minute model-job timeout.
-- One open improvement PR, one changed file, at most three exact edits / 6,000 edit characters / 60 edited lines per pass.
-- The scheduled pilot runs Monday, Wednesday and Friday at 13:30 UTC: 9:30 AM New York during daylight time, 8:30 AM in winter. Manual runs obey the same caps. They do not get a separate allowance.
+- Maximum **two initial runs per New York week** (fewer, larger passes, per the owner's October 24 request), and one per day.
+- Maximum **one revision attempt per PR**, with a maximum two revision attempts per week.
+- Initial pass: **15 model turns**. Revision: **8 turns**. Medium effort.
+- Sonnet, at most 16,000 output tokens per response, and a 25-minute model-job timeout.
+- One open improvement PR, up to three changed files, at most eight exact edits / 24,000 edit characters / 300 edited lines per pass.
+- Monday covers the website (home, discovery, detail); Thursday covers social templates (news video and carousel layouts). Runs at 13:30 UTC: 9:30 AM New York during daylight time, 8:30 AM in winter. Manual runs obey the same caps. They do not get a separate allowance.
 - Past workflow attempts count conservatively, including failures and paused attempts with an initial/revision title. There is no automatic workflow retry or quota-refund mechanism. Checks never call Claude and do not count as initial attempts.
 - No dollar-denominated API budget is presented as a Claude Pro quota. We cannot reserve a precise percentage of a personal Pro allowance or know what other chats consume. Six turns can still use significant context. Claude and Codex retain their own account limits.
 
