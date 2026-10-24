@@ -1,0 +1,20 @@
+import{readFile,writeFile,mkdtemp,rm}from'node:fs/promises';import{join}from'node:path';import{tmpdir}from'node:os';import{execFileSync}from'node:child_process';import{loopGitHub,readRepoFile,openLoopPulls}from'./claude-loop-github.mjs';import{validateLoopPolicy,validateProposal}from'../server/claude-improvement-loop.mjs';
+const policy=validateLoopPolicy(JSON.parse(await readFile('config/claude-improvement-loop.json'))),plan=JSON.parse(await readFile('private-data/claude-loop/plan.json')),proposal=JSON.parse(await readFile('private-data/claude-loop/proposal.json')),g=await loopGitHub();let work;
+try{
+ if(!plan.run||!policy.enabled||!policy.includedUsageConfirmed)throw Error('Loop was paused before staging');
+ const ref=plan.action==='revise'?plan.branch:'main',current=await g.api('/git/ref/heads/'+ref);if(current.object.sha!==plan.sourceRef)throw Error('Source changed during review; no automatic retry');
+ if(plan.action==='revise'){const p=await g.api('/pulls/'+plan.number);if(p.state!=='open'||p.head.repo.full_name!==policy.repository||p.head.ref!==plan.branch||!p.body?.includes('<!-- cancha-claude-loop -->'))throw Error('PR changed before revision');}
+ const files={};for(const path of plan.focusPaths)files[path]=await readRepoFile(g,path,plan.sourceRef);
+ const result=validateProposal(proposal,files,policy);if(!result.changes.length){console.log(JSON.stringify({noChange:true,summary:proposal.summary}));process.exitCode=0;}
+ else{
+  work=await mkdtemp(join(tmpdir(),'cancha-claude-check-'));execFileSync('git',['fetch','origin',plan.sourceRef],{stdio:'pipe'});execFileSync('git',['worktree','add','--detach',work,plan.sourceRef],{stdio:'pipe'});
+  for(const c of result.changes)await writeFile(join(work,c.path),c.content);
+  const cleanEnv={...process.env};delete cleanEnv.GITHUB_TOKEN;delete cleanEnv.GH_TOKEN;delete cleanEnv.CLAUDE_CODE_OAUTH_TOKEN;delete cleanEnv.ANTHROPIC_API_KEY;
+  execFileSync('npm',['ci','--ignore-scripts'],{cwd:work,env:cleanEnv,stdio:'pipe',timeout:90000});execFileSync('npm',['test'],{cwd:work,env:cleanEnv,stdio:'pipe',timeout:90000});
+  const parent=await g.api('/git/commits/'+plan.sourceRef),tree=await g.api('/git/trees','POST',{base_tree:parent.tree.sha,tree:result.changes.map(c=>({path:c.path,mode:'100644',type:'blob',content:c.content}))}),commit=await g.api('/git/commits','POST',{message:'Cancha creative improvement: '+proposal.title,tree:tree.sha,parents:[plan.sourceRef]}),branch=plan.action==='revise'?plan.branch:policy.branchPrefix+process.env.GITHUB_RUN_ID;
+  let pull;
+  if(plan.action==='revise'){await g.api('/git/refs/heads/'+branch,'PATCH',{sha:commit.sha,force:false});pull=await g.api('/pulls/'+plan.number);}
+  else{const open=await openLoopPulls(g);if(open.some(p=>p.head?.ref?.startsWith(policy.branchPrefix)))throw Error('Another loop PR opened; no second PR will be created');await g.api('/git/refs','POST',{ref:'refs/heads/'+branch,sha:commit.sha});pull=await g.api('/pulls','POST',{title:'[Cancha improvement] '+proposal.title,head:branch,base:'main',draft:false,body:'<!-- cancha-claude-loop -->\n\n'+proposal.summary+'\n\nChanged file: '+result.changes[0].path+'\n\nReferences:\n'+proposal.sources.map(u=>'- '+u).join('\n')+'\n\nValidation: npm test passed on this proposed tree. Claude subscription OAuth; one bounded pass. Codex review is requested through the repository’s automatic-review setting. No automatic merge, production release, new TTS, paid API fallback or publication.\n\nRun: https://github.com/'+policy.repository+'/actions/runs/'+process.env.GITHUB_RUN_ID});}
+  const receipt={pullRequest:pull.number,url:pull.html_url,commit:commit.sha,action:plan.action,testsPassed:true,automaticMerge:false,productionChanged:false};await writeFile('private-data/claude-loop/receipt.json',JSON.stringify(receipt,null,2));console.log(JSON.stringify(receipt));
+ }
+}finally{if(work){try{execFileSync('git',['worktree','remove','--force',work],{stdio:'pipe'})}catch{}await rm(work,{recursive:true,force:true})}await g.close()}

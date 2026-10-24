@@ -1,0 +1,34 @@
+{
+  "enabled": false,
+  "includedUsageConfirmed": false,
+  "repository": "titodv41/cancha-automation",
+  "timezone": "America/New_York",
+  "authentication": "claude-pro-oauth-only",
+  "model": "sonnet",
+  "maximumInitialRunsPerWeek": 3,
+  "maximumInitialRunsPerDay": 1,
+  "maximumRevisionsPerPullRequest": 1,
+  "initialTurns": 6,
+  "revisionTurns": 4,
+  "timeoutMinutes": 10,
+  "maximumOutputTokens": 4096,
+  "maximumChangedFiles": 1,
+  "maximumEdits": 3,
+  "maximumEditCharacters": 6000,
+  "maximumChangedLines": 60,
+  "branchPrefix": "claude/cancha-improve-",
+  "codexReviewers": [
+    "chatgpt-codex-connector[bot]",
+    "chatgpt-codex-connector"
+  ],
+  "allowedPaths": [
+    "framer/CanchaHome.tsx",
+    "video/src/AutomaticNewsStory.tsx",
+    "scripts/photo-card-layout.mjs",
+    "scripts/photo-panel-layout.mjs"
+  ],
+  "automaticMerge": false,
+  "automaticProductionRelease": false,
+  "automaticWorkflowRetry": false,
+  "maximumRevisionsPerWeek": 3
+}
