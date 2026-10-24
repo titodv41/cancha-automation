@@ -59,3 +59,12 @@ Production now uses one set of UTC triggers instead of overlapping summer/winter
 - Website release preserved the CMS unchanged and retained zero pending editor changes. Latest backup: `backups/home-updates-1792870136194`. The date tab falls back to news if its last event expires while the page is open.
 - [Corrected carousel PDF](https://framerusercontent.com/assets/Rp5NOuh6mcdKzzzuFKFJevDojDQ.pdf). Twelve photo-editorial slides passed the copy/photo intersection, font, image-resolution and footer bounds checks. Published content is preserved.
 - Current insights check remains blocked by `instagram_manage_insights`; no reach/retention improvement is claimed.
+
+
+### Final queue and website checks
+
+- [Carousel refresh run 40125704147](https://github.com/titodv41/cancha-automation/actions/runs/40125704147) replaced the four unpublished photo carousels and protected the previously Published women's matchdays post. The old FKK preparation was canceled through version-checked owner-authorized control before replacing its artwork; no published or uncertain media was overwritten.
+- [Replacement schedule run 40125827905](https://github.com/titodv41/cancha-automation/actions/runs/40125827905) approved the corrected FKK carousel for the delayed first slot at October 24 19:35:16.773 UTC. The existing four-hour spacing guard can delay the later video; the 18:00 New York slot is a target, not a promise after a late first publication.
+- All eight new news images decoded on the live mobile page. A browser clock check crossed the actual kickoff: the date disappeared and current news became selected, without an empty rail or overflow.
+- Final automated checks: **229 passed, zero failures**. Stage errors now fail the production status while retaining diagnostics and the independent publishing queue. Every review summary exposes the Free-only monthly cap, durable reserved characters and remaining allowance without exposing the provider key.
+- The existing local untracked `previews/launch/` material was left untouched. New production assets and CMS/code backups remain excluded from Git.
