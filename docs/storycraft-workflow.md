@@ -1,3 +1,7 @@
+# Current revision
+
+See [shorter stories and phone readability](short-story-and-phone-readability-2026-10-23.md): Chris, roughly 35–55 spoken words, immediate local hook, upright Barlow Condensed 700 supporting type and larger caption blocks. Earlier font/preview-only directions below are historical; the registered Chris recipe is eligible for the standing plan. New script writing and TTS remain editorial preparation.
+
 # Cancha storycraft — October 23, 2026
 
 > Current revision: see [the creative agency workflow](creative-agency-workflow.md). The owner rejected the local narrators and requested capped ElevenLabs Free auditions. The five-guide photo bank and current queue status are recorded there; older counts and voice recommendations below are historical.

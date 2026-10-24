@@ -21,10 +21,10 @@
     "https://www.ftlutd.com/news/2026/09/30/fort-lauderdale-united-usl-league-one/",
     "https://www.ftlutd.com/news/2026/10/15/fort-lauderdale-united-fc-names-aly-hassan-usl-league-one-gm/"
   ],
-  "status": "Shorter Chris revision requested by owner; new matching narration required before rendering. Earlier audio cannot be used with this script.",
+  "status": "Owner-requested shorter Chris production; render only with matching accepted ElevenLabs narration.",
   "visuals": {
     "headerTag": "BROWARD, FL",
-    "footageContext": "Women’s footage · Men debut spring 2027",
+    "footageContext": "Women play now · Men start in 2027",
     "opening": {
       "chip": "Fort Lauderdale United",
       "title": "YOUR NEXT\nLOCAL TEAM."

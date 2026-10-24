@@ -1,5 +1,7 @@
 # Cancha daily production — October 23 evening
 
+The [October 23 night revision](short-story-and-phone-readability-2026-10-23.md) supersedes the supporting type and FTL script/video below. Automation limits and publication protections remain.
+
 ## Owner direction and visual changes
 
 The owner selected **Chris**, requested moving club footage behind the story graphics, stronger type from Cancha’s own font family, and automatic production for two daily feed posts. The FTL narrative recipe is eligible for the standing plan. Rejected Pocket/Kokoro work remains held; this does not unlock every old Reel.
