@@ -101,6 +101,8 @@ test('Free auditions cannot consume paid-plan credits, exceed the cap or enable 
   assert.equal(calls,0);
   const first=await generateVoice(args),cached=await generateVoice(args);
   assert.equal(calls,1);assert.equal(cached.cached,true);
+  const exhausted=await generateVoice({...args,account:{...account,subscription:{...account.subscription,characterCount:10000}}});assert.equal(exhausted.cached,true);assert.equal(calls,1);
+  await assert.rejects(generateVoice({...args,text:'A new sentence.',account:{...account,subscription:{...account.subscription,characterCount:10000}}}),/free credits/);assert.equal(calls,1);
   assert.equal(JSON.parse(await readFile(first.timingFile)).automaticPublication,false);
  }finally{await rm(dir,{recursive:true,force:true})}
 });

@@ -72,17 +72,18 @@ export async function inspectVoiceAccount(api, policy) {
   return {model: policy.model, voices, subscription: {tier: subscription.tier, characterCount: subscription.character_count, characterLimit: subscription.character_limit, nextReset: subscription.next_character_count_reset_unix, overagesDisabled}};
 }
 
+const requestBody=(text,policy)=>({text,model_id:policy.model,voice_settings:policy.voiceSettings,seed:20261022,language_code:'en'});
+export const voiceRequestDigest=({text,candidate,policy})=>createHash('sha256').update(JSON.stringify({candidate:candidate.id,format:policy.outputFormat,body:requestBody(text,policy)})).digest('hex');
+
 export async function generateVoice({api, text, candidate, policy, ledgerDir, now = new Date(), offset = 0.25, mode='paid', account=null,onLedgerSave=null}) {
   validateVoiceBatch(text, [candidate], policy,{mode});
-  if(mode==='free-preview')validateFreePreviewAccount(account,text.length);
   if(!Number.isFinite(offset)||offset<0)throw Error('Invalid narration offset');
   await mkdir(ledgerDir, {recursive: true, mode: 0o700});
   const ledgerPath = ledgerDir + '/ledger.json';
   let ledger;
   try { ledger = JSON.parse(await readFile(ledgerPath, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') throw e; ledger = {months: {}, requests: {}}; }
   const persist=async()=>{await writeFile(ledgerPath,JSON.stringify(ledger,null,2),{mode:0o600});if(onLedgerSave)await onLedgerSave(structuredClone(ledger));};
-  const body = {text, model_id: policy.model, voice_settings: policy.voiceSettings, seed: 20261022, language_code: 'en'};
-  const digest = createHash('sha256').update(JSON.stringify({candidate: candidate.id, format: policy.outputFormat, body})).digest('hex');
+  const body=requestBody(text,policy),digest=voiceRequestDigest({text,candidate,policy});
   const month = now.toISOString().slice(0, 7), existing = ledger.requests[digest];
   if (existing?.status === 'complete') {
     try {
@@ -92,6 +93,7 @@ export async function generateVoice({api, text, candidate, policy, ledgerDir, no
     return {...existing, cached: true};
   }
   if (existing) throw Error('An earlier generation is pending or uncertain. Inspect provider history before requesting another take.');
+  if(mode==='free-preview')validateFreePreviewAccount(account,text.length);
   const reserved = ledger.months[month] || 0;
   if (reserved + text.length > policy.monthlyProjectCharacterBudget) throw Error('Monthly project voice budget reached');
   // Reserve before the chargeable call; failed/uncertain calls remain reserved and cannot retry.

@@ -4,7 +4,7 @@ import{localStoryDescriptor,localStoryHash,confirmLocalStorySource}from'../serve
 import{validReel,verifyReelAssets}from'../server/instagram-media.mjs';
 import{metaPublisher,contentHash,openQueue,saveDraft,approve}from'../server/instagram-queue.mjs';
 import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
-import{mkdtempSync,rmSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';
+import{mkdtempSync,rmSync,readFileSync}from'node:fs';import{tmpdir}from'node:os';import{join}from'node:path';
 import{satisfiesDailyMediaMix}from'../server/instagram-media-mix.mjs';
 import{approvedOriginalCreative}from'../server/social-creative.mjs';
 const source=localStoryDescriptor('weston-u15-club-clip-20261022'),doc=source.documents[0];
@@ -52,4 +52,10 @@ test('motion revisions keep untouched standing-plan slots and preserve manual or
  for(const status of['Preparing','Publishing','Published','Needs reconciliation']){db.prepare('UPDATE instagram_queue SET status=?').run(status);assert.deepEqual(refreshMotionEditorial(db,[{...revised,caption:'Later revision'}],{now}).protected,[item.id]);assert.equal(db.prepare('SELECT content FROM instagram_queue').get().content,JSON.stringify(revised))}
  db.prepare("UPDATE instagram_queue SET status='Approved',approved_by='Manual owner review'").run();assert.deepEqual(refreshMotionEditorial(db,[item],{now}).protected,[item.id]);
  }finally{db.close();rmSync(dir,{recursive:true,force:true})}
+});
+
+test('a shortened accepted narrative keeps its future standing-plan slot but never replaces a dispatched container',()=>{
+ const dir=mkdtempSync(join(tmpdir(),'narrative-refresh-')),db=openQueue(join(dir,'queue.sqlite')),now=Date.now(),scheduledAt=new Date(now+86400000).toISOString();
+ const fixture=JSON.parse(readFileSync(new URL('../content/instagram/narrative-editorial-ready.json',import.meta.url)))[0],item={...fixture,factsCheckedAt:new Date(now).toISOString(),visualEvidence:{...fixture.visualEvidence,renderedAt:new Date(now).toISOString()}},revised={...item,caption:'A factual ending without the generic closing question.'};
+ try{assert(approvedOriginalCreative(item));saveDraft(db,item);approve(db,item.id,{reviewer:'Cancha owner-authorized standing plan',scheduledAt,now,allowSourceRecheck:true});assert.equal(refreshMotionEditorial(db,[revised],{now}).rescheduled.length,1);const stored=db.prepare('SELECT * FROM instagram_queue WHERE id=?').get(item.id);assert.equal(stored.scheduled_at,scheduledAt);assert.equal(stored.approved_hash,contentHash(revised));db.prepare('UPDATE instagram_queue SET container_id=? WHERE id=?').run('already-dispatched-container',item.id);assert.deepEqual(refreshMotionEditorial(db,[item],{now}).protected,[item.id]);}finally{db.close();rmSync(dir,{recursive:true,force:true})}
 });
