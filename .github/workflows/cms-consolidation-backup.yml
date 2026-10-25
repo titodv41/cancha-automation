@@ -1,0 +1,29 @@
+name: Cancha CMS consolidation backup
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check:connection
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+      - run: npm run backup:cms-consolidation
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cms-consolidation-backup
+          path: backups/
+          retention-days: 7
+          if-no-files-found: error
+    # Read-only: step 1 of docs/cms-consolidation-plan-2026-10-25.md. No CMS writes or publishing.
