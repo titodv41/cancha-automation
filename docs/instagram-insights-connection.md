@@ -12,8 +12,6 @@ The account setup is complete. Full metric artifacts are encrypted with the exis
 
 The owner no longer needs to recover an old token or use the debugger. A fresh **User** authorization lets the trusted workflow derive and verify the Page credential automatically:
 
-After the owner saved `META_USER_ACCESS_TOKEN`, [run 40146734983](https://github.com/titodv41/cancha-automation/actions/runs/40146734983) verified the new User token's validity and correct app, but returned `META_INSIGHTS_USER_PERMISSIONS_MISSING`, naming only `instagram_manage_insights`. It stopped **before** conversion, connection update or publication. The remaining blocker is Meta's app/consent grant, not a missing GitHub key. Before asking the owner to generate another token, inspect that exact permission's Estado/Acción in the existing Instagram use case; no credential values are needed to report those labels. All subsequent source/docs fixes use a separate branch and PR under the owner's latest collaboration rule.
-
 1. Open [Graph API Explorer](https://developers.facebook.com/tools/explorer/). In **Meta App / Aplicación de Meta**, choose **Cancha Automation**.
 2. In **User or Page / Usuario o página**, choose **Get User Access Token / Obtener token de acceso de usuario**. Keep the four working permissions and add **`instagram_manage_insights`** in the permissions selector. The complete list is:
 
