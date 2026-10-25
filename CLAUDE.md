@@ -2,7 +2,7 @@
 
 ## Owner-assigned responsibilities — October 24, 2026
 
-Latest collaboration rule: both assistants work only through GitHub PRs on separate branches (`codex/` or `claude/`). Never push directly to `main`. Cross-area changes require the other assistant's review before merge. Shared instruction changes also need that review. See `AGENTS.md`; this supersedes older direct-push practices.
+Latest owner rule: Claude and Codex work only through GitHub PRs on separate branches (`codex/` or `claude/`), and never push directly to `main`. Each assistant merges its own PR when required tests/checks pass and the other assistant has reviewed any changes touching its area. Shared instruction changes also require that review. Ask the owner only about spending money or account login/authorization steps; handle routine implementation, fixes, reviews and merges within existing authorization without requesting owner approval. Preserve existing spending limits, publishing controls and private data handling. See `AGENTS.md`; this supersedes older direct-push and owner-confirmation practices.
 
 Claude owns website UX/copy in `framer/`, Instagram creative direction (carousel/video templates, hooks and captions), and growth strategy. Codex owns pipelines, publishing, the CMS, source automation and infrastructure. Changes to the other assistant's area go through a PR reviewed by that assistant. Review Claude's forthcoming improvement-loop expansion PR; do not replace it with a competing implementation. Instagram Insights connection is Codex's current first priority. This ownership instruction supersedes older overlapping assignments below; existing source, credential, spending and publication safeguards still apply.
 
