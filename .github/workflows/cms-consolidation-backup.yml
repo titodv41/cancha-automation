@@ -2,7 +2,10 @@ name: Cancha CMS consolidation backup
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
 jobs:
   backup:
     runs-on: ubuntu-latest
@@ -17,13 +20,11 @@ jobs:
       - run: npm run check:connection
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
-      - run: npm run backup:cms-consolidation
+      # Seals the snapshot into the encrypted automation-state store. Never upload raw backups:
+      # this repository is public, so workflow artifacts are not private.
+      - run: npm run backup:cms-consolidation -- --encrypted-store
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: cms-consolidation-backup
-          path: backups/
-          retention-days: 7
-          if-no-files-found: error
-    # Read-only: step 1 of docs/cms-consolidation-plan-2026-10-25.md. No CMS writes or publishing.
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+    # Read-only toward Framer: step 1 of docs/cms-consolidation-plan-2026-10-25.md.
