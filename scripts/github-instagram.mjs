@@ -14,6 +14,7 @@ import {openQueue,saveDraft,dispatchDue,metaPublisher} from '../server/instagram
 import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs';
 import {renewMetaConnection} from '../server/meta-renewal.mjs';
 import {verifyMetaInsightsConnection,MetaInsightsConnectionError} from '../server/meta-insights-connection.mjs';
+import {inspectMetaTokens} from '../server/meta-token-diagnostic.mjs';
 import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
@@ -22,7 +23,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -120,6 +121,19 @@ try{
   phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null,editorialPolicy:creativePolicy});await checkpoint();
  }
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
+ if(mode==='diagnose-insights'){
+  phase='inspect-token-permissions';await mkdir('private-data',{recursive:true,mode:0o700});
+  try{
+   const tokens=[{name:'stored-publisher',value:connection.pageToken},...(process.env.META_PAGE_ACCESS_TOKEN?[{name:'saved-replacement',value:process.env.META_PAGE_ACCESS_TOKEN}]:[])];
+   const report=await inspectMetaTokens({appSecret:process.env.META_APP_SECRET,expected,version:connection.version,tokens,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
+   await writeFile('private-data/meta-token-diagnostic.json',JSON.stringify(report,null,2),{mode:0o600});
+   if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Meta token permissions\n\n'+JSON.stringify(report,null,2)+'\n',{flag:'a'});
+   console.log(JSON.stringify({tokenDiagnostic:report.status,connectionUpdated:false,publishingAttempted:false}));
+  }catch(error){
+   const code=/^META_DIAGNOSTIC_[A-Z_]+$/.test(error.code||'')?error.code:'META_DIAGNOSTIC_REQUEST_FAILED';
+   await writeFile('private-data/meta-token-diagnostic.json',JSON.stringify({checkedAt:new Date().toISOString(),status:'blocked',code,connectionUpdated:false,publishingAttempted:false},null,2),{mode:0o600});throw error;
+  }
+ }
  if(mode==='insights'){
   const report=await collectInstagramInsights(connection,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   state.instagramInsights=[...(state.instagramInsights||[]).slice(-34),learningSnapshot(report)];const learning=instagramLearning(state.instagramInsights);report.topicComparison=learning.topicComparison;report.techniqueLearning=techniqueLearning(state.instagramInsights);report.ageCohortHours=learning.ageCohortHours;report.learningNote=learning.note||'Comparable cohort found; topic preference is an experiment, not proof of causation or guaranteed reach.';await checkpoint();await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/instagram-insights.json',JSON.stringify(report,null,2),{mode:0o600});console.log(JSON.stringify({readOnlyInsights:true,status:report.status,posts:report.posts.length,requiredPermission:report.requiredPermission,comparableTopics:learning.topicComparison.length}));

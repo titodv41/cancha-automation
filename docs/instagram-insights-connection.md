@@ -14,6 +14,21 @@ All **238 tests** pass after adding the redacted diagnostic, including token pre
 
 Publishing is already connected. Keep the existing **Instagram API with Facebook Login** integration, Cancha Automation app and encrypted GitHub state. There is no need for Render, a new app, another paid service, or an Instagram password. The account step below must be done by its owner inside Meta; Codex cannot approve permissions on the owner's behalf.
 
+## If the owner no longer has the copied token
+
+GitHub does not reveal a saved repository secret, and the owner should not be asked to recover or paste it into chat. The `diagnose-insights` workflow action can inspect both the existing encrypted publishing credential and the saved replacement internally. Meta requires the app's own authorization for its token-debugging endpoint; a Page token alone is insufficient.
+
+One-time owner setup for automatic diagnosis:
+
+1. Open [Cancha Automation → app settings → Basic](https://developers.facebook.com/apps/2083779272510560/settings/basic/). In Spanish: **Configuración de la app → Básica**.
+2. At **App Secret / Clave secreta de la app**, choose **Show / Mostrar** and copy the existing value. Do not reset the app secret or share it with either assistant.
+3. Open [New GitHub repository secret](https://github.com/titodv41/cancha-automation/settings/secrets/actions/new). Name: **`META_APP_SECRET`**. Paste the copied value into **Secret**, then save. If that exact secret already exists, update it instead.
+4. Reply **“App secret saved.”** Codex runs `github-instagram.yml` on main with action **`diagnose-insights`** and reads only `meta-token-diagnostic.json`.
+
+The diagnostic performs only batched GET reads of Meta's `debug_token` endpoint. Inspected token values are in the HTTPS request body, app authorization is in the header, and neither appears in the HTTP URL, report or job summary. Only allowlisted permission names, validity/expiry and expected app/Page match booleans are returned. It never replaces a connection or publishes content. The App Secret is bound only to this diagnostic mode, not to Claude or routine publishing. Account permissions still have to be granted in Meta if the diagnostic confirms they are missing.
+
+Official debugging reference: https://developers.facebook.com/docs/graph-api/reference/debug_token/.
+
 ## One-time owner steps
 
 ### 1. Add the analytics permission to the existing app
