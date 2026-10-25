@@ -15,6 +15,17 @@ function fixture({userScopes = core, pageScopes = core, pageExpiry = 0, userApp 
     assert.ok(!url.href.includes('fixture-'));
     calls.push(url.pathname);
     if (options.method === 'POST') {
+      if (url.pathname.endsWith('/oauth/access_token')) {
+        assert.equal(url.search, '');
+        assert.equal(options.headers.Authorization, undefined);
+        const params = new URLSearchParams(options.body);
+        assert.equal(params.get('grant_type'), 'fb_exchange_token');
+        assert.equal(params.get('client_id'), '789');
+        assert.equal(params.get('fb_exchange_token'), 'fixture-short-user');
+        assert.equal(params.get('client_secret'), 'fixture-app-secret');
+        if (rejectExtension) return Response.json({error: {code: 190, message: 'fixture-app-secret private-provider-text'}}, {status: 400});
+        return Response.json({access_token: 'fixture-long-user', expires_in: 5184000});
+      }
       assert.equal(options.headers.Authorization, 'Bearer 789|fixture-app-secret');
       const batch = JSON.parse(new URLSearchParams(options.body).get('batch'));
       assert.equal(batch.length, 1);
@@ -25,11 +36,7 @@ function fixture({userScopes = core, pageScopes = core, pageExpiry = 0, userApp 
         return Response.json([{code: 200, body: JSON.stringify({data: {is_valid: true, app_id: page ? '789' : userApp,
           ...(page ? {profile_id: '123'} : {}), scopes: page ? pageScopes : userScopes, expires_at: page ? pageExpiry : 1792890000}})}]);
       }
-      assert.equal(request.pathname, '/oauth/access_token');
-      assert.equal(request.searchParams.get('fb_exchange_token'), 'fixture-short-user');
-      assert.equal(request.searchParams.get('client_secret'), 'fixture-app-secret');
-      if (rejectExtension) return Response.json([{code: 400, body: JSON.stringify({error: {message: 'fixture-app-secret private-provider-text'}})}]);
-      return Response.json([{code: 200, body: JSON.stringify({access_token: 'fixture-long-user', expires_in: 5184000})}]);
+      assert.fail('Unexpected Graph batch request: OAuth exchange must use the direct token endpoint');
     }
     assert.equal(options.method, undefined);
     if (url.pathname.endsWith('/123')) {
@@ -75,6 +82,6 @@ test('short or unknown Page-token lifetime cannot replace the current publisher'
 });
 
 test('OAuth conversion failures do not disclose provider credentials or change the existing connection', async () => {
-  await assert.rejects(prepareMetaInsightsFromUser({...input, fetchImpl: fixture({rejectExtension: true})}), error => error.code === 'META_INSIGHTS_USER_EXTENSION_FAILED' && !JSON.stringify(error).includes('fixture-'));
+  await assert.rejects(prepareMetaInsightsFromUser({...input, fetchImpl: fixture({rejectExtension: true})}), error => error.code === 'META_INSIGHTS_USER_EXTENSION_FAILED' && error.diagnostic?.metaCode === 190 && error.diagnostic?.httpStatus === 400 && !JSON.stringify(error).includes('fixture-'));
   assert.equal(connection.pageToken, 'fixture-original-publisher');
 });

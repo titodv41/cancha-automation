@@ -26,15 +26,18 @@ export async function prepareMetaInsightsFromUser({connection, userToken, appSec
   let long;
   try {
     const params = new URLSearchParams({grant_type: 'fb_exchange_token', client_id: expected.appId, client_secret: appSecret, fb_exchange_token: userToken});
-    const response = await fetchImpl(new URL(`https://graph.facebook.com/${version}/`), {
-      method: 'POST', redirect: 'error', headers: {Authorization: `Bearer ${expected.appId}|${appSecret}`, 'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams({batch: JSON.stringify([{method: 'GET', relative_url: 'oauth/access_token?' + params}]), include_headers: 'false'}).toString(), signal: AbortSignal.timeout(20000)
+    const response = await fetchImpl(new URL(`https://graph.facebook.com/${version}/oauth/access_token`), {
+      method: 'POST', redirect: 'error', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: params.toString(), signal: AbortSignal.timeout(20000)
     });
-    const rows = await response.json();
-    if (!response.ok || !Array.isArray(rows) || rows.length !== 1 || rows[0]?.code !== 200) fail('META_INSIGHTS_USER_EXTENSION_FAILED');
-    long = JSON.parse(rows[0].body);
+    long = await response.json();
+    if (!response.ok || long.error) fail('META_INSIGHTS_USER_EXTENSION_FAILED', {
+      stage: 'exchange', httpStatus: response.status,
+      metaCode: Number.isInteger(long.error?.code) ? long.error.code : null,
+      metaSubcode: Number.isInteger(long.error?.error_subcode) ? long.error.error_subcode : null
+    });
     if (typeof long.access_token !== 'string' || !long.access_token || !Number.isFinite(long.expires_in) || long.expires_in < 7 * 86400) fail('META_INSIGHTS_USER_EXTENSION_FAILED');
-  } catch { fail('META_INSIGHTS_USER_EXTENSION_FAILED'); }
+  } catch (error) { if (error instanceof MetaInsightsConnectionError) throw error; fail('META_INSIGHTS_USER_EXTENSION_FAILED'); }
   let page;
   try {
     const url = new URL(`https://graph.facebook.com/${version}/${expected.pageId}`);
