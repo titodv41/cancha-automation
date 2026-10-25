@@ -4,7 +4,7 @@ Checked October 25, 2026, New York time. This is an operational handoff for the 
 
 ## Authority and ownership
 
-The owner wants routine work to continue without daily approval. Claude leads website UX/copy, Instagram creative and growth; Codex maintains publishing, CMS/source automation and infrastructure. Both use separate branches and PRs, never direct pushes to `main`. Each assistant merges its own PR after tests pass and the other assistant has reviewed changes in its area. Ask the owner only about spending money or account login/authorization. Shared instruction wording is in PR #5, awaiting Claude's review.
+The owner's final October 25 rule makes Claude the lead and owner of every area, including publishing, pipelines, CMS/source automation and infrastructure. Codex is on standby and covers only when the owner asks, leaving a short PR handoff note. Both use separate branches and PRs, never direct pushes to `main`. Neither needs the other's review. Each merges its own passing PR after its own code review of publishing, credential or CMS changes. Escalate only spending, account logins and provider consent. See [the full Codex handover](handover-from-codex.md); it supersedes older split ownership and PR #5.
 
 Normal authorized decisions include selecting fresh source-backed topics, rotating the existing content mix, improving source coverage and fixing operational faults. Purchases, paid ads, extra API usage and new account access remain owner decisions. Keep existing privacy, factual accuracy and publication controls. Do not treat displayed club profiles as memberships or partnerships.
 
@@ -47,7 +47,7 @@ Claude connection checks do not call a model:
 gh workflow run claude-improvement.yml --repo titodv41/cancha-automation --ref main -f action=check
 ```
 
-An authorized pilot uses `action=propose` and consumes one bounded included-usage attempt. Inspect its actual model job, proposal, tests and native Codex review before calling the improvement loop connected. If authentication or quota fails, retain the error and stop; no API fallback or automatic retry. A tested source PR is not a Framer deployment. Claude should merge its reviewed work and use the existing guarded release procedure, retaining CMS/code backups and checking desktop/mobile output.
+An authorized pilot uses `action=propose` and consumes one bounded included-usage attempt. Inspect its actual model job, proposal and tests before calling the improvement loop connected; native Codex review is optional under the final owner rule. If authentication or quota fails, retain the error and stop; no API fallback or automatic retry. A tested source PR is not a Framer deployment. Claude merges its own passing work after the required self-review and uses the existing guarded release procedure, retaining CMS/code backups and checking desktop/mobile output.
 
 ## Immediate operational priorities
 
@@ -55,7 +55,7 @@ An authorized pilot uses `action=propose` and consumes one bounded included-usag
 2. Verify today's preparation and evening publishing receipts. [Recovery run 40214538910](https://github.com/titodv41/cancha-automation/actions/runs/40214538910) published the Rowdies/Al Lang carousel at about 1:03 PM New York (real Meta receipt retained), cleared yesterday's non-dispatched preparation through the existing expiry checks and approved the fresh news film for 6 PM. Zero uncertain publication rows remained. The earlier 1 PM check had only reconnected credentials; it was not a publication.
 3. Expand working official club/program sources. Last preparation added zero records; five employer boards returned 403. Preserve useful supported feeds, deduplicate by real organization/source identity and keep current opportunities separate from permanent club/place profiles.
 4. PR #6's encrypted backup fix passed Codex re-review and Claude merged it. The current workflow preserves snapshots in encrypted storage with no raw artifact. Do not consolidate/delete collections based solely on a successful backup; restore, route and binding validation are separate.
-5. Let Claude review PR #5 so Codex can merge the shared owner rules. Avoid overlapping design rewrites while Claude leads that area.
+5. PR #5 is superseded by the final Claude-lead/Codex-standby rule and must not be merged later. Claude owns the remaining operations; Codex covers only when the owner asks.
 
 [Website preparation 40214652958](https://github.com/titodv41/cancha-automation/actions/runs/40214652958) confirmed October 25 publication and retained backups. [Creative replenishment 40214824656](https://github.com/titodv41/cancha-automation/actions/runs/40214824656) retained seven ready items / five carousels but correctly failed the fresh-news stage: its 224-character script exceeded the remaining 201-character voice allowance. Existing queue delivery remains independent; this is not an account-login failure or permission to raise the cap.
 
