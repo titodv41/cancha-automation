@@ -1,6 +1,12 @@
 # Connect Cancha's Instagram Insights
 
-## Current diagnosis and simplest remaining owner step
+## Connected: verified October 24, 2026, 8:50 PM New York
+
+[Live connection run 40148250680](https://github.com/titodv41/cancha-automation/actions/runs/40148250680) completed the fresh-consent exchange, exact Cancha app/Page/Instagram identity checks, all five required grants, durable Page-token lifetime verification and actual metric reads. **All five checked posts returned reach, saved and shares.** The receipt reports `connectionUpdated: true`, `corePermissionsVerified: true`, `pageTokenExpiresAt: null` and `publishingAttempted: false`. The verified Page credential is now in encrypted durable state; no post was published during connection.
+
+The account setup is complete. Full metric artifacts are encrypted with the existing state key; the status receipt exposes only access/sample counts. Existing daily collection uses the stored connection. The instructions below are retained for future reauthorization, rather than a request for another credential now. Five usable reads establish access; they do not establish enough comparable samples to select a winning creative or prove growth.
+
+## Setup history and renewal instructions
 
 [Automatic diagnostic 40146137402](https://github.com/titodv41/cancha-automation/actions/runs/40146137402) succeeded at October 24, 2026, 8:18 PM New York after the owner securely supplied `META_APP_SECRET`. Both the encrypted publishing token and saved replacement are valid and belong to the correct app/Page. **Both lack `instagram_manage_insights`.** The saved replacement also expires at 9 PM New York that evening; the existing publisher has no scheduled expiry. Neither was replaced and no publication was attempted. This establishes missing token consent rather than a guessed Page/app mismatch. App Secret setup and automatic inspection are now working.
 
