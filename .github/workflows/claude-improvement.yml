@@ -12,9 +12,8 @@ on:
         description: 'Existing Cancha loop PR number, used only for revise'
         type: string
         default: ''
-  schedule:
-    # Mon (website) and Thu (social templates) at 9:30 AM New York during daylight time, 8:30 AM in winter.
-    - cron: '30 13 * * 1,4'
+  # The Mon/Thu schedule was removed on Oct 25: the owner's daily Claude lead run replaces it,
+  # and both draw on the same Claude Pro usage. Manual dispatch still works.
   pull_request_review:
     types: [submitted]
 permissions:
