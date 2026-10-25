@@ -123,7 +123,7 @@ Before saving a replacement connection, it must:
 
 Failed identity/permission/metric validation leaves the stored connection unchanged and produces a redacted `meta-insights-connection.json` receipt. A failed encrypted checkpoint requires inspecting its actual outcome before retrying. A verified receipt must show `connectionUpdated: true`, `publishingAttempted: false`, `pageMatched: true`, `instagramMatched: true` and a positive `postsWithCoreMetrics` count.
 
-Then run [Cancha Instagram learning report](https://github.com/titodv41/cancha-automation/actions/workflows/instagram-insights.yml) and verify the actual metric report, rather than the green badge alone. The existing read-only daily collection will continue once access works; no second publisher is needed. Do not post private analytics exports to a public PR. Share only the approved minimum useful feedback with Claude.
+Then run [Cancha Instagram learning report](https://github.com/titodv41/cancha-automation/actions/workflows/instagram-insights.yml) and verify `instagram-insights-status.json`, rather than the green badge alone: `status: available` and a positive `postsWithCoreMetrics` count establish actual access. The full metric report is encrypted as `instagram-insights.enc.json` with the existing state key before artifact upload. Only non-sensitive access/sample counts are exposed in the status receipt. Plaintext reports stay in the trusted runner's private workspace; comparable snapshots remain in encrypted durable state. The existing read-only daily collection will continue once access works; no second publisher is needed. Do not post private analytics exports to a public PR. Share only the approved minimum useful feedback with Claude.
 
 ## If a check fails
 

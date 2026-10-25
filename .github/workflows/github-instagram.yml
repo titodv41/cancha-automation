@@ -94,7 +94,8 @@ jobs:
           path: |
             private-data/github-summary.json
             private-data/instagram-preview.html
-            private-data/instagram-insights.json
+            private-data/instagram-insights.enc.json
+            private-data/instagram-insights-status.json
             private-data/meta-insights-connection.json
             private-data/meta-token-diagnostic.json
             private-data/narrative-production/report.json

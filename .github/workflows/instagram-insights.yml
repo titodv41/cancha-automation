@@ -31,5 +31,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: cancha-learning-${{ github.run_id }}
-          path: private-data/instagram-insights.json
+          path: |
+            private-data/instagram-insights.enc.json
+            private-data/instagram-insights-status.json
           retention-days: 7
