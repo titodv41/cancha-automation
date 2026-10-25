@@ -1,6 +1,6 @@
 # Connect Claude Pro to the bounded Cancha improvement loop
 
-Prepared October 24, 2026. The owner confirmed Claude Pro is active and requested a bounded connection between assistants. The repository side is implemented. **The loop is paused until subscription authorization, included-usage settings and the first live handoff are verified.** No Claude request or new API spend has been made by preparing it.
+Updated October 25, 2026. The owner confirmed Claude Pro is active, subscription authorization is stored, extra usage is off and native Codex review is enabled. **The bounded proposal workflow is enabled for a first authenticated pilot and its existing Monday/Thursday schedule.** This setting alone does not prove model authentication, a completed proposal or a website release. There is no API-key fallback or new paid allowance. See [the operational handoff](automation-operations.md) for verified receipts and remaining work.
 
 ## The connection
 
@@ -82,14 +82,14 @@ If GitHub rejects PR creation, its repository setting **Settings → Actions →
 ## Implementation and current status
 
 - `.github/workflows/claude-improvement.yml`: check/propose/revise, read-only model job, separate tested PR staging, trusted-reviewer trigger, no publication secrets.
-- `config/claude-improvement-loop.json`: paused, included-only confirmation false until the account step is complete.
+- `config/claude-improvement-loop.json`: enabled with the owner's included-only confirmation. All existing run, revision, scope and spending limits remain unchanged.
 - `server/claude-improvement-loop.mjs`: hard run/edit scopes and deterministic proposal validation.
 - `scripts/plan-claude-loop.mjs`: live run-history and open-PR checks, no model call in check mode.
 - `scripts/prepare-claude-loop-input.mjs`: actual public reference images with checksum checks and a phone screenshot.
 - `scripts/apply-claude-loop-proposal.mjs`: rechecks source identity, tests the changed tree, creates/revises the scoped PR; no auto merge.
 - Local verification: **233 tests passed**, including run caps, New York day boundaries, failed-attempt accounting, trusted-reviewer checks, edit bounds and stale/ambiguous anchor rejection. Workflow YAML and job permission separation validated.
 
-The public reference packet is not a private analytics export. The repository is public, and artifacts do not include provider execution traces, account tokens, contact data or raw bookmark exports. No actual reach, retention or conversion improvement is claimed from this setup. Instagram Insights access remains necessary for performance-based creative decisions.
+The public reference packet is not a private analytics export. The repository is public, and artifacts do not include provider execution traces, account tokens, contact data or raw bookmark exports. Instagram Insights is connected and full reports are encrypted. The current sample does not establish a winning format or measured growth; a scheduled creative pass does not automatically receive private analytics.
 
 ## Official references
 
@@ -101,6 +101,6 @@ The public reference packet is not a private analytics export. The repository is
 
 ### Live verification receipt
 
-The owner subsequently confirmed **token saved, extra usage off, review enabled**, and assigned Claude the design/growth area and Codex the pipeline/CMS/infrastructure area. [Connection check 40142748079](https://github.com/titodv41/cancha-automation/actions/runs/40142748079) now detects the subscription secret, with zero model requests. `includedUsageConfirmed` records the owner's confirmation; `enabled` remains false while Claude prepares its requested improvement-loop expansion PR. Codex will review that PR rather than start a competing creative proposal. No open PR existed at the live check, and neither a successful Claude authentication nor a real native Codex review has been verified yet. Instagram Insights is the current first priority; see [its exact setup and verification steps](instagram-insights-connection.md).
+The owner subsequently confirmed **token saved, extra usage off, review enabled**, and assigned Claude the design/growth area and Codex the pipeline/CMS/infrastructure area. [Connection check 40142748079](https://github.com/titodv41/cancha-automation/actions/runs/40142748079) detected the subscription secret with zero model requests. Claude's larger-pass policy was reviewed and merged in PR #2. The native Codex connector subsequently completed an actual review of PR #6 at commit `1be5bdc`. Instagram Insights was verified in [run 40148250680](https://github.com/titodv41/cancha-automation/actions/runs/40148250680), and its encrypted daily report passed in [run 40148514164](https://github.com/titodv41/cancha-automation/actions/runs/40148514164). These remove the previous setup blockers; the first authenticated Claude proposal remains a separate live check. Enabling the existing workflow does not replace Claude's creative work or authorize additional usage.
 
 Earlier [connection check 40141627692](https://github.com/titodv41/cancha-automation/actions/runs/40141627692) completed successfully before the secret was configured. It made **zero Claude requests**. [Automation checks 40141626593](https://github.com/titodv41/cancha-automation/actions/runs/40141626593) also passed on GitHub. These historical checks did not establish a live authenticated Claude/Codex exchange.
