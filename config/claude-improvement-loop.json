@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "includedUsageConfirmed": true,
   "repository": "titodv41/cancha-automation",
   "timezone": "America/New_York",
