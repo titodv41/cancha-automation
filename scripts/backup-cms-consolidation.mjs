@@ -23,8 +23,15 @@ await withProject(async f => {
   for (const page of pages) {
     const keep = listingPaths.includes(page.path) || retiring.some(name => page.path?.startsWith(`/${name.toLowerCase()}/`));
     if (!keep) continue;
-    await save(dir, `scene-${page.id}.json`, await f.agent.serialize({ id: page.id, depth: 25 }, { pagePath: page.path }));
-    manifest.pages.push({ id: page.id, path: page.path });
+    // Template pages report "/providers/:slug" but the agent addresses them as "/providers/:Providers".
+    const name = retiring.find(x => page.path.startsWith(`/${x.toLowerCase()}/:`));
+    const pagePath = name ? `/${name.toLowerCase()}/:${name}` : page.path;
+    try {
+      await save(dir, `scene-${page.id}.json`, await f.agent.serialize({ id: page.id, depth: 25 }, { pagePath }));
+      manifest.pages.push({ id: page.id, path: page.path });
+    } catch (error) {
+      manifest.pages.push({ id: page.id, path: page.path, error: String(error.message).slice(0, 200) });
+    }
   }
   const files = await f.getCodeFiles();
   await save(dir, 'code-files.json', files.map(x => ({ id: x.id, name: x.name, content: x.content })));
