@@ -8,7 +8,7 @@ const expected = {pageId: '123', instagramAccountId: '456', username: 'wearecanc
 const now = new Date('2026-10-25T00:00:00Z');
 const published = [{id: 'post-one', published_id: '1000', published_at: '2026-10-23T12:30:00Z', content: JSON.stringify({topic: 'community'})}];
 const input = {connection, expected, now, published, userToken: 'fixture-short-user', appSecret: 'fixture-app-secret'};
-function fixture({userScopes = core, pageScopes = core, pageExpiry = 0, userApp = '789', rejectExtension = false, calls = []} = {}) {
+function fixture({userScopes = core, pageScopes = core, pageExpiry = 0, userApp = '789', rejectExtension = false, omitExpires = false, shortExtended = false, calls = []} = {}) {
   return async (url, options) => {
     assert.equal(url.hostname, 'graph.facebook.com');
     assert.equal(options.redirect, 'error');
@@ -24,7 +24,7 @@ function fixture({userScopes = core, pageScopes = core, pageExpiry = 0, userApp 
         assert.equal(params.get('fb_exchange_token'), 'fixture-short-user');
         assert.equal(params.get('client_secret'), 'fixture-app-secret');
         if (rejectExtension) return Response.json({error: {code: 190, message: 'fixture-app-secret private-provider-text'}}, {status: 400});
-        return Response.json({access_token: 'fixture-long-user', expires_in: 5184000});
+        return Response.json({access_token: 'fixture-long-user', ...(!omitExpires ? {expires_in: 5184000} : {})});
       }
       assert.equal(options.headers.Authorization, 'Bearer 789|fixture-app-secret');
       const batch = JSON.parse(new URLSearchParams(options.body).get('batch'));
@@ -32,9 +32,10 @@ function fixture({userScopes = core, pageScopes = core, pageExpiry = 0, userApp 
       assert.equal(batch[0].method, 'GET');
       const request = new URL(batch[0].relative_url, 'https://graph.facebook.com/');
       if (request.pathname === '/debug_token') {
-        const page = request.searchParams.get('input_token') === 'fixture-derived-page';
+        const token = request.searchParams.get('input_token'), page = token === 'fixture-derived-page', extended = token === 'fixture-long-user';
         return Response.json([{code: 200, body: JSON.stringify({data: {is_valid: true, app_id: page ? '789' : userApp,
-          ...(page ? {profile_id: '123'} : {}), scopes: page ? pageScopes : userScopes, expires_at: page ? pageExpiry : 1792890000}})}]);
+          ...(page ? {profile_id: '123'} : {}), scopes: page ? pageScopes : userScopes,
+          expires_at: page ? pageExpiry : Math.floor(now.getTime() / 1000) + (extended && !shortExtended ? 5184000 : 3600)}})}]);
       }
       assert.fail('Unexpected Graph batch request: OAuth exchange must use the direct token endpoint');
     }
@@ -83,5 +84,12 @@ test('short or unknown Page-token lifetime cannot replace the current publisher'
 
 test('OAuth conversion failures do not disclose provider credentials or change the existing connection', async () => {
   await assert.rejects(prepareMetaInsightsFromUser({...input, fetchImpl: fixture({rejectExtension: true})}), error => error.code === 'META_INSIGHTS_USER_EXTENSION_FAILED' && error.diagnostic?.metaCode === 190 && error.diagnostic?.httpStatus === 400 && !JSON.stringify(error).includes('fixture-'));
+  assert.equal(connection.pageToken, 'fixture-original-publisher');
+});
+
+test('Meta debugger expiry verifies an extended token when expires_in is omitted; short credentials still fail', async () => {
+  const result = await prepareMetaInsightsFromUser({...input, fetchImpl: fixture({omitExpires: true})});
+  assert.equal(result.connection.userAuthorizationExpiresAt, '2026-12-24T00:00:00.000Z');
+  await assert.rejects(prepareMetaInsightsFromUser({...input, fetchImpl: fixture({omitExpires: true, shortExtended: true})}), error => error.code === 'META_INSIGHTS_USER_EXTENSION_FAILED' && error.diagnostic?.stage === 'extended-authorization-lifetime');
   assert.equal(connection.pageToken, 'fixture-original-publisher');
 });
