@@ -16,6 +16,7 @@ import {renewMetaConnection} from '../server/meta-renewal.mjs';
 import {verifyMetaInsightsConnection,MetaInsightsConnectionError} from '../server/meta-insights-connection.mjs';
 import {inspectMetaTokens} from '../server/meta-token-diagnostic.mjs';
 import {prepareMetaInsightsFromUser,checkMetaPageCredential} from '../server/meta-insights-user-connection.mjs';
+import {insightsReportArtifact} from '../server/insights-report-artifact.mjs';
 import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
@@ -162,6 +163,12 @@ try{
   await writeFile('private-data/meta-insights-connection.json',JSON.stringify({...verified.receipt,connectionUpdated:true},null,2),{mode:0o600});
   await writeFile('private-data/instagram-insights.json',JSON.stringify(verified.report,null,2),{mode:0o600});
   if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Instagram Insights connected\n\nExact Cancha Page and Instagram identity verified. Reach, saves and shares read on '+verified.receipt.postsWithCoreMetrics+' post(s). The replacement Page token is now stored encrypted. No post was published.\n',{flag:'a'});
+ }
+ if(['insights','connect-insights','connect-insights-user'].includes(mode)){
+  const report=JSON.parse(await readFile('private-data/instagram-insights.json','utf8'));
+  const sealed=insightsReportArtifact(report,process.env.CANCHA_GITHUB_STATE_KEY);
+  await writeFile('private-data/instagram-insights.enc.json',JSON.stringify(sealed.envelope),{mode:0o600});
+  await writeFile('private-data/instagram-insights-status.json',JSON.stringify(sealed.status,null,2),{mode:0o600});
  }
  if(mode==='command'){
   // Reuse the authenticated command contract locally; receipts survive runs.

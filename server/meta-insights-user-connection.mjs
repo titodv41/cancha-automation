@@ -26,15 +26,24 @@ export async function prepareMetaInsightsFromUser({connection, userToken, appSec
   let long;
   try {
     const params = new URLSearchParams({grant_type: 'fb_exchange_token', client_id: expected.appId, client_secret: appSecret, fb_exchange_token: userToken});
-    const response = await fetchImpl(new URL(`https://graph.facebook.com/${version}/`), {
-      method: 'POST', redirect: 'error', headers: {Authorization: `Bearer ${expected.appId}|${appSecret}`, 'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams({batch: JSON.stringify([{method: 'GET', relative_url: 'oauth/access_token?' + params}]), include_headers: 'false'}).toString(), signal: AbortSignal.timeout(20000)
+    const response = await fetchImpl(new URL(`https://graph.facebook.com/${version}/oauth/access_token`), {
+      method: 'POST', redirect: 'error', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: params.toString(), signal: AbortSignal.timeout(20000)
     });
-    const rows = await response.json();
-    if (!response.ok || !Array.isArray(rows) || rows.length !== 1 || rows[0]?.code !== 200) fail('META_INSIGHTS_USER_EXTENSION_FAILED');
-    long = JSON.parse(rows[0].body);
-    if (typeof long.access_token !== 'string' || !long.access_token || !Number.isFinite(long.expires_in) || long.expires_in < 7 * 86400) fail('META_INSIGHTS_USER_EXTENSION_FAILED');
-  } catch { fail('META_INSIGHTS_USER_EXTENSION_FAILED'); }
+    long = await response.json();
+    if (!response.ok || long.error) fail('META_INSIGHTS_USER_EXTENSION_FAILED', {
+      stage: 'exchange', httpStatus: response.status,
+      metaCode: Number.isInteger(long.error?.code) ? long.error.code : null,
+      metaSubcode: Number.isInteger(long.error?.error_subcode) ? long.error.error_subcode : null
+    });
+    if (!long || typeof long.access_token !== 'string' || !long.access_token) fail('META_INSIGHTS_USER_EXTENSION_FAILED', {stage: 'exchange-response', httpStatus: response.status, hasAccessToken: false});
+  } catch (error) { if (error instanceof MetaInsightsConnectionError) throw error; fail('META_INSIGHTS_USER_EXTENSION_FAILED', {stage: 'exchange-request'}); }
+  // Meta can omit expires_in when returning an already extended credential.
+  // Verify actual validity/expiry with its debugger instead of treating an
+  // optional response property as proof of lifetime.
+  const extended = (await inspectMetaTokens({appSecret, expected, version, tokens: [{name: 'saved-replacement', value: long.access_token}], fetchImpl, now})).inspected[0];
+  if (extended.status !== 'inspected' || !extended.valid || !extended.appMatches || !Array.isArray(extended.missingCorePermissions) || extended.missingCorePermissions.length) fail('META_INSIGHTS_USER_EXTENSION_FAILED', {stage: 'extended-authorization', valid: extended.valid === true, appMatches: extended.appMatches === true});
+  if (!extended.expiryKnown || extended.expiresAt && Date.parse(extended.expiresAt) - now.getTime() < 7 * 86400000) fail('META_INSIGHTS_USER_EXTENSION_FAILED', {stage: 'extended-authorization-lifetime', expiryKnown: extended.expiryKnown, pageCredential: extended.pageMatches === true});
   let page;
   try {
     const url = new URL(`https://graph.facebook.com/${version}/${expected.pageId}`);
@@ -46,7 +55,7 @@ export async function prepareMetaInsightsFromUser({connection, userToken, appSec
   } catch { fail('META_INSIGHTS_PAGE_DERIVATION_FAILED'); }
   const info = await checkMetaPageCredential({token: page.access_token, appSecret, expected, version, fetchImpl, now});
   const verified = await verifyMetaInsightsConnection(connection, page.access_token, expected, published, {fetchImpl, now});
-  verified.connection.userAuthorizationExpiresAt = new Date(now.getTime() + long.expires_in * 1000).toISOString();
+  verified.connection.userAuthorizationExpiresAt = extended.expiresAt;
   verified.receipt = {...verified.receipt, authorizationSource: 'fresh-user-consent', appMatched: true, corePermissionsVerified: true, pageTokenExpiresAt: info.expiresAt};
   return verified;
 }
