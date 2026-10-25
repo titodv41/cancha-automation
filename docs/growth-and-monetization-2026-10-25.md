@@ -27,3 +27,12 @@ Revenue follows audience. Until the site and account show steady traffic, the jo
 No affiliate program was found for the main camp-registration platform (Ryzer, acquired by Scorability in 2025); don't assume one.
 
 Selling to clubs is outreach and pricing is a spending/business commitment: Claude prepares offers and pages; the owner approves and sends.
+
+## Owner decisions, Oct 25 (later): engagement and auto-replies
+
+The owner wants as much automation as is safe.
+
+- **Morning engagement pack (approved).** Each daily status includes 5–10 relevant Florida club, coach or parent accounts with fresh posts, a ready-to-paste specific comment for each, and 2–3 DM drafts asking clubs for info to feature. **The owner sends them by hand**; Claude never auto-comments, cold-DMs or mass-tags, because Instagram bans that automation and it risks the account. Source accounts from official Instagram links already in Cancha's CMS (clubs, opportunities). Read their recent public posts through the Graph API's Business Discovery on the existing connection. No scraping, logins or third-party bots.
+- **Auto-replies (approved).** Reply automatically to comments on our own posts and to DMs people send us first (link requests, "how do I list my club", and so on), using approved templates with real links. No cold messages. This needs Meta permissions beyond the current five grants (comment and message management). Meta may also require App Review or Advanced Access before replies reach the public, which is owner consent: verify that before promising a date.
+- **Tag organizers in every post** (photo/user tags plus a caption mention) and offer collab posts when a club agrees. Clubs reposting is the main free reach lever.
+- **"Get featured" form** linked from the bio: inbound club and coach info for posts, held for review like other submissions.
