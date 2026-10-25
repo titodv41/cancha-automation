@@ -35,6 +35,7 @@ export async function inspectMetaTokens({appSecret, expected, version, tokens, f
       pageMatches: info.profile_id == null ? null : String(info.profile_id) === expected.pageId,
       scopes, insightsGranted: scopes === null ? null : scopes.includes('instagram_manage_insights'),
       missingCorePermissions: scopes === null ? null : permissions.slice(0, 5).filter(p => !scopes.includes(p)),
+      expiryKnown: seconds === 0 || Number.isSafeInteger(seconds) && seconds > 0 && seconds < 253402300800,
       expiresAt: Number.isSafeInteger(seconds) && seconds > 0 && seconds < 253402300800 ? new Date(seconds * 1000).toISOString() : null};
   });
   return {checkedAt: now.toISOString(), status: inspected.every(t => t.status === 'inspected') ? 'inspected' : 'partially_unavailable',

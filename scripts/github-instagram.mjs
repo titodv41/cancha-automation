@@ -15,6 +15,7 @@ import {snapshotState,restoreState,unsealState} from '../server/github-state.mjs
 import {renewMetaConnection} from '../server/meta-renewal.mjs';
 import {verifyMetaInsightsConnection,MetaInsightsConnectionError} from '../server/meta-insights-connection.mjs';
 import {inspectMetaTokens} from '../server/meta-token-diagnostic.mjs';
+import {prepareMetaInsightsFromUser,checkMetaPageCredential} from '../server/meta-insights-user-connection.mjs';
 import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
@@ -23,7 +24,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','connect-insights-user','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -142,11 +143,13 @@ try{
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
   Object.assign(connection,await renewMetaConnection(connection,token,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})}));await checkpoint();
  }
- if(mode==='connect-insights'){
+ if(mode==='connect-insights'||mode==='connect-insights-user'){
   await mkdir('private-data',{recursive:true,mode:0o700});
   let verified;
   try{
-   verified=await verifyMetaInsightsConnection(connection,process.env.META_PAGE_ACCESS_TOKEN,expected,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
+   const fetchImpl=(url,options)=>fetch(url,{...options,dispatcher}),published=db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all();
+   if(mode==='connect-insights-user')verified=await prepareMetaInsightsFromUser({connection,userToken:process.env.META_USER_ACCESS_TOKEN,appSecret:process.env.META_APP_SECRET,expected,published,fetchImpl});
+   else{await checkMetaPageCredential({token:process.env.META_PAGE_ACCESS_TOKEN,appSecret:process.env.META_APP_SECRET,expected,version:connection.version,fetchImpl});verified=await verifyMetaInsightsConnection(connection,process.env.META_PAGE_ACCESS_TOKEN,expected,published,{fetchImpl});}
   }catch(error){
    const code=/^META_INSIGHTS_[A-Z_]+$/.test(error.code||'')?error.code:'META_INSIGHTS_CONNECTION_FAILED';
    await writeFile('private-data/meta-insights-connection.json',JSON.stringify({checkedAt:new Date().toISOString(),status:'blocked',code,diagnostic:error instanceof MetaInsightsConnectionError?error.diagnostic||null:null,connectionUpdated:false,publishingAttempted:false},null,2),{mode:0o600});

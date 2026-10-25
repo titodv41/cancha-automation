@@ -6,7 +6,7 @@ on:
         description: 'migrate once, then prepare/publish/review/pause/resume/command'
         type: choice
         default: review
-        options: [migrate, prepare, publish, review, pause, resume, command, reconnect, connect-insights, diagnose-insights, verify, insights, refresh-creative, refresh-community, refresh-local-stories, refresh-photo-stories, refresh-product-posts, refresh-motion-stories, repair-media, replenish]
+        options: [migrate, prepare, publish, review, pause, resume, command, reconnect, connect-insights, connect-insights-user, diagnose-insights, verify, insights, refresh-creative, refresh-community, refresh-local-stories, refresh-photo-stories, refresh-product-posts, refresh-motion-stories, repair-media, replenish]
       command_file:
         description: 'Repository JSON command path; only used for command'
         type: string
@@ -73,7 +73,8 @@ jobs:
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
           CANCHA_CONTROL_TOKEN: ${{ steps.clock.outputs.action == 'migrate' && secrets.CANCHA_CONTROL_TOKEN || '' }}
           META_PAGE_ACCESS_TOKEN: ${{ (steps.clock.outputs.action == 'reconnect' || steps.clock.outputs.action == 'connect-insights' || steps.clock.outputs.action == 'diagnose-insights') && secrets.META_PAGE_ACCESS_TOKEN || '' }}
-          META_APP_SECRET: ${{ steps.clock.outputs.action == 'diagnose-insights' && secrets.META_APP_SECRET || '' }}
+          META_APP_SECRET: ${{ (steps.clock.outputs.action == 'diagnose-insights' || steps.clock.outputs.action == 'connect-insights' || steps.clock.outputs.action == 'connect-insights-user') && secrets.META_APP_SECRET || '' }}
+          META_USER_ACCESS_TOKEN: ${{ steps.clock.outputs.action == 'connect-insights-user' && secrets.META_USER_ACCESS_TOKEN || '' }}
           FRAMER_API_KEY: ${{ ((steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'repair-media' || steps.clock.outputs.action == 'replenish') && secrets.FRAMER_API_KEY || '' }}
           ELEVENLABS_API_KEY: ${{ steps.clock.outputs.action == 'replenish' && secrets.ELEVENLABS_API_KEY || '' }}
           CANCHA_AUTOMATION_BACKEND: github

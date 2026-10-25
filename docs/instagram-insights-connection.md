@@ -1,5 +1,31 @@
 # Connect Cancha's Instagram Insights
 
+## Current diagnosis and simplest remaining owner step
+
+[Automatic diagnostic 40146137402](https://github.com/titodv41/cancha-automation/actions/runs/40146137402) succeeded at October 24, 2026, 8:18 PM New York after the owner securely supplied `META_APP_SECRET`. Both the encrypted publishing token and saved replacement are valid and belong to the correct app/Page. **Both lack `instagram_manage_insights`.** The saved replacement also expires at 9 PM New York that evening; the existing publisher has no scheduled expiry. Neither was replaced and no publication was attempted. This establishes missing token consent rather than a guessed Page/app mismatch. App Secret setup and automatic inspection are now working.
+
+The owner no longer needs to recover an old token or use the debugger. A fresh **User** authorization lets the trusted workflow derive and verify the Page credential automatically:
+
+1. Open [Graph API Explorer](https://developers.facebook.com/tools/explorer/). In **Meta App / Aplicación de Meta**, choose **Cancha Automation**.
+2. In **User or Page / Usuario o página**, choose **Get User Access Token / Obtener token de acceso de usuario**. Keep the four working permissions and add **`instagram_manage_insights`** in the permissions selector. The complete list is:
+
+   ```text
+   instagram_basic
+   instagram_content_publish
+   instagram_manage_insights
+   pages_show_list
+   pages_read_engagement
+   ```
+
+3. Click **Generate Access Token / Generar token de acceso** after selecting the new permission. Complete Meta's login/consent as the personal profile that manages Cancha, including the Cancha Page and @wearecancha assets. Copying the previously displayed token without this new consent will keep the same missing permission.
+4. Stay on **User** token. Copy the newly generated value from the **Access Token / Token de acceso** field near the top right of Explorer. No Page-token query, manual extension, debugger or code editing is needed.
+5. Open [New GitHub repository secret](https://github.com/titodv41/cancha-automation/settings/secrets/actions/new), set **Name** to **`META_USER_ACCESS_TOKEN`**, paste the new value into **Secret**, then save. Update that exact repository secret if it already exists. Keep all other keys unchanged and never paste the value into chat.
+6. Reply **“User token saved.”** Codex runs `github-instagram.yml` with **`connect-insights-user`**, then the existing read-only learning report.
+
+The new workflow checks the User credential's exact app and five grants before conversion, extends it server-side with the existing App Secret, derives only the confirmed Cancha Page, verifies its exact app/Page, all publishing and Insights grants, and a known durable lifetime, then tests actual media metrics. The prior publisher remains stored until all checks pass and the encrypted checkpoint succeeds. Unknown expiry or a scheduled expiry under seven days is rejected. Credentials in token-exchange parameters remain inside a Graph batch request body; no token/App Secret is written into the HTTP URL, receipts, logs or Claude input. Fresh consent and Meta approval are still account-owner steps; local tests alone do not establish a live new-user conversion.
+
+If Meta refuses `instagram_manage_insights` in the permission selector/consent, enable that exact permission in the existing Instagram use case and Facebook Login for Business configuration as described below. Share only its non-secret error text. Do not switch apps or generate an Instagram-Login token. The similarly named `instagram_business_manage_insights` belongs to a different integration.
+
 Last checked October 24, 2026 at 7:26 PM New York. [Read-only run 40142759333](https://github.com/titodv41/cancha-automation/actions/runs/40142759333) returned `permission_required`, requiring **`instagram_manage_insights`**. Zero posts returned metrics. Some older media also returned error 100; that is not a zero engagement result. A green workflow means the diagnostic completed, not that Meta granted Insights.
 
 The guarded connection was also exercised live at 7:32 PM: [run 40143137258](https://github.com/titodv41/cancha-automation/actions/runs/40143137258) returned **`META_INSIGHTS_TOKEN_MISSING`**, `connectionUpdated: false`, `publishingAttempted: false`. The replacement-token repository secret is absent from this workflow. The existing publishing connection remains in encrypted state. [Automation checks 40143121269](https://github.com/titodv41/cancha-automation/actions/runs/40143121269) passed; all **237 local tests** passed as well.
@@ -25,7 +51,7 @@ One-time owner setup for automatic diagnosis:
 3. Open [New GitHub repository secret](https://github.com/titodv41/cancha-automation/settings/secrets/actions/new). Name: **`META_APP_SECRET`**. Paste the copied value into **Secret**, then save. If that exact secret already exists, update it instead.
 4. Reply **“App secret saved.”** Codex runs `github-instagram.yml` on main with action **`diagnose-insights`** and reads only `meta-token-diagnostic.json`.
 
-The diagnostic performs only batched GET reads of Meta's `debug_token` endpoint. Inspected token values are in the HTTPS request body, app authorization is in the header, and neither appears in the HTTP URL, report or job summary. Only allowlisted permission names, validity/expiry and expected app/Page match booleans are returned. It never replaces a connection or publishes content. The App Secret is bound only to this diagnostic mode, not to Claude or routine publishing. Account permissions still have to be granted in Meta if the diagnostic confirms they are missing.
+The diagnostic performs only batched GET reads of Meta's `debug_token` endpoint. Inspected token values are in the HTTPS request body, app authorization is in the header, and neither appears in the HTTP URL, report or job summary. Only allowlisted permission names, validity/expiry and expected app/Page match booleans are returned. It never replaces a connection or publishes content. The App Secret is bound only to diagnostic and guarded Insights-connection modes, not to Claude or routine publishing. Account permissions still have to be granted in Meta if the diagnostic confirms they are missing.
 
 Official debugging reference: https://developers.facebook.com/docs/graph-api/reference/debug_token/.
 
@@ -108,6 +134,11 @@ Then run [Cancha Instagram learning report](https://github.com/titodv41/cancha-a
 | `META_INSIGHTS_IDENTITY_READ_FAILED` / `META_INSIGHTS_TOKEN_EXPIRED` | Inspect token validity privately in Meta. Share only non-secret error/expiry labels. |
 | `META_INSIGHTS_METRICS_NOT_READABLE` | Investigate the media/API/access-level response; do not replace the working token or treat unavailable metrics as zero. |
 | `META_INSIGHTS_NO_PUBLISHED_MEDIA` | Reconcile recorded publication receipts before attempting analytics. Do not create a test publication just to pass. |
+| `META_INSIGHTS_USER_TOKEN_MISSING` | Save the fresh User authorization as `META_USER_ACCESS_TOKEN` using the current steps at the top. |
+| `META_INSIGHTS_USER_PERMISSIONS_MISSING` | The newly generated User token still lacks one of the five required grants. Inspect only the redacted permission names; repeat consent with those selected. |
+| `META_INSIGHTS_USER_APP_MISMATCH` | In Explorer choose Cancha Automation before generating the User authorization. |
+| `META_INSIGHTS_USER_EXTENSION_FAILED` / `META_INSIGHTS_PAGE_DERIVATION_FAILED` | Inspect the actual guarded failure. Do not replace the existing publisher or ask the owner to run credential-bearing commands. |
+| `META_INSIGHTS_TOKEN_TOO_SHORT_LIVED` / `META_INSIGHTS_TOKEN_LIFETIME_UNKNOWN` | Use the fresh User-consent route so the workflow can derive a durable, verified Page token. |
 
 Meta's current Insights documentation lists additional `ads_management` / `ads_read` requirements when access to the linked Page was granted through Business Manager. If the five permissions above are granted but Meta still returns a role-specific denial, inspect that requirement. These are not instructions to create ads, ad spend, or request unrelated permissions in advance.
 
