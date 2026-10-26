@@ -6,8 +6,11 @@ import {pathToFileURL} from 'node:url';import {resolve} from 'node:path';import 
 export const events=[
  {time:'09:23',action:'replenish'},{time:'10:09',action:'prepare'},
  {time:'12:10',action:'publish'},{time:'12:19',action:'prepare'},{time:'12:32',action:'publish'},
- {time:'13:23',action:'replenish'},{time:'17:40',action:'publish'},{time:'18:02',action:'publish'},
+ {time:'12:50',action:'publish'},{time:'13:23',action:'replenish'},{time:'17:40',action:'publish'},{time:'18:02',action:'publish'},
+ {time:'18:20',action:'publish'},{time:'18:50',action:'publish'},
 ];
+// Follow-up publish events (12:50, 18:20, 18:50): a Reel container created at the slot can still be
+// processing at Meta; later runs send it once it is FINISHED. They never create a second post.
 const nyDate=at=>new Intl.DateTimeFormat('sv-SE',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(at);
 // Upcoming events in order. A link continues strictly after the last event its predecessor handled;
 // a fresh start (manual or cron restart) also fires one that fell due in the last few minutes.
