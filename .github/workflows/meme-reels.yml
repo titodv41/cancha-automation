@@ -27,7 +27,7 @@ jobs:
       # The runner image already has Google Chrome; ffmpeg is installed only if missing (minimal packages).
       - run: if ! command -v ffmpeg >/dev/null; then sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends ffmpeg; fi
       # Searches every footage query the Reels use and downloads licensed clips: YouTube CC videos mirrored on
-      # Wikimedia Commons, Commons CC0/CC BY, Pixabay and Mixkit.
+      # Wikimedia Commons, Commons CC0/CC BY, Pixabay and Mixkit, plus official media from featured clubs' own sites.
       - name: Build footage library
         env:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
@@ -35,6 +35,7 @@ jobs:
           DOWNLOAD_PER_QUERY: '4'
         run: |
           export QUERIES="$(node -e "const r=require('./content/instagram/meme-reels.json').reels;console.log([...new Set(r.flatMap(x=>x.segments.map(s=>s.footage)))].join(','))")"
+          export CLUBS="$(node -e "const r=require('./content/instagram/meme-reels.json').reels;console.log([...new Set(r.flatMap(x=>x.segments.map(s=>s.club).filter(Boolean)))].join(','))")"
           node scripts/footage-library.mjs
       - name: Render Reels
         env:

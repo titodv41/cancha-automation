@@ -1,0 +1,50 @@
+{
+ "note": "Official club/academy sites used as Reel footage sources. Media is fetched only from each club's own host (/wp-content/uploads/). The owner manages permissions with clubs; posts tag the club.",
+ "clubs": [
+  {
+   "id": "sporting-jax",
+   "organization": "Sporting JAX",
+   "city": "Jacksonville",
+   "region": "North Florida",
+   "host": "www.sportingjax.com",
+   "siteUrl": "https://www.sportingjax.com/",
+   "indexUrl": "https://www.sportingjax.com/news/"
+  },
+  {
+   "id": "fort-lauderdale-united",
+   "organization": "Fort Lauderdale United",
+   "city": "Davie",
+   "region": "South Florida",
+   "host": "www.ftlutd.com",
+   "siteUrl": "https://www.ftlutd.com/",
+   "indexUrl": "https://www.ftlutd.com/news/"
+  },
+  {
+   "id": "tampa-bay-rowdies",
+   "organization": "Tampa Bay Rowdies",
+   "city": "St. Petersburg",
+   "region": "Tampa Bay",
+   "host": "www.rowdiessoccer.com",
+   "siteUrl": "https://www.rowdiessoccer.com/",
+   "indexUrl": "https://www.rowdiessoccer.com/news/"
+  },
+  {
+   "id": "tampa-bay-sun",
+   "organization": "Tampa Bay Sun FC",
+   "city": "Tampa",
+   "region": "Tampa Bay",
+   "host": "www.tampabaysunfc.com",
+   "siteUrl": "https://www.tampabaysunfc.com/",
+   "indexUrl": "https://www.tampabaysunfc.com/news/"
+  },
+  {
+   "id": "miami-fc",
+   "organization": "Miami FC",
+   "city": "Miami",
+   "region": "South Florida",
+   "host": "www.miamifc.com",
+   "siteUrl": "https://www.miamifc.com/",
+   "indexUrl": "https://www.miamifc.com/news/"
+  }
+ ]
+}
