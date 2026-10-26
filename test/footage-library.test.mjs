@@ -25,3 +25,14 @@ test('YouTube clips are only ever fetched from their Commons copy',async()=>{
  const src=(await import('node:fs')).readFileSync(new URL('../scripts/footage-library.mjs',import.meta.url),'utf8');
  assert.doesNotMatch(src,/googlevideo|yt-dlp|youtube\.com\/watch[^"]*download/);assert.match(src,/insource:/);
 });
+import {relevant} from '../scripts/footage-library.mjs';import {visuallyUsable,parseSignalstats} from '../scripts/render-meme-reels.mjs';
+test('keeps clips whose title matches the search and drops unrelated ones',()=>{
+ assert.equal(relevant({query:'texting phone',title:'Woman texting on her phone'}),true);
+ assert.equal(relevant({query:'counting money',title:'Typewritten court document 1917'}),false);
+ assert.equal(relevant({query:'soccer ball',title:'Kids kick a football in the park'}),true);
+});
+test('rejects black, washed-out and flat frames from signalstats output',()=>{
+ const s=parseSignalstats('[Parsed_metadata_1] lavfi.signalstats.YAVG=112.4\nlavfi.signalstats.YLOW=20\nlavfi.signalstats.YHIGH=231');
+ assert.deepEqual(s,{avg:112.4,low:20,high:231});assert.equal(visuallyUsable([s]),true);
+ assert.equal(visuallyUsable([{avg:8,low:2,high:30}]),false);assert.equal(visuallyUsable([{avg:120,low:110,high:140}]),false);assert.equal(visuallyUsable([]),false);
+});
