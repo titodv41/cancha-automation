@@ -37,7 +37,8 @@ test('wrong app, missing permission and invalid token remain distinct diagnostic
   assert.equal(result.inspected[0].insightsGranted, false);
   assert.match(result.inspected[0].expiresAt, /^2026-/);
   assert.equal(result.inspected[1].errorCode, 190);
-  assert.doesNotMatch(JSON.stringify(result), /fixture-|private-|other-page|999/);
+  // checkedAt is the wall clock and can legitimately contain "999" milliseconds.
+  assert.doesNotMatch(JSON.stringify({...result, checkedAt: null}), /fixture-|private-|other-page|999/);
 });
 
 test('missing app authorization and provider failures disclose no inspected credentials', async () => {
