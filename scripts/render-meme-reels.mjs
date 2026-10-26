@@ -50,7 +50,8 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  const out='private-data/meme-reels';await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2'])await copyFile(assets+f,join(out,f));
  const tracks={};for(const [name,url] of Object.entries(music)){const file=join(out,'_music-'+name+'.mp3');if(!existsSync(file))await download(url,file);tracks[name]=file;}
  for(const clip of library.clips.filter(c=>c.file)){const stats=frameStats(clip.file);if(!visuallyUsable(stats))clip.rejected='dark, washed-out or flat frames';}
- const browser=await chromium.launch(),page=await browser.newPage({viewport:{width:1080,height:1920}}),results=[],used=new Set();
+ // CHROME_CHANNEL=chrome uses the runner's preinstalled Chrome instead of a slow Playwright browser install.
+ const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1920}}),results=[],used=new Set();
  try{for(const recipe of reels.filter(r=>!process.env.ONLY||process.env.ONLY.split(',').includes(r.id)))try{results.push(await renderReel(recipe,library.clips,page,out,tracks[recipe.music]||Object.values(tracks)[0],used));}catch(e){results.push({id:recipe.id,rendered:false,reason:e.message.slice(0,200)});}}
  finally{await browser.close();}
  await writeFile(join(out,'report.json'),JSON.stringify({renderedAt:new Date().toISOString(),results},null,1));console.log(JSON.stringify(results.map(r=>({id:r.id,rendered:r.rendered,reason:r.reason,footage:r.footage?.map(f=>f.id)}))));

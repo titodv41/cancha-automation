@@ -36,3 +36,4 @@ test('rejects black, washed-out and flat frames from signalstats output',()=>{
  assert.deepEqual(s,{avg:112.4,low:20,high:231});assert.equal(visuallyUsable([s]),true);
  assert.equal(visuallyUsable([{avg:8,low:2,high:30}]),false);assert.equal(visuallyUsable([{avg:120,low:110,high:140}]),false);assert.equal(visuallyUsable([]),false);
 });
+test('rejects other football codes even when the words match',()=>{assert.equal(relevant({query:'amateur football',title:'Amateur American football practice'}),false);});
