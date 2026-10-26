@@ -2,16 +2,25 @@ name: Cancha stock footage search
 on:
   workflow_dispatch:
     inputs:
+      source:
+        description: 'pixabay or youtube (Creative Commons only)'
+        type: choice
+        default: pixabay
+        options: [pixabay, youtube]
       queries:
-        description: 'Comma-separated Pixabay video searches (max 15)'
+        description: 'Comma-separated video searches (max 15)'
         type: string
         default: 'kids soccer, soccer practice, soccer parents, soccer fans'
+      download:
+        description: 'YouTube only: also download up to this many verified Creative Commons results (0 = none)'
+        type: string
+        default: '0'
 permissions:
   contents: read
 jobs:
   search:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,11 +30,25 @@ jobs:
           node-version: 24
       - run: node scripts/stock-footage-search.mjs
         env:
+          SOURCE: ${{ inputs.source }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           QUERIES: ${{ inputs.queries }}
-      # Public clip metadata and CDN links only; the key is never written.
+      # Downloads only results the search verified as Creative Commons; short clips at 720p max.
+      - name: Download Creative Commons clips
+        if: inputs.source == 'youtube' && inputs.download != '0'
+        continue-on-error: true
+        env:
+          LIMIT: ${{ inputs.download }}
+        run: |
+          pip install --quiet yt-dlp==2026.10.10 || pip install --quiet yt-dlp
+          mkdir -p private-data/clips
+          node -e "const r=require('./private-data/stock-footage.json').results.filter(x=>x.duration&&x.duration<=180);console.log(r.slice(0,Math.min(+process.env.LIMIT||0,20)).map(x=>x.url).join('\n'))" > private-data/clips/urls.txt
+          yt-dlp -f "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720][ext=mp4]/b" --merge-output-format mp4 -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 80M -a private-data/clips/urls.txt 2>&1 | tail -20
+          ls -la private-data/clips
+      # Public metadata, CDN links and Creative Commons clips only; keys are never written.
       - uses: actions/upload-artifact@v4
         with:
           name: stock-footage-${{ github.run_id }}
-          path: private-data/stock-footage.json
+          path: private-data/
           retention-days: 7
