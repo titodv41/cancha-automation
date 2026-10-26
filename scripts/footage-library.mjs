@@ -38,8 +38,9 @@ export function relevant(clip){if(clip.source==='club-official')return true;if(/
  if(!words.length)return /soccer|football|futbol|fútbol/.test(text);return words.some(w=>text.includes(w.replace(/(ing|s)$/,'')));}
 // Best sources first: YouTube CC (via Commons), then curated stock, then general Commons search.
 export const sourceRank=['youtube-commons','pixabay','mixkit','commons'];
-// Official club media from the club's own website: match/training photos and hosted video, not logos or sponsor art.
-const notFootage=/logo|lockup|sponsor|rgb|icon|badge|crest|favicon|banner|_large\.|headshot|_head_|heads_|-\d{2,4}x\d{2,4}\./i;
+// Official club media from the club's own website: match/training photos and hosted video, not logos, sponsor
+// art or marketing graphics with baked-in text (social/hero/recap/announcement files).
+const notFootage=/logo|lockup|sponsor|rgb|icon|badge|crest|favicon|banner|_large\.|headshot|_head_|heads_|-\d{2,4}x\d{2,4}\.|social|hero|web\d|announcement|recap|graphic|playoff|promo|flyer|poster|ticket|deposit|popup|\d{3,4}x\d{3,4}/i;
 export function clubMediaUrls(html,host){const re=new RegExp(`https://${host.replace(/\./g,'\\.')}/wp-content/uploads/[^"'\\s?)]+\\.(?:mp4|jpe?g|webp)`,'gi');
  return [...new Set(String(html).match(re)||[])].filter(u=>!notFootage.test(u.split('/').pop()));}
 export function articleLinks(html,host){const re=new RegExp(`https://${host.replace(/\./g,'\\.')}/(?:news/)?[a-z0-9-]{20,}/`,'g');return [...new Set(String(html).match(re)||[])].slice(0,4);}
