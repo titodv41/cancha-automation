@@ -24,7 +24,8 @@ export function chooseClips(recipe,clips,used=new Set()){const rank=c=>{const i=
 export function visuallyUsable(stats){return stats.length>0&&stats.every(s=>s.avg>=35&&s.avg<=225&&s.high-s.low>=70);}
 export function parseSignalstats(text){const get=k=>Number((String(text).match(new RegExp('signalstats\\.'+k+'=([\\d.]+)'))||[])[1]);return Number.isFinite(get('YAVG'))?{avg:get('YAVG'),low:get('YLOW'),high:get('YHIGH')}:null;}
 // metadata=print writes to stderr; a frame past the clip's end yields no stats and is skipped.
-function frameStats(file,photo=false){const out=[];for(const t of photo?[0]:[0.5,2,4]){const run=spawnSync('ffmpeg',['-hide_banner','-ss',String(t),'-i',file,'-frames:v','1','-vf','signalstats,metadata=print','-f','null','-'],{encoding:'utf8'});const stats=parseSignalstats(run.stderr);if(stats)out.push(stats);}return out;}
+// Stills are read without a seek (seeking a JPEG yields no frame); format=yuv420p normalizes full-range JPEG input.
+function frameStats(file,photo=false){const out=[];for(const t of photo?[null]:[0.5,2,4]){const run=spawnSync('ffmpeg',['-hide_banner',...(t===null?[]:['-ss',String(t)]),'-i',file,'-frames:v','1','-vf','format=yuv420p,signalstats,metadata=print','-f','null','-'],{encoding:'utf8'});const stats=parseSignalstats(run.stderr);if(stats)out.push(stats);}return out;}
 const F=0.15;
 async function renderReel(recipe,clips,page,out,music,used){
  const picks=chooseClips(recipe,clips,used);if(picks.some(p=>!p)){const seg=recipe.segments[picks.findIndex(p=>!p)];return {id:recipe.id,rendered:false,reason:'No downloaded clip for '+(seg.club?'club:'+seg.club:seg.footage)};}
