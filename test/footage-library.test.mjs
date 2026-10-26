@@ -37,3 +37,9 @@ test('rejects black, washed-out and flat frames from signalstats output',()=>{
  assert.equal(visuallyUsable([{avg:8,low:2,high:30}]),false);assert.equal(visuallyUsable([{avg:120,low:110,high:140}]),false);assert.equal(visuallyUsable([]),false);
 });
 test('rejects other football codes even when the words match',()=>{assert.equal(relevant({query:'amateur football',title:'Amateur American football practice'}),false);});
+import {clubMediaUrls,articleLinks} from '../scripts/footage-library.mjs';
+test('takes match photos and video from the club host, never logos, sponsors or other hosts',()=>{
+ const html='"https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/02/TBRvCHS_096.jpg" "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2022/02/AEX_LOGOHughes_large.jpg" "https://www.rowdiessoccer.com/wp-content/uploads/x/clip.mp4" "https://cdn.other.com/wp-content/uploads/a.jpg" "https://www.rowdiessoccer.com/wp-content/uploads/a/Sheraton-RGB.jpg"';
+ assert.deepEqual(clubMediaUrls(html,'www.rowdiessoccer.com'),['https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/02/TBRvCHS_096.jpg','https://www.rowdiessoccer.com/wp-content/uploads/x/clip.mp4']);
+ assert.deepEqual(articleLinks('"https://www.ftlutd.com/news/ftl-united-signs-new-forward-for-2027/" "https://www.ftlutd.com/news/"','www.ftlutd.com'),['https://www.ftlutd.com/news/ftl-united-signs-new-forward-for-2027/']);
+});

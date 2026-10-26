@@ -18,23 +18,23 @@ export function overlay(seg){const wm='<div class="wm">CANCHA<span>Florida socce
 // Picks a downloaded clip for each line: a pinned id when reviewed, otherwise the first unused clip for its query long enough for the line.
 // Clips that failed the visual check are excluded; `used` is shared across a batch so no clip repeats.
 export function chooseClips(recipe,clips,used=new Set()){const rank=c=>{const i=sourceRank.indexOf(c.source);return i<0?9:i;};return recipe.segments.map(seg=>{
- const pool=clips.filter(c=>c.file&&!c.rejected&&(seg.clip?c.id===seg.clip:c.query===seg.footage)&&!used.has(c.id)&&(!c.duration||c.duration>=seg.seconds+(seg.start||0))).sort((a,b)=>rank(a)-rank(b));
+ const pool=clips.filter(c=>c.file&&!c.rejected&&(seg.clip?c.id===seg.clip:c.query===(seg.club?'club:'+seg.club:seg.footage))&&!used.has(c.id)&&(!c.duration||c.duration>=seg.seconds+(seg.start||0))).sort((a,b)=>rank(a)-rank(b));
  const pick=pool[0]||null;if(pick)used.add(pick.id);return pick;});}
 // Rejects black, washed-out or flat clips (title cards, blank screens) from frames sampled through the clip.
 export function visuallyUsable(stats){return stats.length>0&&stats.every(s=>s.avg>=35&&s.avg<=225&&s.high-s.low>=70);}
 export function parseSignalstats(text){const get=k=>Number((String(text).match(new RegExp('signalstats\\.'+k+'=([\\d.]+)'))||[])[1]);return Number.isFinite(get('YAVG'))?{avg:get('YAVG'),low:get('YLOW'),high:get('YHIGH')}:null;}
 // metadata=print writes to stderr; a frame past the clip's end yields no stats and is skipped.
-function frameStats(file){const out=[];for(const t of [0.5,2,4]){const run=spawnSync('ffmpeg',['-hide_banner','-ss',String(t),'-i',file,'-frames:v','1','-vf','signalstats,metadata=print','-f','null','-'],{encoding:'utf8'});const stats=parseSignalstats(run.stderr);if(stats)out.push(stats);}return out;}
+function frameStats(file,photo=false){const out=[];for(const t of photo?[0]:[0.5,2,4]){const run=spawnSync('ffmpeg',['-hide_banner','-ss',String(t),'-i',file,'-frames:v','1','-vf','signalstats,metadata=print','-f','null','-'],{encoding:'utf8'});const stats=parseSignalstats(run.stderr);if(stats)out.push(stats);}return out;}
 const F=0.15;
 async function renderReel(recipe,clips,page,out,music,used){
- const picks=chooseClips(recipe,clips,used);if(picks.some(p=>!p))return {id:recipe.id,rendered:false,reason:'No downloaded clip for '+recipe.segments[picks.findIndex(p=>!p)].footage};
+ const picks=chooseClips(recipe,clips,used);if(picks.some(p=>!p)){const seg=recipe.segments[picks.findIndex(p=>!p)];return {id:recipe.id,rendered:false,reason:'No downloaded clip for '+(seg.club?'club:'+seg.club:seg.footage)};}
  const parts=[];
  for(const [i,seg] of recipe.segments.entries()){const html=join(out,`_${recipe.id}-${i}.html`),png=join(out,`_${recipe.id}-${i}.png`),mp4=join(out,`_${recipe.id}-${i}.mp4`),d=seg.seconds;
   await writeFile(html,`<!doctype html><meta charset=utf-8><style>${css}</style><body>${overlay(seg)}<span style="font-family:Display;position:absolute;opacity:0">.</span></body>`);
   await page.goto(pathToFileURL(resolve(html)).href);await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(150);
   if(!await page.evaluate(()=>document.fonts.check('96px Cond')&&document.fonts.check('180px Display')))throw Error('Brand fonts failed to load');
   await page.screenshot({path:png,omitBackground:true});
-  execFileSync('ffmpeg',['-v','error','-y','-ss',String(seg.start||0),'-t',String(d),'-i',picks[i].file,'-loop','1','-t',String(d),'-i',png,'-filter_complex',
+  const still=picks[i].kind==='photo';execFileSync('ffmpeg',['-v','error','-y',...(still?['-loop','1','-framerate','30']:['-ss',String(seg.start||0)]),'-t',String(d),'-i',picks[i].file,'-loop','1','-t',String(d),'-i',png,'-filter_complex',
    `[0:v]scale=-2:1920,crop=1080:1920:(iw-1080)*${seg.focus??0.5}:0,scale=iw*(1+0.05*t/${d}):-2:eval=frame,crop=1080:1920,eq=brightness=-0.07,fps=30,setsar=1[v];`+
    `[1:v]format=rgba,fade=in:st=0.12:d=0.22:alpha=1[t];[v][t]overlay=x=0:y='if(lt(t,0.34),70*(1-(t-0.12)/0.22),0)':shortest=1,format=yuv420p`,'-an','-c:v','libx264','-preset','veryfast','-crf','19',mp4]);
   parts.push([mp4,d]);}
@@ -49,7 +49,7 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  const {music,reels}=JSON.parse(await readFile('content/instagram/meme-reels.json','utf8')),library=JSON.parse(await readFile(process.env.LIBRARY||'private-data/footage/library.json','utf8'));
  const out='private-data/meme-reels';await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2'])await copyFile(assets+f,join(out,f));
  const tracks={};for(const [name,url] of Object.entries(music)){const file=join(out,'_music-'+name+'.mp3');if(!existsSync(file))await download(url,file);tracks[name]=file;}
- for(const clip of library.clips.filter(c=>c.file)){const stats=frameStats(clip.file);if(!visuallyUsable(stats))clip.rejected='dark, washed-out or flat frames';}
+ for(const clip of library.clips.filter(c=>c.file)){const stats=frameStats(clip.file,clip.kind==='photo');if(!visuallyUsable(stats))clip.rejected='dark, washed-out or flat frames';}
  // CHROME_CHANNEL=chrome uses the runner's preinstalled Chrome instead of a slow Playwright browser install.
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1920}}),results=[],used=new Set();
  try{for(const recipe of reels.filter(r=>!process.env.ONLY||process.env.ONLY.split(',').includes(r.id)))try{results.push(await renderReel(recipe,library.clips,page,out,tracks[recipe.music]||Object.values(tracks)[0],used));}catch(e){results.push({id:recipe.id,rendered:false,reason:e.message.slice(0,200)});}}
