@@ -1,0 +1,31 @@
+{
+ "note": "Short Reels rendered by scripts/render-meme-reels.mjs. Each line gets its own licensed clip found by its footage search (or a reviewed clip id). Facts in data Reels come from live Cancha opportunity pages; recheck before publishing.",
+ "music": {
+  "upbeat": "https://assets.mixkit.co/music/224/224.mp3",
+  "drive": "https://assets.mixkit.co/music/1068/1068.mp3",
+  "chill": "https://assets.mixkit.co/music/1001/1001.mp3"
+ },
+ "reels": [
+  {"id": "data-id-camps", "kind": "data", "music": "drive", "checkedOn": "2026-10-26", "segments": [
+   {"footage": "soccer ball", "seconds": 3.0, "text": "What does a college ID camp cost in Florida this winter? 🤔"},
+   {"footage": "soccer training", "seconds": 2.2, "big": "$101", "chip": "Eckerd men’s · Jan 3"},
+   {"footage": "soccer goalkeeper", "seconds": 2.2, "big": "$345", "chip": "USF men’s · 2 days · Jan 2–3"},
+   {"footage": "soccer training", "seconds": 2.6, "text": "We checked them all", "big": "23 open camps", "chip": "Dates, prices & links on Cancha"}]},
+  {"id": "opinion-cost", "kind": "opinion", "music": "chill", "segments": [
+   {"footage": "boy face", "seconds": 3.0, "text": "Unpopular opinion:"},
+   {"footage": "counting money", "seconds": 3.0, "text": "Youth club soccer in Florida costs way too much."},
+   {"footage": "kids soccer", "seconds": 2.8, "text": "Agree or disagree? 👇"}]},
+  {"id": "meme-group-chat", "kind": "meme", "music": "upbeat", "segments": [
+   {"footage": "texting phone", "seconds": 3.4, "text": "The parents’ group chat when tryout results drop 😭"},
+   {"footage": "woman smiling phone", "seconds": 3.2, "text": "Everyone pretending they’re “fine with any team”"}]},
+  {"id": "meme-sunday-league", "kind": "meme", "music": "upbeat", "segments": [
+   {"footage": "amateur football", "seconds": 3.2, "text": "Sunday league players after ONE good touch 😤"},
+   {"footage": "football celebration", "seconds": 3.2, "text": "“Coach, I’m playing striker now”"}]},
+  {"id": "meme-keeper", "kind": "meme", "music": "upbeat", "segments": [
+   {"footage": "soccer goalkeeper", "seconds": 3.2, "text": "Every Sunday league team has this keeper 🧤"},
+   {"footage": "amateur football", "seconds": 3.0, "text": "“I’m not a keeper, I’m just here because nobody else showed up”"}]},
+  {"id": "meme-pickup", "kind": "meme", "music": "chill", "segments": [
+   {"footage": "park football", "seconds": 3.6, "text": "“Bro just come, it’s at the park somewhere” 📍"},
+   {"footage": "soccer ball", "seconds": 3.2, "text": "Or don’t guess 👇", "big": "Find real pickup", "chip": "Florida pickup games by city"}]}
+ ]
+}

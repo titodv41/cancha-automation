@@ -11,7 +11,7 @@ export function shapeYouTube(video,query){if(video.status?.license!=='creativeCo
  return {query,id:video.id,title:video.snippet?.title,duration:isoSeconds(video.contentDetails?.duration),url:'https://www.youtube.com/watch?v='+video.id,thumbnail:video.snippet?.thumbnails?.high?.url||null,page:'https://www.youtube.com/watch?v='+video.id,creator:video.snippet?.channelTitle,license:'CC BY (YouTube Creative Commons)',source:'youtube'};}
 async function getJson(url){const response=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!response.ok)throw Error('Search rejected ('+response.status+')');return response.json();}
 async function pixabay(query,key){return ((await getJson('https://pixabay.com/api/videos/?'+new URLSearchParams({key,q:query,per_page:'30',safesearch:'true'}))).hits||[]).map(hit=>shapeHit(hit,query)).filter(Boolean);}
-async function youtube(query,key){
+export async function youtube(query,key){
  const found=await getJson('https://www.googleapis.com/youtube/v3/search?'+new URLSearchParams({key,q:query,part:'id',type:'video',videoLicense:'creativeCommon',videoDuration:'short',maxResults:'25',safeSearch:'strict'}));
  const ids=(found.items||[]).map(item=>item.id?.videoId).filter(Boolean);if(!ids.length)return [];
  const details=await getJson('https://www.googleapis.com/youtube/v3/videos?'+new URLSearchParams({key,id:ids.join(','),part:'snippet,status,contentDetails'}));
