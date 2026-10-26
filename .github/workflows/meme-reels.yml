@@ -14,7 +14,7 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,21 +24,22 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: if ! command -v ffmpeg >/dev/null; then sudo apt-get update && sudo apt-get install -y ffmpeg; fi
+      # The runner image already has Google Chrome; ffmpeg is installed only if missing (minimal packages).
+      - run: if ! command -v ffmpeg >/dev/null; then sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends ffmpeg; fi
       # Searches every footage query the Reels use and downloads licensed clips: YouTube CC videos mirrored on
       # Wikimedia Commons, Commons CC0/CC BY, Pixabay and Mixkit.
       - name: Build footage library
         env:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          DOWNLOAD_PER_QUERY: '2'
+          DOWNLOAD_PER_QUERY: '4'
         run: |
           export QUERIES="$(node -e "const r=require('./content/instagram/meme-reels.json').reels;console.log([...new Set(r.flatMap(x=>x.segments.map(s=>s.footage)))].join(','))")"
           node scripts/footage-library.mjs
       - name: Render Reels
         env:
           ONLY: ${{ inputs.only }}
+          CHROME_CHANNEL: chrome
         run: node scripts/render-meme-reels.mjs
       # Rendered Reels, posters and the footage/licence report; no credentials.
       - uses: actions/upload-artifact@v4

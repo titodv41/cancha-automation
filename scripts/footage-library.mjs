@@ -34,19 +34,19 @@ export async function searchAll(query,{pixabayKey,youtubeKey}={}){const out=[],e
  return {results:out,errors};}
 // A clip is relevant only when its title/tags contain a meaningful word of the search (or its stem).
 const stop=new Set(['the','a','an','of','and','in','on','at','to','for','with','video','clip','soccer','football']);
-export function relevant(clip){const words=String(clip.query).toLowerCase().split(/\s+/).filter(w=>w.length>2&&!stop.has(w));const text=String(clip.title||'').toLowerCase();
+export function relevant(clip){if(/american football|nfl|gridiron|rugby/i.test(String(clip.title||'')))return false;const words=String(clip.query).toLowerCase().split(/\s+/).filter(w=>w.length>2&&!stop.has(w));const text=String(clip.title||'').toLowerCase();
  if(!words.length)return /soccer|football|futbol|fútbol/.test(text);return words.some(w=>text.includes(w.replace(/(ing|s)$/,'')));}
 // Best sources first: YouTube CC (via Commons), then curated stock, then general Commons search.
 export const sourceRank=['youtube-commons','pixabay','mixkit','commons'];
 export async function download(url,file){const response=await fetch(url,{headers:{'User-Agent':agent},signal:AbortSignal.timeout(120000)});if(!response.ok)throw Error('HTTP '+response.status);
  await pipeline(Readable.fromWeb(response.body),createWriteStream(file));if((await stat(file)).size<20000)throw Error('File too small');return file;}
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
- const queries=String(process.env.QUERIES||'').split(/[,\n]/).map(q=>q.trim()).filter(Boolean).slice(0,15),perQuery=Math.min(Number(process.env.DOWNLOAD_PER_QUERY||0),6),dir='private-data/footage';
+ const queries=String(process.env.QUERIES||'').split(/[,\n]/).map(q=>q.trim()).filter(Boolean).slice(0,15),perQuery=Math.min(Number(process.env.DOWNLOAD_PER_QUERY||0),8),dir='private-data/footage';
  if(!queries.length)throw Error('Provide at least one search');await mkdir(dir,{recursive:true});
  const library=[],report=[];
  for(const query of queries){const {results,errors}=await searchAll(query,{pixabayKey:process.env.PIXABAY_API_KEY,youtubeKey:process.env.YOUTUBE_API_KEY});report.push({query,found:results.length,bySource:Object.fromEntries(['youtube-commons','pixabay','commons','mixkit'].map(s=>[s,results.filter(r=>r.source===s).length])),errors});
   // Download a few per source so every query has a mix of looks.
-  for(const source of sourceRank)for(const clip of results.filter(r=>r.source===source&&(source==='youtube-commons'||relevant(r))).slice(0,perQuery)){
+  for(const source of sourceRank)for(const clip of results.filter(r=>r.source===source&&relevant(r)).slice(0,perQuery)){
    const ext=(clip.url.match(/\.(mp4|webm|ogv|mov)(?:$|\?)/i)?.[1]||'mp4').toLowerCase(),file=join(dir,clip.id+'.'+ext);
    try{await download(clip.url,file);library.push({...clip,file});}catch(e){report.at(-1).errors.push(`${clip.id}: ${e.message}`);}}
   library.push(...results.filter(r=>!library.some(l=>l.id===r.id)));}
