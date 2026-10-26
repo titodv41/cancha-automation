@@ -54,9 +54,7 @@
   "automatedNewsVideoEnabled": true,
   "shortReelsEnabled": true,
   "approvedShortReelIds": [
-    "data-id-camps",
-    "opinion-cost",
     "usl-florida-clubs"
   ],
-  "shortReelsNote": "Owner liked the ID camp price and cost opinion Reels (Oct 26) and directed club content (Oct 26). Other recipes need owner approval before they are added here."
+  "shortReelsNote": "Oct 26 (later): owner rejected Reels built on stock footage (Pixabay/Mixkit/Commons) as generic. Only Reels made from real footage (official club media) may post; stock-footage recipes stay rendered but unapproved."
 }
