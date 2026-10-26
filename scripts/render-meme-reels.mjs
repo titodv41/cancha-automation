@@ -46,10 +46,11 @@ async function renderReel(recipe,clips,page,out,music,used){
  execFileSync('ffmpeg',['-v','error','-y','-ss','1.6','-i',file,'-frames:v','1',join(out,recipe.id+'.jpg')]);
  return {id:recipe.id,rendered:true,file,seconds:+total.toFixed(2),footage:picks.map(p=>({id:p.id,source:p.source,license:p.license,creator:p.creator,page:p.page}))};}
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
- const {music,reels}=JSON.parse(await readFile('content/instagram/meme-reels.json','utf8')),library=JSON.parse(await readFile(process.env.LIBRARY||'private-data/footage/library.json','utf8'));
+ const {music,reels,excludedClips={}}=JSON.parse(await readFile('content/instagram/meme-reels.json','utf8')),library=JSON.parse(await readFile(process.env.LIBRARY||'private-data/footage/library.json','utf8'));
  const out='private-data/meme-reels';await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2'])await copyFile(assets+f,join(out,f));
  const tracks={};for(const [name,url] of Object.entries(music)){const file=join(out,'_music-'+name+'.mp3');if(!existsSync(file))await download(url,file);tracks[name]=file;}
- for(const clip of library.clips.filter(c=>c.file)){const stats=frameStats(clip.file,clip.kind==='photo');if(!visuallyUsable(stats))clip.rejected='dark, washed-out or flat frames';}
+ for(const clip of library.clips)if(excludedClips[clip.id])clip.rejected='reviewed: '+excludedClips[clip.id];
+ for(const clip of library.clips.filter(c=>c.file&&!c.rejected)){const stats=frameStats(clip.file,clip.kind==='photo');if(!visuallyUsable(stats))clip.rejected='dark, washed-out or flat frames';}
  // CHROME_CHANNEL=chrome uses the runner's preinstalled Chrome instead of a slow Playwright browser install.
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1920}}),results=[],used=new Set();
  try{for(const recipe of reels.filter(r=>!process.env.ONLY||process.env.ONLY.split(',').includes(r.id)))try{results.push(await renderReel(recipe,library.clips,page,out,tracks[recipe.music]||Object.values(tracks)[0],used));}catch(e){results.push({id:recipe.id,rendered:false,reason:e.message.slice(0,200)});}}
