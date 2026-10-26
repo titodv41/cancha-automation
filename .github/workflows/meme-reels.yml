@@ -1,0 +1,53 @@
+name: Cancha meme Reels
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Comma-separated Reel ids to render (empty = all in content/instagram/meme-reels.json)'
+        type: string
+        default: ''
+  schedule:
+    # Weekly batch; the production clock does not depend on this.
+    - cron: '17 15 * * 1'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: if ! command -v ffmpeg >/dev/null; then sudo apt-get update && sudo apt-get install -y ffmpeg; fi
+      # Searches every footage query the Reels use and downloads licensed clips: YouTube CC videos mirrored on
+      # Wikimedia Commons, Commons CC0/CC BY, Pixabay and Mixkit.
+      - name: Build footage library
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          DOWNLOAD_PER_QUERY: '2'
+        run: |
+          export QUERIES="$(node -e "const r=require('./content/instagram/meme-reels.json').reels;console.log([...new Set(r.flatMap(x=>x.segments.map(s=>s.footage)))].join(','))")"
+          node scripts/footage-library.mjs
+      - name: Render Reels
+        env:
+          ONLY: ${{ inputs.only }}
+        run: node scripts/render-meme-reels.mjs
+      # Rendered Reels, posters and the footage/licence report; no credentials.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: meme-reels-${{ github.run_id }}
+          path: |
+            private-data/meme-reels/*.mp4
+            private-data/meme-reels/*.jpg
+            private-data/meme-reels/report.json
+            private-data/footage/library.json
+          retention-days: 14

@@ -1,0 +1,27 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {commonsLicenseAllowed,shapeCommons,shapePixabay,parseMixkit} from '../scripts/footage-library.mjs';
+test('keeps only Commons licenses an edited commercial Reel may reuse',()=>{
+ for(const ok of ['CC0','Public domain','CC BY 4.0','CC BY 3.0','CC BY'])assert.equal(commonsLicenseAllowed(ok),true,ok);
+ for(const no of ['CC BY-SA 4.0','CC BY-NC 2.0','CC BY-ND 3.0','CC BY-NC-SA 4.0','GFDL','',undefined])assert.equal(commonsLicenseAllowed(no),false,String(no));
+});
+test('shapes Commons videos with credit and rejects images or share-alike files',()=>{
+ const page=(license,mime='video/webm')=>({pageid:9,title:'File:Sunday league goal.webm',imageinfo:[{url:'https://upload.wikimedia.org/a.webm',descriptionurl:'https://commons.wikimedia.org/wiki/File:a',mime,duration:12.4,width:1280,height:720,extmetadata:{LicenseShortName:{value:license},Artist:{value:'<a href="x">Ana</a>'}}}]});
+ const ok=shapeCommons(page('CC BY 4.0'),'amateur football');assert.equal(ok.creator,'Ana');assert.equal(ok.duration,12);assert.equal(ok.title,'Sunday league goal.webm');
+ assert.equal(shapeCommons(page('CC BY-SA 4.0'),'q'),null);assert.equal(shapeCommons(page('CC0','image/jpeg'),'q'),null);
+});
+test('shapes Pixabay hits and parses Mixkit pages',()=>{
+ assert.equal(shapePixabay({id:7,tags:'soccer',duration:5,pageURL:'p',user:'u',videos:{medium:{url:'https://cdn.pixabay.com/m.mp4',width:1,height:2}}},'q').id,'pixabay-7');
+ const clips=parseMixkit('<img alt="Player dribbling in a soccer game."><a href="https://assets.mixkit.co/videos/43481/43481-360.mp4"></a>','soccer');
+ assert.equal(clips[0].url,'https://assets.mixkit.co/videos/43481/43481-720.mp4');assert.equal(clips[0].title,'Player dribbling in a soccer game.');
+});
+import {chooseClips,overlay} from '../scripts/render-meme-reels.mjs';
+test('gives every line its own long-enough clip, honoring reviewed pins',()=>{
+ const clips=[{id:'a',query:'q',file:'a',duration:2},{id:'b',query:'q',file:'b',duration:9},{id:'c',query:'q',file:'c',duration:9},{id:'d',query:'q',duration:9}];
+ assert.deepEqual(chooseClips({segments:[{footage:'q',seconds:3},{footage:'q',seconds:3}]},clips).map(c=>c.id),['b','c']);
+ assert.equal(chooseClips({segments:[{footage:'q',seconds:3},{footage:'q',seconds:3},{footage:'q',seconds:3}]},clips)[2],null);
+ assert.equal(chooseClips({segments:[{clip:'c',seconds:3}]},clips)[0].id,'c');
+});
+test('escapes overlay text',()=>{assert.match(overlay({text:'<b>"x"'}),/&lt;b&gt;&quot;x&quot;/);});
+test('YouTube clips are only ever fetched from their Commons copy',async()=>{
+ const src=(await import('node:fs')).readFileSync(new URL('../scripts/footage-library.mjs',import.meta.url),'utf8');
+ assert.doesNotMatch(src,/googlevideo|yt-dlp|youtube\.com\/watch[^"]*download/);assert.match(src,/insource:/);
+});
