@@ -43,3 +43,10 @@ test('takes match photos and video from the club host, never logos, sponsors or 
  assert.deepEqual(clubMediaUrls(html,'www.rowdiessoccer.com'),['https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/02/TBRvCHS_096.jpg','https://www.rowdiessoccer.com/wp-content/uploads/x/clip.mp4']);
  assert.deepEqual(articleLinks('"https://www.ftlutd.com/news/ftl-united-signs-new-forward-for-2027/" "https://www.ftlutd.com/news/"','www.ftlutd.com'),['https://www.ftlutd.com/news/ftl-united-signs-new-forward-for-2027/']);
 });
+test('reviewed rejects are excluded by id',()=>{
+ const reels=JSON.parse((await_import_fs()).readFileSync(new URL('../content/instagram/meme-reels.json',import.meta.url),'utf8'));
+ assert.ok(reels.excludedClips['mixkit-2256']);
+ const clips=[{id:'mixkit-2256',query:'q',file:'a',rejected:'reviewed'},{id:'ok',query:'q',file:'b'}];
+ assert.equal(chooseClips({segments:[{footage:'q',seconds:1}]},clips)[0].id,'ok');
+});
+function await_import_fs(){return globalThis.__fs||(globalThis.__fs=process.getBuiltinModule('node:fs'));}

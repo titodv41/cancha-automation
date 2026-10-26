@@ -105,7 +105,7 @@
      "text": "Every Sunday league team has this keeper 🧤"
     },
     {
-     "footage": "amateur football",
+     "footage": "football fail",
      "seconds": 3.0,
      "text": "“I’m not a keeper, I’m just here because nobody else showed up”"
     }
@@ -172,5 +172,9 @@
     }
    ]
   }
- ]
+ ],
+ "excludedClips": {
+  "mixkit-2256": "American football player (reviewed Oct 26)",
+  "yt-24S0xQh_5Nw": "Unrelated singer with burned-in captions (reviewed Oct 26)"
+ }
 }
