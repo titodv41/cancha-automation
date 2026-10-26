@@ -1,0 +1,35 @@
+name: Cancha production clock
+on:
+  workflow_dispatch:
+    inputs:
+      after:
+        description: 'Set by the chain: last event already handled (ISO time); leave empty to start fresh'
+        type: string
+        default: ''
+  schedule:
+    # Restarts the chain if it ever stops; while it runs, the concurrency group keeps one link.
+    - cron: '5 */6 * * *'
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: cancha-production-clock
+  cancel-in-progress: false
+jobs:
+  tick:
+    if: github.event_name == 'workflow_dispatch' || vars.CANCHA_AUTOMATION_BACKEND == 'github'
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # Dispatches the existing production workflow at each New York event, then re-dispatches this
+      # workflow. It never posts, reads secrets or changes state itself.
+      - run: node scripts/production-clock.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          AFTER: ${{ inputs.after }}
