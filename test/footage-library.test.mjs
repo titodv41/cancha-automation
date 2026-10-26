@@ -50,3 +50,8 @@ test('reviewed rejects are excluded by id',()=>{
  assert.equal(chooseClips({segments:[{footage:'q',seconds:1}]},clips)[0].id,'ok');
 });
 function await_import_fs(){return globalThis.__fs||(globalThis.__fs=process.getBuiltinModule('node:fs'));}
+test('skips club marketing graphics with baked-in text but keeps camera photos',()=>{
+ const h='www.tampabaysunfc.com',u=n=>`"https://${h}/wp-content/uploads/sites/90/2026/10/${n}"`;
+ const html=[u('TBSFCPlayerAnnouncementWebHero1921x1020.jpg'),u('RowdiesFirstRoundPlayoffsSocialINDY1920x1080.jpg'),u('Match-Recap-Large-3.jpeg'),u('CJW00897.jpg'),u('VCO0919.jpg')].join(' ');
+ assert.deepEqual(clubMediaUrls(html,h).map(x=>x.split('/').pop()),['CJW00897.jpg','VCO0919.jpg']);
+});
