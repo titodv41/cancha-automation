@@ -60,3 +60,41 @@ jobs:
             private-data/meme-reels/report.json
             private-data/footage/library.json
           retention-days: 14
+  # Hosts approved Reels on Framer and imports them into the encrypted posting queue. The existing
+  # publisher posts them in the 12:30 / 6 PM slots under its usual caps, spacing and media-mix rules.
+  queue:
+    needs: render
+    if: github.event_name == 'workflow_dispatch' || vars.CANCHA_AUTOMATION_BACKEND == 'github'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    concurrency:
+      group: cancha-private-automation
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: meme-reels-${{ github.run_id }}
+          path: private-data/
+      - name: Host approved Reels
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+        run: node scripts/prepare-short-reels.mjs
+      - name: Import into the posting queue
+        run: |
+          if [ "$(node -p "require('./private-data/short-reels-ready.json').length" 2>/dev/null || echo 0)" = "0" ]; then echo "Nothing to import"; exit 0; fi
+          node scripts/github-instagram.mjs refresh-short-reels
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
+          CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}

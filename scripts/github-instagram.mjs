@@ -1,3 +1,4 @@
+import {shortReelAllowed} from '../server/short-reels.mjs';
 import {contentReadiness} from '../server/content-readiness.mjs';
 import {verifyProductAssets,refreshProductEditorial} from '../server/product-editorial.mjs';
 import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
@@ -25,7 +26,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','connect-insights-user','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','connect-insights-user','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','refresh-short-reels','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -64,6 +65,16 @@ try{
   for(const draft of drafts){let valid=false;try{valid=await confirmPostSource(draft)===true}catch{}if(!valid)throw Error('Reviewed local story blocked: '+draft.id)}
   for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
   state.localStoriesRevision='2026-10-22';await checkpoint();
+ }
+ if(mode==='refresh-short-reels'){
+  // Rendered short Reels hosted on Framer by scripts/prepare-short-reels.mjs. Only policy-approved recipes are imported.
+  if(!localPolicy.shortReelsEnabled)throw Error('Short Reels are not enabled in the editorial policy');
+  const drafts=JSON.parse(await readFile(process.env.SHORT_REELS_FILE||'private-data/short-reels-ready.json'));
+  if(!drafts.length||drafts.length>10||drafts.some(x=>!approvedOriginalCreative(x)||!shortReelAllowed(x,localPolicy)))throw Error('Short Reels are missing, unapproved or stale');
+  // Check the entire batch before any queue write; never replace owner approvals or receipts.
+  for(const draft of drafts)await verifyReelAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});
+  for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
+  state.shortReelsRefresh={importedAt:new Date().toISOString(),ids:drafts.map(d=>d.id)};await checkpoint();
  }
  if(mode==='refresh-photo-stories'){
   const drafts=JSON.parse(await readFile('content/instagram/photo-editorial-ready.json'));
@@ -117,7 +128,7 @@ try{
   phase='growth-report';const growthDir='private-data/daily-opportunities/'+dateInNewYork(),dailyResult=JSON.parse(await readFile(growthDir+'/automation-result.json'));state.growth={...JSON.parse(await readFile(growthDir+'/report.json','utf8')).growth,clubProfilesAdded:dailyResult.clubProfilesAdded||0,clubCandidatesRemaining:dailyResult.clubCandidatesRemaining||0,automationBlockers:dailyResult.blockers||[]};
   state.dailyPreparation={completedOn:dateInNewYork(),completedAt:new Date().toISOString(),opportunitiesStaged:dailyResult.staged||0,clubProfilesAdded:dailyResult.clubProfilesAdded||0,published:dailyResult.published===true,blockers:dailyResult.blockers||[]};
  }
- if(mode==='prepare'||mode==='replenish'||mode==='publish'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'||mode==='refresh-photo-stories'||mode==='refresh-product-posts'||mode==='refresh-motion-stories'){
+ if(mode==='prepare'||mode==='replenish'||mode==='publish'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'||mode==='refresh-photo-stories'||mode==='refresh-product-posts'||mode==='refresh-motion-stories'||mode==='refresh-short-reels'){
   const creativePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
   const launchNotPublished=state.localCreativeVersion==='cancha-local-v2'&&!db.prepare("SELECT id FROM instagram_queue WHERE id='cancha-local-discovery' AND status='Published'").get();
   phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null,editorialPolicy:creativePolicy});await checkpoint();
