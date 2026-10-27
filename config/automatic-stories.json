@@ -59,5 +59,7 @@
         }
       }
     ]
-  }
+  },
+  "captionOnlyWhenVoiceCapped": true,
+  "captionOnlyNote": "Oct 27: owner asked for more Reels from real club media. When the Free voice cap is reached, stories render as caption-only Reels (no narration) with the club credited in the caption; the cap and Free-only policy stay unchanged."
 }

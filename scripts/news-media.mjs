@@ -3,7 +3,8 @@ import{mkdir,writeFile}from'node:fs/promises';import{createHash}from'node:crypto
 const sha=b=>createHash('sha256').update(b).digest('hex');
 export async function prepareNewsMedia(entry,session){
  const root='video/public/generated/automatic-news';await mkdir(root,{recursive:true});const media=[],blocked=[];
- for(const[kind,urls]of[['clip',entry.clips],['photo',entry.photos]])for(const url of urls.slice(0,kind==='clip'?2:1)){
+ for(const[kind,urls]of[['clip',entry.clips],['photo',entry.photos]])for(const url of urls.slice(0,kind==='clip'?2:entry.clips.length?1:4)){// Photo-only stories rotate up to four official photos.
+
   try{
    const u=new URL(url);if(u.hostname!==new URL(entry.url).hostname||!u.pathname.startsWith('/wp-content/uploads/')||u.protocol!=='https:'||u.username||u.password)throw Error('Subject media origin changed');
    const b=await session.html(url,kind==='clip'?/video\/mp4/:/image\//,{maxBytes:kind==='clip'?40000000:15000000,timeoutMs:60000}),ext=kind==='clip'?'mp4':b[0]===137?'png':b[0]===255?'jpg':'webp',file=root+'/'+sha(Buffer.from(url)).slice(0,16)+'.'+ext;await writeFile(file,b);

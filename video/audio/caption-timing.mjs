@@ -28,3 +28,9 @@ export function captionGroups(words, maxWords = 4) {
   if (current.length) groups.push(current);
   return groups.map(words => ({start: words[0].start, end: words.at(-1).end, words}));
 }
+
+// Caption-only cut (no narration): each word holds for a comfortable reading pace, with a beat after each sentence.
+export function readingTimeline(script,start=.6){let t=start;return String(script).split(/\s+/).filter(Boolean).map(text=>{const d=Math.max(.3,.055*text.length+.12),w={text,start:+t.toFixed(3),end:+(t+d).toFixed(3)};t+=d+(/[.!?]$/.test(text)?.4:/[,;:]$/.test(text)?.15:0);return w;});}
+// On-screen text shows scores as digits ("two nil" is written for a voice): "two nil" → "2–0", "three all" → "3–3".
+const NUM={nil:0,zero:0,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
+export function captionText(script){return String(script).replace(/\b(zero|one|two|three|four|five|six|seven|eight|nine|ten) (nil|all|zero|one|two|three|four|five|six|seven|eight|nine|ten)\b/gi,(m,a,b)=>{const x=NUM[a.toLowerCase()],y=b.toLowerCase()==='all'?x:NUM[b.toLowerCase()];return x+'–'+y;});}
