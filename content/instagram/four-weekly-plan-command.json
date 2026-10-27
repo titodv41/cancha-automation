@@ -1,0 +1,15 @@
+{
+  "requestId": "cancha-four-weekly-20261027",
+  "action": "plan",
+  "authorized": true,
+  "ownerInstruction": "On October 27 the owner asked to test around four useful feed posts per week (comparisons, opportunity updates, local stories, parent/player guides) and to treat the cadence as a test, tracking saves, shares, website clicks, replies and useful inquiries. Configure one eligible feed slot at 18:00 New York on Sunday, Monday, Wednesday and Friday starting October 28. Keep source rechecks, receipts, caps and spacing; no paid ads, outreach or unsupported claims.",
+  "plan": {
+    "enabled": true,
+    "weekdays": [0, 1, 3, 5],
+    "localTime": "18:00",
+    "localTimes": ["18:00"],
+    "startDate": "2026-10-28",
+    "sourceTypes": ["brand", "opportunity", "news"],
+    "formats": ["feed"]
+  }
+}

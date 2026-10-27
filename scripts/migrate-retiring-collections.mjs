@@ -32,22 +32,31 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  const {withProject}=await import('./project-session.mjs'),{verifyReleaseContract}=await import('./discovery-release-contract.mjs');
  await withProject(async f=>{
   await verifyReleaseContract(f);
+  // A previous interrupted run may have left only this phase's own file and page unpublished; anything else stops here.
+  const ownFile=(await f.getCodeFiles()).find(x=>x.name==='CanchaStaticPage.tsx'),ownPage=(await f.getNodesWithType('WebPageNode')).find(x=>x.path==='/migration-preview');
   const initial=await f.agent.publish({action:'preview'});
-  if(initial.status!=='ready'||initial.changes?.length||initial.errors?.length||initial.stagingEnabled)throw Error('Existing pending project changes must be reviewed first');
+  if(initial.status!=='ready'||initial.errors?.length||initial.stagingEnabled||(initial.changes||[]).some(ch=>!(ch.type==='CodeFile'&&ch.nodeId===ownFile?.id||['WebPage','LayoutTemplate'].includes(ch.type)&&ch.nodeId===ownPage?.id)))throw Error('Existing pending project changes must be reviewed first');
   const {items,counts}=await collect(f);
-  const content=injectItems(await readFile('framer/CanchaStaticPage.tsx','utf8'),items),errors=await f.typecheckCode('CanchaStaticPage.tsx',content);
+  const content=injectItems(await readFile('framer/CanchaStaticPage.tsx','utf8'),items),session='cancha-static-'+Date.now();
+  // Type-check runs per session: load the live shared UI file first so its import resolves.
+  const ui=(await f.getCodeFiles()).find(x=>x.name==='CanchaUI.tsx');if(!ui)throw Error('CanchaUI.tsx missing');
+  const uiErrors=await f.typecheckCode('CanchaUI.tsx',ui.content,undefined,session);if(uiErrors.length)throw Error('Live CanchaUI.tsx has type errors');
+  const errors=await f.typecheckCode('CanchaStaticPage.tsx',content,undefined,session);
   if(errors.length)throw Error('Typecheck failed: '+JSON.stringify(errors).slice(0,800));
   let file=(await f.getCodeFiles()).find(x=>x.name==='CanchaStaticPage.tsx');if(file){if(file.content!==content)await file.setFileContent(content)}else file=await f.createCodeFile('CanchaStaticPage.tsx',content);
   let page=(await f.getNodesWithType('WebPageNode')).find(x=>x.path==='/migration-preview');
   if(!page){const r=await f.agent.applyChanges('+WebPageNode migration_page name="Migration preview" path="/migration-preview"',{pagePath:'/'});if(r.errors||r.parseErrors)throw Error(JSON.stringify(r).slice(0,500));
    page=(await f.getNodesWithType('WebPageNode')).find(x=>x.path==='/migration-preview');}
-  let snap=await f.agent.serialize({id:page.id,depth:4},{pagePath:'/migration-preview'}),desktop=snap.children?.find(x=>x.name==='Desktop')||snap.children?.[0];
-  const commands=[`SET ${page.id} layoutTemplate="ZuWkzhOX9"`];
-  if(!desktop){commands.push(`+FrameNode mp_desktop parent="${page.id}" name="Desktop" width="1200px" height="auto" layout="stack" stackDirection="vertical"`);desktop={id:'mp_desktop'};}
-  if(!desktop.children?.some(x=>x.name==='Static content'))commands.push(`+ComponentInstanceNode mp_content parent="${desktop.id}" component="codeFile/${file.id}:default" name="Static content" width="1fr" height="auto" $control__mode="all"`);
-  let r=await f.agent.applyChanges(commands.join('\n'),{pagePath:'/migration-preview'});if(r.errors||r.parseErrors)throw Error(JSON.stringify(r).slice(0,500));
-  snap=await f.agent.serialize({id:page.id,depth:4},{pagePath:'/migration-preview'});desktop=snap.children.find(x=>x.name==='Desktop')||snap.children[0];
-  if(!snap.children.some(x=>x.name==='Phone')){r=await f.agent.applyChanges(`CREATE_VARIANT mp_phone from="${desktop.id}"\nSET mp_phone name="Phone" width="390px" left="1800px" top="0px"`,{pagePath:'/migration-preview'});if(r.errors||r.parseErrors)throw Error(JSON.stringify(r).slice(0,500));}
+  const apply=async cmd=>{const r=await f.agent.applyChanges(cmd,{pagePath:'/migration-preview'});if(r.errors||r.parseErrors)throw Error(JSON.stringify(r).slice(0,600));return r;};
+  const read=async()=>f.agent.serialize({id:page.id,depth:4},{pagePath:'/migration-preview'});
+  // One change per call, using the real IDs Framer returns (temporary IDs do not resolve across lines).
+  await apply(`SET ${page.id} layoutTemplate="ZuWkzhOX9"`);
+  let snap=await read();console.log(JSON.stringify({previewPage:{id:snap.id,type:snap.type,children:(snap.children||[]).map(c=>({id:c.id,type:c.type,name:c.name}))}}));
+  let desktop=(snap.children||[]).find(x=>x.type==='FrameNode'&&x.name==='Desktop')||(snap.children||[]).find(x=>x.type==='FrameNode');
+  if(!desktop){const r=await apply(`+FrameNode mp_desktop parent="${page.id}" name="Desktop" width="1200px" height="auto" layout="stack" stackDirection="vertical"`);desktop={id:r.renamedIds?.mp_desktop,children:[]};if(!desktop.id)throw Error('Desktop frame not created');}
+  if(!desktop.children?.some(x=>x.name==='Static content'))await apply(`+ComponentInstanceNode mp_content parent="${desktop.id}" component="codeFile/${file.id}:default" name="Static content" width="1fr" height="auto" $control__mode="all"`);
+  snap=await read();
+  if(!snap.children?.some(x=>x.name==='Phone')){const d=snap.children.find(x=>x.type==='FrameNode'&&x.name==='Desktop')||snap.children.find(x=>x.type==='FrameNode');await apply(`CREATE_VARIANT mp_phone from="${d.id}"\nSET mp_phone name="Phone" width="390px" left="1800px" top="0px"`);}
   const preview=await f.agent.publish({action:'preview'});
   if(preview.status!=='ready'||preview.errors?.length||preview.stagingEnabled)throw Error('Publication preview needs review');
   for(const ch of preview.changes||[]){if(ch.type==='CodeFile'&&ch.nodeId===file.id)continue;if(['WebPage','LayoutTemplate'].includes(ch.type)&&ch.nodeId===page.id)continue;throw Error('Unrelated pending change; stopped: '+ch.type+' '+ch.name);}

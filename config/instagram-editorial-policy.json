@@ -27,6 +27,7 @@
   ],
   "curatedDraftIds": [
     "compare-florida-id-camps-dec-2026",
+    "compare-thanksgiving-camps-2026",
     "guide-florida-womens-matchdays-20261023",
     "guide-fkk-first-season-20261023",
     "guide-rowdies-al-lang-20261023",
@@ -60,7 +61,8 @@
   "shortReelsNote": "Oct 26 (later): owner rejected Reels built on stock footage (Pixabay/Mixkit/Commons) as generic. Only Reels made from real footage (official club media) may post; stock-footage recipes stay rendered but unapproved.",
   "comparisonCarouselsEnabled": true,
   "approvedComparisonCarouselIds": [
-    "florida-id-camps-dec-2026"
+    "florida-id-camps-dec-2026",
+    "thanksgiving-camps-2026"
   ],
   "comparisonCarouselsNote": "Oct 27: owner approved the type-led ID camp comparison carousel (no per-slide photos). Facts come from each organizer page and expire after 7 days or once an event date passes."
 }
