@@ -17,3 +17,7 @@ test('the next link never re-fires the event its predecessor just handled',()=>{
  assert.equal(upcoming(new Date('2026-10-26T22:02:30Z'),{after:'2026-10-26T22:02:00.000Z'})[0].at,'2026-10-26T22:20:00.000Z');
  assert.deepEqual(plan(new Date('2026-10-26T16:15:00Z'),320,'2026-10-26T16:10:00.000Z').map(e=>e.at.slice(11,16)),['16:19','16:32','16:50','17:23']);
 });
+test('a cursor never revives events that are more than an hour old',()=>{
+ assert.equal(upcoming(new Date('2026-10-27T03:22:13Z'),{after:'2026-10-26T22:02:00.000Z'})[0].at,'2026-10-27T13:23:00.000Z');
+ assert.equal(upcoming(new Date('2026-10-26T22:40:00Z'),{after:'2026-10-26T22:02:00.000Z'})[0].at,'2026-10-26T22:20:00.000Z');
+});

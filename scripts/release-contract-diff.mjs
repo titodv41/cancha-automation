@@ -1,0 +1,11 @@
+import{readFile}from'node:fs/promises';import{readReleaseContract}from'./discovery-release-contract.mjs';import{withProject}from'./project-session.mjs';
+// Read-only: lists which reviewed website parts (code files, page scenes, shared text styles) no longer match
+// config/discovery-release-contract.json and prints changed text styles (fonts and sizes are public design data).
+const expected=JSON.parse(await readFile('config/discovery-release-contract.json','utf8'));
+await withProject(async f=>{
+ const actual=await readReleaseContract(f),changed=kind=>Object.keys(expected[kind]||{}).filter(id=>actual[kind]?.[id]!==expected[kind][id]),added=kind=>Object.keys(actual[kind]||{}).filter(id=>!(id in (expected[kind]||{})));
+ const report={codeFiles:changed('codeFiles'),scenes:changed('scenes'),textStyles:changed('textStyles'),newTextStyles:added('textStyles')};
+ console.log(JSON.stringify(report,null,1));
+ const ids=new Set([...report.textStyles,...report.newTextStyles]);
+ for(const style of await f.getTextStyles())if(ids.has(style.id))console.log('Current text style '+style.id+':\n'+JSON.stringify(JSON.parse(JSON.stringify(style)),null,1));
+});
