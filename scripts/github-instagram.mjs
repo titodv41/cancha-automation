@@ -205,7 +205,7 @@ try{
   const mayPublish=canPublishFeed(all,readPlan(db));
   for(const row of all)if(['Approved','Preparing'].includes(row.status)&&expiredPublishingDay(row.scheduled_at))db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Scheduled New York day ended; choose fresh content again' WHERE id=?").run(row.id);
   await checkpoint();
-  const publisher=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
+  const publisher=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,collabInvites:localPolicy.collabInvitesEnabled===true,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   // A runner killed after this checkpoint leaves Publishing, never a retryable approval.
   const due=db.prepare("SELECT content FROM instagram_queue WHERE status IN ('Approved','Preparing') AND scheduled_at<=? ORDER BY scheduled_at LIMIT 1").get(new Date().toISOString());const mixAllowed=!due||satisfiesDailyMediaMix(JSON.parse(due.content),db.prepare('SELECT * FROM instagram_queue').all(),localPolicy);if(mayPublish&&mixAllowed&&due&&JSON.parse(due.content).visualEvidence?.kind==='product-demo')await verifyProductAssets(JSON.parse(due.content),localPolicy,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});if(mayPublish&&mixAllowed)await dispatchDue(db,publisher,{limit:1,verifySource:confirmPostSource,checkpoint});await checkpoint();
  }

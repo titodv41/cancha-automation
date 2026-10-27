@@ -64,3 +64,14 @@ test('photo-first policy schedules a checked carousel and excludes otherwise val
  assert.deepEqual(result.scheduled.map(s=>s.id),[r.id]);assert.equal(q.db.prepare("SELECT status FROM instagram_queue WHERE id='a-badge'").get().status,'Draft');
  }finally{q.close()}
 });
+test('collab invites go on the parent only when enabled, and a refused invite retries without it',async()=>{
+ const run=async({collabInvites,refuse,collaborators=['tampabayrowdies']})=>{const graph=[];const p=metaPublisher({token:'t',accountId:'123',version:'v26.0',collabInvites,fetchImpl:async(url,options)=>{
+  if(String(url).startsWith('https://framerusercontent.com'))return new Response(bytes,{headers:{'content-type':'image/jpeg'}});
+  const params=Object.fromEntries(options.body);graph.push(params);if(refuse&&params.collaborators)return Response.json({error:{code:100,message:'Invalid collaborator'}},{status:400});
+  return Response.json({id:params.media_type==='CAROUSEL'?'parent':'child-'+graph.length});}});
+  assert.equal(await p.create({...row(),collaborators}),'parent');return graph;};
+ let g=await run({collabInvites:true});assert.equal(g.at(-1).collaborators,'["tampabayrowdies"]');assert(g.slice(0,-1).every(c=>!c.collaborators));
+ g=await run({collabInvites:false});assert(g.every(c=>!c.collaborators));
+ g=await run({collabInvites:true,refuse:true});assert.equal(g.at(-2).collaborators,'["tampabayrowdies"]');assert.equal(g.at(-1).collaborators,undefined);assert.equal(g.at(-1).media_type,'CAROUSEL');
+ g=await run({collabInvites:true,collaborators:['Bad Handle!','a','b','c']});assert(g.every(c=>!c.collaborators));
+});
