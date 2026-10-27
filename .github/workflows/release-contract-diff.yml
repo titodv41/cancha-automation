@@ -1,6 +1,12 @@
-name: Cancha website release contract diff
+name: Cancha website read-only reports
 on:
   workflow_dispatch:
+    inputs:
+      script:
+        description: 'Read-only Framer report to run'
+        type: choice
+        default: release-contract-diff
+        options: [release-contract-diff, inspect-cms-structure]
 permissions:
   contents: read
 jobs:
@@ -17,6 +23,6 @@ jobs:
           cache: npm
       - run: npm ci
       # Read-only toward Framer: reports what changed since the last reviewed website release.
-      - run: node scripts/release-contract-diff.mjs
+      - run: node scripts/${{ inputs.script || 'release-contract-diff' }}.mjs
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
