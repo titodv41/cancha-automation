@@ -8,7 +8,7 @@ const css=`.csp{padding:28px 0 60px}.csp-back{font-size:12px;color:#66765e!impor
 .csp-kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5f7457;margin:0 0 10px;font-weight:700}
 .csp h1{font-size:clamp(38px,5vw,62px);margin:0 0 16px;overflow-wrap:anywhere}.csp-summary{font-size:16px;line-height:1.75;color:#4c6350;max-width:720px;margin:0 0 26px}
 .csp-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;color:#63745b;margin:0 0 24px}.csp-figure{margin:0 0 30px;max-width:900px}
-.csp-figure img{width:100%;max-height:520px;object-fit:cover;border-radius:14px;display:block;background:#edf2e6}.csp-figure figcaption{font-size:11px;color:#7a856f;margin-top:8px}
+.csp-figure img{width:100%;max-height:520px;object-fit:cover;border-radius:14px;display:block;background:#edf2e6}.csp-logo img{object-fit:contain;max-height:240px;padding:24px}.csp-figure figcaption{font-size:11px;color:#7a856f;margin-top:8px}
 .csp-body{font-size:15px;line-height:1.85;max-width:720px;color:#25382c}.csp-body h2,.csp-body h3{margin:30px 0 10px}.csp-body a{color:#173f30}
 .csp-section{max-width:720px;margin:28px 0 0}.csp-section h2{font-size:24px;margin:0 0 10px}.csp-note{font-size:12px;color:#6b7a62;max-width:720px;line-height:1.6}
 .csp-btn{display:inline-block;margin-top:30px;background:#173f30;color:#fff!important;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:700;font-size:14px}
@@ -25,7 +25,7 @@ function Detail({i}:any){const[href,label]=back[i.kind]
   {i.credentialsReviewed&&<span className="csp-badge">Credentials reviewed</span>}
   {i.meta?.length>0&&<p className="csp-meta">{i.meta.map((m:string)=><span key={m}>{m}</span>)}</p>}
   {i.summary&&<p className="csp-summary">{i.summary}</p>}
-  {i.image&&<figure className="csp-figure"><img src={i.image} alt={i.imageAlt||''}/>{i.credit&&<figcaption>{i.creditLink?<a href={i.creditLink} rel="noopener" target="_blank">{i.credit}</a>:i.credit}</figcaption>}</figure>}
+  {i.image&&<figure className={"csp-figure"+(i.kind==='provider'?' csp-logo':'')}><img src={i.image} alt={i.imageAlt||''}/>{i.credit&&<figcaption>{i.creditLink?<a href={i.creditLink} rel="noopener" target="_blank">{i.credit}</a>:i.credit}</figcaption>}</figure>}
   {i.note&&<p className="csp-note">{i.note}</p>}
   {i.body&&<div className="csp-body" dangerouslySetInnerHTML={{__html:i.body}}/>}
   {(i.sections||[]).map((s:any)=><section className="csp-section" key={s.heading}><h2>{s.heading}</h2><div className="csp-body" dangerouslySetInnerHTML={{__html:s.html}}/></section>)}
