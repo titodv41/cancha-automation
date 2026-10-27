@@ -20,6 +20,8 @@ const css=`.chb{padding:30px 0 60px}.chb-k{font-size:11px;letter-spacing:.08em;t
 @media(max-width:650px){.chb h1{font-size:40px}.chb-intro{font-size:14px}.chb h2{font-size:23px}}`
 const miles=(a:number,b:number,c:number,d:number)=>{const r=(x:number)=>x*Math.PI/180,h=Math.sin(r(c-a)/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(r(d-b)/2)**2;return 7918*Math.asin(Math.sqrt(h))}
 const nice=(s:string)=>{try{return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'))}catch{return s}}
+const decode=(t:string)=>String(t||'').replace(/&rsquo;|&#8217;|&#x27;|&#39;/g,'’').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&ndash;/g,'–')
+const shortAges=(i:any)=>{const a=i.ageEvidence?.label||i.ages||'';return a&&a.length<=40&&!/not established|confirm|must be/i.test(a)?a:''}
 const fee=(c:string)=>!c||/not established|confirm|vary|varies|contact|separate/i.test(c)&&!/[\$]\d/.test(c)?'Ask about fees':c.length>60?'See program fees':c
 /** @framerSupportedLayoutWidth any @framerSupportedLayoutHeight auto */
 export default function CanchaHub({hub='orlando'}:any){
@@ -30,8 +32,8 @@ export default function CanchaHub({hub='orlando'}:any){
  const opps=items.filter((i:any)=>i.entity==='opportunity'&&current(i)&&(hub!=='college'||i.kind==='College Opportunity')).sort((a:any,b:any)=>(a.start||'9999').localeCompare(b.start||'9999'))
  const clubs=hub==='college'?[]:items.filter((i:any)=>i.entity==='profile'&&i.kind==='Club').sort((a:any,b:any)=>a.name.localeCompare(b.name))
  const places=hub==='college'?[]:items.filter((i:any)=>i.entity==='profile'&&i.kind!=='Club')
- const cities=new Set(items.filter((i:any)=>i.entity!=='career').map((i:any)=>i.city)).size
- const card=(i:any)=><a className="chb-card" key={i.href} href={i.href}>{i.entity==='opportunity'&&<span className="chb-date">{i.start?nice(i.start)+(i.end&&i.end!==i.start?' – '+nice(i.end):''):'Dates on official page'} · {i.kind}</span>}<b>{i.name}</b><span>{[i.city,i.entity==='opportunity'?fee(i.cost):i.ages].filter(Boolean).join(' · ')}</span>{i.checkedOn&&<span>Checked {nice(i.checkedOn)}</span>}</a>
+ const cities=new Set([...opps,...clubs,...places].map((i:any)=>i.city)).size
+ const card=(i:any)=><a className="chb-card" key={i.href} href={i.href}>{i.entity==='opportunity'&&<span className="chb-date">{i.start?nice(i.start)+(i.end&&i.end!==i.start?' – '+nice(i.end):''):'Dates on official page'} · {i.kind}</span>}<b>{decode(i.name)}</b><span>{[i.city,i.entity==='opportunity'?fee(i.cost):shortAges(i)].filter(Boolean).join(' · ')}</span>{i.checkedOn&&<span>Checked {nice(i.checkedOn)}</span>}</a>
  return <main className="cancha-v2 chb"><CanchaStyle css={ui+css}/><div className="cv-wrap">
   <p className="chb-k">{h.kicker}</p><h1>{h.title}</h1><p className="chb-intro">{h.intro}</p>
   <div className="chb-stats"><div className="chb-stat"><b>{opps.length}</b>current {hub==='college'?'college events':'tryouts, camps & events'}</div>{hub!=='college'&&<div className="chb-stat"><b>{clubs.length}</b>clubs & academies</div>}{hub!=='college'&&places.length>0&&<div className="chb-stat"><b>{places.length}</b>places & pickup</div>}<div className="chb-stat"><b>{cities}</b>cities</div></div>
