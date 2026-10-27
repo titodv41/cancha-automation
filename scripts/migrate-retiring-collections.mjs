@@ -35,7 +35,11 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
   const initial=await f.agent.publish({action:'preview'});
   if(initial.status!=='ready'||initial.changes?.length||initial.errors?.length||initial.stagingEnabled)throw Error('Existing pending project changes must be reviewed first');
   const {items,counts}=await collect(f);
-  const content=injectItems(await readFile('framer/CanchaStaticPage.tsx','utf8'),items),errors=await f.typecheckCode('CanchaStaticPage.tsx',content);
+  const content=injectItems(await readFile('framer/CanchaStaticPage.tsx','utf8'),items),session='cancha-static-'+Date.now();
+  // Type-check runs per session: load the live shared UI file first so its import resolves.
+  const ui=(await f.getCodeFiles()).find(x=>x.name==='CanchaUI.tsx');if(!ui)throw Error('CanchaUI.tsx missing');
+  const uiErrors=await f.typecheckCode('CanchaUI.tsx',ui.content,undefined,session);if(uiErrors.length)throw Error('Live CanchaUI.tsx has type errors');
+  const errors=await f.typecheckCode('CanchaStaticPage.tsx',content,undefined,session);
   if(errors.length)throw Error('Typecheck failed: '+JSON.stringify(errors).slice(0,800));
   let file=(await f.getCodeFiles()).find(x=>x.name==='CanchaStaticPage.tsx');if(file){if(file.content!==content)await file.setFileContent(content)}else file=await f.createCodeFile('CanchaStaticPage.tsx',content);
   let page=(await f.getNodesWithType('WebPageNode')).find(x=>x.path==='/migration-preview');
