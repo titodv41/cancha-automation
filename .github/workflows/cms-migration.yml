@@ -6,7 +6,7 @@ on:
         description: 'Migration phase (docs/cms-consolidation-plan-2026-10-25.md)'
         type: choice
         default: preview
-        options: [preview]
+        options: [preview, cutover]
 permissions:
   contents: write
 concurrency:
@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
       # Logs carry counts and checks only, never item content.
       - name: Migrate (${{ inputs.phase }})
-        run: node scripts/migrate-retiring-collections.mjs
+        run: node scripts/${{ inputs.phase == 'cutover' && 'cutover' || 'migrate' }}-retiring-collections.mjs
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
           PHASE: ${{ inputs.phase }}
