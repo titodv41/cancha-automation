@@ -1,8 +1,9 @@
 import {execFileSync} from 'node:child_process';
 import {rename, rm} from 'node:fs/promises';
 
-// Music-only cuts (no voice) peak high for their loudness: limit the peaks first, then normalize to -15 LUFS.
-const musicOnlyFilter=truePeakTargetDb=>`alimiter=limit=0.5:level=false,loudnorm=I=-15:TP=${truePeakTargetDb}:LRA=8`;
+// Music-only cuts (no voice) peak high for their loudness: limit the peaks, normalize to -15 LUFS, then limit
+// again, because loudnorm's own peak control is not reliable on every ffmpeg build (6.0 static overshot to +0.3 dBTP).
+const musicOnlyFilter=truePeakTargetDb=>`alimiter=limit=0.5:level=false,loudnorm=I=-15:TP=${truePeakTargetDb}:LRA=8,aformat=sample_rates=48000:channel_layouts=stereo,alimiter=limit=${Math.pow(10,(truePeakTargetDb-1)/20).toFixed(3)}:level=false`;
 
 // Master the encoded delivery, leaving extra headroom for AAC reconstruction.
 // A source WAV peak is not the same as the final file's true peak.
