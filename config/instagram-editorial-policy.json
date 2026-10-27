@@ -28,6 +28,8 @@
   "curatedDraftIds": [
     "compare-florida-id-camps-dec-2026",
     "compare-thanksgiving-camps-2026",
+    "reel-compare-thanksgiving-camps-2026",
+    "reel-compare-florida-id-camps-dec-2026",
     "guide-florida-womens-matchdays-20261023",
     "guide-fkk-first-season-20261023",
     "guide-rowdies-al-lang-20261023",
@@ -64,5 +66,10 @@
     "florida-id-camps-dec-2026",
     "thanksgiving-camps-2026"
   ],
-  "comparisonCarouselsNote": "Oct 27: owner approved the type-led ID camp comparison carousel (no per-slide photos). Facts come from each organizer page and expire after 7 days or once an event date passes."
+  "comparisonCarouselsNote": "Oct 27: owner approved the type-led ID camp comparison carousel (no per-slide photos). Facts come from each organizer page and expire after 7 days or once an event date passes.",
+  "approvedComparisonReelIds": [
+    "florida-id-camps-dec-2026",
+    "thanksgiving-camps-2026"
+  ],
+  "comparisonReelsNote": "Oct 27 (later): owner asked for at least 3 Reels a week ('the more content the better'). Approved comparison carousels may also post as type-and-music vertical Reels with the same facts, sources, 7-day window and publication rechecks, never within 36 hours of the same comparison."
 }

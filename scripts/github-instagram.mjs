@@ -1,5 +1,5 @@
 import {shortReelAllowed} from '../server/short-reels.mjs';
-import {comparisonCarouselAllowed} from '../server/comparison-carousels.mjs';
+import {comparisonCarouselAllowed,comparisonReelAllowed} from '../server/comparison-carousels.mjs';
 import {contentReadiness} from '../server/content-readiness.mjs';
 import {verifyProductAssets,refreshProductEditorial} from '../server/product-editorial.mjs';
 import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
@@ -68,12 +68,12 @@ try{
   state.localStoriesRevision='2026-10-22';await checkpoint();
  }
  if(mode==='refresh-comparison-carousels'){
-  // Type-led comparison carousels hosted on Framer by scripts/prepare-comparison-carousels.mjs. Only policy-approved ones are imported.
+  // Type-led comparison carousels and their Reel versions hosted on Framer by scripts/prepare-comparison-carousels.mjs. Only policy-approved ones are imported.
   if(!localPolicy.comparisonCarouselsEnabled)throw Error('Comparison carousels are not enabled in the editorial policy');
   const drafts=JSON.parse(await readFile(process.env.COMPARISON_CAROUSELS_FILE||'private-data/comparison-carousels-ready.json'));
-  if(!drafts.length||drafts.length>10||drafts.some(x=>!approvedOriginalCreative(x)||!comparisonCarouselAllowed(x,localPolicy)))throw Error('Comparison carousels are missing, unapproved or stale');
+  if(!drafts.length||drafts.length>10||drafts.some(x=>!approvedOriginalCreative(x)||!comparisonCarouselAllowed(x,localPolicy)&&!comparisonReelAllowed(x,localPolicy)))throw Error('Comparison carousels are missing, unapproved or stale');
   // Check the entire batch before any queue write; never replace owner approvals or receipts.
-  for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Organizer page changed: '+draft.id);await verifyCarouselAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});}
+  for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Organizer page changed: '+draft.id);await (draft.reel?verifyReelAssets:verifyCarouselAssets)(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});}
   for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
   state.comparisonCarouselsRefresh={importedAt:new Date().toISOString(),ids:drafts.map(d=>d.id)};await checkpoint();
  }
