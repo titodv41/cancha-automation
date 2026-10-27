@@ -3,11 +3,11 @@ import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';import {join,
 // with the brand fonts: cover, one slide per compared item, a side-by-side table and a checklist.
 const C={forest:'#103f32',cream:'#f5f3e9',lime:'#d7ef86',orange:'#f55b32',ink:'#0b2e24'};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const css=`@font-face{font-family:Display;src:url(display.woff2)}
+export const cssFor=(H=1350)=>`@font-face{font-family:Display;src:url(display.woff2)}
 @font-face{font-family:Cond;src:url(condensed-700.woff2);font-weight:700}
 @font-face{font-family:Cond;src:url(condensed-600.woff2);font-weight:600}
-*{margin:0;box-sizing:border-box}body{width:1080px;height:1350px;overflow:hidden;font-family:Cond;font-weight:700}
-.s{position:relative;width:1080px;height:1350px;padding:64px 72px;display:flex;flex-direction:column}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:${H}px;overflow:hidden;font-family:Cond;font-weight:700}
+.s{position:relative;width:1080px;height:${H}px;padding:${H>1500?'300px 72px 470px':'64px 72px'};display:flex;flex-direction:column}
 .top{display:flex;justify-content:space-between;align-items:center;font-size:40px}.mark{font-family:Display;font-size:58px;letter-spacing:1px}
 h1{font-family:Display;line-height:.9;text-transform:uppercase;letter-spacing:-1px}.kick{font-size:44px;margin-bottom:18px}
 .chips{display:flex;gap:18px;flex-wrap:wrap}.chip{border-radius:20px;padding:22px 30px;font-size:30px;font-weight:600;line-height:1.15}.chip b{display:block;font-size:48px;font-weight:700}
@@ -48,7 +48,7 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1350}}),results=[];
  try{for(const r of carousels.filter(c=>!only.length||only.includes(c.id))){const files=[];
   for(const [i,s] of slides(r).entries()){const html=join(out,`${r.id}-${i+1}.html`),jpg=join(out,`${r.id}-${i+1}.jpg`);
-   await writeFile(html,`<!doctype html><meta charset=utf-8><style>${css}</style><body>${s.html}</body>`);
+   await writeFile(html,`<!doctype html><meta charset=utf-8><style>${cssFor()}</style><body>${s.html}</body>`);
    await page.goto(pathToFileURL(resolve(html)).href);await page.evaluate(()=>document.fonts.ready);
    if(!await page.evaluate(()=>document.fonts.check('96px Display')&&document.fonts.check('700 40px Cond')&&document.fonts.check('600 40px Cond')))throw Error('Brand fonts failed to load');
    await page.screenshot({path:jpg,type:'jpeg',quality:92});files.push({file:jpg,altText:s.alt.slice(0,1000)});}

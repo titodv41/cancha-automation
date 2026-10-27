@@ -11,7 +11,7 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,13 +27,30 @@ jobs:
           ONLY: ${{ inputs.only }}
           CHROME_CHANNEL: chrome
         run: node scripts/render-comparison-carousels.mjs
-      # Rendered slides and alt text only; no credentials or private data.
+      # Pinned static build, as in github-instagram.yml (apt mirrors stalled on the runner image, Oct 27).
+      - name: Install ffmpeg
+        run: |
+          if ! command -v ffmpeg >/dev/null; then
+            npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/ff" ffmpeg-static@5.2.0
+            mkdir -p "$HOME/bin"
+            ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffmpeg-static')")" "$HOME/bin/ffmpeg"
+            echo "$HOME/bin" >> "$GITHUB_PATH"
+          fi
+      - name: Render Reel versions
+        env:
+          ONLY: ${{ inputs.only }}
+          CHROME_CHANNEL: chrome
+        run: node scripts/render-comparison-reels.mjs
+      # Rendered slides, Reels and alt text only; no credentials or private data.
       - uses: actions/upload-artifact@v4
         with:
           name: comparison-carousels-${{ github.run_id }}
           path: |
             private-data/comparison-carousels/*.jpg
             private-data/comparison-carousels/report.json
+            private-data/comparison-reels/*.mp4
+            private-data/comparison-reels/*.jpg
+            private-data/comparison-reels/report.json
           retention-days: 14
   # Hosts approved carousels on Framer and imports them into the encrypted posting queue. The existing
   # publisher posts them in the 12:30 / 6 PM slots under its usual caps, spacing and source rechecks.
@@ -59,7 +76,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: comparison-carousels-${{ github.run_id }}
-          path: private-data/comparison-carousels/
+          path: private-data/
       - name: Host approved carousels
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
