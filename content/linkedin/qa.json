@@ -1,0 +1,143 @@
+{
+  "builtAt": "2026-10-27T17:07:08.363Z",
+  "contentCheckedOn": "2026-10-27",
+  "renderOnly": true,
+  "linkedinApplied": false,
+  "sourceLogoUnchanged": true,
+  "assets": [
+    {
+      "file": "exports/cancha-linkedin-logo-400.png",
+      "width": 400,
+      "height": 400,
+      "bytes": 14589,
+      "sha256": "9784bf2bd929c3e847222bda1e6490105b500f713d7c6ef6a197c2784f07c7d4",
+      "fontsLoaded": true,
+      "textBoundsPassed": true,
+      "textSizes": []
+    },
+    {
+      "file": "exports/cancha-linkedin-cover-1512x256.png",
+      "width": 1512,
+      "height": 256,
+      "bytes": 27915,
+      "sha256": "63ea5c1ff43bc4c02f4788e5bea9595830f4d394d9c96637f9a8dd6a90d489fc",
+      "fontsLoaded": true,
+      "textBoundsPassed": true,
+      "textSizes": [
+        75,
+        38
+      ]
+    },
+    {
+      "file": "exports/post-01-introducing-cancha.png",
+      "width": 1200,
+      "height": 627,
+      "bytes": 52290,
+      "sha256": "88dec26a0ef2e47b56ac745f8336e2fd93d006360a4ef1147a02feaef1168f3e",
+      "fontsLoaded": true,
+      "textBoundsPassed": true,
+      "textSizes": [
+        144,
+        144,
+        45
+      ]
+    },
+    {
+      "file": "exports/post-02-local-soccer.png",
+      "width": 1200,
+      "height": 627,
+      "bytes": 59185,
+      "sha256": "c8937d7fba02070424aedc47d64018784612c70708bac4a35f3e75be007b7b7e",
+      "fontsLoaded": true,
+      "textBoundsPassed": true,
+      "textSizes": [
+        113,
+        113,
+        47
+      ]
+    },
+    {
+      "file": "exports/post-03-id-camp-comparison.png",
+      "width": 1200,
+      "height": 1500,
+      "bytes": 158037,
+      "sha256": "3ca68fb662410722cda075886d2f6d7bfee08804c812f79d27b3da80166b7fbe",
+      "fontsLoaded": true,
+      "textBoundsPassed": true,
+      "textSizes": [
+        132,
+        132,
+        39,
+        41,
+        57,
+        70,
+        39,
+        41,
+        57,
+        42,
+        39,
+        41,
+        57,
+        70,
+        40,
+        40,
+        38,
+        38
+      ]
+    }
+  ],
+  "textCounts": {
+    "tagline": 68,
+    "about": 816,
+    "founder": 366,
+    "posts": [
+      {
+        "id": "introducing-cancha",
+        "characters": 676
+      },
+      {
+        "id": "people-behind-local-soccer",
+        "characters": 610
+      },
+      {
+        "id": "december-id-camp-comparison",
+        "characters": 1095
+      }
+    ]
+  },
+  "coverCenterCropChecks": [
+    {
+      "width": 260,
+      "height": 100,
+      "allEssentialTextVisible": true,
+      "simulationOnly": true
+    },
+    {
+      "width": 320,
+      "height": 100,
+      "allEssentialTextVisible": true,
+      "simulationOnly": true
+    }
+  ],
+  "setupHub": {
+    "mobileOverflow": false,
+    "copyButtons": 16,
+    "aboutCopiedExactly": true,
+    "initialPosts": 3,
+    "status": "Prepared preview. No LinkedIn Page created or profile changes applied.",
+    "firstCopyButton": "Copied",
+    "externalRequests": 0,
+    "liveLinkedInVerified": false,
+    "all16CopyPayloadsMatchCanonical": true,
+    "all16NativeCopyEventsPassed": true
+  },
+  "validation": {
+    "existingRepositoryTests": {
+      "passed": 284,
+      "failed": 0
+    },
+    "javascriptSyntax": "passed",
+    "imageFormatsDimensionsAndHashes": "passed",
+    "liveLinkedInAccountValidation": "blocked: no authorized session"
+  }
+}

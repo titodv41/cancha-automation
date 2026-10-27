@@ -1,0 +1,137 @@
+{
+  "checkedOn": "2026-10-27",
+  "authenticatedLinkedInAccess": false,
+  "pageCreated": false,
+  "profileChanged": false,
+  "postsPublished": false,
+  "postsScheduled": false,
+  "identity": {
+    "targetProfile": "https://www.linkedin.com/in/jose-del-vecchio-80383a181/",
+    "evidence": "Owner supplied URL and confirmed August 2026 start; public profile returned HTTP 999. Signed-in account and existing entries were not verified."
+  },
+  "availability": {
+    "proposed": "https://www.linkedin.com/company/wearecancha/",
+    "publicStatus": 404,
+    "fallbacks": [
+      {
+        "url": "https://www.linkedin.com/company/canchasoccer/",
+        "publicStatus": 404
+      },
+      {
+        "url": "https://www.linkedin.com/company/wearecanchaflorida/",
+        "publicStatus": 404
+      }
+    ],
+    "conclusion": "Not publicly resolving. Availability, existing managed pages and drafts remain unverified until signed-in checks."
+  },
+  "website": {
+    "selected": "https://pioneering-friday-005497.framer.app/",
+    "httpStatus": 200,
+    "title": "Cancha | Find Soccer Clubs, Fields & Pickup in Florida",
+    "futureDomain": "https://wearecancha.com/",
+    "futureDomainResult": "Could not establish a working project website. Owner plans domain transition next week; no ownership/availability claim."
+  },
+  "platform": [
+    {
+      "url": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "title": "Image specifications for your LinkedIn Pages and Career Pages",
+      "httpStatus": 200,
+      "facts": [
+        "Company logo recommended 400 × 400, minimum 268 × 268.",
+        "Page cover 1512 × 256.",
+        "PNG or JPEG; maximum 3 MB.",
+        "Cropping varies by screen; keep essential information centered and away from edges."
+      ]
+    },
+    {
+      "url": "https://www.linkedin.com/help/linkedin/answer/a543852",
+      "title": "Create a LinkedIn Page",
+      "httpStatus": 200,
+      "facts": [
+        "Company Pages can be created for free.",
+        "Creation requires a LinkedIn account and authorization attestation.",
+        "Company, Showcase and Educational institution are different Page types."
+      ]
+    },
+    {
+      "url": "https://www.linkedin.com/help/linkedin/answer/a553289",
+      "title": "Create a LinkedIn Page best practices",
+      "httpStatus": 200,
+      "facts": [
+        "Check that no Page exists before creating one.",
+        "Employer association can take 14–30 days to appear on the Page.",
+        "URL validation must happen in the creation form; public 404 is not reservation."
+      ]
+    },
+    {
+      "url": "https://www.linkedin.com/help/linkedin/answer/a5970273",
+      "title": "Custom call-to-action options for your LinkedIn Page",
+      "httpStatus": 200,
+      "facts": [
+        "Visit website is an available CTA name.",
+        "On a free Page the CTA appears under More; prominent visibility is Premium."
+      ]
+    },
+    {
+      "url": "https://www.linkedin.com/help/linkedin/answer/a593695",
+      "title": "Manage your profile Experience section",
+      "httpStatus": 200,
+      "facts": [
+        "Experience can be added or edited.",
+        "Update my headline and Notify Network can affect profile/introduction and network visibility.",
+        "Use an accurate professional association; preserve unrelated roles."
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/industry-codes-v2",
+      "title": "Industry Codes V2",
+      "httpStatus": 200,
+      "facts": [
+        "Industry 3132: Internet Publishing, online-only content publishing.",
+        "Spectator Sports describes teams/clubs/live spectator events and certain participant services. Internet Publishing is the better fit for this discovery/editorial brand."
+      ]
+    }
+  ],
+  "fieldLimitStatus": "Actual current tagline/About field maxima and the organization type/size selectors could not be inspected without login. Copy character counts are recorded in qa.json; do not claim live form validation.",
+  "logo": "sources/brand-provenance.json proves the existing asset matches the exact live wordmark. No circular-C asset was authenticated or invented.",
+  "campClaims": [
+    {
+      "source": "https://floridakrazekrush.com/fkk-winter-idcamp-girls/",
+      "httpStatus": 200,
+      "facts": [
+        "Saturday December 12, 2026 at Free Kick Orlando.",
+        "Girls birth years 2011 to 2007; non-FKK players permitted.",
+        "$225 per player."
+      ],
+      "notClaimed": [
+        "Guaranteed roster places, outcomes, or a relationship with Cancha."
+      ]
+    },
+    {
+      "source": "https://usa-soccer.org/2026/10/the-usa-league-boys-soccer-id-camp/",
+      "httpStatus": 200,
+      "facts": [
+        "Boys ID camp December 13, 2026, 9:30 AM–12:30 PM, Tampa Bay Rowdies Training Facility.",
+        "$50 USA League players; $275 other players.",
+        "No age range stated on the checked page."
+      ],
+      "notClaimed": [
+        "Exact age eligibility or remaining spaces. The promotional scarcity statement is not repeated."
+      ]
+    },
+    {
+      "source": "https://www.ucfsoccercamp.com/camps/winter-id-camp-12-20",
+      "httpStatus": 200,
+      "facts": [
+        "December 20, 2026 one-day camp, UCF campus in Orlando.",
+        "Grades 9–12 plus gap-year/junior-college transfers.",
+        "$195 field-player/goalkeeper one-day registration; lunch and housing not provided."
+      ],
+      "notClaimed": [
+        "Past-attending colleges as a confirmed current coaching list.",
+        "The separate $295 two-day goalkeeper option as the one-day camp price."
+      ]
+    }
+  ],
+  "factualBasis": "Owner brief for founder/project stage, official LinkedIn documentation for platform guidance, actual current brand manifest/live site for assets, and official organizer pages for camp facts. No outreach targets or private contact details included."
+}
