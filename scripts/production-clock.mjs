@@ -13,9 +13,10 @@ export const events=[
 // processing at Meta; later runs send it once it is FINISHED. They never create a second post.
 const nyDate=at=>new Intl.DateTimeFormat('sv-SE',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(at);
 // Upcoming events in order. A link continues strictly after the last event its predecessor handled;
-// a fresh start (manual or cron restart) also fires one that fell due in the last few minutes.
-export function upcoming(now=new Date(),{catchUpMinutes=5,days=2,after=null}={}){
- const floor=after?Date.parse(after)+1:now.getTime()-catchUpMinutes*60000;
+// a fresh start (manual or cron restart) also fires one that fell due in the last few minutes. Even with
+// a cursor, events more than an hour old are stale (Oct 27: a link fired 22:20/22:50 publish at 23:22).
+export function upcoming(now=new Date(),{catchUpMinutes=5,days=2,after=null,maxLateMinutes=60}={}){
+ const floor=after?Math.max(Date.parse(after)+1,now.getTime()-maxLateMinutes*60000):now.getTime()-catchUpMinutes*60000;
  const out=[];for(let offset=0;offset<days;offset++){const date=nyDate(new Date(now.getTime()+offset*86400000));
   for(const event of events){let at;try{at=Date.parse(newYorkSchedule(date+'T'+event.time));}catch{continue;}
    if(at>=floor)out.push({...event,at:new Date(at).toISOString()});}}
