@@ -30,7 +30,7 @@ export function slides(r){
   out.push({alt:`${it.label}, ${it.where}: ${it.title.join(' ')}. ${it.chips.map(([k,v])=>k+': '+v).join('. ')}. ${it.note}.`,html:`<div class="s" style="background:${bg};color:${fg}">${top(i+2,fg)}
   <div class="kick" style="margin-top:auto">${esc(it.where)}</div><div class="date">${esc(it.label)}</div>
   <h1 style="font-size:92px;margin:40px 0 50px;color:${head}">${it.title.map(esc).join('<br>')}</h1>${chips(it.chips,chipBg,chipFg)}
-  <div style="margin-top:auto"></div>${foot(it.note,host(it.sourceUrl),fg)}</div>`});});
+  <div style="margin-top:auto"></div>${foot(it.note,it.sourceLabel||host(it.sourceUrl),fg)}</div>`});});
  out.push({alt:'Side by side: '+r.items.map(it=>`${it.label}, ${it.row.city}, ${it.row.who} (${it.row.detail}), ${it.row.cost}`).join('; ')+'.',html:`<div class="s" style="background:${C.cream};color:${C.forest}">${top(n-1,C.forest)}
   <h1 style="font-size:120px;margin:70px 0 40px">Side by side</h1><table>${r.items.map(it=>`<tr><td><b>${esc(it.label)}</b>${esc(it.row.city)}</td><td><b>${esc(it.row.who)}</b><span class="sub">${esc(it.row.detail)}</span></td><td><b>${esc(it.row.cost)}</b></td></tr>`).join('')}</table>
   ${foot('Prices as listed by organizers on '+new Date(r.checkedOn+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'}),'Save this',C.forest)}</div>`});
