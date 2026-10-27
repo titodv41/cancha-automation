@@ -6,7 +6,7 @@ on:
         description: 'Read-only Framer report to run'
         type: choice
         default: release-contract-diff
-        options: [release-contract-diff, inspect-cms-structure, agent-dsl-reference, scan-retiring-references]
+        options: [release-contract-diff, inspect-cms-structure, agent-dsl-reference, scan-retiring-references, page-metadata-report]
 permissions:
   contents: read
 jobs:

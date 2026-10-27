@@ -1,0 +1,30 @@
+name: Cancha website update
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: 'Reviewed website change to publish'
+        type: choice
+        options: [site-seo-pass]
+permissions:
+  contents: read
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Publishes only the pages the script names; logs carry titles and checks, no private data.
+      - run: node scripts/${{ inputs.script }}.mjs
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
