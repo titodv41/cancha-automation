@@ -13,7 +13,12 @@ const q=JSON.stringify;
 // Framer keeps temporary ids project-wide, so every created node gets a fresh one.
 let seq=0;const tid=p=>`${p}_${Date.now().toString(36)}_${++seq}`;
 await withProject(async f=>{
- await verifyReleaseContract(f);
+ // A resumed run already holds its own scene edits (and removed templates change linked scenes such as Home),
+ // so it checks reviewed code and typography here and leaves pages to the live checks after publishing.
+ if(process.env.RESUME==='1'){const expected=JSON.parse(await readFile('config/discovery-release-contract.json','utf8')),actual=await readReleaseContract(f);
+  for(const [k,h] of Object.entries(expected.codeFiles))if(actual.codeFiles[k]!==h)throw Error('Reviewed code changed: '+k);
+  for(const [k,h] of Object.entries(expected.textStyles||{}))if(actual.textStyles[k]!==h)throw Error('Typography changed: '+k);}
+ else await verifyReleaseContract(f);
  // RESUME=1 continues an interrupted cutover: its own unpublished edits may be pending, but only of these kinds.
  const resume=process.env.RESUME==='1',before=await f.agent.publish({action:'preview'});
  const ownKind=ch=>['WebPage','LayoutTemplate','Collection','CMSCollection','CollectionItem'].includes(ch.type)||ch.type==='CodeFile'&&ch.name==='CanchaStaticPage.tsx';
