@@ -6,6 +6,8 @@ await withProject(async f=>{
  const actual=await readReleaseContract(f),changed=kind=>Object.keys(expected[kind]||{}).filter(id=>actual[kind]?.[id]!==expected[kind][id]),added=kind=>Object.keys(actual[kind]||{}).filter(id=>!(id in (expected[kind]||{})));
  const report={codeFiles:changed('codeFiles'),scenes:changed('scenes'),textStyles:changed('textStyles'),newTextStyles:added('textStyles')};
  console.log(JSON.stringify(report,null,1));
+ // The current contract in the config file's format, for re-recording after review (hashes only).
+ console.log('ACTUAL_CONTRACT '+JSON.stringify(actual));
  const ids=new Set([...report.textStyles,...report.newTextStyles]);
  // What the editor holds that is not live yet, and when the site was last published.
  const info=await f.getPublishInfo(),when=p=>p?new Date(p.deploymentTime).toISOString():null;
