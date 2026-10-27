@@ -127,7 +127,9 @@
     "status": "Prepared preview. No LinkedIn Page created or profile changes applied.",
     "firstCopyButton": "Copied",
     "externalRequests": 0,
-    "liveLinkedInVerified": false
+    "liveLinkedInVerified": false,
+    "all16CopyPayloadsMatchCanonical": true,
+    "all16NativeCopyEventsPassed": true
   },
   "validation": {
     "existingRepositoryTests": {
