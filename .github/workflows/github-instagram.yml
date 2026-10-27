@@ -59,7 +59,14 @@ jobs:
         if: steps.clock.outputs.action == 'replenish'
         run: |
           npm ci --prefix video
-          if ! command -v ffmpeg >/dev/null; then sudo apt-get update && sudo apt-get install -y ffmpeg; fi
+          # Pinned static builds; apt mirrors on the 26.04 runner image stalled this step past the job limit (Oct 27).
+          if ! command -v ffmpeg >/dev/null; then
+            npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/ff" ffmpeg-static@5.2.0 ffprobe-static@3.1.0
+            mkdir -p "$HOME/bin"
+            ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffmpeg-static')")" "$HOME/bin/ffmpeg"
+            ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffprobe-static').path")" "$HOME/bin/ffprobe"
+            echo "$HOME/bin" >> "$GITHUB_PATH"
+          fi
       - uses: actions/cache/restore@v4
         if: steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true'
         with:
