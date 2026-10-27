@@ -13,6 +13,7 @@ export function validAutomatedNewsVideo(row){
 // Credit line for club media (owner, Oct 27): names the club and its official Instagram (from the club's own site) and invites a takedown.
 export function mediaCredit(entry){const source=localNewsSources.find(s=>s.id===entry?.sourceId);if(!source)return '';
  return `📸 Photos and video: ${source.organization}${source.instagram?' @'+source.instagram:''} (official club media). Your content? DM us to change the credit or have it removed.`;}
+export const collabHandle=entry=>localNewsSources.find(s=>s.id===entry?.sourceId)?.instagram||null;
 export const automatedNewsAllowed=(row,policy)=>policy.automatedNewsVideoEnabled===true&&validAutomatedNewsVideo(row);
 export async function confirmAutomatedNewsVideo(row,options={}){
  if(!validAutomatedNewsVideo(row))return false;
