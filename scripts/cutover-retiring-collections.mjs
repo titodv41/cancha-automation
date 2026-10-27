@@ -10,15 +10,25 @@ import {site,storyItem,providerItem,injectItems} from './migrate-retiring-collec
 const RETIRING=['Stories','Providers','Offers'],LISTS={'/stories':['story','Approved Stories'],'/providers':['provider','Approved Providers'],'/offers':['offer','Approved Offers']};
 const flat=(n,out=[])=>{if(n){out.push(n);for(const c of n.children||[])flat(c,out);}return out;};
 const q=JSON.stringify;
+// Framer keeps temporary ids project-wide, so every created node gets a fresh one.
+let seq=0;const tid=p=>`${p}_${Date.now().toString(36)}_${++seq}`;
 await withProject(async f=>{
- await verifyReleaseContract(f);
- const before=await f.agent.publish({action:'preview'});
- if(before.status!=='ready'||before.errors?.length||before.changes?.length||before.stagingEnabled)throw Error('Pending project changes must be reviewed first');
+ // A resumed run already holds its own scene edits (and removed templates change linked scenes such as Home),
+ // so it checks reviewed code and typography here and leaves pages to the live checks after publishing.
+ if(process.env.RESUME==='1'){const expected=JSON.parse(await readFile('config/discovery-release-contract.json','utf8')),actual=await readReleaseContract(f);
+  for(const [k,h] of Object.entries(expected.codeFiles))if(actual.codeFiles[k]!==h)throw Error('Reviewed code changed: '+k);
+  for(const [k,h] of Object.entries(expected.textStyles||{}))if(actual.textStyles[k]!==h)throw Error('Typography changed: '+k);}
+ else await verifyReleaseContract(f);
+ // RESUME=1 continues an interrupted cutover: its own unpublished edits may be pending, but only of these kinds.
+ const resume=process.env.RESUME==='1',before=await f.agent.publish({action:'preview'});
+ const ownKind=ch=>['WebPage','LayoutTemplate','Collection','CMSCollection','CollectionItem'].includes(ch.type)||ch.type==='CodeFile'&&ch.name==='CanchaStaticPage.tsx';
+ if(before.status!=='ready'||before.errors?.length||before.stagingEnabled||(before.changes||[]).some(ch=>!resume||!ownKind(ch)))throw Error('Pending project changes must be reviewed first');
+ if(resume)console.log(JSON.stringify({resume:true,pending:(before.changes||[]).map(ch=>ch.type+':'+ch.status)}));
  // 1. Data and component (same field mapping as the verified preview phase).
  const collections=(await f.getCollections()).filter(c=>RETIRING.includes(c.name)),items=[];
  for(const c of collections){const byName=Object.fromEntries((await c.getFields()).map(x=>[x.name,x])),live=(await c.getItems()).filter(i=>!i.draft);
   if(c.name==='Offers'&&live.length)throw Error('Offers exist; extend the migration first');for(const it of live)items.push(c.name==='Stories'?storyItem(it,byName):providerItem(it,byName));}
- if(collections.length!==3||items.length!==5||items.some(i=>!i.title))throw Error('Unexpected collections or items; re-run the preview phase');
+ if(collections.length!==3||items.length!==5||items.some(i=>!i.title))throw Error('Unexpected collections or items ('+collections.length+'/'+items.length+'); collections are deleted only after every page step, so a resume always finds them');
  const content=injectItems(await readFile('framer/CanchaStaticPage.tsx','utf8'),items),session='cancha-cutover-'+Date.now();
  const ui=(await f.getCodeFiles()).find(x=>x.name==='CanchaUI.tsx');if((await f.typecheckCode('CanchaUI.tsx',ui.content,undefined,session)).length)throw Error('Live CanchaUI.tsx has type errors');
  const errors=await f.typecheckCode('CanchaStaticPage.tsx',content,undefined,session);if(errors.length)throw Error('Typecheck failed: '+JSON.stringify(errors).slice(0,600));
@@ -27,34 +37,34 @@ await withProject(async f=>{
  const apply=async(cmd,pagePath)=>{const r=await f.agent.applyChanges(cmd,{pagePath});if(r.errors||r.parseErrors)throw Error(pagePath+': '+JSON.stringify(r).slice(0,600));return r;};
  const pages=await f.getNodesWithType('WebPageNode'),byPath=p=>pages.find(x=>x.path===p);
  const templates=RETIRING.map(n=>byPath(`/${n.toLowerCase()}/:slug`)).filter(Boolean),preview=byPath('/migration-preview');
- if(templates.length!==3)throw Error('Expected 3 CMS template pages');
- const touched=new Set([file.id,...templates.map(t=>t.id),...(preview?[preview.id]:[]),...collections.map(c=>c.id)]);
+ if(templates.length!==3&&!resume)throw Error('Expected 3 CMS template pages');
+ const touched=new Set([...(resume?(before.changes||[]).map(ch=>ch.nodeId):[]),file.id,...templates.map(t=>t.id),...(preview?[preview.id]:[]),...collections.map(c=>c.id)]);
  // 2. Remove the template pages first; if Framer refuses, stop with nothing published.
- await f.removeNodes(templates.map(t=>t.id));
+ if(templates.length)await f.removeNodes(templates.map(t=>t.id));
  // 3. Listing pages: replace the CMS list and its filters with the component in list mode, on every breakpoint.
  for(const [path,[kind,listName]] of Object.entries(LISTS)){const page=byPath(path);if(!page)throw Error('Missing '+path);touched.add(page.id);
   const read=async()=>f.agent.serialize({id:page.id,depth:3},{pagePath:path});
   for(const frameName of ['Desktop','Phone']){let scene=await read(),frame=scene.children?.find(x=>x.name===frameName);if(!frame)continue;
-   const list=frame.children?.find(x=>x.name===listName),index=list?frame.children.indexOf(list):frame.children.findIndex(x=>x.name==='Directory filters');
+   const pos=name=>frame.children?.findIndex(x=>x.name===name)??-1,hero=pos('Directory hero'),index=pos(listName)>=0?pos(listName):pos('Directory filters')>=0?pos('Directory filters'):hero>=0?hero+1:-1;
    for(const name of ['Directory filters',listName]){const node=frame.children?.find(x=>x.name===name);if(node)await apply(`DEL ${node.id}`,path);}
    scene=await read();frame=scene.children.find(x=>x.name===frameName);
-   if(!frame.children?.some(x=>x.name==='Static listing')){const r=await apply(`+ComponentInstanceNode static_list parent=${q(frame.id)} component="${component}" name="Static listing" width="1fr" height="auto" $control__mode="list" $control__kind="${kind}"`,path);
-    const id=r.renamedIds?.static_list;if(id&&index>=0)await apply(`MOVE ${id} parent=${q(frame.id)} index="${index}"`,path);}}
+   if(!frame.children?.some(x=>x.name==='Static listing')){const t=tid('sl');const r=await apply(`+ComponentInstanceNode ${t} parent=${q(frame.id)} component="${component}" name="Static listing" width="1fr" height="auto" $control__mode="list" $control__kind="${kind}"`,path);
+    const id=r.renamedIds?.[t];if(id&&index>=0)await apply(`MOVE ${id} parent=${q(frame.id)} index="${index}"`,path);}}
   const check=flat(await read());if(check.some(n=>[listName,'Directory filters'].includes(n.name))||!check.some(n=>n.name==='Static listing'))throw Error('Listing replacement incomplete on '+path);}
  // 4. Remove the three collections.
  for(const c of collections)await apply(`DEL ${c.id}`,'/');
  if((await f.getCollections()).some(c=>RETIRING.includes(c.name)))throw Error('Collections still present');
  // 5. One static page per item at the exact old URL, with the site layout, title and description.
  for(const i of items){let page=(await f.getNodesWithType('WebPageNode')).find(x=>x.path===i.path);
-  if(!page){await apply(`+WebPageNode static_page name=${q(i.title.slice(0,60))} path=${q(i.path)}`,'/');page=(await f.getNodesWithType('WebPageNode')).find(x=>x.path===i.path);}
+  if(!page){await apply(`+WebPageNode ${tid('sp')} name=${q(i.title.slice(0,60))} path=${q(i.path)}`,'/');page=(await f.getNodesWithType('WebPageNode')).find(x=>x.path===i.path);}
   if(!page)throw Error('Page creation failed for '+i.path);touched.add(page.id);
   await apply(`SET ${page.id} layoutTemplate="ZuWkzhOX9"`,i.path);
   try{await apply(`SET ${page.id} metadata.title=${q(i.title+' | Cancha')} metadata.description=${q((i.summary||i.title).slice(0,155))}`,i.path);}catch(e){console.log(JSON.stringify({metadata:'not set',path:i.path,reason:String(e.message).slice(0,160)}));}
   let scene=await f.agent.serialize({id:page.id,depth:3},{pagePath:i.path}),desktop=scene.children?.find(x=>x.type==='FrameNode'&&x.name==='Desktop')||scene.children?.find(x=>x.type==='FrameNode');
-  if(!desktop){const r=await apply(`+FrameNode sp_desktop parent=${q(page.id)} name="Desktop" width="1200px" height="auto" layout="stack" stackDirection="vertical"`,i.path);desktop={id:r.renamedIds?.sp_desktop,children:[]};}
-  if(!desktop.children?.some(x=>x.name==='Static content'))await apply(`+ComponentInstanceNode static_detail parent=${q(desktop.id)} component="${component}" name="Static content" width="1fr" height="auto" $control__mode="detail" $control__path=${q(i.path)}`,i.path);
+  if(!desktop){const t=tid('spd');const r=await apply(`+FrameNode ${t} parent=${q(page.id)} name="Desktop" width="1200px" height="auto" layout="stack" stackDirection="vertical"`,i.path);desktop={id:r.renamedIds?.[t],children:[]};}
+  if(!desktop.children?.some(x=>x.name==='Static content'))await apply(`+ComponentInstanceNode ${tid('sd')} parent=${q(desktop.id)} component="${component}" name="Static content" width="1fr" height="auto" $control__mode="detail" $control__path=${q(i.path)}`,i.path);
   scene=await f.agent.serialize({id:page.id,depth:3},{pagePath:i.path});
-  if(!scene.children.some(x=>x.name==='Phone')){const d=scene.children.find(x=>x.type==='FrameNode'&&x.name==='Desktop')||scene.children.find(x=>x.type==='FrameNode');await apply(`CREATE_VARIANT sp_phone from=${q(d.id)}\nSET sp_phone name="Phone" width="390px" left="1800px" top="0px"`,i.path);}}
+  if(!scene.children.some(x=>x.name==='Phone')){const d=scene.children.find(x=>x.type==='FrameNode'&&x.name==='Desktop')||scene.children.find(x=>x.type==='FrameNode');const t=tid('spp');await apply(`CREATE_VARIANT ${t} from=${q(d.id)}\nSET ${t} name="Phone" width="390px" left="1800px" top="0px"`,i.path);}}
  // 6. The temporary preview page goes away with this publish.
  if(preview)await f.removeNodes([preview.id]);
  // 7. Publish only if every pending change belongs to this migration.

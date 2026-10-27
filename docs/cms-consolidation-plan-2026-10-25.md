@@ -1,6 +1,16 @@
 # CMS consolidation plan: 5 collections → 2 (for Framer Basic)
 
-Written October 25, 2026 by Claude. **Status: plan only. Nothing has changed in Framer.** The live backup in step 1 has not run yet: the read-only connection check fails from this environment (see "Blocker" below). Counts are from the October 21 backup recorded in `docs/domain-and-hosting-costs.md` and must be re-confirmed by the live backup.
+Written October 25, 2026 by Claude.
+
+**Status (October 27, 2026): done and live.** The project has 2 CMS collections (Clubs, Opportunities) and 18 pages.
+- **Preview:** run 40541478723 rendered 5/5 migrated items on a temporary page.
+- **Cutover:** run 40543356672, finished by 40544145283, removed the Stories / Providers / Offers templates and collections. It replaced the three listing pages' CMS lists with `CanchaStaticPage` (intake forms kept) and published one static page per item at its exact old URL, with "| Cancha" titles.
+- **Live checks:** every preserved URL and the main pages return 200, detail and listing content render, and `/offers` shows its empty state.
+- **Restore point:** the encrypted backup taken right before the cutover.
+
+The original plan follows.
+
+**Original status (Oct 25): plan only. Nothing has changed in Framer.** The live backup in step 1 has not run yet: the read-only connection check fails from this environment (see "Blocker" below). Counts are from the October 21 backup recorded in `docs/domain-and-hosting-costs.md` and must be re-confirmed by the live backup.
 
 Owner decision: Framer Basic yearly + `wearecancha.com`, purchased **only after** this migration is verified live.
 

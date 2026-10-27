@@ -6,7 +6,7 @@ on:
         description: 'Migration phase (docs/cms-consolidation-plan-2026-10-25.md)'
         type: choice
         default: preview
-        options: [preview, cutover]
+        options: [preview, cutover, cutover-resume]
 permissions:
   contents: write
 concurrency:
@@ -26,7 +26,9 @@ jobs:
           cache: npm
       - run: npm ci
       # Fresh restore point in the encrypted store before any Framer write; never a public artifact.
+      # A resumed cutover keeps the restore point taken right before the interrupted run.
       - name: Encrypted backup
+        if: inputs.phase != 'cutover-resume'
         run: npm run backup:cms-consolidation -- --encrypted-store > /dev/null
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
@@ -34,7 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
       # Logs carry counts and checks only, never item content.
       - name: Migrate (${{ inputs.phase }})
-        run: node scripts/${{ inputs.phase == 'cutover' && 'cutover' || 'migrate' }}-retiring-collections.mjs
+        run: node scripts/${{ startsWith(inputs.phase, 'cutover') && 'cutover' || 'migrate' }}-retiring-collections.mjs
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
           PHASE: ${{ inputs.phase }}
+          RESUME: ${{ inputs.phase == 'cutover-resume' && '1' || '0' }}
