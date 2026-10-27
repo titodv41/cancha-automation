@@ -36,7 +36,9 @@ if(process.argv[1]?.endsWith('/create-hub-pages.mjs'))await withProject(async f=
  const confirm=await f.agent.publish({action:'preview'});if(confirm.confirmationHash!==pending.confirmationHash)throw Error('Project changed after preview');
  const receipt=await f.publish();if(receipt.errors?.length||receipt.status==='failed')throw Error('Publication failed');
  await new Promise(s=>setTimeout(s,60000));
- const checks=[];for(const h of HUB_PAGES){const r=await fetch(site+h.path+'?v='+Date.now()),html=await r.text();checks.push({path:h.path,status:r.status,title:((html.match(/<title>([^<]*)/)||[])[1]||'').slice(0,70),h1:html.includes(h.h1.replace(/&amp;/g,'&'))||html.toUpperCase().includes(h.h1.toUpperCase()),cards:(html.match(/chb-card/g)||[]).length});}
+ // A cache edge can serve the previous version for a few minutes after publishing; retry before judging.
+ const fresh=async path=>{let r,html='';for(let n=0;n<10;n++){r=await fetch(site+path+'?v='+Date.now());html=await r.text();if(html.includes('chb-card'))break;await new Promise(s=>setTimeout(s,30000));}return {r,html};};
+ const checks=[];for(const h of HUB_PAGES){const {r,html}=await fresh(h.path);checks.push({path:h.path,status:r.status,title:((html.match(/<title>([^<]*)/)||[])[1]||'').slice(0,70),h1:html.includes(h.h1.replace(/&amp;/g,'&'))||html.toUpperCase().includes(h.h1.toUpperCase()),cards:(html.match(/chb-card/g)||[]).length});}
  await verifyReleaseContract(f);
  console.log(JSON.stringify({published:true,pages:(await f.getNodesWithType('WebPageNode')).length,checks}));
  if(checks.some(c=>c.status!==200||!c.cards))process.exitCode=1;
