@@ -7,6 +7,7 @@ import {MotionStory} from './MotionStory';
 import {NewsExplainer} from './NewsExplainer';
 import {ClubCut} from './ClubCut';
 import {CommunityCut} from './CommunityCut';
+import {MeetClub,INTRO,OUTRO} from './MeetClub';
 import communityCut from '../../content/instagram/community-cut.json';
 import clubCut from '../../content/instagram/club-cut.json';
 import motionManifest from '../../content/instagram/motion-stories.json';
@@ -54,4 +55,5 @@ const AllRoot=()=> <><ExtendedRoot/><Composition id="CommunityCut" component={Co
 const StoryRoot=()=> <><AllRoot/><Composition id="SingleStory" component={SingleStory} durationInFrames={Math.round(singleStory.durationSeconds*30)} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,story:singleStory,audio:'generated/single-story/music/soundtrack.wav'}}/></>;
 const NarrativeRoot=()=> <><StoryRoot/><Composition id="NarrativeStory" component={NarrativeStory} durationInFrames={960} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,visuals:narrativeManifest.visuals,edit:{durationSeconds:32,scenes:[]},audio:'generated/narrative-story/soundtrack.wav',groups:[]}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.edit.durationSeconds*30)})}/></>;
 const CompleteRoot=()=> <><NarrativeRoot/><Composition id="AutomaticNewsStory" component={AutomaticNewsStory} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,episode:{durationSeconds:20,media:[],entry:{city:'',publishedOn:'2026-10-24',title:''},story:{}},groups:[],audio:'generated/automatic-news/soundtrack.wav'}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.episode.durationSeconds*30)})}/></>;
-registerRoot(CompleteRoot);
+const MeetRoot=()=> <><CompleteRoot/><Composition id="MeetClub" component={MeetClub} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,feature:{city:'',organization:'',segments:[],endCard:[]},music:null}} calculateMetadata={({props})=>({durationInFrames:Math.round((INTRO+OUTRO+props.feature.segments.reduce((a:number,s:any)=>a+s.duration,0))*30)})}/></>;
+registerRoot(MeetRoot);

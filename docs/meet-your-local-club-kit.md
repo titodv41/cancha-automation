@@ -49,3 +49,17 @@ The caption tags their account and links their page. Name the series in the capt
 - Send them the link and thank them, and ask them to share it, since that's how the post reaches their community.
 - Log it in the private outreach tracker (not in this public repo): reply date, consent date, post date, saves, shares and profile visits at 48 hours and 7 days.
 - After about 3 features, ask what helped them (inquiries, registrations). That's the evidence for a future paid offer.
+
+## 7. Rendering the Reel (Claude)
+
+The template is `video/render-meet-club.mjs` with the `MeetClub` composition. Everything stays in `private-data/` (never committed; this repo is public).
+
+1. Put the clips in `private-data/meet-club/<id>/` and write `feature.json` next to them:
+   - `id`, `organization`, `city`, `instagram` (handle from their official site, no @) and `officialUrl`.
+   - `consent`: `reply: "yes"`, `via: "email"`, `receivedOn`, `ownsMedia: true`, `everyoneAgreed: true`, `minorsShown`, plus `guardianConsent: true` if minors appear.
+   - `segments`: 1–6 clips, each with `file`, `start`, `duration` (2–15 s) and an optional `caption` (their own words, 90 characters or fewer) and `speaker`.
+   - `endCard`: 1–3 rows (where they train, who can join, how to reach them), copied from their official page.
+   - `caption`: the Instagram caption, naming "Meet Your Local Club" and the city.
+2. Run `node video/render-meet-club.mjs private-data/meet-club/<id>/feature.json`. It refuses to render if any consent field or limit is missing.
+3. The output in `render/` is 10–45 s long. It keeps the organization's own audio, adds a low original music bed and passes the delivery sound audit.
+4. Send the draft to the organization before anything goes live, as promised in the invite.
