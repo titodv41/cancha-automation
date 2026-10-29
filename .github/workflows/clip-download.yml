@@ -23,6 +23,14 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
+      # The runner image has no ffmpeg; yt-dlp needs it to merge video and audio. Same pinned build as the publisher.
+      - name: Static ffmpeg
+        run: |
+          npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/ff" ffmpeg-static@5.2.0 ffprobe-static@3.1.0
+          mkdir -p "$HOME/bin"
+          ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffmpeg-static')")" "$HOME/bin/ffmpeg"
+          ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffprobe-static').path")" "$HOME/bin/ffprobe"
+          echo "$HOME/bin" >> "$GITHUB_PATH"
       - name: Queue cleared videos only
         env:
           IDS: ${{ inputs.ids }}
@@ -35,7 +43,6 @@ jobs:
         env:
           YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
         run: |
-          sudo apt-get install -y -qq ffmpeg > /dev/null
           pip install --quiet -U "yt-dlp[default]"
           umask 077
           COOKIES="$RUNNER_TEMP/yt-cookies.txt"

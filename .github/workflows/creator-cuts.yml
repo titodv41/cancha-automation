@@ -1,0 +1,90 @@
+name: Cancha creator cuts
+on:
+  workflow_dispatch:
+    inputs:
+      cut:
+        description: 'File name in content/instagram/creator-cuts (without .json)'
+        type: string
+        default: this-is-florida-soccer
+permissions:
+  contents: write
+# Shares the voice ledger and posting queue with the other private jobs.
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  cut:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci && npm ci --prefix video
+      - run: npx playwright install --with-deps chromium
+      - name: Static ffmpeg
+        run: |
+          npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/ff" ffmpeg-static@5.2.0 ffprobe-static@3.1.0
+          mkdir -p "$HOME/bin"
+          ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffmpeg-static')")" "$HOME/bin/ffmpeg"
+          ln -sf "$(node -p "require('$RUNNER_TEMP/ff/node_modules/ffprobe-static').path")" "$HOME/bin/ffprobe"
+          echo "$HOME/bin" >> "$GITHUB_PATH"
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Check the cut name
+        env:
+          CUT: ${{ inputs.cut }}
+        run: |
+          [[ "$CUT" =~ ^[a-z0-9-]+$ ]] && test -f "content/instagram/creator-cuts/$CUT.json"
+          echo "CUT_FILE=content/instagram/creator-cuts/$CUT.json" >> "$GITHUB_ENV"
+      # Only the cut's cleared videos; the burner cookies live in a 0600 temp file for this step only.
+      - name: Download cleared clips
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
+        run: |
+          mkdir -p private-data/clips
+          IDS="$(node -p "const c=require('./'+process.env.CUT_FILE);[...new Set([...c.shots,...(c.sfx||[])].map(s=>s.id))].join(',')")" node scripts/clip-download.mjs private-data/clips/urls.txt
+          pip install --quiet -U "yt-dlp[default]"
+          umask 077
+          COOKIES="$RUNNER_TEMP/yt-cookies.txt"
+          printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIES"
+          set +e
+          yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/b" --merge-output-format mp4 \
+            -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --no-progress \
+            -a private-data/clips/urls.txt 2>&1 | grep -v -i cookie | tail -20
+          status=${PIPESTATUS[0]}
+          rm -f "$COOKIES"
+          ls -la private-data/clips
+          exit $status
+      - name: Narrate, render and host
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: github
+        run: node scripts/creator-cut.mjs "$CUT_FILE" private-data/clips
+      # The existing publisher posts it in the 12:30 / 6 PM slots under its usual caps and spacing.
+      - name: Import into the posting queue
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
+          CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
+        run: |
+          if [ "$(node -p "require('./private-data/short-reels-ready.json').length" 2>/dev/null || echo 0)" = "0" ]; then echo "Nothing to import"; exit 0; fi
+          node scripts/github-instagram.mjs refresh-short-reels
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: creator-cut-${{ github.run_id }}
+          path: |
+            private-data/creator-cuts/*.mp4
+            private-data/creator-cuts/*.jpg
+            private-data/creator-cuts/*.json
+          retention-days: 14
