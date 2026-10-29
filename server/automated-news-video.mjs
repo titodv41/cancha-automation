@@ -20,3 +20,10 @@ export async function confirmAutomatedNewsVideo(row,options={}){
  const fetchHtml=options.fetchHtml||(async url=>{const response=await (options.fetchImpl||fetch)(url,{redirect:'error',signal:AbortSignal.timeout(20000)});if(!response.ok||!/text\/html/.test(response.headers.get('content-type')||''))throw Error('Official news source unavailable');const reader=response.body.getReader(),chunks=[];let bytes=0;try{while(true){const r=await reader.read();if(r.done)break;bytes+=r.value.length;if(bytes>2000000)throw Error('Official news source too large');chunks.push(Buffer.from(r.value))}}finally{await reader.cancel()}return Buffer.concat(chunks)});
  return confirmLocalUpdate(row.newsEntry,{fetchHtml,now:options.now});
 }
+// Production gate for automatic club Reels: a draft buffer and a daily cap. Drafts the editorial policy retired
+// will never post, so they neither fill the buffer nor use the day's allowance.
+export function newsProductionBlocked(queue,{retired=[],draftBuffer,maxPerDay,today,now=Date.now(),dayOf}){
+ const live=queue.filter(r=>r.parsed?.visualEvidence?.kind==='news-film'&&!retired.includes(r.id));
+ const pending=live.filter(r=>['Draft','Approved','Preparing'].includes(r.status)&&Date.parse(r.parsed.newsEntry?.expiresAt)>now);
+ return pending.length>=draftBuffer||live.filter(r=>dayOf(r.parsed.visualEvidence.renderedAt)===today).length>=maxPerDay;
+}

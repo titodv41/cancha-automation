@@ -21,3 +21,11 @@ test('captions show spoken scores as digits and leave other words alone',()=>{as
 import{chooseNewsTechnique,NEWS_TECHNIQUES}from'../server/automatic-story.mjs';
 test('only configured techniques are chosen for new stories; older techniques stay valid',()=>{const e={id:'x',title:'Sporting JAX Women Rally to Earn Point'};
  assert.equal(chooseNewsTechnique(e,[],null,['full-bleed']),'full-bleed');assert.ok(NEWS_TECHNIQUES.includes('club-film'));assert.ok(NEWS_TECHNIQUES.includes(chooseNewsTechnique(e)));});
+import{newsProductionBlocked}from'../server/automated-news-video.mjs';
+test('retired club Reels neither fill the draft buffer nor use the daily allowance',()=>{
+ const row=(id,day)=>({id,status:'Draft',parsed:{visualEvidence:{kind:'news-film',renderedAt:day},newsEntry:{expiresAt:'2026-11-05T00:00:00Z'}}});
+ const queue=[row('a','2026-10-28'),row('b','2026-10-29'),row('c','2026-10-29')],opts={draftBuffer:2,maxPerDay:1,today:'2026-10-29',now:Date.parse('2026-10-29T15:00:00Z'),dayOf:v=>v};
+ assert.equal(newsProductionBlocked(queue,opts),true);
+ assert.equal(newsProductionBlocked(queue,{...opts,retired:['a','b','c']}),false);
+ assert.equal(newsProductionBlocked(queue,{...opts,retired:['a','b']}),true);
+});
