@@ -141,6 +141,8 @@ try{
  }
  if(mode==='prepare'||mode==='replenish'||mode==='publish'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'||mode==='refresh-photo-stories'||mode==='refresh-product-posts'||mode==='refresh-motion-stories'||mode==='refresh-short-reels'||mode==='refresh-comparison-carousels'){
   const creativePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
+  // A draft retired after the plan approved it holds its slot and never posts (Oct 29, 6 PM); release it so the plan can refill the slot.
+  for(const id of creativePolicy.retiredDraftIds||[])db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Retired after approval; slot released' WHERE id=? AND status IN ('Approved','Preparing')").run(id);
   const launchNotPublished=state.localCreativeVersion==='cancha-local-v2'&&!db.prepare("SELECT id FROM instagram_queue WHERE id='cancha-local-discovery' AND status='Published'").get();
   phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null,editorialPolicy:creativePolicy});await checkpoint();
  }
