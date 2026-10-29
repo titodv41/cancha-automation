@@ -1,8 +1,8 @@
 {
   "enabled": true,
   "voice": "Chris",
-  "freeOnly": true,
-  "monthlyCharacterBudget": 1500,
+  "freeOnly": false,
+  "monthlyCharacterBudget": 25000,
   "maximumCharactersPerStory": 320,
   "maximumNewStoriesPerDay": 1,
   "draftBuffer": 2,
@@ -62,5 +62,9 @@
   "captionOnlyNote": "Oct 27: owner asked for more Reels from real club media. When the Free voice cap is reached, stories render as caption-only Reels (no narration) with the club credited in the caption; the cap and Free-only policy stay unchanged.",
   "techniquesNote": "Oct 29: owner asked for Reels that look professional and big. New club Reels use the full-bleed technique (footage fills the frame, cuts every 2 s, hook, score bug, end card). Older techniques remain valid for existing drafts.",
   "videoOnly": true,
-  "videoOnlyNote": "Oct 29: owner wants Reels made from real video only (club footage), never photo slideshows. Stories without official club video are not turned into Reels."
+  "videoOnlyNote": "Oct 29: owner wants Reels made from real video only (club footage), never photo slideshows. Stories without official club video are not turned into Reels.",
+  "plan": "starter",
+  "planNote": "Oct 29: owner subscribed to ElevenLabs Starter. Automatic narration uses the Starter allowance (25,000 of 30,000 characters/month), overage always off; caption-only cuts remain the fallback when the allowance is used up.",
+  "narrationRequiresReview": true,
+  "narrationReviewNote": "Oct 29: owner asked that no ElevenLabs credits are spent before the video is checked. Automatic stories render caption-only; narration is added only to a reviewed cut."
 }

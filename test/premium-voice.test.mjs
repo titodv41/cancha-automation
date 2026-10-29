@@ -106,3 +106,15 @@ test('Free auditions cannot consume paid-plan credits, exceed the cap or enable 
   assert.equal(JSON.parse(await readFile(first.timingFile)).automaticPublication,false);
  }finally{await rm(dir,{recursive:true,force:true})}
 });
+import{validateStarterAccount}from'../video/audio/premium-voice.mjs';
+test('Starter narration needs the Starter tier, overage off and included credits',()=>{
+ const ok={subscription:{tier:'starter',characterLimit:30000,characterCount:100,overagesDisabled:true},voices:[{available:true}]};
+ assert.equal(validateStarterAccount(ok,300),true);
+ assert.throws(()=>validateStarterAccount({...ok,subscription:{...ok.subscription,tier:'free'}},300),/Starter subscription/);
+ assert.throws(()=>validateStarterAccount({...ok,subscription:{...ok.subscription,overagesDisabled:false}},300),/Usage-based billing/);
+ assert.throws(()=>validateStarterAccount({...ok,subscription:{...ok.subscription,characterCount:29900}},300),/Insufficient/);
+});
+test('the Starter policy is capped below the plan and never allows overage',async()=>{const p=JSON.parse(await (await import('node:fs/promises')).readFile('config/elevenlabs-starter.json','utf8'));
+ assert.equal(p.plan,'starter');assert.equal(p.allowOverage,false);assert.ok(p.monthlyProjectCharacterBudget<=25000);
+ const s=JSON.parse(await (await import('node:fs/promises')).readFile('config/automatic-stories.json','utf8'));assert.equal(s.narrationRequiresReview,true);assert.equal(s.paidUsageEnabled,false);
+});
