@@ -1,18 +1,108 @@
-{"id":"creator-cut-this-is-florida-soccer","chip":"FLORIDA SOCCER","hook":"This is\nFlorida soccer.","hookSeconds":2.4,"outroSeconds":2.2,"bpm":124,
- "shots":[
-  {"id":"ttVtRHrCWT4","at":9.8,"seconds":2.4,"x":0.5},
-  {"id":"bOiij-kIrwM","at":11.8,"seconds":2.4,"x":0.5},
-  {"id":"bOiij-kIrwM","at":21.8,"seconds":2.4,"x":0.5},
-  {"id":"ttVtRHrCWT4","at":49.5,"seconds":2.4,"x":0.5},
-  {"id":"ttVtRHrCWT4","at":104.0,"seconds":2.4,"x":0.5},
-  {"id":"ttVtRHrCWT4","at":246.0,"seconds":2.4,"x":0.5},
-  {"id":"3DAWLIHC5Uo","at":240.0,"seconds":2.4,"x":0.5},
-  {"id":"bOiij-kIrwM","at":57.0,"seconds":2.6,"x":0.5}
+{
+ "id": "creator-cut-this-is-florida-soccer",
+ "chip": "FLORIDA SOCCER",
+ "hook": "This is\nFlorida soccer.",
+ "hookSeconds": 2.4,
+ "outroSeconds": 2.2,
+ "bpm": 124,
+ "shots": [
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 9.8,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "bOiij-kIrwM",
+   "at": 11.8,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "bOiij-kIrwM",
+   "at": 21.8,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 49.5,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 104.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 246.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "3DAWLIHC5Uo",
+   "at": 240.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "bOiij-kIrwM",
+   "at": 57.0,
+   "seconds": 2.6,
+   "x": 0.5
+  }
  ],
- "beats":[
-  {"start":2.4,"end":7.2,"text":"Orlando City fans marching in before kickoff."},
-  {"start":7.2,"end":14.4,"text":"Florida academy players on tournament day."},
-  {"start":14.4,"end":16.8,"text":"And the reps nobody sees."},
-  {"start":16.8,"end":19.4,"text":"Clubs, camps, pickup and fans. One place."}
+ "beats": [
+  {
+   "start": 2.4,
+   "end": 7.2,
+   "text": "Orlando City fans marching in before kickoff."
+  },
+  {
+   "start": 7.2,
+   "end": 14.4,
+   "text": "Florida academy players on tournament day."
+  },
+  {
+   "start": 14.4,
+   "end": 16.8,
+   "text": "And the reps nobody sees."
+  },
+  {
+   "start": 16.8,
+   "end": 19.4,
+   "text": "Clubs, camps, pickup and fans. One place."
+  }
  ],
- "ambience":{"id":"bOiij-kIrwM","at":11.8,"start":2.4,"seconds":4.8,"gain":0.9}}
+ "narrationApprovedOn": "2026-10-29",
+ "script": "Florida soccer isn't just ninety minutes. It's the drums outside the stadium before kickoff. It's an academy team locked in on tournament day. It's the reps you put in when nobody's watching. Cancha brings it all together: clubs, camps, pickup and fans near you.",
+ "caption": "This is Florida soccer. 🌴⚽\n\nFans marching in before kickoff. Academy teams on tournament day. The reps nobody sees. Cancha puts Florida soccer in one place: clubs, camps, pickup and more near you. Link in bio.\n\n🎥 Video: Lozzz Productionz, Florida Life and Progressive Soccer on YouTube (CC BY). Creators, DM us anytime for credit changes or removal.\n\n#FloridaSoccer #SoccerCommunity #OrlandoSoccer #YouthSoccer",
+ "altText": "Cancha Reel: Orlando City fans marching with drums and flags before a match, Florida academy youth teams huddling and celebrating at a tournament, a player doing ball-control drills, and a stadium crowd at sunset, ending on the Cancha card 'Find your game.'",
+ "sfx": [
+  {
+   "id": "bOiij-kIrwM",
+   "at": 11.8,
+   "start": 2.4,
+   "seconds": 4.8,
+   "gain": 0.6
+  },
+  {
+   "id": "bOiij-kIrwM",
+   "at": 57.0,
+   "start": 12.0,
+   "seconds": 2.4,
+   "gain": 0.55
+  },
+  {
+   "id": "bOiij-kIrwM",
+   "at": 57.0,
+   "start": 16.8,
+   "seconds": 4.8,
+   "gain": 0.75
+  }
+ ],
+ "posterSeconds": 1.2
+}
