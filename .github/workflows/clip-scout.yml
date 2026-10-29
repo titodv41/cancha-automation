@@ -1,0 +1,31 @@
+name: Cancha clip scout
+on:
+  workflow_dispatch:
+    inputs:
+      queries:
+        description: 'Comma-separated YouTube searches (max 15)'
+        type: string
+        default: 'Orlando pickup soccer, Miami pickup soccer, Tampa pickup soccer, Florida youth soccer goals, soccer drills field workout, Florida soccer fans, USL Championship Florida goals'
+permissions:
+  contents: read
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # Public video metadata only (title, creator, link, license); the results table is in the run summary.
+      - run: node scripts/clip-scout.mjs
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          QUERIES: ${{ inputs.queries }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: clip-scout-${{ github.run_id }}
+          path: private-data/clip-scout.json
+          retention-days: 30
