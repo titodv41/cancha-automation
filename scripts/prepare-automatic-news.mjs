@@ -1,4 +1,4 @@
-import{prepareNewsMedia}from'./news-media.mjs';
+import{prepareNewsMedia,brollCandidates}from'./news-media.mjs';
 import{readFile,writeFile,mkdir}from'node:fs/promises';import{createHash}from'node:crypto';import{execFileSync}from'node:child_process';
 import{fetch,ProxyAgent}from'undici';import{sourceSession}from'./source-session.mjs';import{withProject}from'./project-session.mjs';import{githubStateClient}from'./github-state-client.mjs';import{sendPrivate}from'./automation-service-client.mjs';import{runSubprocess}from'./subprocess.mjs';import{dateInNewYork}from'../server/offer-expiry.mjs';
 import{writeAutomaticStory,chooseNewsTechnique}from'../server/automatic-story.mjs';import{confirmLocalUpdate}from'../server/local-updates.mjs';import{validAutomatedNewsVideo,mediaCredit,collabHandle,newsProductionBlocked}from'../server/automated-news-video.mjs';import{elevenClient,inspectVoiceAccount,generateVoice,selectVoiceCandidates,voiceRequestDigest}from'../video/audio/premium-voice.mjs';import{sharedVoiceLedger}from'./shared-voice-ledger.mjs';import{techniqueLearning}from'../server/instagram-insights.mjs';
@@ -23,8 +23,8 @@ let ledger,dispatcher;try{
  const currentMonth=new Date().toISOString().slice(0,7),reserved=state.voiceLedger?.months?.[currentMonth]??(settings.baseline.month===currentMonth?settings.baseline.reservedCharacters:0);report.voiceBudget={month:currentMonth,limit:settings.monthlyCharacterBudget,reserved,remaining:Math.max(0,settings.monthlyCharacterBudget-reserved),cachedRequest:cachedRequest?.status==='complete'};// Over the Free voice cap the story still runs as a caption-only Reel (owner, Oct 27: more club Reels); the cap itself never moves.
  const captionOnly=reserved+(cachedRequest?.status==='complete'?0:selected.story.script.length)>settings.monthlyCharacterBudget;if(captionOnly&&settings.captionOnlyWhenVoiceCapped!==true)throw Error('Monthly project voice budget reached: '+(settings.monthlyCharacterBudget-reserved)+' characters remain');report.captionOnly=captionOnly;
  const{entry,story,technique}=selected,id='auto-'+entry.id,assets='video/public/generated/automatic-news';await mkdir(assets,{recursive:true});
- const preparedMedia=await prepareNewsMedia(entry,session),media=preparedMedia.media;report.blocked.push(...preparedMedia.blocked);
- if(!media.length)throw Error('No verified subject media could be decoded');
+ const preparedMedia=await prepareNewsMedia(entry,session,{broll:brollCandidates(entry,entries)}),media=preparedMedia.media;report.blocked.push(...preparedMedia.blocked);
+ if(!media.some(m=>m.role!=='broll'))throw Error('No verified subject media could be decoded');
  const headline=story.score&&story.deficit?Math.abs(Number(story.deficit.split('–')[0])-Number(story.deficit.split('–')[1]))+' DOWN.\n'+story.score+' AT FULL TIME.':entry.organization.toUpperCase();
  const baseEpisode={id,entry,story,technique,headline,media,opponent:entry.title.match(/(?:against|vs)\s+(.+)$/i)?.[1]};
  await writeFile(out+'/episode.json',JSON.stringify(baseEpisode,null,2),{mode:0o600});

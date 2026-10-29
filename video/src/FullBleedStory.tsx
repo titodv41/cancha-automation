@@ -1,32 +1,38 @@
 import React from'react';
 import{AbsoluteFill,Audio,Easing,Img,OffthreadVideo,Sequence,interpolate,staticFile,useCurrentFrame,useVideoConfig}from'remotion';
-// "full-bleed" technique (owner, Oct 29: look professional and big): the club's own footage fills the frame and cuts
-// every two seconds, a one-line hook owns the first beat, then a score bug, the club line and bold captions; a short
+// "full-bleed" technique (owner, Oct 29: look professional and big): the club's own footage fills the frame, each
+// shot with its own slow move and a soft crossfade, a one-line hook owns the first beat, then a score bug, the club line and bold captions; a short
 // branded end card closes. Same facts, sources and caption timing as the other techniques.
 const clamp={extrapolateLeft:'clamp' as const,extrapolateRight:'clamp' as const};
 const ease=(f:number,a:number,b:number)=>interpolate(f,[a,b],[0,1],{...clamp,easing:Easing.bezier(.16,1,.3,1)});
 const display:React.CSSProperties={fontFamily:'AutoDisplay,sans-serif',fontStyle:'italic',fontWeight:700,letterSpacing:-1,lineHeight:.92,textTransform:'uppercase'};
-export const SHOT=2,HOOK=2.4,OUTRO=2.2;
+export const HOOK=2.4,OUTRO=2.2,FADE=8;
+// Shot list: clips hold ~2.4 s, photos ~3 s with their own slow move. Every distinct image is used before any
+// repeats, the same image never shows twice in a row, and repeats of a clip start further into it.
+const MOVES=['in','out','left','right','up'];
 export function shotPlan(media:any[],seconds:number){
- const clips=media.filter(m=>m.kind==='clip'),photos=media.filter(m=>m.kind==='photo'),pool=clips.length?clips:photos,count=Math.max(1,Math.ceil(seconds/SHOT));
- return Array.from({length:count},(_,k)=>{const m=pool[k%pool.length],round=Math.floor(k/pool.length);
-  if(m?.kind!=='clip')return{media:m,start:0,zoomIn:k%2===0,focus:['50% 40%','35% 45%','65% 45%','50% 60%'][k%4]};
-  const span=Math.max(SHOT,(m.durationSeconds||SHOT)-SHOT),start=((m.windowStart||0)+round*SHOT)%span;return{media:m,start,zoomIn:k%2===0,focus:'50% 45%'};});
+ const pool=[...media.filter(m=>m.kind==='clip'&&m.role!=='broll'),...media.filter(m=>m.kind==='photo'&&m.role!=='broll'),...media.filter(m=>m.role==='broll')];
+ const shots:any[]=[];let t=0,k=0;const uses=new Map();
+ while(pool.length&&t<seconds){let m=pool[k%pool.length];if(pool.length>1&&shots.at(-1)?.media===m)m=pool[++k%pool.length];
+  const n=uses.get(m)||0,len=m.kind==='clip'?2.4:3;uses.set(m,n+1);
+  const span=Math.max(len,(m.durationSeconds||len)-len),start=m.kind==='clip'?((m.windowStart||0)+n*len)%span:0;
+  shots.push({media:m,start,from:t,len,move:MOVES[(k+n)%MOVES.length]});t+=len;k++;}
+ return shots;
 }
 export function FullBleedStory({brand,episode,groups,audio}:any){
- const f=useCurrentFrame(),{fps,durationInFrames}=useVideoConfig(),t=f/fps,shotFrames=SHOT*fps,hookEnd=Math.round(HOOK*fps),outroFrom=durationInFrames-Math.round(OUTRO*fps);
+ const f=useCurrentFrame(),{fps,durationInFrames}=useVideoConfig(),t=f/fps,hookEnd=Math.round(HOOK*fps),outroFrom=durationInFrames-Math.round(OUTRO*fps);
  const shots=shotPlan(episode.media,durationInFrames/fps),result=!!episode.story.score,resultAt=Math.floor((episode.resultAtSeconds||episode.durationSeconds*.48)*fps),final=!episode.story.deficit||f>=resultAt;
  const active=f>=hookEnd-6&&f<outroFrom?groups.find((g:any)=>t>=g.start&&t<g.end):null,hook=f<hookEnd,outro=f>=outroFrom;
  // Recaps open on the score line; other club news opens on the article's own title.
  const lines=String(result?episode.headline:episode.entry.title).split('\n'),longest=Math.max(...lines.map(l=>l.length)),hookSize=longest>22?92:longest>14?118:150;
  return <AbsoluteFill style={{background:'#06140f',color:'#fff',fontFamily:'AutoUI,sans-serif',fontWeight:700,overflow:'hidden'}}>
   <style>{`@font-face{font-family:AutoDisplay;src:url('${staticFile('generated/automatic-news/display.woff2')}');font-weight:700;font-style:italic}@font-face{font-family:AutoUI;src:url('${staticFile('generated/automatic-news/ui.woff2')}');font-weight:700}`}</style>
-  {shots.map((s:any,k:number)=>{const from=k*shotFrames,local=f-from,punch=interpolate(local,[0,9],[1.12,1],{...clamp,easing:Easing.out(Easing.cubic)}),drift=interpolate(local,[0,shotFrames],s.zoomIn?[1,1.06]:[1.06,1],clamp);
-   return <Sequence key={k} from={from} durationInFrames={shotFrames} layout="none"><AbsoluteFill style={{transform:`scale(${punch*drift})`}}>
-    {s.media?.kind==='clip'?<OffthreadVideo src={staticFile(s.media.publicFile)} startFrom={Math.floor(s.start*fps)} muted style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:s.focus}}/>:s.media?<Img src={staticFile(s.media.publicFile)} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:s.focus}}/>:null}
+  {shots.map((s:any,k:number)=>{const from=Math.round(s.from*fps),len=Math.round(s.len*fps),local=f-from,p=interpolate(local,[0,len+FADE],[0,1],clamp);
+   // Slow camera move per shot; photos travel further than clips. Each shot fades in over the previous one.
+   const d=s.media?.kind==='clip'?.05:.1,scale=s.move==='out'?1+d*(1-p)+.04:1.04+(s.move==='in'?d*p:d*.5),x=s.move==='left'?(.5-p)*60:s.move==='right'?(p-.5)*60:0,y=s.move==='up'?(.5-p)*50:0;
+   return <Sequence key={k} from={from} durationInFrames={len+FADE} layout="none"><AbsoluteFill style={{opacity:k===0?1:interpolate(local,[0,FADE],[0,1],clamp),transform:`translate(${x}px,${y}px) scale(${scale})`}}>
+    {s.media?.kind==='clip'?<OffthreadVideo src={staticFile(s.media.publicFile)} startFrom={Math.floor(s.start*fps)} muted style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 45%'}}/>:s.media?<Img src={staticFile(s.media.publicFile)} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 40%'}}/>:null}
    </AbsoluteFill></Sequence>;})}
-  {/* Cut flash: three frames of light on every cut after the first. */}
-  {f>=shotFrames&&f%shotFrames<3&&<AbsoluteFill style={{background:'#fff',opacity:.18*(1-(f%shotFrames)/3)}}/>}
   <AbsoluteFill style={{background:'linear-gradient(180deg,#000a 0%,#0000 16%,#0000 56%,#06140f80 76%,#06140fd9 100%)'}}/>
   {hook&&<AbsoluteFill style={{background:`rgba(6,20,15,${.38*(1-ease(f,hookEnd-8,hookEnd))})`}}/>}
   <header data-region="brand" style={{position:'absolute',left:62,right:140,top:110,height:68,display:'flex',alignItems:'center',justifyContent:'space-between'}}><Img src={staticFile('generated/automatic-news/cancha.png')} style={{width:200,height:64,objectFit:'cover',filter:'brightness(0) invert(1)'}}/><span data-copy style={{fontSize:30,letterSpacing:1.5,background:brand.accent,color:brand.forest,padding:'8px 14px 10px',borderRadius:6,lineHeight:1}}>{result?'MATCH RECAP':'CLUB NEWS'} · {String(episode.entry.city).toUpperCase()}</span></header>

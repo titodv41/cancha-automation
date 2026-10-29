@@ -1,6 +1,8 @@
 import {validReel} from './instagram-media.mjs';
 import {localNewsSources,officialNewsUrl,updateSourceHash,confirmLocalUpdate} from './local-updates.mjs';
 import {validAutomaticScript,NEWS_TECHNIQUES} from './automatic-story.mjs';
+// Supporting shots must come from another official article of the same club, hosted on the club's own uploads.
+const brollFromSource=(m,source)=>{try{const u=new URL(m.originalUrl);return!!officialNewsUrl(m.sourcePage,source)&&u.protocol==='https:'&&u.hostname===source.host&&u.pathname.startsWith('/wp-content/uploads/')}catch{return false}};
 export function validAutomatedNewsVideo(row){
  const e=row.visualEvidence,a=row.audioEvidence,n=row.newsEntry,source=localNewsSources.find(s=>s.id===n?.sourceId);
  if(e?.kind!=='news-film'||!source||!officialNewsUrl(n.url,source)||n.sourceHash!==updateSourceHash(n)||!validAutomaticScript(row.spokenStory,n)||!row.reel||!validReel(row))return false;
@@ -8,7 +10,7 @@ export function validAutomatedNewsVideo(row){
   &&a?.originalMusic===true&&a.sourceClipAudioUsed===false&&a.scriptHash===row.spokenStory.scriptHash
   &&(a.provider==='elevenlabs'&&a.voice==='Chris'&&a.model==='eleven_v3'&&a.syntheticNarration===true&&a.ownerUseAuthorization==='owner-chat-2026-10-24-automatic-stories'&&/^[a-f0-9]{64}$/.test(a.audioSha256||'')
    ||a.provider==='none'&&a.captionOnly===true&&a.syntheticNarration===false&&a.ownerUseAuthorization==='owner-chat-2026-10-27-club-reels'&&!!mediaCredit(n)&&String(row.caption||'').includes(mediaCredit(n)))
-  &&NEWS_TECHNIQUES.includes(row.creativeTechnique)&&row.subjectMedia?.length>0&&row.subjectMedia.every(m=>['clip','photo'].includes(m.kind)&&m.sourcePage===n.url&&m.authorization==='owner-cleared-2026-10-22'&&/^[a-f0-9]{64}$/.test(m.sha256||'')&&(m.kind==='clip'?n.clips:n.photos).includes(m.originalUrl));
+  &&NEWS_TECHNIQUES.includes(row.creativeTechnique)&&row.subjectMedia?.some(m=>m.role!=='broll')&&row.subjectMedia.length<=8&&row.subjectMedia.every(m=>['clip','photo'].includes(m.kind)&&m.authorization==='owner-cleared-2026-10-22'&&/^[a-f0-9]{64}$/.test(m.sha256||'')&&(m.role==='broll'?brollFromSource(m,source):m.sourcePage===n.url&&(m.kind==='clip'?n.clips:n.photos).includes(m.originalUrl)));
 }
 // Credit line for club media (owner, Oct 27): names the club and its official Instagram (from the club's own site) and invites a takedown.
 export function mediaCredit(entry){const source=localNewsSources.find(s=>s.id===entry?.sourceId);if(!source)return '';

@@ -29,3 +29,17 @@ test('retired club Reels neither fill the draft buffer nor use the daily allowan
  assert.equal(newsProductionBlocked(queue,{...opts,retired:['a','b','c']}),false);
  assert.equal(newsProductionBlocked(queue,{...opts,retired:['a','b']}),true);
 });
+import{brollCandidates}from'../scripts/news-media.mjs';
+test('supporting shots come only from the same club\'s other recent articles, never repeating the story\'s own media',()=>{
+ const entry={id:'a',sourceId:'tampa-bay-rowdies',url:'https://www.rowdiessoccer.com/news/2026/10/26/a/',photos:['p1'],clips:[]};
+ const entries=[entry,{id:'b',sourceId:'tampa-bay-rowdies',url:'u-b',publishedAt:'2026-10-25T00:00:00Z',photos:['p1','p2','p3','p4'],clips:['c1']},{id:'c',sourceId:'miami-fc',url:'u-c',publishedAt:'2026-10-25T00:00:00Z',photos:['m1'],clips:[]},{id:'d',sourceId:'tampa-bay-rowdies',url:'u-d',publishedAt:'2026-08-01T00:00:00Z',photos:['old'],clips:[]}];
+ const b=brollCandidates(entry,entries,{now:Date.parse('2026-10-29T00:00:00Z')});
+ assert.deepEqual(b.map(m=>m.url),['c1','p2']);assert.ok(b.every(m=>m.sourcePage==='u-b'));
+});
+test('a supporting shot must come from another official article of the same club, hosted on its own uploads',()=>{const r=make(),base=r.subjectMedia[0];
+ const ok={...base,role:'broll',kind:'photo',originalUrl:'https://www.sportingjax.com/wp-content/uploads/2026/10/other.jpg',sourcePage:'https://www.sportingjax.com/news/2026/10/20/other-story/'};
+ assert(validAutomatedNewsVideo({...r,subjectMedia:[...r.subjectMedia,ok]}));
+ assert(!validAutomatedNewsVideo({...r,subjectMedia:[...r.subjectMedia,{...ok,originalUrl:'https://cdn.example.org/x.jpg'}]}));
+ assert(!validAutomatedNewsVideo({...r,subjectMedia:[...r.subjectMedia,{...ok,sourcePage:'https://www.rowdiessoccer.com/news/2026/10/20/x/'}]}));
+ assert(!validAutomatedNewsVideo({...r,subjectMedia:[ok]}));
+});
