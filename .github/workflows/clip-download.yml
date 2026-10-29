@@ -1,0 +1,55 @@
+name: Cancha cleared clip download
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: 'YouTube ids from config/clip-permissions.json, comma-separated (blank = all)'
+        type: string
+        default: ''
+permissions:
+  contents: read
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # yt-dlp needs a JavaScript runtime for YouTube; deno is its default.
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Queue cleared videos only
+        env:
+          IDS: ${{ inputs.ids }}
+        run: |
+          mkdir -p private-data/clips
+          node scripts/clip-download.mjs private-data/clips/urls.txt
+          cp config/clip-permissions.json private-data/clips/
+      # The burner account's cookies (owner, Oct 29) live only in a 0600 temp file for this step and are deleted after.
+      - name: Download
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
+        run: |
+          pip install --quiet -U "yt-dlp[default]"
+          umask 077
+          COOKIES="$RUNNER_TEMP/yt-cookies.txt"
+          printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIES"
+          set +e
+          yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/b" --merge-output-format mp4 \
+            -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --write-info-json --no-progress \
+            -a private-data/clips/urls.txt 2>&1 | grep -v -i cookie | tail -40
+          status=${PIPESTATUS[0]}
+          rm -f "$COOKIES"
+          ls -la private-data/clips
+          exit $status
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cleared-clips-${{ github.run_id }}
+          path: private-data/clips/
+          retention-days: 7
