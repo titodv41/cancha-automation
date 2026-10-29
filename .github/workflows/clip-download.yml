@@ -35,12 +35,13 @@ jobs:
         env:
           YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
         run: |
+          sudo apt-get install -y -qq ffmpeg > /dev/null
           pip install --quiet -U "yt-dlp[default]"
           umask 077
           COOKIES="$RUNNER_TEMP/yt-cookies.txt"
           printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIES"
           set +e
-          yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/b" --merge-output-format mp4 \
+          yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/b" --merge-output-format mp4 \
             -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --write-info-json --no-progress \
             -a private-data/clips/urls.txt 2>&1 | grep -v -i cookie | tail -40
           status=${PIPESTATUS[0]}

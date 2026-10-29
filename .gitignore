@@ -27,3 +27,4 @@ audit/official-pages/
 
 # Production videos are delivered through encrypted queue state.
 /content/instagram/narrative-editorial-ready.json
+/previews/creator-cut/
