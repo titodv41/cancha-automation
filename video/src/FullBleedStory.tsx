@@ -19,21 +19,9 @@ export function shotPlan(media:any[],seconds:number){
   shots.push({media:m,start,from:t,len,move:MOVES[(k+n)%MOVES.length]});t+=len;k++;}
  return shots;
 }
-// Player pop (photos with a cutout): the photo sits back, darker and softer, a headline word fills the middle, and the
-// cut-out player stands in front of it moving a little faster, which reads as depth. Words come from the story's title.
-const STOP=new Set(['A','AN','THE','VS','VS.','FOR','OF','TO','IN','ON','AT','AND','READY','WITH','FROM','BY','IS','ARE','AS']);
-export const popWordsFor=(title:string)=>String(title).toUpperCase().replace(/[^A-Z0-9' –-]/g,' ').split(/\s+/).filter(w=>w.length>2&&!STOP.has(w)).slice(0,6);
-function PlayerPop({media,word,local,len,accent}:any){
- const p=interpolate(local,[0,len],[0,1],clamp),inWord=ease(local,2,14),size=Math.min(290,Math.floor(1650/Math.max(4,word.length)));
- return <AbsoluteFill>
-  <Img src={staticFile(media.publicFile)} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 40%',filter:'brightness(.45) saturate(1.1) blur(3px)',transform:`scale(${1.08+p*.05})`}}/>
-  {word&&<div style={{position:'absolute',left:0,right:0,top:330,textAlign:'center',fontFamily:'AutoDisplay,sans-serif',fontStyle:'italic',fontWeight:700,textTransform:'uppercase',fontSize:size,lineHeight:.85,letterSpacing:-3,color:accent,opacity:inWord,transform:`translateX(${(1-inWord)*-120+(p-.5)*-40}px)`}}>{word}</div>}
-  <Img src={staticFile(media.cutoutFile)} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 40%',filter:'drop-shadow(0 18px 30px #000a)',transform:`translateY(${(1-ease(local,0,12))*60-p*20}px) scale(${1.1+p*.09})`}}/>
- </AbsoluteFill>;
-}
 export function FullBleedStory({brand,episode,groups,audio}:any){
  const f=useCurrentFrame(),{fps,durationInFrames}=useVideoConfig(),t=f/fps,hookEnd=Math.round(HOOK*fps),outroFrom=durationInFrames-Math.round(OUTRO*fps);
- const popWords=popWordsFor(episode.entry.title).length?popWordsFor(episode.entry.title):[String(episode.entry.organization).toUpperCase()],shots=shotPlan(episode.media,durationInFrames/fps),result=!!episode.story.score,resultAt=Math.floor((episode.resultAtSeconds||episode.durationSeconds*.48)*fps),final=!episode.story.deficit||f>=resultAt;
+ const shots=shotPlan(episode.media,durationInFrames/fps),result=!!episode.story.score,resultAt=Math.floor((episode.resultAtSeconds||episode.durationSeconds*.48)*fps),final=!episode.story.deficit||f>=resultAt;
  const active=f>=hookEnd-6&&f<outroFrom?groups.find((g:any)=>t>=g.start&&t<g.end):null,hook=f<hookEnd,outro=f>=outroFrom;
  // Recaps open on the score line; other club news opens on the article's own title.
  const lines=String(result?episode.headline:episode.entry.title).split('\n'),longest=Math.max(...lines.map(l=>l.length)),hookSize=longest>22?92:longest>14?118:150;
@@ -43,7 +31,7 @@ export function FullBleedStory({brand,episode,groups,audio}:any){
    // Slow camera move per shot; photos travel further than clips. Each shot fades in over the previous one.
    const d=s.media?.kind==='clip'?.05:.1,scale=s.move==='out'?1+d*(1-p)+.04:1.04+(s.move==='in'?d*p:d*.5),x=s.move==='left'?(.5-p)*60:s.move==='right'?(p-.5)*60:0,y=s.move==='up'?(.5-p)*50:0;
    return <Sequence key={k} from={from} durationInFrames={len+FADE} layout="none"><AbsoluteFill style={{opacity:k===0?1:interpolate(local,[0,FADE],[0,1],clamp),transform:`translate(${x}px,${y}px) scale(${scale})`}}>
-    {s.media?.cutoutFile?<PlayerPop media={s.media} word={k>0?popWords[(k-1)%popWords.length]:''} local={local} len={len} accent={brand.accent}/>:s.media?.kind==='clip'?<OffthreadVideo src={staticFile(s.media.publicFile)} startFrom={Math.floor(s.start*fps)} muted style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 45%'}}/>:s.media?<Img src={staticFile(s.media.publicFile)} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 40%'}}/>:null}
+    {s.media?.kind==='clip'?<OffthreadVideo src={staticFile(s.media.publicFile)} startFrom={Math.floor(s.start*fps)} muted style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 45%'}}/>:s.media?<Img src={staticFile(s.media.publicFile)} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'50% 40%'}}/>:null}
    </AbsoluteFill></Sequence>;})}
   <AbsoluteFill style={{background:'linear-gradient(180deg,#000a 0%,#0000 16%,#0000 56%,#06140f80 76%,#06140fd9 100%)'}}/>
   {hook&&<AbsoluteFill style={{background:`rgba(6,20,15,${.38*(1-ease(f,hookEnd-8,hookEnd))})`}}/>}
