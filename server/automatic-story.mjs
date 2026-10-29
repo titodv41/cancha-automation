@@ -34,15 +34,16 @@ export function validAutomaticScript(story,entry){
   &&story.evidence.length>=1&&story.evidence.length<=2&&story.evidence.every(e=>e.source===entry.url&&entry.paragraphs.some(p=>normalize(p).includes(normalize(e.exactText)))&&e.spoken===cleanSentence(e.exactText))
   &&story.wordCount===story.script.split(/\s+/).length&&story.wordCount>=25&&story.wordCount<=58&&!unsafe.test(story.script)&&!/[?]$/.test(story.script);
 }
-export const NEWS_TECHNIQUES=['match-board','newsroom','club-film'];
-export function chooseNewsTechnique(entry,previous=[],learning=null){
+export const NEWS_TECHNIQUES=['match-board','newsroom','club-film','full-bleed'];
+// `allowed` comes from config/automatic-stories.json; drafts made with any known technique stay valid.
+export function chooseNewsTechnique(entry,previous=[],learning=null,allowed=NEWS_TECHNIQUES){
  const used=previous.filter(r=>r.status==='Published'||r.status==='Approved'||r.status==='Draft').map(r=>{try{return typeof r.content==='string'?JSON.parse(r.content):r.content}catch{return null}}).filter(c=>c&&NEWS_TECHNIQUES.includes(c.creativeTechnique)).sort((a,b)=>(Date.parse(a.visualEvidence?.renderedAt)||0)-(Date.parse(b.visualEvidence?.renderedAt)||0));
  const counts=Object.fromEntries(NEWS_TECHNIQUES.map(k=>[k,used.slice(-12).filter(r=>r.creativeTechnique===k).length]));
- const candidates=NEWS_TECHNIQUES.filter(k=>k!=='match-board'||/\b(?:draw|rall(?:y|ies|ied)?|win|beat|match)\b/i.test(entry.title));
+ const candidates=NEWS_TECHNIQUES.filter(k=>allowed.includes(k)).filter(k=>k!=='match-board'||/\b(?:draw|rall(?:y|ies|ied)?|win|beat|match)\b/i.test(entry.title));
  const order=[...candidates].sort((a,b)=>counts[a]-counts[b]||sha(entry.id+a).localeCompare(sha(entry.id+b)));
  // A measured preference is only eligible after comparable independent samples.
  const winner=learning?.comparisons?.[0];
  if(winner?.posts>=5&&learning.comparisons.length>=2&&parseInt(sha(entry.id).slice(0,2),16)%4!==0&&candidates.includes(winner.technique))return winner.technique;
- if(/rall(?:y|ies|ied)|comeback/i.test(entry.title)&&counts['match-board']===0)return 'match-board';
+ if(/rall(?:y|ies|ied)|comeback/i.test(entry.title)&&counts['match-board']===0&&candidates.includes('match-board'))return 'match-board';
  return order[0];
 }

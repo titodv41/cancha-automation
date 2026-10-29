@@ -14,7 +14,8 @@ const key=s=>String(s).normalize('NFKC').toLowerCase().replace(/[^a-z0-9]/g,'');
 if(key(timing.words.map(w=>w.text).join(' '))!==key(caption?captionText(episode.story.script):episode.story.script))throw Error('Provider word alignment does not match the complete script');
 const normalized=timing.words.map(w=>key(w.text)),prefix=episode.story.evidence.at(-1).spoken.split(/\s+/).slice(0,4).map(key),resultIndex=normalized.findIndex((_,i)=>prefix.every((w,j)=>normalized[i+j]===w));
 if(episode.story.score&&resultIndex>0)episode.resultAtSeconds=timing.words[resultIndex].start;
-episode.durationSeconds=Math.ceil((audioSeconds+.25+.7)*30)/30;
+// The full-bleed technique closes on a short branded end card after the story.
+episode.durationSeconds=Math.ceil((audioSeconds+.25+.7+(episode.technique==='full-bleed'?2.2:0))*30)/30;
 await writeFile(assets+'/score.json',JSON.stringify({durationSeconds:episode.durationSeconds,music:{bpm:episode.technique==='newsroom'?122:132,openGain:.65,duckedGain:.2,transitionSeconds:[episode.durationSeconds*.48]}}));
 await writeFile(assets+'/narration-proof.json',JSON.stringify(caption?{provider:'none',captionOnly:true,syntheticNarration:false,parts:[]}:{provider:'elevenlabs',model:timing.model,voice:'Chris',audioSha256:sha(voice),syntheticNarration:true,parts:[{file:resolve(episode.voiceFile),start:.25,sha256:sha(voice),durationSeconds:audioSeconds}]}));
 execFileSync(process.execPath,['video/audio/soundtrack.mjs',assets+'/score.json',assets],{stdio:'pipe'});

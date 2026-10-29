@@ -18,3 +18,6 @@ test('caption-only timing reads at a steady pace and keeps every word in order',
 });
 import{captionText}from'../video/audio/caption-timing.mjs';
 test('captions show spoken scores as digits and leave other words alone',()=>{assert.equal(captionText('Lexington took a two nil lead and it ended three all.'),'Lexington took a 2–0 lead and it ended 3–3.');assert.equal(captionText('Two of three games.'),'Two of three games.');});
+import{chooseNewsTechnique,NEWS_TECHNIQUES}from'../server/automatic-story.mjs';
+test('only configured techniques are chosen for new stories; older techniques stay valid',()=>{const e={id:'x',title:'Sporting JAX Women Rally to Earn Point'};
+ assert.equal(chooseNewsTechnique(e,[],null,['full-bleed']),'full-bleed');assert.ok(NEWS_TECHNIQUES.includes('club-film'));assert.ok(NEWS_TECHNIQUES.includes(chooseNewsTechnique(e)));});

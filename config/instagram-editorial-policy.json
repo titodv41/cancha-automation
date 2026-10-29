@@ -23,7 +23,10 @@
     "local-fkk-programs-20261022",
     "local-weston-club-20261022",
     "local-weston-coach-20261022",
-    "local-rowdies-playoff-20261022"
+    "local-rowdies-playoff-20261022",
+    "auto-club-news-48d2dc0f3e62768ffb66",
+    "auto-club-news-6a6b851b490c2279515c",
+    "auto-club-news-aac14057e46b3643525d"
   ],
   "curatedDraftIds": [
     "compare-florida-id-camps-dec-2026",
@@ -68,5 +71,6 @@
   "approvedComparisonReelIds": [],
   "comparisonReelsNote": "Oct 29: owner rejected comparison Reels (carousel information as a Reel) as not professional enough; none may post. Comparison carousels stay. Reels should be built from real club footage.",
   "collabInvitesEnabled": true,
-  "collabInvitesNote": "Oct 27: owner approved inviting the featured club as Instagram collaborator (max 3, from the club's official site). A declined or invalid invite never blocks the post; the club's acceptance is also its consent to the shared Reel."
+  "collabInvitesNote": "Oct 27: owner approved inviting the featured club as Instagram collaborator (max 3, from the club's official site). A declined or invalid invite never blocks the post; the club's acceptance is also its consent to the shared Reel.",
+  "retiredDraftsNote": "Oct 29: three club-news Reels rendered in the older boxed layout retired after the owner asked for a more professional Reel look."
 }
