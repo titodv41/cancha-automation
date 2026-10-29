@@ -9,7 +9,8 @@ export function narrationAllowed(cut,settings){
  return !!cut.script&&/^\d{4}-\d{2}-\d{2}$/.test(cut.narrationApprovedOn||'');
 }
 export function buildCreatorDraft(cut,result,{date,posterUrl,posterChecksum,videoUrl,videoChecksum}){
- return{id:`short-${cut.id}-${date}`,recipeId:cut.id,recipeKind:'creator',format:'feed',sourceType:'brand',topic:'community',creativeKind:'short-reel',creativeVersion:'cancha-local-v2',
+ // One draft id per cut, so a re-run never queues a second copy.
+ return{id:`short-${cut.id}`,recipeId:cut.id,recipeKind:'creator',format:'feed',sourceType:'brand',topic:'community',creativeKind:'short-reel',creativeVersion:'cancha-local-v2',
   headline:cut.hook.replace(/\n/g,' '),caption:cut.caption,altText:cut.altText,
   rights:'Footage: '+result.footage.map(f=>f.creator.replace(/ - .*/,'')+' ('+f.license+', '+f.page+')').join('; ')+'. Recorded in config/clip-permissions.json. Music, edit and design by Cancha; narration by ElevenLabs (Starter commercial license).',
   footage:result.footage,assetUrl:posterUrl,assetChecksum:posterChecksum,
