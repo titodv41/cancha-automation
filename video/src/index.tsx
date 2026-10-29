@@ -1,3 +1,4 @@
+import {CreatorCut} from './CreatorCut';
 import{AutomaticNewsStory}from'./AutomaticNewsStory';
 import narrativeManifest from '../../content/instagram/story-narration.json';
 import {NarrativeStory} from './NarrativeStory';
@@ -56,4 +57,5 @@ const StoryRoot=()=> <><AllRoot/><Composition id="SingleStory" component={Single
 const NarrativeRoot=()=> <><StoryRoot/><Composition id="NarrativeStory" component={NarrativeStory} durationInFrames={960} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,visuals:narrativeManifest.visuals,edit:{durationSeconds:32,scenes:[]},audio:'generated/narrative-story/soundtrack.wav',groups:[]}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.edit.durationSeconds*30)})}/></>;
 const CompleteRoot=()=> <><NarrativeRoot/><Composition id="AutomaticNewsStory" component={AutomaticNewsStory} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,episode:{durationSeconds:20,media:[],entry:{city:'',publishedOn:'2026-10-24',title:''},story:{}},groups:[],audio:'generated/automatic-news/soundtrack.wav'}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.episode.durationSeconds*30)})}/></>;
 const MeetRoot=()=> <><CompleteRoot/><Composition id="MeetClub" component={MeetClub} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,feature:{city:'',organization:'',segments:[],endCard:[]},music:null}} calculateMetadata={({props})=>({durationInFrames:Math.round((INTRO+OUTRO+props.feature.segments.reduce((a:number,s:any)=>a+s.duration,0))*30)})}/></>;
-registerRoot(MeetRoot);
+const CreatorRoot=()=> <><MeetRoot/><Composition id="CreatorCut" component={CreatorCut} durationInFrames={600} fps={30} width={1080} height={1920} defaultProps={{brand:defaults.brand,cut:{shots:[],beats:[],hook:'',chip:'',credit:'',hookSeconds:2.4,outroSeconds:2.2,durationSeconds:20},audio:null}} calculateMetadata={({props})=>({durationInFrames:Math.round(props.cut.durationSeconds*30)})}/></>;
+registerRoot(CreatorRoot);
