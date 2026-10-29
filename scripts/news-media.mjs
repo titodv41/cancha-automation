@@ -8,9 +8,9 @@ export function brollCandidates(entry,entries,{now=Date.now(),maxAgeDays=30,limi
   for(const url of(e.clips||[]).slice(0,1))out.push({kind:'clip',url,sourcePage:e.url});for(const url of(e.photos||[]).slice(0,2))out.push({kind:'photo',url,sourcePage:e.url});}
  const seen=new Set([...(entry.photos||[]),...(entry.clips||[])]);return out.filter(m=>!seen.has(m.url)&&seen.add(m.url)).slice(0,limit);
 }
-export async function prepareNewsMedia(entry,session,{broll=[]}={}){
+export async function prepareNewsMedia(entry,session,{broll=[],videoOnly=false}={}){
  const root='video/public/generated/automatic-news';await mkdir(root,{recursive:true});const media=[],blocked=[];
- const jobs=[...entry.clips.slice(0,3).map(url=>({kind:'clip',url,sourcePage:entry.url})),...entry.photos.slice(0,4).map(url=>({kind:'photo',url,sourcePage:entry.url})),...broll.map(m=>({...m,role:'broll'}))];
+ const jobs=[...entry.clips.slice(0,3).map(url=>({kind:'clip',url,sourcePage:entry.url})),...entry.photos.slice(0,4).map(url=>({kind:'photo',url,sourcePage:entry.url})),...broll.map(m=>({...m,role:'broll'}))].filter(j=>!videoOnly||j.kind==='clip');
  for(const{kind,url,sourcePage,role}of jobs){if(media.length>=8)break;
   try{
    const u=new URL(url);if(u.hostname!==new URL(sourcePage).hostname||new URL(sourcePage).hostname!==new URL(entry.url).hostname||!u.pathname.startsWith('/wp-content/uploads/')||u.protocol!=='https:'||u.username||u.password)throw Error('Subject media origin changed');

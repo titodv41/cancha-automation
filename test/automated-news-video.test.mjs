@@ -43,3 +43,9 @@ test('a supporting shot must come from another official article of the same club
  assert(!validAutomatedNewsVideo({...r,subjectMedia:[...r.subjectMedia,{...ok,sourcePage:'https://www.rowdiessoccer.com/news/2026/10/20/x/'}]}));
  assert(!validAutomatedNewsVideo({...r,subjectMedia:[ok]}));
 });
+import{prepareNewsMedia}from'../scripts/news-media.mjs';
+test('video-only production never even fetches photos',async()=>{const tried=[],session={html:async u=>{tried.push(u);throw Error('offline')}};
+ const entry={id:'x',url:'https://www.sportingjax.com/news/2026/10/23/x/',clips:['https://www.sportingjax.com/wp-content/uploads/a.mp4'],photos:['https://www.sportingjax.com/wp-content/uploads/p.jpg']};
+ await prepareNewsMedia(entry,session,{videoOnly:true,broll:[{kind:'photo',url:'https://www.sportingjax.com/wp-content/uploads/b.jpg',sourcePage:'https://www.sportingjax.com/news/2026/10/20/y/'}]});
+ assert.deepEqual(tried,['https://www.sportingjax.com/wp-content/uploads/a.mp4']);
+});
