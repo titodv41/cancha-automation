@@ -8,7 +8,9 @@ import {approvedOriginalCreative} from '../server/social-creative.mjs';
 import {passesCarouselPolicy} from '../server/carousel-quality.mjs';
 import {requiresSource,confirmPostSource} from '../server/post-source.mjs';
 const {carousels}=JSON.parse(await readFile('content/instagram/comparison-carousels.json','utf8'));
-const policy=JSON.parse(await readFile('config/instagram-editorial-policy.json','utf8'));
+const livePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json','utf8'));
+// The mechanism is tested with Reels approved; the live policy currently approves none (owner, Oct 29).
+const policy={...livePolicy,approvedComparisonReelIds:['florida-id-camps-dec-2026','thanksgiving-camps-2026']};
 const recipe=carousels.find(c=>c.id==='florida-id-camps-dec-2026');
 const hex=n=>String(n).repeat(64).slice(0,64);
 const hosted=slides(recipe).map((s,i)=>({assetUrl:`https://framerusercontent.com/images/slide${i}.jpg`,assetChecksum:hex(i),altText:s.alt,width:1080,height:1350}));
@@ -83,3 +85,4 @@ test('after the day\'s carousel the second slot takes a comparison Reel, never t
   assert.ok(result.skipped.some(x=>x.id==='reel-compare-florida-id-camps-dec-2026'&&/36 hours/.test(x.reason)));
  }finally{db.close();await rm(dir,{recursive:true,force:true});}
 });
+test('the live policy approves no comparison Reels (owner, Oct 29)',()=>{assert.deepEqual(livePolicy.approvedComparisonReelIds,[]);assert.equal(comparisonReelAllowed(reel,livePolicy,{now}),false);});
