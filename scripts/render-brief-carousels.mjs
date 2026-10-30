@@ -7,7 +7,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const palettes=[[C.cream,C.forest,C.orange],[C.lime,C.forest,C.forest],[C.orange,C.cream,C.ink]];
 const nice=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
 export function briefSlides(r){
- const n=r.points.length+2,top=(i,fg)=>`<div class="top" style="color:${fg}"><span class="mark">CANCHA</span><span>${i} / ${n}</span></div>`;
+ const n=r.points.length+2,top=(i,fg)=>`<div class="top" style="color:${fg}"><img class="logo" src="cancha-trim.png" alt="Cancha" style="${fg===C.forest||fg===C.ink?'':'filter:brightness(0) invert(1)'}"><span>${i} / ${n}</span></div>`;
  const foot=(l,rt,fg)=>`<div class="foot" style="color:${fg}"><span>${esc(l)}</span><span>${esc(rt)}</span></div>`;
  const cover=`background:${C.forest};color:${C.cream}`;
  // The photo owns the top panel and the text sits below it, so headline type never covers faces.
@@ -32,7 +32,7 @@ export function briefSlides(r){
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
  const {chromium}=await import('playwright'),{briefs}=JSON.parse(await readFile('content/instagram/brief-carousels.json','utf8'));
  const only=(process.env.ONLY||'').split(',').filter(Boolean),out='private-data/brief-carousels',assets='content/instagram/local-stories/assets/';
- await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2','condensed-600.woff2'])await copyFile(assets+f,join(out,f));
+ await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2','condensed-600.woff2','cancha-trim.png'])await copyFile(assets+f,join(out,f));
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1350}}),results=[];
  try{for(const r of briefs.filter(c=>!only.length||only.includes(c.id))){const files=[];
   // The photo comes straight from the cited source (photo.url must be on a source's domain) and is credited on the slide.
