@@ -30,7 +30,8 @@ test('every brief keeps opinion on its take slide, credits sources and stays app
 });
 test('a brief photo comes from one of its cited sources, is credited, and collab handles are valid',()=>{
  const host=u=>new URL(u).hostname.replace(/^www\./,'');
- for(const b of briefs.filter(b=>b.photo)){assert.ok(b.sources.some(s=>host(s.url)===host(b.photo.url)),b.id);assert.match(b.photo.credit,/^Photo: /);assert.match(b.caption,/📸 Photo:/);assert.ok(b.photo.alt.length>20);}
+ const cleared=JSON.parse(readFileSync(new URL('../config/clip-permissions.json',import.meta.url))).videos.map(v=>v.id);
+ for(const b of briefs.filter(b=>b.photo)){if(b.photo.local){assert.ok(cleared.includes(b.photo.clearedVideo),b.id);assert.ok(readFileSync(new URL('../'+b.photo.local,import.meta.url)).length>1000);}else assert.ok(b.sources.some(s=>host(s.url)===host(b.photo.url)),b.id);assert.match(b.photo.credit,/^Photo: /);assert.match(b.caption,/📸 Photo:/);assert.ok(b.photo.alt.length>20);}
  for(const b of briefs.filter(b=>b.collab))assert.match(b.collab,/^[a-z0-9._]{1,30}$/);
  const d=buildBriefDraft({...recipe,checkedOn:today},[{assetUrl:'https://framerusercontent.com/images/x.jpg',assetChecksum:'a'.repeat(64),altText:'x'}],{renderedAt:new Date().toISOString()});
  assert.deepEqual(d.collaborators,recipe.collab?[recipe.collab]:undefined);

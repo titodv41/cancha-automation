@@ -36,7 +36,11 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1350}}),results=[];
  try{for(const r of briefs.filter(c=>!only.length||only.includes(c.id))){const files=[];
   // The photo comes straight from the cited source (photo.url must be on a source's domain) and is credited on the slide.
-  if(r.photo){const host=u=>new URL(u).hostname.replace(/^www\./,'');if(!r.sources.some(s=>host(s.url)===host(r.photo.url)))throw Error(r.id+': photo must come from a cited source');
+  // A photo is either the cited source's own image, or a still from a cleared creator video already in the repo.
+  if(r.photo?.local){const {clearedVideos}=await import('./clip-download.mjs'),cleared=clearedVideos(JSON.parse(await readFile('config/clip-permissions.json','utf8')));
+   if(!/^content\/[\w\/.-]+\.jpg$/.test(r.photo.local)||!cleared.some(v=>v.id===r.photo.clearedVideo))throw Error(r.id+': local photo needs a cleared source video');
+   await copyFile(r.photo.local,join(out,`${r.id}-photo.jpg`));r.photo={...r.photo,file:`${r.id}-photo.jpg`};}
+  else if(r.photo){const host=u=>new URL(u).hostname.replace(/^www\./,'');if(!r.sources.some(s=>host(s.url)===host(r.photo.url)))throw Error(r.id+': photo must come from a cited source');
    const res=await fetch(r.photo.url,{signal:AbortSignal.timeout(60000)});if(!res.ok||!/^image\//.test(res.headers.get('content-type')||''))throw Error(r.id+': photo unavailable');
    const ext=(res.headers.get('content-type').split('/')[1]||'jpg').replace('jpeg','jpg');await writeFile(join(out,`${r.id}-photo.${ext}`),Buffer.from(await res.arrayBuffer()));r.photo={...r.photo,file:`${r.id}-photo.${ext}`};}
   for(const [i,s] of briefSlides(r).entries()){const html=join(out,`${r.id}-${i+1}.html`),jpg=join(out,`${r.id}-${i+1}.jpg`);

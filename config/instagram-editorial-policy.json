@@ -83,7 +83,8 @@
   "briefCarouselsEnabled": true,
   "approvedBriefCarouselIds": [
     "ftl-utd-broward-college-fields",
-    "rowdies-miami-fc-playoff-derby-2026"
+    "rowdies-miami-fc-playoff-derby-2026",
+    "age-groups-school-year-2026-27"
   ],
   "briefCarouselsNote": "Oct 30: owner asked for posts like news-with-a-take and money/opportunity alerts ('cool posts that offer information, value, drive people'). Claude approves each brief after checking every fact against its cited source the same day.",
   "priorityDraftIds": [

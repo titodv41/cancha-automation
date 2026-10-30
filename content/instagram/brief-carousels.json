@@ -146,6 +146,80 @@
     "alt": "Fort Lauderdale United FC and Broward College leaders with the Broward College mascot on the college's basketball court."
    },
    "collab": "ftlutd"
+  },
+  {
+   "id": "age-groups-school-year-2026-27",
+   "checkedOn": "2026-10-30",
+   "kicker": "CANCHA BRIEF · FOR PARENTS",
+   "title": [
+    "Your kid's age",
+    "group changed."
+   ],
+   "highlight": "Here's why.",
+   "dek": "For 2026-27, youth soccer moved from birth-year to school-year age groups.",
+   "points": [
+    {
+     "label": "WHAT CHANGED",
+     "title": [
+      "Jan 1 → Aug 1"
+     ],
+     "body": [
+      "Age groups now run August 1 to July 31, not January to December",
+      "Announced by US Youth Soccer, US Club Soccer and AYSO",
+      "Starts with the 2026-27 season"
+     ]
+    },
+    {
+     "label": "EXAMPLE",
+     "title": [
+      "U-12 = born",
+      "Aug 2014–Jul 2015"
+     ],
+     "body": [
+      "Born August–December? Your player moves to a younger age group than under the old rule",
+      "Born January–July? Same age group as before",
+      "Teammates may change as rosters are rebuilt"
+     ]
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "Check before",
+      "tryouts"
+     ],
+     "body": [
+      "Leagues could choose their system, so confirm your league's chart",
+      "Ask clubs which age group your player tries out for",
+      "Find your player's group in seconds: link in bio"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "label": "SoccerWire: US Club Soccer, US Youth Soccer and AYSO announcement",
+     "url": "https://www.soccerwire.com/news/us-club-soccer-us-youth-soccer-ayso-announce-update-on-age-group-formation-cycle/",
+     "confirm": [
+      "2026-27",
+      "school year"
+     ]
+    },
+    {
+     "label": "Miami Athletic Club: 2026-27 age group chart",
+     "url": "https://miamiac.ottosport.ai/about-us/resources/age-group",
+     "confirm": [
+      "August 1",
+      "July 31",
+      "U-12"
+     ]
+    }
+   ],
+   "photo": {
+    "local": "content/website/pathway/teamwalk.jpg",
+    "clearedVideo": "ttVtRHrCWT4",
+    "credit": "Photo: Lozzz Productionz (CC BY)",
+    "alt": "Youth teams in purple and light blue kits walking onto a field together at a Florida tournament."
+   },
+   "caption": "Your kid's age group changed this season. Here's why. 👇\n\nFor 2026-27, US Youth Soccer, US Club Soccer and AYSO moved youth soccer from birth-year to school-year age groups: August 1 to July 31 instead of January to December.\n\nExample: U-12 is now born Aug 1, 2014 to Jul 31, 2015. Born August to December? Your player likely moves to a younger age group than under the old rule. Born January to July? Same group as before.\n\nLeagues could choose their system, so confirm your league's chart and ask clubs which age group your player tries out for.\n\n🧮 Find your player's 2026-27 age group, ODP range and college contact date in seconds: link in bio → Pathway → Your soccer timeline.\n\nSources: SoccerWire (joint announcement), Miami Athletic Club 2026-27 age group chart.\n📸 Photo: Lozzz Productionz on YouTube (CC BY).\n\nSend this to the team group chat 📲\n\n#FloridaSoccer #YouthSoccer #SoccerParents #SoccerTryouts #AgeGroups"
   }
  ]
 }
