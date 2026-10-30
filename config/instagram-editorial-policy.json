@@ -82,7 +82,12 @@
   "creatorCutsNote": "Oct 29: owner approved the first creator cut ('This is Florida soccer') from cleared creator videos: post it after adding Chris narration, with creator credits on screen and in the caption. Oct 29 (later): owner asked for traffic-driving tryout/pathway content and for Claude to decide and post independently; Pathway 101 episodes 1-4 approved by Claude after fact and visual checks (FYSA ODP page, FYSA Rule 401.6, NCAA D1 June 15 contact rule).",
   "briefCarouselsEnabled": true,
   "approvedBriefCarouselIds": [
-    "ftl-utd-broward-college-fields"
+    "ftl-utd-broward-college-fields",
+    "rowdies-miami-fc-playoff-derby-2026"
   ],
-  "briefCarouselsNote": "Oct 30: owner asked for posts like news-with-a-take and money/opportunity alerts ('cool posts that offer information, value, drive people'). Claude approves each brief after checking every fact against its cited source the same day."
+  "briefCarouselsNote": "Oct 30: owner asked for posts like news-with-a-take and money/opportunity alerts ('cool posts that offer information, value, drive people'). Claude approves each brief after checking every fact against its cited source the same day.",
+  "priorityDraftIds": [
+    "brief-rowdies-miami-fc-playoff-derby-2026"
+  ],
+  "priorityDraftIdsNote": "Time-bound drafts the standing plan should pick first when eligible (all normal checks still apply). Remove entries once published or expired."
 }

@@ -155,7 +155,7 @@ try{
   // A draft retired after the plan approved it holds its slot and never posts (Oct 29, 6 PM); release it so the plan can refill the slot.
   for(const id of creativePolicy.retiredDraftIds||[])db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Retired after approval; slot released' WHERE id=? AND status IN ('Approved','Preparing')").run(id);
   const launchNotPublished=state.localCreativeVersion==='cancha-local-v2'&&!db.prepare("SELECT id FROM instagram_queue WHERE id='cancha-local-discovery' AND status='Published'").get();
-  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':null,editorialPolicy:creativePolicy});await checkpoint();
+  phase='standing-plan';await prepareStandingPlan(db,{connected:true,accountType:connection.accountType||'UNCONFIRMED',verifySource:confirmPostSource,requireBrandPhotos:true,requireCreativeVersion:creativePolicy.requiredCreativeVersion||null,preferredDraftId:launchNotPublished?'cancha-local-discovery':(creativePolicy.priorityDraftIds||[]).find(id=>db.prepare("SELECT id FROM instagram_queue WHERE id=? AND status='Draft'").get(id))||null,editorialPolicy:creativePolicy});await checkpoint();
  }
  if(mode==='verify')await renewMetaConnection(connection,connection.pageToken,expected,{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
  if(mode==='diagnose-insights'){
