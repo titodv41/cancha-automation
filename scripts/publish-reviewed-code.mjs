@@ -14,6 +14,11 @@ if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(asy
  const before=await f.agent.publish({action:'preview'});if(before.status!=='ready'||before.errors?.length||before.changes?.length||before.stagingEnabled)throw Error('Pending project changes must be reviewed first');
  const files=await f.getCodeFiles(),session='cancha-code-'+Date.now(),ui=files.find(x=>x.name==='CanchaUI.tsx'),ids=new Set();let changed=false;
  if((await f.typecheckCode('CanchaUI.tsx',FILES.includes('CanchaUI.tsx')?sources['CanchaUI.tsx']:ui.content,undefined,session)).length)throw Error('CanchaUI.tsx has type errors');
+ // Load every live file the reviewed files import (recursively) into the same typecheck session first; otherwise
+ // imports such as ./CanchaDiscoveryData.tsx are unresolved (Oct 30, CanchaHome publish).
+ const loaded=new Set(['CanchaUI.tsx']),deps=async content=>{for(const m of content.matchAll(/from\s*['"]\.\/([\w-]+\.tsx)['"]/g)){const dep=m[1];if(loaded.has(dep)||FILES.includes(dep))continue;loaded.add(dep);
+  const live=files.find(x=>x.name===dep);if(!live)throw Error(dep+' missing in the project');await deps(live.content);if((await f.typecheckCode(dep,live.content,undefined,session)).length)throw Error('Live '+dep+' has type errors');}};
+ for(const name of FILES)await deps(sources[name]);
  for(const name of FILES){const errors=await f.typecheckCode(name,sources[name],undefined,session);if(errors.length)throw Error(name+' typecheck: '+JSON.stringify(errors).slice(0,400));
   const file=files.find(x=>x.name===name);if(!file)throw Error(name+' missing');ids.add(file.id);if(file.content!==sources[name]){await file.setFileContent(sources[name]);changed=true;}}
  const pending=await f.agent.publish({action:'preview'});if(pending.status!=='ready'||pending.errors?.length)throw Error('Publication preview needs review');
