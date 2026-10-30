@@ -1,5 +1,6 @@
 import {shortReelAllowed} from '../server/short-reels.mjs';
 import {comparisonCarouselAllowed,comparisonReelAllowed} from '../server/comparison-carousels.mjs';
+import {briefCarouselAllowed} from '../server/brief-carousels.mjs';
 import {contentReadiness} from '../server/content-readiness.mjs';
 import {verifyProductAssets,refreshProductEditorial} from '../server/product-editorial.mjs';
 import{refreshMotionEditorial}from'../server/motion-editorial-refresh.mjs';
@@ -27,7 +28,7 @@ import {canPublishFeed} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
- if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','connect-insights-user','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','refresh-short-reels','refresh-comparison-carousels','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
+ if(!['migrate','prepare','publish','review','pause','resume','command','reconnect','connect-insights','connect-insights-user','diagnose-insights','verify','insights','refresh-creative','refresh-community','refresh-local-stories','refresh-photo-stories','refresh-product-posts','refresh-motion-stories','refresh-short-reels','refresh-comparison-carousels','refresh-brief-carousels','repair-media','replenish'].includes(mode))throw Error('Unsupported GitHub automation action');
  client=githubStateClient();let state=await client.load();
  if(mode==='migrate'){
   if(state)throw Error('GitHub state already exists; review it instead of importing again');
@@ -66,6 +67,16 @@ try{
   for(const draft of drafts){let valid=false;try{valid=await confirmPostSource(draft)===true}catch{}if(!valid)throw Error('Reviewed local story blocked: '+draft.id)}
   for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
   state.localStoriesRevision='2026-10-22';await checkpoint();
+ }
+ if(mode==='refresh-brief-carousels'){
+  // "Cancha Brief" carousels hosted on Framer by scripts/prepare-brief-carousels.mjs. Only policy-approved ones are imported, and every source is rechecked first.
+  if(!localPolicy.briefCarouselsEnabled)throw Error('Brief carousels are not enabled in the editorial policy');
+  const drafts=JSON.parse(await readFile(process.env.BRIEF_CAROUSELS_FILE||'private-data/brief-carousels-ready.json'));
+  if(!drafts.length||drafts.length>10||drafts.some(x=>!approvedOriginalCreative(x)||!briefCarouselAllowed(x,localPolicy)))throw Error('Brief carousels are missing, unapproved or stale');
+  // Check the entire batch before any queue write; never replace owner approvals or receipts.
+  for(const draft of drafts){if(!await confirmPostSource(draft))throw Error('Brief source changed: '+draft.id);await verifyCarouselAssets(draft,{fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});}
+  for(const draft of drafts){const old=db.prepare('SELECT status FROM instagram_queue WHERE id=?').get(draft.id);if(!old||old.status==='Draft')saveDraft(db,draft)}
+  state.briefCarouselsRefresh={importedAt:new Date().toISOString(),ids:drafts.map(d=>d.id)};await checkpoint();
  }
  if(mode==='refresh-comparison-carousels'){
   // Type-led comparison carousels and their Reel versions hosted on Framer by scripts/prepare-comparison-carousels.mjs. Only policy-approved ones are imported.
@@ -139,7 +150,7 @@ try{
   phase='growth-report';const growthDir='private-data/daily-opportunities/'+dateInNewYork(),dailyResult=JSON.parse(await readFile(growthDir+'/automation-result.json'));state.growth={...JSON.parse(await readFile(growthDir+'/report.json','utf8')).growth,clubProfilesAdded:dailyResult.clubProfilesAdded||0,clubCandidatesRemaining:dailyResult.clubCandidatesRemaining||0,automationBlockers:dailyResult.blockers||[]};
   state.dailyPreparation={completedOn:dateInNewYork(),completedAt:new Date().toISOString(),opportunitiesStaged:dailyResult.staged||0,clubProfilesAdded:dailyResult.clubProfilesAdded||0,published:dailyResult.published===true,blockers:dailyResult.blockers||[]};
  }
- if(mode==='prepare'||mode==='replenish'||mode==='publish'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'||mode==='refresh-photo-stories'||mode==='refresh-product-posts'||mode==='refresh-motion-stories'||mode==='refresh-short-reels'||mode==='refresh-comparison-carousels'){
+ if(mode==='prepare'||mode==='replenish'||mode==='publish'||mode==='migrate'||mode==='resume'||mode==='refresh-creative'||mode==='refresh-community'||mode==='refresh-local-stories'||mode==='refresh-photo-stories'||mode==='refresh-product-posts'||mode==='refresh-motion-stories'||mode==='refresh-short-reels'||mode==='refresh-comparison-carousels'||mode==='refresh-brief-carousels'){
   const creativePolicy=JSON.parse(await readFile('config/instagram-editorial-policy.json'));
   // A draft retired after the plan approved it holds its slot and never posts (Oct 29, 6 PM); release it so the plan can refill the slot.
   for(const id of creativePolicy.retiredDraftIds||[])db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Retired after approval; slot released' WHERE id=? AND status IN ('Approved','Preparing')").run(id);

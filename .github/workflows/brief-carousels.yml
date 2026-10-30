@@ -1,0 +1,75 @@
+name: Cancha brief carousels
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Comma-separated brief ids to render (empty = all in content/instagram/brief-carousels.json)'
+        type: string
+        default: ''
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # The runner image already has Google Chrome.
+      - name: Render carousels
+        env:
+          ONLY: ${{ inputs.only }}
+          CHROME_CHANNEL: chrome
+        run: node scripts/render-brief-carousels.mjs
+      # Rendered slides and alt text only; no credentials or private data.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: brief-carousels-${{ github.run_id }}
+          path: |
+            private-data/brief-carousels/*.jpg
+            private-data/brief-carousels/report.json
+          retention-days: 14
+  # Hosts approved briefs on Framer and imports them into the encrypted posting queue. The existing
+  # publisher posts them in the 12:30 / 6 PM slots under its usual caps, spacing and source rechecks.
+  queue:
+    needs: render
+    if: vars.CANCHA_AUTOMATION_BACKEND == 'github'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    concurrency:
+      group: cancha-private-automation
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: brief-carousels-${{ github.run_id }}
+          path: private-data/
+      - name: Host approved carousels
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+        run: node scripts/prepare-brief-carousels.mjs
+      - name: Import into the posting queue
+        run: |
+          if [ "$(node -p "require('./private-data/brief-carousels-ready.json').length" 2>/dev/null || echo 0)" = "0" ]; then echo "Nothing to import"; exit 0; fi
+          node scripts/github-instagram.mjs refresh-brief-carousels
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
+          CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}

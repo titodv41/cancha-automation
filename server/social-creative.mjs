@@ -1,4 +1,5 @@
 import {validAutomatedNewsVideo} from './automated-news-video.mjs';
+import {validBriefCarousel} from './brief-carousels.mjs';
 import {validNarrativeStory} from './narrative-editorial.mjs';
 import {validShortReel} from './short-reels.mjs';
 import {validComparisonCarousel,validComparisonReel} from './comparison-carousels.mjs';
@@ -18,10 +19,11 @@ export function approvedSubjectPhoto(photo, row) {
 }
 export function approvedSocialPhoto(photo){try{const url=new URL(photo.url),source=new URL(photo.sourcePage);return url.origin==='https://framerusercontent.com'&&/^\/images\/.+\.jpe?g$/i.test(url.pathname)&&!url.search&&!url.username&&!url.password&&source.origin==='https://commons.wikimedia.org'&&source.pathname.startsWith('/wiki/File:')&&/^[a-f0-9]{64}$/.test(photo.originalChecksum||'')&&!!photo.creator&&((photo.license==='CC0'&&photo.licenseUrl==='https://creativecommons.org/publicdomain/zero/1.0/deed.en')||(photo.license==='CC BY 2.0'&&photo.licenseUrl==='https://creativecommons.org/licenses/by/2.0/')||(photo.license==='CC BY 4.0'&&photo.licenseUrl==='https://creativecommons.org/licenses/by/4.0'))&&['photo-poster','photo-split'].includes(photo.layout);}catch{return false;}}
 export function approvedOriginalCreative(row){
- const e=row.visualEvidence;if(row.creativeVersion!=='cancha-local-v2'||!e||e.creator!=='Cancha'||!['product-demo','parent-guide','map-guide','profile-spotlight','photo-guide','community-question','local-story','photo-carousel','motion-story','animated-explainer','directory-guide','narrative-story','news-film','short-reel','comparison-carousel','comparison-reel'].includes(e.kind)||!e.subjectKey||!Number.isFinite(Date.parse(e.renderedAt))||Date.parse(e.renderedAt)>Date.now()||Date.now()-Date.parse(e.renderedAt)>7*86400000||e.sourceReviewedOn&&(e.sourceReviewedOn>new Date().toISOString().slice(0,10)||(Date.now()-Date.parse(e.sourceReviewedOn))/86400000>30)||e.assetChecksum!==row.assetChecksum||!/^[a-f0-9]{64}$/.test(e.assetChecksum||''))return false;
+ const e=row.visualEvidence;if(row.creativeVersion!=='cancha-local-v2'||!e||e.creator!=='Cancha'||!['product-demo','parent-guide','map-guide','profile-spotlight','photo-guide','community-question','local-story','photo-carousel','motion-story','animated-explainer','directory-guide','narrative-story','news-film','short-reel','comparison-carousel','comparison-reel','brief-carousel'].includes(e.kind)||!e.subjectKey||!Number.isFinite(Date.parse(e.renderedAt))||Date.parse(e.renderedAt)>Date.now()||Date.now()-Date.parse(e.renderedAt)>7*86400000||e.sourceReviewedOn&&(e.sourceReviewedOn>new Date().toISOString().slice(0,10)||(Date.now()-Date.parse(e.sourceReviewedOn))/86400000>30)||e.assetChecksum!==row.assetChecksum||!/^[a-f0-9]{64}$/.test(e.assetChecksum||''))return false;
  if(e.kind==='news-film')return validAutomatedNewsVideo(row)&&!!row.rights&&!!row.caption&&!!row.altText;
  if(e.kind==='short-reel')return validShortReel(row)&&!!row.rights&&!!row.caption&&!!row.altText;
  if(e.kind==='comparison-carousel')return validComparisonCarousel(row)&&!!row.rights&&!!row.caption&&!!row.altText;
+ if(e.kind==='brief-carousel')return validBriefCarousel(row)&&!!row.rights&&!!row.caption&&!!row.altText;
  if(e.kind==='comparison-reel')return validComparisonReel(row)&&!!row.rights&&!!row.caption&&!!row.altText;
  if(e.kind==='narrative-story')return validNarrativeStory(row)&&!!row.rights&&!!row.caption&&!!row.altText;
  if(e.kind==='directory-guide')return validDirectoryGuide(row)&&!!row.rights&&!!row.caption&&!!row.altText;
