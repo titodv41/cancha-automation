@@ -10,3 +10,8 @@ test('the pathway guide cites a source for every factual section and states the 
 test('the guide page has search metadata within limits and a stable path',()=>{
  for(const p of GUIDE_PAGES){assert.match(p.path,/^\/[a-z0-9-]+$/);assert.ok(p.title.length<=70,p.title);assert.ok(p.description.length<=160,p.description);}
 });
+test('every photo the guide uses exists, and photos are credited',async()=>{
+ const{readdirSync}=await import('node:fs'),files=new Set(readdirSync(new URL('../content/website/pathway/',import.meta.url)).map(n=>n.replace(/\.jpg$/,'')));
+ const used=[...src.matchAll(/__IMG:([a-z-]+)__/g)].map(m=>m[1]);assert.ok(used.length>=5);
+ for(const k of used)assert.ok(files.has(k),k);assert.match(src,/PHOTO_CREDIT='Photos: [^']*\(CC BY\)/);
+});
