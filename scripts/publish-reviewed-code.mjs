@@ -4,7 +4,7 @@ import {readReleaseContract,verifyReleaseContract} from './discovery-release-con
 import {contentDigest} from '../server/discovery-release-contract.mjs';
 // Publishes reviewed edits of existing Framer code components from framer/<name>.tsx. The release contract in the same
 // commit must already hold each file's new digest; every other reviewed part must match live before publishing.
-export const FILES=['CanchaNavigation.tsx','CanchaFooter.tsx'];
+export const FILES=['CanchaHome.tsx'];
 const site='https://pioneering-friday-005497.framer.app';
 if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(async f=>{
  const expected=JSON.parse(await readFile('config/discovery-release-contract.json','utf8')),live=await readReleaseContract(f),sources={};
