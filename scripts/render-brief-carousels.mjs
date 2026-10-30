@@ -9,10 +9,13 @@ const nice=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-US',{month:'short'
 export function briefSlides(r){
  const n=r.points.length+2,top=(i,fg)=>`<div class="top" style="color:${fg}"><span class="mark">CANCHA</span><span>${i} / ${n}</span></div>`;
  const foot=(l,rt,fg)=>`<div class="foot" style="color:${fg}"><span>${esc(l)}</span><span>${esc(rt)}</span></div>`;
- const out=[{alt:`${r.kicker}. ${r.title.join(' ')} ${r.highlight}. ${r.dek}`,html:`<div class="s" style="background:${C.forest};color:${C.cream}">${top(1,C.cream)}
-  <div class="kick" style="margin-top:130px;color:${C.lime}">${esc(r.kicker)}</div>
-  <h1 style="font-size:150px">${r.title.map(esc).join('<br>')}<br><span style="color:${C.lime}">${esc(r.highlight)}</span></h1>
-  <div style="font-size:48px;font-weight:600;margin-top:46px;line-height:1.25">${esc(r.dek)}</div>${foot('@wearecancha','Swipe →',C.cream)}</div>`}];
+ const cover=`background:${C.forest};color:${C.cream}`;
+ // The photo owns the top panel and the text sits below it, so headline type never covers faces.
+ const panel=r.photo?`<div style="position:absolute;left:0;right:0;top:0;height:700px;background:url(${r.photo.file}) center 35%/cover no-repeat"></div><div style="position:absolute;left:0;right:0;top:0;height:700px;background:linear-gradient(180deg,${C.forest}99 0%,${C.forest}00 18%,${C.forest}00 72%,${C.forest} 100%)"></div><div style="position:absolute;right:72px;top:652px;font-size:24px;font-weight:600;opacity:.85">${esc(r.photo.credit)}</div>`:'';
+ const out=[{alt:`${r.kicker}. ${r.title.join(' ')} ${r.highlight}. ${r.dek}${r.photo?' Photo: '+r.photo.alt:''}`,html:`<div class="s" style="${cover}">${panel}<div style="position:relative;display:flex;flex-direction:column;height:100%">${top(1,C.cream)}
+  <div class="kick" style="margin-top:${r.photo?'585px':'130px'};color:${C.lime}">${esc(r.kicker)}</div>
+  <h1 style="font-size:${r.photo?118:150}px">${r.title.map(esc).join('<br>')}<br><span style="color:${C.lime}">${esc(r.highlight)}</span></h1>
+  <div style="font-size:${r.photo?42:48}px;font-weight:600;margin-top:${r.photo?30:46}px;line-height:1.25">${esc(r.dek)}</div>${r.photo?'<div style="height:40px"></div>':''}${foot('@wearecancha','Swipe →',C.cream)}</div></div>`}];
  r.points.forEach((p,i)=>{const [bg,fg,head]=palettes[i%palettes.length];
   out.push({alt:`${p.label}: ${p.title.join(' ')}. ${p.body.join('. ')}.`,html:`<div class="s" style="background:${bg};color:${fg}">${top(i+2,fg)}
   <div class="kick" style="margin-top:110px">${esc(p.label)}</div>
@@ -32,6 +35,10 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2','condensed-600.woff2'])await copyFile(assets+f,join(out,f));
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1350}}),results=[];
  try{for(const r of briefs.filter(c=>!only.length||only.includes(c.id))){const files=[];
+  // The photo comes straight from the cited source (photo.url must be on a source's domain) and is credited on the slide.
+  if(r.photo){const host=u=>new URL(u).hostname.replace(/^www\./,'');if(!r.sources.some(s=>host(s.url)===host(r.photo.url)))throw Error(r.id+': photo must come from a cited source');
+   const res=await fetch(r.photo.url,{signal:AbortSignal.timeout(60000)});if(!res.ok||!/^image\//.test(res.headers.get('content-type')||''))throw Error(r.id+': photo unavailable');
+   const ext=(res.headers.get('content-type').split('/')[1]||'jpg').replace('jpeg','jpg');await writeFile(join(out,`${r.id}-photo.${ext}`),Buffer.from(await res.arrayBuffer()));r.photo={...r.photo,file:`${r.id}-photo.${ext}`};}
   for(const [i,s] of briefSlides(r).entries()){const html=join(out,`${r.id}-${i+1}.html`),jpg=join(out,`${r.id}-${i+1}.jpg`);
    await writeFile(html,`<!doctype html><meta charset=utf-8><style>${cssFor()}</style><body>${s.html}</body>`);
    await page.goto(pathToFileURL(resolve(html)).href);await page.evaluate(()=>document.fonts.ready);

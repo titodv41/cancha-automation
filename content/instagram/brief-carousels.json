@@ -5,18 +5,67 @@
    "id": "ftl-utd-broward-college-fields",
    "checkedOn": "2026-10-30",
    "kicker": "CANCHA BRIEF · BROWARD",
-   "title": ["A pro club wants", "to put $350K"],
+   "title": [
+    "A pro club wants",
+    "to put $350K"
+   ],
    "highlight": "into college fields",
    "dek": "Fort Lauderdale United FC and Broward College announced a field-upgrade proposal on Oct 29.",
    "points": [
-    {"label": "THE PLAN", "title": ["About $350,000", "in field upgrades"], "body": ["At Broward College's Central Campus", "Baseball fields become multipurpose soccer fields", "New grass, irrigation and restored field lights"]},
-    {"label": "WHO PLAYS THERE", "title": ["Students first.", "Then the club."], "body": ["Broward College students and intramurals get first priority", "FTL UTD gets space for youth development, clinics and training", "Plus community events and gym access for youth programs"]},
-    {"label": "OUR TAKE", "title": ["More lit fields,", "more soccer"], "body": ["Every soccer-ready field with lights means more room for youth programs and pickup", "It's still a proposal: no construction dates yet", "Both sides will also explore North and South campus projects"]}
+    {
+     "label": "THE PLAN",
+     "title": [
+      "About $350,000",
+      "in field upgrades"
+     ],
+     "body": [
+      "At Broward College's Central Campus",
+      "Baseball fields become multipurpose soccer fields",
+      "New grass, irrigation and restored field lights"
+     ]
+    },
+    {
+     "label": "WHO PLAYS THERE",
+     "title": [
+      "Students first.",
+      "Then the club."
+     ],
+     "body": [
+      "Broward College students and intramurals get first priority",
+      "FTL UTD gets space for youth development, clinics and training",
+      "Plus community events and gym access for youth programs"
+     ]
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "More lit fields,",
+      "more soccer"
+     ],
+     "body": [
+      "Every soccer-ready field with lights means more room for youth programs and pickup",
+      "It's still a proposal: no construction dates yet",
+      "Both sides will also explore North and South campus projects"
+     ]
+    }
    ],
    "sources": [
-    {"label": "Fort Lauderdale United FC, Oct 29, 2026", "url": "https://www.ftlutd.com/news/2026/10/29/fort-lauderdale-united-fc-commits-350000-investment-in-broward-college-athletic-infrastructure/", "confirm": ["350,000", "Broward College"]}
+    {
+     "label": "Fort Lauderdale United FC, Oct 29, 2026",
+     "url": "https://www.ftlutd.com/news/2026/10/29/fort-lauderdale-united-fc-commits-350000-investment-in-broward-college-athletic-infrastructure/",
+     "confirm": [
+      "350,000",
+      "Broward College"
+     ]
+    }
    ],
-   "caption": "A pro club wants to put $350K into college fields ⚽🏟️\n\nFort Lauderdale United FC and Broward College announced a proposal for an estimated $350,000 in upgrades at Broward College's Central Campus: baseball fields converted into multipurpose soccer fields, new grass, upgraded irrigation and restored field lighting.\n\nBroward College students and intramurals get first priority. FTL UTD would get space for youth development, clinics, training and community events.\n\nOur take: more lit, soccer-ready fields means more room for youth programs and pickup in Broward. It's still a proposal, so we'll be watching for construction dates.\n\nSource: Fort Lauderdale United FC, Oct 29, 2026 (ftlutd.com). Cancha is independent and not affiliated with either organization.\n\nFollow @wearecancha for Florida soccer, explained.\n\n#FloridaSoccer #BrowardSoccer #FortLauderdale #YouthSoccer #SoccerFields"
+   "caption": "A pro club wants to put $350K into college fields ⚽🏟️\n\nFort Lauderdale United FC and Broward College announced a proposal for an estimated $350,000 in upgrades at Broward College's Central Campus: baseball fields converted into multipurpose soccer fields, new grass, upgraded irrigation and restored field lighting.\n\nBroward College students and intramurals get first priority. FTL UTD would get space for youth development, clinics, training and community events.\n\nOur take: more lit, soccer-ready fields means more room for youth programs and pickup in Broward. It's still a proposal, so we'll be watching for construction dates.\n\nSource: Fort Lauderdale United FC, Oct 29, 2026 (ftlutd.com).\n📸 Photo: Fort Lauderdale United FC @ftlutd (official club media). Your photo? DM us to change the credit or have it removed. Cancha is independent and not affiliated with either organization.\n\nFollow @wearecancha for Florida soccer, explained.\n\n#FloridaSoccer #BrowardSoccer #FortLauderdale #YouthSoccer #SoccerFields",
+   "photo": {
+    "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/IMG_2808r.png",
+    "credit": "Photo: Fort Lauderdale United FC",
+    "alt": "Fort Lauderdale United FC and Broward College leaders with the Broward College mascot on the college's basketball court."
+   },
+   "collab": "ftlutd"
   }
  ]
 }
