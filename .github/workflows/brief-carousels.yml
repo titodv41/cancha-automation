@@ -56,10 +56,11 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # A single-folder upload stores files at the artifact root, so download back into that folder.
       - uses: actions/download-artifact@v4
         with:
           name: brief-carousels-${{ github.run_id }}
-          path: private-data/
+          path: private-data/brief-carousels/
       - name: Host approved carousels
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
