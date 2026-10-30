@@ -5,7 +5,7 @@ on:
       script:
         description: 'Reviewed website change to publish'
         type: choice
-        options: [site-seo-pass, create-hub-pages, publish-reviewed-code]
+        options: [site-seo-pass, create-hub-pages, create-guide-pages, publish-reviewed-code]
 permissions:
   contents: read
 concurrency:
