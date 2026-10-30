@@ -8,7 +8,7 @@ export const cssFor=(H=1350)=>`@font-face{font-family:Display;src:url(display.wo
 @font-face{font-family:Cond;src:url(condensed-600.woff2);font-weight:600}
 *{margin:0;box-sizing:border-box}body{width:1080px;height:${H}px;overflow:hidden;font-family:Cond;font-weight:700}
 .s{position:relative;width:1080px;height:${H}px;padding:${H>1500?'300px 72px 470px':'64px 72px'};display:flex;flex-direction:column}
-.top{display:flex;justify-content:space-between;align-items:center;font-size:40px}.mark{font-family:Display;font-size:58px;letter-spacing:1px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:40px}.mark{font-family:Display;font-size:58px;letter-spacing:1px}.logo{height:60px;width:auto;display:block}
 h1{font-family:Display;line-height:.9;text-transform:uppercase;letter-spacing:-1px}.kick{font-size:44px;margin-bottom:18px}
 .chips{display:flex;gap:18px;flex-wrap:wrap}.chip{border-radius:20px;padding:22px 30px;font-size:30px;font-weight:600;line-height:1.15}.chip b{display:block;font-size:48px;font-weight:700}
 .foot{margin-top:auto;display:flex;justify-content:space-between;gap:24px;font-size:34px}
@@ -19,7 +19,7 @@ table{width:100%;border-collapse:collapse;font-size:40px}td{padding:30px 10px;bo
 const palettes=[[C.orange,C.cream,C.ink,C.cream,C.forest],[C.lime,C.forest,C.forest,C.forest,C.cream],[C.forest,C.cream,C.lime,C.cream,C.forest]];
 const host=u=>new URL(u).hostname.replace(/^www\./,'');
 export function slides(r){
- const n=r.items.length+3,top=(i,fg)=>`<div class="top" style="color:${fg}"><span class="mark">CANCHA</span><span>${i} / ${n}</span></div>`;
+ const n=r.items.length+3,top=(i,fg)=>`<div class="top" style="color:${fg}"><img class="logo" src="cancha-trim.png" alt="Cancha" style="${fg===C.forest||fg===C.ink?'':'filter:brightness(0) invert(1)'}"><span>${i} / ${n}</span></div>`;
  const foot=(l,rt,fg)=>`<div class="foot" style="color:${fg}"><span>${esc(l)}</span><span>${esc(rt)}</span></div>`;
  const chips=(items,bg,fg)=>`<div class="chips">${items.map(([k,v])=>`<div class="chip" style="background:${bg};color:${fg}">${esc(k)}<b>${esc(v)}</b></div>`).join('')}</div>`;
  const out=[{alt:`${r.title.join(' ')}: ${r.highlight}. ${r.intro.join(' ')}`,html:`<div class="s" style="background:${C.forest};color:${C.cream}">${top(1,C.cream)}
@@ -44,7 +44,7 @@ export function slides(r){
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
  const {chromium}=await import('playwright'),{carousels}=JSON.parse(await readFile('content/instagram/comparison-carousels.json','utf8'));
  const only=(process.env.ONLY||'').split(',').filter(Boolean),out='private-data/comparison-carousels',assets='content/instagram/local-stories/assets/';
- await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2','condensed-600.woff2'])await copyFile(assets+f,join(out,f));
+ await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2','condensed-600.woff2','cancha-trim.png'])await copyFile(assets+f,join(out,f));
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1350}}),results=[];
  try{for(const r of carousels.filter(c=>!only.length||only.includes(c.id))){const files=[];
   for(const [i,s] of slides(r).entries()){const html=join(out,`${r.id}-${i+1}.html`),jpg=join(out,`${r.id}-${i+1}.jpg`);
