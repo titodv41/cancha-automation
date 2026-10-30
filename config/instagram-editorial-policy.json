@@ -61,7 +61,11 @@
   "shortReelsEnabled": true,
   "approvedShortReelIds": [
     "usl-florida-clubs",
-    "creator-cut-this-is-florida-soccer"
+    "creator-cut-this-is-florida-soccer",
+    "creator-cut-pathway-01-odp",
+    "creator-cut-pathway-02-college-contact",
+    "creator-cut-pathway-03-tryout-window",
+    "creator-cut-pathway-04-stand-out"
   ],
   "shortReelsNote": "Oct 26 (later): owner rejected Reels built on stock footage (Pixabay/Mixkit/Commons) as generic. Only Reels made from real footage (official club media) may post; stock-footage recipes stay rendered but unapproved.",
   "comparisonCarouselsEnabled": true,
@@ -75,5 +79,5 @@
   "collabInvitesEnabled": true,
   "collabInvitesNote": "Oct 27: owner approved inviting the featured club as Instagram collaborator (max 3, from the club's official site). A declined or invalid invite never blocks the post; the club's acceptance is also its consent to the shared Reel.",
   "retiredDraftsNote": "Oct 29: three club-news Reels rendered in the older boxed layout retired after the owner asked for a more professional Reel look. Oct 29 (later): the photo-only Fort Lauderdale United Reel retired; Reels are video only.",
-  "creatorCutsNote": "Oct 29: owner approved the first creator cut ('This is Florida soccer') from cleared creator videos: post it after adding Chris narration, with creator credits on screen and in the caption."
+  "creatorCutsNote": "Oct 29: owner approved the first creator cut ('This is Florida soccer') from cleared creator videos: post it after adding Chris narration, with creator credits on screen and in the caption. Oct 29 (later): owner asked for traffic-driving tryout/pathway content and for Claude to decide and post independently; Pathway 101 episodes 1-4 approved by Claude after fact and visual checks (FYSA ODP page, FYSA Rule 401.6, NCAA D1 June 15 contact rule)."
 }

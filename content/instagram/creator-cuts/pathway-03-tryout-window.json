@@ -1,0 +1,85 @@
+{
+ "id": "creator-cut-pathway-03-tryout-window",
+ "hookSeconds": 2.4,
+ "outroSeconds": 2.2,
+ "bpm": 124,
+ "narrationApprovedOn": "2026-10-29",
+ "posterSeconds": 1.2,
+ "chip": "PATHWAY 101 · EP 3",
+ "hook": "Florida tryouts\nhave a start date.",
+ "shots": [
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 28.4,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 58.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 80.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 117.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 141.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 162.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 201.5,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 22.0,
+   "seconds": 2.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.4,
+   "end": 7.2,
+   "text": "Florida club tryouts: no earlier than May 1"
+  },
+  {
+   "start": 7.2,
+   "end": 12.0,
+   "text": "Start date set by the Tuesday after Memorial Day"
+  },
+  {
+   "start": 12.0,
+   "end": 16.8,
+   "text": "Each region picks its date inside that window"
+  },
+  {
+   "start": 16.8,
+   "end": 19.2,
+   "text": "Visit clubs before May"
+  }
+ ],
+ "script": "Florida club tryouts don't just happen whenever. State rules say they can't start before May first, and the start date has to land by the Tuesday after Memorial Day. Each region picks its date inside that window. So the time to visit clubs and ask questions is before May, not after.",
+ "caption": "Florida club tryouts have a start date 📅\n\nUnder FYSA Rule 401.6, the statewide tryout date can be no earlier than May 1 and no later than the Tuesday after Memorial Day, and each region can pick its own date inside that window. Always confirm your club's exact dates.\n\nThat means the best time to visit clubs, watch a practice and ask questions is before May. Save this and share it with a soccer parent.\n\nPathway 101: how Florida players move up. Next: how to stand out at a tryout.\n\n🎥 Video: Lozzz Productionz on YouTube (CC BY). Creators, DM us anytime for credit changes or removal.\n\n#FYSA #FloridaSoccer #YouthSoccer #SoccerTryouts #SoccerParents #SoccerPlayer",
+ "altText": "Cancha Pathway 101 Reel about Florida club tryout dates: footage from a Florida youth tournament with teams walking out, match action and handshakes, with on-screen text saying tryouts can't start before May 1, the start date must fall by the Tuesday after Memorial Day, and to visit clubs before May."
+}
