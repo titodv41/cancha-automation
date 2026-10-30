@@ -1,0 +1,85 @@
+{
+ "id": "creator-cut-pathway-01-odp",
+ "hookSeconds": 2.4,
+ "outroSeconds": 2.2,
+ "bpm": 124,
+ "narrationApprovedOn": "2026-10-29",
+ "posterSeconds": 1.2,
+ "chip": "PATHWAY 101 · EP 1",
+ "hook": "The tryout\nmost players miss.",
+ "shots": [
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 9.8,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 185.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 49.5,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "RAhgpBvMF38",
+   "at": 93.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "OkSQTIHt_eE",
+   "at": 232.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 104.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "RAhgpBvMF38",
+   "at": 222.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 246.0,
+   "seconds": 2.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.4,
+   "end": 7.2,
+   "text": "ODP = Olympic Development Program"
+  },
+  {
+   "start": 7.2,
+   "end": 12.0,
+   "text": "2026 Florida tryouts: August · $50 a location"
+  },
+  {
+   "start": 12.0,
+   "end": 16.8,
+   "text": "Make the pool: train Sept–June in your district"
+  },
+  {
+   "start": 16.8,
+   "end": 19.2,
+   "text": "Next tryouts: summer 2027"
+  }
+ ],
+ "script": "There's a tryout most Florida players never hear about. It's called ODP, the Olympic Development Program. This year, Florida's tryouts ran in August, fifty dollars per location. Make the pool, and you train with top players in your district from September all the way to June. Follow so you don't miss next year's.",
+ "caption": "The tryout most Florida players miss: ODP 👀\n\nODP is the Olympic Development Program, run in Florida by FYSA. For 2026/27, tryouts ran in August at locations around the state ($50 per player, per location). Selected players train in their district pool from September 2026 through June 2027.\n\nMissed it? Save this and follow Cancha so you catch the 2027 tryouts. Details: fysa.com/odp\n\nPathway 101 is our series on how Florida players move up. Next: when college coaches can actually contact you.\n\n🎥 Video: Lozzz Productionz, Coach Javi on YouTube (CC BY). Creators, DM us anytime for credit changes or removal.\n\n#FloridaODP #ODP #FloridaSoccer #YouthSoccer #SoccerTryouts #SoccerParents #SoccerPlayer",
+ "altText": "Cancha Pathway 101 Reel explaining Florida ODP: youth players walking out at a Florida tournament, training drills through cones, team huddles and match action, with on-screen facts about 2026 ODP tryouts in August, a $50 fee per location and district pool training from September to June."
+}

@@ -1,0 +1,85 @@
+{
+ "id": "creator-cut-pathway-02-college-contact",
+ "hookSeconds": 2.4,
+ "outroSeconds": 2.2,
+ "bpm": 124,
+ "narrationApprovedOn": "2026-10-29",
+ "posterSeconds": 1.2,
+ "chip": "PATHWAY 101 · EP 2",
+ "hook": "When can college\ncoaches DM you?",
+ "shots": [
+  {
+   "id": "_O9v1lG5TC0",
+   "at": 18.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "_O9v1lG5TC0",
+   "at": 60.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "_O9v1lG5TC0",
+   "at": 112.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "OkSQTIHt_eE",
+   "at": 168.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "_O9v1lG5TC0",
+   "at": 232.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "ttVtRHrCWT4",
+   "at": 201.5,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "_O9v1lG5TC0",
+   "at": 141.0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "_O9v1lG5TC0",
+   "at": 531.0,
+   "seconds": 2.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.4,
+   "end": 7.2,
+   "text": "D1 soccer: no recruiting contact before June 15"
+  },
+  {
+   "start": 7.2,
+   "end": 12.0,
+   "text": "…after your sophomore year"
+  },
+  {
+   "start": 12.0,
+   "end": 16.8,
+   "text": "But coaches are watching: camps, showcases, film"
+  },
+  {
+   "start": 16.8,
+   "end": 19.2,
+   "text": "Start now: film + grades"
+  }
+ ],
+ "script": "When can college coaches actually reach out? In Division One soccer, recruiting calls, texts and messages can't start until June fifteenth after your sophomore year. But coaches are watching way before that, at camps, showcases and on film. So don't wait for the DM. Build your film and your grades now.",
+ "caption": "When can college coaches actually contact you? 📲\n\nUnder NCAA Division I rules for men's and women's soccer, coaches can't start recruiting calls, texts or messages until June 15 after your sophomore year. That doesn't mean they aren't watching: camps, showcases and your highlight film all count before that date.\n\nSave this for your freshman or sophomore year, and send it to a teammate who's thinking about college soccer. Rules can change, so always confirm on ncaa.org.\n\nPathway 101: how Florida players move up. Next: when Florida club tryouts can start.\n\n🎥 Video: Lozzz Productionz, Coach Javi on YouTube (CC BY). Creators, DM us anytime for credit changes or removal.\n\n#CollegeSoccer #SoccerRecruiting #FloridaSoccer #YouthSoccer #SoccerTryouts #SoccerParents #SoccerPlayer",
+ "altText": "Cancha Pathway 101 Reel about NCAA Division I soccer recruiting contact: high school and academy match footage, a team huddle, crowds and celebrations, with on-screen text saying recruiting contact can't start before June 15 after sophomore year, and to start building film and grades now."
+}
