@@ -22,7 +22,7 @@ export function extractLocalUpdate(url,html,source,{now=Date.now()}={}){
  if(title.length<12||title.length>160||/\b(?:official.*partner|signage partner|printing partner|sponsor announcement)\b/i.test(title))return null;
  const body=document.querySelector('.entry-content')||document.querySelector('.article-content')||document.querySelector('.article-body')||document.querySelector('article');if(!body)return null;
  const photos=[],clips=[];
- const addPhoto=value=>{const image=mediaUrl(value,source);if(image&&!/\b(?:logo|sponsor|shadow-onblue|icon|badge|evergreen|marketing|outdoor)\b/i.test(image.pathname)&&!photos.some(x=>new URL(x).pathname===image.pathname))photos.push(image.href)};
+ const addPhoto=value=>{const image=mediaUrl(value,source);if(image&&!/\b(?:logo|sponsor|shadow-onblue|icon|badge|evergreen|marketing|outdoor|banner)\b/i.test(image.pathname)&&!photos.some(x=>new URL(x).pathname===image.pathname))photos.push(image.href)};
  addPhoto(document.querySelector('meta[property="og:image"]')?.getAttribute('content'));
  addPhoto(document.querySelector('article img[src]')?.getAttribute('src'));
  for(const img of body.querySelectorAll('img[src]'))addPhoto(img.getAttribute('src'));
