@@ -6,6 +6,7 @@ const sha=b=>createHash('sha256').update(b).digest('hex');
 export function buildBriefDraft(recipe,slides,{renderedAt}){
  return {id:`brief-${recipe.id}`,recipeId:recipe.id,format:'feed',sourceType:'news',topic:'community',creativeKind:'brief-carousel',creativeVersion:'cancha-local-v2',
   headline:`${recipe.title.join(' ')} ${recipe.highlight}`,caption:recipe.caption,altText:slides[0].altText,factsCheckedOn:recipe.checkedOn,factsCheckedAt:recipe.checkedOn+'T00:00:00.000Z',
+  ...(recipe.expiresOn?{expiresOn:recipe.expiresOn}:{}),
   briefSources:recipe.sources.map(s=>({label:s.label,url:s.url,confirm:s.confirm})),
   // A collab invite to the organization the brief is about (owner-approved collab invites); the publisher retries without it if refused.
   ...(recipe.collab?{collaborators:[recipe.collab]}:{}),
