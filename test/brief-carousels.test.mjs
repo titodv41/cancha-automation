@@ -37,7 +37,7 @@ test('a brief photo comes from one of its cited sources, is credited, and collab
  assert.deepEqual(d.collaborators,recipe.collab?[recipe.collab]:undefined);
 });
 test('a time-bound brief stops after its New York expiry date',()=>{
- const r={...recipe,checkedOn:today,expiresOn:'2026-10-30'},d=draft(r);
+ const r={...recipe,checkedOn:'2026-10-30',expiresOn:'2026-10-30'},d=draft(r);
  assert.equal(validBriefCarousel(d,{now:Date.parse('2026-10-30T23:00:00Z')}),true);
  assert.equal(validBriefCarousel(d,{now:Date.parse('2026-10-31T05:00:00Z')}),false);
  assert.equal(validBriefCarousel({...d,expiresOn:'Oct 30'},{now:Date.parse('2026-10-30T12:00:00Z')}),false);
