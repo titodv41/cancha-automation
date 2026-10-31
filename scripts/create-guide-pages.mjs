@@ -40,8 +40,8 @@ if(process.argv[1]?.endsWith('/create-guide-pages.mjs'))await withProject(async 
  await new Promise(s=>setTimeout(s,60000));
  // A cache edge can serve the previous version for a few minutes after publishing; retry before judging.
  const fresh=async path=>{let r,html='';for(let n=0;n<10;n++){r=await fetch(site+path+'?v='+Date.now());html=await r.text();if(html.includes('cgd-card'))break;await new Promise(s=>setTimeout(s,30000));}return {r,html};};
- const checks=[];for(const h of GUIDE_PAGES){const {r,html}=await fresh(h.path);checks.push({path:h.path,status:r.status,title:((html.match(/<title>([^<]*)/)||[])[1]||'').slice(0,70),h1:html.includes(h.h1.replace(/&amp;/g,'&'))||html.toUpperCase().includes(h.h1.toUpperCase()),sections:(html.match(/class="cgd-card"/g)||[]).length,photos:(html.match(/framerusercontent\.com\/images\//g)||[]).length});}
+ const checks=[];for(const h of GUIDE_PAGES){const {r,html}=await fresh(h.path);checks.push({path:h.path,status:r.status,title:((html.match(/<title>([^<]*)/)||[])[1]||'').slice(0,70),h1:html.includes(h.h1.replace(/&amp;/g,'&'))||html.toUpperCase().includes(h.h1.toUpperCase()),sections:(html.match(/class="cgd-card"/g)||[]).length,photos:(html.match(/framerusercontent\.com\/images\//g)||[]).length,faq:html.includes('"@type":"FAQPage"')});}
  await verifyReleaseContract(f);
  console.log(JSON.stringify({published:true,pages:(await f.getNodesWithType('WebPageNode')).length,checks}));
- if(checks.some(c=>c.status!==200||c.sections<5||c.photos<5))process.exitCode=1;
+ if(checks.some(c=>c.status!==200||c.sections<5||c.photos<5||!c.faq))process.exitCode=1;
 });

@@ -91,9 +91,16 @@ const css=`.cgd{padding:0 0 70px}.cgd *{box-sizing:border-box}
 .cgd-tipgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cgd-cta{grid-template-columns:1fr}.cgd-cta img{min-height:200px;max-height:240px}}
 @media(max-width:650px){.cgd-hero{min-height:640px;border-radius:0 0 22px 22px}.cgd-hero:before{background:linear-gradient(180deg,#0b2e2433 0%,#0b2e2499 38%,#0b2e24eb 62%,#0b2e24 100%)}.cgd-hero p{font-size:16px}.cgd-keys{grid-template-columns:1fr;gap:8px}.cgd-key{display:flex;align-items:center;gap:14px;padding:12px 14px}.cgd-key b{font-size:34px;min-width:96px}
 .cgd-tips-in{padding:28px 18px}.cgd-tip{padding:14px}.cgd-tip b{font-size:17px}.cgd-cta>div{padding:24px 18px}}`
+// FAQ structured data (Oct 31, SEO): the same facts as the cards, as schema.org FAQPage for search results.
+export const FAQ=[['When can Florida club soccer tryouts start?','Under FYSA Rule 401.6, the statewide tryout date can be no earlier than May 1 and no later than the Tuesday after Memorial Day. Each FYSA region can pick its own date inside that window, so confirm exact dates with the club.'],
+ ['What is Florida ODP and when are tryouts?','ODP is the Olympic Development Program, run in Florida by FYSA. For 2026/27, tryouts were held in August 2026 at locations around the state, at $50 per player per location, and district pools train from September 2026 through June 2027.'],
+ ['When can college soccer coaches contact my player?','Under NCAA Division I rules for men’s and women’s soccer, coaches can’t start recruiting calls, texts or messages until June 15 after a player’s sophomore year of high school. Coaches still watch earlier at ID camps, showcases and on film.'],
+ ['What age group is my child in for 2026-27?','For 2026-27, US Youth Soccer, US Club Soccer and AYSO moved to school-year age groups (August 1 to July 31). For example, U-12 is born August 1, 2014 to July 31, 2015. Leagues could choose their system, so confirm with your league.'],
+ ['When is high school soccer season in Florida?','Florida high school soccer is a winter sport: FHSAA regular-season matches run from November to mid-January, with playoffs into February.']]
+const faqJson=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:FAQ.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}).replace(/</g,'\\u003c')
 export default function CanchaGuide(){
  const odp=SECTIONS[1],keys=[SECTIONS[0],odp,SECTIONS[3]]
- return <main className="cancha-v2 cgd"><CanchaStyle css={ui+css}/>
+ return <main className="cancha-v2 cgd"><CanchaStyle css={ui+css}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:faqJson}}/>
   <section className="cgd-hero" style={{backgroundImage:'url(__IMG:hero-walkout__)'}}><div className="cv-wrap">
    <span className="cgd-chip">Pathway 101 · Florida</span><h1>Your Florida soccer pathway</h1>
    <p>Tryouts, ODP, elite leagues and college recruiting, at a glance. Every date is sourced. Checked {CHECKED}.</p>
