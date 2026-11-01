@@ -6,6 +6,26 @@ const C={forest:'#103f32',cream:'#f5f3e9',lime:'#d7ef86',orange:'#f55b32',ink:'#
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const palettes=[[C.cream,C.forest,C.orange],[C.lime,C.forest,C.forest],[C.orange,C.cream,C.ink]];
 const nice=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+const VISUAL_H=540;
+// Club crests come only from the checked badge manifest (unmodified marks on a neutral panel).
+export const CRESTS=new Set(['jax','rowdies','miami','weston','fkk']);
+export function visualAlt(v){
+ if(v.type==='photo')return 'Photo: '+v.alt+'.';
+ if(v.type==='stat')return `${v.value} ${v.caption}.`;
+ if(v.type==='scoreboard')return `Scoreboard: ${v.teams.map(t=>t.name+' '+t.score).join(', ')}. ${v.note||''}`;
+ if(v.type==='ratio')return `Chart: ${v.highlight} of ${v.of} icons highlighted. ${v.caption}.`;
+ return '';
+}
+export function visualHtml(v,bg,fg,head){
+ const box=`margin:30px -72px 0;height:${VISUAL_H}px;position:relative;overflow:hidden`;
+ if(v.type==='photo')return `<div style="${box};background:url(${v.file}) center ${v.focus||'35%'}/cover no-repeat"><div style="position:absolute;right:28px;bottom:20px;font-size:22px;font-weight:600;color:#fff;text-shadow:0 1px 6px #000a">${esc(v.credit)}</div></div>`;
+ if(v.type==='stat')return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;background:${C.forest};color:${C.cream};text-align:center"><div style="font-family:Display;font-style:italic;font-size:${String(v.value).length>6?190:250}px;line-height:.9;color:${C.lime}">${esc(v.value)}</div><div style="font-size:46px;font-weight:700;margin-top:22px;text-transform:uppercase;letter-spacing:2px;padding:0 60px">${esc(v.caption)}</div></div>`;
+ if(v.type==='scoreboard'){const team=t=>`<div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:240px"><div style="width:200px;height:200px;border-radius:50%;background:#ffffff1f;border:3px solid ${C.cream}55;display:flex;align-items:center;justify-content:center"><img src="${t.crest}.png" style="max-width:150px;max-height:150px"></div><div style="font-size:38px;font-weight:700;text-transform:uppercase;white-space:nowrap">${esc(t.name)}</div></div>`,score=t=>`<div style="font-family:Display;font-style:italic;font-size:200px;line-height:1;color:${C.lime}">${esc(t.score)}</div>`,[x,y]=v.teams;
+  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;background:${C.forest};color:${C.cream}"><div style="display:flex;justify-content:center;align-items:center;gap:34px">${team(x)}${score(x)}<div style="font-family:Display;font-size:90px;opacity:.6">–</div>${score(y)}${team(y)}</div>${v.note?`<div style="margin:26px auto 0;background:${C.orange};color:${C.cream};font-size:40px;font-weight:700;padding:12px 30px;border-radius:999px;text-transform:uppercase">${esc(v.note)}</div>`:''}</div>`;}
+ if(v.type==='ratio'){const icon=on=>`<svg width="110" height="190" viewBox="0 0 22 38"><circle cx="11" cy="5" r="5" fill="${on?C.orange:C.cream}"/><path d="M4 13h14v12h-3v13H7V25H4z" fill="${on?C.orange:C.cream}"/></svg>`;
+  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;background:${C.forest};color:${C.cream}"><div style="display:flex;gap:18px">${Array.from({length:v.of},(_,k)=>icon(k<v.highlight)).join('')}</div><div style="font-size:46px;font-weight:700;margin-top:34px;text-transform:uppercase;text-align:center;padding:0 60px">${esc(v.caption)}</div></div>`;}
+ throw Error('Unknown visual '+v.type);
+}
 export function briefSlides(r){
  const n=r.points.length+2,top=(i,fg)=>`<div class="top" style="color:${fg}"><img class="logo" src="cancha-trim.png" alt="Cancha" style="${fg===C.forest||fg===C.ink?'':'filter:brightness(0) invert(1)'}"><span>${i} / ${n}</span></div>`;
  const foot=(l,rt,fg)=>`<div class="foot" style="color:${fg}"><span>${esc(l)}</span><span>${esc(rt)}</span></div>`;
@@ -16,7 +36,14 @@ export function briefSlides(r){
   <div class="kick" style="margin-top:${r.photo?'585px':'130px'};color:${C.lime}">${esc(r.kicker)}</div>
   <h1 style="font-size:${r.photo?118:150}px">${r.title.map(esc).join('<br>')}<br><span style="color:${C.lime}">${esc(r.highlight)}</span></h1>
   <div style="font-size:${r.photo?42:48}px;font-weight:600;margin-top:${r.photo?30:46}px;line-height:1.25">${esc(r.dek)}</div>${r.photo?'<div style="height:40px"></div>':''}${foot('@wearecancha','Swipe →',C.cream)}</div></div>`}];
- r.points.forEach((p,i)=>{const [bg,fg,head]=palettes[i%palettes.length];
+ r.points.forEach((p,i)=>{const [bg,fg,head]=palettes[i%palettes.length],v=p.visual;
+  // A slide with a visual (photo, big number, scoreboard or icon chart) leads with it and keeps the text short.
+  if(v){out.push({alt:`${p.label}: ${p.title.join(' ')}. ${visualAlt(v)} ${p.body.join('. ')}.`,html:`<div class="s" style="background:${bg};color:${fg}">${top(i+2,fg)}
+  ${visualHtml(v,bg,fg,head)}
+  <div class="kick" style="margin-top:34px">${esc(p.label)}</div>
+  <h1 style="font-size:92px;margin:6px 0 26px;color:${head}">${p.title.map(esc).join('<br>')}</h1>
+  <div style="font-size:40px;line-height:1.25;font-weight:600">${p.body.map(x=>`<div style="margin-bottom:16px">— ${esc(x)}</div>`).join('')}</div>
+  ${foot(r.kicker,i===r.points.length-1?'Save this':'Swipe →',fg)}</div>`});return;}
   out.push({alt:`${p.label}: ${p.title.join(' ')}. ${p.body.join('. ')}.`,html:`<div class="s" style="background:${bg};color:${fg}">${top(i+2,fg)}
   <div class="kick" style="margin-top:110px">${esc(p.label)}</div>
   <h1 style="font-size:118px;margin:10px 0 56px;color:${head}">${p.title.map(esc).join('<br>')}</h1>
@@ -33,16 +60,23 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  const {chromium}=await import('playwright'),{briefs}=JSON.parse(await readFile('content/instagram/brief-carousels.json','utf8'));
  const only=(process.env.ONLY||'').split(',').filter(Boolean),out='private-data/brief-carousels',assets='content/instagram/local-stories/assets/';
  await mkdir(out,{recursive:true});for(const f of ['display.woff2','condensed-700.woff2','condensed-600.woff2','cancha-trim.png'])await copyFile(assets+f,join(out,f));
+ // A photo is either the cited source's own image (photo.url on a source's domain) or a still from a cleared creator
+ // video already in the repo; either way it is credited on the slide.
+ async function loadPhoto(r,ph,name){
+  if(ph.local){const {clearedVideos}=await import('./clip-download.mjs'),cleared=clearedVideos(JSON.parse(await readFile('config/clip-permissions.json','utf8')));
+   if(!/^content\/[\w\/.-]+\.jpg$/.test(ph.local)||!cleared.some(v=>v.id===ph.clearedVideo))throw Error(r.id+': local photo needs a cleared source video');
+   await copyFile(ph.local,join(out,name+'.jpg'));return {...ph,file:name+'.jpg'};}
+  const host=u=>new URL(u).hostname.replace(/^www\./,'');if(!r.sources.some(s=>host(s.url)===host(ph.url)))throw Error(r.id+': photo must come from a cited source');
+  const res=await fetch(ph.url,{signal:AbortSignal.timeout(60000)});if(!res.ok||!/^image\//.test(res.headers.get('content-type')||''))throw Error(r.id+': photo unavailable');
+  const ext=(res.headers.get('content-type').split('/')[1]||'jpg').replace('jpeg','jpg');await writeFile(join(out,`${name}.${ext}`),Buffer.from(await res.arrayBuffer()));return {...ph,file:`${name}.${ext}`};
+ }
  const browser=await chromium.launch(process.env.CHROME_CHANNEL?{channel:process.env.CHROME_CHANNEL}:{}),page=await browser.newPage({viewport:{width:1080,height:1350}}),results=[];
  try{for(const r of briefs.filter(c=>!only.length||only.includes(c.id))){const files=[];
   // The photo comes straight from the cited source (photo.url must be on a source's domain) and is credited on the slide.
   // A photo is either the cited source's own image, or a still from a cleared creator video already in the repo.
-  if(r.photo?.local){const {clearedVideos}=await import('./clip-download.mjs'),cleared=clearedVideos(JSON.parse(await readFile('config/clip-permissions.json','utf8')));
-   if(!/^content\/[\w\/.-]+\.jpg$/.test(r.photo.local)||!cleared.some(v=>v.id===r.photo.clearedVideo))throw Error(r.id+': local photo needs a cleared source video');
-   await copyFile(r.photo.local,join(out,`${r.id}-photo.jpg`));r.photo={...r.photo,file:`${r.id}-photo.jpg`};}
-  else if(r.photo){const host=u=>new URL(u).hostname.replace(/^www\./,'');if(!r.sources.some(s=>host(s.url)===host(r.photo.url)))throw Error(r.id+': photo must come from a cited source');
-   const res=await fetch(r.photo.url,{signal:AbortSignal.timeout(60000)});if(!res.ok||!/^image\//.test(res.headers.get('content-type')||''))throw Error(r.id+': photo unavailable');
-   const ext=(res.headers.get('content-type').split('/')[1]||'jpg').replace('jpeg','jpg');await writeFile(join(out,`${r.id}-photo.${ext}`),Buffer.from(await res.arrayBuffer()));r.photo={...r.photo,file:`${r.id}-photo.${ext}`};}
+  r.photo=r.photo&&await loadPhoto(r,r.photo,`${r.id}-photo`);
+  r.points=await Promise.all(r.points.map(async(p,k)=>p.visual?.type==='photo'?{...p,visual:{...p.visual,...await loadPhoto(r,p.visual,`${r.id}-p${k+1}`)}}:p));
+  for(const p of r.points)if(p.visual?.type==='scoreboard')for(const t of p.visual.teams){if(!CRESTS.has(t.crest))throw Error(r.id+': crest not in the badge manifest');await copyFile(assets+t.crest+'.png',join(out,t.crest+'.png'));}
   for(const [i,s] of briefSlides(r).entries()){const html=join(out,`${r.id}-${i+1}.html`),jpg=join(out,`${r.id}-${i+1}.jpg`);
    await writeFile(html,`<!doctype html><meta charset=utf-8><style>${cssFor()}</style><body>${s.html}</body>`);
    await page.goto(pathToFileURL(resolve(html)).href);await page.evaluate(()=>document.fonts.ready);

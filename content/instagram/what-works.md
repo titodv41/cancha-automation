@@ -13,3 +13,11 @@ The only post with real engagement so far (~40 likes per the owner; others near 
 - One **stakes headline** and one **comment prompt** (pick a side, tag a teammate, share your story).
 - The same day, or the day before the moment. Set `expiresOn` when the post is time-bound and add it to `priorityDraftIds`.
 - It is still evidence from one post: compare with Insights before calling it proven.
+
+## Nov 1, 2026: owner feedback, more pictures and graphics
+Text-only inside slides are hard to read. Every point slide in a new brief leads with a `visual` (enforced by tests):
+- `photo`: the cited source's own image or a still from a cleared creator video, credited (`url` or `local` + `clearedVideo`).
+- `stat`: one big number with a short caption (`$3,500`, `11.21`, `8 – 1`).
+- `scoreboard`: two club crests from the badge manifest with scores and a note (match results).
+- `ratio`: an icon chart such as 1 in 7 (`of` ≤ 10).
+Don't repeat the visual's number in the slide headline; use the headline for the meaning.

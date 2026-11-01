@@ -16,26 +16,36 @@
     {
      "label": "THE GOAL",
      "title": [
-      "$3,500 for",
+      "Kits for",
       "100 kids"
      ],
      "body": [
       "“Ready to Play” youth soccer kits",
       "For children in the care of The Spring of Tampa Bay",
       "The Spring supports survivors of domestic violence and their families"
-     ]
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "$3,500",
+      "caption": "The drive’s goal"
+     }
     },
     {
      "label": "HOW TO HELP",
      "title": [
       "Give online or",
-      "bring gear 11/21"
+      "bring gear"
      ],
      "body": [
       "Donate on the drive’s Givebutter page (link in caption)",
       "Or shop the wish list and bring items to the Sun’s Nov 21 home match",
       "Every item goes to a kid who wants to play"
-     ]
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "11.21",
+      "caption": "Bring gear to the Sun’s home match"
+     }
     },
     {
      "label": "OUR TAKE",
@@ -47,7 +57,13 @@
       "The club cites a stat: 1 in 7 parents haven’t signed kids up for sports because of equipment costs",
       "Send this to your team group chat",
       "Florida soccer looks after its own"
-     ]
+     ],
+     "visual": {
+      "type": "ratio",
+      "of": 7,
+      "highlight": 1,
+      "caption": "1 in 7 parents haven’t signed kids up because of gear costs"
+     }
     }
    ],
    "sources": [
@@ -85,14 +101,30 @@
     {
      "label": "THE GOALS",
      "title": [
-      "1-1 after",
-      "120 minutes"
+      "Level after",
+      "extra time"
      ],
      "body": [
       "Matias Romero put Miami ahead in the 34th minute",
       "MD Myers equalized for Tampa Bay in the 44th",
       "Myers had a penalty saved late in extra time"
-     ]
+     ],
+     "visual": {
+      "type": "scoreboard",
+      "teams": [
+       {
+        "crest": "rowdies",
+        "name": "Rowdies",
+        "score": "1"
+       },
+       {
+        "crest": "miami",
+        "name": "Miami FC",
+        "score": "1"
+       }
+      ],
+      "note": "After 120 minutes"
+     }
     },
     {
      "label": "THE SHOOTOUT",
@@ -104,7 +136,12 @@
       "The Players’ Shield winners are out in the quarterfinals",
       "“That’s playoff football for you.” — Rowdies coach Dominic Casciato",
       "Tampa Bay had 8 corners to Miami’s 1"
-     ]
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "8 – 1",
+      "caption": "Corners: Rowdies vs Miami"
+     }
     },
     {
      "label": "OUR TAKE",
@@ -116,7 +153,12 @@
       "An 8 seed beat the best regular-season team in the league",
       "Both of Florida’s USL Championship playoff clubs gave fans a classic",
       "Follow for Miami FC’s next round"
-     ]
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "#8 > #1",
+      "caption": "The 8 seed knocks out the 1 seed"
+     }
     }
    ],
    "sources": [
