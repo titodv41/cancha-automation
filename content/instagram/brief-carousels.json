@@ -2,6 +2,84 @@
  "note": "Cancha Brief: one real Florida soccer story per post with a clear take. Every fact comes from the cited sources (confirm tokens are copied from them); opinion goes only on the 'Our take' slide. Facts expire 7 days after checkedOn.",
  "briefs": [
   {
+   "id": "miami-fc-upsets-rowdies-2026",
+   "checkedOn": "2026-11-01",
+   "kicker": "CANCHA BRIEF · USL PLAYOFFS",
+   "title": [
+    "#8 seed Miami FC",
+    "knocks out the #1"
+   ],
+   "highlight": "Rowdies on penalties",
+   "dek": "1-1 after extra time at Al Lang. Miami won the shootout 5-4.",
+   "points": [
+    {
+     "label": "THE GOALS",
+     "title": [
+      "1-1 after",
+      "120 minutes"
+     ],
+     "body": [
+      "Matias Romero put Miami ahead in the 34th minute",
+      "MD Myers equalized for Tampa Bay in the 44th",
+      "Myers had a penalty saved late in extra time"
+     ]
+    },
+    {
+     "label": "THE SHOOTOUT",
+     "title": [
+      "Miami 5-4",
+      "on penalties"
+     ],
+     "body": [
+      "The Players’ Shield winners are out in the quarterfinals",
+      "“That’s playoff football for you.” — Rowdies coach Dominic Casciato",
+      "Tampa Bay had 8 corners to Miami’s 1"
+     ]
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "This is why",
+      "you watch live"
+     ],
+     "body": [
+      "An 8 seed beat the best regular-season team in the league",
+      "Both of Florida’s USL Championship playoff clubs gave fans a classic",
+      "Follow for Miami FC’s next round"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "label": "Tampa Bay Rowdies match recap, Oct 31, 2026",
+     "url": "https://www.rowdiessoccer.com/news/2026/10/31/rowdies-playoff-run-ends-in-penalties-against-miami/",
+     "confirm": [
+      "5-4",
+      "extra time",
+      "Romero",
+      "Myers",
+      "That’s playoff football"
+     ]
+    },
+    {
+     "label": "Tampa Bay Rowdies match preview, Oct 29, 2026",
+     "url": "https://www.rowdiessoccer.com/news/2026/10/29/conference-quarterfinal-preview-rowdies-vs-miami-fc/",
+     "confirm": [
+      "18W-5L-7D",
+      "9W-12L-9D",
+      "Al Lang"
+     ]
+    }
+   ],
+   "photo": {
+    "url": "https://www.rowdiessoccer.com/wp-content/uploads/sites/38/2026/10/MT1_3291.jpg",
+    "credit": "Photo: Tampa Bay Rowdies",
+    "alt": "A Tampa Bay Rowdies player in green and yellow on the ball during a night match, with a Miami FC player in the background."
+   },
+   "collab": "themiamifc",
+   "caption": "Playoff chaos in Florida. ⚽😱\n\n#8 seed Miami FC knocked out the #1 seed and Players’ Shield winners, the Tampa Bay Rowdies, in the USL Championship Eastern Conference Quarterfinal at Al Lang Stadium.\n\n1-1 after extra time: Matias Romero scored for Miami in the 34th minute, MD Myers answered for Tampa Bay in the 44th, and Myers had a penalty saved late in extra time. Miami won the shootout 5-4.\n\n“That’s playoff football for you.” — Rowdies head coach Dominic Casciato\n\nOur take: this is why you watch live. Follow Cancha for Miami FC’s next round.\n\nSources: Tampa Bay Rowdies match recap (Oct 31) and preview (Oct 29), rowdiessoccer.com.\n📸 Photo: Tampa Bay Rowdies @tampabayrowdies (official club media). Your photo? DM us to change the credit or have it removed. Cancha is independent and not affiliated with either club.\n\n#FloridaSoccer #USLChampionship #MiamiFC #Rowdies #USLPlayoffs"
+  },
+  {
    "id": "rowdies-miami-fc-playoff-derby-2026",
    "checkedOn": "2026-10-30",
    "expiresOn": "2026-10-30",

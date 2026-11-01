@@ -4,7 +4,7 @@ import{buildBriefDraft}from'../scripts/prepare-brief-carousels.mjs';import{brief
 import{approvedOriginalCreative}from'../server/social-creative.mjs';import{passesCarouselPolicy}from'../server/carousel-quality.mjs';import{requiresSource}from'../server/post-source.mjs';
 const{briefs}=JSON.parse(readFileSync(new URL('../content/instagram/brief-carousels.json',import.meta.url)));
 const policy=JSON.parse(readFileSync(new URL('../config/instagram-editorial-policy.json',import.meta.url)));
-const recipe=briefs.find(b=>!b.expiresOn),today=new Date().toISOString().slice(0,10);
+const recipe=briefs.find(b=>b.id==='ftl-utd-broward-college-fields'),today=new Date().toISOString().slice(0,10);
 const draft=(r={...recipe,checkedOn:today})=>buildBriefDraft(r,briefSlides(r).map((s,i)=>({assetUrl:`https://framerusercontent.com/images/brief${i}.jpg`,assetChecksum:String(i).repeat(64).slice(0,64).replace(/\d/g,'a'),altText:s.alt,width:1080,height:1350})),{renderedAt:new Date().toISOString()});
 test('a current brief with cited sources is valid, approved and treated as a sourced post',()=>{
  const d=draft();assert.equal(validBriefCarousel(d),true);assert.equal(briefCarouselAllowed(d,policy),true);assert.equal(requiresSource(d),true);
