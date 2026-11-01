@@ -45,9 +45,9 @@ const startCss=`.ch8-start{padding:56px 0 30px;background:#f5f3e9}.ch8-start h2{
 .ch8-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .5s ease}.ch8-card:hover img{transform:scale(1.04)}.ch8-card:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0b2e2400 25%,#0b2e24cc 62%,#0b2e24 100%)}
 .ch8-in{padding:22px 22px 20px;display:flex;flex-direction:column;gap:6px}.ch8-chip{align-self:flex-start;background:#d7ef86;color:#103f32;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:6px 9px}
 .ch8-num{font-family:var(--cancha-display-font,'Cancha Display'),sans-serif;font-style:italic;font-size:56px;line-height:.95;color:#d7ef86;text-transform:uppercase}.ch8-card b{font-size:24px;line-height:1.15}.ch8-card span.ch8-sub{font-size:14px;line-height:1.45;color:#dbe7d3}.ch8-go{margin-top:6px;font-size:13px;font-weight:800;color:#d7ef86}
-.ch8-keys{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;align-items:stretch}.ch8-keys>p{margin:0;align-self:center;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5f7457;max-width:120px}
+.ch8-keys{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));gap:12px;margin-top:16px;align-items:stretch}.ch8-keys>p{margin:0;align-self:center;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5f7457;max-width:120px}
 .ch8-key{display:flex;align-items:center;gap:14px;background:#103f32;border-radius:16px;padding:14px 16px;color:#fff!important;text-decoration:none}.ch8-key b{font-family:var(--cancha-display-font,'Cancha Display'),sans-serif;font-style:italic;font-size:34px;line-height:1;color:#d7ef86;min-width:88px;text-transform:uppercase}.ch8-key span{font-size:13px;line-height:1.35}
-.ch8-credit{font-size:11px;color:#7a856f;margin:12px 0 0}
+.ch8-key-calc{background:#d7ef86;color:#103f32!important}.ch8-key-calc b{color:#f55b32}.ch8-credit{font-size:11px;color:#7a856f;margin:12px 0 0}
 @media(max-width:900px){.ch8-grid{grid-template-columns:1fr 1fr}.ch8-card:first-child{grid-column:1/-1;min-height:340px}.ch8-keys{grid-template-columns:1fr}.ch8-keys>p{max-width:none}}
 @media(max-width:650px){.ch8-start{padding:40px 0 24px}.ch8-grid{grid-template-columns:1fr;gap:12px}.ch8-card{min-height:250px}.ch8-card:first-child{min-height:330px}.ch8-num{font-size:46px}}
 @media(prefers-reduced-motion:reduce){.ch8-card img{transition:none}}`
@@ -64,6 +64,7 @@ export function StartHere({profiles}:any){
    <a className="ch8-key" href="/florida-soccer-pathway#tryouts"><b>May 1</b><span>Earliest Florida club tryouts</span></a>
    <a className="ch8-key" href="/florida-soccer-pathway#odp"><b>Aug</b><span>Florida ODP tryouts (2026)</span></a>
    <a className="ch8-key" href="/florida-soccer-pathway#college"><b>Jun 15</b><span>D1 college contact opens, after sophomore year</span></a>
+   <a className="ch8-key ch8-key-calc" href="/florida-soccer-pathway#calc-title"><b>U?</b><span>Age groups changed for 2026-27. Find your player’s in 10 seconds →</span></a>
   </div>
   <p className="ch8-credit">Photos: stills from Lozzz Productionz videos on YouTube (CC BY).</p>
  </div></section>
