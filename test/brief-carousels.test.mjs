@@ -42,3 +42,21 @@ test('a time-bound brief stops after its New York expiry date',()=>{
  assert.equal(validBriefCarousel(d,{now:Date.parse('2026-10-31T05:00:00Z')}),false);
  assert.equal(validBriefCarousel({...d,expiresOn:'Oct 30'},{now:Date.parse('2026-10-30T12:00:00Z')}),false);
 });
+test('brief slides lead with visuals: every point of a new brief has one, crests come from the badge manifest',async()=>{
+ const{CRESTS,visualHtml,visualAlt}=await import('../scripts/render-brief-carousels.mjs');
+ const manifest=JSON.parse(readFileSync(new URL('../content/instagram/local-stories/assets/manifest.json',import.meta.url))).map(m=>m.id);
+ for(const c of CRESTS)assert.ok(manifest.includes(c),c);
+ const host=u=>new URL(u).hostname.replace(/^www\./,''),cleared=JSON.parse(readFileSync(new URL('../config/clip-permissions.json',import.meta.url))).videos.map(v=>v.id);
+ for(const b of briefs){
+  // Owner, Nov 1: more pictures and graphics so posts are easier to read.
+  if(b.checkedOn>='2026-11-01')for(const p of b.points)assert.ok(p.visual,`${b.id}: ${p.label} needs a visual`);
+  for(const p of b.points.filter(p=>p.visual)){const v=p.visual;
+   assert.ok(['photo','stat','scoreboard','ratio'].includes(v.type),b.id);assert.ok(visualAlt(v).length>8);
+   if(v.type==='photo'){assert.match(v.credit,/^Photo: /);assert.ok(v.local?cleared.includes(v.clearedVideo):b.sources.some(s=>host(s.url)===host(v.url)),b.id);}
+   if(v.type==='scoreboard'){assert.equal(v.teams.length,2);for(const t of v.teams)assert.ok(CRESTS.has(t.crest),t.crest);}
+   if(v.type==='ratio')assert.ok(v.highlight>0&&v.highlight<v.of&&v.of<=10);
+   if(v.type!=='photo')assert.ok(visualHtml(v,'#fff','#000','#000').includes('<div'));}
+ }
+ const slides=briefSlides(briefs.find(b=>b.id==='miami-fc-upsets-rowdies-2026'));
+ assert.match(slides[1].html,/rowdies\.png/);assert.match(slides[1].alt,/Scoreboard: Rowdies 1, Miami FC 1/);
+});
