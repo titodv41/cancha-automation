@@ -2,6 +2,76 @@
  "note": "Cancha Brief: one real Florida soccer story per post with a clear take. Every fact comes from the cited sources (confirm tokens are copied from them); opinion goes only on the 'Our take' slide. Facts expire 7 days after checkedOn.",
  "briefs": [
   {
+   "id": "tampa-bay-sun-gear-goals-drive-2026",
+   "checkedOn": "2026-11-01",
+   "expiresOn": "2026-11-21",
+   "kicker": "CANCHA BRIEF · TAMPA BAY",
+   "title": [
+    "Give a kid",
+    "their first kit."
+   ],
+   "highlight": "Gear & Goals drive",
+   "dek": "Tampa Bay Sun Foundation's holiday drive is outfitting 100 kids to play soccer.",
+   "points": [
+    {
+     "label": "THE GOAL",
+     "title": [
+      "$3,500 for",
+      "100 kids"
+     ],
+     "body": [
+      "“Ready to Play” youth soccer kits",
+      "For children in the care of The Spring of Tampa Bay",
+      "The Spring supports survivors of domestic violence and their families"
+     ]
+    },
+    {
+     "label": "HOW TO HELP",
+     "title": [
+      "Give online or",
+      "bring gear 11/21"
+     ],
+     "body": [
+      "Donate on the drive’s Givebutter page (link in caption)",
+      "Or shop the wish list and bring items to the Sun’s Nov 21 home match",
+      "Every item goes to a kid who wants to play"
+     ]
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "Gear shouldn’t",
+      "decide who plays"
+     ],
+     "body": [
+      "The club cites a stat: 1 in 7 parents haven’t signed kids up for sports because of equipment costs",
+      "Send this to your team group chat",
+      "Florida soccer looks after its own"
+     ]
+    }
+   ],
+   "sources": [
+    {
+     "label": "Tampa Bay Sun FC, Oct 31, 2026",
+     "url": "https://www.tampabaysunfc.com/news/2026/10/31/tampa-bay-sun-foundation-launches-gear-goals-holiday-drive/",
+     "confirm": [
+      "3,500",
+      "100 children",
+      "The Spring of Tampa Bay",
+      "11.21",
+      "1 in 7"
+     ]
+    }
+   ],
+   "photo": {
+    "url": "https://www.tampabaysunfc.com/wp-content/uploads/sites/90/2026/10/GGD-BLOG_c1dd4a.jpg",
+    "credit": "Photo: Tampa Bay Sun FC",
+    "alt": "The Tampa Bay Sun FC mascot holding a soccer ball next to a box of new cleats, balls and shin guards."
+   },
+   "collab": "tampabaysunfc",
+   "caption": "Give a kid their first kit. ⚽🎁\n\nTampa Bay Sun Foundation’s Gear & Goals holiday drive is raising $3,500 for “Ready to Play” youth soccer kits for 100 children in the care of The Spring of Tampa Bay, which supports survivors of domestic violence and their families.\n\nHow to help:\n💛 Donate: givebutter.com/holidaygeargoalsdrive\n🎁 Or shop the wish list and bring items to the Sun’s Nov 21 home match\n\nThe club cites a stat: 1 in 7 parents haven’t signed their kids up for sports because of equipment costs. Gear shouldn’t decide who plays.\n\nWho’s in? Tag a teammate who should help 👇\n\nSource: Tampa Bay Sun FC, Oct 31, 2026 (tampabaysunfc.com).\n📸 Photo: Tampa Bay Sun FC @tampabaysunfc (official club media). Your photo? DM us to change the credit or have it removed. Cancha is independent and not affiliated with the club or the drive.\n\n#FloridaSoccer #TampaBay #TampaBaySun #GiveBack #YouthSoccer"
+  },
+  {
    "id": "miami-fc-upsets-rowdies-2026",
    "checkedOn": "2026-11-01",
    "kicker": "CANCHA BRIEF · USL PLAYOFFS",
