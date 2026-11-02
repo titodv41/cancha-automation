@@ -86,3 +86,22 @@ test('after the day\'s carousel the second slot takes a comparison Reel, never t
  }finally{db.close();await rm(dir,{recursive:true,force:true});}
 });
 test('the live policy approves no comparison Reels (owner, Oct 29)',()=>{assert.deepEqual(livePolicy.approvedComparisonReelIds,[]);assert.equal(comparisonReelAllowed(reel,livePolicy,{now}),false);});
+test('with preferCraftedBriefs a researched brief beats an automatic carousel for the slot (owner, Nov 2)',async t=>{
+ const at=Date.parse('2026-10-28T14:05:00Z');t.mock.timers.enable({apis:['Date'],now:at});
+ const {mkdtemp,rm}=await import('node:fs/promises'),{join}=await import('node:path'),{tmpdir}=await import('node:os');
+ const {openQueue,saveDraft}=await import('../server/instagram-queue.mjs'),{savePlan,prepareStandingPlan}=await import('../server/instagram-plan.mjs');
+ const {buildBriefDraft}=await import('../scripts/prepare-brief-carousels.mjs'),{briefSlides}=await import('../scripts/render-brief-carousels.mjs');
+ const {briefs}=JSON.parse(await readFile(new URL('../content/instagram/brief-carousels.json',import.meta.url),'utf8'));
+ const r={...briefs.find(b=>b.id==='ftl-utd-broward-college-fields'),checkedOn:'2026-10-28'};
+ const brief=buildBriefDraft(r,briefSlides(r).map((s,i)=>({assetUrl:`https://framerusercontent.com/images/brief${i}.jpg`,assetChecksum:'a'.repeat(64),altText:s.alt,width:1080,height:1350})),{renderedAt:'2026-10-28T13:00:00.000Z'});
+ for(const prefer of [false,true]){
+  const dir=await mkdtemp(join(tmpdir(),'cancha-crafted-')),db=openQueue(join(dir,'queue.sqlite'));
+  try{
+   saveDraft(db,{...draft,sourceType:'brand'});saveDraft(db,{...brief,sourceType:'brand'});
+   savePlan(db,{enabled:true,weekdays:[3],localTime:'12:30',localTimes:['12:30'],startDate:'2026-10-28',sourceTypes:['brand'],formats:['feed']},'test');
+   const editorialPolicy={...policy,briefCarouselsEnabled:true,approvedBriefCarouselIds:[r.id],curatedDraftIds:[draft.id],preferCraftedBriefs:prefer};
+   const result=await prepareStandingPlan(db,{now:at,connected:true,editorialPolicy,verifySource:async()=>true});
+   assert.deepEqual(result.scheduled.map(x=>x.id),[prefer?brief.id:draft.id]);
+  }finally{db.close();await rm(dir,{recursive:true,force:true});}
+ }
+});

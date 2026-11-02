@@ -82,4 +82,12 @@ Orlando, Tampa and Gainesville stay on the wider Florida roadmap and must not do
 - No WhatsApp or Facebook group promotion without an admin's permission.
 - No scraped contacts or bulk unsolicited messages.
 - Paid placement is always disclosed and never buys a positive review.
-- No commercial execution (pilots, invoices, paid promotion) until the owner confirms it's permitted.
+- Commercial work: the owner handles the legal side. Sales (founding-partner pilots, sponsorships) can be prepared and proposed later; any paid placement must be disclosed, and pricing or a deal goes to the owner before it's offered.
+
+**Owner decisions on the brief (Nov 2).**
+- **Volume stays.** Up to 2 posts a day and 14 a week, because testing at volume finds what works. Every post must still be interesting or useful; there are plenty of real stories, so no automated filler. The plan prefers researched briefs (`preferCraftedBriefs`).
+- **No approval step.** Posts publish automatically after Claude's research and checks.
+- **More short, engaging Reels.** They drive views and traffic.
+- **Founder Reel:** later, once the format is proven.
+- **Outreach:** the owner and ChatGPT handle it. Claude builds the content once someone says yes.
+- **LinkedIn:** start looking at automated professional posts the week of Nov 9 (needs the owner's LinkedIn consent).
