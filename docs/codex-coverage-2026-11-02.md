@@ -28,3 +28,11 @@ No publication cap, approval, schedule, credential, voice allowance or CMS polic
 5. The owner handles outreach. Use the interview kit only after a real guest/creator agrees. LinkedIn automation remains a later consent step; the prepared LinkedIn kit did not create a Company Page.
 
 Read the latest `.agents/product-marketing.md` before following older geographic, design, cadence or voice notes. South Florida neighborhoods are the current focus. Private review artifacts stay in ignored `private-data/`; no raw analytics, credentials or contacts belong in this document or a PR.
+
+## Subsequent owner request and homepage follow-up
+
+The owner supplied five design/audience screenshots and asked for a prioritized business/design action list, a Cancha-for-clubs service idea and a later personalized shin-guard concept. The full plan and the distinction between observations and hypotheses are in [the business and creative actions](business-and-creative-actions-2026-11-02.md). No second Instagram account, club service, paid placement or physical product was launched.
+
+The homepage follow-up keeps the youth/adult audience in quick-start results and their URLs, allows adult competitive clubs outside UPSL, removes unsupported "and nearby" wording from exact-city choices, makes the teen/adult age labels non-overlapping and puts South Florida cities first. The quiz panel now uses calmer neutral surfaces, readable supporting type and the existing brand display face. Other homepage sections, form destinations, CMS records and listing URLs are preserved. Broad youth/adult filters do not establish a particular child's program eligibility.
+
+Local preview checks passed at 390 and 1440 px with the actual hosted Cancha fonts loaded, no horizontal overflow or page errors, and the youth recreational choice carried into the Weston results URL. Public section previews: [mobile](previews/home-quick-start-2026-11-02-mobile.png), [desktop](previews/home-quick-start-2026-11-02-desktop.png), [mobile result](previews/home-quick-start-2026-11-02-mobile-result.png). These are local layout previews, not delivery receipts.

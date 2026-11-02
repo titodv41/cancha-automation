@@ -3,7 +3,7 @@ import{catalog}from'./CanchaDiscoveryData.tsx'
 import{CanchaStyle,ui,locationStyles,CatalogCard,Icon,BrowseTiles,COMMUNITY_MEDIA}from'./CanchaUI.tsx'
 import CanchaPlayerFit,{usePlayerFilters,fitStyles,DeviceLocationControl}from'./CanchaPlayerFit.tsx'
 import DiscoveryCityMap from'./DiscoveryCityMap.tsx'
-import{BROWSE_CATEGORIES,activeFilterCount,goalPath,filterDiscovery,discoveryHref,searchSubmission,locationIssue}from'./DiscoveryModel.tsx'
+import{BROWSE_CATEGORIES,activeFilterCount,goalPath,filterDiscovery,discoveryHref,searchSubmission,locationIssue,quickStartResult}from'./DiscoveryModel.tsx'
 // Licensed real-match photo; credits stay on the photo-credits page.
 const HERO_PHOTO=COMMUNITY_MEDIA.find((m:any)=>m.id==='orlando-huddle')
 function FloridaClubBoard({profiles}:any){
@@ -71,16 +71,10 @@ export function StartHere({profiles}:any){
 }
 // "Find your game" (Oct 30): a three-tap quiz that ends in a live, filtered directory count and one button. Each answer maps
 // to filters the directory already supports; the count comes from the same catalog the results page uses.
-const QUIZ_WHO=[['kid','A kid','Under 13'],['teen','A teen','13 to 18'],['adult','An adult','18+']]
+const QUIZ_WHO=[['kid','A kid','Under 13'],['teen','A teen','13 to 17'],['adult','An adult','18+']]
 const QUIZ_GOAL=[['fun','Have fun','Friends, rec leagues'],['better','Get better','Competitive club team'],['elite','Go elite','Academy, ODP, college path'],['pickup','Just play','Pickup and casual games']]
-const QUIZ_CITY=['Orlando','Tampa','Miami','Jacksonville','Fort Lauderdale','Anywhere']
-export function quizResult(who:string,goal:string){
- if(goal==='pickup'||who==='adult'&&goal==='fun')return{title:'Pickup & casual games',why:'Show up and play. No tryouts, no season commitment.',filters:{activity:'Pickup groups'},guide:null}
- if(who==='adult')return{title:goal==='elite'?'Competitive adult soccer':'Adult club teams',why:'UPSL is a competitive adult amateur league with teams across Florida. Teams hold their own tryouts.',filters:{activity:'Clubs & teams',league:'UPSL'},guide:null}
- if(goal==='fun')return{title:'Recreational soccer',why:'Rec leagues are the easiest start: local, low-commitment and built for fun.',filters:{play:'Recreational'},guide:null}
- if(goal==='better')return{title:'Competitive club teams',why:'Travel and club teams train more often and hold tryouts, which can start May 1 in Florida.',filters:{level:'Competitive'},guide:['When tryouts can start','/florida-soccer-pathway#tryouts']}
- return{title:'Academy & elite paths',why:who==='kid'?'Academies plus ODP are the main routes up for younger players.':'Academy programs in leagues like MLS NEXT and ECNL are the main elite paths. D1 coaches can contact players from June 15 after sophomore year.',filters:{play:'Academy'},guide:who==='kid'?['How ODP works','/florida-soccer-pathway#odp']:['When college coaches can contact you','/florida-soccer-pathway#college']}
-}
+const QUIZ_CITY=['Miami','Doral','Kendall','Weston','Fort Lauderdale','Anywhere']
+export const quizResult=quickStartResult
 const quizCss=`.ch9-quiz{padding:30px 0 56px;background:#f5f3e9}.ch9-box{background:#103f32;color:#fff;border-radius:28px;padding:30px;display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:start;position:relative;overflow:hidden;isolation:isolate}
 .ch9-box:before{content:'';position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:1px solid #d7ef8626;z-index:-1}.ch9-box h2{color:#fff;font-size:clamp(34px,4.6vw,56px);margin:10px 0 8px}.ch9-box>div>p{color:#cfe0c8;font-size:15px;margin:0}
 .ch9-chip{display:inline-block;background:#d7ef86;color:#103f32;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:6px 9px}.ch9-steps{display:flex;gap:6px;margin-top:18px}.ch9-steps i{height:5px;flex:1;border-radius:9px;background:#ffffff2e}.ch9-steps i.on{background:#d7ef86}
@@ -92,17 +86,20 @@ const quizCss=`.ch9-quiz{padding:30px 0 56px;background:#f5f3e9}.ch9-box{backgro
 .ch9-cta a{background:#103f32;color:#fff!important;border-radius:12px;padding:13px 16px;font-size:14px;font-weight:800;text-decoration:none}.ch9-cta a+a{background:transparent;color:#103f32!important;border:2px solid #103f32}
 @media(max-width:900px){.ch9-box{grid-template-columns:1fr;gap:20px}}@media(max-width:650px){.ch9-quiz{padding:20px 0 40px}.ch9-box{padding:22px 18px;border-radius:22px}.ch9-opts{grid-template-columns:1fr 1fr}.ch9-opts button{min-height:64px;padding:12px}.ch9-res h3{font-size:26px}.ch9-num{font-size:54px}}
 @media(prefers-reduced-motion:reduce){.ch9-opts button{transition:none}}`
+// One quiet product panel: the brand display face stays, while answers and results
+// share the directory's cream/forest hierarchy. No decorative progress animation.
+const quickStartPolish=`.ch9-box{background:#fff;color:#103f32;border:1px solid #dce2d7;border-radius:20px;padding:34px;grid-template-columns:.85fr 1.15fr;gap:40px}.ch9-box:before{display:none}.ch9-box h2{color:#103f32;margin:14px 0 12px}.ch9-box>div>p{color:#536052;font-size:16px;line-height:1.6;max-width:320px}.ch9-chip{background:#edf2e8;color:#365542;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;padding:7px 11px;border-radius:7px}.ch9-steps{gap:8px;max-width:200px;margin-top:24px}.ch9-steps i{height:3px;background:#e4e9de}.ch9-steps i.on{background:#103f32}.ch9-q{color:#536052;text-transform:none;letter-spacing:0;font-size:15px;font-weight:600;margin-bottom:14px}.ch9-opts{gap:10px}.ch9-opts button{background:#f8f9f5;color:#103f32;border:1px solid #e1e6db;border-radius:12px;padding:17px 18px;min-height:78px}.ch9-opts b{font-size:18px;font-weight:700;letter-spacing:0}.ch9-opts span{font-size:14px;color:#596654}.ch9-opts button:hover,.ch9-opts button:focus-visible{background:#edf3e5;border-color:#527546;outline:2px solid #527546;outline-offset:2px}.ch9-back{color:#496143;font-size:14px}.ch9-res{background:#f5f7ef;border:1px solid #e1e6d8;border-radius:14px;padding:24px}.ch9-res small{text-transform:none;letter-spacing:0;font-size:13px;font-weight:600}.ch9-res h3{font-size:30px;line-height:1.15;margin:10px 0}.ch9-res p{font-size:15px;line-height:1.55;color:#536052}.ch9-num{color:#103f32}.ch9-numl{font-size:14px;font-weight:600;margin-top:5px}.ch9-cta{gap:12px}.ch9-cta a{font-size:14px;font-weight:600;border-radius:9px;min-height:44px;display:inline-flex;align-items:center}.ch9-cta a+a{border-width:1px}.ch9-cta a:focus-visible,.ch9-back:focus-visible{outline:2px solid #527546;outline-offset:3px}@media(max-width:900px){.ch9-box{grid-template-columns:1fr;gap:24px}}@media(max-width:650px){.ch9-box{padding:24px 20px;border-radius:16px}.ch9-box h2{font-size:42px}.ch9-opts{grid-template-columns:1fr 1fr}.ch9-opts button{padding:14px 12px;min-height:76px}.ch9-opts b{font-size:17px}.ch9-opts span{font-size:13px}.ch9-res{padding:20px}.ch9-res h3{font-size:28px}.ch9-cta{align-items:stretch;flex-direction:column}.ch9-cta a{justify-content:center;text-align:center}}`
 export function FindYourGame({profiles}:any){
  const[who,setWho]=React.useState(''),[goal,setGoal]=React.useState(''),[city,setCity]=React.useState(''),step=!who?0:!goal?1:!city?2:3
  const res=step===3?quizResult(who,goal):null,place=city==='Anywhere'?'':city,matches=res?filterDiscovery(profiles,{...res.filters,city:place}).length:0,all=res?filterDiscovery(profiles,res.filters).length:0
  const reset=()=>{setWho('');setGoal('');setCity('')},back=()=>step===3?setCity(''):step===2?setGoal(''):setWho('')
  const opts=(list:any[],pick:any)=><div className="ch9-opts">{list.map(([v,t,d]:any)=><button key={v} type="button" onClick={()=>pick(v)}><b>{t}</b><span>{d}</span></button>)}</div>
- return <section className="ch9-quiz" aria-labelledby="quiz-title"><CanchaStyle css={quizCss}/><div className="cv-wrap"><div className="ch9-box">
-  <div><span className="ch9-chip">3 taps</span><h2 id="quiz-title">Find your game</h2><p>Tell us who’s playing and what you want. We’ll show you where to start.</p><div className="ch9-steps" aria-hidden="true">{[0,1,2].map(i=><i key={i} className={step>i?'on':''}/>)}</div></div>
+ return <section className="ch9-quiz" aria-labelledby="quiz-title"><CanchaStyle css={quizCss+quickStartPolish}/><div className="cv-wrap"><div className="ch9-box">
+  <div><span className="ch9-chip">{step===3?'Your results':`Step ${step+1} of 3`}</span><h2 id="quiz-title">Find your game</h2><p>Choose who’s playing, the kind of soccer and a city.</p><div className="ch9-steps" aria-hidden="true">{[0,1,2].map(i=><i key={i} className={step>i?'on':''}/>)}</div></div>
   <div aria-live="polite">{step===0&&<><p className="ch9-q">Who’s playing?</p>{opts(QUIZ_WHO,setWho)}</>}
    {step===1&&<><p className="ch9-q">What do you want?</p>{opts(QUIZ_GOAL,setGoal)}</>}
-   {step===2&&<><p className="ch9-q">Where?</p>{opts(QUIZ_CITY.map(c=>[c,c,c==='Anywhere'?'All of Florida':'and nearby']),setCity)}</>}
-   {res&&<div className="ch9-res"><small>Your best start</small><h3>{res.title}</h3><p>{res.why}</p>
+   {step===2&&<><p className="ch9-q">Where?</p>{opts(QUIZ_CITY.map(c=>[c,c,c==='Anywhere'?'All of Florida':'City listings']),setCity)}</>}
+   {res&&<div className="ch9-res"><small>Options to explore</small><h3>{res.title}</h3><p>{res.why}</p>
     {matches>0?<><div className="ch9-num">{matches}</div><div className="ch9-numl">{matches===1?'match':'matches'} {place?'in '+place:'in Florida'}</div></>:<p><b>No exact matches listed in {place} yet.</b> {all>0?all+' across Florida.':''}</p>}
     <div className="ch9-cta"><a href={discoveryHref('/clubs',{},{...res.filters,city:matches>0?place:''})}>See {matches>0?'them':'Florida options'} →</a>{res.guide&&<a href={res.guide[1]}>{res.guide[0]}</a>}</div></div>}
    {step>0&&<button className="ch9-back" type="button" onClick={step===3?reset:back}>{step===3?'Start over':'← Back'}</button>}</div>
