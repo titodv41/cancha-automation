@@ -12,11 +12,12 @@ const assets=join(root,'video/public/generated/creator-cut'),gen=join(root,'vide
 await mkdir(assets,{recursive:true});await mkdir(gen,{recursive:true});await mkdir(out,{recursive:true});
 for(const[name,path]of[['display.woff2',brand.displayFont],['ui.woff2',brand.bodyFont],['cancha.png',brand.logo]])await copyFile(join(root,path),join(gen,name));
 const source=id=>join(clipDir,id+'.mp4');
+// A shot with fit:true shows the whole 16:9 frame (charts, boards) in the upper part over a blurred fill instead of a centre crop.
 // With narration, shots and lines stretch evenly so the picture never runs out before the voice does.
 const timing=arg('--voice')?JSON.parse(await readFile(arg('--voice'),'utf8')):null,voiceEnd=timing?timing.words.at(-1).end:0;
 const planned=spec.shots.reduce((a,s)=>a+s.seconds,0),k=Math.max(1,(voiceEnd+.7)/planned),r=x=>Math.round(x*k*30)/30;
 const shots=spec.shots.map((s,i)=>{const file=`generated/creator-cut/shot-${i}.mp4`,seconds=r(s.seconds);
- execFileSync('ffmpeg',['-v','error','-y','-ss',String(s.at),'-i',source(s.id),'-t',String(seconds+.4),'-an','-vf',`scale=-2:1920,crop=1080:1920:(iw-1080)*${s.x??.5}:0,fps=30`,'-c:v','libx264','-crf','17','-pix_fmt','yuv420p',join(root,'video/public',file)]);
+ execFileSync('ffmpeg',['-v','error','-y','-ss',String(s.at),'-i',source(s.id),'-t',String(seconds+.4),'-an','-vf',s.fit?`split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.18[bg];[b]scale=1080:-2[fg];[bg][fg]overlay=0:300,fps=30`:`scale=-2:1920,crop=1080:1920:(iw-1080)*${s.x??.5}:0,fps=30`,'-c:v','libx264','-crf','17','-pix_fmt','yuv420p',join(root,'video/public',file)]);
  return{...s,seconds,file};});
 const durationSeconds=+(shots.reduce((a,s)=>a+s.seconds,0)+spec.outroSeconds).toFixed(2);
 const cut={...spec,shots,beats:spec.beats.map(b=>({...b,start:r(b.start),end:r(b.end)})),hookSeconds:r(spec.hookSeconds),durationSeconds,credit:'Video: '+creators.join(' · ')+' · YouTube'+(spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cc-by')?' (CC BY)':'')};
