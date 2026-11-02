@@ -54,6 +54,8 @@ Put the script and scores in the PR body.
 
 Set `"music": "<id>"`. The renderer puts it about 13 LU under the voice and ducks it further under speech. The caption must include the track's `credit`; tests enforce this. Never use the synthesized beds under narration: the owner rejected them on Nov 2. If no track fits, add a new CC BY track to the library (download it, pin its sha256, and listen-test it by asking the owner) rather than forcing one.
 
+**Owner script review (Nov 2):** before rendering, send the owner the script, the storyboard table and the music choice in chat, and wait for "go" or changes. Don't render or spend voice characters until then.
+
 ## 5. Ship and review
 1. Run `npm test` and confirm `# fail 0`. Open a PR, merge, and wait until main has the merge.
 2. Dispatch `creator-cuts.yml` with `cut=<name>`. The log shows `narration`, `checks.passed`, the hosted mp4 URL and `prepared`.
