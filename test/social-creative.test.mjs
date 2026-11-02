@@ -13,6 +13,22 @@ test('photo reuse checks original source across different crops and render files
  assert.equal(recentlyUsedPhoto({photo},[{...old,status:'Draft'}],at),false);
  assert.equal(recentlyUsedPhoto({photo},[{...old,published_at:'2026-09-15T22:00:00Z'}],at),false);
 });
+test('different creator videos never collide through absent legacy footage or photo fields',async()=>{
+ const {recentlyUsedPhoto}=await import('../server/social-creative.mjs');
+ const clip=id=>({source:'youtube-cleared',id,page:'https://www.youtube.com/watch?v='+id});
+ const previous={status:'Published',published_at:'2026-11-01T23:00:00Z',content:{footage:[clip('previous-video')],photos:[{originalChecksum:'a'.repeat(64)}]}};
+ assert.equal(recentlyUsedPhoto({footage:[clip('different-video')],photos:[{originalChecksum:'b'.repeat(64)}]},[previous],'2026-11-02T23:00:00Z'),false);
+ assert.equal(recentlyUsedPhoto({footage:[{}],photos:[{}],slides:[{}]},[previous],'2026-11-02T23:00:00Z'),false);
+});
+test('real creator-video identity still blocks reused footage within the existing window',async()=>{
+ const {recentlyUsedPhoto}=await import('../server/social-creative.mjs');
+ const footage={source:'youtube-cleared',id:'same-video',page:'https://www.youtube.com/watch?v=same-video'};
+ const old={status:'Published',published_at:'2026-11-01T23:00:00Z',content:JSON.stringify({footage:[footage]})};
+ for(const next of [footage,{source:footage.source,id:footage.id},{page:footage.page}])
+  assert.equal(recentlyUsedPhoto({footage:[next]},[old],'2026-11-02T23:00:00Z'),true);
+ assert.equal(recentlyUsedPhoto({footage:[footage]},[{...old,status:'Draft'}],'2026-11-02T23:00:00Z'),false);
+ assert.equal(recentlyUsedPhoto({footage:[footage]},[old],'2026-12-02T23:00:00Z'),false);
+});
 test('new original product artwork requires current evidence, matching image bytes and an actual Cancha source',()=>{
  const base={creativeVersion:'cancha-local-v2',assetChecksum:'c'.repeat(64),rights:'Original Cancha design',caption:'Local clubs',altText:'Directory demo',visualEvidence:{creator:'Cancha',kind:'product-demo',subjectKey:'demo-one',sourceUrl:'https://pioneering-friday-005497.framer.app/clubs',assetChecksum:'c'.repeat(64),renderedAt:new Date().toISOString()}};
  assert.equal(approvedOriginalCreative(base),true);for(const row of [{...base,creativeVersion:'old'},{...base,assetChecksum:'d'.repeat(64)},{...base,visualEvidence:{...base.visualEvidence,sourceUrl:'https://other.example/clubs'}},{...base,visualEvidence:{...base.visualEvidence,renderedAt:'2026-01-01T00:00:00Z'}},{...base,visualEvidence:{...base.visualEvidence,sourceReviewedOn:'2020-01-01'}}])assert.equal(approvedOriginalCreative(row),false);

@@ -46,7 +46,19 @@ export function applyEditorialCreative(row,photos){
 
 // Compare source identity as well as rendered files: a new crop is still the same photo.
 export function recentlyUsedPhoto(content,rows,scheduledAt,{days=30}={}){
- const identities=row=>[row.directoryProfile?.imageIdentity&&'badge:'+row.directoryProfile.imageIdentity,row.directoryProfile?.slug&&'directory:'+row.directoryProfile.slug,row.visualEvidence?.subjectKey&&'subject:'+row.visualEvidence.subjectKey,row.photo?.originalChecksum&&'original:'+row.photo.originalChecksum,row.photo?.sourcePage&&'source:'+row.photo.sourcePage,row.photo?.url&&'photo:'+row.photo.url,row.assetChecksum&&'render:'+row.assetChecksum,row.assetUrl&&'asset:'+row.assetUrl,...(row.photos||[]).flatMap(p=>['original:'+p.originalChecksum,'original-url:'+p.originalUrl]),...(row.slides||[]).map(s=>'render:'+s.assetChecksum),...(row.footage||[]).flatMap(p=>['footage:'+p.originalChecksum,'clip-post:'+p.permalink])].filter(Boolean);
+ // Prefix only real values. Creator-cut footage uses source/id/page rather than the older
+ // originalChecksum/permalink shape; 'footage:undefined' used to collide across unrelated Reels.
+ const key=(type,value)=>typeof value==='string'&&value.trim()?type+':'+value:null;
+ const identities=row=>[
+  key('badge',row.directoryProfile?.imageIdentity),key('directory',row.directoryProfile?.slug),
+  key('subject',row.visualEvidence?.subjectKey),key('original',row.photo?.originalChecksum),
+  key('source',row.photo?.sourcePage),key('photo',row.photo?.url),
+  key('render',row.assetChecksum),key('asset',row.assetUrl),
+  ...(row.photos||[]).flatMap(p=>[key('original',p.originalChecksum),key('original-url',p.originalUrl)]),
+  ...(row.slides||[]).map(s=>key('render',s.assetChecksum)),
+  ...(row.footage||[]).flatMap(p=>[key('footage',p.originalChecksum),key('clip-post',p.permalink),
+   p.source&&p.id?key('clip-id',p.source+':'+p.id):null,key('clip-page',p.page)])
+ ].filter(Boolean);
  const keys=new Set(identities(content)),at=Date.parse(scheduledAt);if(!keys.size||!Number.isFinite(at))return false;
  return rows.some(row=>{
   if(!['Approved','Preparing','Publishing','Published','Needs reconciliation'].includes(row.status))return false;
