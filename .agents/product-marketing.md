@@ -35,3 +35,51 @@ The October 25 preparation published successfully but added zero profiles and ze
 Instagram Insights access is verified and full reports are encrypted. The verified sample still has no comparable topic groups, so do not claim measured growth or a winning format. Website aggregates may contain owner/QA visits and are not confirmed registrations or ad conversions. The first bounded Claude GitHub pilot failed before producing a proposal; a full unattended improvement cycle is not verified. See the handover for the exact receipts and next checks.
 
 Native Framer Email forms are the current private intake. The owner confirmed Gmail receipt; submissions do not automatically become public listings. Preserve those destinations. Community supports “Add your group,” but no approved public WhatsApp invite or Cancha-owned group has been supplied. Obtain actual admin/provider consent before listing private-community access. Do not send DMs, emails, comments or outreach based solely on generic skill recommendations.
+
+## Operating brief — November 2, 2026 (owner's founder brief)
+
+Mission: help people in soccer discover what comes next. Make Cancha useful enough to share, credible enough for organizations to take part, and effective enough that businesses will eventually pay. Producing content is not the same as building the business. Measure outcomes and say so plainly when a direction isn't working.
+
+**Geography.** South Florida first, and say the actual neighborhood every time.
+1. Miami-Dade: Doral/Sweetwater/West Miami; Kendall/Pinecrest/Palmetto Bay; Coral Gables/Coconut Grove/central Miami.
+2. Broward: Pembroke Pines, Weston, Davie, Plantation, Coral Springs, Fort Lauderdale.
+3. Palm Beach later: Boca Raton, Delray, Boynton, Wellington, Palm Beach Gardens.
+Orlando, Tampa and Gainesville stay on the wider Florida roadmap and must not dominate the content.
+
+**Audiences (hypotheses until our own data confirms them).**
+- Youth soccer parents (28–55): cost, distance, level, beginners, girls' programs, camps, and how pathways differ.
+- Coaches and trainers: reaching families and filling slots.
+- Players 16–30: where to play, tryouts, college, UPSL, pickup.
+- Club directors: registrations and visibility. Likely the first paying customers.
+
+**Language.** English by default. Spanish-led or bilingual posts where the community is Spanish-speaking (test about 70/30). Spanglish only where it's natural. Never fake slang.
+
+**Recurring series.**
+- Meet the Team (coach and club interviews; see docs/five-questions-interview-kit.md)
+- Find Your Next Game (verified, located, current opportunities)
+- The Local Game (culture and people)
+- No One Explains This (education: rec vs travel, MLS NEXT, ID camps, college paths)
+- South Florida Soccer Radar (weekly verified roundup)
+- Stories Behind the Game
+
+**Differentiation.** Other directories already exist, including regional South Florida club directories. Don't compete on being another list. Compete on:
+- verified, timely, located opportunities;
+- strong visuals;
+- recognizing local people;
+- useful education;
+- one clear action;
+- bilingual community.
+
+**Publishing standard.** Research → concept → fact-check → brief → assets → visual inspection → approval → publication → review. Every claim needs a source. Every post has a purpose and one relevant next action, never a generic "follow for more". Don't scale a format just because it can be automated.
+
+**Hard nos (in addition to the rules above).**
+- No fabricated relationships or "official partner" claims.
+- No invented opportunities, prices, testimonials, traction or player stories.
+- No scholarship or outcome promises.
+- No implied affiliation with MLS, Inter Miami, FIFA or clubs.
+- No unlicensed clips.
+- No child-safety shortcuts.
+- No WhatsApp or Facebook group promotion without an admin's permission.
+- No scraped contacts or bulk unsolicited messages.
+- Paid placement is always disclosed and never buys a positive review.
+- No commercial execution (pilots, invoices, paid promotion) until the owner confirms it's permitted.
