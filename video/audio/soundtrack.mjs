@@ -3,7 +3,7 @@ import {spawnSync} from 'node:child_process';
 const [storyFile,out]=process.argv.slice(2),story=JSON.parse(await readFile(storyFile)),proof=JSON.parse(await readFile(out+'/narration-proof.json'));
 const sr=48000,length=Math.ceil(story.durationSeconds*sr),voice=new Float32Array(length),active=new Uint8Array(length);
 for(const part of proof.parts){
- const run=spawnSync('ffmpeg',['-v','error','-i',part.file,'-af','highpass=f=75,lowpass=f=11500,acompressor=threshold=0.12:ratio=2:attack=15:release=100','-f','f32le','-ac','1','-ar',String(sr),'pipe:1'],{maxBuffer:10_000_000});if(run.status!==0)throw Error('Voice decoding failed');
+ const run=spawnSync('ffmpeg',['-v','error','-i',part.file,'-af','highpass=f=75,lowpass=f=11500,acompressor=threshold=0.12:ratio=2:attack=15:release=100','-f','f32le','-ac','1','-ar',String(sr),'pipe:1'],{maxBuffer:96_000_000});if(run.status!==0)throw Error('Voice decoding failed');
  const samples=new Float32Array(run.stdout.buffer,run.stdout.byteOffset,run.stdout.length/4),offset=Math.round(part.start*sr);let peak=.001;for(const value of samples)peak=Math.max(peak,Math.abs(value));const gain=.62/peak;
  for(let i=0;i<samples.length&&offset+i<length;i++){voice[offset+i]+=samples[i]*gain;active[offset+i]=1}
 }
