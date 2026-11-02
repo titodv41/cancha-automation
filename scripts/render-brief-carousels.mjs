@@ -13,6 +13,7 @@ export function visualAlt(v){
  if(v.type==='photo')return 'Photo: '+v.alt+'.';
  if(v.type==='stat')return `${v.value} ${v.caption}.`;
  if(v.type==='scoreboard')return `Scoreboard: ${v.teams.map(t=>t.name+' '+t.score).join(', ')}. ${v.note||''}`;
+ if(v.type==='bars')return `Bar chart: ${v.bars.map(b=>b.label+' '+b.display).join(', ')}. ${v.caption||''}`;
  if(v.type==='ratio')return `Chart: ${v.highlight} of ${v.of} icons highlighted. ${v.caption}.`;
  return '';
 }
@@ -22,6 +23,8 @@ export function visualHtml(v,bg,fg,head){
  if(v.type==='stat')return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;background:${C.forest};color:${C.cream};text-align:center"><div style="font-family:Display;font-style:italic;font-size:${String(v.value).length>6?190:250}px;line-height:.9;color:${C.lime}">${esc(v.value)}</div><div style="font-size:46px;font-weight:700;margin-top:22px;text-transform:uppercase;letter-spacing:2px;padding:0 60px">${esc(v.caption)}</div></div>`;
  if(v.type==='scoreboard'){const team=t=>`<div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:240px"><div style="width:200px;height:200px;border-radius:50%;background:#ffffff1f;border:3px solid ${C.cream}55;display:flex;align-items:center;justify-content:center"><img src="${t.crest}.png" style="max-width:150px;max-height:150px"></div><div style="font-size:38px;font-weight:700;text-transform:uppercase;white-space:nowrap">${esc(t.name)}</div></div>`,score=t=>`<div style="font-family:Display;font-style:italic;font-size:200px;line-height:1;color:${C.lime}">${esc(t.score)}</div>`,[x,y]=v.teams;
   return `<div style="${box};display:flex;flex-direction:column;justify-content:center;background:${C.forest};color:${C.cream}"><div style="display:flex;justify-content:center;align-items:center;gap:34px">${team(x)}${score(x)}<div style="font-family:Display;font-size:90px;opacity:.6">–</div>${score(y)}${team(y)}</div>${v.note?`<div style="margin:26px auto 0;background:${C.orange};color:${C.cream};font-size:40px;font-weight:700;padding:12px 30px;border-radius:999px;text-transform:uppercase">${esc(v.note)}</div>`:''}</div>`;}
+ if(v.type==='bars'){const max=Math.max(...v.bars.map(b=>b.value));
+  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;gap:16px;padding:0 72px;background:${C.forest};color:${C.cream}">${v.bars.map(b=>`<div style="display:flex;align-items:center;gap:20px"><div style="width:230px;font-size:34px;font-weight:700;text-transform:uppercase;line-height:1.05">${esc(b.label)}</div><div style="flex:1;height:58px;position:relative"><div style="height:100%;width:${Math.max(8,Math.round(b.value/max*100))}%;background:${b.highlight?C.lime:C.cream+'55'};border-radius:6px"></div></div><div style="width:190px;text-align:right;font-family:Display;font-style:italic;font-size:54px;color:${b.highlight?C.lime:C.cream}">${esc(b.display)}</div></div>`).join('')}${v.caption?`<div style="font-size:30px;font-weight:600;opacity:.8;margin-top:6px">${esc(v.caption)}</div>`:''}</div>`;}
  if(v.type==='ratio'){const icon=on=>`<svg width="110" height="190" viewBox="0 0 22 38"><circle cx="11" cy="5" r="5" fill="${on?C.orange:C.cream}"/><path d="M4 13h14v12h-3v13H7V25H4z" fill="${on?C.orange:C.cream}"/></svg>`;
   return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;background:${C.forest};color:${C.cream}"><div style="display:flex;gap:18px">${Array.from({length:v.of},(_,k)=>icon(k<v.highlight)).join('')}</div><div style="font-size:46px;font-weight:700;margin-top:34px;text-transform:uppercase;text-align:center;padding:0 60px">${esc(v.caption)}</div></div>`;}
  throw Error('Unknown visual '+v.type);
@@ -63,6 +66,10 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  // A photo is either the cited source's own image (photo.url on a source's domain) or a still from a cleared creator
  // video already in the repo; either way it is credited on the slide.
  async function loadPhoto(r,ph,name){
+  // A licensed image from config/community-media.json (Wikimedia, CC), credited with artist and license.
+  if(ph.media){const m=JSON.parse(await readFile('config/community-media.json','utf8')).find(x=>x.id===ph.media);if(!m||!/^CC/.test(m.license))throw Error(r.id+': unknown or unlicensed community media');
+   const res=await fetch(m.url,{signal:AbortSignal.timeout(60000)});if(!res.ok)throw Error(r.id+': community media unavailable');const ext=m.url.endsWith('.png')?'png':'jpg';
+   await writeFile(join(out,`${name}.${ext}`),Buffer.from(await res.arrayBuffer()));return {...ph,file:`${name}.${ext}`};}
   if(ph.local){const {clearedVideos}=await import('./clip-download.mjs'),cleared=clearedVideos(JSON.parse(await readFile('config/clip-permissions.json','utf8')));
    if(!/^content\/[\w\/.-]+\.jpg$/.test(ph.local)||!cleared.some(v=>v.id===ph.clearedVideo))throw Error(r.id+': local photo needs a cleared source video');
    await copyFile(ph.local,join(out,name+'.jpg'));return {...ph,file:name+'.jpg'};}

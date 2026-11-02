@@ -2,6 +2,145 @@
  "note": "Cancha Brief: one real Florida soccer story per post with a clear take. Every fact comes from the cited sources (confirm tokens are copied from them); opinion goes only on the 'Our take' slide. Facts expire 7 days after checkedOn.",
  "briefs": [
   {
+   "id": "where-fans-show-up-2025-26",
+   "checkedOn": "2026-11-02",
+   "kicker": "CANCHA BRIEF · THE STANDS",
+   "title": [
+    "Germany beat",
+    "England again."
+   ],
+   "highlight": "In the stands.",
+   "dek": "Average crowds in Europe's top five leagues last season, and where MLS fits.",
+   "sources": [
+    {
+     "label": "Football Benchmark report via Inside World Football, Aug 28, 2026",
+     "url": "https://www.insideworldfootball.com/2026/08/28/europes-big-5-league-attendances-topped-60m-last-season/",
+     "confirm": [
+      "42,308",
+      "41,636",
+      "30,952",
+      "29,892",
+      "27,396",
+      "97.4%",
+      "97.1%",
+      "Hamburg",
+      "Camp Nou"
+     ]
+    },
+    {
+     "label": "MLS, 2025 regular season",
+     "url": "https://www.mlssoccer.com/news/mls-30th-regular-season-strength-scale-and-unmatched-fan-engagement",
+     "confirm": [
+      "21,988",
+      "11.2 million",
+      "with 19"
+     ]
+    }
+   ],
+   "photo": {
+    "media": "orlando-supporters",
+    "credit": "Photo: Brandon Moore (Raskuly), CC BY 4.0",
+    "alt": "Orlando City supporters waving flags in the stadium's Wall section during a 2024 match."
+   },
+   "points": [
+    {
+     "label": "EUROPE'S TOP 5",
+     "title": [
+      "About 670 more",
+      "fans a game"
+     ],
+     "body": [
+      "Average league crowd in 2025/26",
+      "Hamburg and Köln coming back up helped Germany"
+     ],
+     "visual": {
+      "type": "bars",
+      "bars": [
+       {
+        "label": "Bundesliga",
+        "value": 42308,
+        "display": "42,308",
+        "highlight": true
+       },
+       {
+        "label": "Premier League",
+        "value": 41636,
+        "display": "41,636"
+       },
+       {
+        "label": "LaLiga",
+        "value": 30952,
+        "display": "30,952"
+       },
+       {
+        "label": "Serie A",
+        "value": 29892,
+        "display": "29,892"
+       },
+       {
+        "label": "Ligue 1",
+        "value": 27396,
+        "display": "27,396"
+       }
+      ]
+     }
+    },
+    {
+     "label": "SOLD OUT",
+     "title": [
+      "No empty",
+      "seats left"
+     ],
+     "body": [
+      "Germany 97.4% full, England 97.1%",
+      "Spain, France and Italy: 80–84%",
+      "Camp Nou's rebuild pulled Spain's number down"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "97%",
+      "caption": "of seats filled in Germany and England"
+     }
+    },
+    {
+     "label": "AND MLS?",
+     "title": [
+      "19 clubs over",
+      "20,000 a game"
+     ],
+     "body": [
+      "MLS says that's more than any other league in the world",
+      "11.2 million fans in 2025, its second-best year",
+      "MLS plays spring to fall, so it's the 2025 season"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "21,988",
+      "caption": "MLS average crowd, 2025"
+     }
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "Big crowds",
+      "start local"
+     ],
+     "body": [
+      "Florida has Inter Miami, Orlando City, the Rowdies, Miami FC, the Sun and more",
+      "A local game is the easiest team night out",
+      "Best crowd you've ever been part of? Tell us below"
+     ],
+     "visual": {
+      "type": "photo",
+      "media": "orlando-street",
+      "credit": "Photo: Brandon Moore (Raskuly), CC BY 4.0",
+      "alt": "Orlando City supporters marching to the stadium before a 2024 match."
+     }
+    }
+   ],
+   "caption": "Germany out-drew England again last season. By about 670 people a game.\n\nBundesliga: 42,308 average\nPremier League: 41,636\nLaLiga: 30,952\nSerie A: 29,892\nLigue 1: 27,396\n\nGermany and England were both about 97% full. Basically sold out every week.\n\nMLS averaged 21,988 in 2025, and 19 clubs drew more than 20,000 a game.\n\nBest crowd you've ever been part of? Drop it below 👇\n\nSources: Football Benchmark report via Inside World Football (Aug 28, 2026); MLS 2025 season release (mlssoccer.com).\n📸 Photo: Orlando City supporters by Brandon Moore (Raskuly), CC BY 4.0, via Wikimedia Commons. Cancha is independent and not affiliated with any league or club.\n\n#FloridaSoccer #Bundesliga #PremierLeague #MLS #SoccerFans"
+  },
+  {
    "id": "tampa-bay-sun-gear-goals-drive-2026",
    "checkedOn": "2026-11-01",
    "expiresOn": "2026-11-21",
