@@ -113,6 +113,8 @@ test('Starter narration needs the Starter tier, overage off and included credits
  assert.throws(()=>validateStarterAccount({...ok,subscription:{...ok.subscription,tier:'free'}},300),/Starter subscription/);
  assert.throws(()=>validateStarterAccount({...ok,subscription:{...ok.subscription,overagesDisabled:false}},300),/Usage-based billing/);
  assert.throws(()=>validateStarterAccount({...ok,subscription:{...ok.subscription,characterCount:29900}},300),/Insufficient/);
+ // One take is capped by the policy's per-request limit, and never above 1,100 characters (Nov 2, longer Reels).
+ assert.throws(()=>validateStarterAccount(ok,970),/Insufficient/);assert.equal(validateStarterAccount(ok,970,1100),true);assert.throws(()=>validateStarterAccount(ok,1200,5000),/Insufficient/);
 });
 test('the Starter policy is capped below the plan and never allows overage',async()=>{const p=JSON.parse(await (await import('node:fs/promises')).readFile('config/elevenlabs-starter.json','utf8'));
  assert.equal(p.plan,'starter');assert.equal(p.allowOverage,false);assert.ok(p.monthlyProjectCharacterBudget<=25000);
