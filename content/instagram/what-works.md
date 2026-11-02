@@ -36,3 +36,9 @@ Principles we act on. They are platform guidance and common practice, not yet pr
 2. Do more of what drew shares and follows; change or stop what didn't.
 3. Ship one Instagram improvement and one website improvement, each verified visually.
 4. Every Monday: send the owner a short private scorecard (top post, worst post, what changes this week).
+
+## Audience and voice (owner, Nov 2)
+- **Who:** South Florida first. Parents at clubs, coaches, players. The goal is a soccer community first; club partnerships and paid features come later.
+- **Mix:** besides club moments, post soccer culture people want to talk about: attendance and fan culture, how the pros play (e.g. why Messi walks so much), lower-league and grassroots stories from around the world. It shows we understand the game, the clubs and the people around them.
+- **Voice:** write like a person at the field. Short sentences, real numbers, a plain opinion. No marketing filler ("dive in", "game-changer", "elevate"), few em dashes. Tests reject the common giveaways.
+- **Other creators' videos:** never download or screenshot them without the creator's OK. Summarize the public facts with our own graphics, credit and link the creator, or ask the creator (owner) and add the video to config/clip-permissions.json.

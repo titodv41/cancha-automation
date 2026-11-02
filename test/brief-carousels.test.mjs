@@ -31,7 +31,8 @@ test('every brief keeps opinion on its take slide, credits sources and stays app
 test('a brief photo comes from one of its cited sources, is credited, and collab handles are valid',()=>{
  const host=u=>new URL(u).hostname.replace(/^www\./,'');
  const cleared=JSON.parse(readFileSync(new URL('../config/clip-permissions.json',import.meta.url))).videos.map(v=>v.id);
- for(const b of briefs.filter(b=>b.photo)){if(b.photo.local){assert.ok(cleared.includes(b.photo.clearedVideo),b.id);assert.ok(readFileSync(new URL('../'+b.photo.local,import.meta.url)).length>1000);}else assert.ok(b.sources.some(s=>host(s.url)===host(b.photo.url)),b.id);assert.match(b.photo.credit,/^Photo: /);assert.match(b.caption,/📸 Photo:/);assert.ok(b.photo.alt.length>20);}
+ const media=JSON.parse(readFileSync(new URL('../config/community-media.json',import.meta.url)));
+ for(const b of briefs.filter(b=>b.photo)){if(b.photo.media){const m=media.find(x=>x.id===b.photo.media);assert.ok(m&&/^CC/.test(m.license),b.id);assert.ok(b.photo.credit.includes(m.license)&&b.caption.includes(m.artist),b.id);}else if(b.photo.local){assert.ok(cleared.includes(b.photo.clearedVideo),b.id);assert.ok(readFileSync(new URL('../'+b.photo.local,import.meta.url)).length>1000);}else assert.ok(b.sources.some(s=>host(s.url)===host(b.photo.url)),b.id);assert.match(b.photo.credit,/^Photo: /);assert.match(b.caption,/📸 Photo:/);assert.ok(b.photo.alt.length>20);}
  for(const b of briefs.filter(b=>b.collab))assert.match(b.collab,/^[a-z0-9._]{1,30}$/);
  const d=buildBriefDraft({...recipe,checkedOn:today},[{assetUrl:'https://framerusercontent.com/images/x.jpg',assetChecksum:'a'.repeat(64),altText:'x'}],{renderedAt:new Date().toISOString()});
  assert.deepEqual(d.collaborators,recipe.collab?[recipe.collab]:undefined);
@@ -51,12 +52,19 @@ test('brief slides lead with visuals: every point of a new brief has one, crests
   // Owner, Nov 1: more pictures and graphics so posts are easier to read.
   if(b.checkedOn>='2026-11-01')for(const p of b.points)assert.ok(p.visual,`${b.id}: ${p.label} needs a visual`);
   for(const p of b.points.filter(p=>p.visual)){const v=p.visual;
-   assert.ok(['photo','stat','scoreboard','ratio'].includes(v.type),b.id);assert.ok(visualAlt(v).length>8);
-   if(v.type==='photo'){assert.match(v.credit,/^Photo: /);assert.ok(v.local?cleared.includes(v.clearedVideo):b.sources.some(s=>host(s.url)===host(v.url)),b.id);}
+   assert.ok(['photo','stat','scoreboard','ratio','bars'].includes(v.type),b.id);assert.ok(visualAlt(v).length>8);
+   if(v.type==='photo'){assert.match(v.credit,/^Photo: /);assert.ok(v.media?JSON.parse(readFileSync(new URL('../config/community-media.json',import.meta.url))).some(m=>m.id===v.media&&/^CC/.test(m.license)):v.local?cleared.includes(v.clearedVideo):b.sources.some(s=>host(s.url)===host(v.url)),b.id);}
    if(v.type==='scoreboard'){assert.equal(v.teams.length,2);for(const t of v.teams)assert.ok(CRESTS.has(t.crest),t.crest);}
+   if(v.type==='bars')assert.ok(v.bars.length>=2&&v.bars.length<=6&&v.bars.every(x=>x.value>0&&x.display));
    if(v.type==='ratio')assert.ok(v.highlight>0&&v.highlight<v.of&&v.of<=10);
    if(v.type!=='photo')assert.ok(visualHtml(v,'#fff','#000','#000').includes('<div'));}
  }
  const slides=briefSlides(briefs.find(b=>b.id==='miami-fc-upsets-rowdies-2026'));
  assert.match(slides[1].html,/rowdies\.png/);assert.match(slides[1].alt,/Scoreboard: Rowdies 1, Miami FC 1/);
+});
+test('captions and slides read like a person wrote them, not a template',()=>{
+ // Owner, Nov 2: "be careful the wording doesn't look AI". Phrases that give generated copy away.
+ const tells=/\b(dive in|delve|game[- ]changer|unlock|elevate|in today's|navigat(e|ing) the|landscape|tapestry|testament to|it's worth noting|whether you're|look no further|buckle up|let's break it down|here's the thing|not just .* it's)\b/i;
+ for(const b of briefs){const text=[b.caption,b.dek,...b.title,...b.points.flatMap(p=>[...p.title,...p.body])].join(' ');assert.doesNotMatch(text,tells,b.id);
+  assert.ok((b.caption.match(/—/g)||[]).length<=1,b.id+': too many em dashes in the caption');}
 });
