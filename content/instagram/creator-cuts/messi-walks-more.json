@@ -1,0 +1,85 @@
+{
+ "id": "creator-cut-messi-walks-more",
+ "hookSeconds": 2.4,
+ "outroSeconds": 2.2,
+ "bpm": 118,
+ "narrationApprovedOn": "2026-11-02",
+ "posterSeconds": 1.0,
+ "chip": "HOW THE PROS PLAY",
+ "hook": "Messi walks.\nAnd scores more.",
+ "shots": [
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 6.0,
+   "seconds": 2.4,
+   "x": 0.43
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 870.0,
+   "seconds": 2.4,
+   "x": 0.48
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 30.0,
+   "seconds": 2.4,
+   "x": 0.65
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 42.0,
+   "seconds": 2.4,
+   "x": 0.47
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 990.0,
+   "seconds": 2.4,
+   "x": 0.54
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 882.0,
+   "seconds": 2.4,
+   "x": 0.35
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 888.0,
+   "seconds": 2.4,
+   "x": 0.4
+  },
+  {
+   "id": "xGwYAuUHcfE",
+   "at": 1056.0,
+   "seconds": 2.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.4,
+   "end": 7.2,
+   "text": "64% of his distance: walking"
+  },
+  {
+   "start": 7.2,
+   "end": 12.0,
+   "text": "First 4 World Cups: 6 goals"
+  },
+  {
+   "start": 12.0,
+   "end": 16.8,
+   "text": "Last 2, at 35 and 39: 15 goals"
+  },
+  {
+   "start": 16.8,
+   "end": 19.2,
+   "text": "He walks. He scans."
+  }
+ ],
+ "script": "Watch Messi. Most of the match, he's walking. In Pedro El Ingeniero's breakdown, sixty-four percent of Messi's distance at the 2026 World Cup was at walking pace. In his first four World Cups, running everywhere, he scored six goals. In the last two, at thirty-five and thirty-nine, he scored fifteen. Harry Kane made about twice as many high-speed runs. Messi still scored eight. Because when he walks, he's reading the game.",
+ "caption": "Messi walks more than almost anyone on the field. And he scores more. 🐐\n\n64% of his distance at the 2026 World Cup was at walking pace, and the average forward walked about half as much.\nFirst four World Cups, running everywhere: 6 goals.\nLast two, at 35 and 39: 15 goals.\nHarry Kane made about 600 high-speed runs at the 2026 World Cup. Messi made 298, and still scored 8.\n\nThe trick: while he walks, he scans. By the time the ball comes, he already knows what to do with it.\n\nWho's the Messi on your team, walking all game and still scoring? Tag them 👇\n\nNumbers and 3D analysis: Pedro El Ingeniero, from his video \"¿Por qué Messi dejó de correr a los 24?\" on YouTube (@PedroElIngeniero). Watch the full breakdown there, it's worth it.\n🎥 Video: Pedro El Ingeniero. Cancha is independent and not affiliated with any player, club or FIFA.\n\n#Messi #SoccerIQ #FloridaSoccer #YouthSoccer #SoccerTips",
+ "altText": "Cancha Reel built from Pedro El Ingeniero's 3D tactical animation: a 3D Messi figure walking on a dark pitch, a top-down view with his marker, bars comparing 6 goals in four World Cups with 15 in the last two, a 298 versus 600 high-speed-runs graphic, and Messi seen from behind scanning the field, with on-screen lines about walking, goals and scanning."
+}
