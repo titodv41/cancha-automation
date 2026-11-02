@@ -30,11 +30,11 @@ export function validateFreePreviewAccount(account, characters) {
   return true;
 }
 
-export function validateStarterAccount(account, characters) {
+export function validateStarterAccount(account, characters, maxPerRequest=650) {
   if(account?.subscription?.tier!=='starter')throw Error('Starter narration requires the Starter subscription');
   const {characterLimit,characterCount,overagesDisabled}=account.subscription;
   if(overagesDisabled===false)throw Error('Usage-based billing is on; turn it off before any narration');
-  if(!Number.isInteger(characters)||characters<1||characters>650||!Number.isFinite(characterLimit)||!Number.isFinite(characterCount)||characterLimit-characterCount<characters)throw Error('Insufficient included Starter credits for this narration');
+  if(!Number.isInteger(characters)||characters<1||characters>Math.min(maxPerRequest,1100)||!Number.isFinite(characterLimit)||!Number.isFinite(characterCount)||characterLimit-characterCount<characters)throw Error('Insufficient included Starter credits for this narration');
   if(account.voices?.some(v=>!v.available))throw Error('A selected stock voice is unavailable on this account');
   return true;
 }
@@ -106,7 +106,7 @@ export async function generateVoice({api, text, candidate, policy, ledgerDir, no
   }
   if (existing) throw Error('An earlier generation is pending or uncertain. Inspect provider history before requesting another take.');
   if(mode==='free-preview')validateFreePreviewAccount(account,text.length);
-  if(mode==='starter')validateStarterAccount(account,text.length);
+  if(mode==='starter')validateStarterAccount(account,text.length,policy.maxCharactersPerRequest);
   const reserved = ledger.months[month] || 0;
   if (reserved + text.length > policy.monthlyProjectCharacterBudget) throw Error('Monthly project voice budget reached');
   // Reserve before the chargeable call; failed/uncertain calls remain reserved and cannot retry.
