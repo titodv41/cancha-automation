@@ -91,3 +91,5 @@ Orlando, Tampa and Gainesville stay on the wider Florida roadmap and must not do
 - **Founder Reel:** later, once the format is proven.
 - **Outreach:** the owner and ChatGPT handle it. Claude builds the content once someone says yes.
 - **LinkedIn:** start looking at automated professional posts the week of Nov 9 (needs the owner's LinkedIn consent).
+- **Creator content (Nov 2):** when a creator gives their OK, it covers everything in their video, including material inside it. The owner has his own advice on this. Always credit the creator.
+- **Reels (Nov 2):** aim for 1–2 creator Reels a week using the cancha-reel skill. Analysis Reels can run 45–75 s with the cinematic music style.
