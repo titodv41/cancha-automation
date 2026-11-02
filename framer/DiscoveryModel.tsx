@@ -11,6 +11,16 @@ export const GOALS=[
 ]
 export const EMPTY_FILTERS={q:'',near:'',radius:'25',city:'',region:'',age:'',playerAge:'',role:'player',level:'',activity:'',type:'',league:'',division:'',play:'',checked:false,includeUnknown:true,view:'auto'}
 export const PROFILE_KEYS=['playerAge','age','level','includeUnknown']
+// Broad audience choices remain broad: do not invent an exact age or eligibility.
+// The same filters drive both the quick-start count and its directory URL.
+export function quickStartResult(who:string,goal:string){
+ const age=who==='adult'?'Adult':'Youth'
+ if(goal==='pickup')return{title:who==='adult'?'Pickup & casual games':'Youth pickup & casual games',why:'Find groups that list this age group, then check the session details.',filters:{age,activity:'Pickup groups'},guide:null}
+ if(goal==='fun')return{title:who==='adult'?'Adult recreational soccer':'Youth recreational soccer',why:'Compare recreational programs and the ages they serve.',filters:{age,play:'Recreational'},guide:null}
+ if(goal==='better')return{title:who==='adult'?'Adult club teams':'Competitive youth clubs',why:'Find competitive clubs, then check teams, training and current openings.',filters:{age,activity:'Clubs & teams',level:'Competitive'},guide:null}
+ if(who==='adult')return{title:'Adult competitive pathways',why:'Explore clubs with semi-pro pathways and check their current tryouts.',filters:{age,activity:'Clubs & teams',level:'Semi-pro pathway'},guide:['Find adult tryouts','/explore?age=Adult&activity=Tryouts']}
+ return{title:'Academy programs',why:'Compare academy programs. Each club lists its own ages and entry requirements.',filters:{age,play:'Academy'},guide:['See the Florida pathway guide','/florida-soccer-pathway']}
+}
 export function playerAge(value:any){const s=String(value??'');const n=Number(s);return /^\d{1,2}$/.test(s)&&n>=2&&n<=99?n:null}
 export function ageFit(item:any,value:any){
  const n=playerAge(value);if(n===null)return {hidden:false,known:false,rank:0,label:''}
