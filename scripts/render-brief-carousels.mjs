@@ -70,6 +70,10 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
   if(ph.media){const m=JSON.parse(await readFile('config/community-media.json','utf8')).find(x=>x.id===ph.media);if(!m||!/^CC/.test(m.license))throw Error(r.id+': unknown or unlicensed community media');
    const res=await fetch(m.url,{signal:AbortSignal.timeout(60000)});if(!res.ok)throw Error(r.id+': community media unavailable');const ext=m.url.endsWith('.png')?'png':'jpg';
    await writeFile(join(out,`${name}.${ext}`),Buffer.from(await res.arrayBuffer()));return {...ph,file:`${name}.${ext}`};}
+  // An interview guest's own photo, used only with the guest's yes recorded in config/interview-permissions.json.
+  if(ph.guest){const g=JSON.parse(await readFile('config/interview-permissions.json','utf8')).guests.find(x=>x.id===ph.guest);
+   if(!g?.okRelayedOn||!ph.local?.startsWith(`content/instagram/interviews/${g.id}/`)||!/\.(jpe?g|png)$/.test(ph.local))throw Error(r.id+': guest photo needs the guest\'s recorded OK');
+   const ext=ph.local.split('.').pop();await copyFile(ph.local,join(out,`${name}.${ext}`));return {...ph,file:`${name}.${ext}`};}
   if(ph.local){const {clearedVideos}=await import('./clip-download.mjs'),cleared=clearedVideos(JSON.parse(await readFile('config/clip-permissions.json','utf8')));
    if(!/^content\/[\w\/.-]+\.jpg$/.test(ph.local)||!cleared.some(v=>v.id===ph.clearedVideo))throw Error(r.id+': local photo needs a cleared source video');
    await copyFile(ph.local,join(out,name+'.jpg'));return {...ph,file:name+'.jpg'};}
