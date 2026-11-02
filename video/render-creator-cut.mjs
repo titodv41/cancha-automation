@@ -21,10 +21,19 @@ const shots=spec.shots.map((s,i)=>{const file=`generated/creator-cut/shot-${i}.m
  return{...s,seconds,file};});
 const durationSeconds=+(shots.reduce((a,s)=>a+s.seconds,0)+spec.outroSeconds).toFixed(2);
 const cut={...spec,shots,beats:spec.beats.map(b=>({...b,start:r(b.start),end:r(b.end)})),hookSeconds:r(spec.hookSeconds),durationSeconds,credit:'Video: '+creators.join(' · ')+' · YouTube'+(spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cc-by')?' (CC BY)':'')};
-await writeFile(join(assets,'story.json'),JSON.stringify({durationSeconds,music:{bpm:spec.bpm||(spec.musicStyle==='cinematic'?84:124),style:spec.musicStyle||'bright-house'}}));
+// A licensed library track (config/music-library.json) replaces the synthesized bed: voice-only mix first, then the
+// track sits about 13 LU under the voice and ducks further while Chris speaks (owner, Nov 2: music quieter than the voice).
+const track=spec.music?JSON.parse(await readFile(join(root,'config/music-library.json'),'utf8')).tracks.find(t=>t.id===spec.music):null;if(spec.music&&!track)throw Error('Unknown music track '+spec.music);
+await writeFile(join(assets,'story.json'),JSON.stringify({durationSeconds,music:track?{openGain:0,duckedGain:0,transitionSeconds:[]}:{bpm:spec.bpm||(spec.musicStyle==='cinematic'?84:124),style:spec.musicStyle||'bright-house'}}));
 await writeFile(join(assets,'narration-proof.json'),JSON.stringify({parts:timing?[{file:resolve(arg('--voice').replace(/\.json$/,'.mp3')),start:0}]:[]}));
 execFileSync(process.execPath,[join(root,'video/audio/soundtrack.mjs'),join(assets,'story.json'),assets],{stdio:'pipe'});
 let audio=join(assets,'soundtrack.wav');
+if(track){const file=join(assets,'track.mp3'),res=await fetch(track.url,{signal:AbortSignal.timeout(60000)});if(!res.ok)throw Error('Music track unavailable');
+ const bytes=Buffer.from(await res.arrayBuffer());if(createHash('sha256').update(bytes).digest('hex')!==track.sha256)throw Error('Music track changed');await writeFile(file,bytes);
+ const mixed=join(assets,'with-music.wav'),fadeOut=Math.max(0,durationSeconds-2.2);
+ execFileSync('ffmpeg',['-v','error','-y','-i',audio,'-ss',String(track.startSeconds||0),'-t',String(durationSeconds+1),'-i',file,'-filter_complex',
+  `[1:a]aresample=48000,aformat=channel_layouts=stereo,loudnorm=I=${spec.musicLufs??-27}:TP=-6:LRA=11,afade=t=in:d=0.8,afade=t=out:st=${fadeOut}:d=2.2[m];[0:a]asplit=2[v1][v2];[m][v1]sidechaincompress=threshold=0.03:ratio=5:attack=20:release=450[md];[v2][md]amix=inputs=2:duration=first:normalize=0`,
+  '-ar','48000','-ac','2',mixed]);audio=mixed;}
 // Natural sound (crowd, drums, cheers) from cleared videos, mixed under the music at the planned moments.
 for(const[n,a]of(spec.sfx||[]).entries()){const mixed=join(assets,`mix-${n}.wav`),at=Math.round(r(a.start)*1000);
  execFileSync('ffmpeg',['-v','error','-y','-i',audio,'-ss',String(a.at),'-t',String(a.seconds),'-i',source(a.id),'-filter_complex',`[1:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=0.3,afade=t=out:st=${Math.max(0,a.seconds-.6)}:d=0.6,volume=${a.gain??.8},adelay=${at}|${at},apad[n];[0:a][n]amix=inputs=2:duration=first:normalize=0`,'-ar','48000','-ac','2',mixed]);audio=mixed;}

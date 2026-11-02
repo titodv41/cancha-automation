@@ -17,19 +17,42 @@ Run `clip-download.yml` with `ids=<id>`. The log prints:
 
 Download the sheets and look at them. Download the job log through the URL that `get_job_logs` returns (`return_content: false`) to get the whole transcript.
 
-## 3. Story first
-- **One story.** Usually the creator's thesis, retold in 45–75 s for analysis pieces (the owner prefers longer when the material is strong) or 20–35 s for tips.
-- **Hook:** at most 2.4 s, two short lines, a surprising claim ("Messi walks. And scores more.").
-- **Narration (Chris)** explains the story and doesn't read the screen. Attribute numbers to the creator ("In Pedro El Ingeniero's breakdown…"). Keep within the ElevenLabs Starter cap (25,000/month); check `characters` in the log.
-- **On-screen lines** add the number or the phrase to remember: 3–6 words each.
-- **End:** a takeaway line ("Less running. More thinking."), then a caption question people can answer or tag a teammate on.
+## 3. Script: write it like a pro, for the ear (the owner flagged amateur scripts on Nov 2)
+Target about 2.5 spoken words per second: 30 s ≈ 70 words, 60 s ≈ 145 words, 75 s ≈ 180 words.
+Structure:
+1. **Hook, in the first 2 s:** at most 8 spoken words, matching the on-screen hook. Use a claim that breaks expectations or a question with stakes. Bad: "Watch Messi at the 2026 World Cup." Good: "Messi walks more than any forward. And scores more."
+2. **Why it matters:** one sentence on why the viewer should care.
+3. **At most three beats:** one idea and one number each, linked with "But…", "So…", "Here's why…". Never read a list of years or stats like a timeline.
+4. **Payoff:** the reveal that answers the hook.
+5. **Takeaway for our audience** (youth players, parents, coaches): something concrete to do. "Next practice, check your shoulder twice before the ball arrives."
+6. **One call to action**, said out loud, shown on the end card (`outro: {kicker,title,line}`) and repeated in the caption: follow, save, send to a teammate, or comment with one answer. Never more than one.
+Write for the ear: short sentences, plain words, numbers people can picture, a natural pause before the payoff. Attribute borrowed analysis ("Pedro El Ingeniero showed…").
 
-## 4. Shot list (`content/instagram/creator-cuts/<name>.json`)
-- Plan shot seconds to match the narration segments: about 2.7 spoken words per second. The renderer stretches every shot evenly to fit the voice, so each line and its visual must be planned together.
-- Each beat (on-screen line) sits over the shot that shows the same thing.
-- Charts, boards and graphics: `"fit": true` (the full 16:9 frame over a blurred fill). Players and action: crop with `x` (0–1) so the subject is inside the 9:16 window: centre ≈ x·0.68 + 0.16 of the frame width.
-- Avoid presenter-on-camera moments unless they serve the story. Check that a shot's stretched length doesn't run into the next scene.
-- `musicStyle`: `"cinematic"` (84 BPM pad, pulse, bells) for analysis and emotional stories; default house only for hype and fun. The owner rejected house under analysis Reels.
+## 4. Storyboard before rendering
+Write a table in the session scratchpad: sentence → on-screen line (5 words max, 2 lines max) → shot (`at`, crop `x` or `fit`) → seconds. Rules:
+- Every sentence has a visual showing exactly what's being said. No empty pitches, presenter shots or off-topic frames.
+- Plan shot seconds to match the words. The renderer stretches every shot evenly to fit the voice, so each line and its visual must be planned together.
+- The first frame has a clear subject (player, face, big number), not a wide empty scene.
+- Charts and boards use `"fit": true`. Players and action are cropped with `x` (0–1): centre ≈ x·0.68 + 0.16 of the frame width.
+- Check shots near the start of a source video for the presenter or intro cards.
+
+**Amateur-mistakes check.** Score each item 1–5 and rewrite anything below 4 before rendering:
+- the hook is strong in 2 s;
+- one story, no timeline-reading;
+- every line has a matching visual;
+- there's a takeaway for our audience;
+- there's exactly one CTA;
+- the on-screen text is short;
+- the pacing has no dead shots;
+- the music fits the mood.
+Put the script and scores in the PR body.
+
+**Music:** only licensed tracks from `config/music-library.json`, chosen by mood:
+- `analysis` → rising-tide
+- `hype` → undaunted
+- `fun`/`community` → loopster
+
+Set `"music": "<id>"`. The renderer puts it about 13 LU under the voice and ducks it further under speech. The caption must include the track's `credit`; tests enforce this. Never use the synthesized beds under narration: the owner rejected them on Nov 2. If no track fits, add a new CC BY track to the library (download it, pin its sha256, and listen-test it by asking the owner) rather than forcing one.
 
 ## 5. Ship and review
 1. Run `npm test` and confirm `# fail 0`. Open a PR, merge, and wait until main has the merge.
@@ -45,3 +68,4 @@ Download the sheets and look at them. Download the job log through the URL that 
 - Nov 2, Messi cut: the first render centre-cropped stat graphics and mismatched lines and visuals. That's why `fit` and the beat-to-shot rule exist.
 - Nov 2: the owner wants longer Reels when the source is rich, and calmer music than house for analysis.
 - Nov 2: the first seconds of a creator's video often include the presenter on camera. Check the exact window on the contact sheet before using any shot near 0 s.
+- Nov 2: the owner rejected the synthesized 'cinematic' bed ("weird piano, not even music") and the house beat under analysis. Licensed library music only, sitting well under the voice. Every Reel ends with one spoken and on-screen CTA.

@@ -1,0 +1,8 @@
+{
+ "note": "Licensed music for Reels (owner, Nov 2: the music must fit the content and sit well under the voice; no synthesized beds under narration). Kevin MacLeod tracks are CC BY 4.0: commercial use allowed with credit. Every Reel that uses one must credit it in the caption exactly as 'credit'. Files are downloaded at render time and must match sha256.",
+ "tracks": [
+  {"id": "rising-tide", "title": "Rising Tide", "artist": "Kevin MacLeod", "mood": ["analysis", "explainer", "breakdown"], "url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Rising%20Tide.mp3", "sha256": "56e5f0b8f69de4bfc81abd6b50414db2e14a2f487de01a38027188c18d00d420", "license": "CC BY 4.0", "credit": "Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0", "startSeconds": 0},
+  {"id": "undaunted", "title": "Undaunted", "artist": "Kevin MacLeod", "mood": ["hype", "match", "epic"], "url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Undaunted.mp3", "sha256": "eb80db4bfba6c0516824a2e9a7a88bba47560a7d4e447a7750979f003fe13fcd", "license": "CC BY 4.0", "credit": "Music: \"Undaunted\" by Kevin MacLeod (incompetech.com), CC BY 4.0", "startSeconds": 8},
+  {"id": "loopster", "title": "Loopster", "artist": "Kevin MacLeod", "mood": ["fun", "community", "tips"], "url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Loopster.mp3", "sha256": "66978bd06d6a56dec6125663843cf762435bbbf9182cc65653035e24c648667c", "license": "CC BY 4.0", "credit": "Music: \"Loopster\" by Kevin MacLeod (incompetech.com), CC BY 4.0", "startSeconds": 0}
+ ]
+}
