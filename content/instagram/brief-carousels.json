@@ -2,6 +2,101 @@
  "note": "Cancha Brief: one real Florida soccer story per post with a clear take. Every fact comes from the cited sources (confirm tokens are copied from them); opinion goes only on the 'Our take' slide. Facts expire 7 days after checkedOn.",
  "briefs": [
   {
+   "id": "miami-fc-conference-semifinal-louisville-2026",
+   "checkedOn": "2026-11-02",
+   "expiresOn": "2026-11-07",
+   "kicker": "USL PLAYOFFS · CONFERENCE SEMIFINAL",
+   "title": [
+    "Miami FC is in",
+    "the semis."
+   ],
+   "highlight": "Saturday, 7 PM.",
+   "dek": "After knocking out the #1 seed, Miami goes to Louisville City for a spot in the Eastern Conference Final.",
+   "sources": [
+    {
+     "label": "Miami FC, Nov 2, 2026",
+     "url": "https://www.miamifc.com/news/2026/11/02/miami-fc-advances-to-conference-semifinals-with-playoff-victory-over-tampa-bay/",
+     "confirm": [
+      "5-4 on penalties",
+      "first Eastern Conference Semifinal",
+      "since joining the USL Championship in 2020",
+      "Louisville City FC",
+      "this Saturday at 7 PM",
+      "Lynn Family Stadium"
+     ]
+    }
+   ],
+   "photo": {
+    "url": "https://www.miamifc.com/wp-content/uploads/sites/4/2026/11/MT1_7922.jpg",
+    "credit": "Photo: Miami FC",
+    "alt": "A Miami FC player in a blue kit battling a Tampa Bay Rowdies player for the ball during the playoff match at Al Lang Stadium."
+   },
+   "collab": "themiamifc",
+   "points": [
+    {
+     "label": "HOW THEY GOT HERE",
+     "title": [
+      "Beat the #1 seed",
+      "on their field"
+     ],
+     "body": [
+      "1-1 after extra time at Al Lang",
+      "Miami won the shootout 5-4"
+     ],
+     "visual": {
+      "type": "scoreboard",
+      "teams": [
+       {
+        "crest": "rowdies",
+        "name": "Rowdies",
+        "score": "1"
+       },
+       {
+        "crest": "miami",
+        "name": "Miami FC",
+        "score": "1"
+       }
+      ],
+      "note": "Miami win 5–4 on pens"
+     }
+    },
+    {
+     "label": "WHY IT'S BIG",
+     "title": [
+      "A first for",
+      "the club"
+     ],
+     "body": [
+      "Miami's first Eastern Conference Semifinal since joining the USL Championship in 2020",
+      "Win and they're in the conference final"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "1st",
+      "caption": "conference semifinal since joining the USL Championship (2020)"
+     }
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "Can the 8 seed",
+      "do it again?"
+     ],
+     "body": [
+      "Away at Louisville City, Lynn Family Stadium",
+      "Score prediction? Drop it below",
+      "Watching with your team? Tag them"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "SAT · 7PM",
+      "caption": "at Louisville City"
+     }
+    }
+   ],
+   "caption": "Miami FC just made history. Now they need one more upset. ⚽🔥\n\nFriday they knocked out the #1 seed Tampa Bay Rowdies 5-4 on penalties at Al Lang.\nThat sends Miami to its first Eastern Conference Semifinal since joining the USL Championship in 2020.\n\nNext: Louisville City FC.\n📅 This Saturday, 7 PM\n📍 Lynn Family Stadium, Louisville\n\nCan the 8 seed do it again? Drop your score prediction 👇\n\nSource: Miami FC, Nov 2, 2026 (miamifc.com).\n📸 Photo: Miami FC @themiamifc (official club media). Your photo? DM us to change the credit or have it removed. Cancha is independent and not affiliated with the club or the league.\n\n#MiamiFC #USLChampionship #FloridaSoccer #MiamiSoccer #Playoffs"
+  },
+  {
    "id": "where-fans-show-up-2025-26",
    "checkedOn": "2026-11-02",
    "kicker": "CANCHA BRIEF · THE STANDS",
