@@ -42,3 +42,10 @@ Principles we act on. They are platform guidance and common practice, not yet pr
 - **Mix:** besides club moments, post soccer culture people want to talk about: attendance and fan culture, how the pros play (e.g. why Messi walks so much), lower-league and grassroots stories from around the world. It shows we understand the game, the clubs and the people around them.
 - **Voice:** write like a person at the field. Short sentences, real numbers, a plain opinion. No marketing filler ("dive in", "game-changer", "elevate"), few em dashes. Tests reject the common giveaways.
 - **Other creators' videos:** never download or screenshot them without the creator's OK. Summarize the public facts with our own graphics, credit and link the creator, or ask the creator (owner) and add the video to config/clip-permissions.json.
+
+## Ask the owner first (owner, Nov 2)
+The owner is well connected and makes every ask personally. When a post needs someone else's OK (a creator's clip, a guest's answers and photos, a club's media beyond its public news), Claude:
+1. Builds the post to top level: script or storyboard if the media can't be used yet, otherwise the full render.
+2. Ends the session with an **ASK** line for the owner: who to ask, the exact question, and a preview.
+3. Waits. On the owner's yes, records it (`config/clip-permissions.json` or `config/interview-permissions.json`), approves the post and queues it. On no, drops it.
+Ongoing series: "5 Questions" interviews with South Florida soccer people (docs/five-questions-interview-kit.md), and sponsorship stories for club directors (how clubs land a first sponsor, real local partnerships).
