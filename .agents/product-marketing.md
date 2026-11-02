@@ -93,3 +93,8 @@ Orlando, Tampa and Gainesville stay on the wider Florida roadmap and must not do
 - **LinkedIn:** start looking at automated professional posts the week of Nov 9 (needs the owner's LinkedIn consent).
 - **Creator content (Nov 2):** when a creator gives their OK, it covers everything in their video, including material inside it. The owner has his own advice on this. Always credit the creator.
 - **Reels (Nov 2):** aim for 1–2 creator Reels a week using the cancha-reel skill. Analysis Reels can run 45–75 s with the cinematic music style.
+
+**Design direction (owner, Nov 3 references: @phormestudio on Instagram, boardui.com).**
+- **Instagram (phorme):** a calm, premium grid. Lots of empty space, one short statement per slide in a light, elegant weight, black-and-white action photography, and an alternating rhythm of statement slides and photo slides. Restraint over decoration.
+- **Website (BoardUI):** clean modern product UI. Generous white space, soft neutral backgrounds, crisp cards, small refined data visuals, one strong primary button, a clear hierarchy, and nothing cluttered.
+- **How to apply it:** keep Cancha's colors and real logo, but use them sparingly: mostly cream/white and forest, lime and orange only as accents. Test a "minimal" carousel variant (statement slide plus B&W photo slide) against the current bold style, and compare saves and shares before switching. Bring the website's cards, spacing and type toward BoardUI's calm precision, one section at a time, checked at 390 px and on desktop.
