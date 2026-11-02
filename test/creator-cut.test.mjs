@@ -11,7 +11,9 @@ test('narration needs an approved cut and the capped Starter plan',()=>{
 });
 test('an approved creator cut is a valid short Reel up to 40 s; cleared footage is limited to creator cuts',()=>{
  assert.equal(shortReelAllowed(draft(),policy),true);
- assert.equal(shortReelAllowed(draft({...result,seconds:41}),policy),false);
+ // Owner, Nov 2: longer analysis Reels are welcome; creator cuts may run up to Instagram's 90 s Reel limit.
+ assert.equal(shortReelAllowed(draft({...result,seconds:73.5}),policy),true);
+ assert.equal(shortReelAllowed(draft({...result,seconds:91}),policy),false);
  assert.equal(shortReelAllowed({...draft(),recipeId:'other'},policy),false);
  assert.equal(shortReelAllowed({...draft(),recipeKind:'club'},{...policy}),false);
 });
