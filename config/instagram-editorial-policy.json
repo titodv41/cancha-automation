@@ -81,6 +81,8 @@
   "retiredDraftsNote": "Oct 29: three club-news Reels rendered in the older boxed layout retired after the owner asked for a more professional Reel look. Oct 29 (later): the photo-only Fort Lauderdale United Reel retired; Reels are video only.",
   "creatorCutsNote": "Oct 29: owner approved the first creator cut ('This is Florida soccer') from cleared creator videos: post it after adding Chris narration, with creator credits on screen and in the caption. Oct 29 (later): owner asked for traffic-driving tryout/pathway content and for Claude to decide and post independently; Pathway 101 episodes 1-4 approved by Claude after fact and visual checks (FYSA ODP page, FYSA Rule 401.6, NCAA D1 June 15 contact rule).",
   "briefCarouselsEnabled": true,
+  "preferCraftedBriefs": true,
+  "preferCraftedBriefsNote": "Owner, Nov 2: keep the volume but no automated filler. When an approved, researched brief is eligible, the plan picks it over automatic directory, news or comparison posts. The day's Reel slot and every other check are unchanged.",
   "approvedBriefCarouselIds": [
     "where-fans-show-up-2025-26",
     "ftl-utd-broward-college-fields",
