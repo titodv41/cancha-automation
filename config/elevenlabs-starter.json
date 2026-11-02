@@ -2,7 +2,7 @@
   "provider": "elevenlabs",
   "model": "eleven_v3",
   "outputFormat": "mp3_44100_128",
-  "maxCharactersPerRequest": 650,
+  "maxCharactersPerRequest": 1100,
   "maxCharactersPerBatch": 1300,
   "monthlyProjectCharacterBudget": 25000,
   "automaticGeneration": true,
@@ -27,5 +27,5 @@
   ],
   "plan": "starter",
   "allowOverage": false,
-  "note": "Oct 29: owner subscribed to ElevenLabs Starter (commercial license, 30,000 credits/month). Cancha uses at most 25,000 characters a month, never overage; Chris is the automatic voice."
+  "note": "Oct 29: owner subscribed to ElevenLabs Starter (commercial license, 30,000 credits/month). Cancha uses at most 25,000 characters a month, never overage; Chris is the automatic voice. Nov 2: per-request limit raised from 650 to 1100 so a 60-75 s analysis Reel can be narrated in one take (owner asked for longer Reels); the 25,000/month project budget and no-overage rule are unchanged."
 }
