@@ -24,8 +24,8 @@ for(let i=0;i<length;i++){
  const chordTime=(t+beat*.5)%beat,minor=bar%4===0?1.189207:1.259921,chord=(sine(root*2,t)+sine(root*2*minor,t)+sine(root*3,t))*.019*Math.exp(-chordTime*12)*sidechain;
  const note=root*2*Math.pow(2,notes[step%notes.length]/12),pluckTime=t%(beat/2),pluck=(sine(note,t)+.23*sine(note*2,t))*.042*Math.exp(-pluckTime*15)*sidechain;
  duck+=(active[i]?1-duck:-duck)*(active[i]?1/(sr*.035):1/(sr*.18));
- const musicGain=(story.music?.openGain||.85)*(1-duck)+(story.music?.duckedGain||.42)*duck;
- let effects=0;for(const at of(story.music?.transitionSeconds||[.9,5.6,10.4,15.3,18.6])){const d=t-at;if(d>-.12&&d<.16)effects+=brightNoise*.035*Math.sin(Math.PI*(d+.12)/.28)}
+ const musicGain=(story.music?.openGain??.85)*(1-duck)+(story.music?.duckedGain??.42)*duck;
+ let effects=0;for(const at of(story.music?.transitionSeconds??[.9,5.6,10.4,15.3,18.6])){const d=t-at;if(d>-.12&&d<.16)effects+=brightNoise*.035*Math.sin(Math.PI*(d+.12)/.28)}
  if(cinematic){
   // Original cinematic bed (owner, Nov 2: analysis Reels need something calmer than house): a soft heartbeat pulse,
   // slow warm pad chords (Am-F-C-G), a sparse bell motif and a gentle riser into each four-bar phrase. No samples.

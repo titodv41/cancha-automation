@@ -24,9 +24,9 @@ export function CreatorCut({brand,cut,audio}:any){
    <div data-copy style={{...display,fontSize:96,textShadow:'0 4px 22px #000c'}}>{beat.text}</div></div>}
   {f>=outroFrom&&<AbsoluteFill style={{background:`rgba(16,63,50,${.92*ease(f,outroFrom,outroFrom+8)})`}}>
    <div style={{position:'absolute',left:62,right:140,top:720,opacity:ease(f,outroFrom+3,outroFrom+12)}}>
-    <div data-copy style={{fontSize:32,color:brand.accent,letterSpacing:1.5}}>FLORIDA SOCCER · EVERY WEEK</div>
-    <div data-copy style={{...display,fontSize:120,marginTop:16}}>Find your<br/>game.</div>
-    <div data-copy style={{fontSize:40,marginTop:34}}>Clubs, camps & tryouts near you · link in bio</div></div></AbsoluteFill>}
+    <div data-copy style={{fontSize:32,color:brand.accent,letterSpacing:1.5}}>{(cut.outro?.kicker)||'FLORIDA SOCCER · EVERY WEEK'}</div>
+    <div data-copy style={{...display,fontSize:120,marginTop:16}}>{((cut.outro?.title)||'Find your\ngame.').split('\n').map((l:string,i:number)=><div key={i}>{l}</div>)}</div>
+    <div data-copy style={{fontSize:40,marginTop:34}}>{(cut.outro?.line)||'Clubs, camps & tryouts near you · link in bio'}</div></div></AbsoluteFill>}
   <div data-copy style={{position:'absolute',left:64,right:140,bottom:250,fontSize:24,opacity:.8,lineHeight:1.3}}>{cut.credit}</div>
   <div data-copy style={{position:'absolute',left:64,bottom:205,fontSize:30,opacity:.85}}>{brand.handle}</div>
   {audio&&<Audio src={staticFile(audio)}/>}

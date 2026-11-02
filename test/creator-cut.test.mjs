@@ -21,3 +21,14 @@ test('the caption credits every creator and never claims more than the license',
  for(const name of['Lozzz Productionz','Florida Life','Progressive Soccer'])assert.match(cut.caption,new RegExp(name));
  assert.doesNotMatch(cut.caption,/used with permission|official|partner/i);
 });
+test('narrated creator cuts use licensed library music, credit it, and end on a call to action (owner, Nov 2)',async()=>{
+ const{readdirSync}=await import('node:fs'),dir=new URL('../content/instagram/creator-cuts/',import.meta.url);
+ const library=JSON.parse(readFileSync(new URL('../config/music-library.json',import.meta.url))).tracks;
+ for(const t of library){assert.match(t.sha256,/^[a-f0-9]{64}$/);assert.match(t.url,/^https:\/\/incompetech\.com\//);assert.equal(t.license,'CC BY 4.0');assert.match(t.credit,/Kevin MacLeod.*CC BY 4\.0/);}
+ for(const f of readdirSync(dir).filter(f=>f.endsWith('.json'))){const c=JSON.parse(readFileSync(new URL(f,dir)));
+  assert.notEqual(c.musicStyle,'cinematic',f+': the synthesized cinematic bed was rejected');
+  if(!c.music)continue;const track=library.find(t=>t.id===c.music);assert.ok(track,f+': unknown track');
+  assert.ok(c.caption.includes(track.credit),f+': caption must credit the music');
+  assert.ok(c.outro?.title&&c.outro?.line,f+': end card needs a call to action');
+  assert.match(c.script,/\b(follow|save|send|share|tag|comment)\b/i,f+': say the call to action');}
+});
