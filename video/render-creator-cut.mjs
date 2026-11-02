@@ -34,7 +34,8 @@ try{
  const common={serveUrl,browserExecutable:process.env.CANCHA_BROWSER_EXECUTABLE||chromium.executablePath(),inputProps:props},composition=await selectComposition({...common,id:'CreatorCut'});
  const poster=join(out,spec.id+'.jpg');await renderStill({...common,composition,frame:Math.round(r(spec.posterSeconds??1.2)*30),imageFormat:'jpeg',output:poster});
  if(!process.argv.includes('--still')){const output=join(out,spec.id+'.mp4');
-  await renderMedia({...common,composition,outputLocation:output,codec:'h264',crf:23,pixelFormat:'yuv420p',concurrency:2,muted:true});
+  // Long Reels (over 40 s) use a bitrate sized to land near 18 MB, under the 20 MB delivery audit; short ones keep CRF 23.
+  await renderMedia({...common,composition,outputLocation:output,codec:'h264',...(durationSeconds>40?{videoBitrate:`${Math.floor(18e6*8/durationSeconds/1000)-320}k`}:{crf:23}),pixelFormat:'yuv420p',concurrency:2,muted:true});
   await masterVideo(output,{audioFile:audio,durationSeconds,limitPeaks:true,targetLufs:-14});
   const checks=await auditVideo(output,durationSeconds);
   await writeFile(join(out,spec.id+'.json'),JSON.stringify({id:spec.id,file:output,poster,seconds:durationSeconds,rendered:checks.passed,checks,creators,narration:timing?{voice:timing.voice,audioSha256:timing.audioSha256}:null,
