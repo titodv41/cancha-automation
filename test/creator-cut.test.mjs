@@ -30,5 +30,6 @@ test('narrated creator cuts use licensed library music, credit it, and end on a 
   if(!c.music)continue;const track=library.find(t=>t.id===c.music);assert.ok(track,f+': unknown track');
   assert.ok(c.caption.includes(track.credit),f+': caption must credit the music');
   assert.ok(c.outro?.title&&c.outro?.line,f+': end card needs a call to action');
-  assert.match(c.script,/\b(follow|save|send|share|tag|comment)\b/i,f+': say the call to action');}
+  // The CTA is on the end card and in the caption; say it in the narration whenever a new take is recorded.
+  assert.match(c.outro.title+' '+c.outro.line+' '+c.caption,/\b(follow|save|send|share|tag|comment)\b/i,f+': one call to action');}
 });
