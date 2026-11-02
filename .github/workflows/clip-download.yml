@@ -50,12 +50,20 @@ jobs:
           printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIES"
           set +e
           yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/b" --merge-output-format mp4 \
-            -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --write-info-json --no-progress \
+            -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --write-info-json --write-auto-subs --sub-langs "es-orig,es,en-orig,en" --sub-format vtt --no-progress \
             -a private-data/clips/urls.txt 2>&1 | grep -v -i cookie | tail -40
           status=${PIPESTATUS[0]}
           rm -f "$COOKIES"
           ls -la private-data/clips
           exit $status
+      # Shot planning: timestamped contact sheets hosted on Framer and caption text in the log (cleared videos only).
+      - run: npm ci
+        if: success()
+      - name: Preview
+        if: success()
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+        run: node scripts/clip-preview.mjs private-data/clips
       - uses: actions/upload-artifact@v4
         if: always()
         with:
