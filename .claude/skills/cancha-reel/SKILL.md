@@ -44,3 +44,4 @@ Download the sheets and look at them. Download the job log through the URL that 
 ## Lessons log
 - Nov 2, Messi cut: the first render centre-cropped stat graphics and mismatched lines and visuals. That's why `fit` and the beat-to-shot rule exist.
 - Nov 2: the owner wants longer Reels when the source is rich, and calmer music than house for analysis.
+- Nov 2: the first seconds of a creator's video often include the presenter on camera. Check the exact window on the contact sheet before using any shot near 0 s.
