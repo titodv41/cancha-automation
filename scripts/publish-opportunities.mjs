@@ -10,8 +10,10 @@ export async function publishOpportunities(f,{cmsUpdates=false,reviewedPages=[]}
  if(hasChanges||derived?.result.applied||cmsUpdates){
   if(dataFile){await verifyReleaseContract(f);const current=await syncDiscoveryCatalog(f);if(current.content!==derived.content||(await f.getCodeFiles()).find(x=>x.id===dataFile.id)?.content!==derived.content)throw Error('Public discovery data changed during publication');}
   const receipt=await f.publish();if(receipt.errors?.length||['failed','blocked'].includes(receipt.status))throw Error('Framer publication rejected');
-  let info;for(let i=0;i<20;i++){info=await f.getPublishInfo();if(info.production?.deploymentTime> (before.production?.deploymentTime||0))break;await new Promise(resolve=>setTimeout(resolve,2000));}
-  if(!info?.production?.url||new URL(info.production.url).hostname!=='pioneering-friday-005497.framer.app'||!(info.production.deploymentTime>(before.production?.deploymentTime||0)))throw Error('Production publication receipt not confirmed');
+  // Larger publishes (code plus catalog) can take over a minute to deploy (Nov 3: two prepares failed after a 40 s wait).
+  let info;for(let i=0;i<60;i++){info=await f.getPublishInfo();if(info.production?.deploymentTime> (before.production?.deploymentTime||0))break;await new Promise(resolve=>setTimeout(resolve,3000));}
+  const host=info?.production?.url?new URL(info.production.url).hostname:null,advanced=info?.production?.deploymentTime>(before.production?.deploymentTime||0);
+  if(!host||host!=='pioneering-friday-005497.framer.app'||!advanced)throw Error('Production publication receipt not confirmed: '+(!host?'no production URL':host!=='pioneering-friday-005497.framer.app'?'unexpected production host '+host:'deployment time did not advance within 3 minutes'));
   result={published:true,url:info.production.url,deploymentTime:info.production.deploymentTime,changes:preview.changes};
  }
  await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/framer-publication.json',JSON.stringify(result,null,2),{mode:0o600});console.log(JSON.stringify(result));return result;
