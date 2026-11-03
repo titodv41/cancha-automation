@@ -5,7 +5,15 @@ on:
       script:
         description: 'Reviewed website change to publish'
         type: choice
-        options: [site-seo-pass, create-hub-pages, create-guide-pages, publish-reviewed-code]
+        options: [site-seo-pass, create-hub-pages, create-guide-pages, publish-reviewed-code, apply-reviewed-opportunities]
+      batch:
+        description: 'apply-reviewed-opportunities only: config/reviewed-opportunities/<file>.json'
+        type: string
+        default: ''
+      apply:
+        description: 'apply-reviewed-opportunities only: write and publish (unchecked = dry run)'
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -25,6 +33,7 @@ jobs:
           cache: npm
       - run: npm ci
       # Publishes only the pages the script names; logs carry titles and checks, no private data.
-      - run: node scripts/${{ inputs.script }}.mjs
+      - run: node scripts/${{ inputs.script }}.mjs ${{ inputs.script == 'apply-reviewed-opportunities' && inputs.apply && '--apply' || '' }}
         env:
           FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+          BATCH: ${{ inputs.batch }}
