@@ -2,6 +2,116 @@
  "note": "Cancha Brief: one real Florida soccer story per post with a clear take. Every fact comes from the cited sources (confirm tokens are copied from them); opinion goes only on the 'Our take' slide. Facts expire 7 days after checkedOn.",
  "briefs": [
   {
+   "id": "kendall-thanksgiving-winter-soccer-camps-2026",
+   "checkedOn": "2026-11-03",
+   "expiresOn": "2026-11-22",
+   "kicker": "FIND YOUR NEXT GAME · KENDALL",
+   "title": [
+    "Holiday soccer",
+    "camps in Kendall."
+   ],
+   "highlight": "3 options, checked.",
+   "dek": "Kendall · holiday camps · ages 3–17 · Thanksgiving week and Dec 28–31.",
+   "sources": [
+    {
+     "label": "Twelfth Miami camps and clinics",
+     "url": "https://www.twelfthmiami.com/campsclinics",
+     "confirm": [
+      "Thanksgiving Camp",
+      "November 23-25",
+      "Indoor Winter Soccer Camp",
+      "December 28-31",
+      "Ages 3-13"
+     ]
+    },
+    {
+     "label": "Next Level",
+     "url": "https://nextlevelfacility.com/",
+     "confirm": [
+      "Thanksgiving Soccer & Speed Clinic",
+      "Nov 23–27",
+      "Ages 5–17"
+     ]
+    }
+   ],
+   "photo": {
+    "local": "content/website/pathway/teamwalk.jpg",
+    "clearedVideo": "ttVtRHrCWT4",
+    "credit": "Photo: Lozzz Productionz (CC BY)",
+    "alt": "Youth teams in purple and light blue kits walking onto a field together."
+   },
+   "points": [
+    {
+     "label": "THANKSGIVING WEEK",
+     "title": [
+      "Twelfth Miami",
+      "Thanksgiving Camp"
+     ],
+     "body": [
+      "Indoor, shooting and finishing focus",
+      "Coed, ages 3–13 · 9 AM–3 PM"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "NOV 23–25",
+      "caption": "Mon–Wed · indoor in Kendall"
+     }
+    },
+    {
+     "label": "FOR OLDER PLAYERS TOO",
+     "title": [
+      "Next Level Soccer",
+      "& Speed Clinic"
+     ],
+     "body": [
+      "Small groups by age: 5–9, 10–12, 13–17",
+      "Technical work plus speed training"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "NOV 23–27",
+      "caption": "Ages 5–17 · sessions by age"
+     }
+    },
+    {
+     "label": "WINTER BREAK",
+     "title": [
+      "Twelfth Miami",
+      "Indoor Winter Camp"
+     ],
+     "body": [
+      "Footwork, passing, dribbling, finishing",
+      "Coed, ages 3–13 · 9 AM–3 PM"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "DEC 28–31",
+      "caption": "Mon–Thu · indoor in Kendall"
+     }
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "Lock the week",
+      "in early"
+     ],
+     "body": [
+      "Prices aren't all listed. Confirm before you book",
+      "All three are at 13450 SW 129th St",
+      "Which week works for your family? Tell us below"
+     ],
+     "visual": {
+      "type": "photo",
+      "local": "content/website/pathway/huddle.jpg",
+      "clearedVideo": "ttVtRHrCWT4",
+      "credit": "Photo: Lozzz Productionz (CC BY)",
+      "alt": "A youth team kneeling together in a huddle on a field."
+     }
+    }
+   ],
+   "caption": "Holiday soccer in Kendall, sorted. 🗓️⚽\n\nThree camps we checked on the organizers' own pages:\n\n🦃 Twelfth Miami Thanksgiving Camp: Nov 23–25, 9 AM–3 PM, coed ages 3–13 (indoor)\n⚡ Next Level Thanksgiving Soccer & Speed Clinic: Nov 23–27, ages 5–17, sessions by age group\n🎄 Twelfth Miami Indoor Winter Camp: Dec 28–31, 9 AM–3 PM, coed ages 3–13\n\nAll at 13450 SW 129th St, Kendall. Not every price is listed, so confirm cost and spots with the organizer before you book.\n\nFull details and links: Tryouts & events on our site (link in bio).\nWhich week works for your family? Drop it below 👇\n\nSources: twelfthmiami.com and nextlevelfacility.com, checked Nov 3, 2026.\n📸 Photo: Lozzz Productionz (CC BY). Cancha is independent and not affiliated with these organizers.\n\n#Kendall #MiamiSoccer #YouthSoccer #SoccerCamp #FloridaSoccer"
+  },
+  {
    "id": "miami-fc-conference-semifinal-louisville-2026",
    "checkedOn": "2026-11-02",
    "expiresOn": "2026-11-07",

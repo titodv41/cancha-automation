@@ -86,6 +86,7 @@
   "preferCraftedBriefs": true,
   "preferCraftedBriefsNote": "Owner, Nov 2: keep the volume but no automated filler. When an approved, researched brief is eligible, the plan picks it over automatic directory, news or comparison posts. The day's Reel slot and every other check are unchanged.",
   "approvedBriefCarouselIds": [
+    "kendall-thanksgiving-winter-soccer-camps-2026",
     "miami-fc-conference-semifinal-louisville-2026",
     "where-fans-show-up-2025-26",
     "ftl-utd-broward-college-fields",
@@ -97,7 +98,7 @@
   ],
   "briefCarouselsNote": "Oct 30: owner asked for posts like news-with-a-take and money/opportunity alerts ('cool posts that offer information, value, drive people'). Claude approves each brief after checking every fact against its cited source the same day.",
   "priorityDraftIds": [
-    "brief-miami-fc-conference-semifinal-louisville-2026",
+    "brief-kendall-thanksgiving-winter-soccer-camps-2026",
     "brief-tampa-bay-sun-gear-goals-drive-2026"
   ],
   "priorityDraftIdsNote": "Time-bound drafts the standing plan should pick first when eligible (all normal checks still apply). Remove entries once published or expired."
