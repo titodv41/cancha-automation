@@ -17,3 +17,8 @@ test('unknown cost never reads as free; checked dates are short and safe',()=>{
  assert.equal(m.costLabel(''),'Cost not confirmed');assert.equal(m.costLabel(undefined),'Cost not confirmed');assert.equal(m.costLabel('$199'),'$199');
  assert.equal(m.checkedLabel('2026-11-03'),'Checked Nov 3');assert.equal(m.checkedLabel('bad'),'');
 });
+test('CanchaUI.tsx carries an identical copy of the label rules',async()=>{
+ const rules=s=>{s=s.replace(/export function /g,'function ');const a=s.indexOf('// Honest listing labels'),b=s.indexOf('\n',s.indexOf('function checkedLabel('));assert.ok(a>=0&&b>a);return s.slice(a,b);};
+ const dm=await readFile(new URL('../framer/DiscoveryModel.tsx',import.meta.url),'utf8'),ui=await readFile(new URL('../framer/CanchaUI.tsx',import.meta.url),'utf8');
+ assert.equal(rules(ui),rules(dm));assert.doesNotMatch(ui,/from'\.\/DiscoveryModel/);
+});
