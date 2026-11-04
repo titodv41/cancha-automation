@@ -24,6 +24,14 @@ Preserve Cancha's italic Barlow Condensed display/wordmark, upright Barlow Conde
 
 Each carousel swipe should add a useful fact and different appropriate media; changing crops of the same photograph is not variety. Mix recognizable local clubs, useful discovery, community stories, source-checked news and actual product demonstrations. Videos cover one specific story with a short hook and connected explanation. Narration adds context beyond the on-screen headlines; factual endings replace forced generic questions. Chris is the selected ElevenLabs voice; do not fall back to rejected local voices. Use the existing storycraft/motion guidance where useful, then inspect real renders and phone playback.
 
+## Less text rule — November 4, 2026 (owner)
+
+Text is the thing the owner dislikes most across Instagram, the website and the app: crowded, small, and it adds nothing. Applies everywhere:
+- Say it in the fewest words. One idea per slide, card or section. If a line doesn't change what someone does, cut it.
+- No small print in the design. Nothing below 14px in the app or on the site, and nothing a phone viewer has to zoom to read on a slide. Required receipts (source, checked date, "example") go one tap deeper or into the caption, not on the visual.
+- Visuals carry the message: real photos, club crests, big numbers. Show many club badges; they build trust and make people feel part of a club.
+- Copy the layout discipline of good sports apps (FotMob, OneFootball, Strava) rather than inventing dense layouts.
+
 ## Existing automation and limits
 
 The standing plan authorizes 12:30 PM and 6 PM New York feed slots, up to two/day and 14/week, at least four actual hours apart. A published daily carousel precedes a Reel or platform post. Routine eligible scheduling does not need owner sign-off. Preserve Published and uncertain receipts; do not retry an uncertain dispatch. Stories and TikTok are not connected.
