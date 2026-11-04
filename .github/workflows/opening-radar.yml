@@ -1,0 +1,28 @@
+name: Cancha opening radar
+on:
+  workflow_dispatch:
+  schedule:
+    # 07:41 New York (EST); runs before the daily routine reviews candidates.
+    - cron: '41 12 * * *'
+permissions:
+  contents: read
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/opening-radar.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opening-radar
+          path: private-data/opening-radar/
+          retention-days: 14
+          if-no-files-found: error
+    # Report only: public club pages, robots.txt respected, no credentials, nothing published.
+    # Candidates go through apply-reviewed-opportunities.mjs (source + date checks) before any listing goes live.
