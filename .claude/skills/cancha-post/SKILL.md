@@ -15,3 +15,5 @@ Read first: `.agents/product-marketing.md` (operating brief: geography, audience
 6. **Render and look.** Run `ONLY=<id> node scripts/render-brief-carousels.mjs` and inspect every slide at phone size. Overflow fails the render.
 7. **Ship.** Add the id to `approvedBriefCarouselIds` (and to `priorityDraftIds` plus `expiresOn` if it's time-bound). Run `npm test` and confirm `# fail 0`, then open a PR and merge. Once main has the merge, dispatch `brief-carousels.yml` with `only=<id>` and confirm `prepared` in the queue job log.
 8. **Afterwards.** In later sessions, compare its results (shares, saves, follows), and write conclusions only (never raw numbers) into `what-works.md`.
+
+Note: the publish-time source check strips tags but does not decode HTML entities. Never use a confirm token containing &, quotes or apostrophes; split it ("Thanksgiving Soccer", "Speed Clinic"). Test tokens with `text.replace(/<[^>]*>/g,' ').replace(/&nbsp;|\s+/g,' ')` before shipping.
