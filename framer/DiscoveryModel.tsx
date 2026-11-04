@@ -90,3 +90,17 @@ export const BROWSE_CATEGORIES=[
 ]
 export function matchesPlay(item:any,play:string){return play==='Recreational'?(item.levels||[]).includes('Recreational'):play==='Community'?item.kind==='Pickup group':play==='Academy'?(item.levels||[]).includes('Academy'):false}
 export function categorySelected(f:any,category:any){return ['play','league','activity'].every(k=>(f[k]||'')===(category.patch[k]||''))}
+// Honest listing labels (owner plan, Nov 3): a club profile is not an opening, a field is not an organized game,
+// and a listing never reads as free or confirmed unless the source says so.
+export function listingStatus(item:any,today:string=new Date().toISOString().slice(0,10)){
+ if(!item||item.entity==='career')return null;
+ if(item.entity==='profile')return item.kind==='Place'?{kind:'place',label:'Fields · check access'}:{kind:'profile',label:'Club profile'};
+ const end=item.end||item.start;if(end&&end<today)return{kind:'ended',label:'Ended'};
+ const short=(d:string)=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');return m?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(m[2])-1]+' '+Number(m[3]):''};
+ if(/roster opening/i.test(item.kind||''))return{kind:'opening',label:'Team opening · confirm'};
+ if(item.start&&item.start>=today)return{kind:'upcoming',label:'Upcoming · '+short(item.start)};
+ if(item.start)return{kind:'upcoming',label:'On now · until '+short(end)};
+ return{kind:'ongoing',label:'Ongoing · confirm dates'};
+}
+export function costLabel(cost:any){const c=String(cost??'').trim();return c||'Cost not confirmed'}
+export function checkedLabel(checkedOn:any){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(checkedOn||''));return m?'Checked '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(m[2])-1]+' '+Number(m[3]):''}
