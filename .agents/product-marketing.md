@@ -30,6 +30,7 @@ Each carousel swipe should add a useful fact and different appropriate media; ch
 - MVP first user: **someone new in town** who wants a team and a soccer community (the founder's own story: soccer connected him to people in every new city and country). Core: clubs and teams near me, ask to join, people you'll play with.
 - Look and feel for the app and the website: **Strava** (social, streaks, people), **FotMob/OneFootball** (clean sports data, many club crests, follow your teams) and **Nike Run Club** (bold editorial type and photos, premium).
 - Website while the app is built: **app landing page + waitlist** (players and organizers), crests up front; the current directory moves to a secondary page.
+- MVP flow (owner, Nov 4): first open is a **3-tap quiz** (area, level, what you want: play, join a team, meet people) leading to a personal home. Joining a team is **request, captain accepts, then in-app chat** (no phone numbers shared). Waitlist asks **email + area + role** (player or organizer). Launch area: **Miami-Dade + Broward**.
 
 ## Less text rule — November 4, 2026 (owner)
 
