@@ -24,6 +24,13 @@ Preserve Cancha's italic Barlow Condensed display/wordmark, upright Barlow Conde
 
 Each carousel swipe should add a useful fact and different appropriate media; changing crops of the same photograph is not variety. Mix recognizable local clubs, useful discovery, community stories, source-checked news and actual product demonstrations. Videos cover one specific story with a short hook and connected explanation. Narration adds context beyond the on-screen headlines; factual endings replace forced generic questions. Chris is the selected ElevenLabs voice; do not fall back to rejected local voices. Use the existing storycraft/motion guidance where useful, then inspect real renders and phone playback.
 
+## Owner decisions — November 4, 2026 (evening)
+
+- This week's focus: an MVP app designed and in the works so we can start marketing it, and a new website design. Instagram keeps running: valuable, traffic-driving posts only.
+- MVP first user: **someone new in town** who wants a team and a soccer community (the founder's own story: soccer connected him to people in every new city and country). Core: clubs and teams near me, ask to join, people you'll play with.
+- Look and feel for the app and the website: **Strava** (social, streaks, people), **FotMob/OneFootball** (clean sports data, many club crests, follow your teams) and **Nike Run Club** (bold editorial type and photos, premium).
+- Website while the app is built: **app landing page + waitlist** (players and organizers), crests up front; the current directory moves to a secondary page.
+
 ## Less text rule — November 4, 2026 (owner)
 
 Text is the thing the owner dislikes most across Instagram, the website and the app: crowded, small, and it adds nothing. Applies everywhere:
@@ -34,7 +41,7 @@ Text is the thing the owner dislikes most across Instagram, the website and the 
 
 ## Existing automation and limits
 
-The standing plan authorizes 12:30 PM and 6 PM New York feed slots, up to two/day and 14/week, at least four actual hours apart. A published daily carousel precedes a Reel or platform post. Routine eligible scheduling does not need owner sign-off. Preserve Published and uncertain receipts; do not retry an uncertain dispatch. Stories and TikTok are not connected.
+The standing plan authorizes 12:30 PM and 6 PM New York feed slots, up to two/day and 14/week, at least four actual hours apart. The carousel-before-Reel rule was removed on Nov 4 (owner): each slot takes the most valuable approved post. Routine eligible scheduling does not need owner sign-off. Preserve Published and uncertain receipts; do not retry an uncertain dispatch. Stories and TikTok are not connected.
 
 The replenisher prepares source-checked directory guides with official identities/badges and actual Cancha captures, aiming for a six-post buffer and at most two new guides/run. News scripts and Chris narration are automated within source, cache and durable reservation checks. The Free-only monthly project cap remains 1,500 characters; paid usage, paid fallback and uncertain generation retries remain disabled. Keep matching accepted audio reusable without a new charge. A configured voice or model key is not a guarantee of available quota.
 

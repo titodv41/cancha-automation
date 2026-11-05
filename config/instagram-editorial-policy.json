@@ -41,7 +41,8 @@
   ],
   "requireSubjectPhotos": true,
   "allowMotionStories": false,
-  "minimumDailyCarousels": 1,
+  "minimumDailyCarousels": 0,
+  "minimumDailyCarouselsNote": "Owner, Nov 4: removed the carousel-before-Reel rule after it left Nov 4 with no posts. Post the most valuable approved content in each slot; every other check (approval, sources, 4 hours apart, 2/day, 14/week) is unchanged.",
   "videoCreativeReviewRequired": true,
   "requireDistinctCarouselPhotos": true,
   "productDemoDraftIds": [

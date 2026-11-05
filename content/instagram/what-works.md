@@ -26,7 +26,7 @@ Don't repeat the visual's number in the slide headline; use the headline for the
 Principles we act on. They are platform guidance and common practice, not yet proven for Cancha:
 - **Shares beat likes.** Instagram's head has said sends (shares in DMs) per reach is one of the strongest signals for reaching non-followers. Build posts people send to a team chat: calculators, dates and deadlines, "your club is on this list".
 - **Collabs borrow an audience.** One collab invite to the featured club per post. The owner can personally message a club after we feature it, asking it to accept or reshare (a human message, never automated).
-- **Reels find new people; carousels earn saves.** Keep the daily carousel and the Reel/platform slot.
+- **Reels find new people; carousels earn saves.** Mix both, but no fixed order: the carousel-before-Reel rule was removed on Nov 4 after it blocked a whole day.
 - **The first hour matters.** Real friends and followers sharing to their stories and replying in comments right after posting helps. Never buy or fake engagement.
 - **One idea per post, one call to action.** "Comment who you've got", "Send this to your team chat", or "Link in bio", not all three.
 - **Visual first.** A photo or graphic on every slide, a big number or face in the first second, few words, and the logo always.
