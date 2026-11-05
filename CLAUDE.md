@@ -22,6 +22,8 @@ This rule supersedes the earlier split ownership, cross-assistant review require
 
 ## Product and creative constraints
 
+**Feedback rule (owner, Nov 5):** feedback is not permission to redesign. Preserve what works, name the exact issue, make targeted fixes on a copy (never overwrite the approved version). Before any substantial change of creative direction, show the proposal and what would be lost, and wait for the owner. One campaign idea per video: "Falta uno" is about finding a game when you are one player short; Find Your Team gets its own campaign. Promo "Falta uno" main line: v2 (`PromoFaltaUno`) → v2.1 (`PromoFaltaUnoV21`); v3 (footage) is parked.
+
 Cancha helps people discover clubs, places to play, coaches, current opportunities, learning and careers, starting with Florida soccer. Preserve the existing project, useful discovery tools and private native email forms. Do not rebuild or rebrand without a concrete reason.
 
 Always put the real Cancha logo file on every post and website page (`content/instagram/local-stories/assets/cancha.png`, trimmed copy `cancha-trim.png`; owner, Oct 30), never a typed wordmark. Lead with real photos and visuals, not walls of text. Use Cancha's italic Barlow Condensed display/wordmark, upright Barlow Condensed 700 supporting type, forest `#103f32`, cream `#f5f3e9`, lime `#d7ef86` and orange `#f55b32`. Prefer real subject media, concise human copy, readable type and clear visual hierarchy. Each carousel slide should add a useful fact and a different appropriate image. Narration should explain one story rather than read slide text. Chris is the selected voice; rejected legacy voices remain held. A passing render is not proof of aesthetic quality or audience demand.
