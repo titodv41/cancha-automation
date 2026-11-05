@@ -12,7 +12,7 @@ const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as cons
 const kick = Easing.bezier(0.2, 1.4, 0.4, 1); // fast out, slight overshoot
 export const T = {hook: 0, squad: S(2), status: S(5), chat: S(7), off: S(10.5), grid: S(12.5), phone: S(13.5), tap: S(16.2), fill: S(17), win: S(18.2), end: S(20.2), total: S(23)};
 
-function Grain() {
+export function Grain() {
   const f = useCurrentFrame();
   return <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, opacity: 0.16, mixBlendMode: 'overlay', pointerEvents: 'none'}}>
     <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={f % 7}/><feColorMatrix type="saturate" values="0"/></filter>
@@ -20,7 +20,7 @@ function Grain() {
   </svg>;
 }
 
-function MovingGrid({f, opacity = 0.18, speed = 1.2}: {f: number; opacity?: number; speed?: number}) {
+export function MovingGrid({f, opacity = 0.18, speed = 1.2}: {f: number; opacity?: number; speed?: number}) {
   const o = (f * speed) % 90;
   return <div style={{position: 'absolute', inset: -90, opacity, transform: `translate(${-o}px, ${-o}px)`,
     backgroundImage: `linear-gradient(${C.lime}55 2px, transparent 2px), linear-gradient(90deg, ${C.lime}55 2px, transparent 2px)`, backgroundSize: '90px 90px'}}/>;

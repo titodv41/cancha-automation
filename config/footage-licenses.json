@@ -1,0 +1,13 @@
+{
+ "note": "Third-party footage used in Cancha videos. Only clips listed here may be rendered into public posts. Stock footage is not Miami: never caption it as a local place, club or person.",
+ "licenses": {
+  "mixkit-free": {"name": "Mixkit Stock Video Free License", "url": "https://mixkit.co/license/#videoFree", "terms": "Free for commercial and personal use, no attribution required; do not redistribute the clips standalone or imply endorsement by people shown."}
+ },
+ "clips": [
+  {"name": "penalty", "provider": "mixkit", "id": 43494, "license": "mixkit-free", "page": "https://mixkit.co/free-stock-video/close-shot-of-a-soccer-player-shooting-a-penalty-43494/", "source": "https://assets.mixkit.co/videos/43494/43494-2160.mp4", "shows": "Floodlit night shot of a player stepping up to a ball on artificial turf", "cut": {"start": 0, "duration": 3.2, "x": 0.42}},
+  {"name": "net", "provider": "mixkit", "id": 43495, "license": "mixkit-free", "source": "https://assets.mixkit.co/videos/43495/43495-2160.mp4", "shows": "Night pitch seen through the goal net", "cut": {"start": 0.8, "duration": 2.2, "x": 0.5}},
+  {"name": "hands", "provider": "mixkit", "id": 43479, "license": "mixkit-free", "source": "https://assets.mixkit.co/videos/43479/43479-2160.mp4", "shows": "Players stacking hands in a team huddle", "cut": {"start": 0, "duration": 2.2, "x": 0.5}},
+  {"name": "juggle", "provider": "mixkit", "id": 43490, "license": "mixkit-free", "source": "https://assets.mixkit.co/videos/43490/43490-2160.mp4", "shows": "Player in a bib juggling a ball at night", "cut": {"start": 1.5, "duration": 4, "x": 0.5}},
+  {"name": "huddle", "provider": "mixkit", "id": 43477, "license": "mixkit-free", "source": "https://assets.mixkit.co/videos/43477/43477-2160.mp4", "shows": "Team in bibs gathering hands in at golden hour", "cut": {"start": 0, "duration": 2.6, "x": 0.38}}
+ ]
+}
