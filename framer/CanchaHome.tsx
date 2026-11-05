@@ -119,7 +119,7 @@ export function HowItWorks(){
   <li className="ch10-step"><span className="ch10-n" aria-hidden="true">3</span><span className="ch10-ic"><Icon name="club" size={26}/></span><h3>Contact the club</h3><p>Use the club’s own site to confirm spaces, prices and how to join.</p><a className="ch10-go" href="/florida-soccer-pathway">Know the dates first →</a></li>
  </ol></div></section>
 }
-// <waitlist> App waitlist (owner, Nov 4: email, area, role). Rows go to the app's Supabase table, which accepts inserts only
+// <waitlist> App waitlist (owner, Nov 4: email, area, role). English first; Spanish only when the visitor taps the switch (owner, Nov 5). Rows go to the app's Supabase table, which accepts inserts only
 // (no one can read it back through the API). The publishable key is public by design; RLS is the guard. Nothing is logged.
 const WAITLIST={url:'https://ipyaljmbumgvnpkjnbag.supabase.co/rest/v1/waitlist',key:'sb_publishable_XGeHJnRGPPVyrLQYwTAeKg_hwxBC5ps'}
 const WL_AREAS=['Miami','Doral','Kendall','Hialeah','Miami Beach','Fort Lauderdale','Hollywood','Pembroke Pines','Weston','Coral Springs']
@@ -136,7 +136,7 @@ const waitlistCss=`.ch11-app{background:#103f32;color:#f5f3e9;padding:56px 0;bor
 @media(max-width:800px){.ch11-app{padding:40px 0}.ch11-grid{grid-template-columns:1fr;gap:24px}.ch11-row{grid-template-columns:1fr}.ch11-form{padding:16px}}`
 function AppWaitlist(){
  const[lang,setLang]=React.useState('en'),[source,setSource]=React.useState('site'),[form,setForm]=React.useState<any>({email:'',area:'Miami',role:'player',consent:false,hp:''}),[state,setState]=React.useState('idle')
- React.useEffect(()=>{try{const q=new URLSearchParams(window.location.search);const l=q.get('lang');setLang(l==='es'||(!l&&navigator.language?.toLowerCase().startsWith('es'))?'es':'en');setSource((q.get('src')||q.get('utm_source')||'site').toLowerCase().slice(0,40))}catch{}},[])
+ React.useEffect(()=>{try{const q=new URLSearchParams(window.location.search);setSource((q.get('src')||q.get('utm_source')||'site').toLowerCase().slice(0,40))}catch{}},[])
  const t=WL_TEXT[lang]
  const submit=async(e:any)=>{e.preventDefault();if(state==='sending')return
   if(form.hp){setState('done');return}
