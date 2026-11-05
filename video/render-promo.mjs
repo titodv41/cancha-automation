@@ -10,8 +10,8 @@ const temp=await mkdtemp(join(tmpdir(),'cancha-promo-'));
 try{
  const serveUrl=await bundle({entryPoint:join(root,'video/src/index.tsx'),publicDir:join(root,'video/public'),outDir:join(temp,'bundle'),enableCaching:false});
  const common={serveUrl,browserExecutable:process.env.CANCHA_BROWSER_EXECUTABLE||chromium.executablePath(),inputProps:{brand,logo:'generated/promo/cancha.png',text:spec.text}};
- const composition=await selectComposition({...common,id:'PromoEmptySpot'});
- if(process.argv.includes('--stills')){for(const s of [1.5,4.6,9.5,13.4,17.2,20.6]){await renderStill({...common,composition,frame:Math.round(s*30),imageFormat:'jpeg',output:join(out,`${spec.id}-${s}.jpg`)});}}
+ const composition=await selectComposition({...common,id:spec.composition||'PromoEmptySpot'});
+ if(process.argv.includes('--stills')){for(const s of spec.stills||[1.5,4.6,9.5,13.4,17.2,20.6]){await renderStill({...common,composition,frame:Math.round(s*30),imageFormat:'jpeg',output:join(out,`${spec.id}-${s}.jpg`)});}}
  else await renderMedia({...common,composition,outputLocation:join(out,spec.id+'-silent.mp4'),codec:'h264',crf:23,pixelFormat:'yuv420p',concurrency:2,muted:true});
  console.log(JSON.stringify({out}));
 }finally{await rm(temp,{recursive:true,force:true})}
