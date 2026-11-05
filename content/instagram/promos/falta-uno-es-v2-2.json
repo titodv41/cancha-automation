@@ -1,0 +1,211 @@
+{
+ "id": "promo-falta-uno-es-v2-2",
+ "approvedOn": "2026-11-05",
+ "approval": "Owner approved the Promo 1 script and Chris narration on Nov 5. v2.2 = v2.1 with motion and sound polish (owner, Nov 5: 'figure the video out'); draft for owner review.",
+ "lang": "es",
+ "narration": "Domingo. Ocho de la noche. Trece. Falta uno. Otra vez. El grupo explota de mensajes, y nadie contesta. Se suspende. En Miami siempre hay alguien con ganas de jugar. Cancha te lo encuentra. Partido completo.",
+ "music": "mixkit-51",
+ "text": {
+  "kicker": "Todos los\ndomingos",
+  "day": "Domingo 8:00 PM",
+  "count": "13 / 14",
+  "missing": "Falta uno",
+  "chat": [
+   "¿Quién juega hoy?",
+   "Falta uno",
+   "¿Alguien?"
+  ],
+  "chatTime": "7:45 PM",
+  "off": "Partido suspendido",
+  "city": "En Miami siempre hay alguien con ganas de jugar.",
+  "tag1": "Encontrá tu partido.",
+  "cta": "Sumate a la lista · link en bio"
+ },
+ "composition": "PromoFaltaUnoV22",
+ "stills": [
+  0.1,
+  0.3,
+  1.0,
+  1.9,
+  2.2,
+  2.6,
+  3.3,
+  4.1,
+  5.6,
+  5.9,
+  7.5,
+  8.65,
+  9.05,
+  9.4,
+  10.3,
+  11.1,
+  11.4,
+  12.9,
+  13.6,
+  14.6,
+  15.2,
+  16.6,
+  17.6
+ ],
+ "publishBlockedUntil": "Owner approves v2.1 visuals and the website waitlist is live.",
+ "sound": {
+  "music": {
+   "id": "mixkit-51",
+   "tempo": 120,
+   "start": 16.13,
+   "gain": 0.9,
+   "muffled": [
+    5.5,
+    8.5
+   ],
+   "silent": [
+    8.5,
+    10.0
+   ],
+   "fadeOut": 0.8
+  },
+  "cues": [
+   [
+    "slam",
+    0
+   ],
+   [
+    "slam",
+    0.267
+   ],
+   [
+    "slam",
+    0.767
+   ],
+   [
+    "airwoosh",
+    1.85
+   ],
+   [
+    "pop",
+    2.133,
+    0.35
+   ],
+   [
+    "pop",
+    2.267,
+    0.35
+   ],
+   [
+    "pop",
+    2.4,
+    0.35
+   ],
+   [
+    "pop",
+    2.533,
+    0.35
+   ],
+   [
+    "pop",
+    2.667,
+    0.35
+   ],
+   [
+    "pop",
+    2.8,
+    0.35
+   ],
+   [
+    "pop",
+    2.933,
+    0.35
+   ],
+   [
+    "alarm",
+    3.0
+   ],
+   [
+    "whoosh",
+    3.88,
+    0.6
+   ],
+   [
+    "whoosh",
+    5.35
+   ],
+   [
+    "ping",
+    5.5,
+    0.8
+   ],
+   [
+    "ping",
+    5.767,
+    0.8
+   ],
+   [
+    "ping",
+    6.0,
+    0.8
+   ],
+   [
+    "ping",
+    6.233,
+    0.8
+   ],
+   [
+    "ping",
+    6.5,
+    0.8
+   ],
+   [
+    "lights",
+    8.633
+   ],
+   [
+    "lights",
+    8.833
+   ],
+   [
+    "stamp",
+    9.0
+   ],
+   [
+    "longwhoosh",
+    9.4,
+    0.8,
+    "reverse"
+   ],
+   [
+    "whoosh",
+    10.88
+   ],
+   [
+    "tap",
+    13.0
+   ],
+   [
+    "success",
+    13.067
+   ],
+   [
+    "roll",
+    13.5
+   ],
+   [
+    "impact",
+    14.4,
+    0.7
+   ],
+   [
+    "crowd",
+    14.5,
+    0.6
+   ],
+   [
+    "whoosh",
+    16.38
+   ],
+   [
+    "cta",
+    17.233
+   ]
+  ]
+ }
+}
