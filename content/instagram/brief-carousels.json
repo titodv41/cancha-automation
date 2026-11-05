@@ -612,7 +612,7 @@
   },
   {
    "id": "ftl-utd-broward-college-fields",
-   "checkedOn": "2026-10-30",
+   "checkedOn": "2026-11-05",
    "kicker": "CANCHA BRIEF · BROWARD",
    "title": [
     "A pro club wants",
@@ -624,14 +624,17 @@
     {
      "label": "THE PLAN",
      "title": [
-      "About $350,000",
-      "in field upgrades"
+      "Baseball fields",
+      "turn soccer"
      ],
      "body": [
-      "At Broward College's Central Campus",
-      "Baseball fields become multipurpose soccer fields",
-      "New grass, irrigation and restored field lights"
-     ]
+      "Baseball fields at Broward College Central Campus become soccer fields"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "$350K",
+      "caption": "Proposed field upgrades"
+     }
     },
     {
      "label": "WHO PLAYS THERE",
@@ -640,10 +643,13 @@
       "Then the club."
      ],
      "body": [
-      "Broward College students and intramurals get first priority",
-      "FTL UTD gets space for youth development, clinics and training",
-      "Plus community events and gym access for youth programs"
-     ]
+      "Students first, then FTL UTD youth programs and clinics"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "Central",
+      "caption": "Broward College campus"
+     }
     },
     {
      "label": "OUR TAKE",
@@ -652,10 +658,13 @@
       "more soccer"
      ],
      "body": [
-      "Every soccer-ready field with lights means more room for youth programs and pickup",
-      "It's still a proposal: no construction dates yet",
-      "Both sides will also explore North and South campus projects"
-     ]
+      "Still a proposal: no construction dates yet"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "TBD",
+      "caption": "Construction dates"
+     }
     }
    ],
    "sources": [
@@ -678,7 +687,7 @@
   },
   {
    "id": "age-groups-school-year-2026-27",
-   "checkedOn": "2026-10-30",
+   "checkedOn": "2026-11-05",
    "kicker": "CANCHA BRIEF · FOR PARENTS",
    "title": [
     "Your kid's age",
@@ -693,10 +702,13 @@
       "Jan 1 → Aug 1"
      ],
      "body": [
-      "Age groups now run August 1 to July 31, not January to December",
-      "Announced by US Youth Soccer, US Club Soccer and AYSO",
-      "Starts with the 2026-27 season"
-     ]
+      "August 1 to July 31, starting with the 2026-27 season"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "2026-27",
+      "caption": "First season under the new rule"
+     }
     },
     {
      "label": "EXAMPLE",
@@ -705,10 +717,13 @@
       "Aug 2014–Jul 2015"
      ],
      "body": [
-      "Born August–December? Your player moves to a younger age group than under the old rule",
-      "Born January–July? Same age group as before",
-      "Teammates may change as rosters are rebuilt"
-     ]
+      "Born August–December? Your player moves to a younger group"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "Aug–Dec",
+      "caption": "Birthdays that move to a younger group"
+     }
     },
     {
      "label": "OUR TAKE",
@@ -717,10 +732,13 @@
       "tryouts"
      ],
      "body": [
-      "Leagues could choose their system, so confirm your league's chart",
-      "Ask clubs which age group your player tries out for",
-      "Find your player's group in seconds: link in bio"
-     ]
+      "Confirm your league's chart before tryouts"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "Ask",
+      "caption": "Which age group your player tries out for"
+     }
     }
    ],
    "sources": [
@@ -752,7 +770,7 @@
   },
   {
    "id": "chobani-feed-the-dream-florida-2026",
-   "checkedOn": "2026-10-30",
+   "checkedOn": "2026-11-05",
    "kicker": "CANCHA BRIEF · MONEY FOR CLUBS",
    "title": [
     "18 Florida entries",
@@ -764,7 +782,8 @@
     {
      "label": "SOUTH FLORIDA",
      "title": [
-      "6 clubs"
+      "Miami to",
+      "Parkland"
      ],
      "body": [
       "Albion SC Miami · Cutler Bay",
@@ -773,24 +792,52 @@
       "Miami SCORES",
       "Parkland Travel Soccer Club",
       "WASA SC · Miami"
-     ]
+     ],
+     "visual": {
+      "type": "bars",
+      "bars": [
+       {
+        "label": "South FL",
+        "value": 6,
+        "display": "6"
+       },
+       {
+        "label": "Central FL",
+        "value": 4,
+        "display": "4"
+       },
+       {
+        "label": "Tampa Bay · SW · Panhandle",
+        "value": 8,
+        "display": "8"
+       }
+      ],
+      "caption": "Florida entries by region"
+     }
     },
     {
      "label": "CENTRAL FLORIDA",
      "title": [
-      "4 clubs"
+      "Orlando to",
+      "Winter Springs"
      ],
      "body": [
       "BlackLions SC · Orlando",
       "Florida Kraze Krush · Winter Springs",
       "Orlando Soccer School Lake Nona",
       "PSG Academy Orlando"
-     ]
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "18",
+      "caption": "Florida entries on the list"
+     }
     },
     {
      "label": "TAMPA BAY · SW · PANHANDLE",
      "title": [
-      "8 entries"
+      "Riverview to",
+      "Cape Coral"
      ],
      "body": [
       "Tampa Dynamo FC · Riverview",
@@ -799,7 +846,12 @@
       "Lakewood Ranch FC · Sarasota",
       "North Port Youth Soccer",
       "Cape Coral SA (2 programs) · Gulfsouth SC"
-     ]
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "$10K",
+      "caption": "Each Feed the Dream grant"
+     }
     },
     {
      "label": "OUR TAKE",
@@ -808,10 +860,13 @@
       "clubs that apply"
      ],
      "body": [
-      "Sponsor programs like this reward clubs that enter",
-      "Club leaders: follow us for the next grant alert",
-      "Congrats to every Florida club on the list"
-     ]
+      "Follow us for the next grant alert"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "Apply",
+      "caption": "How clubs get on the next list"
+     }
     }
    ],
    "sources": [
