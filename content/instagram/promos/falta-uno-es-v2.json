@@ -1,0 +1,40 @@
+{
+ "id": "promo-falta-uno-es-v2",
+ "approvedOn": "2026-11-05",
+ "approval": "Owner approved the Promo 1 script and Chris narration on Nov 5; v2 visuals follow the owner's reference brief (Nov 5). Original animation; no third-party assets.",
+ "lang": "es",
+ "narration": "Domingo. Ocho de la noche. Trece. Falta uno. Otra vez. El grupo explota de mensajes, y nadie contesta. Se suspende. En Miami siempre hay alguien con ganas de jugar. Cancha te lo encuentra. Partido completo.",
+ "music": "loopster",
+ "text": {
+  "kicker": "Todos los\ndomingos",
+  "day": "Domingo 8:00 PM",
+  "count": "13 / 14",
+  "missing": "Falta uno",
+  "chat": [
+   "¿Quién juega hoy?",
+   "Falta uno",
+   "¿Alguien?"
+  ],
+  "chatTime": "7:45 PM",
+  "off": "Partido suspendido",
+  "city": "En Miami siempre hay alguien con ganas de jugar.",
+  "tag1": "Encontrá tu partido.",
+  "tag2": "Encontrá tu equipo.",
+  "cta": "Sumate a la lista · link en bio"
+ },
+ "composition": "PromoFaltaUno",
+ "stills": [
+  0.6,
+  1.6,
+  4.3,
+  6.2,
+  9.3,
+  11.6,
+  13.0,
+  15.0,
+  16.5,
+  17.6,
+  19.2,
+  22.0
+ ]
+}
