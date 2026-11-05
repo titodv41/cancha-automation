@@ -17,3 +17,9 @@ test('the waitlist sends only the allowed fields, minimal return, with consent',
   assert.match(home, /return\{email,area,role,lang:lang==='es'\?'es':'en',source:.{1,60}\?source:'site',consent:true\}/);
   assert.match(home, /<AppWaitlist\/><section className="ch3-browse">/);
 });
+
+test('the waitlist opens in English; Spanish only from the switch', () => {
+  assert.match(home, /useState\('en'\)/);
+  assert.doesNotMatch(home, /navigator\.language/);
+  assert.doesNotMatch(home, /get\('lang'\)/);
+});
