@@ -1,0 +1,50 @@
+{
+ "id": "promo-falta-uno-es-v3-footage",
+ "approvedOn": "2026-11-05",
+ "approval": "Owner approved the Promo 1 script and Chris narration on Nov 5. v3 visuals are a draft for owner review (not approved for posting). Uses licensed Mixkit footage listed in config/footage-licenses.json.",
+ "lang": "es",
+ "narration": "Domingo. Ocho de la noche. Falta uno. Otra vez. Nadie contesta. Se suspende. En Cancha encontrás tu partido. Y tu equipo. Sumate a la lista.",
+ "music": "loopster",
+ "text": {
+  "kicker": "Todos los\ndomingos",
+  "day": "Domingo 8:00 PM",
+  "count": "13 / 14",
+  "missing": "Falta uno",
+  "chat": [
+   "¿Quién juega hoy?",
+   "Falta uno",
+   "¿Alguien?"
+  ],
+  "chatTime": "7:45 PM",
+  "off": "Partido suspendido",
+  "city": "En Miami siempre hay alguien con ganas de jugar.",
+  "tag1": "Encontrá tu partido.",
+  "tag2": "Encontrá tu equipo.",
+  "cta": "Sumate a la lista · link en bio"
+ },
+ "composition": "PromoFaltaUnoV3",
+ "stills": [
+  0.3,
+  0.9,
+  1.6,
+  3.0,
+  4.9,
+  6.2,
+  7.3,
+  8.9,
+  9.4,
+  10.2,
+  11.6,
+  13.1,
+  13.4,
+  14.2,
+  15.2,
+  16.4,
+  18.4
+ ],
+ "props": {
+  "opening": "footage"
+ },
+ "footage": "config/footage-licenses.json",
+ "publishBlockedUntil": "Owner approves v3 visuals and the website waitlist is live."
+}
