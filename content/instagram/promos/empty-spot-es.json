@@ -1,0 +1,21 @@
+{
+ "id": "promo-empty-spot-es",
+ "approvedOn": "2026-11-05",
+ "approval": "Owner approved the script and Chris narration on Nov 5. Original animation; no footage or third-party media.",
+ "lang": "es",
+ "narration": "Todos los domingos, la misma historia. Trece. Falta uno. Alguien escribe en el grupo a las siete y cuarenta y cinco. Nadie contesta. Se suspende el partido. En Miami siempre hay alguien con ganas de jugar. Solo que no sabe dónde. Por eso estamos creando Cancha.",
+ "music": "loopster",
+ "text": {
+  "kicker": "Todos los\ndomingos",
+  "day": "Domingo 8:00 PM",
+  "count": "13 / 14",
+  "missing": "Falta uno",
+  "chat": ["¿Quién juega hoy?", "Falta uno", "¿Alguien?"],
+  "chatTime": "7:45 PM",
+  "off": "Partido suspendido",
+  "city": "En Miami siempre hay alguien con ganas de jugar.",
+  "tag1": "Encontrá tu partido.",
+  "tag2": "Encontrá tu equipo.",
+  "cta": "Sumate a la lista · link en bio"
+ }
+}
