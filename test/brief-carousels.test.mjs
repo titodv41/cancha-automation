@@ -55,6 +55,7 @@ test('brief slides lead with visuals: every point of a new brief has one, crests
   for(const p of b.points.filter(p=>p.visual)){const v=p.visual;
    assert.ok(['photo','stat','scoreboard','ratio','bars'].includes(v.type),b.id);assert.ok(visualAlt(v).length>8);
    if(v.type==='photo'){assert.match(v.credit,/^Photo: /);assert.ok(v.guest?JSON.parse(readFileSync(new URL('../config/interview-permissions.json',import.meta.url))).guests.some(g=>g.id===v.guest&&g.okRelayedOn):v.media?JSON.parse(readFileSync(new URL('../config/community-media.json',import.meta.url))).some(m=>m.id===v.media&&/^CC/.test(m.license)):v.local?cleared.includes(v.clearedVideo):b.sources.some(s=>host(s.url)===host(v.url)),b.id);}
+   if(v.bg){const v0=v;{const v=v0.bg;assert.match(v.credit,/^Photo: /);assert.ok(v.guest?JSON.parse(readFileSync(new URL('../config/interview-permissions.json',import.meta.url))).guests.some(g=>g.id===v.guest&&g.okRelayedOn):v.media?JSON.parse(readFileSync(new URL('../config/community-media.json',import.meta.url))).some(m=>m.id===v.media&&/^CC/.test(m.license)):v.local?cleared.includes(v.clearedVideo):b.sources.some(s=>host(s.url)===host(v.url)),b.id);}}
    if(v.type==='scoreboard'){assert.equal(v.teams.length,2);for(const t of v.teams)assert.ok(CRESTS.has(t.crest),t.crest);}
    if(v.type==='bars')assert.ok(v.bars.length>=2&&v.bars.length<=6&&v.bars.every(x=>x.value>0&&x.display));
    if(v.type==='ratio')assert.ok(v.highlight>0&&v.highlight<v.of&&v.of<=10);
@@ -68,4 +69,12 @@ test('captions and slides read like a person wrote them, not a template',()=>{
  const tells=/\b(dive in|delve|game[- ]changer|unlock|elevate|in today's|navigat(e|ing) the|landscape|tapestry|testament to|it's worth noting|whether you're|look no further|buckle up|let's break it down|here's the thing|not just .* it's)\b/i;
  for(const b of briefs){const text=[b.caption,b.dek,...b.title,...b.points.flatMap(p=>[...p.title,...p.body])].join(' ');assert.doesNotMatch(text,tells,b.id);
   assert.ok((b.caption.match(/—/g)||[]).length<=1,b.id+': too many em dashes in the caption');}
+});
+
+test('carousels end on the take, not a sources slide; sources and the check date go in the caption',async()=>{
+ const{briefSlides}=await import('../scripts/render-brief-carousels.mjs'),{briefCaption}=await import('../scripts/prepare-brief-carousels.mjs');
+ const{briefs}=JSON.parse(readFileSync(new URL('../content/instagram/brief-carousels.json',import.meta.url)));
+ for(const b of briefs){const slides=briefSlides(JSON.parse(JSON.stringify(b)));assert.equal(slides.length,b.points.length+1,b.id);assert.ok(!slides.some(x=>/^Sources:/.test(x.alt)),b.id);
+  const c=briefCaption(b);assert.match(c,/\n\nSources: .+\. Checked [A-Z][a-z]{2} \d{1,2}, \d{4}\./,b.id);assert.ok((c.match(/independent/gi)||[]).length<=1,b.id);assert.equal((c.match(/^\s*Sources?:/gim)||[]).length,1,b.id);assert.ok(c.length<=2200,b.id);
+  for(const s of b.sources)assert.ok(c.includes(new URL(s.url).hostname.replace(/^www\./,'')),b.id);}
 });

@@ -1,7 +1,7 @@
 import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';import {join,resolve} from 'node:path';import {pathToFileURL} from 'node:url';
 import {cssFor} from './render-comparison-carousels.mjs';
 // Renders the "Cancha Brief" carousels in content/instagram/brief-carousels.json to 1080x1350 JPEGs with the brand
-// fonts: a cover, one slide per point (the last one is Cancha's take) and a sources slide with the check date.
+// fonts: a cover and one slide per point (the last one is Cancha's take). Sources and the check date go in the caption.
 const C={forest:'#103f32',cream:'#f5f3e9',lime:'#d7ef86',orange:'#f55b32',ink:'#0b2e24'};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const palettes=[[C.cream,C.forest,C.orange],[C.lime,C.forest,C.forest],[C.orange,C.cream,C.ink]];
@@ -17,20 +17,25 @@ export function visualAlt(v){
  if(v.type==='ratio')return `Chart: ${v.highlight} of ${v.of} icons highlighted. ${v.caption}.`;
  return '';
 }
-export function visualHtml(v,bg,fg,head){
+// A number, chart or score can sit on a darkened photo (v.bg, same sourcing rules as a photo visual) so every slide has a picture.
+// The photo stays visible: a light top-to-bottom shade plus a text shadow keeps the number readable. bg.zoom crops past graphics.
+const ground=v=>v.bg?.file?`background:linear-gradient(180deg,${C.forest}40 0%,${C.forest}8c 55%,${C.forest}d0 100%),url(${v.bg.file}) ${v.bg.x||'50%'} ${v.bg.focus||'40%'}/${v.bg.zoom?v.bg.zoom+'% auto':'cover'} no-repeat;text-shadow:0 4px 24px #000c`:`background:${C.forest}`;
+const bgCredit=v=>v.bg?.file?`<div style="position:absolute;right:28px;bottom:16px;font-size:22px;font-weight:600;color:#fff;opacity:.85">${esc(v.bg.credit)}</div>`:'';
+export function visualHtml(v,bg,fg,head){const h=visualBody(v,bg,fg,head);return v.type!=='photo'&&v.bg?.file?h.replace(/<\/div>$/,bgCredit(v)+'</div>'):h;}
+function visualBody(v,bg,fg,head){
  const box=`margin:30px -72px 0;height:${VISUAL_H}px;position:relative;overflow:hidden`;
  if(v.type==='photo')return `<div style="${box};background:url(${v.file}) center ${v.focus||'35%'}/cover no-repeat"><div style="position:absolute;right:28px;bottom:20px;font-size:22px;font-weight:600;color:#fff;text-shadow:0 1px 6px #000a">${esc(v.credit)}</div></div>`;
- if(v.type==='stat')return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;background:${C.forest};color:${C.cream};text-align:center"><div style="font-family:Display;font-style:italic;font-size:${String(v.value).length>6?190:250}px;line-height:.9;color:${C.lime}">${esc(v.value)}</div><div style="font-size:46px;font-weight:700;margin-top:22px;text-transform:uppercase;letter-spacing:2px;padding:0 60px">${esc(v.caption)}</div></div>`;
+ if(v.type==='stat')return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;${ground(v)};color:${C.cream};text-align:center"><div style="font-family:Display;font-style:italic;font-size:${String(v.value).length>6?190:250}px;line-height:.9;color:${C.lime}">${esc(v.value)}</div><div style="font-size:46px;font-weight:700;margin-top:22px;text-transform:uppercase;letter-spacing:2px;padding:0 60px">${esc(v.caption)}</div></div>`;
  if(v.type==='scoreboard'){const team=t=>`<div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:240px"><div style="width:200px;height:200px;border-radius:50%;background:#ffffff1f;border:3px solid ${C.cream}55;display:flex;align-items:center;justify-content:center"><img src="${t.crest}.png" style="max-width:150px;max-height:150px"></div><div style="font-size:38px;font-weight:700;text-transform:uppercase;white-space:nowrap">${esc(t.name)}</div></div>`,score=t=>`<div style="font-family:Display;font-style:italic;font-size:200px;line-height:1;color:${C.lime}">${esc(t.score)}</div>`,[x,y]=v.teams;
-  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;background:${C.forest};color:${C.cream}"><div style="display:flex;justify-content:center;align-items:center;gap:34px">${team(x)}${score(x)}<div style="font-family:Display;font-size:90px;opacity:.6">–</div>${score(y)}${team(y)}</div>${v.note?`<div style="margin:26px auto 0;background:${C.orange};color:${C.cream};font-size:40px;font-weight:700;padding:12px 30px;border-radius:999px;text-transform:uppercase">${esc(v.note)}</div>`:''}</div>`;}
+  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;${ground(v)};color:${C.cream}"><div style="display:flex;justify-content:center;align-items:center;gap:34px">${team(x)}${score(x)}<div style="font-family:Display;font-size:90px;opacity:.6">–</div>${score(y)}${team(y)}</div>${v.note?`<div style="margin:26px auto 0;background:${C.orange};color:${C.cream};font-size:40px;font-weight:700;padding:12px 30px;border-radius:999px;text-transform:uppercase">${esc(v.note)}</div>`:''}</div>`;}
  if(v.type==='bars'){const max=Math.max(...v.bars.map(b=>b.value));
-  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;gap:16px;padding:0 72px;background:${C.forest};color:${C.cream}">${v.bars.map(b=>`<div style="display:flex;align-items:center;gap:20px"><div style="width:230px;font-size:34px;font-weight:700;text-transform:uppercase;line-height:1.05">${esc(b.label)}</div><div style="flex:1;height:58px;position:relative"><div style="height:100%;width:${Math.max(8,Math.round(b.value/max*100))}%;background:${b.highlight?C.lime:C.cream+'55'};border-radius:6px"></div></div><div style="width:190px;text-align:right;font-family:Display;font-style:italic;font-size:54px;color:${b.highlight?C.lime:C.cream}">${esc(b.display)}</div></div>`).join('')}${v.caption?`<div style="font-size:30px;font-weight:600;opacity:.8;margin-top:6px">${esc(v.caption)}</div>`:''}</div>`;}
+  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;gap:16px;padding:0 72px;${ground(v)};color:${C.cream}">${v.bars.map(b=>`<div style="display:flex;align-items:center;gap:20px"><div style="width:230px;font-size:34px;font-weight:700;text-transform:uppercase;line-height:1.05">${esc(b.label)}</div><div style="flex:1;height:58px;position:relative"><div style="height:100%;width:${Math.max(8,Math.round(b.value/max*100))}%;background:${b.highlight?C.lime:C.cream+'55'};border-radius:6px"></div></div><div style="width:190px;text-align:right;font-family:Display;font-style:italic;font-size:54px;color:${b.highlight?C.lime:C.cream}">${esc(b.display)}</div></div>`).join('')}${v.caption?`<div style="font-size:30px;font-weight:600;opacity:.8;margin-top:6px">${esc(v.caption)}</div>`:''}</div>`;}
  if(v.type==='ratio'){const icon=on=>`<svg width="110" height="190" viewBox="0 0 22 38"><circle cx="11" cy="5" r="5" fill="${on?C.orange:C.cream}"/><path d="M4 13h14v12h-3v13H7V25H4z" fill="${on?C.orange:C.cream}"/></svg>`;
-  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;background:${C.forest};color:${C.cream}"><div style="display:flex;gap:18px">${Array.from({length:v.of},(_,k)=>icon(k<v.highlight)).join('')}</div><div style="font-size:46px;font-weight:700;margin-top:34px;text-transform:uppercase;text-align:center;padding:0 60px">${esc(v.caption)}</div></div>`;}
+  return `<div style="${box};display:flex;flex-direction:column;justify-content:center;align-items:center;${ground(v)};color:${C.cream}"><div style="display:flex;gap:18px">${Array.from({length:v.of},(_,k)=>icon(k<v.highlight)).join('')}</div><div style="font-size:46px;font-weight:700;margin-top:34px;text-transform:uppercase;text-align:center;padding:0 60px">${esc(v.caption)}</div></div>`;}
  throw Error('Unknown visual '+v.type);
 }
 export function briefSlides(r){
- const n=r.points.length+2,top=(i,fg)=>`<div class="top" style="color:${fg}"><img class="logo" src="cancha-trim.png" alt="Cancha" style="${fg===C.forest||fg===C.ink?'':'filter:brightness(0) invert(1)'}"><span>${i} / ${n}</span></div>`;
+ const n=r.points.length+1,top=(i,fg)=>`<div class="top" style="color:${fg}"><img class="logo" src="cancha-trim.png" alt="Cancha" style="${fg===C.forest||fg===C.ink?'':'filter:brightness(0) invert(1)'}"><span>${i} / ${n}</span></div>`;
  const foot=(l,rt,fg)=>`<div class="foot" style="color:${fg}"><span>${esc(l)}</span><span>${esc(rt)}</span></div>`;
  const cover=`background:${C.forest};color:${C.cream}`;
  // The photo owns the top panel and the text sits below it, so headline type never covers faces.
@@ -52,11 +57,7 @@ export function briefSlides(r){
   <h1 style="font-size:118px;margin:10px 0 56px;color:${head}">${p.title.map(esc).join('<br>')}</h1>
   <div style="font-size:50px;line-height:1.3;font-weight:600">${p.body.map(x=>`<div style="margin-bottom:30px">— ${esc(x)}</div>`).join('')}</div>
   ${foot(r.kicker,i===r.points.length-1?'Save this':'Swipe →',fg)}</div>`});});
- out.push({alt:'Sources: '+r.sources.map(s=>s.label+' ('+s.url+')').join('; ')+`. Checked ${nice(r.checkedOn)}.`,html:`<div class="s" style="background:${C.forest};color:${C.cream}">${top(n,C.cream)}
-  <h1 style="font-size:120px;margin-top:120px;color:${C.lime}">Sources</h1>
-  <div style="font-size:44px;line-height:1.35;margin:46px 0;font-weight:600">${r.sources.map(s=>`<div style="margin-bottom:26px">${esc(s.label)}<div style="font-size:32px;opacity:.75;word-break:break-all">${esc(s.url.replace(/^https:\/\/(www\.)?/,''))}</div></div>`).join('')}</div>
-  <div style="font-size:36px;font-weight:600;opacity:.85">Checked ${esc(nice(r.checkedOn))}. Cancha is independent; no affiliation implied.</div>
-  ${foot('Follow @wearecancha for Florida soccer, explained','',C.cream)}</div>`});
+ // Sources live in the caption (owner, Nov 5: no sources slide); see briefCaption in prepare-brief-carousels.mjs.
  return out;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
@@ -86,7 +87,7 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
   // The photo comes straight from the cited source (photo.url must be on a source's domain) and is credited on the slide.
   // A photo is either the cited source's own image, or a still from a cleared creator video already in the repo.
   r.photo=r.photo&&await loadPhoto(r,r.photo,`${r.id}-photo`);
-  r.points=await Promise.all(r.points.map(async(p,k)=>p.visual?.type==='photo'?{...p,visual:{...p.visual,...await loadPhoto(r,p.visual,`${r.id}-p${k+1}`)}}:p));
+  r.points=await Promise.all(r.points.map(async(p,k)=>p.visual?.type==='photo'?{...p,visual:{...p.visual,...await loadPhoto(r,p.visual,`${r.id}-p${k+1}`)}}:p.visual?.bg?{...p,visual:{...p.visual,bg:await loadPhoto(r,p.visual.bg,`${r.id}-p${k+1}-bg`)}}:p));
   for(const p of r.points)if(p.visual?.type==='scoreboard')for(const t of p.visual.teams){if(!CRESTS.has(t.crest))throw Error(r.id+': crest not in the badge manifest');await copyFile(assets+t.crest+'.png',join(out,t.crest+'.png'));}
   for(const [i,s] of briefSlides(r).entries()){const html=join(out,`${r.id}-${i+1}.html`),jpg=join(out,`${r.id}-${i+1}.jpg`);
    await writeFile(html,`<!doctype html><meta charset=utf-8><style>${cssFor()}</style><body>${s.html}</body>`);
