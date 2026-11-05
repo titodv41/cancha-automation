@@ -10,3 +10,13 @@ test('v2.2 cues use listed sounds inside its 20 seconds', () => {
   for (const [name, at] of spec.sound.cues) { assert.ok(lib.sfx[name], name); assert.ok(at >= 0 && at < 20, `${name} ${at}`); }
   assert.ok(spec.publishBlockedUntil);
 });
+
+test('Nuevo en Miami: listed sounds, every photo has a source page, adults-only promo copy', () => {
+  const n = JSON.parse(readFileSync(new URL('../content/instagram/promos/nuevo-en-miami-es.json', import.meta.url), 'utf8'));
+  assert.ok(lib.music[n.sound.music.id]);
+  for (const [name, at] of n.sound.cues) { assert.ok(lib.sfx[name], name); assert.ok(at >= 0 && at < 20); }
+  const sourced = new Set(n.photoSources.map(x => x.file));
+  for (const p of n.props.photos) assert.ok(sourced.has(p), p);
+  for (const s of n.photoSources) assert.match(s.page, /^https:\/\/www\.pexels\.com\/photo\//);
+  assert.ok(n.publishBlockedUntil);
+});

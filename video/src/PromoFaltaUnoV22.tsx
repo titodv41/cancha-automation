@@ -12,19 +12,19 @@ const D = 'CanchaDisplay, sans-serif', U = 'CanchaUI, sans-serif';
 const S = (s: number) => Math.round(s * 30);
 const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 const kick = Easing.bezier(0.2, 1.4, 0.4, 1); // fast out, slight overshoot
-const B = 15; // one beat at 120 BPM
+export const B = 15; // one beat at 120 BPM
 export const T22 = {hook: 0, squad: 4 * B, status: 8 * B, chat: 11 * B, off: 17 * B, stamp: 18 * B, grid: 20 * B, phone: 22 * B, tap: 26 * B, fill: 27 * B, win: 29 * B, end: 33 * B, total: 40 * B};
 const T = T22;
-const out = Easing.out(Easing.exp), back = Easing.out(Easing.back(1.6));
-const ease = (f: number, a: number, b: number, e = out) => interpolate(f, [a, b], [0, 1], {...cl, easing: e});
+export const out = Easing.out(Easing.exp), back = Easing.out(Easing.back(1.6));
+export const ease = (f: number, a: number, b: number, e = out) => interpolate(f, [a, b], [0, 1], {...cl, easing: e});
 // Whip between scenes: the outgoing scene leaves upward with blur, the incoming one arrives from below.
-function Whip({f, from, to, children}: {f: number; from: number; to: number; children: React.ReactNode}) {
+export function Whip({f, from, to, children}: {f: number; from: number; to: number; children: React.ReactNode}) {
   const inP = from === 0 ? 1 : ease(f, from, from + 7), outP = interpolate(f, [to - 5, to], [0, 1], {...cl, easing: Easing.in(Easing.cubic)});
   const y = (1 - inP) * 380 - outP * 380, blur = (1 - inP) * 14 + outP * 14;
   return <AbsoluteFill style={{transform: `translateY(${y}px)`, filter: blur > 0.3 ? `blur(${blur}px)` : undefined}}>{children}</AbsoluteFill>;
 }
 // Scoreboard roll between two numbers.
-function Roll({a, b, p, h}: {a: number; b: number; p: number; h: number}) {
+export function Roll({a, b, p, h}: {a: number; b: number; p: number; h: number}) {
   return <span style={{display: 'inline-block', height: h, overflow: 'hidden', verticalAlign: 'bottom', lineHeight: `${h}px`}}>
     <span style={{display: 'flex', flexDirection: 'column', transform: `translateY(${-p * h}px)`, filter: p > 0.05 && p < 0.95 ? 'blur(2px)' : undefined}}><span>{a}</span><span>{b}</span></span></span>;
 }
