@@ -1,0 +1,87 @@
+{
+ "note": "Mixkit Sound Effects / Stock Music Free License: commercial use, no attribution required. https://mixkit.co/license/",
+ "music": {
+  "mixkit-51": {
+   "title": "Deep Urban",
+   "url": "https://assets.mixkit.co/music/51/51.mp3",
+   "bpm": 123
+  }
+ },
+ "sfx": {
+  "whoosh": {
+   "id": 1491,
+   "title": "Cinematic whoosh fast transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1491/1491-preview.mp3"
+  },
+  "airwoosh": {
+   "id": 1492,
+   "title": "Air woosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3"
+  },
+  "longwhoosh": {
+   "id": 1486,
+   "title": "Fast whoosh transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1486/1486-preview.mp3"
+  },
+  "slam": {
+   "id": 2150,
+   "title": "Short bass hit",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2150/2150-preview.mp3"
+  },
+  "pop": {
+   "id": 914,
+   "title": "Dry pop up notification alert",
+   "url": "https://assets.mixkit.co/active_storage/sfx/914/914-preview.mp3"
+  },
+  "alarm": {
+   "id": 2182,
+   "title": "Deep heartbeat impact",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2182/2182-preview.mp3"
+  },
+  "ping": {
+   "id": 900,
+   "title": "Message pop alert",
+   "url": "https://assets.mixkit.co/active_storage/sfx/900/900-preview.mp3"
+  },
+  "lights": {
+   "id": 1125,
+   "title": "On or off light switch tap",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1125/1125-preview.mp3"
+  },
+  "stamp": {
+   "id": 2198,
+   "title": "Big cinematic impact",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2198/2198-preview.mp3"
+  },
+  "tap": {
+   "id": 2568,
+   "title": "Modern technology select",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+  },
+  "success": {
+   "id": 2358,
+   "title": "Correct answer tone",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"
+  },
+  "roll": {
+   "id": 1113,
+   "title": "Cool interface click tone",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1113/1113-preview.mp3"
+  },
+  "crowd": {
+   "id": 368,
+   "title": "Cheering crowd loud whistle",
+   "url": "https://assets.mixkit.co/active_storage/sfx/368/368-preview.mp3"
+  },
+  "impact": {
+   "id": 2596,
+   "title": "Epic movie trailer whoosh impact",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2596/2596-preview.mp3"
+  },
+  "cta": {
+   "id": 2356,
+   "title": "Confirmation tone",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2356/2356-preview.mp3"
+  }
+ }
+}

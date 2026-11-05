@@ -1,0 +1,227 @@
+{
+ "id": "promo-nuevo-en-miami-es",
+ "composition": "PromoNuevoEnMiami",
+ "lang": "es",
+ "approval": "Draft for owner review (owner, Nov 5: broader find-your-team story; photos from the internet, owner handles rights).",
+ "publishBlockedUntil": "Owner approves the video and the photo rights.",
+ "props": {
+  "photos": [
+   "generated/promo/photos/pexels-11221497.jpg",
+   "generated/promo/photos/pexels-8740433.jpg",
+   "generated/promo/photos/pexels-27572834.jpg",
+   "generated/promo/photos/pexels-12430231.jpg",
+   "generated/promo/photos/pexels-9040062.jpg"
+  ],
+  "crests": [
+   "generated/promo/crests/117-fc-academy.jpg",
+   "generated/promo/crests/asa-itss.jpg",
+   "generated/promo/crests/boca-jrs-miami-fc.jpg",
+   "generated/promo/crests/florida-island-united.jpg",
+   "generated/promo/crests/fort-training-academy.jpg",
+   "generated/promo/crests/hodler-fc.jpg",
+   "generated/promo/crests/futsoc.jpg",
+   "generated/promo/crests/hodler-miami-fc.jpg",
+   "generated/promo/crests/homestead-fc.jpg",
+   "generated/promo/crests/miami-sporting-fc.jpg",
+   "generated/promo/crests/milan-de-miami-fc.jpg",
+   "generated/promo/crests/miramar-supreme-fc.jpg",
+   "generated/promo/crests/river-miami-fc.jpg",
+   "generated/promo/crests/united-stars.jpg",
+   "generated/promo/crests/weston-fc-ii.jpg",
+   "generated/promo/crests/weston-fc.png"
+  ],
+  "posts": [
+   {
+    "who": "JM",
+    "area": "Doral · Domingo",
+    "text": "7v7 con gente nueva"
+   },
+   {
+    "who": "AR",
+    "area": "Miami Beach · Sábado",
+    "text": "Fútbol playa al atardecer"
+   },
+   {
+    "who": "DL",
+    "area": "Kendall · Martes",
+    "text": "Primer entreno con el equipo"
+   }
+  ]
+ },
+ "photoSources": [
+  {
+   "file": "generated/promo/photos/pexels-11221497.jpg",
+   "page": "https://www.pexels.com/photo/11221497/",
+   "license": "Pexels License"
+  },
+  {
+   "file": "generated/promo/photos/pexels-8740433.jpg",
+   "page": "https://www.pexels.com/photo/8740433/",
+   "license": "Pexels License"
+  },
+  {
+   "file": "generated/promo/photos/pexels-27572834.jpg",
+   "page": "https://www.pexels.com/photo/27572834/",
+   "license": "Pexels License"
+  },
+  {
+   "file": "generated/promo/photos/pexels-12430231.jpg",
+   "page": "https://www.pexels.com/photo/12430231/",
+   "license": "Pexels License"
+  },
+  {
+   "file": "generated/promo/photos/pexels-9040062.jpg",
+   "page": "https://www.pexels.com/photo/9040062/",
+   "license": "Pexels License"
+  }
+ ],
+ "crestSource": "cancha-app/assets/crests (approved crest identity list); copied into video/public/generated/promo/crests",
+ "stills": [
+  0.2,
+  1.2,
+  2.2,
+  3.0,
+  3.8,
+  4.6,
+  5.4,
+  6.4,
+  7.0,
+  8.6,
+  9.8,
+  11.2,
+  13.0,
+  14.2,
+  15.2,
+  16.8,
+  18.4
+ ],
+ "sound": {
+  "music": {
+   "id": "mixkit-51",
+   "tempo": 120,
+   "start": 16.13,
+   "gain": 0.9,
+   "fadeOut": 0.8
+  },
+  "cues": [
+   [
+    "slam",
+    0
+   ],
+   [
+    "slam",
+    0.267
+   ],
+   [
+    "slam",
+    0.767
+   ],
+   [
+    "whoosh",
+    2.38
+   ],
+   [
+    "whoosh",
+    6.38
+   ],
+   [
+    "whoosh",
+    9.38
+   ],
+   [
+    "whoosh",
+    16.38
+   ],
+   [
+    "airwoosh",
+    14.35
+   ],
+   [
+    "tap",
+    3.25
+   ],
+   [
+    "tap",
+    4.5
+   ],
+   [
+    "tap",
+    5.75
+   ],
+   [
+    "success",
+    5.8
+   ],
+   [
+    "pop",
+    6.7,
+    0.3
+   ],
+   [
+    "pop",
+    6.833,
+    0.3
+   ],
+   [
+    "pop",
+    6.967,
+    0.3
+   ],
+   [
+    "pop",
+    7.1,
+    0.3
+   ],
+   [
+    "pop",
+    7.233,
+    0.3
+   ],
+   [
+    "pop",
+    7.367,
+    0.3
+   ],
+   [
+    "pop",
+    7.5,
+    0.3
+   ],
+   [
+    "pop",
+    7.633,
+    0.3
+   ],
+   [
+    "ping",
+    8.5
+   ],
+   [
+    "tap",
+    11.0
+   ],
+   [
+    "roll",
+    11.05
+   ],
+   [
+    "tap",
+    13.0
+   ],
+   [
+    "success",
+    13.05,
+    0.6
+   ],
+   [
+    "crowd",
+    14.5,
+    0.5
+   ],
+   [
+    "cta",
+    16.767
+   ]
+  ]
+ }
+}
