@@ -370,7 +370,12 @@
      "visual": {
       "type": "stat",
       "value": "$3,500",
-      "caption": "The drive’s goal"
+      "caption": "The drive’s goal",
+      "bg": {
+       "url": "https://www.tampabaysunfc.com/wp-content/uploads/sites/90/2026/09/1.jpg",
+       "credit": "Photo: Tampa Bay Sun FC",
+       "focus": "60%"
+      }
      }
     },
     {
@@ -385,7 +390,14 @@
      "visual": {
       "type": "stat",
       "value": "11.21",
-      "caption": "Bring gear to the Sun’s home match"
+      "caption": "Bring gear to the Sun’s home match",
+      "bg": {
+       "url": "https://www.tampabaysunfc.com/wp-content/uploads/sites/90/2026/10/16x9_b3587f.jpg",
+       "credit": "Photo: Tampa Bay Sun FC",
+       "focus": "10%",
+       "zoom": 140,
+       "x": "70%"
+      }
      }
     },
     {
@@ -401,7 +413,14 @@
       "type": "ratio",
       "of": 7,
       "highlight": 1,
-      "caption": "1 in 7 parents haven’t signed kids up because of gear costs"
+      "caption": "1 in 7 parents haven’t signed kids up because of gear costs",
+      "bg": {
+       "url": "https://www.tampabaysunfc.com/wp-content/uploads/sites/90/2026/10/bright-bits-web.jpg",
+       "credit": "Photo: Tampa Bay Sun FC",
+       "focus": "0%",
+       "zoom": 150,
+       "x": "60%"
+      }
      }
     }
    ],
@@ -633,7 +652,14 @@
      "visual": {
       "type": "stat",
       "value": "$350K",
-      "caption": "Proposed field upgrades"
+      "caption": "Proposed field upgrades",
+      "bg": {
+       "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/Match-Recap-Large-3.jpeg",
+       "credit": "Photo: Fort Lauderdale United FC",
+       "focus": "5%",
+       "zoom": 150,
+       "x": "60%"
+      }
      }
     },
     {
@@ -648,7 +674,14 @@
      "visual": {
       "type": "stat",
       "value": "Central",
-      "caption": "Broward College campus"
+      "caption": "Broward College campus",
+      "bg": {
+       "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/10/Match-Recap-Large-2.jpeg",
+       "credit": "Photo: Fort Lauderdale United FC",
+       "focus": "5%",
+       "zoom": 150,
+       "x": "60%"
+      }
      }
     },
     {
@@ -663,7 +696,14 @@
      "visual": {
       "type": "stat",
       "value": "TBD",
-      "caption": "Construction dates"
+      "caption": "Construction dates",
+      "bg": {
+       "url": "https://www.ftlutd.com/wp-content/uploads/sites/152/2026/11/Match-Recap-Large.jpeg",
+       "credit": "Photo: Fort Lauderdale United FC",
+       "focus": "5%",
+       "zoom": 150,
+       "x": "60%"
+      }
      }
     }
    ],

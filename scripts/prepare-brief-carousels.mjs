@@ -3,9 +3,19 @@ import {briefCarouselAllowed} from '../server/brief-carousels.mjs';
 // Hosts rendered "Cancha Brief" carousels (private-data/brief-carousels) on Framer and writes queue-ready drafts for
 // `github-instagram.mjs refresh-brief-carousels`. Only briefs the editorial policy approves are prepared.
 const sha=b=>createHash('sha256').update(b).digest('hex');
+// The caption carries the sources and the check date (owner, Nov 5: no sources slide). Any hand-written "Source:" line is replaced.
+const nice=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+export function briefCaption(recipe){
+ const lines=recipe.caption.split('\n').filter(l=>!/^\s*Sources?:/i.test(l)),text=lines.join('\n').trimEnd();
+ const list=recipe.sources.map(s=>`${s.label} (${new URL(s.url).hostname.replace(/^www\./,'')})`).join(' · ');
+ const src=`Sources: ${list}. Checked ${nice(recipe.checkedOn)}.${/independent/i.test(text)?'':' Cancha is independent; no affiliation implied.'}`;
+ // Sources go above a closing hashtag block, so the caption still ends on the tags.
+ const m=text.match(/\n\n((?:#\S+\s*)+)$/);
+ return m?`${text.slice(0,m.index)}\n\n${src}\n\n${m[1].trim()}`:`${text}\n\n${src}`;
+}
 export function buildBriefDraft(recipe,slides,{renderedAt}){
  return {id:`brief-${recipe.id}`,recipeId:recipe.id,format:'feed',sourceType:'news',topic:'community',creativeKind:'brief-carousel',creativeVersion:'cancha-local-v2',
-  headline:`${recipe.title.join(' ')} ${recipe.highlight}`,caption:recipe.caption,altText:slides[0].altText,factsCheckedOn:recipe.checkedOn,factsCheckedAt:recipe.checkedOn+'T00:00:00.000Z',
+  headline:`${recipe.title.join(' ')} ${recipe.highlight}`,caption:briefCaption(recipe),altText:slides[0].altText,factsCheckedOn:recipe.checkedOn,factsCheckedAt:recipe.checkedOn+'T00:00:00.000Z',
   ...(recipe.expiresOn?{expiresOn:recipe.expiresOn}:{}),
   briefSources:recipe.sources.map(s=>({label:s.label,url:s.url,confirm:s.confirm})),
   // A collab invite to the organization the brief is about (owner-approved collab invites); the publisher retries without it if refused.
