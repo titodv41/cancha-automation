@@ -1,0 +1,407 @@
+{
+ "lang": "en",
+ "revisionOf": "story-find-your-club-adults-v2-en (v2.1 kept unchanged)",
+ "approval": "Revision per owner's review brief (Nov 6). Earlier cut preserved.",
+ "claims": [
+  {
+   "id": "Hodler FC",
+   "displayText": "Hodler FC: Doral, Miami-Dade, UPSL Division 1 · 2026 Fall; places not confirmed",
+   "sourceUrl": "https://wearecancha.framer.website/clubs/hodler-fc",
+   "checkedAt": "2026-11-06",
+   "definition": "Directory profile (sources checked Oct 20, 2026). Listing is not a partnership or an available roster spot."
+  },
+  {
+   "id": "Boca Jrs Miami FC",
+   "displayText": "Boca Jrs Miami FC: Margate, Broward, UPSL Division 1 · 2026 Fall; places not confirmed",
+   "sourceUrl": "https://wearecancha.framer.website/clubs/boca-jrs-miami-fc",
+   "checkedAt": "2026-11-06",
+   "definition": "Directory profile (sources checked Oct 20, 2026). Listing is not a partnership or an available roster spot."
+  },
+  {
+   "id": "screens",
+   "displayText": "Screens are the live Cancha website directory (search near Doral → Hodler FC profile)",
+   "sourceUrl": "https://wearecancha.framer.website/clubs?near=Doral",
+   "checkedAt": "2026-11-06"
+  },
+  {
+   "id": "app",
+   "displayText": "App screens are the Cancha app prototype (Expo build), labelled 'Coming soon'",
+   "sourceUrl": "https://wearecancha.framer.website/",
+   "checkedAt": "2026-11-06",
+   "definition": "Not live in app stores; waitlist on the website."
+  },
+  {
+   "id": "Hodler FC link",
+   "displayText": "Hodler FC page shows Visit club website → UPSL Division 1 team page (Doral, FL, 2026 Fall)",
+   "sourceUrl": "https://wearecancha.framer.website/clubs/hodler-fc",
+   "checkedAt": "2026-11-06",
+   "definition": "The link opens UPSL's team page (URL slug still reads petare-fc); not the club's own site."
+  },
+  {
+   "id": "Directory search",
+   "displayText": "Directory search UPSL + Doral: Hodler FC and Hodler Miami FC shown; U19/U20 results are below the crop and never shown",
+   "sourceUrl": "https://wearecancha.framer.website/clubs",
+   "checkedAt": "2026-11-06",
+   "definition": "Recorded on the live site, Nov 6."
+  }
+ ],
+ "facts": [
+  {
+   "claim": "Hodler FC, Boca Jrs Miami FC and River Miami FC are listed on Cancha as UPSL Division 1 2026 Fall adult teams",
+   "sources": [
+    "https://wearecancha.framer.website/clubs/hodler-fc",
+    "https://wearecancha.framer.website/clubs/boca-jrs-miami-fc",
+    "https://wearecancha.framer.website/clubs/river-miami-fc"
+   ]
+  }
+ ],
+ "permissionsToAsk": [
+  {
+   "what": "Night player photo",
+   "from": "Pexels (free licence)",
+   "page": "https://www.pexels.com/photo/men-playing-football-at-night-11221497/"
+  }
+ ],
+ "seconds": 20.0,
+ "caption": "Played back home? Find your team. ⚽\n\nSemi-pro and rec teams across Miami-Dade and Broward are on the Cancha directory now: search your area, open a team, see its level and how to reach them. A listing isn't a guaranteed spot; contact the club for current places.\n\nComing soon: the Cancha app, with clubs near you and a feed of people at your level. Join the list, link in bio.\n#miamisoccer #browardsoccer #semipro #upsl",
+ "stills": [
+  11,
+  14,
+  17
+ ],
+ "title": "Played back home? Find your team.",
+ "altText": "Vertical video: a night match photo with \"Played back home? Find your team. Adult soccer, Miami-Dade + Broward\", a map of the two counties highlighting Hodler FC (Doral) and Boca Jrs Miami FC (Margate), the Cancha directory search and Hodler FC's page with its club link, the UPSL team page it opens, two preview screens of the upcoming Cancha app (a team list and an example post: \"Our team needs a keeper\"), and the closing card \"Find your team. Browse the directory now. Link in bio. App coming soon.\"",
+ "footage": [
+  {
+   "source": "pexels",
+   "id": "11221497",
+   "creator": "Pexels",
+   "license": "Pexels License (free commercial use)",
+   "page": "https://www.pexels.com/photo/men-playing-football-at-night-11221497/"
+  },
+  {
+   "source": "cancha",
+   "id": "directory-club-marks",
+   "creator": "Club marks as shown in the Cancha directory",
+   "license": "Unmodified club identifying marks for independent editorial identification",
+   "page": "https://wearecancha.framer.website/clubs"
+  },
+  {
+   "source": "cancha",
+   "id": "directory-screens",
+   "creator": "Cancha",
+   "license": "Own product screens",
+   "page": "https://wearecancha.framer.website/clubs"
+  },
+  {
+   "source": "cancha",
+   "id": "app-screens",
+   "creator": "Cancha",
+   "license": "Own product screens (app in development, labelled coming soon)",
+   "page": "https://wearecancha.framer.website/"
+  },
+  {
+   "source": "pexels",
+   "id": "12659335",
+   "creator": "Pexels",
+   "license": "Pexels License (free commercial use)",
+   "page": "https://www.pexels.com/photo/photo-of-a-goalkeeper-keeping-a-ball-12659335/"
+  },
+  {
+   "source": "cancha",
+   "id": "upsl-team-page",
+   "creator": "UPSL team page as opened from the directory",
+   "license": "Brief editorial view of the linked destination",
+   "page": "https://division1.upsl.com/teams/petare-fc-367742/"
+  },
+  {
+   "source": "mixkit",
+   "id": "51",
+   "creator": "Mixkit, Deep Urban",
+   "license": "Mixkit Free License",
+   "page": "https://mixkit.co/license/"
+  }
+ ],
+ "id": "story-find-your-club-adults-v2-2-en",
+ "composition": "StoryReel3",
+ "publishBlockedUntil": "Owner approves v2.2.",
+ "props": {
+  "scenes": [
+   {
+    "kind": "hero",
+    "beats": 5,
+    "img": "generated/story/night-player.jpg",
+    "x": 0.4,
+    "headline": [
+     "Played back home?",
+     "Find your team."
+    ],
+    "accent": 1,
+    "support": "ADULT SOCCER\nMIAMI-DADE + BROWARD"
+   },
+   {
+    "kind": "map",
+    "beats": 8,
+    "headline": "Miami-Dade\n+ Broward",
+    "pins": [
+     {
+      "badge": "generated/story/crests/117-fc-academy.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/asa-itss.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/boca-jrs-miami-fc.jpg",
+      "lat": 26.248,
+      "lng": -80.2112
+     },
+     {
+      "badge": "generated/story/crests/futsoc.jpg",
+      "lat": 26.1004,
+      "lng": -80.4021
+     },
+     {
+      "badge": "generated/story/crests/florida-island-united.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/fort-training-academy.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/hodler-fc.jpg",
+      "lat": 25.816,
+      "lng": -80.3576
+     },
+     {
+      "badge": "generated/story/crests/hodler-miami-fc.jpg",
+      "lat": 25.816,
+      "lng": -80.3576
+     },
+     {
+      "badge": "generated/story/crests/homestead-fc.jpg",
+      "lat": 25.4659,
+      "lng": -80.446
+     },
+     {
+      "badge": "generated/story/crests/miami-sporting-fc.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/milan-de-miami-fc.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/miramar-supreme-fc.jpg",
+      "lat": 25.9725,
+      "lng": -80.3386
+     },
+     {
+      "badge": "generated/story/crests/river-miami-fc.jpg",
+      "lat": 26.031,
+      "lng": -80.1646
+     },
+     {
+      "badge": "generated/story/crests/united-stars.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/weston-fc.png",
+      "lat": 26.1004,
+      "lng": -80.4021
+     },
+     {
+      "badge": "generated/story/crests/weston-fc-ii.jpg",
+      "lat": 26.1004,
+      "lng": -80.4021
+     }
+    ],
+    "cards": [
+     {
+      "badge": "generated/story/crests/hodler-fc.jpg",
+      "lat": 25.816,
+      "lng": -80.3576,
+      "name": "Hodler FC",
+      "line": "Doral · UPSL Division 1",
+      "status": "Contact club for openings"
+     },
+     {
+      "badge": "generated/story/crests/boca-jrs-miami-fc.jpg",
+      "lat": 26.248,
+      "lng": -80.2112,
+      "name": "Boca Jrs Miami FC",
+      "line": "Margate · UPSL Division 1",
+      "status": "Contact club for openings"
+     }
+    ]
+   },
+   {
+    "kind": "rec",
+    "beats": 6,
+    "label": "Browse teams now",
+    "img": "generated/story/v22/list.png",
+    "imgW": 1170,
+    "crop": [
+     2292,
+     3525
+    ],
+    "tap": {
+     "x": 966,
+     "y": 2844,
+     "at": 40
+    }
+   },
+   {
+    "kind": "rec",
+    "beats": 5,
+    "label": "Check the team.\nContact the club.",
+    "img": "generated/story/v22/profile.png",
+    "imgW": 1170,
+    "crop": [
+     750,
+     1800
+    ],
+    "outline": {
+     "x": 54,
+     "y": 1560,
+     "w": 1062,
+     "h": 144,
+     "at": 12
+    },
+    "tap": {
+     "x": 558,
+     "y": 1632,
+     "at": 48
+    },
+    "zoom": 0.84,
+    "align": "left"
+   },
+   {
+    "kind": "rec",
+    "beats": 2,
+    "label": "Check the team.\nContact the club.",
+    "img": "generated/story/v22/club-site.png",
+    "imgW": 1170,
+    "crop": [
+     0,
+     1260
+    ],
+    "dark": true,
+    "zoom": 0.84,
+    "align": "left"
+   },
+   {
+    "kind": "rec",
+    "beats": 4,
+    "label": "App preview · coming soon",
+    "img": "generated/story/v22/app-teams.png",
+    "imgW": 1170,
+    "crop": [
+     540,
+     1450
+    ],
+    "dark": true
+   },
+   {
+    "kind": "rec",
+    "beats": 4,
+    "label": "App preview · coming soon",
+    "img": "generated/story/v22/app-feed.png",
+    "imgW": 1170,
+    "crop": [
+     366,
+     2560
+    ],
+    "dark": true
+   },
+   {
+    "kind": "end",
+    "beats": 6,
+    "action": "Find your team.",
+    "line": "Browse the directory now.",
+    "link": "Link in bio ↗",
+    "soon": "App coming soon."
+   }
+  ]
+ },
+ "sound": {
+  "music": {
+   "id": "mixkit-51",
+   "tempo": 120,
+   "start": 16.13,
+   "gain": 0.9,
+   "fadeOut": 0.8
+  },
+  "cues": [
+   [
+    "slam",
+    0.133,
+    0.45
+   ],
+   [
+    "whoosh",
+    2.45,
+    0.6
+   ],
+   [
+    "pop",
+    3.0,
+    0.5
+   ],
+   [
+    "pop",
+    4.75,
+    0.5
+   ],
+   [
+    "whoosh",
+    6.45,
+    0.6
+   ],
+   [
+    "tap",
+    7.8,
+    0.8
+   ],
+   [
+    "whoosh",
+    9.45,
+    0.6
+   ],
+   [
+    "tap",
+    11.1,
+    0.8
+   ],
+   [
+    "whoosh",
+    11.95,
+    0.6
+   ],
+   [
+    "whoosh",
+    12.95,
+    0.6
+   ],
+   [
+    "whoosh",
+    14.95,
+    0.6
+   ],
+   [
+    "cta",
+    16.95,
+    0.8
+   ]
+  ]
+ }
+}
