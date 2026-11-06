@@ -1,0 +1,408 @@
+{
+ "id": "story-como-v3-en",
+ "composition": "StoryReel2",
+ "lang": "en",
+ "revisionOf": "story-como-how-it-works-en",
+ "approval": "Revision per owner's review brief (Nov 6). Earlier cuts preserved.",
+ "publishBlockedUntil": "Owner approves, numbers reconciled with Como's filings, and Como 1907 agrees to the footage use.",
+ "props": {
+  "scenes": [
+   {
+    "kind": "hero",
+    "beats": 6,
+    "media": {
+     "src": "generated/story/como/fabregas.mp4",
+     "video": true
+    },
+    "kicker": "Como 1907 · Serie A",
+    "headline": [
+     "Buying the club",
+     "was the cheap part."
+    ],
+    "accent": 1
+   },
+   {
+    "kind": "hero",
+    "beats": 5,
+    "media": {
+     "src": "generated/story/como/city.mp4",
+     "video": true,
+     "start": 2
+    },
+    "kicker": "2019",
+    "headline": [
+     "The Hartono family",
+     "buys Como."
+    ],
+    "support": "In Serie D. Price reported at under €1 million."
+   },
+   {
+    "kind": "hero",
+    "beats": 5,
+    "media": {
+     "src": "generated/story/como/lake.mp4",
+     "video": true
+    },
+    "kicker": "The media angle",
+    "headline": [
+     "Their TV service",
+     "made it a series."
+    ],
+    "support": "Mola TV, “Como 1907: The Real Story” (2021)."
+   },
+   {
+    "kind": "ladder",
+    "beats": 9,
+    "headline": "From Serie D\nto Europe.",
+    "steps": [
+     {
+      "label": "Serie D",
+      "note": "2019"
+     },
+     {
+      "label": "Serie C",
+      "note": "2019–21"
+     },
+     {
+      "label": "Serie B",
+      "note": "2021–24"
+     },
+     {
+      "label": "Serie A",
+      "note": "2024"
+     },
+     {
+      "label": "Champions League",
+      "note": "2026"
+     }
+    ]
+   },
+   {
+    "kind": "hero",
+    "beats": 7,
+    "media": {
+     "src": "generated/story/como/cesc-team.mp4",
+     "video": true
+    },
+    "headline": [
+     "Player → shareholder",
+     "→ head coach."
+    ],
+    "accent": 1,
+    "support": "Joined 2022. Interim and assistant coach in 2023/24; head coach after promotion."
+   },
+   {
+    "kind": "bars",
+    "beats": 10,
+    "headline": "The owners keep\npaying in.",
+    "unit": "€ millions paid into Como 1907 S.r.l. by the owners, by season (Jul–Jun)",
+    "bars": [
+     {
+      "label": "19/20",
+      "value": 2.6
+     },
+     {
+      "label": "20/21",
+      "value": 7.4
+     },
+     {
+      "label": "21/22",
+      "value": 9.8
+     },
+     {
+      "label": "22/23",
+      "value": 22.0
+     },
+     {
+      "label": "23/24",
+      "value": 45.5
+     },
+     {
+      "label": "24/25",
+      "value": 133.6,
+      "hot": true
+     }
+    ]
+   },
+   {
+    "kind": "versus",
+    "beats": 8,
+    "headline": "2024/25,\nside by side.",
+    "left": {
+     "value": "€133.6M",
+     "label": "paid in by the owners"
+    },
+    "right": {
+     "value": "€55.4M",
+     "label": "club revenue (value of production)"
+    },
+    "foot": "Different measures, not profit. Staff costs alone were 155% of revenue."
+   },
+   {
+    "kind": "hero",
+    "beats": 8,
+    "media": {
+     "src": "generated/story/como/party.mp4",
+     "video": true
+    },
+    "headline": [
+     "The bet:",
+     "Serie A + the brand."
+    ],
+    "accent": 1,
+    "support": "Serie A TV rights: €31.8M in 2024/25. A 15,200-seat stadium is planned. Profit isn't shown yet."
+   },
+   {
+    "kind": "cta",
+    "beats": 7,
+    "action": "Follow for\nmore stories.",
+    "line": "@wearecancha",
+    "media": {
+     "src": "generated/story/como/fireworks.mp4",
+     "video": true
+    },
+    "logoBeats": 2
+   }
+  ],
+  "theme": {
+   "accent": "#5cc0ff",
+   "ink": "#06234d",
+   "bg": "#06111f"
+  }
+ },
+ "claims": [
+  {
+   "id": "purchase",
+   "displayText": "Bought in 2019 in Serie D, price reported at under €1 million",
+   "sourceUrl": "https://www.goal.com/en/originals/cesc-fabregas-como-1-million-1-billion-valuation-10-years/blt6d00283407a911b6",
+   "checkedAt": "2026-11-06",
+   "period": "April 2019",
+   "entity": "Como 1907",
+   "definition": "Goal: club worth under €1M in 2019; The Esk reports about €200,000 (completed 4 Apr 2019). Video uses the conservative 'under €1 million'."
+  },
+  {
+   "id": "documentary",
+   "displayText": "Mola TV made the docuseries “Como 1907: The Real Story” (2021)",
+   "sourceUrl": "https://www.antaranews.com/berita/2099798/serial-dokumenter-como-1907-the-true-story-hadir-di-mola-tv",
+   "checkedAt": "2026-11-06",
+   "period": "2021",
+   "entity": "Mola TV (Djarum group)",
+   "definition": "Shows the media link only; the video does not claim it was the reason for buying."
+  },
+  {
+   "id": "ladder",
+   "displayText": "Serie D 2019 → Serie C 2019–21 → Serie B 2021–24 → Serie A 2024 → Champions League 2026",
+   "sourceUrl": "https://www.vavel.com/en/data/como-1907/bio/",
+   "checkedAt": "2026-11-06",
+   "entity": "Como 1907",
+   "definition": "Promotion years from club history coverage; first Champions League qualification after finishing 4th in 2025/26. To reconcile with the club's official site before posting."
+  },
+  {
+   "id": "cesc",
+   "displayText": "Joined 2022 as player and shareholder; interim and assistant coach 2023/24; head coach after promotion (four-year contract)",
+   "sourceUrl": "https://comofootball.com/en/cesc-fabregas-to-officially-become-head-coach-of-como-1907s-men-team/",
+   "checkedAt": "2026-11-06",
+   "entity": "Como 1907 (official)"
+  },
+  {
+   "id": "owner-funding",
+   "displayText": "Owner payments by season, €M: 2.6, 7.4, 9.8, 22.0, 45.5, 133.6",
+   "sourceUrl": "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26",
+   "checkedAt": "2026-11-06",
+   "period": "2019/20–2024/25 (Jul–Jun)",
+   "entity": "Como 1907 S.r.l.",
+   "definition": "Payments into the company by the owners as reported by The Esk from filings. Secondary source: reconcile with https://comofootball.com/documenti-societari/ before posting. The €297M cumulative figure is NOT used on screen."
+  },
+  {
+   "id": "revenue",
+   "displayText": "Club revenue 2024/25 €55.4M (value of production); TV rights €31.8M",
+   "sourceUrl": "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26",
+   "checkedAt": "2026-11-06",
+   "period": "2024/25",
+   "entity": "Como 1907 S.r.l. (club only; consolidated €62.0M)",
+   "definition": "Value of production, not profit."
+  },
+  {
+   "id": "staff-costs",
+   "displayText": "Staff costs were 155% of revenue in 2024/25",
+   "sourceUrl": "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26",
+   "checkedAt": "2026-11-06",
+   "period": "2024/25",
+   "entity": "Como 1907 S.r.l.",
+   "definition": "Staff costs as % of value of production."
+  },
+  {
+   "id": "stadium",
+   "displayText": "A 15,200-seat stadium is planned",
+   "sourceUrl": "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26",
+   "checkedAt": "2026-11-06",
+   "entity": "Stadio Sinigaglia rebuild",
+   "definition": "Planned (Populous design, May 2026–Aug 2028 schedule); no completion date claimed on screen."
+  }
+ ],
+ "facts": [
+  {
+   "claim": "Bought in 2019 in Serie D, price reported at under €1 million",
+   "sources": [
+    "https://www.goal.com/en/originals/cesc-fabregas-como-1-million-1-billion-valuation-10-years/blt6d00283407a911b6"
+   ]
+  },
+  {
+   "claim": "Mola TV made the docuseries “Como 1907: The Real Story” (2021)",
+   "sources": [
+    "https://www.antaranews.com/berita/2099798/serial-dokumenter-como-1907-the-true-story-hadir-di-mola-tv"
+   ]
+  },
+  {
+   "claim": "Serie D 2019 → Serie C 2019–21 → Serie B 2021–24 → Serie A 2024 → Champions League 2026",
+   "sources": [
+    "https://www.vavel.com/en/data/como-1907/bio/"
+   ]
+  },
+  {
+   "claim": "Joined 2022 as player and shareholder; interim and assistant coach 2023/24; head coach after promotion (four-year contract)",
+   "sources": [
+    "https://comofootball.com/en/cesc-fabregas-to-officially-become-head-coach-of-como-1907s-men-team/"
+   ]
+  },
+  {
+   "claim": "Owner payments by season, €M: 2.6, 7.4, 9.8, 22.0, 45.5, 133.6",
+   "sources": [
+    "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26"
+   ]
+  },
+  {
+   "claim": "Club revenue 2024/25 €55.4M (value of production); TV rights €31.8M",
+   "sources": [
+    "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26"
+   ]
+  },
+  {
+   "claim": "Staff costs were 155% of revenue in 2024/25",
+   "sources": [
+    "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26"
+   ]
+  },
+  {
+   "claim": "A 15,200-seat stadium is planned",
+   "sources": [
+    "https://theesk.org/2026/11/03/the-analysis-series-como-1907-ownership-owner-funding-2025-26"
+   ]
+  }
+ ],
+ "permissionsToAsk": [
+  {
+   "what": "Footage from the club's YouTube (ASCENT documentary; promotion match)",
+   "from": "Como 1907 press office",
+   "page": "https://www.youtube.com/@como1907"
+  }
+ ],
+ "sound": {
+  "music": {
+   "id": "mixkit-51",
+   "tempo": 120,
+   "start": 16.13,
+   "gain": 0.9,
+   "fadeOut": 0.8
+  },
+  "cues": [
+   [
+    "slam",
+    0.067,
+    0.4
+   ],
+   [
+    "whoosh",
+    2.9,
+    0.6
+   ],
+   [
+    "slam",
+    3.067,
+    0.4
+   ],
+   [
+    "whoosh",
+    5.4,
+    0.6
+   ],
+   [
+    "slam",
+    5.567,
+    0.4
+   ],
+   [
+    "whoosh",
+    7.9,
+    0.6
+   ],
+   [
+    "success",
+    11.5,
+    0.6
+   ],
+   [
+    "whoosh",
+    12.4,
+    0.6
+   ],
+   [
+    "slam",
+    12.567,
+    0.4
+   ],
+   [
+    "whoosh",
+    15.9,
+    0.6
+   ],
+   [
+    "impact",
+    17.133,
+    0.5
+   ],
+   [
+    "whoosh",
+    20.9,
+    0.6
+   ],
+   [
+    "pop",
+    21.267,
+    0.5
+   ],
+   [
+    "pop",
+    21.533,
+    0.5
+   ],
+   [
+    "whoosh",
+    24.9,
+    0.6
+   ],
+   [
+    "slam",
+    25.067,
+    0.4
+   ],
+   [
+    "whoosh",
+    28.9,
+    0.6
+   ],
+   [
+    "cta",
+    29.3,
+    0.8
+   ]
+  ]
+ },
+ "seconds": 32.5,
+ "caption": "Buying Como was the cheap part. 🌊\n\nThe Hartono family bought the club in Serie D in 2019 (price reported at under €1 million). Their streaming service made it a docuseries in 2021. Then Como climbed: Serie D → C → B → A (2024) → Champions League (2026).\n\nFàbregas joined in 2022 as a player and shareholder, was interim and assistant coach in 2023/24, and became head coach after promotion.\n\nThe owners keep paying in: €133.6M in 2024/25 alone, against €55.4M of club revenue (value of production). Those are different measures, not profit. The bet is Serie A money (€31.8M of TV rights in 2024/25) and a global brand, with a 15,200-seat stadium planned.\n\nSources: Como 1907 (official), The Esk (from club filings), Goal, Vavel, Antara.\n#como #seriea #fabregas #football",
+ "stills": [
+  3.5,
+  6,
+  30
+ ]
+}

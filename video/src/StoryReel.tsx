@@ -14,7 +14,7 @@ let C = BASE;
 const D = 'CanchaDisplay, sans-serif', U = 'CanchaUI, sans-serif';
 const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 
-type Photo = {src: string; x?: number; y?: number; zoom?: number; dir?: 1 | -1};
+type Photo = {src: string; x?: number; y?: number; zoom?: number; dir?: 1 | -1; card?: boolean};
 export type Scene =
   | {kind: 'photo'; beats: number; photo: Photo; kicker?: string; lines: string[]; accent?: number; place?: 'top' | 'bottom'; badge?: string}
   | {kind: 'pins'; beats: number; title: string; sub?: string; pins: {badge: string; lat: number; lng: number; name?: string}[]; cities: {name: string; lat: number; lng: number}[]; highlight?: string[]}
@@ -48,10 +48,20 @@ function Headline({lines, local, accent = -1, size = 132, top}: {lines: string[]
   </div>;
 }
 
+// Small source photos (owner wants quality): a sharp tilted card over a blurred copy, never a stretched full-bleed.
+function Card({photo, local, dur}: {photo: Photo; local: number; dur: number}) {
+  const p = ease(local, 0, 12, back), drift = interpolate(local, [0, dur], [0, 1], cl);
+  return <div style={{position: 'absolute', left: 60, right: 60, top: 300, height: 700, borderRadius: 28, overflow: 'hidden', border: `8px solid ${C.cream}`, boxShadow: '0 40px 90px #000c',
+    transform: `translateY(${(1 - Math.min(1, p)) * 200}px) rotate(${-3 + (1 - Math.min(1, p)) * -8 + drift * 1.5}deg) scale(${0.85 + 0.15 * Math.min(1, p)})`, opacity: Math.min(1, p * 1.5)}}>
+    <Img src={staticFile(photo.src)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${(photo.x ?? 0.5) * 100}% ${(photo.y ?? 0.5) * 100}%`, transform: `scale(${1.04 + drift * 0.05})`}}/>
+  </div>;
+}
+
 function PhotoScene({s, local, dur}: {s: Extract<Scene, {kind: 'photo'}>; local: number; dur: number}) {
   const k = ease(local, 0, 8, back), h = s.lines.length * 120;
   return <AbsoluteFill>
-    <Bg photo={s.photo} local={local} dur={dur}/>
+    <Bg photo={s.photo} local={local} dur={dur} dim={s.photo.card ? 0.8 : 0.55} blur={s.photo.card ? 30 : 0}/>
+    {s.photo.card && <Card photo={s.photo} local={local} dur={dur}/>}
     {s.kicker && <div style={{position: 'absolute', left: 60, top: s.place === 'top' ? 200 : 1450 - h, display: 'flex', alignItems: 'center', gap: 18, opacity: Math.min(1, k),
       transform: `translateX(${(1 - Math.min(1, k)) * -60}px)`}}><div style={{width: 56, height: 8, borderRadius: 4, background: C.lime}}/>
       <span style={{fontFamily: D, fontStyle: 'italic', fontSize: 58, color: C.lime, textTransform: 'uppercase', letterSpacing: 1, textShadow: '0 6px 24px #000c'}}>{s.kicker}</span></div>}
@@ -147,7 +157,7 @@ function Pins({s, local, dur}: {s: Extract<Scene, {kind: 'pins'}>; local: number
 function Stat({s, local, dur}: {s: Extract<Scene, {kind: 'stat'}>; local: number; dur: number}) {
   const p = interpolate(local, [4, Math.min(dur - 10, 2 * B + 4)], [0, 1], {...cl, easing: Easing.out(Easing.cubic)}), raw = s.from + (s.to - s.from) * p, v = (s.decimals ? raw.toFixed(s.decimals) : Math.round(raw).toLocaleString('en-US')) + (s.suffix ?? ''), land = ease(local, 2 * B + 2, 2 * B + 10, back);
   return <AbsoluteFill style={{background: C.night}}>
-    {s.photo && <Bg photo={s.photo} local={local} dur={dur} dim={0.75}/>}
+    {s.photo && <Bg photo={s.photo} local={local} dur={dur} dim={s.photo.card ? 0.82 : 0.75} blur={s.photo.card ? 30 : 0}/>}
     <div style={{position: 'absolute', left: 50, top: 520, fontFamily: D, fontStyle: 'italic', fontSize: s.suffix || s.decimals ? 300 : 420, lineHeight: 0.85, color: p >= 1 ? C.lime : C.cream, whiteSpace: 'nowrap',
       transform: `scale(${p >= 1 ? 0.9 + 0.1 * land : 1})`, transformOrigin: 'left center', textShadow: '0 20px 60px #000c'}}>{s.prefix ?? ''}{v}</div>
     <Headline lines={s.lines} local={local - 2 * B} top={1000} size={104} accent={-1}/>

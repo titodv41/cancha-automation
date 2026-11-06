@@ -1,0 +1,299 @@
+{
+ "id": "story-find-your-club-adults-v2-en",
+ "composition": "StoryReel2",
+ "lang": "en",
+ "revisionOf": "story-find-your-club-adults-en",
+ "approval": "Revision per owner's review brief (Nov 6). Earlier cut preserved.",
+ "publishBlockedUntil": "Owner approves; bio link points to the live directory (https://wearecancha.framer.website/clubs).",
+ "props": {
+  "scenes": [
+   {
+    "kind": "hero",
+    "beats": 5,
+    "media": {
+     "src": "generated/story/night-player.jpg",
+     "x": 0.4
+    },
+    "headline": [
+     "Played back home?",
+     "Find your team here."
+    ],
+    "accent": 1,
+    "support": "Adults · Miami-Dade + Broward"
+   },
+   {
+    "kind": "map",
+    "beats": 8,
+    "headline": "Adult teams\nnear you.",
+    "pins": [
+     {
+      "badge": "generated/story/crests/117-fc-academy.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/asa-itss.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/boca-jrs-miami-fc.jpg",
+      "lat": 26.248,
+      "lng": -80.2112
+     },
+     {
+      "badge": "generated/story/crests/futsoc.jpg",
+      "lat": 26.1004,
+      "lng": -80.4021
+     },
+     {
+      "badge": "generated/story/crests/florida-island-united.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/fort-training-academy.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/hodler-fc.jpg",
+      "lat": 25.816,
+      "lng": -80.3576
+     },
+     {
+      "badge": "generated/story/crests/hodler-miami-fc.jpg",
+      "lat": 25.816,
+      "lng": -80.3576
+     },
+     {
+      "badge": "generated/story/crests/homestead-fc.jpg",
+      "lat": 25.4659,
+      "lng": -80.446
+     },
+     {
+      "badge": "generated/story/crests/miami-sporting-fc.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/milan-de-miami-fc.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/miramar-supreme-fc.jpg",
+      "lat": 25.9725,
+      "lng": -80.3386
+     },
+     {
+      "badge": "generated/story/crests/river-miami-fc.jpg",
+      "lat": 26.031,
+      "lng": -80.1646
+     },
+     {
+      "badge": "generated/story/crests/united-stars.jpg",
+      "lat": 25.7752,
+      "lng": -80.2086
+     },
+     {
+      "badge": "generated/story/crests/weston-fc.png",
+      "lat": 26.1004,
+      "lng": -80.4021
+     },
+     {
+      "badge": "generated/story/crests/weston-fc-ii.jpg",
+      "lat": 26.1004,
+      "lng": -80.4021
+     }
+    ],
+    "cards": [
+     {
+      "badge": "generated/story/crests/hodler-fc.jpg",
+      "lat": 25.816,
+      "lng": -80.3576,
+      "name": "Hodler FC",
+      "city": "Doral, Miami-Dade",
+      "level": "UPSL Division 1 · 2026 Fall",
+      "status": "Places: contact the club"
+     },
+     {
+      "badge": "generated/story/crests/boca-jrs-miami-fc.jpg",
+      "lat": 26.248,
+      "lng": -80.2112,
+      "name": "Boca Jrs Miami FC",
+      "city": "Margate, Broward",
+      "level": "UPSL Division 1 · 2026 Fall",
+      "status": "Places: contact the club"
+     },
+     {
+      "badge": "generated/story/crests/river-miami-fc.jpg",
+      "lat": 26.031,
+      "lng": -80.1646,
+      "name": "River Miami FC",
+      "city": "Hollywood, Broward",
+      "level": "UPSL Division 1 · 2026 Fall",
+      "status": "Places: contact the club"
+     }
+    ]
+   },
+   {
+    "kind": "screen",
+    "beats": 6,
+    "img": "generated/story/site/list.png",
+    "imgW": 1170,
+    "imgH": 8634,
+    "label": "Live: the Cancha directory",
+    "scroll": [
+     1150,
+     2300
+    ],
+    "tap": {
+     "x": 585,
+     "y": 3080,
+     "at": 70
+    }
+   },
+   {
+    "kind": "screen",
+    "beats": 7,
+    "img": "generated/story/site/profile.png",
+    "imgW": 1170,
+    "imgH": 4896,
+    "label": "Live: the Cancha directory",
+    "scroll": [
+     0,
+     600
+    ],
+    "ring": {
+     "x": 54,
+     "y": 1080,
+     "w": 1062,
+     "h": 720,
+     "at": 40
+    },
+    "caption": "Level, city, how to reach them."
+   },
+   {
+    "kind": "cta",
+    "beats": 6,
+    "action": "Find adult teams.",
+    "line": "Link in bio · @wearecancha",
+    "logoBeats": 2
+   }
+  ]
+ },
+ "claims": [
+  {
+   "id": "Hodler FC",
+   "displayText": "Hodler FC: Doral, Miami-Dade, UPSL Division 1 · 2026 Fall; places not confirmed",
+   "sourceUrl": "https://wearecancha.framer.website/clubs/hodler-fc",
+   "checkedAt": "2026-11-06",
+   "definition": "Directory profile (sources checked Oct 20, 2026). Listing is not a partnership or an available roster spot."
+  },
+  {
+   "id": "Boca Jrs Miami FC",
+   "displayText": "Boca Jrs Miami FC: Margate, Broward, UPSL Division 1 · 2026 Fall; places not confirmed",
+   "sourceUrl": "https://wearecancha.framer.website/clubs/boca-jrs-miami-fc",
+   "checkedAt": "2026-11-06",
+   "definition": "Directory profile (sources checked Oct 20, 2026). Listing is not a partnership or an available roster spot."
+  },
+  {
+   "id": "River Miami FC",
+   "displayText": "River Miami FC: Hollywood, Broward, UPSL Division 1 · 2026 Fall; places not confirmed",
+   "sourceUrl": "https://wearecancha.framer.website/clubs/river-miami-fc",
+   "checkedAt": "2026-11-06",
+   "definition": "Directory profile (sources checked Oct 20, 2026). Listing is not a partnership or an available roster spot."
+  },
+  {
+   "id": "screens",
+   "displayText": "Screens are the live Cancha website directory (search near Doral → Hodler FC profile)",
+   "sourceUrl": "https://wearecancha.framer.website/clubs?near=Doral",
+   "checkedAt": "2026-11-06"
+  }
+ ],
+ "facts": [
+  {
+   "claim": "Hodler FC, Boca Jrs Miami FC and River Miami FC are listed on Cancha as UPSL Division 1 2026 Fall adult teams",
+   "sources": [
+    "https://wearecancha.framer.website/clubs/hodler-fc",
+    "https://wearecancha.framer.website/clubs/boca-jrs-miami-fc",
+    "https://wearecancha.framer.website/clubs/river-miami-fc"
+   ]
+  }
+ ],
+ "permissionsToAsk": [
+  {
+   "what": "Night player photo",
+   "from": "Pexels (free licence)",
+   "page": "https://www.pexels.com/photo/men-playing-football-at-night-11221497/"
+  }
+ ],
+ "sound": {
+  "music": {
+   "id": "mixkit-51",
+   "tempo": 120,
+   "start": 16.13,
+   "gain": 0.9,
+   "fadeOut": 0.8
+  },
+  "cues": [
+   [
+    "slam",
+    0.067,
+    0.4
+   ],
+   [
+    "whoosh",
+    2.4,
+    0.6
+   ],
+   [
+    "pop",
+    3.5,
+    0.5
+   ],
+   [
+    "pop",
+    4.5,
+    0.5
+   ],
+   [
+    "pop",
+    5.5,
+    0.5
+   ],
+   [
+    "whoosh",
+    6.4,
+    0.6
+   ],
+   [
+    "tap",
+    8.833,
+    0.8
+   ],
+   [
+    "whoosh",
+    9.4,
+    0.6
+   ],
+   [
+    "whoosh",
+    12.9,
+    0.6
+   ],
+   [
+    "cta",
+    13.3,
+    0.8
+   ]
+  ]
+ },
+ "seconds": 16.0,
+ "caption": "Played back home? Find your team here. ⚽\n\nAdult teams across Miami-Dade and Broward are on Cancha: search your area, open a team, see its level and how to reach them. A listing isn't a guaranteed spot; contact the club for current places.\n\nFind adult teams, link in bio.\n#miamisoccer #browardsoccer #adultsoccer #upsl",
+ "stills": [
+  11,
+  12.5
+ ]
+}
