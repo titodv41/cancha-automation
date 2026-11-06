@@ -34,6 +34,7 @@ export function Roll({a, b, p, h}: {a: number; b: number; p: number; h: number})
 function Tag({children, bg = C.cream, fg = C.night, style}: {children: React.ReactNode; bg?: string; fg?: string; style?: React.CSSProperties}) {
   return <div style={{position: 'absolute', background: bg, color: fg, fontFamily: U, fontSize: 34, letterSpacing: 3, textTransform: 'uppercase', padding: '10px 22px', borderRadius: 6, ...style}}>{children}</div>;
 }
+// (Concept label removed from this video by the owner, Nov 6.)
 const ConceptTag = () => <Tag bg="#ffffff1f" fg={C.cream} style={{top: 64, left: 60, fontSize: 28, letterSpacing: 2, border: '1px solid #ffffff40'}}>Concepto de la app</Tag>;
 
 // 1 · Hook: oversized overlapping words that slam in.
@@ -148,6 +149,17 @@ function GridTransition({f}: {f: number}) {
   </AbsoluteFill>;
 }
 
+// 6b · Brand beat (owner, Nov 6: the green grid felt weird): the real logo lands on forest, then the app takes over.
+function LogoBeat({f}: {f: number}) {
+  const local = f - T.grid, p = ease(local, 0, 9, back), out = interpolate(local, [2 * B - 5, 2 * B], [0, 1], {...cl, easing: Easing.in(Easing.cubic)});
+  return <AbsoluteFill style={{background: C.forest, alignItems: 'center', justifyContent: 'center'}}>
+    <MovingGrid f={f} opacity={0.07}/>
+    <Img src={staticFile('generated/promo/cancha-trim.png')} style={{width: 860, filter: `brightness(0) invert(1)${p < 1 ? ` blur(${(1 - Math.min(1, p)) * 14}px)` : ''}${out > 0 ? ` blur(${out * 12}px)` : ''}`,
+      transform: `scale(${(0.7 + 0.3 * p) * (1 + out * 0.6)})`, opacity: Math.min(1, p) * (1 - out)}}/>
+    <div style={{position: 'absolute', top: 1180, fontFamily: D, fontStyle: 'italic', fontSize: 92, color: C.lime, textTransform: 'uppercase', opacity: ease(local, 6, 14) * (1 - out)}}>Encontrá tu partido</div>
+  </AbsoluteFill>;
+}
+
 // 7 · Plei-style match detail rebuilt in Cancha colours, one oversized join button.
 function Phone({f}: {f: number}) {
   const rise = ease(f, T.phone, T.phone + 14), roll = ease(f, T.tap, T.tap + 8);
@@ -226,8 +238,8 @@ export const PromoFaltaUnoV22 = () => {
     {f >= T.squad && f < T.chat && <Whip f={f} from={T.squad} to={T.chat}><Squad f={f} dim={0} counter={f < T.status}/>{f >= T.status && <StatusCard f={f} at={T.status} full={0}/>}</Whip>}
     {f >= T.chat && f < T.off && <><Squad f={f} dim={0.85} counter={false}/><AbsoluteFill style={{background: '#000a'}}/><Whip f={f} from={T.chat} to={T.total}><Notifications f={f}/></Whip></>}
     {f >= T.off && f < T.grid && <AbsoluteFill style={{transform: `translate(${stampShake}px, ${-stampShake}px)`}}><Squad f={f} dim={dimOff} counter={false}/>{flicker && <AbsoluteFill style={{background: '#000'}}/>}{f >= T.stamp && <Tag bg={C.orange} fg={C.cream} style={{left: 190, top: 820, fontSize: 96, letterSpacing: 8, transform: `rotate(-5deg) scale(${stampIn})`}}>Suspendido</Tag>}</AbsoluteFill>}
-    {f >= T.grid && f < T.phone && <GridTransition f={f}/>}
-    {f >= T.phone && f < T.win && <><Phone f={f}/><ConceptTag/>{f >= T.fill && <StatusCard f={f} at={T.fill - 10} full={fullFill}/>}</>}
+    {f >= T.grid && f < T.phone && <LogoBeat f={f}/>}
+    {f >= T.phone && f < T.win && <><Phone f={f}/>{f >= T.fill && <StatusCard f={f} at={T.fill - 10} full={fullFill}/>}</>}
     {f >= T.win && f < T.end && <Win f={f}/>}
     {f >= T.end && <Whip f={f} from={T.end} to={T.total + 99}><End f={f}/></Whip>}
     <Grain/>

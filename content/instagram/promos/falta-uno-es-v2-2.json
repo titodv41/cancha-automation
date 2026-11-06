@@ -23,29 +23,11 @@
  },
  "composition": "PromoFaltaUnoV22",
  "stills": [
-  0.1,
-  0.3,
-  1.0,
-  1.9,
-  2.2,
-  2.6,
-  3.3,
-  4.1,
-  5.6,
-  5.9,
-  7.5,
-  8.65,
-  9.05,
   9.4,
-  10.3,
-  11.1,
-  11.4,
-  12.9,
-  13.6,
-  14.6,
-  15.2,
-  16.6,
-  17.6
+  10.15,
+  10.5,
+  11.3,
+  13.6
  ],
  "publishBlockedUntil": "Owner approves v2.1 visuals and the website waitlist is live.",
  "sound": {
@@ -205,6 +187,11 @@
    [
     "cta",
     17.233
+   ],
+   [
+    "slam",
+    10.0,
+    0.9
    ]
   ]
  }
