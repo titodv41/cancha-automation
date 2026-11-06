@@ -32,3 +32,6 @@ test('pending-owner videos can be downloaded for drafts but never post', async (
 test('the posting gate names pending-owner footage explicitly', () => {
   assert.match(readFileSync(new URL('../server/short-reels.mjs', import.meta.url), 'utf8'), /f\.license==='pending-owner'\)\)return false/);
 });
+test('creator-cut drafts keep pending-owner on the footage so the posting gate sees it', () => {
+  assert.match(readFileSync(new URL('../video/render-creator-cut.mjs', import.meta.url), 'utf8'), /v\.license==='pending-owner'\?'pending-owner'/);
+});

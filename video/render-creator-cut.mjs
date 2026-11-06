@@ -48,6 +48,6 @@ try{
   await masterVideo(output,{audioFile:audio,durationSeconds,limitPeaks:true,targetLufs:-14});
   const checks=await auditVideo(output,durationSeconds);
   await writeFile(join(out,spec.id+'.json'),JSON.stringify({id:spec.id,file:output,poster,seconds:durationSeconds,rendered:checks.passed,checks,creators,narration:timing?{voice:timing.voice,audioSha256:timing.audioSha256}:null,
-   footage:used.map(id=>{const v=cleared.find(x=>x.id===id);return{source:'youtube-cleared',id,creator:v.creator,license:v.license==='cc-by'?'CC BY 3.0 (YouTube Creative Commons)':'creator permission',page:'https://www.youtube.com/watch?v='+id}}),
+   footage:used.map(id=>{const v=cleared.find(x=>x.id===id);return{source:'youtube-cleared',id,creator:v.creator,license:v.license==='cc-by'?'CC BY 3.0 (YouTube Creative Commons)':v.license==='pending-owner'?'pending-owner':'creator permission',page:'https://www.youtube.com/watch?v='+id}}),
    videoSha256:sha(await readFile(output)),renderedAt:new Date().toISOString()},null,2));console.log(JSON.stringify({output,durationSeconds,checks}));}
 }finally{await rm(temp,{recursive:true,force:true})}
