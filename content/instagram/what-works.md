@@ -37,6 +37,13 @@ Principles we act on. They are platform guidance and common practice, not yet pr
 3. Ship one Instagram improvement and one website improvement, each verified visually.
 4. Every Monday: send the owner a short private scorecard (top post, worst post, what changes this week).
 
+## Story Reels (owner, Nov 6): what he loves
+1. Cool soccer stories: business, ownership, culture (example: Como's president and the Disney playbook). Make them now; the owner gets permissions. Each story file lists who to ask.
+2. League ladders and data graphics (Serie D → C → B → A → Champions League) are the favourite. Use that kind of animated graphic a lot: climbs, counters, maps, comparisons.
+3. No narrator on story Reels: music, sound effects and kinetic text carry them.
+4. Only high-quality pictures (no small web thumbnails), plus real clips of goals and celebrations.
+5. Borrow each club's look: its colours, its scarf and crowd aesthetic. Cancha logo stays on every scene and the end card.
+
 ## Audience and voice (owner, Nov 2)
 - **Who:** South Florida first. Parents at clubs, coaches, players. The goal is a soccer community first; club partnerships and paid features come later.
 - **Mix:** besides club moments, post soccer culture people want to talk about: attendance and fan culture, how the pros play (e.g. why Messi walks so much), lower-league and grassroots stories from around the world. It shows we understand the game, the clubs and the people around them.
