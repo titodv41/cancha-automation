@@ -390,13 +390,14 @@
  ],
  "approved": {
   "on": "2026-11-06",
-  "by": "owner in chat (\"those are approved\")",
-  "video": "content/instagram/stories/approved/story-find-your-club-adults-v2-en.mp4",
-  "videoSha256": "1f0575b1bc8227f9c22bbef5cb3881e069cc4b5e03fadc5c33079eeeeb52b7ae",
-  "poster": "content/instagram/stories/approved/story-find-your-club-adults-v2-en.jpg",
-  "posterSha256": "a7ef87a9e04903fda903d08f5e504da2c9afcf8770440a87bcf40c0981197854",
-  "renderedAt": "2026-11-06T07:09:04Z",
-  "seconds": 20
+  "by": "owner in chat, Nov 6 (\"those are approved\"), with one fix: the app feed screen shows people posting (labelled examples), not a club photo",
+  "video": "content/instagram/stories/approved/story-find-your-club-adults-v2-1-en.mp4",
+  "videoSha256": "32d7d7378cc86aae12025e914a0da558ea19c8712277872904636289d7f5a323",
+  "poster": "content/instagram/stories/approved/story-find-your-club-adults-v2-1-en.jpg",
+  "posterSha256": "dd2554d6e4a60a5d39572c5f4f3d72c5cd3a81f864b40832be315b5313f49b08",
+  "renderedAt": "2026-11-06T15:42:48Z",
+  "seconds": 20,
+  "revision": "v2.1: only the feed screen (15-17 s) changed; every other second matches the v2 render the owner saw"
  },
  "postingNote": "Caption says \"link in bio\": the Instagram bio must point to https://wearecancha.framer.website/ (home has the waitlist and the directory)."
 }
