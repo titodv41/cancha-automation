@@ -6,6 +6,7 @@ import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Img, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, Easing} from 'remotion';
 import {Grain, MovingGrid} from './PromoFaltaUno';
 import {B, back, ease, Whip} from './PromoFaltaUnoV22';
+import COUNTIES from './data/florida-counties.json'; // US Census 2023 cartographic boundaries (public domain), simplified
 
 const BASE = {forest: '#103f32', night: '#07130f', cream: '#f5f3e9', lime: '#d7ef86', orange: '#f55b32', mint: '#b9c8bf'};
 // Club look (owner, Nov 6): a story can set its accent (lime by default) and the ink drawn on that accent.
@@ -16,7 +17,7 @@ const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as cons
 type Photo = {src: string; x?: number; y?: number; zoom?: number; dir?: 1 | -1};
 export type Scene =
   | {kind: 'photo'; beats: number; photo: Photo; kicker?: string; lines: string[]; accent?: number; place?: 'top' | 'bottom'; badge?: string}
-  | {kind: 'pins'; beats: number; title: string; pins: {badge: string; lat: number; lng: number; name?: string}[]; cities: {name: string; lat: number; lng: number}[]}
+  | {kind: 'pins'; beats: number; title: string; sub?: string; pins: {badge: string; lat: number; lng: number; name?: string}[]; cities: {name: string; lat: number; lng: number}[]; highlight?: string[]}
   | {kind: 'ladder'; beats: number; title: string; steps: {label: string; year: string}[]; photo?: Photo}
   | {kind: 'compare'; beats: number; title: string; left: {head: string; lines: string[]}; right: {head: string; lines: string[]}; photo?: Photo}
   | {kind: 'stat'; beats: number; from: number; to: number; prefix?: string; lines: string[]; photo?: Photo}
@@ -48,8 +49,9 @@ function PhotoScene({s, local, dur}: {s: Extract<Scene, {kind: 'photo'}>; local:
   const k = ease(local, 0, 8, back), h = s.lines.length * 120;
   return <AbsoluteFill>
     <Bg photo={s.photo} local={local} dur={dur}/>
-    {s.kicker && <div style={{position: 'absolute', left: 60, top: s.place === 'top' ? 200 : 1460 - h, background: C.lime, color: C.forest, fontFamily: U, fontSize: 36,
-      letterSpacing: 3, textTransform: 'uppercase', padding: '10px 20px', borderRadius: 8, transform: `scale(${k})`, transformOrigin: 'left center'}}>{s.kicker}</div>}
+    {s.kicker && <div style={{position: 'absolute', left: 60, top: s.place === 'top' ? 200 : 1450 - h, display: 'flex', alignItems: 'center', gap: 18, opacity: Math.min(1, k),
+      transform: `translateX(${(1 - Math.min(1, k)) * -60}px)`}}><div style={{width: 56, height: 8, borderRadius: 4, background: C.lime}}/>
+      <span style={{fontFamily: D, fontStyle: 'italic', fontSize: 58, color: C.lime, textTransform: 'uppercase', letterSpacing: 1, textShadow: '0 6px 24px #000c'}}>{s.kicker}</span></div>}
     <Headline lines={s.lines} local={local} accent={s.accent} top={s.place === 'top' ? 290 : 1540 - h}/>
     {s.badge && <Badge src={s.badge} size={170} style={{position: 'absolute', right: 60, top: 60, transform: `scale(${k}) rotate(${(1 - Math.min(1, k)) * -20}deg)`}}/>}
   </AbsoluteFill>;
@@ -68,11 +70,11 @@ function Ladder({s, local, dur}: {s: Extract<Scene, {kind: 'ladder'}>; local: nu
     <MovingGrid f={local} opacity={0.06}/>
     <div style={{position: 'absolute', left: 60, right: 60, top: 170, fontFamily: D, fontStyle: 'italic', fontSize: 120, lineHeight: 0.9, color: C.cream, textTransform: 'uppercase', opacity: ease(local, 0, 8), whiteSpace: 'pre-line'}}>{s.title}</div>
     {s.steps.map((st, i) => {
-      const on = ease(local, 4 + i * 3, 12 + i * 3, back), reached = i <= at, top = base - (i + 1) * rowH, w = 560 + i * 90;
+      const on = ease(local, 4 + i * 3, 12 + i * 3, back), reached = i <= at, top = base - (i + 1) * rowH, w = 700 + i * 60;
       return <div key={i} style={{position: 'absolute', left: 60, top, width: w, height: rowH - 22, borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 34px',
         background: reached ? (i === at ? C.lime : '#d7ef8633') : '#ffffff12', border: `3px solid ${reached ? C.lime : '#ffffff30'}`, transform: `translateX(${(1 - on) * -400}px)`, opacity: Math.min(1, on)}}>
         <span style={{fontFamily: D, fontStyle: 'italic', fontSize: 78, color: i === at ? C.forest : C.cream, textTransform: 'uppercase'}}>{st.label}</span>
-        <span style={{fontFamily: U, fontSize: 44, color: i === at ? C.forest : C.mint}}>{st.year}</span></div>;
+        <span style={{fontFamily: D, fontStyle: 'italic', fontSize: 56, color: i === at ? C.forest : C.mint, textTransform: 'uppercase'}}>{st.year}</span></div>;
     })}
   </AbsoluteFill>;
 }
@@ -95,33 +97,46 @@ function Compare({s, local, dur}: {s: Extract<Scene, {kind: 'compare'}>; local: 
   </AbsoluteFill>;
 }
 
-// Clubs on the map (owner, Nov 6: badges whenever we can): a stylised South Florida coast, city dots, crests pop in.
-const MAP = {lng: [-80.56, -80.02], lat: [25.40, 26.34], x: 60, y: 470, w: 960, h: 1260};
-const px = (lat: number, lng: number) => ({x: MAP.x + (lng - MAP.lng[0]) / (MAP.lng[1] - MAP.lng[0]) * MAP.w, y: MAP.y + (MAP.lat[1] - lat) / (MAP.lat[1] - MAP.lat[0]) * MAP.h});
-const COAST: [number, number][] = [[26.34, -80.07], [26.14, -80.10], [25.96, -80.115], [25.80, -80.125], [25.70, -80.16], [25.60, -80.30], [25.48, -80.33], [25.40, -80.36]];
+// Clubs on the real map (owner, Nov 6: "use the real map, make people say wow"). Real Florida county shapes; the camera
+// starts on the whole state, flies into South Florida, the highlighted counties light up, then each crest lands at its city.
+type Box = {lng: [number, number]; lat: [number, number]};
+const FLORIDA: Box = {lng: [-87.7, -79.9], lat: [24.4, 31.05]}, SOFLA: Box = {lng: [-80.62, -79.98], lat: [25.38, 26.36]};
+const VIEW = {x: 40, y: 440, w: 1000, h: 1340};
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+function projector(box: Box) {
+  const k = Math.cos(((box.lat[0] + box.lat[1]) / 2) * Math.PI / 180), dx = (box.lng[1] - box.lng[0]) * k, dy = box.lat[1] - box.lat[0];
+  const sc = Math.min(VIEW.w / dx, VIEW.h / dy), cx = (box.lng[0] + box.lng[1]) / 2, cy = (box.lat[0] + box.lat[1]) / 2;
+  return (lng: number, lat: number) => ({x: VIEW.x + VIEW.w / 2 + (lng - cx) * k * sc, y: VIEW.y + VIEW.h / 2 - (lat - cy) * sc});
+}
 function Pins({s, local, dur}: {s: Extract<Scene, {kind: 'pins'}>; local: number; dur: number}) {
-  const ocean = 'M ' + COAST.map(([la, ln]) => { const p = px(la, ln); return `${p.x} ${p.y}`; }).join(' L ') + ` L ${MAP.x + MAP.w + 60} ${MAP.y + MAP.h} L ${MAP.x + MAP.w + 60} ${MAP.y - 60} Z`;
-  const seen: Record<string, number> = {}, cam = interpolate(local, [0, dur], [1.04, 1], cl);
-  return <AbsoluteFill style={{background: C.night}}>
-    <MovingGrid f={local} opacity={0.07}/>
-    <AbsoluteFill style={{transform: `scale(${cam})`}}>
-      <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
-        <path d={ocean} fill="#0d2a3a" opacity={ease(local, 0, 10)}/>
-        <path d={'M ' + COAST.map(([la, ln]) => { const p = px(la, ln); return `${p.x} ${p.y}`; }).join(' L ')} stroke={C.lime} strokeWidth={4} fill="none" strokeDasharray={2400} strokeDashoffset={2400 * (1 - ease(local, 0, 20))}/>
-      </svg>
-      {s.cities.map((c, i) => { const p = px(c.lat, c.lng), o = ease(local, 6 + i * 2, 14 + i * 2);
-        return <div key={c.name} style={{position: 'absolute', left: p.x - 9, top: p.y - 9, opacity: o}}>
-          <div style={{width: 18, height: 18, borderRadius: 9, background: C.cream}}/>
-          <div style={{position: 'absolute', left: -150, width: 318, top: 24, textAlign: 'center', fontFamily: U, fontSize: 30, color: C.mint}}>{c.name}</div></div>; })}
-      {s.pins.map((pin, i) => {
-        const k = `${pin.lat},${pin.lng}`, n = seen[k] = (seen[k] ?? -1) + 1, total = s.pins.filter(q => q.lat === pin.lat && q.lng === pin.lng).length;
-        const ang = -Math.PI / 2 + n * 2 * Math.PI / total, rad = total > 1 ? 40 + total * 16 : 0;
-        const p = px(pin.lat, pin.lng), x = p.x + Math.cos(ang) * rad, y = p.y - (total > 1 ? 0 : 80) + Math.sin(ang) * rad, on = ease(local, B + i * 3, B + 8 + i * 3, back);
-        return <Badge key={i} src={pin.badge} size={112} style={{position: 'absolute', left: x - 56, top: y - 56, transform: `scale(${on})`, opacity: Math.min(1, on * 2)}}/>;
-      })}
-    </AbsoluteFill>
-    <div style={{position: 'absolute', left: 60, right: 60, top: 170, fontFamily: D, fontStyle: 'italic', fontSize: 116, lineHeight: 0.9, color: C.cream, textTransform: 'uppercase',
-      opacity: ease(local, 0, 8), transform: `translateY(${(1 - ease(local, 0, 10)) * 60}px)`, whiteSpace: 'pre-line'}}>{s.title}</div>
+  const fly = ease(local, 1.5 * B, 4.5 * B, Easing.inOut(Easing.cubic)), lit = ease(local, 4.5 * B, 5.5 * B);
+  const box: Box = {lng: [lerp(FLORIDA.lng[0], SOFLA.lng[0], fly), lerp(FLORIDA.lng[1], SOFLA.lng[1], fly)], lat: [lerp(FLORIDA.lat[0], SOFLA.lat[0], fly), lerp(FLORIDA.lat[1], SOFLA.lat[1], fly)]};
+  const P = projector(box), hi = new Set(s.highlight ?? ['12086', '12011']), draw = ease(local, 0, 1.5 * B);
+  const path = (rings: number[][][]) => rings.map(r => 'M' + r.map(([x, y]) => { const q = P(x, y); return `${q.x.toFixed(1)} ${q.y.toFixed(1)}`; }).join('L') + 'Z').join('');
+  const counties = COUNTIES as {fips: string; name: string; rings: number[][][]}[];
+  const seen: Record<string, number> = {};
+  return <AbsoluteFill style={{background: 'radial-gradient(ellipse at 60% 55%, #0e2b3b 0%, #07131c 70%)'}}>
+    <MovingGrid f={local} opacity={0.05}/>
+    <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
+      <defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <g opacity={draw}>{counties.map(c => <path key={c.fips} d={path(c.rings)} fill={hi.has(c.fips) ? `rgba(215,239,134,${0.08 + 0.22 * lit})` : '#12302a'} stroke={C.lime} strokeOpacity={hi.has(c.fips) ? 0.35 + 0.65 * lit : 0.22} strokeWidth={hi.has(c.fips) ? 2 + 2 * lit : 1.2}/>)}</g>
+      <g filter="url(#glow)" opacity={draw * (1 - 0.5 * fly)}>{counties.map(c => <path key={c.fips} d={path(c.rings)} fill="none" stroke={C.lime} strokeOpacity={0.5} strokeWidth={2.5}/>)}</g>
+    </svg>
+    {fly < 0.4 && <div style={{position: 'absolute', left: 0, right: 0, top: 1180, textAlign: 'center', fontFamily: D, fontStyle: 'italic', fontSize: 120, color: C.cream, opacity: draw * (1 - fly / 0.4), letterSpacing: 6}}>FLORIDA</div>}
+    {[['Miami-Dade', -80.55, 25.62], ['Broward', -80.52, 26.24]].map(([n, ln, la]) => { const q = P(ln as number, la as number);
+      return <div key={n as string} style={{position: 'absolute', left: q.x, top: q.y, fontFamily: D, fontStyle: 'italic', fontSize: 54, color: C.lime, textTransform: 'uppercase', opacity: lit, letterSpacing: 2}}>{n}</div>; })}
+    {s.cities.map((c, i) => { const q = P(c.lng, c.lat), o = ease(local, 5 * B + i * 2, 5 * B + 8 + i * 2);
+      return <div key={c.name} style={{position: 'absolute', left: q.x - 8, top: q.y - 8, opacity: o}}>
+        <div style={{width: 16, height: 16, borderRadius: 8, background: C.cream, boxShadow: `0 0 0 ${6 + 6 * Math.sin(local / 5)}px ${C.lime}33`}}/></div>; })}
+    {s.pins.map((pin, i) => {
+      const key = `${pin.lat},${pin.lng}`, n = seen[key] = (seen[key] ?? -1) + 1, total = s.pins.filter(q => q.lat === pin.lat && q.lng === pin.lng).length;
+      const ang = -Math.PI / 2 + n * 2 * Math.PI / total, rad = total > 1 ? 40 + total * 16 : 0, q = P(pin.lng, pin.lat);
+      const x = q.x + Math.cos(ang) * rad, y = q.y - (total > 1 ? 0 : 76) + Math.sin(ang) * rad, on = ease(local, 6 * B + i * 2, 6 * B + 8 + i * 2, back);
+      return <Badge key={i} src={pin.badge} size={104} style={{position: 'absolute', left: x - 52, top: y - 52, transform: `scale(${on})`, opacity: Math.min(1, on * 2)}}/>;
+    })}
+    <div style={{position: 'absolute', left: 60, right: 60, top: 170, fontFamily: D, fontStyle: 'italic', fontSize: 112, lineHeight: 0.9, color: C.cream, textTransform: 'uppercase',
+      opacity: ease(local, 4 * B, 5 * B), whiteSpace: 'pre-line'}}>{s.title}</div>
+    {s.sub && <div style={{position: 'absolute', left: 60, right: 60, top: 1820 - 60, fontFamily: D, fontStyle: 'italic', fontSize: 64, color: C.lime, textTransform: 'uppercase', opacity: ease(local, 9 * B, 10 * B)}}>{s.sub}</div>}
   </AbsoluteFill>;
 }
 
