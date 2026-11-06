@@ -8,6 +8,7 @@ export function validShortReel(row,{now=Date.now()}={}){
  if(e.kind!=='short-reel'||row.creativeKind!=='short-reel'||!row.recipeId||!validReel(row)||!row.reel)return false;
  if(row.reel.durationSeconds<5||row.reel.durationSeconds>(row.recipeKind==='creator'?90:20))return false;
  if(footage?.some?.(f=>f.source==='youtube-cleared')&&row.recipeKind!=='creator')return false;
+ if(footage?.some?.(f=>f.license==='pending-owner'))return false; // drafts only until the creator says yes
  if(!Array.isArray(footage)||!footage.length||footage.some(f=>!sources.has(f.source)||!f.id||!f.license||!/^https:\/\//.test(f.page||'')))return false;
  if(e.videoChecksum!==row.reel.assetChecksum)return false;
  if(row.recipeKind==='data'){const checked=Date.parse(row.factsCheckedOn);if(!Number.isFinite(checked)||checked>now||(now-checked)/86400000>7)return false;}

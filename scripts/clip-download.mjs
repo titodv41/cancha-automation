@@ -2,7 +2,9 @@ import {readFile,writeFile} from 'node:fs/promises';import {pathToFileURL} from 
 // Cleared-video downloader guard (owner, Oct 29): only videos recorded in config/clip-permissions.json are ever
 // downloaded. Each entry needs a YouTube id, a creator, a credit line and a dated record of how it was cleared
 // (Creative Commons, or the creator's OK relayed by the owner). Prints one URL per line for yt-dlp.
-const ID=/^[A-Za-z0-9_-]{11}$/,LICENSES=new Set(['cc-by','creator-ok']);
+// 'pending-owner' (owner, Nov 6): download and build drafts now; the owner asks the creator. Posting refuses such footage
+// (server/short-reels.mjs) until the entry becomes 'creator-ok' with the date and how the creator said yes.
+const ID=/^[A-Za-z0-9_-]{11}$/,LICENSES=new Set(['cc-by','creator-ok','pending-owner']);
 export function clearedVideos(config){
  return (config?.videos||[]).filter(v=>ID.test(v?.id||'')&&LICENSES.has(v.license)&&v.creator&&v.credit&&/^\d{4}-\d{2}-\d{2}$/.test(v.permission?.recordedOn||'')&&v.permission?.how);
 }
