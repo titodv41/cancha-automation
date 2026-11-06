@@ -1,7 +1,7 @@
 // Promo 2 "Nuevo en Miami" (owner, Nov 5): the broader Cancha story, find your team and your people.
 // Same identity and motion system as "Falta uno" v2.2 (beat grid, expo eases, whips, blur on fast moves).
 // Story: new in town, no team -> 3-tap quiz -> real South Florida club crests near you -> a feed of real people
-// -> ENCONTRÁ TU EQUIPO -> waitlist. Product screens are concepts and carry one quiet label.
+// -> ENCONTRÁ TU EQUIPO -> waitlist. No concept label on screen (owner, Nov 6).
 // Photos come from props (spec.props.photos, files under public/generated/promo/photos), crests from props too.
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Img, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, Easing} from 'remotion';
@@ -48,7 +48,6 @@ function Quiz({f}: {f: number}) {
   const tapAt = Math.round(1.5 * B), picked = sLocal >= tapAt;
   return <AbsoluteFill style={{background: C.forest}}>
     <MovingGrid f={f} opacity={0.07}/>
-    <Concept/>
     <div style={{position: 'absolute', left: 60, right: 60, top: 170, display: 'flex', gap: 12}}>
       {QUIZ.map((_, i) => <div key={i} style={{flex: 1, height: 16, borderRadius: 8, background: '#ffffff26', overflow: 'hidden'}}>
         <div style={{height: '100%', width: `${(i < step ? 1 : i === step ? ease(sLocal, tapAt, tapAt + 8) : 0) * 100}%`, background: C.lime}}/></div>)}
@@ -118,7 +117,6 @@ function Feed({f, photos, posts}: {f: number; photos: string[]; posts: Props['po
       })}
     </div>
     <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 170, background: 'linear-gradient(180deg, #0d1210 75%, #0d121000)'}}/>
-    <Concept/>
   </AbsoluteFill>;
 }
 
