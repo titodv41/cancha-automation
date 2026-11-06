@@ -46,6 +46,7 @@ Principles we act on. They are platform guidance and common practice, not yet pr
 6. Owner approved the Como and Weston drafts (Nov 6). More moving graphics (ladders, counters, maps with crest pins). Club badge whenever we can.
 7. Focus on adults (the app is adults-only): "Meet the club / Find your club" for clubs with adult teams (UPSL and similar), more clubs around Miami-Dade and Broward.
 8. Next format to try: the app itself, a feed of people at your level and pickup near you.
+9. Explain the real business, with numbers and how it works (owner, Nov 6: the Disney comparison was "weird" and said nothing new). Each beat answers a question a fan would ask: where the club came from, why the owners bought it, how a key person's role worked (Fàbregas: player → shareholder → coach), money in vs money earned, what's next. One explaining graphic per beat: flow chart, ladder, bars, counter. Source every number in the caption.
 
 ## Audience and voice (owner, Nov 2)
 - **Who:** South Florida first. Parents at clubs, coaches, players. The goal is a soccer community first; club partnerships and paid features come later.
