@@ -15,7 +15,7 @@ let C = BASE;
 const D = 'CanchaDisplay, sans-serif', U = 'CanchaUI, sans-serif';
 const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 export const SAFE = {left: 72, right: 900, top: 288, bottom: 1248};
-const HEAD = SAFE.top + 92; // top headlines start below the wordmark
+const HEAD = SAFE.top + 86; // top headlines start below the wordmark
 const W = SAFE.right - SAFE.left;
 
 type Media = {src: string; video?: boolean; start?: number; x?: number; y?: number};
@@ -40,29 +40,32 @@ function Media({m, local, from, scrim = 0.55}: {m: Media; local: number; from: n
     <AbsoluteFill style={{background: `linear-gradient(180deg, rgba(5,10,12,${scrim * 0.35}) 0%, rgba(5,10,12,${scrim * 0.2}) 25%, rgba(5,10,12,${scrim}) 55%, rgba(5,10,12,${scrim * 0.9}) 80%, rgba(5,10,12,${scrim * 0.5}) 100%)`}}/>
   </AbsoluteFill>;
 }
-const Headline = ({lines, local, accent = -1, top, size = 92, at = 2}: {lines: string[]; local: number; accent?: number; top: number; size?: number; at?: number}) =>
-  <div style={{position: 'absolute', left: SAFE.left, width: W, top}}>
-    {lines.map((l, i) => { const p = enter(local, at + i * 4); return <div key={i} style={{fontFamily: D, fontStyle: 'italic', fontSize: size, lineHeight: 0.98, textTransform: 'uppercase',
-      color: i === accent ? C.accent : C.cream, opacity: p, transform: `translateY(${(1 - p) * 24}px)`, textShadow: '0 6px 30px #000a'}}>{l}</div>; })}
+export const TITLE = 120, TITLE_LH = 0.9; // v1 title scale
+const Headline = ({lines, local, accent = -1, top, size = TITLE, at = 4}: {lines: string[]; local: number; accent?: number; top: number; size?: number; at?: number}) =>
+  <div style={{position: 'absolute', left: SAFE.left - 12, width: W + 70, top}}>
+    {lines.map((l, i) => { const p = ease(local, at + i * 5, at + 10 + i * 5); return <div key={i} style={{fontFamily: D, fontStyle: 'italic', fontSize: size, lineHeight: TITLE_LH, textTransform: 'uppercase',
+      color: i === accent ? C.accent : C.cream, opacity: Math.min(1, p * 1.4), transform: `translateY(${(1 - p) * 70}px)`, filter: p < 0.9 ? `blur(${(1 - p) * 10}px)` : undefined, textShadow: '0 10px 40px #000c'}}>{l}</div>; })}
   </div>;
-const Support = ({text, local, top, at = 10}: {text: string; local: number; top: number; at?: number}) =>
-  <div style={{position: 'absolute', left: SAFE.left, width: W, top, fontFamily: U, fontSize: 44, lineHeight: 1.15, color: C.cream, opacity: enter(local, at), textShadow: '0 4px 20px #000c'}}>{text}</div>;
+const Support = ({text, local, top, at = 14}: {text: string; local: number; top: number; at?: number}) =>
+  <div style={{position: 'absolute', left: SAFE.left, width: W, top, fontFamily: D, fontStyle: 'italic', fontSize: 52, lineHeight: 1.04, textTransform: 'uppercase', color: C.accent, opacity: enter(local, at), transform: `translateY(${(1 - enter(local, at)) * 30}px)`, textShadow: '0 6px 24px #000c'}}>{text}</div>;
 const Kicker = ({text, local, top}: {text: string; local: number; top: number}) =>
-  <div style={{position: 'absolute', left: SAFE.left, top, display: 'flex', alignItems: 'center', gap: 16, opacity: enter(local, 0)}}>
-    <div style={{width: 48, height: 7, borderRadius: 4, background: C.accent}}/><span style={{fontFamily: U, fontSize: 38, color: C.accent, letterSpacing: 2, textTransform: 'uppercase'}}>{text}</span></div>;
+  <div style={{position: 'absolute', left: SAFE.left, top, display: 'flex', alignItems: 'center', gap: 18, opacity: enter(local, 0), transform: `translateX(${(1 - enter(local, 0)) * -40}px)`}}>
+    <div style={{width: 56, height: 8, borderRadius: 4, background: C.accent}}/><span style={{fontFamily: D, fontStyle: 'italic', fontSize: 58, color: C.accent, textTransform: 'uppercase', textShadow: '0 6px 24px #000c'}}>{text}</span></div>;
 
 function Hero({s, local, from}: {s: Extract<Scene2, {kind: 'hero'}>; local: number; from: number}) {
-  const top = 1248 - (s.support ? 130 : 0) - s.headline.length * 92;
+  // estimate wrapped lines so the title never collides with the support line
+  const rows = s.headline.reduce((a, l) => a + Math.ceil(l.length / 16), 0), supRows = s.support ? Math.ceil(s.support.length / 34) : 0;
+  const top = 1248 - supRows * 54 - (supRows ? 20 : 0) - rows * TITLE * TITLE_LH;
   return <AbsoluteFill><Media m={s.media} local={local} from={from}/>
     {s.kicker && <Kicker text={s.kicker} local={local} top={top - 70}/>}
     <Headline lines={s.headline} local={local} accent={s.accent} top={top}/>
-    {s.support && <Support text={s.support} local={local} top={1248 - 110}/>}
+    {s.support && <Support text={s.support} local={local} top={1248 - supRows * 54}/>}
   </AbsoluteFill>;
 }
 
 // Past steps dim, the current step lights, the destination is the biggest thing on screen.
 function Ladder({s, local, dur, from}: {s: Extract<Scene2, {kind: 'ladder'}>; local: number; dur: number; from: number}) {
-  const n = s.steps.length, at = Math.min(n - 1, Math.floor(interpolate(local, [B, dur - 2 * B], [0, n - 1 + 0.999], cl))), rowH = 132, base = 1248;
+  const n = s.steps.length, at = Math.min(n - 1, Math.floor(interpolate(local, [B, dur - 2 * B], [0, n - 1 + 0.999], cl))), rowH = 118, base = 1248;
   return <AbsoluteFill style={{background: C.night}}>
     {s.media && <Media m={s.media} local={local} from={from} scrim={0.85}/>}
     <Headline lines={s.headline.split('\n')} local={local} top={HEAD}/>
@@ -128,7 +131,7 @@ function MapScene({s, local, dur}: {s: Extract<Scene2, {kind: 'map'}>; local: nu
         <Img src={staticFile(card.badge)} style={{width: '82%', height: '82%', objectFit: 'contain'}}/></div>; })()}
     </AbsoluteFill>
     <Headline lines={s.headline.split('\n')} local={local} top={HEAD}/>
-    {s.support && <Support text={s.support} local={local} top={HEAD + 200} at={6}/>}
+    {s.support && <Support text={s.support} local={local} top={HEAD + 230} at={6}/>}
     {card && <div style={{position: 'absolute', left: SAFE.left, width: W, top: 1000, borderRadius: 24, background: '#0b1714f2', border: `2px solid ${C.accent}`, padding: '22px 26px', display: 'flex', gap: 22, alignItems: 'center', opacity: cp, transform: `translateY(${(1 - cp) * 24}px)`}}>
       <div style={{width: 96, height: 96, borderRadius: 20, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none'}}><Img src={staticFile(card.badge)} style={{width: '82%', height: '82%', objectFit: 'contain'}}/></div>
       <div style={{minWidth: 0}}><div style={{fontFamily: D, fontStyle: 'italic', fontSize: 60, lineHeight: 1, color: C.cream, textTransform: 'uppercase'}}>{card.name}</div>
@@ -147,8 +150,8 @@ function Screen({s, local, dur}: {s: Extract<Scene2, {kind: 'screen'}>; local: n
       {s.tap && <div style={{position: 'absolute', left: s.tap.x * scale - 60, top: s.tap.y * scale - 60, width: 120, height: 120, borderRadius: 60, background: `${C.ink}33`, border: `6px solid ${C.ink}`, opacity: tapP, transform: `scale(${0.7 + tapP * 0.3})`}}/>}
       {s.ring && <div style={{position: 'absolute', left: s.ring.x * scale - 12, top: s.ring.y * scale - 12, width: s.ring.w * scale + 24, height: s.ring.h * scale + 24, borderRadius: 26, border: `8px solid ${BASE.accent}`, boxShadow: `0 0 0 9999px rgba(7,19,15,${0.35 * ring})`, opacity: ring}}/>}
     </div>
-    {s.label && <div style={{position: 'absolute', left: SAFE.left, top: SAFE.top - 10, padding: '10px 18px', borderRadius: 12, background: '#07130fe6', fontFamily: U, fontSize: 34, color: '#f5f3e9', opacity: enter(local, 0)}}>{s.label}</div>}
-    {s.caption && <div style={{position: 'absolute', left: SAFE.left, width: W, top: 1248 - 120, padding: '18px 22px', borderRadius: 18, background: '#07130fee', fontFamily: D, fontStyle: 'italic', fontSize: 64, lineHeight: 1, color: '#f5f3e9', textTransform: 'uppercase', opacity: enter(local, 8)}}>{s.caption}</div>}
+    {s.label && <div style={{position: 'absolute', left: SAFE.left, top: 1248 - 250, padding: '10px 20px', borderRadius: 12, background: '#07130fe6', fontFamily: D, fontStyle: 'italic', fontSize: 46, textTransform: 'uppercase', color: BASE.accent, opacity: enter(local, 0)}}>{s.label}</div>}
+    {s.caption && <div style={{position: 'absolute', left: SAFE.left, width: W, top: 1248 - 120, padding: '18px 22px', borderRadius: 18, background: '#07130fee', fontFamily: D, fontStyle: 'italic', fontSize: 72, lineHeight: 1, color: '#f5f3e9', textTransform: 'uppercase', opacity: enter(local, 8)}}>{s.caption}</div>}
   </AbsoluteFill>;
 }
 
@@ -157,8 +160,8 @@ function Cta({s, local, dur, from}: {s: Extract<Scene2, {kind: 'cta'}>; local: n
   return <AbsoluteFill style={{background: C.ink}}>
     {s.media && <Media m={s.media} local={local} from={from} scrim={0.75}/>}
     <AbsoluteFill style={{opacity: 1 - logo}}>
-      <Headline lines={s.action.split('\n')} local={local} top={760} size={104} accent={0}/>
-      <div style={{position: 'absolute', left: SAFE.left, width: W, top: 1000, fontFamily: U, fontSize: 52, color: C.cream, opacity: enter(local, 10)}}>{s.line}</div>
+      <Headline lines={s.action.split('\n')} local={local} top={700} size={132} accent={0}/>
+      <div style={{position: 'absolute', left: SAFE.left, width: W, top: 1000, fontFamily: D, fontStyle: 'italic', fontSize: 64, lineHeight: 1.05, textTransform: 'uppercase', color: C.cream, opacity: enter(local, 12), whiteSpace: 'pre-line'}}>{s.line}</div>
     </AbsoluteFill>
     <AbsoluteFill style={{opacity: logo, background: C.ink, alignItems: 'center', justifyContent: 'center'}}>
       <Img src={staticFile('generated/promo/cancha-trim.png')} style={{width: 640, filter: 'brightness(0) invert(1)', transform: `scale(${0.94 + 0.06 * logo})`}}/>

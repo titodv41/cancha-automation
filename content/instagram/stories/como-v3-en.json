@@ -16,8 +16,8 @@
     },
     "kicker": "Como 1907 · Serie A",
     "headline": [
-     "Buying the club",
-     "was the cheap part."
+     "Buying Como was",
+     "the cheap part."
     ],
     "accent": 1
    },
@@ -31,10 +31,11 @@
     },
     "kicker": "2019",
     "headline": [
-     "The Hartono family",
+     "Indonesia's",
+     "Hartono family",
      "buys Como."
     ],
-    "support": "In Serie D. Price reported at under €1 million."
+    "support": "Serie D, 2019 · under €1M"
    },
    {
     "kind": "hero",
@@ -46,9 +47,9 @@
     "kicker": "The media angle",
     "headline": [
      "Their TV service",
-     "made it a series."
+     "made it a show."
     ],
-    "support": "Mola TV, “Como 1907: The Real Story” (2021)."
+    "support": "Mola TV · The Real Story · 2021"
    },
    {
     "kind": "ladder",
@@ -85,11 +86,12 @@
      "video": true
     },
     "headline": [
-     "Player → shareholder",
-     "→ head coach."
+     "Player →",
+     "shareholder →",
+     "head coach."
     ],
-    "accent": 1,
-    "support": "Joined 2022. Interim and assistant coach in 2023/24; head coach after promotion."
+    "accent": 2,
+    "support": "Head coach since 2024 · 4-year deal"
    },
    {
     "kind": "bars",
@@ -147,10 +149,11 @@
     },
     "headline": [
      "The bet:",
-     "Serie A + the brand."
+     "Serie A money",
+     "+ the brand."
     ],
     "accent": 1,
-    "support": "Serie A TV rights: €31.8M in 2024/25. A 15,200-seat stadium is planned. Profit isn't shown yet."
+    "support": "TV rights €31.8M (24/25) · profit: not yet"
    },
    {
     "kind": "cta",
@@ -401,8 +404,10 @@
  "seconds": 32.5,
  "caption": "Buying Como was the cheap part. 🌊\n\nThe Hartono family bought the club in Serie D in 2019 (price reported at under €1 million). Their streaming service made it a docuseries in 2021. Then Como climbed: Serie D → C → B → A (2024) → Champions League (2026).\n\nFàbregas joined in 2022 as a player and shareholder, was interim and assistant coach in 2023/24, and became head coach after promotion.\n\nThe owners keep paying in: €133.6M in 2024/25 alone, against €55.4M of club revenue (value of production). Those are different measures, not profit. The bet is Serie A money (€31.8M of TV rights in 2024/25) and a global brand, with a 15,200-seat stadium planned.\n\nSources: Como 1907 (official), The Esk (from club filings), Goal, Vavel, Antara.\n#como #seriea #fabregas #football",
  "stills": [
-  3.5,
-  6,
-  30
+  1.5,
+  4,
+  6.5,
+  15,
+  25
  ]
 }
