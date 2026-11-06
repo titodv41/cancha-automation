@@ -25,8 +25,8 @@
    },
    {
     "kind": "pins",
-    "beats": 12,
-    "title": "16 clubs with\nadult teams.",
+    "beats": 14,
+    "title": "Clubs with\nadult teams.",
     "pins": [
      {
       "badge": "generated/story/crests/117-fc-academy.jpg",
@@ -161,26 +161,24 @@
       "lat": 26.1004,
       "lng": -80.4021
      }
-    ]
+    ],
+    "sub": "New clubs every day."
    },
    {
-    "kind": "compare",
-    "beats": 9,
-    "title": "Two ways\nto play.",
-    "left": {
-     "head": "Pickup",
-     "lines": [
-      "This week",
-      "Your level"
-     ]
+    "kind": "photo",
+    "beats": 7,
+    "photo": {
+     "src": "generated/promo/photos/pexels-27572834.jpg",
+     "x": 0.5,
+     "zoom": 1.2
     },
-    "right": {
-     "head": "Club team",
-     "lines": [
-      "A season",
-      "A crest on your chest"
-     ]
-    }
+    "kicker": "In the Cancha app",
+    "lines": [
+     "No team yet?",
+     "Pickup groups.",
+     "Your level."
+    ],
+    "accent": 2
    },
    {
     "kind": "end",
@@ -192,9 +190,15 @@
  },
  "facts": [
   {
-   "claim": "16 clubs with adult teams in Miami-Dade and Broward are in Cancha's directory, pinned at their city",
+   "claim": "Clubs with adult teams in Miami-Dade and Broward are in Cancha's directory, pinned at their city; the directory grows daily",
    "sources": [
     "https://wearecancha.framer.website/clubs"
+   ]
+  },
+  {
+   "claim": "Map: US Census 2023 cartographic county boundaries (public domain)",
+   "sources": [
+    "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip"
    ]
   }
  ],
@@ -207,6 +211,11 @@
    "what": "Night player photo",
    "from": "Pexels (free licence)",
    "page": "https://www.pexels.com/photo/men-playing-football-at-night-11221497/"
+  },
+  {
+   "what": "Beach pickup photo",
+   "from": "Pexels (free licence)",
+   "page": "https://www.pexels.com/photo/a-group-of-people-playing-soccer-on-the-beach-27572834/"
   }
  ],
  "sound": {
@@ -239,102 +248,79 @@
     0.8
    ],
    [
-    "pop",
-    3.5,
-    0.35
-   ],
-   [
-    "pop",
+    "longwhoosh",
     3.6,
-    0.35
+    0.5
+   ],
+   [
+    "impact",
+    5.25,
+    0.5
    ],
    [
     "pop",
-    3.7,
-    0.35
+    6.0,
+    0.3
    ],
    [
     "pop",
-    3.8,
-    0.35
+    6.133,
+    0.3
    ],
    [
     "pop",
-    3.9,
-    0.35
+    6.267,
+    0.3
    ],
    [
     "pop",
-    4.0,
-    0.35
+    6.4,
+    0.3
    ],
    [
     "pop",
-    4.1,
-    0.35
+    6.533,
+    0.3
    ],
    [
     "pop",
-    4.2,
-    0.35
+    6.667,
+    0.3
    ],
    [
     "pop",
-    4.3,
-    0.35
+    6.8,
+    0.3
    ],
    [
     "pop",
-    4.4,
-    0.35
-   ],
-   [
-    "pop",
-    4.5,
-    0.35
-   ],
-   [
-    "pop",
-    4.6,
-    0.35
-   ],
-   [
-    "pop",
-    4.7,
-    0.35
-   ],
-   [
-    "pop",
-    4.8,
-    0.35
-   ],
-   [
-    "pop",
-    4.9,
-    0.35
-   ],
-   [
-    "pop",
-    5.0,
-    0.35
+    6.933,
+    0.3
    ],
    [
     "success",
-    8.2,
+    7.6,
     0.6
    ],
    [
     "whoosh",
-    8.88,
+    9.88,
     0.8
    ],
    [
-    "pop",
-    9.267
+    "slam",
+    10.133,
+    0.45
    ],
    [
-    "pop",
-    9.6
+    "slam",
+    10.3,
+    0.45
+   ],
+   [
+    "slam",
+    10.467,
+    0.45
    ],
    [
     "whoosh",
@@ -347,13 +333,17 @@
    ]
   ]
  },
- "caption": "New in Miami and miss playing on a real team? 16 clubs with adult teams across Miami-Dade and Broward are on Cancha. ⚽\n\nPickup this week, or a club for the season. Find yours, link in bio.\n#miamisoccer #browardsoccer #adultsoccer #upsl",
+ "caption": "New in Miami and miss playing on a real team? Clubs with adult teams across Miami-Dade and Broward are on Cancha, with new ones added every day. ⚽\n\nNot ready for a club? Pickup groups and people at your level are coming in the Cancha app.\n\nFind your club, link in bio.\n#miamisoccer #browardsoccer #adultsoccer #upsl",
  "stills": [
-  2,
-  4,
-  6,
-  8.5,
-  13,
+  3.5,
+  4.2,
+  5,
+  5.6,
+  6.4,
+  8,
+  9.5,
+  11,
+  13.5,
   15.5
  ],
  "seconds": 16.5
