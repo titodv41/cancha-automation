@@ -7,7 +7,7 @@ import {typecheckReviewedCode} from './typecheck-reviewed-code.mjs';
 // commit must already hold each file's new digest; every other reviewed part must match live before publishing.
 // Run this right after merging a contract change: until the reviewed digest is live, the daily prepare's release-contract
 // check blocks website publication and content scheduling (Oct 30). To hold a code change back, keep the live digest in the contract.
-export const FILES=['DiscoveryModel.tsx','CanchaUI.tsx','CanchaHome.tsx','CanchaDiscovery.tsx'];
+export const FILES=['DiscoveryModel.tsx','CanchaUI.tsx','CanchaHome.tsx','CanchaDiscovery.tsx','CanchaDetail.tsx'];
 const site='https://pioneering-friday-005497.framer.app';
 if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(async f=>{
  const expected=JSON.parse(await readFile('config/discovery-release-contract.json','utf8')),live=await readReleaseContract(f),sources={};
