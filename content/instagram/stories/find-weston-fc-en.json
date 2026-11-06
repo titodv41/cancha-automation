@@ -1,0 +1,349 @@
+{
+ "id": "story-find-weston-fc-en",
+ "composition": "StoryReel",
+ "lang": "en",
+ "series": "Find it on Cancha",
+ "approval": "Draft (owner, Nov 6: 'Find it on Cancha' club series; owner asks the club first).",
+ "publishBlockedUntil": "Weston FC agrees (owner asks) and the owner approves.",
+ "props": {
+  "scenes": [
+   {
+    "kind": "photo",
+    "beats": 6,
+    "photo": {
+     "src": "generated/story/weston/team.jpg",
+     "x": 0.5,
+     "zoom": 1.25
+    },
+    "kicker": "Find it on Cancha",
+    "lines": [
+     "Weston FC.",
+     "Broward.",
+     "Boys & girls."
+    ],
+    "accent": 0
+   },
+   {
+    "kind": "stat",
+    "beats": 6,
+    "from": 100,
+    "to": 14,
+    "prefix": "#",
+    "lines": [
+     "in the U.S. · boys",
+     "SoccerWire Top 100"
+    ],
+    "photo": {
+     "src": "generated/story/weston/boy.jpg",
+     "x": 0.45,
+     "y": 0.4
+    }
+   },
+   {
+    "kind": "stat",
+    "beats": 6,
+    "from": 100,
+    "to": 46,
+    "prefix": "#",
+    "lines": [
+     "in the U.S. · girls",
+     "Top-ranked in Florida"
+    ],
+    "photo": {
+     "src": "generated/story/weston/girl.jpg",
+     "x": 0.55,
+     "y": 0.4
+    }
+   },
+   {
+    "kind": "ladder",
+    "beats": 10,
+    "title": "The girls'\npathway.",
+    "photo": {
+     "src": "generated/story/weston/girl.jpg",
+     "x": 0.5
+    },
+    "steps": [
+     {
+      "label": "SFPL",
+      "year": "U9–U12"
+     },
+     {
+      "label": "NPL",
+      "year": "U13–U19"
+     },
+     {
+      "label": "DPL",
+      "year": "U13–U19"
+     },
+     {
+      "label": "College",
+      "year": ""
+     },
+     {
+      "label": "National Team",
+      "year": "the dream"
+     }
+    ]
+   },
+   {
+    "kind": "ladder",
+    "beats": 8,
+    "title": "Boys:\nall the way up.",
+    "photo": {
+     "src": "generated/story/weston/boy.jpg",
+     "x": 0.5
+    },
+    "steps": [
+     {
+      "label": "Youth teams",
+      "year": "boys"
+     },
+     {
+      "label": "MLS NEXT",
+      "year": "2025–26"
+     },
+     {
+      "label": "UPSL",
+      "year": "adults"
+     },
+     {
+      "label": "League Two",
+      "year": "adults"
+     }
+    ]
+   },
+   {
+    "kind": "photo",
+    "beats": 6,
+    "photo": {
+     "src": "generated/story/weston/team.jpg",
+     "x": 0.6,
+     "y": 0.55,
+     "zoom": 1.5
+    },
+    "kicker": "Next up",
+    "lines": [
+     "Thanksgiving camp.",
+     "Nov 23–25.",
+     "Vista Park."
+    ],
+    "accent": 1,
+    "place": "bottom"
+   },
+   {
+    "kind": "end",
+    "beats": 6,
+    "title": "Find Weston FC\non Cancha.",
+    "line": "Link in bio · @wearecancha"
+   }
+  ],
+  "theme": {
+   "accent": "#8fd0f2",
+   "ink": "#0b1e2d",
+   "bg": "#07131c"
+  }
+ },
+ "facts": [
+  {
+   "claim": "Weston FC: Broward club with boys' and girls' competitive programs, performance program, UPSL / League Two pathways; Vista Park and Weston Regional Park",
+   "sources": [
+    "https://www.westonfc.org/",
+    "https://www.westonfc.org/about-1-1"
+   ]
+  },
+  {
+   "claim": "On the official MLS NEXT member list for 2025–26",
+   "sources": [
+    "https://www.mlssoccer.com/mlsnext/about/members"
+   ]
+  },
+  {
+   "claim": "SoccerWire Top 100: highest-ranked club in Florida; boys 14th and girls 46th nationally (as published by the club)",
+   "sources": [
+    "https://www.westonfc.org/"
+   ]
+  },
+  {
+   "claim": "Girls' development pathway: SFPL U9–U12, NPL U13–U19, DPL U13–U19, College, US National Team (club graphic)",
+   "sources": [
+    "https://www.westonfc.org/"
+   ]
+  },
+  {
+   "claim": "Thanksgiving camps Nov 23–25 at Vista Park (club flyers)",
+   "sources": [
+    "https://www.westonfc.org/"
+   ]
+  }
+ ],
+ "permissionsToAsk": [
+  {
+   "what": "Use of the club's photos and rankings in a 'Find it on Cancha' Reel",
+   "from": "Weston FC (contact page)",
+   "page": "https://www.westonfc.org/contact-10"
+  }
+ ],
+ "sound": {
+  "music": {
+   "id": "mixkit-51",
+   "tempo": 120,
+   "start": 16.13,
+   "gain": 0.9,
+   "fadeOut": 0.8
+  },
+  "cues": [
+   [
+    "slam",
+    0.133,
+    0.45
+   ],
+   [
+    "slam",
+    0.3,
+    0.45
+   ],
+   [
+    "slam",
+    0.467,
+    0.45
+   ],
+   [
+    "whoosh",
+    2.88,
+    0.8
+   ],
+   [
+    "roll",
+    3.2,
+    0.6
+   ],
+   [
+    "impact",
+    4.05,
+    0.6
+   ],
+   [
+    "whoosh",
+    5.88,
+    0.8
+   ],
+   [
+    "roll",
+    6.2,
+    0.6
+   ],
+   [
+    "impact",
+    7.05,
+    0.6
+   ],
+   [
+    "whoosh",
+    8.88,
+    0.8
+   ],
+   [
+    "pop",
+    9.133,
+    0.4
+   ],
+   [
+    "pop",
+    9.233,
+    0.4
+   ],
+   [
+    "pop",
+    9.333,
+    0.4
+   ],
+   [
+    "pop",
+    9.433,
+    0.4
+   ],
+   [
+    "pop",
+    9.533,
+    0.4
+   ],
+   [
+    "success",
+    13.4,
+    0.6
+   ],
+   [
+    "whoosh",
+    13.88,
+    0.8
+   ],
+   [
+    "pop",
+    14.133,
+    0.4
+   ],
+   [
+    "pop",
+    14.233,
+    0.4
+   ],
+   [
+    "pop",
+    14.333,
+    0.4
+   ],
+   [
+    "pop",
+    14.433,
+    0.4
+   ],
+   [
+    "success",
+    17.4,
+    0.6
+   ],
+   [
+    "whoosh",
+    17.88,
+    0.8
+   ],
+   [
+    "slam",
+    18.133,
+    0.45
+   ],
+   [
+    "slam",
+    18.3,
+    0.45
+   ],
+   [
+    "slam",
+    18.467,
+    0.45
+   ],
+   [
+    "whoosh",
+    20.88,
+    0.8
+   ],
+   [
+    "cta",
+    21.267
+   ]
+  ]
+ },
+ "caption": "Find it on Cancha: Weston FC 🩵\n\nBroward club with boys' and girls' programs. SoccerWire's Top 100 has them as the top-ranked club in Florida: #14 in the U.S. for boys, #46 for girls (as published by the club).\n\nGirls' pathway: SFPL → NPL → DPL → college. Boys: youth teams, MLS NEXT, and adult UPSL and League Two teams.\n\nThanksgiving camp: Nov 23–25 at Vista Park. Details and sign-up on the club's site.\n\nFind Weston FC and more South Florida clubs on Cancha. Link in bio.\n#westonfc #browardsoccer #floridasoccer #youthsoccer",
+ "stills": [
+  2,
+  4.5,
+  7.5,
+  10,
+  13,
+  17,
+  20.5,
+  23
+ ],
+ "seconds": 24.0
+}
