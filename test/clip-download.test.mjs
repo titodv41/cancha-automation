@@ -21,3 +21,17 @@ test('every creator cut uses only cleared videos and its lines fit the timeline'
   for(const b of cut.beats)assert.ok(b.start>=cut.hookSeconds&&b.end<=total+.01&&b.text.length<=60,name+': '+b.text);
  }
 });
+
+test('pending-owner videos can be downloaded for drafts but never post', async () => {
+  const {validShortReel} = await import('../server/short-reels.mjs');
+  const {downloadList} = await import('../scripts/clip-download.mjs');
+  const cfg = {videos: [{id: 'EY_CVh0pv8k', creator: 'X', credit: 'Video: X', license: 'pending-owner', permission: {recordedOn: '2026-11-06', how: 'owner will ask'}}]};
+  assert.deepEqual(downloadList(cfg, 'EY_CVh0pv8k'), ['https://www.youtube.com/watch?v=EY_CVh0pv8k']);
+  assert.equal(validShortReel({footage: [{source: 'youtube-cleared', id: 'EY_CVh0pv8k', license: 'pending-owner', page: 'https://youtu.be/x'}]}), false);
+});
+test('the posting gate names pending-owner footage explicitly', () => {
+  assert.match(readFileSync(new URL('../server/short-reels.mjs', import.meta.url), 'utf8'), /f\.license==='pending-owner'\)\)return false/);
+});
+test('creator-cut drafts keep pending-owner on the footage so the posting gate sees it', () => {
+  assert.match(readFileSync(new URL('../video/render-creator-cut.mjs', import.meta.url), 'utf8'), /v\.license==='pending-owner'\?'pending-owner'/);
+});
