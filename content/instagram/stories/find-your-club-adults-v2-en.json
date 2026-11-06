@@ -16,15 +16,15 @@
     },
     "headline": [
      "Played back home?",
-     "Find your team here."
+     "Find your team."
     ],
     "accent": 1,
-    "support": "Adults · Miami-Dade + Broward"
+    "support": "Semi-pro & rec · Miami-Dade + Broward"
    },
    {
     "kind": "map",
     "beats": 8,
-    "headline": "Adult teams\nnear you.",
+    "headline": "Semi-pro & rec\nteams near you.",
     "pins": [
      {
       "badge": "generated/story/crests/117-fc-academy.jpg",
@@ -114,7 +114,7 @@
       "lng": -80.3576,
       "name": "Hodler FC",
       "city": "Doral, Miami-Dade",
-      "level": "UPSL Division 1 · 2026 Fall",
+      "level": "Semi-pro · UPSL Division 1",
       "status": "Places: contact the club"
      },
      {
@@ -123,7 +123,7 @@
       "lng": -80.2112,
       "name": "Boca Jrs Miami FC",
       "city": "Margate, Broward",
-      "level": "UPSL Division 1 · 2026 Fall",
+      "level": "Semi-pro · UPSL Division 1",
       "status": "Places: contact the club"
      },
      {
@@ -132,7 +132,7 @@
       "lng": -80.1646,
       "name": "River Miami FC",
       "city": "Hollywood, Broward",
-      "level": "UPSL Division 1 · 2026 Fall",
+      "level": "Semi-pro · UPSL Division 1",
       "status": "Places: contact the club"
      }
     ]
@@ -172,13 +172,44 @@
      "h": 720,
      "at": 40
     },
-    "caption": "Level, city, how to reach them."
+    "caption": "Level. City. Contact."
+   },
+   {
+    "kind": "screen",
+    "beats": 4,
+    "img": "generated/story/app/app-teams.png",
+    "imgW": 1170,
+    "imgH": 2532,
+    "label": "Coming soon: the Cancha app",
+    "scroll": [
+     0,
+     0
+    ],
+    "tap": {
+     "x": 585,
+     "y": 440,
+     "at": 44
+    },
+    "caption": "Clubs near you."
+   },
+   {
+    "kind": "screen",
+    "beats": 4,
+    "img": "generated/story/app/app-feed.png",
+    "imgW": 1170,
+    "imgH": 2532,
+    "label": "Coming soon: the Cancha app",
+    "scroll": [
+     0,
+     0
+    ],
+    "caption": "Your people. Your level."
    },
    {
     "kind": "cta",
     "beats": 6,
-    "action": "Find adult teams.",
-    "line": "Link in bio · @wearecancha",
+    "action": "Find your team.",
+    "line": "Directory now. App soon.\nLink in bio",
     "logoBeats": 2
    }
   ]
@@ -210,6 +241,13 @@
    "displayText": "Screens are the live Cancha website directory (search near Doral → Hodler FC profile)",
    "sourceUrl": "https://wearecancha.framer.website/clubs?near=Doral",
    "checkedAt": "2026-11-06"
+  },
+  {
+   "id": "app",
+   "displayText": "App screens are the Cancha app prototype (Expo build), labelled 'Coming soon'",
+   "sourceUrl": "https://wearecancha.framer.website/",
+   "checkedAt": "2026-11-06",
+   "definition": "Not live in app stores; waitlist on the website."
   }
  ],
  "facts": [
@@ -240,8 +278,8 @@
   "cues": [
    [
     "slam",
-    0.067,
-    0.4
+    0.133,
+    0.45
    ],
    [
     "whoosh",
@@ -284,16 +322,32 @@
     0.6
    ],
    [
+    "tap",
+    14.467,
+    0.8
+   ],
+   [
+    "whoosh",
+    14.9,
+    0.6
+   ],
+   [
+    "whoosh",
+    16.9,
+    0.6
+   ],
+   [
     "cta",
-    13.3,
+    17.3,
     0.8
    ]
   ]
  },
- "seconds": 16.0,
- "caption": "Played back home? Find your team here. ⚽\n\nAdult teams across Miami-Dade and Broward are on Cancha: search your area, open a team, see its level and how to reach them. A listing isn't a guaranteed spot; contact the club for current places.\n\nFind adult teams, link in bio.\n#miamisoccer #browardsoccer #adultsoccer #upsl",
+ "seconds": 20.0,
+ "caption": "Played back home? Find your team. ⚽\n\nSemi-pro and rec teams across Miami-Dade and Broward are on the Cancha directory now: search your area, open a team, see its level and how to reach them. A listing isn't a guaranteed spot; contact the club for current places.\n\nComing soon: the Cancha app, with clubs near you and a feed of people at your level. Join the list, link in bio.\n#miamisoccer #browardsoccer #semipro #upsl",
  "stills": [
   11,
-  12.5
+  14,
+  17
  ]
 }
