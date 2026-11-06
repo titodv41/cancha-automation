@@ -1,0 +1,46 @@
+name: Cancha story Reels
+# Hosts an owner-approved Story Reel (the exact committed render) and imports it into the existing posting queue.
+# Nothing posts here: the publisher posts it in the 12:30 / 6 PM slots under its usual caps and spacing.
+on:
+  workflow_dispatch:
+    inputs:
+      story:
+        description: 'File name in content/instagram/stories (without .json)'
+        type: string
+        required: true
+permissions:
+  contents: write
+# Shares the posting queue with the other private jobs.
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check the story name
+        env:
+          STORY: ${{ inputs.story }}
+        run: |
+          [[ "$STORY" =~ ^[a-z0-9-]+$ ]] && test -f "content/instagram/stories/$STORY.json"
+          echo "STORY_FILE=content/instagram/stories/$STORY.json" >> "$GITHUB_ENV"
+      - name: Host the approved render
+        env:
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}
+        run: node scripts/story-reel.mjs "$STORY_FILE"
+      - name: Import into the posting queue
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
+          CANCHA_SCHEDULE_BACKEND: ${{ vars.CANCHA_AUTOMATION_BACKEND }}
+        run: node scripts/github-instagram.mjs refresh-short-reels

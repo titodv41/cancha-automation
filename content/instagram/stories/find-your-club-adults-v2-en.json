@@ -4,7 +4,6 @@
  "lang": "en",
  "revisionOf": "story-find-your-club-adults-en",
  "approval": "Revision per owner's review brief (Nov 6). Earlier cut preserved.",
- "publishBlockedUntil": "Owner approves; bio link points to the live directory (https://wearecancha.framer.website/clubs).",
  "props": {
   "scenes": [
    {
@@ -349,5 +348,56 @@
   11,
   14,
   17
- ]
+ ],
+ "title": "Played back home? Find your team.",
+ "altText": "Vertical video: a night match photo with the line \"Played back home? Find your team.\", a map of Miami-Dade and Broward with three semi-pro clubs (Hodler FC, Boca Jrs Miami FC, River Miami FC), the Cancha directory list and a club profile, two screens of the upcoming Cancha app, and the end card \"Find your team. Directory now. App soon.\"",
+ "footage": [
+  {
+   "source": "pexels",
+   "id": "11221497",
+   "creator": "Pexels",
+   "license": "Pexels License (free commercial use)",
+   "page": "https://www.pexels.com/photo/men-playing-football-at-night-11221497/"
+  },
+  {
+   "source": "cancha",
+   "id": "directory-club-marks",
+   "creator": "Club marks as shown in the Cancha directory",
+   "license": "Unmodified club identifying marks for independent editorial identification",
+   "page": "https://wearecancha.framer.website/clubs"
+  },
+  {
+   "source": "cancha",
+   "id": "directory-screens",
+   "creator": "Cancha",
+   "license": "Own product screens",
+   "page": "https://wearecancha.framer.website/clubs"
+  },
+  {
+   "source": "cancha",
+   "id": "app-screens",
+   "creator": "Cancha",
+   "license": "Own product screens (app in development, labelled coming soon)",
+   "page": "https://wearecancha.framer.website/"
+  },
+  {
+   "source": "mixkit",
+   "id": "51",
+   "creator": "Mixkit, Deep Urban",
+   "license": "Mixkit Free License",
+   "page": "https://mixkit.co/license/"
+  }
+ ],
+ "approved": {
+  "on": "2026-11-06",
+  "by": "owner in chat, Nov 6 (\"those are approved\"), with one fix: the app feed screen shows people posting (labelled examples), not a club photo",
+  "video": "content/instagram/stories/approved/story-find-your-club-adults-v2-1-en.mp4",
+  "videoSha256": "32d7d7378cc86aae12025e914a0da558ea19c8712277872904636289d7f5a323",
+  "poster": "content/instagram/stories/approved/story-find-your-club-adults-v2-1-en.jpg",
+  "posterSha256": "dd2554d6e4a60a5d39572c5f4f3d72c5cd3a81f864b40832be315b5313f49b08",
+  "renderedAt": "2026-11-06T15:42:48Z",
+  "seconds": 20,
+  "revision": "v2.1: only the feed screen (15-17 s) changed; every other second matches the v2 render the owner saw"
+ },
+ "postingNote": "Caption says \"link in bio\": the Instagram bio must point to https://wearecancha.framer.website/ (home has the waitlist and the directory)."
 }
