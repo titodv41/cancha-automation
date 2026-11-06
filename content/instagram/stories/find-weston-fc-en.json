@@ -21,7 +21,8 @@
      "Broward.",
      "Boys & girls."
     ],
-    "accent": 0
+    "accent": 0,
+    "badge": "generated/story/crests/weston-fc.png"
    },
    {
     "kind": "stat",
@@ -135,7 +136,8 @@
     "kind": "end",
     "beats": 6,
     "title": "Find Weston FC\non Cancha.",
-    "line": "Link in bio · @wearecancha"
+    "line": "Link in bio · @wearecancha",
+    "badge": "generated/story/crests/weston-fc.png"
    }
   ],
   "theme": {

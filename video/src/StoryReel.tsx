@@ -15,11 +15,12 @@ const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as cons
 
 type Photo = {src: string; x?: number; y?: number; zoom?: number; dir?: 1 | -1};
 export type Scene =
-  | {kind: 'photo'; beats: number; photo: Photo; kicker?: string; lines: string[]; accent?: number; place?: 'top' | 'bottom'}
+  | {kind: 'photo'; beats: number; photo: Photo; kicker?: string; lines: string[]; accent?: number; place?: 'top' | 'bottom'; badge?: string}
+  | {kind: 'pins'; beats: number; title: string; pins: {badge: string; lat: number; lng: number; name?: string}[]; cities: {name: string; lat: number; lng: number}[]}
   | {kind: 'ladder'; beats: number; title: string; steps: {label: string; year: string}[]; photo?: Photo}
   | {kind: 'compare'; beats: number; title: string; left: {head: string; lines: string[]}; right: {head: string; lines: string[]}; photo?: Photo}
   | {kind: 'stat'; beats: number; from: number; to: number; prefix?: string; lines: string[]; photo?: Photo}
-  | {kind: 'end'; beats: number; title: string; line: string};
+  | {kind: 'end'; beats: number; title: string; line: string; badge?: string};
 export type StoryProps = {scenes: Scene[]; credit?: string; theme?: {accent: string; ink: string; bg?: string}};
 
 export const storyFrames = (scenes: Scene[]) => scenes.reduce((a, s) => a + s.beats * B, 0);
@@ -50,8 +51,13 @@ function PhotoScene({s, local, dur}: {s: Extract<Scene, {kind: 'photo'}>; local:
     {s.kicker && <div style={{position: 'absolute', left: 60, top: s.place === 'top' ? 200 : 1460 - h, background: C.lime, color: C.forest, fontFamily: U, fontSize: 36,
       letterSpacing: 3, textTransform: 'uppercase', padding: '10px 20px', borderRadius: 8, transform: `scale(${k})`, transformOrigin: 'left center'}}>{s.kicker}</div>}
     <Headline lines={s.lines} local={local} accent={s.accent} top={s.place === 'top' ? 290 : 1540 - h}/>
+    {s.badge && <Badge src={s.badge} size={170} style={{position: 'absolute', right: 60, top: 60, transform: `scale(${k}) rotate(${(1 - Math.min(1, k)) * -20}deg)`}}/>}
   </AbsoluteFill>;
 }
+
+const Badge = ({src, size, style}: {src: string; size: number; style?: React.CSSProperties}) =>
+  <div style={{width: size, height: size, borderRadius: size * 0.24, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 12px 40px #0008', ...style}}>
+    <Img src={staticFile(src)} style={{width: '80%', height: '80%', objectFit: 'contain'}}/></div>;
 
 // A club climbing the pyramid: steps rise from the bottom, a lime marker climbs one step per beat.
 function Ladder({s, local, dur}: {s: Extract<Scene, {kind: 'ladder'}>; local: number; dur: number}) {
@@ -60,7 +66,7 @@ function Ladder({s, local, dur}: {s: Extract<Scene, {kind: 'ladder'}>; local: nu
   return <AbsoluteFill style={{background: C.night}}>
     {s.photo && <Bg photo={s.photo} local={local} dur={dur} dim={0.85} blur={8}/>}
     <MovingGrid f={local} opacity={0.06}/>
-    <div style={{position: 'absolute', left: 60, right: 60, top: 170, fontFamily: D, fontStyle: 'italic', fontSize: 120, lineHeight: 0.9, color: C.cream, textTransform: 'uppercase', opacity: ease(local, 0, 8)}}>{s.title}</div>
+    <div style={{position: 'absolute', left: 60, right: 60, top: 170, fontFamily: D, fontStyle: 'italic', fontSize: 120, lineHeight: 0.9, color: C.cream, textTransform: 'uppercase', opacity: ease(local, 0, 8), whiteSpace: 'pre-line'}}>{s.title}</div>
     {s.steps.map((st, i) => {
       const on = ease(local, 4 + i * 3, 12 + i * 3, back), reached = i <= at, top = base - (i + 1) * rowH, w = 560 + i * 90;
       return <div key={i} style={{position: 'absolute', left: 60, top, width: w, height: rowH - 22, borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 34px',
@@ -83,9 +89,39 @@ function Compare({s, local, dur}: {s: Extract<Scene, {kind: 'compare'}>; local: 
   return <AbsoluteFill style={{background: C.forest}}>
     {s.photo && <Bg photo={s.photo} local={local} dur={dur} dim={0.9} blur={6}/>}
     <MovingGrid f={local} opacity={0.06}/>
-    <div style={{position: 'absolute', left: 60, right: 60, top: 220, fontFamily: D, fontStyle: 'italic', fontSize: 140, lineHeight: 0.88, color: C.cream, textTransform: 'uppercase', opacity: ease(local, 0, 8),
+    <div style={{position: 'absolute', left: 60, right: 60, top: 220, fontFamily: D, fontStyle: 'italic', fontSize: 140, lineHeight: 0.88, color: C.cream, textTransform: 'uppercase', opacity: ease(local, 0, 8), whiteSpace: 'pre-line',
       transform: `translateY(${(1 - ease(local, 0, 10)) * 60}px)`}}>{s.title}</div>
     <div style={{position: 'absolute', left: 50, right: 50, top: 700, display: 'flex', gap: 24}}>{col(s.left, 0)}{col(s.right, 1)}</div>
+  </AbsoluteFill>;
+}
+
+// Clubs on the map (owner, Nov 6: badges whenever we can): a stylised South Florida coast, city dots, crests pop in.
+const MAP = {lng: [-80.56, -80.02], lat: [25.40, 26.34], x: 60, y: 470, w: 960, h: 1260};
+const px = (lat: number, lng: number) => ({x: MAP.x + (lng - MAP.lng[0]) / (MAP.lng[1] - MAP.lng[0]) * MAP.w, y: MAP.y + (MAP.lat[1] - lat) / (MAP.lat[1] - MAP.lat[0]) * MAP.h});
+const COAST: [number, number][] = [[26.34, -80.07], [26.14, -80.10], [25.96, -80.115], [25.80, -80.125], [25.70, -80.16], [25.60, -80.30], [25.48, -80.33], [25.40, -80.36]];
+function Pins({s, local, dur}: {s: Extract<Scene, {kind: 'pins'}>; local: number; dur: number}) {
+  const ocean = 'M ' + COAST.map(([la, ln]) => { const p = px(la, ln); return `${p.x} ${p.y}`; }).join(' L ') + ` L ${MAP.x + MAP.w + 60} ${MAP.y + MAP.h} L ${MAP.x + MAP.w + 60} ${MAP.y - 60} Z`;
+  const seen: Record<string, number> = {}, cam = interpolate(local, [0, dur], [1.04, 1], cl);
+  return <AbsoluteFill style={{background: C.night}}>
+    <MovingGrid f={local} opacity={0.07}/>
+    <AbsoluteFill style={{transform: `scale(${cam})`}}>
+      <svg width={1080} height={1920} style={{position: 'absolute', inset: 0}}>
+        <path d={ocean} fill="#0d2a3a" opacity={ease(local, 0, 10)}/>
+        <path d={'M ' + COAST.map(([la, ln]) => { const p = px(la, ln); return `${p.x} ${p.y}`; }).join(' L ')} stroke={C.lime} strokeWidth={4} fill="none" strokeDasharray={2400} strokeDashoffset={2400 * (1 - ease(local, 0, 20))}/>
+      </svg>
+      {s.cities.map((c, i) => { const p = px(c.lat, c.lng), o = ease(local, 6 + i * 2, 14 + i * 2);
+        return <div key={c.name} style={{position: 'absolute', left: p.x - 9, top: p.y - 9, opacity: o}}>
+          <div style={{width: 18, height: 18, borderRadius: 9, background: C.cream}}/>
+          <div style={{position: 'absolute', left: -150, width: 318, top: 24, textAlign: 'center', fontFamily: U, fontSize: 30, color: C.mint}}>{c.name}</div></div>; })}
+      {s.pins.map((pin, i) => {
+        const k = `${pin.lat},${pin.lng}`, n = seen[k] = (seen[k] ?? -1) + 1, total = s.pins.filter(q => q.lat === pin.lat && q.lng === pin.lng).length;
+        const ang = -Math.PI / 2 + n * 2 * Math.PI / total, rad = total > 1 ? 40 + total * 16 : 0;
+        const p = px(pin.lat, pin.lng), x = p.x + Math.cos(ang) * rad, y = p.y - (total > 1 ? 0 : 80) + Math.sin(ang) * rad, on = ease(local, B + i * 3, B + 8 + i * 3, back);
+        return <Badge key={i} src={pin.badge} size={112} style={{position: 'absolute', left: x - 56, top: y - 56, transform: `scale(${on})`, opacity: Math.min(1, on * 2)}}/>;
+      })}
+    </AbsoluteFill>
+    <div style={{position: 'absolute', left: 60, right: 60, top: 170, fontFamily: D, fontStyle: 'italic', fontSize: 116, lineHeight: 0.9, color: C.cream, textTransform: 'uppercase',
+      opacity: ease(local, 0, 8), transform: `translateY(${(1 - ease(local, 0, 10)) * 60}px)`, whiteSpace: 'pre-line'}}>{s.title}</div>
   </AbsoluteFill>;
 }
 
@@ -105,7 +141,8 @@ function End({s, local}: {s: Extract<Scene, {kind: 'end'}>; local: number}) {
   return <AbsoluteFill style={{background: C.forest}}>
     <MovingGrid f={local} opacity={0.07}/>
     <Img src={staticFile('generated/promo/cancha-trim.png')} style={{position: 'absolute', left: 110, width: 860, top: 560, filter: 'brightness(0) invert(1)', opacity: Math.min(1, a), transform: `scale(${0.9 + a * 0.1})`}}/>
-    <div style={{position: 'absolute', left: 60, right: 60, top: 880, textAlign: 'center', fontFamily: D, fontStyle: 'italic', fontSize: 96, lineHeight: 0.95, color: C.lime, textTransform: 'uppercase', opacity: Math.min(1, a)}}>{s.title}</div>
+    {s.badge && <Badge src={s.badge} size={200} style={{position: 'absolute', left: 440, top: 300, transform: `scale(${Math.min(1.1, a)})`}}/>}
+    <div style={{position: 'absolute', left: 60, right: 60, top: 880, textAlign: 'center', fontFamily: D, fontStyle: 'italic', fontSize: 96, lineHeight: 0.95, color: C.lime, textTransform: 'uppercase', opacity: Math.min(1, a), whiteSpace: 'pre-line'}}>{s.title}</div>
     <div style={{position: 'absolute', left: 0, right: 0, top: 1140, textAlign: 'center', fontFamily: U, fontSize: 48, color: C.cream, opacity: Math.min(1, d)}}>{s.line}</div>
   </AbsoluteFill>;
 }
@@ -123,7 +160,7 @@ export const StoryReel = ({scenes, credit, theme}: StoryProps) => {
     <style>{`@font-face{font-family:CanchaDisplay;src:url('${staticFile('generated/promo/display.woff2')}');font-weight:700;font-style:italic}@font-face{font-family:CanchaUI;src:url('${staticFile('generated/promo/ui.woff2')}');font-weight:600}`}</style>
     <Whip f={f} from={cur.from} to={cur.i === parts.length - 1 ? cur.from + cur.dur + 99 : cur.from + cur.dur}>
       {s.kind === 'photo' ? <PhotoScene s={s} local={local} dur={cur.dur}/> : s.kind === 'ladder' ? <Ladder s={s} local={local} dur={cur.dur}/>
-        : s.kind === 'compare' ? <Compare s={s} local={local} dur={cur.dur}/> : s.kind === 'stat' ? <Stat s={s} local={local} dur={cur.dur}/> : <End s={s} local={local}/>}
+        : s.kind === 'compare' ? <Compare s={s} local={local} dur={cur.dur}/> : s.kind === 'stat' ? <Stat s={s} local={local} dur={cur.dur}/> : s.kind === 'pins' ? <Pins s={s} local={local} dur={cur.dur}/> : <End s={s} local={local}/>}
     </Whip>
     {credit && s.kind !== 'end' && <div style={{position: 'absolute', right: 40, bottom: 60, fontFamily: U, fontSize: 26, color: '#ffffffb0'}}>{credit}</div>}
     <Img src={staticFile('generated/promo/cancha-trim.png')} style={{position: 'absolute', left: 60, top: 80, width: 200, filter: 'brightness(0) invert(1)', opacity: s.kind === 'end' ? 0 : 0.9}}/>
