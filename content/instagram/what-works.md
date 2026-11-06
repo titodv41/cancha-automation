@@ -43,6 +43,9 @@ Principles we act on. They are platform guidance and common practice, not yet pr
 3. No narrator on story Reels: music, sound effects and kinetic text carry them.
 4. Only high-quality pictures (no small web thumbnails), plus real clips of goals and celebrations.
 5. Borrow each club's look: its colours, its scarf and crowd aesthetic. Cancha logo stays on every scene and the end card.
+6. Owner approved the Como and Weston drafts (Nov 6). More moving graphics (ladders, counters, maps with crest pins). Club badge whenever we can.
+7. Focus on adults (the app is adults-only): "Meet the club / Find your club" for clubs with adult teams (UPSL and similar), more clubs around Miami-Dade and Broward.
+8. Next format to try: the app itself, a feed of people at your level and pickup near you.
 
 ## Audience and voice (owner, Nov 2)
 - **Who:** South Florida first. Parents at clubs, coaches, players. The goal is a soccer community first; club partnerships and paid features come later.
