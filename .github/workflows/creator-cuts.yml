@@ -6,6 +6,10 @@ on:
         description: 'File name in content/instagram/creator-cuts (without .json)'
         type: string
         default: this-is-florida-soccer
+  # Keep approved cuts postable (scripts/keep-fresh.mjs): one approved cut per day, re-rendered in a quiet hour
+  # (06:20 UTC). An unchanged script reuses the cached narration, so no new voice characters are spent.
+  schedule:
+    - cron: '20 6 * * *'
 permissions:
   contents: write
 # Shares the voice ledger and posting queue with the other private jobs.
@@ -13,7 +17,28 @@ concurrency:
   group: cancha-private-automation
   cancel-in-progress: false
 jobs:
+  pick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      cut: ${{ steps.pick.outputs.cut }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_CUT: ${{ inputs.cut }}
+        run: |
+          if [ "$EVENT" = schedule ]; then CUT="$(node scripts/keep-fresh.mjs cut)"; else CUT="$INPUT_CUT"; fi
+          echo "cut=$CUT" >> "$GITHUB_OUTPUT"; echo "Cut: ${CUT:-none}"
   cut:
+    needs: pick
+    if: needs.pick.outputs.cut != ''
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -38,7 +63,7 @@ jobs:
           deno-version: v2.x
       - name: Check the cut name
         env:
-          CUT: ${{ inputs.cut }}
+          CUT: ${{ needs.pick.outputs.cut }}
         run: |
           [[ "$CUT" =~ ^[a-z0-9-]+$ ]] && test -f "content/instagram/creator-cuts/$CUT.json"
           echo "CUT_FILE=content/instagram/creator-cuts/$CUT.json" >> "$GITHUB_ENV"

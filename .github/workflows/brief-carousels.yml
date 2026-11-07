@@ -6,10 +6,37 @@ on:
         description: 'Comma-separated brief ids to render (empty = all in content/instagram/brief-carousels.json)'
         type: string
         default: ''
+  # Keep approved briefs postable (scripts/keep-fresh.mjs): re-render the ones still inside their fact window in a quiet
+  # hour (05:20 UTC), so the job never pushes a pending publish run out of the shared concurrency group.
+  schedule:
+    - cron: '20 5 * * *'
 permissions:
   contents: read
 jobs:
+  pick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      only: ${{ steps.pick.outputs.only }}
+      run: ${{ steps.pick.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_ONLY: ${{ inputs.only }}
+        run: |
+          if [ "$EVENT" = schedule ]; then ONLY="$(node scripts/keep-fresh.mjs briefs)"; RUN=$([ -n "$ONLY" ] && echo true || echo false); else ONLY="$INPUT_ONLY"; RUN=true; fi
+          [[ "$ONLY" =~ ^[a-z0-9,-]*$ ]] || { echo "Invalid brief list"; exit 1; }
+          echo "only=$ONLY" >> "$GITHUB_OUTPUT"; echo "run=$RUN" >> "$GITHUB_OUTPUT"; echo "Briefs: ${ONLY:-all} (run=$RUN)"
   render:
+    needs: pick
+    if: needs.pick.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -24,7 +51,7 @@ jobs:
       # The runner image already has Google Chrome.
       - name: Render carousels
         env:
-          ONLY: ${{ inputs.only }}
+          ONLY: ${{ needs.pick.outputs.only }}
           CHROME_CHANNEL: chrome
         run: node scripts/render-brief-carousels.mjs
       # Rendered slides and alt text only; no credentials or private data.
@@ -38,7 +65,7 @@ jobs:
   # Hosts approved briefs on Framer and imports them into the encrypted posting queue. The existing
   # publisher posts them in the 12:30 / 6 PM slots under its usual caps, spacing and source rechecks.
   queue:
-    needs: render
+    needs: [pick, render]
     if: vars.CANCHA_AUTOMATION_BACKEND == 'github'
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -68,7 +95,13 @@ jobs:
       - name: Import into the posting queue
         run: |
           if [ "$(node -p "require('./private-data/brief-carousels-ready.json').length" 2>/dev/null || echo 0)" = "0" ]; then echo "Nothing to import"; exit 0; fi
-          node scripts/github-instagram.mjs refresh-brief-carousels
+          # One brief per import: a single brief whose source changed must not block the others (keep-fresh, Nov 7).
+          node -e "const d=require('./private-data/brief-carousels-ready.json');d.forEach((x,i)=>require('fs').writeFileSync('private-data/brief-ready-'+i+'.json',JSON.stringify([x])))"
+          status=0
+          for f in private-data/brief-ready-*.json; do
+            BRIEF_CAROUSELS_FILE="$f" node scripts/github-instagram.mjs refresh-brief-carousels || { echo "Not imported: $(node -p "require('./$f')[0].id")"; status=1; }
+          done
+          exit $status
         env:
           GITHUB_TOKEN: ${{ github.token }}
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
