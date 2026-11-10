@@ -34,7 +34,11 @@ jobs:
           EVENT: ${{ github.event_name }}
           INPUT_CUT: ${{ inputs.cut }}
         run: |
-          if [ "$EVENT" = schedule ]; then CUT="$(node scripts/keep-fresh.mjs cut)"; else CUT="$INPUT_CUT"; fi
+          # GitHub can start a scheduled run hours late (Nov 9-10: 13:30 and 15:01 UTC). Outside the quiet window
+          # (04:00-11:59 UTC) a late refresh could displace a pending publish run, so it skips.
+          H=$(date -u +%H)
+          if [ "$EVENT" = schedule ] && { [ "$H" -ge 12 ] || [ "$H" -lt 4 ]; }; then echo "Late scheduled start; skipping"; CUT=""; RUN=false
+          elif [ "$EVENT" = schedule ]; then CUT="$(node scripts/keep-fresh.mjs cut)"; else CUT="$INPUT_CUT"; fi
           echo "cut=$CUT" >> "$GITHUB_OUTPUT"; echo "Cut: ${CUT:-none}"
   cut:
     needs: pick
