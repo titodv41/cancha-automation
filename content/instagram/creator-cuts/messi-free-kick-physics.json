@@ -14,7 +14,7 @@
   },
   {
    "id": "WN2jafJHRU8",
-   "at": 18,
+   "at": 8,
    "seconds": 1.8,
    "x": 0.5
   },
@@ -82,13 +82,13 @@
    "id": "WN2jafJHRU8",
    "at": 196,
    "seconds": 1.8,
-   "x": 0.5
+   "fit": true
   },
   {
    "id": "WN2jafJHRU8",
    "at": 202,
    "seconds": 1.8,
-   "x": 0.5
+   "fit": true
   },
   {
    "id": "WN2jafJHRU8",
@@ -128,15 +128,15 @@
   },
   {
    "id": "WN2jafJHRU8",
-   "at": 12,
+   "at": 3,
    "seconds": 2.31,
    "x": 0.5
   },
   {
    "id": "WN2jafJHRU8",
-   "at": 288,
+   "at": 5,
    "seconds": 2.69,
-   "x": 0.5
+   "fit": true
   }
  ],
  "beats": [
