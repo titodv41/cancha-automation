@@ -19,6 +19,8 @@ test('every creator cut uses only cleared videos and its lines fit the timeline'
   const cut=JSON.parse(readFileSync(new URL('../content/instagram/creator-cuts/'+name,import.meta.url))),total=cut.shots.reduce((a,s)=>a+s.seconds,0);
   for(const s of cut.shots)assert.ok(ids.has(s.id),name+' uses '+s.id);
   for(const b of cut.beats)assert.ok(b.start>=cut.hookSeconds&&b.end<=total+.01&&b.text.length<=60,name+': '+b.text);
+  // The hook is set large; past about three wrapped lines (~15 characters each) it runs into the credit line (Nov 11).
+  assert.ok(cut.hook.split('\n').reduce((a,l)=>a+Math.ceil(l.length/15),0)<=3,name+': hook too long');
  }
 });
 
