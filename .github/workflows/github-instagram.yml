@@ -54,7 +54,13 @@ jobs:
           CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
         run: node scripts/check-preparation-needed.mjs >> "$GITHUB_OUTPUT"
       - if: (steps.clock.outputs.action == 'prepare' && steps.preparation.outputs.needed == 'true') || steps.clock.outputs.action == 'replenish'
-        run: npx playwright install --with-deps chromium
+        # Nov 11: the daily prepare died here on a runner DNS glitch (apt could not resolve). Retry before failing the day.
+        run: |
+          for attempt in 1 2 3; do
+            npx playwright install --with-deps chromium && exit 0
+            echo "Browser install failed (attempt $attempt); retrying in 30 s"; sleep 30
+          done
+          exit 1
       - name: Install locked video renderer
         if: steps.clock.outputs.action == 'replenish'
         run: |
