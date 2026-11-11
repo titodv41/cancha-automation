@@ -77,17 +77,23 @@ jobs:
           YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
         run: |
           mkdir -p private-data/clips
-          IDS="$(node -p "const c=require('./'+process.env.CUT_FILE);[...new Set([...c.shots,...(c.sfx||[])].map(s=>s.id))].join(',')")" node scripts/clip-download.mjs private-data/clips/urls.txt
-          pip install --quiet -U "yt-dlp[default]"
-          umask 077
-          COOKIES="$RUNNER_TEMP/yt-cookies.txt"
-          printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIES"
-          set +e
-          yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/b" --merge-output-format mp4 \
-            -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --no-progress \
-            -a private-data/clips/urls.txt 2>&1 | grep -v -i cookie | tail -20
-          status=${PIPESTATUS[0]}
-          rm -f "$COOKIES"
+          export IDS="$(node -p "const c=require('./'+process.env.CUT_FILE);[...new Set([...c.shots,...(c.sfx||[])].map(s=>s.id))].join(',')")"
+          node scripts/clip-download.mjs private-data/clips/urls.txt
+          # Cancha's own app recordings are committed in the repo; copy them (checksum-checked) instead of downloading.
+          node scripts/own-footage.mjs private-data/clips "$IDS"
+          status=0
+          if grep -q . private-data/clips/urls.txt; then
+            pip install --quiet -U "yt-dlp[default]"
+            umask 077
+            COOKIES="$RUNNER_TEMP/yt-cookies.txt"
+            printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIES"
+            set +e
+            yt-dlp --cookies "$COOKIES" -f "bv*[height<=1080][vcodec^=avc1]+ba[ext=m4a]/bv*[height<=1080]+ba/b" --merge-output-format mp4 \
+              -o "private-data/clips/%(id)s.%(ext)s" --no-playlist --max-filesize 400M --no-progress \
+              -a private-data/clips/urls.txt 2>&1 | grep -v -i cookie | tail -20
+            status=${PIPESTATUS[0]}
+            rm -f "$COOKIES"
+          fi
           ls -la private-data/clips
           exit $status
       - name: Narrate, render and host

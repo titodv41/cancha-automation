@@ -37,3 +37,15 @@ test('the posting gate names pending-owner footage explicitly', () => {
 test('creator-cut drafts keep pending-owner on the footage so the posting gate sees it', () => {
   assert.match(readFileSync(new URL('../video/render-creator-cut.mjs', import.meta.url), 'utf8'), /v\.license==='pending-owner'\?'pending-owner'/);
 });
+test('Cancha own footage is cleared for cuts, never sent to YouTube, and must match its checksum',async()=>{
+ const{ownFootage}=await import('../scripts/clip-download.mjs'),{copyOwnFootage}=await import('../scripts/own-footage.mjs');
+ const{mkdtempSync,writeFileSync,mkdirSync,existsSync}=await import('node:fs'),{tmpdir}=await import('node:os'),{join}=await import('node:path'),{createHash}=await import('node:crypto');
+ const root=mkdtempSync(join(tmpdir(),'own-'));mkdirSync(join(root,'content/instagram/own-footage'),{recursive:true});writeFileSync(join(root,'content/instagram/own-footage/cancha-app-tour-01.mp4'),'video');
+ const entry={id:'cancha-app-tour-01',file:'content/instagram/own-footage/cancha-app-tour-01.mp4',sha256:createHash('sha256').update('video').digest('hex'),creator:'Cancha',license:'cancha-own',credit:'App screens: Cancha',permission:{recordedOn:'2026-11-11',how:'Recorded by Cancha from its own app build.'}};
+ const config={videos:[entry,{...entry,id:'cancha-x',file:'content/instagram/own-footage/other.mp4'},{...entry,id:'cancha-y',creator:'Someone'}]};
+ assert.deepEqual(ownFootage(config).map(v=>v.id),['cancha-app-tour-01']);
+ assert.ok(clearedVideos(config).some(v=>v.id==='cancha-app-tour-01'));
+ assert.deepEqual(downloadList(config,'cancha-app-tour-01'),[]);
+ const out=join(root,'clips');assert.deepEqual(await copyOwnFootage(config,'cancha-app-tour-01,S13aJN_OCFs',out,root),['cancha-app-tour-01']);assert.ok(existsSync(join(out,'cancha-app-tour-01.mp4')));
+ await assert.rejects(copyOwnFootage({videos:[{...entry,sha256:'0'.repeat(64)}]},'cancha-app-tour-01',out,root),/changed/);
+});
