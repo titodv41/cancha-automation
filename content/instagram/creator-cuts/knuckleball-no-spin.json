@@ -1,0 +1,158 @@
+{
+ "id": "creator-cut-knuckleball-no-spin",
+ "hookSeconds": 1.92,
+ "outroSeconds": 3.0,
+ "posterSeconds": 1.0,
+ "chip": "THE SCIENCE OF SOCCER",
+ "hook": "Messi bends it with spin.\nThese guys kill the spin.",
+ "shots": [
+  {
+   "id": "DG6hBgrryWg",
+   "at": 30,
+   "seconds": 1.92,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 36,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 42,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 48,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 54,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 60,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 66,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 72,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 78,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 84,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 90,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 96,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 102,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 108,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 114,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 120,
+   "seconds": 1.5,
+   "fit": true
+  },
+  {
+   "id": "DG6hBgrryWg",
+   "at": 126,
+   "seconds": 1.5,
+   "fit": true
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.0,
+   "end": 5.5,
+   "text": "Messi: spin. These guys: none."
+  },
+  {
+   "start": 5.5,
+   "end": 9.5,
+   "text": "Hit the middle, through the valve"
+  },
+  {
+   "start": 9.5,
+   "end": 13.0,
+   "text": "Short, stiff follow-through"
+  },
+  {
+   "start": 13.0,
+   "end": 17.0,
+   "text": "Almost no spin"
+  },
+  {
+   "start": 17.0,
+   "end": 21.0,
+   "text": "The air flows unevenly.\nIt wobbles and dips late."
+  },
+  {
+   "start": 21.0,
+   "end": 23.5,
+   "text": "Keepers can't read it"
+  },
+  {
+   "start": 23.5,
+   "end": 25.92,
+   "text": "Tag your keeper"
+  }
+ ],
+ "script": "Messi bends free kicks with spin. These players take the spin away. It's called a knuckleball. Hit the middle of the ball, through the valve, with a short, stiff follow-through. Almost no spin. Without spin, the air doesn't flow around the ball evenly, so it wobbles and dips late. The keeper can't read it. Sometimes, neither can the shooter. Try it at your next session, and tag who's in goal.",
+ "caption": "Messi bends it with spin. The knuckleball kills the spin. ⚽\n\nHow it works:\n• Strike the middle of the ball, through the valve.\n• Short, stiff follow-through.\n• Almost no spin, so the air flows around the ball unevenly. It wobbles and dips late, and the keeper can't read it.\n\nTry it at your next session and tag who's in goal 👇 Follow @wearecancha for more.\n\nVideo: Knuckleball Twins, \"SLOW MOTION Knuckleball Freekicks in 4K!\" on YouTube. Watch the full video there.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0. Cancha is independent and not affiliated with any player, club or league.\n\n#Knuckleball #FreeKick #SoccerScience #SoccerTraining #MiamiSoccer",
+ "altText": "Cancha Reel built from Knuckleball Twins' slow-motion footage: players striking knuckleball free kicks at a small goal on an outdoor pitch, with short on-screen lines explaining how a ball with almost no spin moves.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "THE SCIENCE OF SOCCER",
+  "title": "Tag your\nkeeper.",
+  "line": "New breakdowns every week · @wearecancha"
+ }
+}
