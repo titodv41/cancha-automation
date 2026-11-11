@@ -1207,6 +1207,110 @@
     }
    ],
    "caption": "The road to the final. ⚽🏆\n\nThe 2026 MLS Cup Playoffs have four rounds. Round One is best of three: Inter Miami host Columbus Crew in Game 1 on Saturday, Nov 21 at 6 PM ET at Nu Stadium. The conference semifinals are Dec 5-6, the conference finals Dec 11-12, and MLS Cup is Friday, Dec 18.\n\nOur take: Miami are the reigning champions, and the road back starts at home. Who lifts it on Dec 18? Drop your pick below.\n\nSource: Inter Miami CF (intermiamicf.com).\n\nFollow @wearecancha for South Florida soccer, explained.\n\n#InterMiami #MLSCupPlayoffs #MiamiSoccer #NuStadium #FloridaSoccer"
+  },
+  {
+   "id": "mls-expansion-fees-beckham-25m",
+   "checkedOn": "2026-11-11",
+   "kicker": "SOCCER BUSINESS · MLS",
+   "title": [
+    "Beckham paid",
+    "$25 million."
+   ],
+   "highlight": "San Diego: $500M.",
+   "dek": "The price of a seat in MLS went up 20 times. A closed league sells scarcity.",
+   "points": [
+    {
+     "label": "THE OPTION",
+     "title": [
+      "A clause in his",
+      "2007 contract"
+     ],
+     "body": [
+      "Signed when he joined LA Galaxy",
+      "Used in 2014. Inter Miami played in 2020."
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "$25M",
+      "caption": "Beckham's price for an MLS team"
+     }
+    },
+    {
+     "label": "THE PRICE NOW",
+     "title": [
+      "What it costs",
+      "to get in today"
+     ],
+     "body": [
+      "Charlotte: reported near $325M",
+      "San Diego, 2023: a reported $500M"
+     ],
+     "visual": {
+      "type": "bars",
+      "bars": [
+       {
+        "label": "Miami",
+        "value": 25,
+        "display": "$25M"
+       },
+       {
+        "label": "Charlotte",
+        "value": 325,
+        "display": "$325M"
+       },
+       {
+        "label": "San Diego",
+        "value": 500,
+        "display": "$500M",
+        "highlight": true
+       }
+      ]
+     }
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "The seat itself",
+      "is the asset"
+     ],
+     "body": [
+      "No relegation in MLS",
+      "Inter Miami, Forbes 2025"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "$1.2B",
+      "caption": "Inter Miami's estimated value"
+     }
+    }
+   ],
+   "sources": [
+    {
+     "label": "Wikipedia, Inter Miami CF",
+     "url": "https://en.wikipedia.org/wiki/Inter_Miami_CF",
+     "confirm": [
+      "at a price of $25 million",
+      "exercised his option on February 5, 2014",
+      "valued at $1.2 billion as of 2025"
+     ]
+    },
+    {
+     "label": "Wikipedia, San Diego FC",
+     "url": "https://en.wikipedia.org/wiki/San_Diego_FC",
+     "confirm": [
+      "paid a $500 million expansion fee",
+      "awarded an expansion team on May 18, 2023"
+     ]
+    },
+    {
+     "label": "Wikipedia, Charlotte FC",
+     "url": "https://en.wikipedia.org/wiki/Charlotte_FC",
+     "confirm": [
+      "reported to be near $325 million"
+     ]
+    }
+   ],
+   "caption": "Beckham paid $25 million. San Diego paid a reported $500M. 💰\n\nWhen David Beckham joined LA Galaxy in 2007, his contract included an option to buy an MLS expansion team for $25 million. He used it in 2014, and Inter Miami started playing in 2020.\n\nThe price of getting in has changed: Charlotte FC's fee was reported near $325 million, and San Diego FC, awarded in May 2023, paid a reported $500 million.\n\nOur take: MLS has no promotion or relegation, so a team can't play its way in. The seat itself is the asset, and Forbes valued Inter Miami at about $1.2 billion in 2025.\n\nSource: Wikipedia (Inter Miami CF, San Diego FC, Charlotte FC), citing Forbes and media reports.\n\nSend this to your sports business group chat 👇 Follow @wearecancha for South Florida soccer, explained.\n\n#InterMiami #MLS #SportsBusiness #MiamiSoccer #Beckham"
   }
  ]
 }
