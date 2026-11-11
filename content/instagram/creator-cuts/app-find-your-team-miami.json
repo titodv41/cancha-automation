@@ -1,0 +1,117 @@
+{
+ "id": "creator-cut-app-find-your-team-miami",
+ "narrationApprovedOn": "2026-11-11",
+ "hookSeconds": 1.92,
+ "outroSeconds": 3.0,
+ "posterSeconds": 1.0,
+ "chip": "THE CANCHA APP",
+ "hook": "New in Miami?\nFind your team.",
+ "shots": [
+  {
+   "id": "cancha-app-tour-01",
+   "at": 0,
+   "seconds": 1.92,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 1.92,
+   "seconds": 1.9,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 4,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 7,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 10,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 14,
+   "seconds": 4.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 19,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 23,
+   "seconds": 4.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 28,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 32,
+   "seconds": 3.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.0,
+   "end": 5.8,
+   "text": "Who are you?"
+  },
+  {
+   "start": 5.8,
+   "end": 11.4,
+   "text": "What you want. How you play. Where."
+  },
+  {
+   "start": 11.4,
+   "end": 16.0,
+   "text": "Real clubs near you"
+  },
+  {
+   "start": 16.0,
+   "end": 19.4,
+   "text": "Every club, its own page"
+  },
+  {
+   "start": 19.4,
+   "end": 24.0,
+   "text": "Miami to Palm Beach"
+  },
+  {
+   "start": 24.0,
+   "end": 27.4,
+   "text": "Pickup near you"
+  },
+  {
+   "start": 27.4,
+   "end": 31.8,
+   "text": "Soon: captains post. You ask to join."
+  }
+ ],
+ "script": "New in Miami and looking for a team? This is Cancha. Tell it who you are. A player, a captain, a club, or someone who runs pickup. Say what you want, how you play, and where you're based. Then you get real clubs near you. Every club gets its own page, from Miami to Palm Beach. Pickup near you. And soon, captains post when they need a player, and you ask to join. Cancha opens soon in Miami-Dade and Broward. Follow to be first in.",
+ "caption": "New in Miami and looking for a team? ⚽\n\nThis is Cancha:\n• Tell it who you are: player, captain, club or pickup organizer.\n• Get real clubs near you, each with its own page.\n• Find pickup near you.\n• Soon: captains post when they need a player, and you ask to join.\n\nOpening soon in Miami-Dade and Broward. Follow @wearecancha to be first in 👇\n\nScreens from the Cancha app in development; the feed post shown is an example. Club names and crests are shown as listed in the Cancha directory; no affiliation or endorsement implied.\n🎵 Music: \"Loopster\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #AdultSoccer #PickupSoccer #Cancha",
+ "altText": "Screen recording of the Cancha app on a phone: the 'Who are you?' start screen, questions about what you want, how you play and where you're based, a list of Miami clubs with their crests, the Miami Sporting FC club page, a grid of club crests, a pickup listing and an example feed post labeled 'Example post'.",
+ "music": "loopster",
+ "outro": {
+  "kicker": "MIAMI-DADE + BROWARD",
+  "title": "Opening\nsoon.",
+  "line": "Follow @wearecancha to be first in"
+ }
+}

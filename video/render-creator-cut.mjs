@@ -20,7 +20,7 @@ const shots=spec.shots.map((s,i)=>{const file=`generated/creator-cut/shot-${i}.m
  execFileSync('ffmpeg',['-v','error','-y','-ss',String(s.at),'-i',source(s.id),'-t',String(seconds+.4),'-an','-vf',s.fit?`split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.18[bg];[b]scale=1080:-2[fg];[bg][fg]overlay=0:300,fps=30`:`scale=-2:1920,crop=1080:1920:(iw-1080)*${s.x??.5}:0,fps=30`,'-c:v','libx264','-crf','17','-pix_fmt','yuv420p',join(root,'video/public',file)]);
  return{...s,seconds,file};});
 const durationSeconds=+(shots.reduce((a,s)=>a+s.seconds,0)+spec.outroSeconds).toFixed(2);
-const cut={...spec,shots,beats:spec.beats.map(b=>({...b,start:r(b.start),end:r(b.end)})),hookSeconds:r(spec.hookSeconds),durationSeconds,credit:'Video: '+creators.join(' · ')+' · YouTube'+(spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cc-by')?' (CC BY)':'')};
+const cut={...spec,shots,beats:spec.beats.map(b=>({...b,start:r(b.start),end:r(b.end)})),hookSeconds:r(spec.hookSeconds),durationSeconds,credit:spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cancha-own')?'App screens: Cancha':'Video: '+creators.filter(c=>c!=='Cancha').join(' · ')+' · YouTube'+(spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cc-by')?' (CC BY)':'')};
 // A licensed library track (config/music-library.json) replaces the synthesized bed: voice-only mix first, then the
 // track sits about 13 LU under the voice and ducks further while Chris speaks (owner, Nov 2: music quieter than the voice).
 const track=spec.music?JSON.parse(await readFile(join(root,'config/music-library.json'),'utf8')).tracks.find(t=>t.id===spec.music):null;if(spec.music&&!track)throw Error('Unknown music track '+spec.music);
@@ -48,6 +48,6 @@ try{
   await masterVideo(output,{audioFile:audio,durationSeconds,limitPeaks:true,targetLufs:-14});
   const checks=await auditVideo(output,durationSeconds);
   await writeFile(join(out,spec.id+'.json'),JSON.stringify({id:spec.id,file:output,poster,seconds:durationSeconds,rendered:checks.passed,checks,creators,narration:timing?{voice:timing.voice,audioSha256:timing.audioSha256}:null,
-   footage:used.map(id=>{const v=cleared.find(x=>x.id===id);return{source:'youtube-cleared',id,creator:v.creator,license:v.license==='cc-by'?'CC BY 3.0 (YouTube Creative Commons)':v.license==='pending-owner'?'pending-owner':'creator permission',page:'https://www.youtube.com/watch?v='+id}}),
+   footage:used.map(id=>{const v=cleared.find(x=>x.id===id);if(v.license==='cancha-own')return{source:'cancha',id,creator:'Cancha',license:'Cancha original',page:'https://wearecancha.framer.website/'};return{source:'youtube-cleared',id,creator:v.creator,license:v.license==='cc-by'?'CC BY 3.0 (YouTube Creative Commons)':v.license==='pending-owner'?'pending-owner':'creator permission',page:'https://www.youtube.com/watch?v='+id}}),
    videoSha256:sha(await readFile(output)),renderedAt:new Date().toISOString()},null,2));console.log(JSON.stringify({output,durationSeconds,checks}));}
 }finally{await rm(temp,{recursive:true,force:true})}

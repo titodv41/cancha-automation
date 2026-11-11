@@ -324,6 +324,19 @@
     "recordedOn": "2026-11-11",
     "how": "Owner (Nov 11): find content and make drafts; owner gets the creator's OK. YouTube lists it as Creative Commons, but it may contain footage the uploader does not own, so it stays unpublishable until the owner confirms (creator-ok)."
    }
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "title": "Cancha app screens (web build, Nov 11 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-app-tour-01.mp4",
+   "sha256": "4c181214e193c7ad4a4aafcac4c404136234a2e0db67221c682a1e6d8520e037",
+   "license": "cancha-own",
+   "credit": "App screens: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-11",
+    "how": "Recorded by Cancha from its own app build (titodv41/cancha-app main, 13ea27e): onboarding, club list, club page, clubs grid, pickup and an example feed post labeled EXAMPLE POST. Club crests are the ones shown in the Cancha directory. No third-party video."
+   }
   }
  ]
 }

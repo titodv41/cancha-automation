@@ -19,3 +19,12 @@ test('rejects stale data facts, unhosted video, unknown footage sources and mism
  assert.equal(validShortReel({...draft(),footage:[{...result.footage[0],source:'instagram'}]},{now}),false);
  assert.equal(validShortReel({...draft(),visualEvidence:{...draft().visualEvidence,videoChecksum:sum}},{now}),false);
 });
+test('creator cuts may use Cancha app recordings, but not Pexels or unlabeled Cancha footage',()=>{
+ const own={id:'cancha-app-tour-01',source:'cancha',creator:'Cancha',license:'Cancha original',page:'https://wearecancha.framer.website/'},yt={source:'youtube-cleared',id:'S13aJN_OCFs',license:'creator permission',page:'https://www.youtube.com/watch?v=S13aJN_OCFs'};
+ const cut=footage=>({...draft(recipe('meme')),recipeKind:'creator',footage});
+ assert.equal(validShortReel(cut([own]),{now}),true);
+ assert.equal(validShortReel(cut([own,yt]),{now}),true);
+ assert.equal(validShortReel(cut([{...own,license:'stock'}]),{now}),false);
+ assert.equal(validShortReel(cut([own,{id:'p1',source:'pexels',license:'Pexels',page:'https://www.pexels.com/photo/1/'}]),{now}),false);
+ assert.equal(validShortReel({...cut([own]),recipeKind:'meme'},{now}),false);
+});
