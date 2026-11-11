@@ -1,0 +1,140 @@
+{
+ "id": "creator-cut-receive-like-rodri-pedri",
+ "hookSeconds": 1.92,
+ "outroSeconds": 3.0,
+ "posterSeconds": 1.0,
+ "chip": "HOW THE PROS PLAY",
+ "hook": "Great midfielders\nare never hidden.",
+ "shots": [
+  {
+   "id": "S13aJN_OCFs",
+   "at": 0,
+   "seconds": 1.92,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 42,
+   "seconds": 3.85,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 18,
+   "seconds": 2.5,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 36,
+   "seconds": 2.5,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 60,
+   "seconds": 2.88,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 78,
+   "seconds": 2.88,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 126,
+   "seconds": 2.5,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 136,
+   "seconds": 2.5,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 150,
+   "seconds": 1.92,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 166,
+   "seconds": 1.92,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 180,
+   "seconds": 3.08,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 194,
+   "seconds": 3.08,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 212,
+   "seconds": 3.85,
+   "fit": true
+  },
+  {
+   "id": "S13aJN_OCFs",
+   "at": 226,
+   "seconds": 3.08,
+   "fit": true
+  }
+ ],
+ "beats": [
+  {
+   "start": 5.77,
+   "end": 10.77,
+   "text": "1. Show yourself"
+  },
+  {
+   "start": 10.77,
+   "end": 16.53,
+   "text": "2. Drop deep"
+  },
+  {
+   "start": 16.53,
+   "end": 21.53,
+   "text": "3. Slide sideways"
+  },
+  {
+   "start": 21.53,
+   "end": 25.37,
+   "text": "4. Drift wide"
+  },
+  {
+   "start": 25.37,
+   "end": 31.53,
+   "text": "5. Third man run"
+  },
+  {
+   "start": 31.53,
+   "end": 35.38,
+   "text": "Scan first"
+  },
+  {
+   "start": 35.38,
+   "end": 38.46,
+   "text": "Send it to your 8"
+  }
+ ],
+ "script": "Great midfielders are never hidden. Rodri and Pedri use five moves to always be open. One. Show yourself. Check your shoulder, then arrive as the pass is played. Two. Drop deep, between the defenders. More time, and you receive on the half turn. Three. If the middle is blocked, slide sideways and open a new angle. Four. Still crowded? Fake toward the ball, then drift wide. Five. The third man run. Don't ask for the first pass. Run for the second one. Every one starts the same way: scan before you move. Send this to the midfielder on your team.",
+ "caption": "Great midfielders are never hidden. ⚽\n\nFive ways Rodri and Pedri stay open:\n1. Show yourself: check your shoulder, arrive as the pass is played.\n2. Drop deep between the defenders and receive on the half turn.\n3. Middle blocked? Slide sideways and open a new angle.\n4. Still crowded? Fake toward the ball, then drift wide.\n5. Third man run: don't ask for the first pass, run for the second.\n\nEvery one starts the same way: scan before you move.\n\nSend this to the midfielder on your team 👇 Follow @wearecancha for more.\n\nAnalysis: Dribble Dreams Academy, from \"How to Play as a Midfielder | 5 Ways to Receive like Rodri & Pedri\" on YouTube. Watch the full video there.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0. Cancha is independent and not affiliated with any player, club or league.\n\n#Rodri #Pedri #Midfielder #SoccerIQ #MiamiSoccer",
+ "altText": "Cancha Reel built from Dribble Dreams Academy's analysis: tactical diagrams and wide match views showing five ways midfielders like Rodri and Pedri get open to receive the ball, with a short on-screen line for each.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "HOW THE PROS PLAY",
+  "title": "Send it to\nyour 8.",
+  "line": "New breakdowns every week · @wearecancha"
+ }
+}
