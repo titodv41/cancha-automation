@@ -1021,6 +1021,108 @@
    ],
    "caption": "Playoff soccer comes to Nu Stadium ⚽🏟️\n\nInter Miami, the reigning MLS Cup champions, open Round One against Columbus Crew in a best-of-three series. Game 1 is Saturday, Nov 21 at 6 PM ET at Nu Stadium, the stadium's first-ever MLS Cup Playoffs match. Game 2 is Friday, Nov 27 at 8 PM ET in Columbus. If a Game 3 is needed, it comes back to Miami on Dec 1 or 2.\n\nOur take: the first playoff night at Nu Stadium is a big one for South Florida soccer. Going? Tag who you are taking.\n\nSource: Inter Miami CF (intermiamicf.com).\n\nFollow @wearecancha for South Florida soccer, explained.\n\n#InterMiami #MiamiSoccer #MLSCupPlayoffs #NuStadium #FloridaSoccer",
    "collab": "intermiamicf"
+  },
+  {
+   "id": "messi-golden-boot-back-to-back-2026",
+   "checkedOn": "2026-11-11",
+   "expiresOn": "2026-11-21",
+   "kicker": "MLS · GOLDEN BOOT",
+   "title": [
+    "Messi did it",
+    "again."
+   ],
+   "highlight": "First ever.",
+   "dek": "The first player in MLS history to win back-to-back Golden Boot awards.",
+   "points": [
+    {
+     "label": "THE RACE",
+     "title": [
+      "Top scorer,",
+      "second year running"
+     ],
+     "body": [
+      "2026 regular season goals",
+      "Musa (FC Dallas), Surridge (Nashville SC)"
+     ],
+     "visual": {
+      "type": "bars",
+      "bars": [
+       {
+        "label": "Messi",
+        "value": 26,
+        "display": "26",
+        "highlight": true
+       },
+       {
+        "label": "Musa",
+        "value": 22,
+        "display": "22"
+       },
+       {
+        "label": "Surridge",
+        "value": 21,
+        "display": "21"
+       }
+      ]
+     }
+    },
+    {
+     "label": "THE HISTORY",
+     "title": [
+      "Nobody had won it",
+      "two years in a row"
+     ],
+     "body": [
+      "Six players have won it twice",
+      "Only Messi did it back to back"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "1st",
+      "caption": "back-to-back Golden Boots in MLS history"
+     }
+    },
+    {
+     "label": "OUR TAKE",
+     "title": [
+      "Scores them.",
+      "Sets them up."
+     ],
+     "body": [
+      "17 assists on top of the goals",
+      "Next: playoff Game 1 vs Columbus, Sat Nov 21"
+     ],
+     "visual": {
+      "type": "stat",
+      "value": "43",
+      "caption": "goal contributions, league best"
+     }
+    }
+   ],
+   "sources": [
+    {
+     "label": "MLSsoccer.com, 2026 Golden Boot",
+     "url": "https://www.mlssoccer.com/news/inter-miami-s-lionel-messi-wins-2026-mls-golden-boot-presented-by-audi",
+     "confirm": [
+      "netting 26 goals",
+      "second consecutive season",
+      "17 assists",
+      "43 goal contributions",
+      "first player in MLS history to win back-to-back Golden Boot",
+      "Petar Musa (22 goals)",
+      "Sam Surridge (21 goals)"
+     ]
+    },
+    {
+     "label": "Inter Miami CF, playoff schedule",
+     "url": "https://www.intermiamicf.com/news/it-s-miami-time-presented-by-royal-caribbean-schedule-announced-for-audi-2026-mls-cup-playoffs-round-one-series-against-columbus-crew",
+     "confirm": [
+      "Columbus Crew",
+      "Nov. 21 at 6 p.m. ET"
+     ]
+    }
+   ],
+   "caption": "Messi did it again. First ever. ⚽👟\n\nLionel Messi won the 2026 MLS Golden Boot with 26 goals, the league's top scorer for the second straight season. He is the first player in MLS history to win back-to-back Golden Boots. FC Dallas' Petar Musa (22) and Nashville SC's Sam Surridge (21) finished behind him.\n\nHe added 17 assists for a league-best 43 goal contributions.\n\nOur take: at this level, the assists matter as much as the goals. Next up: playoff Game 1 vs Columbus Crew, Saturday Nov 21 at Nu Stadium.\n\nSource: MLSsoccer.com and Inter Miami CF.\n\nFollow @wearecancha for South Florida soccer, explained.\n\n#Messi #InterMiami #MiamiSoccer #MLS #GoldenBoot"
   }
  ]
 }
