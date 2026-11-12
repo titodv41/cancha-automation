@@ -11,6 +11,7 @@ const creators=[...new Set(spec.shots.map(s=>cleared.find(v=>v.id===s.id).creato
 const assets=join(root,'video/public/generated/creator-cut'),gen=join(root,'video/public/generated/automatic-news'),out=resolve(arg('--out')||join(root,'previews/creator-cut'));
 await mkdir(assets,{recursive:true});await mkdir(gen,{recursive:true});await mkdir(out,{recursive:true});
 for(const[name,path]of[['display.woff2',brand.displayFont],['ui.woff2',brand.bodyFont],['cancha.png',brand.logo]])await copyFile(join(root,path),join(gen,name));
+await copyFile(join(root,'content/instagram/own-footage/endcard-phone.png'),join(assets,'endcard-phone.png'));
 const source=id=>join(clipDir,id+'.mp4');
 // A shot with fit:true shows the whole 16:9 frame (charts, boards) in the upper part over a blurred fill instead of a centre crop.
 // With narration, each line starts on its cue word and the shots stretch between cues (video/cue-timeline.mjs).

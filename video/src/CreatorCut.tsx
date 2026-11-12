@@ -23,11 +23,20 @@ export function CreatorCut({brand,cut,audio}:any){
   {beat&&<div key={beat.start} style={{position:'absolute',left:62,right:140,top:1240,opacity:ease(f,beat.start*fps,beat.start*fps+8)*(1-ease(f,beat.end*fps-6,beat.end*fps)),transform:`translateY(${(1-ease(f,beat.start*fps,beat.start*fps+12))*30}px)`}}>
    <div style={{height:6,width:90,background:brand.accent,marginBottom:24}}/>
    <div data-copy style={{...display,fontSize:96,textShadow:'0 4px 22px #000c'}}>{beat.text}</div></div>}
-  {f>=outroFrom&&<AbsoluteFill style={{background:`rgba(16,63,50,${.92*ease(f,outroFrom,outroFrom+8)})`}}>
-   <div style={{position:'absolute',left:62,right:140,top:720,opacity:ease(f,outroFrom+3,outroFrom+12)}}>
-    <div data-copy style={{fontSize:32,color:brand.accent,letterSpacing:1.5}}>{(cut.outro?.kicker)||'FLORIDA SOCCER · EVERY WEEK'}</div>
-    <div data-copy style={{...display,fontSize:120,marginTop:16}}>{((cut.outro?.title)||'Find your\ngame.').split('\n').map((l:string,i:number)=><div key={i}>{l}</div>)}</div>
-    <div data-copy style={{fontSize:40,marginTop:34}}>{(cut.outro?.line)||'Clubs, camps & tryouts near you · link in bio'}</div></div></AbsoluteFill>}
+  {f>=outroFrom&&(()=>{const a=ease(f,outroFrom,outroFrom+10),ph=ease(f,outroFrom+4,outroFrom+22),tx=ease(f,outroFrom+2,outroFrom+14);
+   // Owner, Nov 12: the plain-text end card looked like a document. The end card now shows the product: the logo,
+   // one bold line and the real app on a phone rising into frame, on a forest-to-black brand gradient.
+   return <AbsoluteFill style={{opacity:a,background:'radial-gradient(120% 70% at 50% 78%,#1c5a47 0%,#103f32 45%,#06140f 100%)'}}>
+    <div style={{position:'absolute',left:0,right:0,top:620,height:1100,display:'flex',justifyContent:'center',transform:`translateY(${(1-ph)*160}px)`,opacity:ph}}>
+     <div style={{position:'absolute',width:620,height:620,borderRadius:'50%',background:brand.accent,opacity:.16,filter:'blur(90px)',top:180}}/>
+     <Img src={staticFile('generated/creator-cut/endcard-phone.png')} style={{width:440,height:952,filter:'drop-shadow(0 40px 60px #000a)'}}/></div>
+    <div style={{position:'absolute',left:62,right:62,top:150,opacity:tx,transform:`translateY(${(1-tx)*24}px)`}}>
+     <Img src={staticFile('generated/automatic-news/cancha.png')} style={{width:300,height:96,objectFit:'cover',filter:'brightness(0) invert(1)'}}/>
+     <div data-copy style={{fontSize:30,color:brand.accent,letterSpacing:1.5,marginTop:34}}>{(cut.outro?.kicker)||'FLORIDA SOCCER · EVERY WEEK'}</div>
+     <div data-copy style={{...display,fontSize:112,marginTop:12}}>{((cut.outro?.title)||'Find your\ngame.').split('\n').map((l:string,i:number,arr:string[])=><div key={i} style={{color:i===arr.length-1&&arr.length>1?brand.accent:'#fff'}}>{l}</div>)}</div></div>
+    <div data-copy style={{position:'absolute',left:62,right:62,bottom:330,display:'flex',justifyContent:'center',opacity:ease(f,outroFrom+14,outroFrom+24)}}>
+     <span style={{background:brand.accent,color:brand.forest,fontSize:36,padding:'16px 30px 18px',borderRadius:999}}>{(cut.outro?.line)||'Clubs, camps & tryouts near you · link in bio'}</span></div>
+   </AbsoluteFill>;})()}
   <div data-copy style={{position:'absolute',left:64,right:140,bottom:250,fontSize:24,opacity:.8,lineHeight:1.3}}>{cut.credit}</div>
   <div data-copy style={{position:'absolute',left:64,bottom:205,fontSize:30,opacity:.85}}>{brand.handle}</div>
   {audio&&<Audio src={staticFile(audio)}/>}
