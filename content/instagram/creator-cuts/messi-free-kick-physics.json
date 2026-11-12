@@ -144,57 +144,68 @@
   {
    "start": 4.49,
    "end": 8.33,
-   "text": "30 m out, near the sideline"
+   "text": "30 m out, near the sideline",
+   "cue": "He's almost thirty meters out"
   },
   {
    "start": 8.33,
    "end": 11.79,
-   "text": "The goal: 4° wide"
+   "text": "The goal: 4° wide",
+   "cue": "From there, the goal looks"
   },
   {
    "start": 11.79,
    "end": 17.95,
-   "text": "Straight shot: impossible"
+   "text": "Straight shot: impossible",
+   "cue": "A straight shot is impossible"
   },
   {
    "start": 17.95,
    "end": 24.49,
-   "text": "Off center. 10 spins a second"
+   "text": "Off center. 10 spins a second",
+   "cue": "He hits it off center"
   },
   {
    "start": 24.49,
    "end": 32.17,
-   "text": "Spin bends the air"
+   "text": "Spin bends the air",
+   "cue": "That spin drags air"
   },
   {
    "start": 32.17,
    "end": 35.77,
-   "text": "Tracked frame by frame"
+   "text": "Tracked frame by frame",
+   "cue": "Biblidom tracked it"
   },
   {
    "start": 35.77,
    "end": 45.01,
-   "text": "Clears the wall. Curves 7 m"
+   "text": "Clears the wall. Curves 7 m",
+   "cue": "clears the wall"
   },
   {
    "start": 45.01,
    "end": 48.09,
-   "text": "No spin: 7 m short"
+   "text": "No spin: 7 m short",
+   "cue": "Without the spin"
   },
   {
    "start": 48.09,
    "end": 50.78,
-   "text": "Half a degree off: wide"
+   "text": "Half a degree off: wide",
+   "cue": "Half a degree off"
   },
   {
    "start": 50.78,
    "end": 55.4,
-   "text": "Next: Columbus, playoffs"
+   "text": "Next: Columbus, playoffs",
+   "cue": "And on November twenty-first"
   },
   {
    "start": 55.4,
    "end": 58.09,
-   "text": "Save this"
+   "text": "Save this",
+   "cue": "Save this for your"
   }
  ],
  "script": "Messi bent this free kick seven meters. Here's how. Columbus, September. He's almost thirty meters out, near the sideline. From there, the goal looks just four degrees wide. And the wall stands right on the line to the post. A straight shot is impossible. So he doesn't hit it hard. He hits it off center, with about ten spins a second. That spin drags air around the ball. One side moves faster, the pressure drops, and the ball gets pushed sideways. Biblidom tracked it frame by frame. It leaves at about ninety kilometers an hour, clears the wall at two and a half meters, then curves seven meters into the corner. Without the spin, it lands seven meters short. Half a degree off, and it's wide. He's thirty-nine. And on November twenty-first, he faces Columbus again, in the playoffs. Save this for your next free kick.",

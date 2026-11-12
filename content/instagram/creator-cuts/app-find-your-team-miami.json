@@ -70,39 +70,46 @@
  ],
  "beats": [
   {
-   "start": 2.0,
-   "end": 5.8,
-   "text": "Who are you?"
+   "start": 1.92,
+   "end": 3.82,
+   "text": "Who are you?",
+   "cue": "Tell it who"
   },
   {
-   "start": 5.8,
-   "end": 11.4,
-   "text": "What you want. How you play. Where."
+   "start": 3.82,
+   "end": 12.42,
+   "text": "What you want. How you play. Where.",
+   "cue": "Say what you want"
   },
   {
-   "start": 11.4,
-   "end": 16.0,
-   "text": "Real clubs near you"
+   "start": 12.42,
+   "end": 17.02,
+   "text": "Real clubs near you",
+   "cue": "Then you get real"
   },
   {
-   "start": 16.0,
-   "end": 19.4,
-   "text": "Every club, its own page"
+   "start": 17.02,
+   "end": 20.42,
+   "text": "Every club, its own page",
+   "cue": "Every club gets"
   },
   {
-   "start": 19.4,
-   "end": 24.0,
-   "text": "Miami to Palm Beach"
+   "start": 20.42,
+   "end": 25.02,
+   "text": "Miami to Palm Beach",
+   "cue": "from Miami to Palm"
   },
   {
-   "start": 24.0,
-   "end": 27.4,
-   "text": "Pickup near you"
+   "start": 25.02,
+   "end": 28.42,
+   "text": "Pickup near you",
+   "cue": "Pickup near you"
   },
   {
-   "start": 27.4,
+   "start": 28.42,
    "end": 31.8,
-   "text": "Soon: captains post. You ask to join."
+   "text": "Soon: captains post. You ask to join.",
+   "cue": "And soon, captains"
   }
  ],
  "script": "New in Miami and looking for a team? This is Cancha. Tell it who you are. A player, a captain, a club, or someone who runs pickup. Say what you want, how you play, and where you're based. Then you get real clubs near you. Every club gets its own page, from Miami to Palm Beach. Pickup near you. And soon, captains post when they need a player, and you ask to join. Cancha opens soon in Miami-Dade and Broward. Follow to be first in.",
