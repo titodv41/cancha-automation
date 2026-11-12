@@ -511,6 +511,10 @@
     {
       "url": "https://division1.upsl.com/teams/",
       "division": "Division 1"
+    },
+    {
+      "url": "https://women.upsl.com/teams/",
+      "division": "Women"
     }
   ]
 }
