@@ -1,6 +1,6 @@
 import test from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';
 import{narrationAllowed,buildCreatorDraft}from'../scripts/creator-cut.mjs';import{shortReelAllowed}from'../server/short-reels.mjs';
-const cut=JSON.parse(readFileSync(new URL('../content/instagram/creator-cuts/this-is-florida-soccer.json',import.meta.url))),policy=JSON.parse(readFileSync(new URL('../config/instagram-editorial-policy.json',import.meta.url)));
+const cut=JSON.parse(readFileSync(new URL('../content/instagram/creator-cuts/this-is-florida-soccer.json',import.meta.url))),livePolicy=JSON.parse(readFileSync(new URL('../config/instagram-editorial-policy.json',import.meta.url))),policy={...livePolicy,approvedShortReelIds:[...livePolicy.approvedShortReelIds,cut.id]};
 const h='a'.repeat(64),v='b'.repeat(64),result={seconds:22.3,renderedAt:new Date().toISOString(),footage:[{source:'youtube-cleared',id:'ttVtRHrCWT4',creator:'Lozzz Productionz',license:'CC BY 3.0 (YouTube Creative Commons)',page:'https://www.youtube.com/watch?v=ttVtRHrCWT4'}]};
 const draft=(r=result)=>buildCreatorDraft(cut,r,{date:'2026-10-29',posterUrl:'https://framerusercontent.com/images/abc.jpg',posterChecksum:h,videoUrl:'https://framerusercontent.com/assets/abc.mp4',videoChecksum:v});
 test('narration needs an approved cut and the capped Starter plan',()=>{
