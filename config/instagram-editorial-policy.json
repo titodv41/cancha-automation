@@ -68,7 +68,8 @@
     "creator-cut-nu-stadium-built-in-a-rush",
     "creator-cut-messi-free-kick-physics",
     "creator-cut-receive-like-rodri-pedri",
-    "creator-cut-knuckleball-no-spin"
+    "creator-cut-knuckleball-no-spin",
+    "creator-cut-where-do-you-play-miami"
   ],
   "shortReelsNote": "Oct 26 (later): owner rejected Reels built on stock footage (Pixabay/Mixkit/Commons) as generic. Only Reels made from real footage (official club media) may post; stock-footage recipes stay rendered but unapproved.",
   "comparisonCarouselsEnabled": true,
@@ -104,6 +105,7 @@
   "briefCarouselsNote": "Oct 30: owner asked for posts like news-with-a-take and money/opportunity alerts ('cool posts that offer information, value, drive people'). Claude approves each brief after checking every fact against its cited source the same day.",
   "priorityDraftIds": [
     "short-creator-cut-messi-free-kick-physics",
+    "short-creator-cut-where-do-you-play-miami",
     "short-creator-cut-nu-stadium-built-in-a-rush",
     "short-creator-cut-app-find-your-team-miami",
     "short-creator-cut-receive-like-rodri-pedri",
