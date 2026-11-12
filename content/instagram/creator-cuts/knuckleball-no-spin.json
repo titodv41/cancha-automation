@@ -112,39 +112,46 @@
  ],
  "beats": [
   {
-   "start": 2.0,
-   "end": 5.5,
-   "text": "Messi: spin. These guys: none."
+   "start": 1.92,
+   "end": 4.92,
+   "text": "Messi: spin. These guys: none.",
+   "cue": "Messi bends free kicks"
   },
   {
-   "start": 5.5,
-   "end": 9.5,
-   "text": "Hit the middle, through the valve"
+   "start": 4.92,
+   "end": 9.42,
+   "text": "Hit the middle, through the valve",
+   "cue": "Hit the middle"
   },
   {
-   "start": 9.5,
-   "end": 13.0,
-   "text": "Short, stiff follow-through"
+   "start": 9.42,
+   "end": 12.42,
+   "text": "Short, stiff follow-through",
+   "cue": "with a short, stiff"
   },
   {
-   "start": 13.0,
-   "end": 17.0,
-   "text": "Almost no spin"
+   "start": 12.42,
+   "end": 16.92,
+   "text": "Almost no spin",
+   "cue": "Almost no spin"
   },
   {
-   "start": 17.0,
-   "end": 21.0,
-   "text": "The air flows unevenly.\nIt wobbles and dips late."
+   "start": 16.92,
+   "end": 21.42,
+   "text": "The air flows unevenly.\nIt wobbles and dips late.",
+   "cue": "Without spin, the air"
   },
   {
-   "start": 21.0,
-   "end": 23.5,
-   "text": "Keepers can't read it"
+   "start": 21.42,
+   "end": 22.92,
+   "text": "Keepers can't read it",
+   "cue": "The keeper can't"
   },
   {
-   "start": 23.5,
+   "start": 22.92,
    "end": 25.92,
-   "text": "Tag your keeper"
+   "text": "Tag your keeper",
+   "cue": "Try it at your"
   }
  ],
  "script": "No spin. All chaos. Messi bends free kicks with spin. These players take the spin away. It's called a knuckleball. Hit the middle of the ball, through the valve, with a short, stiff follow-through. Almost no spin. Without spin, the air doesn't flow around the ball evenly, so it wobbles and dips late. The keeper can't read it. Sometimes, neither can the shooter. Try it at your next session, and tag who's in goal.",

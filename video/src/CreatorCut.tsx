@@ -6,7 +6,8 @@ import{AbsoluteFill,Audio,Easing,Img,OffthreadVideo,Sequence,interpolate,staticF
 const clamp={extrapolateLeft:'clamp' as const,extrapolateRight:'clamp' as const};
 const ease=(f:number,a:number,b:number)=>interpolate(f,[a,b],[0,1],{...clamp,easing:Easing.bezier(.16,1,.3,1)});
 const display:React.CSSProperties={fontFamily:'AutoDisplay,sans-serif',fontStyle:'italic',fontWeight:700,letterSpacing:-1,lineHeight:.92,textTransform:'uppercase'};
-export const FADE=6;
+// Owner, Nov 12: transitions felt abrupt; a 0.4 s crossfade reads as one calm piece.
+export const FADE=12;
 export function CreatorCut({brand,cut,audio}:any){
  const f=useCurrentFrame(),{fps,durationInFrames}=useVideoConfig(),outroFrom=durationInFrames-Math.round(cut.outroSeconds*fps),hookEnd=Math.round(cut.hookSeconds*fps);
  const beat=f>=hookEnd&&f<outroFrom?cut.beats.find((b:any)=>f>=b.start*fps&&f<b.end*fps):null;

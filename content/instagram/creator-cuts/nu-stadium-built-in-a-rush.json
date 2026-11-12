@@ -112,54 +112,64 @@
  ],
  "beats": [
   {
-   "start": 2.0,
-   "end": 5.0,
-   "text": "Ground broke Aug 2023"
+   "start": 1.92,
+   "end": 5.8,
+   "text": "Ground broke Aug 2023",
+   "cue": "Ground broke in"
   },
   {
-   "start": 5.0,
-   "end": 8.5,
-   "text": "~14 months for the electrical work"
+   "start": 5.8,
+   "end": 7.74,
+   "text": "~14 months for the electrical work",
+   "cue": "The electricians say"
   },
   {
-   "start": 8.5,
-   "end": 11.5,
-   "text": "~400,000 work hours"
+   "start": 7.74,
+   "end": 11.62,
+   "text": "~400,000 work hours",
+   "cue": "Around four hundred thousand"
   },
   {
-   "start": 11.5,
-   "end": 14.5,
-   "text": "240+ electricians"
+   "start": 11.62,
+   "end": 13.56,
+   "text": "240+ electricians",
+   "cue": "More than two hundred"
   },
   {
-   "start": 14.5,
-   "end": 19.0,
-   "text": "Open roof. Catwalks.\nNothing to mount to."
+   "start": 13.56,
+   "end": 19.38,
+   "text": "Open roof. Catwalks.\nNothing to mount to.",
+   "cue": "An open roof"
   },
   {
-   "start": 19.0,
-   "end": 22.0,
-   "text": "Sun. Rain. A deadline."
+   "start": 19.38,
+   "end": 21.32,
+   "text": "Sun. Rain. A deadline.",
+   "cue": "Sun, rain"
   },
   {
-   "start": 22.0,
-   "end": 25.0,
-   "text": "Opened April 4, 2026"
+   "start": 21.32,
+   "end": 25.2,
+   "text": "Opened April 4, 2026",
+   "cue": "On April fourth"
   },
   {
-   "start": 25.0,
-   "end": 27.5,
-   "text": "26,700 seats"
+   "start": 25.2,
+   "end": 27.14,
+   "text": "26,700 seats",
+   "cue": "Twenty-six thousand"
   },
   {
-   "start": 27.5,
-   "end": 30.5,
-   "text": "Messi scored Inter Miami's\nfirst goal here"
+   "start": 27.14,
+   "end": 31.02,
+   "text": "Messi scored Inter Miami's\nfirst goal here",
+   "cue": "And Messi scored"
   },
   {
-   "start": 30.5,
+   "start": 31.02,
    "end": 32.96,
-   "text": "Playoffs here: Sat, Nov 21"
+   "text": "Playoffs here: Sat, Nov 21",
+   "cue": "the playoffs come"
   }
  ],
  "script": "Inter Miami's new home was built in a rush. Ground broke in August 2023. The electricians say they had about fourteen months for their part. Around four hundred thousand work hours. More than two hundred forty electricians. An open roof, with catwalks that had nothing to mount to. Sun, rain, and a deadline. On April fourth, it opened. Twenty-six thousand seven hundred seats. And Messi scored Inter Miami's first goal there. And on November twenty-first, the playoffs come to it. Inter Miami against Columbus, game one. Have you been yet?",
