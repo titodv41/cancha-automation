@@ -14,7 +14,7 @@ if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(asy
  for(const name of FILES){sources[name]=await readFile('framer/'+name,'utf8');if(expected.codeFiles[name]!==contentDigest(sources[name]))throw Error('Contract does not hold the reviewed digest of '+name);}
  for(const [k,h] of Object.entries(expected.codeFiles))if(!FILES.includes(k)&&live.codeFiles[k]!==h)throw Error('Unreviewed code change: '+k);
  for(const kind of ['scenes','textStyles'])for(const [k,h] of Object.entries(expected[kind]||{}))if(live[kind]?.[k]!==h)throw Error('Unreviewed '+kind+' change: '+k);
- const before=await f.agent.publish({action:'preview'});if(before.status!=='ready'||before.errors?.length||before.changes?.length||before.stagingEnabled)throw Error('Pending project changes must be reviewed first');
+ const before=await f.agent.publish({action:'preview'});if(before.status!=='ready'||before.errors?.length||before.changes?.length||before.stagingEnabled)throw Error('Pending project changes must be reviewed first: '+pendingSummary(before));
  const files=await f.getCodeFiles(),session='cancha-code-'+Date.now(),ui=files.find(x=>x.name==='CanchaUI.tsx'),ids=new Set();let changed=false;
  if((await f.typecheckCode('CanchaUI.tsx',FILES.includes('CanchaUI.tsx')?sources['CanchaUI.tsx']:ui.content,undefined,session)).length)throw Error('CanchaUI.tsx has type errors');
  // A live dependency can import another reviewed file. Load that reviewed source
@@ -33,3 +33,5 @@ if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(asy
  await new Promise(s=>setTimeout(s,60000));const html=await (await fetch(site+'/?v='+Date.now())).text();
  console.log(JSON.stringify({published:true,files:FILES,footerHubLinks:(html.match(/href="\/(orlando|tampa|miami)-soccer"/g)||[]).length}));
 });
+// What blocks a publish, without content: change types and names only (the Actions log is public).
+export function pendingSummary(p){return JSON.stringify({status:p?.status,staging:!!p?.stagingEnabled,errors:(p?.errors||[]).length,changes:(p?.changes||[]).slice(0,20).map(c=>[c.type,String(c.name||c.id||'').slice(0,60)])});}
