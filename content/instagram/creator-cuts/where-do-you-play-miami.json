@@ -1,0 +1,112 @@
+{
+ "id": "creator-cut-where-do-you-play-miami",
+ "narrationApprovedOn": "2026-11-12",
+ "hookSeconds": 1.92,
+ "outroSeconds": 3.0,
+ "posterSeconds": 1.0,
+ "chip": "MIAMI SOCCER",
+ "hook": "Inter Miami plays\nhere Saturday.",
+ "shots": [
+  {
+   "id": "NnwOFf3VlWg",
+   "at": 222,
+   "seconds": 1.92,
+   "x": 0.5
+  },
+  {
+   "id": "NnwOFf3VlWg",
+   "at": 180,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 23,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 14,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 19,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 28,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 10,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-app-tour-01",
+   "at": 0,
+   "seconds": 3.2,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 1.92,
+   "end": 4.52,
+   "text": "26,700 seats",
+   "cue": "Twenty-six thousand"
+  },
+  {
+   "start": 4.52,
+   "end": 7.52,
+   "text": "Where do you play?",
+   "cue": "But where do you play"
+  },
+  {
+   "start": 7.52,
+   "end": 10.92,
+   "text": "Adult clubs, Homestead to Weston",
+   "cue": "South Florida has adult clubs"
+  },
+  {
+   "start": 10.92,
+   "end": 13.92,
+   "text": "Every club, its own page",
+   "cue": "Every club gets"
+  },
+  {
+   "start": 13.92,
+   "end": 16.52,
+   "text": "Pickup near you",
+   "cue": "Pickup near"
+  },
+  {
+   "start": 16.52,
+   "end": 19.52,
+   "text": "Your level. Your area.",
+   "cue": "Tell us your level"
+  },
+  {
+   "start": 19.52,
+   "end": 22.72,
+   "text": "Opening soon",
+   "cue": "Cancha opens soon"
+  }
+ ],
+ "script": "Saturday, Inter Miami plays a playoff game right here. Twenty-six thousand seven hundred seats. But where do you play? South Florida has adult clubs from Homestead to Weston. Every club gets its own page on Cancha. Pickup near you, too. Tell us your level and your area, and find your team. Cancha opens soon in Miami-Dade and Broward. Follow so you're first in.",
+ "caption": "Inter Miami plays a playoff game at Nu Stadium this Saturday. 🏟️ But where do YOU play?\n\nCancha puts South Florida soccer in one place:\n• Adult clubs from Homestead to Weston, each with its own page (Miami Sporting FC, Hodler FC, River Miami FC, Milan De Miami FC and more).\n• Pickup near you.\n• Tell us your level and area, and find your team.\n\nOpening soon in Miami-Dade and Broward. Follow @wearecancha to be first in 👇 Tag the teammate you need.\n\nStadium footage: ElectricTV, \"Inside Miami's New Landmark\" on YouTube, used with permission. App screens: Cancha. Club names and crests as listed in the Cancha directory; no affiliation or endorsement implied.\n🎵 Music: \"Loopster\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #InterMiami #BrowardSoccer #AdultSoccer #PickupSoccer",
+ "altText": "Cancha Reel: construction footage of Inter Miami's Nu Stadium, then the Cancha app on a phone showing a grid of South Florida club crests, a list of Miami clubs, a club page, a pickup listing and the start screen asking where you are based and who you are.",
+ "music": "loopster",
+ "outro": {
+  "kicker": "MIAMI-DADE + BROWARD",
+  "title": "Find your\nteam.",
+  "line": "Follow @wearecancha to be first in"
+ }
+}
