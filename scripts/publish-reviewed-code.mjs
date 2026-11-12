@@ -23,7 +23,7 @@ if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(asy
  for(const name of FILES){
   const file=files.find(x=>x.name===name);if(!file)throw Error(name+' missing');ids.add(file.id);if(file.content!==sources[name]){await file.setFileContent(sources[name]);changed=true;}}
  const pending=await f.agent.publish({action:'preview'});if(pending.status!=='ready'||pending.errors?.length)throw Error('Publication preview needs review');
- const foreign=(pending.changes||[]).filter(ch=>!(ch.type==='CodeFile'&&ids.has(ch.nodeId)));if(foreign.length)throw Error('Unrelated pending changes: '+foreign.map(c=>c.type+' '+c.name).join(', '));
+ const foreign=(pending.changes||[]).filter(ch=>!(ch.type==='CodeFile'&&ids.has(ch.nodeId))&&!reviewedOpportunityChange(ch,reviewed));if(foreign.length)throw Error('Unrelated pending changes: '+foreign.map(c=>c.type+' '+c.name).join(', '));
  // Framer's preview does not always list an updated code file, so publish when this run edited one or anything of ours is pending.
  // A run that found the editor already updated still publishes: the editor content is the reviewed digest (checked below).
  for(const name of FILES)if(contentDigest((await f.getCodeFiles()).find(x=>x.name===name).content)!==expected.codeFiles[name])throw Error('Editor content differs from the reviewed digest: '+name);
