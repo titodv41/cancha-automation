@@ -15,7 +15,9 @@ test('the waitlist sends only the allowed fields, minimal return, with consent',
   assert.match(home, /key:'sb_publishable_[A-Za-z0-9_-]+'/);
   assert.match(home, /Prefer:'return=minimal'/);
   assert.match(home, /return\{email,area,role,lang:lang==='es'\?'es':'en',source:.{1,60}\?source:'site',consent:true\}/);
-  assert.match(home, /`\}\/>\s*<AppWaitlist\/><section className="ch3-hero ch7-hero">/, "the app waitlist leads the homepage (owner, Nov 4)");
+  assert.match(home, /`\}\/>\s*<AppWaitlist\/>/, "the app waitlist leads the homepage (owner, Nov 4)");
+  assert.match(home, /<AppWaitlist\/><ClubBadgeRail profiles=\{profiles\}\/><section className="ch3-hero ch7-hero">/, "club crests sit right under the waitlist (owner, Nov 4: crests up front)");
+  assert.equal(home.split('<ClubBadgeRail ').length, 2, "the crest rail appears once");
 });
 
 test('the waitlist opens in English; Spanish only from the switch', () => {
