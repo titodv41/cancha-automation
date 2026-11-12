@@ -14,7 +14,7 @@ if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(asy
  for(const name of FILES){sources[name]=await readFile('framer/'+name,'utf8');if(expected.codeFiles[name]!==contentDigest(sources[name]))throw Error('Contract does not hold the reviewed digest of '+name);}
  for(const [k,h] of Object.entries(expected.codeFiles))if(!FILES.includes(k)&&live.codeFiles[k]!==h)throw Error('Unreviewed code change: '+k);
  for(const kind of ['scenes','textStyles'])for(const [k,h] of Object.entries(expected[kind]||{}))if(live[kind]?.[k]!==h)throw Error('Unreviewed '+kind+' change: '+k);
- const before=await f.agent.publish({action:'preview'});if(before.status!=='ready'||before.errors?.length||before.changes?.length||before.stagingEnabled)throw Error('Pending project changes must be reviewed first: '+pendingSummary(before));
+ const before=await f.agent.publish({action:'preview'}),reviewed=await reviewedOpportunitySlugs(),extra=(before.changes||[]).filter(c=>!reviewedOpportunityChange(c,reviewed));if(before.status!=='ready'||before.errors?.length||extra.length||before.stagingEnabled)throw Error('Pending project changes must be reviewed first: '+pendingSummary({...before,changes:extra}));if(before.changes?.length)console.log(JSON.stringify({includesReviewedOpportunities:before.changes.map(c=>c.name)}));
  const files=await f.getCodeFiles(),session='cancha-code-'+Date.now(),ui=files.find(x=>x.name==='CanchaUI.tsx'),ids=new Set();let changed=false;
  if((await f.typecheckCode('CanchaUI.tsx',FILES.includes('CanchaUI.tsx')?sources['CanchaUI.tsx']:ui.content,undefined,session)).length)throw Error('CanchaUI.tsx has type errors');
  // A live dependency can import another reviewed file. Load that reviewed source
@@ -35,3 +35,15 @@ if(process.argv[1]?.endsWith('/publish-reviewed-code.mjs'))await withProject(asy
 });
 // What blocks a publish, without content: change types and names only (the Actions log is public).
 export function pendingSummary(p){return JSON.stringify({status:p?.status,staging:!!p?.stagingEnabled,errors:(p?.errors||[]).length,changes:(p?.changes||[]).slice(0,20).map(c=>[c.type,String(c.name||c.id||'').slice(0,60)])});}
+// Owner workflow (Nov 12): the daily opportunity import writes items from reviewed sources (config/opportunity-workflow.json,
+// config/reviewed-club-sources.json). If one is left unpublished it must not block a reviewed code release (and with it the
+// Instagram prepare check). Only collection items in opportunities/ whose slug matches a reviewed source ride along.
+export async function reviewedOpportunitySlugs(){
+ const w=JSON.parse(await readFile('config/opportunity-workflow.json','utf8')),r=JSON.parse(await readFile('config/reviewed-club-sources.json','utf8'));
+ const list=x=>Array.isArray(x)?x:Object.values(x||{}).find(Array.isArray)||[];
+ return [...list(w.sources).map(x=>x.id),...list(r).map(x=>x.slug)].filter(x=>/^[a-z0-9-]{3,}$/.test(x||''));
+}
+export function reviewedOpportunityChange(c,slugs){
+ const m=/^opportunities\/([a-z0-9-]{8,})$/.exec(String(c?.name||''));
+ return c?.type==='CollectionItem'&&!!m&&slugs.some(s=>s===m[1]||s.startsWith(m[1]));
+}
