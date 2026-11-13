@@ -1,0 +1,88 @@
+{
+ "id": "creator-cut-promotion-relegation-2028",
+ "narrationApprovedOn": "2026-11-13",
+ "hookSeconds": 1.92,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "US SOCCER",
+ "hook": "Relegation is coming\nto US soccer.",
+ "shots": [
+  {
+   "id": "cancha-promrel-explainer-01",
+   "at": 0,
+   "seconds": 1.92,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-promrel-explainer-01",
+   "at": 8,
+   "seconds": 4.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-promrel-explainer-01",
+   "at": 16,
+   "seconds": 3.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-promrel-explainer-01",
+   "at": 24,
+   "seconds": 4.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-promrel-explainer-01",
+   "at": 28.5,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-promrel-explainer-01",
+   "at": 32,
+   "seconds": 3.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 1.92,
+   "end": 6.12,
+   "text": "USL Premier: a new top flight",
+   "cue": "The USL is creating"
+  },
+  {
+   "start": 6.12,
+   "end": 9.72,
+   "text": "Up and down from 2028",
+   "cue": "Teams move up"
+  },
+  {
+   "start": 9.72,
+   "end": 14.12,
+   "text": "12+ teams · 15,000 seats · $40M owners",
+   "cue": "But the bar is high"
+  },
+  {
+   "start": 14.12,
+   "end": 17.12,
+   "text": "Not enough teams signed up yet",
+   "cue": "Not enough teams"
+  },
+  {
+   "start": 17.12,
+   "end": 20.52,
+   "text": "Should MLS do it too?",
+   "cue": "Should MLS"
+  }
+ ],
+ "script": "Relegation is coming to American soccer. The USL is creating a new top flight, USL Premier, above the Championship and League One. Teams move up, and teams go down, starting in 2028. But the bar is high: at least twelve teams, stadiums with fifteen thousand seats, and owners worth forty million dollars. Not enough teams have signed up yet. Should MLS do it too? Tell us in the comments.",
+ "caption": "Promotion and relegation is coming to US soccer. ⬆️⬇️\n\nThe USL is splitting into three divisions with a new top flight, USL Premier, and plans to introduce promotion and relegation in 2028.\n\nThe bar for a Division 1 league is high: at least 12 teams, enclosed stadiums with at least 15,000 seats, and owners worth $40M or more. So far, not enough teams have announced they will apply.\n\nShould MLS do it too? Tell us in the comments 👇\n\nSource: Goal, \"USL announces rebrand\" by Tom Hindle (Oct 23, 2026), citing the USL and U.S. Soccer's Division 1 standards. Cancha is independent and not affiliated with any league.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#USL #USLPremier #PromotionRelegation #MLS #SoccerBusiness",
+ "altText": "Cancha motion-graphics Reel: a USL Premier title card, a three-step league ladder with arrows up and down, a counter landing on 2028, three requirement cards (12+ teams, 15,000 seats, $40M owner) and a bubble asking whether MLS is next.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "SOCCER, EXPLAINED",
+  "title": "Would you\nwatch it?",
+  "line": "Follow @wearecancha"
+ }
+}
