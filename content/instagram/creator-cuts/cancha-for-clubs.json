@@ -1,0 +1,100 @@
+{
+ "id": "creator-cut-cancha-for-clubs",
+ "narrationApprovedOn": "2026-11-13",
+ "hookSeconds": 3.0,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "FOR CLUBS",
+ "hook": "Cancha\nfor Clubs.",
+ "shots": [
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 0,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 6,
+   "seconds": 4.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 12,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 18,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 24,
+   "seconds": 3.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 30,
+   "seconds": 2.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "at": 36,
+   "seconds": 3.6,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 3.0,
+   "end": 7.4,
+   "text": "Your club page. Free.",
+   "cue": "Your club gets"
+  },
+  {
+   "start": 7.4,
+   "end": 10.8,
+   "text": "Players ask to join",
+   "cue": "Post an opening"
+  },
+  {
+   "start": 10.8,
+   "end": 14.2,
+   "text": "Featured on our Instagram",
+   "cue": "Get featured"
+  },
+  {
+   "start": 14.2,
+   "end": 18.0,
+   "text": "Sponsors that fit your club",
+   "cue": "When you're ready"
+  },
+  {
+   "start": 18.0,
+   "end": 20.8,
+   "text": "Your media kit, free",
+   "cue": "We also build"
+  },
+  {
+   "start": 20.8,
+   "end": 24.4,
+   "text": "DM @wearecancha",
+   "cue": "Claim your club"
+  }
+ ],
+ "script": "South Florida clubs: this is Cancha for Clubs. Your club gets a free page, with your crest, league and city. Post an opening, and players ask to join. Get featured on our Instagram, with your club tagged. When you're ready, we find local sponsors that fit your club. We also build your media kit, for free. Claim your club. Send us a message on Instagram, at We Are Cancha.",
+ "caption": "Introducing Cancha for Clubs ⚽️\n\nFor adult clubs in Miami-Dade and Broward:\n\n✅ A free club page in the Cancha app: crest, league, city\n✅ Post an opening (a keeper, a sub, a tryout night) and players ask to join\n✅ Club spotlights on our Instagram, with your club tagged\n✅ A free media kit, and help finding local sponsors that fit your club when you're ready\n\nRun a club? DM us your club name and we'll set up your page.\n\nTag a club that should be on Cancha 👇\n\nApp screens show an example post. Club crests as listed in the Cancha directory; a listing is not a partnership or endorsement.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #SoccerClub #UPSL #SouthFloridaSoccer",
+ "altText": "Cancha motion-graphics Reel: a wall of South Florida club crests, the Cancha app club page for Miami Sporting FC, an example post asking for a keeper with an Ask to join tap, three club spotlight cards, a sponsor-category diagram around a club crest, an example media-kit layout with placeholders, and a Claim your club title.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "CANCHA FOR CLUBS",
+  "title": "Claim your\nclub.",
+  "line": "DM @wearecancha"
+ }
+}
