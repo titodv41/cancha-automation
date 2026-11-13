@@ -7,7 +7,8 @@ The house rules for every Reel. Read before writing a script or a spec. When the
 - **Never "vibe coded" or AI-looking.** No generic stock, no fake people, no flashy effects. Real footage, real screens, real faces.
 - **Voice and picture move together.** Each on-screen line starts on its cue word (`beats[].cue`) and lands on a cut. The picture changes when the line changes. Tests enforce this (`test/cue-timeline.test.mjs`).
 - **Calm transitions.** 0.4 s crossfades (`FADE=12`), a slow push on footage. No hard jump cuts between unrelated scenes, and no whip pans or glitch effects.
-- **End on the product.** The end card shows the logo, one bold line and the real app on a phone rising into frame, with a lime call-to-action pill (owner, Nov 12: the old plain-text card looked like a document).
+- **End on the product.** A 4.8 s end card: the logo, one bold line, and the app opening on a phone (a tap on the Cancha icon, then the club crests scrolling), with a lime call-to-action pill (owner, Nov 12-13).
+- **No sources or credits on the video.** They go in the caption only (owner, Nov 13).
 - **A reason to follow.** Every Reel belongs to a named series and ends with what the series gives you, e.g. "New breakdowns every week".
 
 ## Formats that work (references the owner sent)
@@ -39,7 +40,7 @@ The house rules for every Reel. Read before writing a script or a spec. When the
 - Open on a name, a number or a face in the first second. Keep the hook to three short lines on screen.
 - Use short sentences and plain words. Opinions go only in the last line. End with one call to action.
 - Aim for 25–45 s. Go up to 60 s only when the story earns it.
-- Never invent facts, partners, results or urgency. Credit the creator on screen the whole time and in the caption.
+- Never invent facts, partners, results or urgency. Credit the creator and sources in the caption (not on the video).
 
 ## Distribution (each Reel)
 - Send one collab invite: the featured club, or the creator who cleared the footage.
