@@ -337,6 +337,19 @@
     "recordedOn": "2026-11-11",
     "how": "Recorded by Cancha from its own app build (titodv41/cancha-app main, 13ea27e): onboarding, club list, club page, clubs grid, pickup and an example feed post labeled EXAMPLE POST. Club crests are the ones shown in the Cancha directory. No third-party video."
    }
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "title": "Cancha motion graphics: Sarasota Paradise report (Nov 13 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-sarasota-report-01.mp4",
+   "sha256": "2cc6125857608ff27087d4f4199571e0b49709d31f3d142f15aed7ceebb05d8c",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-13",
+    "how": "Made by Cancha: brand-color motion graphics with the Sarasota Paradise crest as listed in the Cancha directory. No third-party video."
+   }
   }
  ]
 }

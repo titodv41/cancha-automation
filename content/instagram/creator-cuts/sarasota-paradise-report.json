@@ -1,0 +1,100 @@
+{
+ "id": "creator-cut-sarasota-paradise-report",
+ "narrationApprovedOn": "2026-11-13",
+ "hookSeconds": 1.92,
+ "outroSeconds": 3.0,
+ "posterSeconds": 1.0,
+ "chip": "USL LEAGUE ONE",
+ "hook": "Sarasota Paradise\nhas folded.",
+ "shots": [
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 0,
+   "seconds": 1.92,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 1.92,
+   "seconds": 3.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 8,
+   "seconds": 4.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 16,
+   "seconds": 3.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 19.5,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 24,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sarasota-report-01",
+   "at": 32,
+   "seconds": 3.5,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 1.92,
+   "end": 5.12,
+   "text": "Reported, not confirmed",
+   "cue": "That's according to"
+  },
+  {
+   "start": 5.12,
+   "end": 9.12,
+   "text": "1 pro season. 11th.",
+   "cue": "The club played one season"
+  },
+  {
+   "start": 9.12,
+   "end": 12.32,
+   "text": "4th League One club gone in 2026?",
+   "cue": "If it's true"
+  },
+  {
+   "start": 12.32,
+   "end": 15.72,
+   "text": "Tormenta. Westchester. Corpus Christi.",
+   "cue": "Tormenta shut down"
+  },
+  {
+   "start": 15.72,
+   "end": 19.12,
+   "text": "2027 tickets still on sale",
+   "cue": "And the club's site"
+  },
+  {
+   "start": 19.12,
+   "end": 22.62,
+   "text": "What should the league change?",
+   "cue": "What should the league"
+  }
+ ],
+ "script": "Sarasota Paradise has folded. That's according to a Backheeled report, citing unnamed sources. The club played one season as a pro team in USL League One, and finished eleventh. If it's true, that's the fourth League One club gone this year. Tormenta shut down before the season. Westchester and Corpus Christi dropped out. And the club's site still sells 2027 season tickets. What should the league change? Tell us in the comments.",
+ "caption": "Sarasota Paradise has folded, according to a Backheeled report citing unnamed sources. 🚨\n\nThe Florida club played one season in USL League One (2026) and finished 11th. The club and USL have not commented, and the club site still lists 2027 season tickets.\n\nIf the report holds, it is the fourth League One club gone this year: South Georgia Tormenta shut down before the season, and Westchester SC and Corpus Christi dropped out.\n\nWhat should the league change so this stops happening? Tell us in the comments 👇\n\nSource: Backheeled (Nov 12, 2026); Sarasota Paradise club site. Unconfirmed report; we will update if the club or USL comments. Crest as listed in the Cancha directory; no affiliation implied.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#SarasotaParadise #USLLeagueOne #FloridaSoccer #USL #SoccerBusiness",
+ "altText": "Cancha motion-graphics Reel: the Sarasota Paradise crest with a REPORT tag, a counter landing on 11th, four League One clubs struck through, a 2027 season ticket card and a question bubble asking what the league should change.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FLORIDA SOCCER, EXPLAINED",
+  "title": "What do\nyou think?",
+  "line": "Follow @wearecancha"
+ }
+}
