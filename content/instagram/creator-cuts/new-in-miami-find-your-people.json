@@ -1,0 +1,76 @@
+{
+ "id": "creator-cut-new-in-miami-find-your-people",
+ "narrationApprovedOn": "2026-11-13",
+ "hookSeconds": 2.6,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "FIND YOUR TEAM",
+ "hook": "New in\nMiami?",
+ "shots": [
+  {
+   "id": "cancha-find-your-people-01",
+   "at": 0,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-find-your-people-01",
+   "at": 6,
+   "seconds": 4.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-find-your-people-01",
+   "at": 12,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-find-your-people-01",
+   "at": 18,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-find-your-people-01",
+   "at": 24,
+   "seconds": 3.6,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.6,
+   "end": 6.6,
+   "text": "Adult clubs near you",
+   "cue": "Cancha lists"
+  },
+  {
+   "start": 6.6,
+   "end": 10.0,
+   "text": "By league and city",
+   "cue": "See the clubs"
+  },
+  {
+   "start": 10.0,
+   "end": 13.4,
+   "text": "Follow your clubs",
+   "cue": "Follow the clubs"
+  },
+  {
+   "start": 13.4,
+   "end": 17.0,
+   "text": "Find your people",
+   "cue": "Find your team"
+  }
+ ],
+ "script": "New in Miami and looking for a team? Cancha lists adult clubs across Miami-Dade and Broward. See the clubs near you, by league and city. Follow the clubs you like, and see what they need. Find your team, and find your people. Link in our bio.",
+ "caption": "New in Miami? Soccer is the fastest way to find your people. ⚽️\n\nCancha lists adult clubs across Miami-Dade and Broward, from Miami and Doral to Weston, Miramar and Fort Lauderdale, with each club's league and city.\n\nFind your team at the link in our bio, and tag a friend who just moved here 👇\n\nClub crests as listed in the Cancha directory; a listing is not a partnership or endorsement.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #NewInMiami #AdultSoccer #FindYourTeam",
+ "altText": "Cancha motion-graphics Reel: New in Miami in big type, club crests grouped by city (Miami, Weston, Doral, Miramar, Fort Lauderdale), the Cancha app home screen with clubs near Miami, a club page with a Follow tap, and Find your people.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FIND YOUR TEAM",
+  "title": "Find your\npeople.",
+  "line": "Link in bio"
+ }
+}

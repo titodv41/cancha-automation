@@ -44,7 +44,7 @@ export async function prepareStandingPlan(db,{now=Date.now(),connected=false,acc
  const slots=[];for(let offset=0;offset<7;offset++){
   const day=new Date(today+'T12:00:00Z');day.setUTCDate(day.getUTCDate()+offset);const date=day.toISOString().slice(0,10);
   if(date<plan.startDate||!plan.weekdays.includes(day.getUTCDay()))continue;
-  for(const time of plan.localTimes||[plan.localTime])try{const scheduledAt=newYorkSchedule(date+'T'+time);if(Date.parse(scheduledAt)>now&&Date.parse(scheduledAt)-now<=8*3600000)slots.push({date,scheduledAt});else if(editorialPolicy.lateSlotGraceMinutes&&Date.parse(scheduledAt)<=now&&now-Date.parse(scheduledAt)<=Math.min(90,editorialPolicy.lateSlotGraceMinutes)*60000)slots.push({date,scheduledAt:new Date(now+1000).toISOString(),intendedAt:scheduledAt});}catch{/* DST ambiguity skips this slot. */}
+  for(const time of plan.localTimes||[plan.localTime])try{const scheduledAt=newYorkSchedule(date+'T'+time);if(Date.parse(scheduledAt)>now&&Date.parse(scheduledAt)-now<=8*3600000)slots.push({date,scheduledAt});else if(editorialPolicy.lateSlotGraceMinutes&&Date.parse(scheduledAt)<=now&&now-Date.parse(scheduledAt)<=Math.min(90,editorialPolicy.lateSlotGraceMinutes)*60000&&!all.some(r=>r.scheduled_at&&Math.abs(Date.parse(r.scheduled_at)-Date.parse(scheduledAt))<MIN_GAP_MS))slots.push({date,scheduledAt:new Date(now+1000).toISOString(),intendedAt:scheduledAt});}catch{/* DST ambiguity skips this slot. */}
  }
  // Owner "post now" (Nov 13): one named draft gets a slot on this run, ahead of the daily slots, with every other check unchanged.
  const postNow=activePostNow(editorialPolicy,now),postNowDraft=postNow&&all.find(r=>r.id===postNow.draftId&&r.status==='Draft')?postNow.draftId:null;
