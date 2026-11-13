@@ -118,5 +118,6 @@
     "brief-messi-golden-boot-back-to-back-2026",
     "brief-mls-cup-playoffs-road-2026"
   ],
-  "priorityDraftIdsNote": "Time-bound drafts the standing plan should pick first when eligible (all normal checks still apply). Remove entries once published or expired."
+  "priorityDraftIdsNote": "Time-bound drafts the standing plan should pick first when eligible (all normal checks still apply). Remove entries once published or expired.",
+  "minimumReadyPosts": 3
 }

@@ -34,3 +34,11 @@ test('the buffer counts approved Briefs, comparison carousels and long creator R
  t.mock.method(Date,'now',()=>at+8*86400000);
  assert.equal(contentReadiness(queue,policy,{now:at+8*86400000}).ready,0);
 });
+test('Reels-only queues are not a shortage; the minimum follows the daily slots (owner, Nov 13)',t=>{
+ t.mock.method(Date,'now',()=>now);const r=rows();
+ // Two ready posts, both carousels here, but no carousel is required unless the policy asks for one.
+ assert.equal(contentReadiness(r,{minimumReadyCarousels:0},{now}).shortage,false);
+ assert.equal(contentReadiness(r,{minimumReadyPosts:3},{now}).shortage,true);
+ assert.equal(contentReadiness(r,{minimumReadyPosts:3},{now}).minimumReady,3);
+ assert.equal(contentReadiness(r,{minimumReadyCarousels:3},{now}).shortage,true);
+});

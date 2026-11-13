@@ -24,5 +24,8 @@ export function contentReadiness(rows,policy,{now=Date.now()}={}){
   return kind==='news-film'&&automatedNewsAllowed(c,policy)&&now<Date.parse(c.newsEntry.expiresAt)||kind==='photo-carousel'||kind==='narrative-story'&&narrativeAllowed(c,policy);
  });
  const carousels=ready.filter(r=>{const c=typeof r.content==='string'?JSON.parse(r.content):r.content;return c.slides?.length>=2}).length;
- return{ready:ready.length,carousels,minimumReady:2,shortage:ready.length<2||carousels<1};
+ // Owner, Nov 13: Reels over carousels, three posts a day. A shortage means fewer ready posts than daily slots; a ready
+ // carousel is only required when the policy asks for one (minimumReadyCarousels).
+ const minimumReady=Math.max(2,policy.minimumReadyPosts||0),minCarousels=policy.minimumReadyCarousels||0;
+ return{ready:ready.length,carousels,minimumReady,shortage:ready.length<minimumReady||carousels<minCarousels};
 }
