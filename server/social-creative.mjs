@@ -56,8 +56,10 @@ export function recentlyUsedPhoto(content,rows,scheduledAt,{days=30}={}){
   key('render',row.assetChecksum),key('asset',row.assetUrl),
   ...(row.photos||[]).flatMap(p=>[key('original',p.originalChecksum),key('original-url',p.originalUrl)]),
   ...(row.slides||[]).map(s=>key('render',s.assetChecksum)),
-  ...(row.footage||[]).flatMap(p=>[key('footage',p.originalChecksum),key('clip-post',p.permalink),
-   p.source&&p.id?key('clip-id',p.source+':'+p.id):null,key('clip-page',p.page)])
+  // Footage identity counts for news films and club clips. Two different creator cuts may be edited from the same long
+  // source video, and every Cancha-made clip shares one page (owner, Nov 13: the Sarasota Reel blocked the next ones).
+  ...(row.recipeKind==='creator'?[]:(row.footage||[]).flatMap(p=>[key('footage',p.originalChecksum),key('clip-post',p.permalink),
+   p.source&&p.id?key('clip-id',p.source+':'+p.id):null,key('clip-page',p.page)]))
  ].filter(Boolean);
  const keys=new Set(identities(content)),at=Date.parse(scheduledAt);if(!keys.size||!Number.isFinite(at))return false;
  return rows.some(row=>{

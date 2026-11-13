@@ -28,3 +28,15 @@ test('creator cuts may use Cancha app recordings, but not Pexels or unlabeled Ca
  assert.equal(validShortReel(cut([own,{id:'p1',source:'pexels',license:'Pexels',page:'https://www.pexels.com/photo/1/'}]),{now}),false);
  assert.equal(validShortReel({...cut([own]),recipeKind:'meme'},{now}),false);
 });
+test('different creator cuts from the same source video or Cancha footage are not repeats',async()=>{
+ const{recentlyUsedPhoto}=await import('../server/social-creative.mjs');
+ const own={source:'cancha',id:'cancha-a',license:'Cancha original',page:'https://wearecancha.framer.website/'},yt={source:'youtube-cleared',id:'NnwOFf3VlWg',license:'creator permission',page:'https://www.youtube.com/watch?v=NnwOFf3VlWg'};
+ const cut=(id,footage,extra={})=>({recipeKind:'creator',footage,visualEvidence:{subjectKey:id},assetChecksum:id.padEnd(64,'0').slice(0,64),assetUrl:'https://framerusercontent.com/images/'+id+'.jpg',...extra});
+ const posted=[{status:'Published',published_at:'2026-11-13T03:59:00Z',content:JSON.stringify(cut('sarasota',[{...own,id:'cancha-sarasota'}]))},{status:'Published',published_at:'2026-11-12T23:52:00Z',content:JSON.stringify(cut('nu-stadium',[yt]))}];
+ assert.equal(recentlyUsedPhoto(cut('promrel',[{...own,id:'cancha-promrel'}]),posted,'2026-11-13T17:30:00Z'),false);
+ assert.equal(recentlyUsedPhoto(cut('where',[yt,own]),posted,'2026-11-13T23:00:00Z'),false);
+ // The same cut (same subject) or the same rendered poster still counts as a repeat.
+ assert.equal(recentlyUsedPhoto(cut('nu-stadium',[yt]),posted,'2026-11-13T23:00:00Z'),true);
+ // News films keep the footage check.
+ assert.equal(recentlyUsedPhoto({footage:[yt],visualEvidence:{subjectKey:'x'}},[{status:'Published',published_at:'2026-11-12T23:52:00Z',content:JSON.stringify({footage:[yt]})}],'2026-11-13T23:00:00Z'),true);
+});
