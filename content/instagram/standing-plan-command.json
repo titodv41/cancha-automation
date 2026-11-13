@@ -1,8 +1,8 @@
 {
-  "requestId": "cancha-two-daily-20261022",
+  "requestId": "cancha-three-daily-20261113",
   "action": "plan",
   "authorized": true,
-  "ownerInstruction": "On October 22 the owner asked for at least two daily posts with personalized club and community content. Configure two eligible feed slots at 12:30 and 18:00 New York starting October 23; preserve tonight's existing approval. Recheck sources, vary subjects, skip weak or expired content, enforce four hours between actual publications and a two-post daily maximum. No paid ads, outreach, fake partnerships or unsupported state launch claims.",
+  "ownerInstruction": "On November 13 the owner asked to increase the number of posts to build an audience. Configure three eligible feed slots at 12:30, 18:00 and 22:00 New York; keep four hours between actual publications, recheck sources, vary subjects and skip weak or expired content. No paid ads, outreach, fake partnerships or unsupported claims.",
   "plan": {
     "enabled": true,
     "weekdays": [
@@ -17,7 +17,8 @@
     "localTime": "18:00",
     "localTimes": [
       "12:30",
-      "18:00"
+      "18:00",
+      "22:00"
     ],
     "startDate": "2026-10-23",
     "sourceTypes": [

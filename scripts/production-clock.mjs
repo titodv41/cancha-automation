@@ -8,6 +8,8 @@ export const events=[
  {time:'12:10',action:'publish'},{time:'12:19',action:'prepare'},{time:'12:32',action:'publish'},
  {time:'12:50',action:'publish'},{time:'13:23',action:'replenish'},{time:'17:40',action:'publish'},{time:'18:02',action:'publish'},
  {time:'18:20',action:'publish'},{time:'18:50',action:'publish'},
+ // Third daily slot (owner, Nov 13): 22:00 New York, booked by the 18:50 run and sent by these events.
+ {time:'21:40',action:'publish'},{time:'22:02',action:'publish'},{time:'22:20',action:'publish'},{time:'22:50',action:'publish'},
 ];
 // Follow-up publish events (12:50, 18:20, 18:50): a Reel container created at the slot can still be
 // processing at Meta; later runs send it once it is FINISHED. They never create a second post.

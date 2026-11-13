@@ -24,10 +24,11 @@ export function savePlan(db,input,ownerInstruction){
  if(!Array.isArray(input.weekdays)||!input.weekdays.length||input.weekdays.length>7||new Set(input.weekdays).size!==input.weekdays.length||input.weekdays.some(day=>!Number.isInteger(day)||day<0||day>6)||!/^\d\d:\d\d$/.test(input.localTime||'')||!/^20\d\d-\d\d-\d\d$/.test(input.startDate||''))throw Error('Choose up to seven weekly slots in New York time');
  const parsed=new Date(input.startDate+'T12:00:00Z');if(!Number.isFinite(parsed.getTime())||parsed.toISOString().slice(0,10)!==input.startDate)throw Error('Invalid start date');
  const times=input.localTimes===undefined?[input.localTime]:input.localTimes;
- if(!Array.isArray(times)||times.length<1||times.length>2||new Set(times).size!==times.length||times.some(t=>!/^\d\d:\d\d$/.test(t)))throw Error('Choose one or two distinct daily times');
+ if(!Array.isArray(times)||times.length<1||times.length>3||new Set(times).size!==times.length||times.some(t=>!/^\d\d:\d\d$/.test(t)))throw Error('Choose one to three distinct daily times');
  for(const time of times)newYorkSchedule(input.startDate+'T'+time);
  const localTimes=[...times].sort(),minutes=t=>Number(t.slice(0,2))*60+Number(t.slice(3));
- if(localTimes.length===2&&minutes(localTimes[1])-minutes(localTimes[0])<240)throw Error('Keep daily posts at least four hours apart');
+ // Owner, Nov 13: up to three daily posts; every pair of neighbouring slots stays at least four hours apart.
+ if(localTimes.some((t,i)=>i>0&&minutes(t)-minutes(localTimes[i-1])<240))throw Error('Keep daily posts at least four hours apart');
  if(!Array.isArray(input.sourceTypes)||!input.sourceTypes.length||input.sourceTypes.some(type=>!['brand','opportunity','news'].includes(type)))throw Error('Only Cancha brand, checked opportunities and verified news is supported');
  const formats=Array.isArray(input.formats)?input.formats:['feed'];if(!formats.length||formats.some(format=>!['feed','story'].includes(format)))throw Error('Choose feed/story formats');
  const state={enabled:true,weekdays:[...input.weekdays].sort(),localTime:input.localTime,localTimes,maxPerDay:localTimes.length,startDate:input.startDate,sourceTypes:[...new Set(input.sourceTypes)],timezone:'America/New_York',formats:[...new Set(formats)],maxPerWeek:input.weekdays.length*localTimes.length,excludedIds:['providers-coming-soon'],lastCheckedDay:null,lastQueueHash:null,lastResult:null};

@@ -1,6 +1,8 @@
 import {dateInNewYork} from './offer-expiry.mjs';
 export function dailyPostLimit(plan) {
-  return plan?.maxPerDay === 2 && Array.isArray(plan.localTimes) && plan.localTimes.length === 2 ? 2 : 1;
+  // One post per configured daily slot (one to three); anything inconsistent falls back to one.
+  const n = Array.isArray(plan?.localTimes) ? plan.localTimes.length : 0;
+  return n >= 1 && n <= 3 && plan?.maxPerDay === n ? n : 1;
 }
 export function canPublishFeed(rows, plan, now = Date.now()) {
   const today = dateInNewYork(new Date(now));

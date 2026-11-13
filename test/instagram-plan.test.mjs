@@ -15,7 +15,10 @@ test('two daily slots schedule different clubs, remain idempotent and both pause
  assert.equal((await prepareStandingPlan(db,{now:at,connected:true})).scheduled.length,0);
  savePlan(db,{enabled:false},'Owner pauses both daily slots');assert.equal(db.prepare("SELECT count(*) n FROM instagram_queue WHERE status='Approved'").get().n,0);
  assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','14:00']},'Too close fixture'),/four hours/);
- assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','18:00','21:00']},'Too many fixture'),/one or two/);
+ // Owner, Nov 13: three slots are allowed when every neighbouring pair is four hours apart; four are not.
+ assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','18:00','21:00']},'Too close third fixture'),/four hours/);
+ assert.throws(()=>savePlan(db,{...plan,localTimes:['08:00','12:30','18:00','22:00']},'Too many fixture'),/one to three/);
+ savePlan(db,{...plan,weekdays:[0,1,2,3,4,5,6],localTimes:['12:30','18:00','22:00']},'Owner asks for three posts a day');assert.equal(readPlan(db).maxPerWeek,21);assert.equal(readPlan(db).maxPerDay,3);
 }));
 test('curated local stories take priority but still need live source confirmation and a vacant slot',()=>fixture(async db=>{
  saveDraft(db,{...draft('a-generic'),topic:'community'});
@@ -94,3 +97,10 @@ test('an unavailable source backs off for a day and does not block a newly prepa
  saveDraft(db,draft('a-blocked','opportunity'));savePlan(db,plan,'Owner wants verified daily content');let reads=0;await prepareStandingPlan(db,{now,connected:true,verifySource:async()=>{reads++;return false}});assert.match(db.prepare("SELECT note FROM instagram_queue WHERE id='a-blocked'").get().note,/Source unavailable/);
  saveDraft(db,{...draft('z-replacement'),assetUrl:'https://framerusercontent.com/images/replacement.jpg',assetChecksum:'e'.repeat(64)});const r=await prepareStandingPlan(db,{now:now+30000,connected:true,verifySource:async()=>{reads++;return false}});assert.equal(reads,1);assert.deepEqual(r.scheduled.map(p=>p.id),['z-replacement']);
 }));
+test('the daily post limit follows the number of configured slots (one to three)',async()=>{
+ const{dailyPostLimit}=await import('../server/instagram-frequency.mjs');
+ assert.equal(dailyPostLimit({maxPerDay:3,localTimes:['12:30','18:00','22:00']}),3);
+ assert.equal(dailyPostLimit({maxPerDay:2,localTimes:['12:30','18:00']}),2);
+ assert.equal(dailyPostLimit({maxPerDay:3,localTimes:['12:30','18:00']}),1);
+ assert.equal(dailyPostLimit(null),1);
+});
