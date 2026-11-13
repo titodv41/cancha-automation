@@ -11,7 +11,7 @@ const creators=[...new Set(spec.shots.map(s=>cleared.find(v=>v.id===s.id).creato
 const assets=join(root,'video/public/generated/creator-cut'),gen=join(root,'video/public/generated/automatic-news'),out=resolve(arg('--out')||join(root,'previews/creator-cut'));
 await mkdir(assets,{recursive:true});await mkdir(gen,{recursive:true});await mkdir(out,{recursive:true});
 for(const[name,path]of[['display.woff2',brand.displayFont],['ui.woff2',brand.bodyFont],['cancha.png',brand.logo]])await copyFile(join(root,path),join(gen,name));
-await copyFile(join(root,'content/instagram/own-footage/endcard-phone.png'),join(assets,'endcard-phone.png'));
+await copyFile(join(root,'content/instagram/own-footage/endcard-app-open.mp4'),join(assets,'endcard-app-open.mp4'));
 const source=id=>join(clipDir,id+'.mp4');
 // A shot with fit:true shows the whole 16:9 frame (charts, boards) in the upper part over a blurred fill instead of a centre crop.
 // With narration, each line starts on its cue word and the shots stretch between cues (video/cue-timeline.mjs).
@@ -20,8 +20,9 @@ const r=x=>Math.round(x*30)/30,aligned=timing?alignToVoice(spec,timing.words):{s
 const shots=spec.shots.map((s,i)=>{const file=`generated/creator-cut/shot-${i}.mp4`,seconds=r(aligned.shots[i].seconds);
  execFileSync('ffmpeg',['-v','error','-y','-ss',String(s.at),'-i',source(s.id),'-t',String(seconds+.4),'-an','-vf',s.fit?`split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.18[bg];[b]scale=1080:-2[fg];[bg][fg]overlay=0:300,fps=30`:`scale=-2:1920,crop=1080:1920:(iw-1080)*${s.x??.5}:0,fps=30`,'-c:v','libx264','-crf','17','-pix_fmt','yuv420p',join(root,'video/public',file)]);
  return{...s,seconds,file};});
-const durationSeconds=+(shots.reduce((a,s)=>a+s.seconds,0)+spec.outroSeconds).toFixed(2);
-const cut={...spec,shots,beats:aligned.beats.map(b=>({...b,start:r(b.start),end:r(b.end)})),hookSeconds:r(aligned.hookSeconds),durationSeconds,credit:spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cancha-own')?'App screens: Cancha':'Video: '+creators.filter(c=>c!=='Cancha').join(' · ')+' · YouTube'+(spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cc-by')?' (CC BY)':'')};
+// The end card plays the 5 s app-opening clip (owner, Nov 13: a 4-5 second app frame).
+const outroSeconds=Math.max(spec.outroSeconds??3,4.8),durationSeconds=+(shots.reduce((a,s)=>a+s.seconds,0)+outroSeconds).toFixed(2);
+const cut={...spec,outroSeconds,shots,beats:aligned.beats.map(b=>({...b,start:r(b.start),end:r(b.end)})),hookSeconds:r(aligned.hookSeconds),durationSeconds,credit:spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cancha-own')?'App screens: Cancha':'Video: '+creators.filter(c=>c!=='Cancha').join(' · ')+' · YouTube'+(spec.shots.every(x=>cleared.find(v=>v.id===x.id).license==='cc-by')?' (CC BY)':'')};
 // A licensed library track (config/music-library.json) replaces the synthesized bed: voice-only mix first, then the
 // track sits about 13 LU under the voice and ducks further while Chris speaks (owner, Nov 2: music quieter than the voice).
 const track=spec.music?JSON.parse(await readFile(join(root,'config/music-library.json'),'utf8')).tracks.find(t=>t.id===spec.music):null;if(spec.music&&!track)throw Error('Unknown music track '+spec.music);
