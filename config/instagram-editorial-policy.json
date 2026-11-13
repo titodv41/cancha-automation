@@ -119,5 +119,11 @@
     "brief-mls-cup-playoffs-road-2026"
   ],
   "priorityDraftIdsNote": "Time-bound drafts the standing plan should pick first when eligible (all normal checks still apply). Remove entries once published or expired.",
-  "minimumReadyPosts": 3
+  "minimumReadyPosts": 3,
+  "postNow": {
+    "draftId": "short-creator-cut-cancha-for-clubs",
+    "requestedAt": "2026-11-13T17:48:33Z",
+    "until": "2026-11-14T01:48:33Z"
+  },
+  "postNowNote": "Owner, Nov 13: 'if I tell you post it now, you should be able to post it ASAP.' postNow names one draft; the next publish run books it immediately (one extra post that day), with all other checks unchanged. Valid until 'until' (max 24 h). Replace or remove after it posts."
 }

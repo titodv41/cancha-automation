@@ -6,7 +6,9 @@ import {pathToFileURL} from 'node:url';import {resolve} from 'node:path';import 
 export const events=[
  {time:'09:23',action:'replenish'},{time:'10:09',action:'prepare'},
  {time:'12:10',action:'publish'},{time:'12:19',action:'prepare'},{time:'12:32',action:'publish'},
- {time:'12:50',action:'publish'},{time:'13:23',action:'replenish'},{time:'17:40',action:'publish'},{time:'18:02',action:'publish'},
+ {time:'12:50',action:'publish'},{time:'13:23',action:'replenish'},
+ // Fourth daily slot (owner, Nov 13 later): 15:30 New York.
+ {time:'15:10',action:'publish'},{time:'15:32',action:'publish'},{time:'15:50',action:'publish'},{time:'16:20',action:'publish'},{time:'17:40',action:'publish'},{time:'18:02',action:'publish'},
  {time:'18:20',action:'publish'},{time:'18:50',action:'publish'},
  // Third daily slot (owner, Nov 13): 22:00 New York, booked by the 18:50 run and sent by these events.
  {time:'21:40',action:'publish'},{time:'22:02',action:'publish'},{time:'22:20',action:'publish'},{time:'22:50',action:'publish'},
