@@ -363,6 +363,19 @@
     "recordedOn": "2026-11-13",
     "how": "Made by Cancha: brand-color motion graphics (league ladder, year counter, requirement cards). Text only; no league logos or third-party video."
    }
+  },
+  {
+   "id": "cancha-clubs-announce-01",
+   "title": "Cancha motion graphics: Cancha for Clubs announcement (Nov 13 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-clubs-announce-01.mp4",
+   "sha256": "e8d22d9bfc6a464cc552dc3cdff5bfb138a29e88acd92ac8cb4f748300ce5f50",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-13",
+    "how": "Made by Cancha: brand-color motion graphics with real Cancha app screens (example post labeled), club crests from the Cancha directory, an example media-kit layout with placeholders and a sponsor-category diagram. No third-party video, no invented businesses."
+   }
   }
  ]
 }
