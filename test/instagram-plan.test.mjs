@@ -14,10 +14,10 @@ test('two daily slots schedule different clubs, remain idempotent and both pause
  const result=await prepareStandingPlan(db,{now:at,connected:true});assert.deepEqual(result.scheduled.map(x=>x.id),['a-club','c-other-club']);assert.deepEqual(result.scheduled.map(x=>x.scheduledAt),['2026-10-12T16:30:00.000Z','2026-10-12T22:00:00.000Z']);
  assert.equal((await prepareStandingPlan(db,{now:at,connected:true})).scheduled.length,0);
  savePlan(db,{enabled:false},'Owner pauses both daily slots');assert.equal(db.prepare("SELECT count(*) n FROM instagram_queue WHERE status='Approved'").get().n,0);
- assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','14:00']},'Too close fixture'),/four hours/);
+ assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','12:40']},'Too close fixture'),/15 minutes/);
  // Owner, Nov 13: three slots are allowed when every neighbouring pair is four hours apart; four are not.
- assert.throws(()=>savePlan(db,{...plan,localTimes:['12:30','18:00','21:00']},'Too close third fixture'),/four hours/);
- assert.throws(()=>savePlan(db,{...plan,localTimes:['08:00','12:30','18:00','22:00']},'Too many fixture'),/one to three/);
+ assert.doesNotThrow(()=>savePlan(db,{...plan,localTimes:['12:30','15:30','18:00','22:00']},'Owner, Nov 13: no four-hour gap, four slots'));
+ assert.throws(()=>savePlan(db,{...plan,localTimes:['08:00','12:30','15:30','18:00','22:00']},'Too many fixture'),/one to four/);
  savePlan(db,{...plan,weekdays:[0,1,2,3,4,5,6],localTimes:['12:30','18:00','22:00']},'Owner asks for three posts a day');assert.equal(readPlan(db).maxPerWeek,21);assert.equal(readPlan(db).maxPerDay,3);
 }));
 test('curated local stories take priority but still need live source confirmation and a vacant slot',()=>fixture(async db=>{
@@ -104,3 +104,20 @@ test('the daily post limit follows the number of configured slots (one to three)
  assert.equal(dailyPostLimit({maxPerDay:3,localTimes:['12:30','18:00']}),1);
  assert.equal(dailyPostLimit(null),1);
 });
+test('post now books the named draft on this run, even when the day is full',()=>fixture(async db=>{
+ const at=Date.parse('2026-10-12T14:05:00Z');
+ for(const [id,badge,checksum]of[['a-club','weston','1'],['c-other-club','jax','3']])saveDraft(db,{...draft(id),editorialOrganization:badge,assetChecksum:checksum.repeat(64),assetUrl:'https://framerusercontent.com/images/'+id+'.jpg'});
+ savePlan(db,{...plan,weekdays:[0,1,2,3,4,5,6],localTimes:['12:30']},'One slot a day');
+ const editorialPolicy={postNow:{draftId:'c-other-club',requestedAt:'2026-10-12T14:00:00Z',until:'2026-10-12T20:00:00Z'}};
+ const result=await prepareStandingPlan(db,{now:at,connected:true,editorialPolicy});
+ assert.equal(result.scheduled[0].id,'c-other-club');assert.equal(result.scheduled[0].scheduledAt,new Date(at+1000).toISOString());
+ assert.equal(result.scheduled[1]?.id,'a-club');
+}));
+test('post now never substitutes another draft when the named one is missing',()=>fixture(async db=>{
+ const at=Date.parse('2026-10-12T19:05:00Z');
+ saveDraft(db,{...draft('a-club'),editorialOrganization:'weston',assetChecksum:'1'.repeat(64),assetUrl:'https://framerusercontent.com/images/a-club.jpg'});
+ savePlan(db,{...plan,weekdays:[0,1,2,3,4,5,6],localTimes:['22:00']},'One evening slot');
+ const editorialPolicy={postNow:{draftId:'not-here',requestedAt:'2026-10-12T17:00:00Z',until:'2026-10-12T20:00:00Z'}};
+ const result=await prepareStandingPlan(db,{now:at,connected:true,editorialPolicy});
+ assert.deepEqual(result.scheduled.map(x=>x.scheduledAt),['2026-10-13T02:00:00.000Z']);
+}));

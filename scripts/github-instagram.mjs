@@ -24,7 +24,7 @@ import {instagramPreview} from './instagram-preview.mjs';
 import {queueVersion} from '../server/chat-control.mjs';
 import {savePlan,prepareStandingPlan,readPlan} from '../server/instagram-plan.mjs';
 import {confirmPostSource} from '../server/post-source.mjs';import {dateInNewYork} from '../server/offer-expiry.mjs';
-import {canPublishFeed} from '../server/instagram-frequency.mjs';
+import {canPublishFeed,activePostNow} from '../server/instagram-frequency.mjs';
 const mode=process.argv[2]||'review';let db,client,dir,phase='load';
 const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY,...(process.env.SSL_CERT_FILE?{requestTls:{ca:fs.readFileSync(process.env.SSL_CERT_FILE)}}:{})}):undefined;
 try{
@@ -215,7 +215,7 @@ try{
  if(mode==='publish'){
   const today=dateInNewYork(),all=db.prepare('SELECT * FROM instagram_queue').all();
   if(all.some(row=>['Publishing','Needs reconciliation'].includes(row.status)))throw Error('Uncertain publication requires reconciliation before another automatic post');
-  const mayPublish=canPublishFeed(all,readPlan(db));
+  const mayPublish=canPublishFeed(all,readPlan(db),Date.now(),(()=>{const r=activePostNow(localPolicy);return r&&all.some(row=>row.id===r.draftId&&row.scheduled_at&&dateInNewYork(new Date(row.scheduled_at))===today)?1:0})());
   for(const row of all)if(['Approved','Preparing'].includes(row.status)&&expiredPublishingDay(row.scheduled_at))db.prepare("UPDATE instagram_queue SET status='Draft',approved_hash=NULL,approved_by=NULL,scheduled_at=NULL,container_id=NULL,note='Scheduled New York day ended; choose fresh content again' WHERE id=?").run(row.id);
   await checkpoint();
   const publisher=metaPublisher({token:connection.pageToken,accountId:connection.accountId,version:connection.version,accountType:connection.accountType,collabInvites:localPolicy.collabInvitesEnabled===true,fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});

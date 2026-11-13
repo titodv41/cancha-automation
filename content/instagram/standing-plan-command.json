@@ -1,8 +1,8 @@
 {
-  "requestId": "cancha-three-daily-20261113",
+  "requestId": "cancha-four-daily-20261113",
   "action": "plan",
   "authorized": true,
-  "ownerInstruction": "On November 13 the owner asked to increase the number of posts to build an audience. Configure three eligible feed slots at 12:30, 18:00 and 22:00 New York; keep four hours between actual publications, recheck sources, vary subjects and skip weak or expired content. No paid ads, outreach, fake partnerships or unsupported claims.",
+  "ownerInstruction": "On November 13 the owner asked for more posts and removed the four-hour gap ('if we need to post a lot of stuff quickly, we do; the slots are just to automate it'). Configure four eligible feed slots at 12:30, 15:30, 18:00 and 22:00 New York; recheck sources, vary subjects and skip weak or expired content. No paid ads, outreach, fake partnerships or unsupported claims.",
   "plan": {
     "enabled": true,
     "weekdays": [
@@ -17,6 +17,7 @@
     "localTime": "18:00",
     "localTimes": [
       "12:30",
+      "15:30",
       "18:00",
       "22:00"
     ],
