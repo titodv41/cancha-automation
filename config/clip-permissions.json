@@ -350,6 +350,19 @@
     "recordedOn": "2026-11-13",
     "how": "Made by Cancha: brand-color motion graphics with the Sarasota Paradise crest as listed in the Cancha directory. No third-party video."
    }
+  },
+  {
+   "id": "cancha-promrel-explainer-01",
+   "title": "Cancha motion graphics: USL promotion and relegation (Nov 13 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-promrel-explainer-01.mp4",
+   "sha256": "16a886ffcf0cf7a4f360f462c4f07859ad993870834e84d4768be91cf8210a97",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-13",
+    "how": "Made by Cancha: brand-color motion graphics (league ladder, year counter, requirement cards). Text only; no league logos or third-party video."
+   }
   }
  ]
 }
