@@ -376,6 +376,32 @@
     "recordedOn": "2026-11-13",
     "how": "Made by Cancha: brand-color motion graphics with real Cancha app screens (example post labeled), club crests from the Cancha directory, an example media-kit layout with placeholders and a sponsor-category diagram. No third-party video, no invented businesses."
    }
+  },
+  {
+   "id": "cancha-captains-opening-01",
+   "title": "Cancha motion graphics: captains post an opening (Nov 13 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-captains-opening-01.mp4",
+   "sha256": "dbf4c276097256346baebf246c829cc2cafc7375d34dbdd13443b07558b9c144",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-13",
+    "how": "Made by Cancha: brand-color motion graphics with the real Cancha app feed screen (example post labeled), an example \"we need a keeper\" card, example join requests and an example chat, all labeled EXAMPLE; directory crests. No third-party video."
+   }
+  },
+  {
+   "id": "cancha-find-your-people-01",
+   "title": "Cancha motion graphics: new in Miami, find your people (Nov 13 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-find-your-people-01.mp4",
+   "sha256": "2c31dfa0f0352a36c0dcccdee43e27e223990558ac09a32d712ac9d6231f581f",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-13",
+    "how": "Made by Cancha: brand-color motion graphics with directory crests grouped by city from the Cancha directory and real Cancha app screens (home and club page). No third-party video."
+   }
   }
  ]
 }

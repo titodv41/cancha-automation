@@ -121,3 +121,12 @@ test('post now never substitutes another draft when the named one is missing',()
  const result=await prepareStandingPlan(db,{now:at,connected:true,editorialPolicy});
  assert.deepEqual(result.scheduled.map(x=>x.scheduledAt),['2026-10-13T02:00:00.000Z']);
 }));
+test('a slot that already posted is not booked again as a late slot',()=>fixture(async db=>{
+ saveDraft(db,{...draft('a-club'),editorialOrganization:'weston',assetChecksum:'1'.repeat(64),assetUrl:'https://framerusercontent.com/images/a-club.jpg'});
+ saveDraft(db,{...draft('c-other-club'),editorialOrganization:'jax',assetChecksum:'3'.repeat(64),assetUrl:'https://framerusercontent.com/images/c-other-club.jpg'});
+ savePlan(db,{...plan,weekdays:[0,1,2,3,4,5,6],localTimes:['12:30','22:00']},'Two slots');
+ const first=await prepareStandingPlan(db,{now:Date.parse('2026-10-12T16:25:00Z'),connected:true,editorialPolicy:{lateSlotGraceMinutes:90}});
+ assert.equal(first.scheduled[0].scheduledAt,'2026-10-12T16:30:00.000Z');
+ const later=await prepareStandingPlan(db,{now:Date.parse('2026-10-12T16:50:00Z'),connected:true,editorialPolicy:{lateSlotGraceMinutes:90}});
+ assert.ok(!later.scheduled.some(x=>Date.parse(x.scheduledAt)<Date.parse('2026-10-12T17:00:00Z')));
+}));

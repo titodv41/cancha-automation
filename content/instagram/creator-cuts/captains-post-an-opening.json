@@ -1,0 +1,88 @@
+{
+ "id": "creator-cut-captains-post-an-opening",
+ "narrationApprovedOn": "2026-11-13",
+ "hookSeconds": 2.2,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "FOR CAPTAINS",
+ "hook": "Need a keeper\nby Sunday?",
+ "shots": [
+  {
+   "id": "cancha-captains-opening-01",
+   "at": 0,
+   "seconds": 2.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-opening-01",
+   "at": 6,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-opening-01",
+   "at": 12,
+   "seconds": 4.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-opening-01",
+   "at": 18,
+   "seconds": 3.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-opening-01",
+   "at": 24,
+   "seconds": 3.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-opening-01",
+   "at": 30,
+   "seconds": 3.6,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.2,
+   "end": 5.2,
+   "text": "Post an opening",
+   "cue": "Post an opening"
+  },
+  {
+   "start": 5.2,
+   "end": 9.8,
+   "text": "Say who you need",
+   "cue": "Say exactly"
+  },
+  {
+   "start": 9.8,
+   "end": 13.6,
+   "text": "You pick who fits",
+   "cue": "Players near you"
+  },
+  {
+   "start": 13.6,
+   "end": 16.8,
+   "text": "Chat in the app",
+   "cue": "Then chat"
+  },
+  {
+   "start": 16.8,
+   "end": 20.4,
+   "text": "Coming to Cancha",
+   "cue": "Coming to Cancha"
+  }
+ ],
+ "script": "Need a keeper by Sunday? Post an opening on Cancha. Say exactly who you need: the position, the level, the day you play. Players near you ask to join, and you pick who fits. Then chat in the app, no phone numbers. Coming to Cancha. Follow us and join the list at the link in our bio.",
+ "caption": "Short a keeper for Sunday? 🧤\n\nSoon on Cancha, captains and clubs in Miami-Dade and Broward can post an opening and say exactly who they need: position, level, day and area. Players nearby ask to join, you pick who fits, and you chat in the app. No phone numbers shared.\n\nJoin the list at the link in our bio, and tag the captain who's always looking for a sub 👇\n\nApp screens, the opening card, join requests and chat show examples, not real players. Club crests as listed in the Cancha directory.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #SundayLeague #SoccerCaptain #FindYourTeam",
+ "altText": "Cancha motion-graphics Reel: a big question, Need a keeper by Sunday; the Cancha app feed with an example post and an Ask to join tap; an example card listing goalkeeper, competitive, Sunday 8 AM, Doral; three example join requests with Accept buttons; an example chat; and Post an opening with club crests.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FOR CAPTAINS",
+  "title": "Post an\nopening.",
+  "line": "Join the list · link in bio"
+ }
+}
