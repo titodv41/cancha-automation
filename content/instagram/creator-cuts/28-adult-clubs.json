@@ -1,0 +1,76 @@
+{
+ "id": "creator-cut-28-adult-clubs",
+ "narrationApprovedOn": "2026-11-15",
+ "hookSeconds": 3.4,
+ "outroSeconds": 4.8,
+ "posterSeconds": 2.0,
+ "chip": "FIND YOUR CLUB",
+ "hook": "Miami soccer,\nin one place.",
+ "shots": [
+  {
+   "id": "cancha-28-clubs-01",
+   "at": 0,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-28-clubs-01",
+   "at": 6,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-28-clubs-01",
+   "at": 12,
+   "seconds": 3.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-28-clubs-01",
+   "at": 18,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-28-clubs-01",
+   "at": 24,
+   "seconds": 3.0,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 3.4,
+   "end": 5.8,
+   "text": "Tag your club",
+   "cue": "Which one"
+  },
+  {
+   "start": 5.8,
+   "end": 9.4,
+   "text": "Miami to Fort Lauderdale",
+   "cue": "Miami, Weston"
+  },
+  {
+   "start": 9.4,
+   "end": 12.8,
+   "text": "Follow your club",
+   "cue": "Open a club"
+  },
+  {
+   "start": 12.8,
+   "end": 15.8,
+   "text": "Link in bio",
+   "cue": "Find your club"
+  }
+ ],
+ "script": "Twenty-eight adult clubs in Miami-Dade and Broward, all on Cancha. Which one is yours? Miami, Weston, Doral, Miramar, Fort Lauderdale. Open a club, follow it, and see what they need. Find your club at the link in our bio.",
+ "caption": "28 adult clubs in Miami-Dade + Broward, all on Cancha. ⚽️\n\nWhich one is yours? Tag your club in the comments 👇\n\nFrom Miami and Doral to Weston, Miramar and Fort Lauderdale: find your club, follow it, and see what they need. Link in bio.\n\nRun a club that's missing? DM us and we'll add it.\n\nClub crests as listed in the Cancha directory; a listing is not a partnership or endorsement.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #UPSL #AdultSoccer #FindYourTeam",
+ "altText": "Cancha motion-graphics Reel: 28 Adult Clubs above a swarm of South Florida club crests popping in, a Which one is yours question, crests grouped by city, a club page in the Cancha app, and Find your club.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FIND YOUR CLUB",
+  "title": "Which one\nis yours?",
+  "line": "Link in bio"
+ }
+}
