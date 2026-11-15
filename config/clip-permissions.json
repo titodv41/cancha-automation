@@ -402,6 +402,19 @@
     "recordedOn": "2026-11-13",
     "how": "Made by Cancha: brand-color motion graphics with directory crests grouped by city from the Cancha directory and real Cancha app screens (home and club page). No third-party video."
    }
+  },
+  {
+   "id": "cancha-28-clubs-01",
+   "title": "Cancha motion graphics: 28 adult clubs in Miami-Dade + Broward (Nov 15 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-28-clubs-01.mp4",
+   "sha256": "6792e9476467670d99f52dc18093ae7740ab9cf00cd0ee56f8f8691339b50afd",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-15",
+    "how": "Made by Cancha: a count and a swarm of the 28 Miami-Dade and Broward adult club crests in the Cancha directory (Palm Beach excluded), crests grouped by city, and the real Cancha app club page. No third-party video."
+   }
   }
  ]
 }
