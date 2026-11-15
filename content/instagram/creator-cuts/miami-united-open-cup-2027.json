@@ -1,0 +1,88 @@
+{
+ "id": "creator-cut-miami-united-open-cup-2027",
+ "narrationApprovedOn": "2026-11-15",
+ "hookSeconds": 2.8,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "MIAMI SOCCER",
+ "hook": "Miami club,\nOpen Cup.",
+ "shots": [
+  {
+   "id": "cancha-miami-united-open-cup-01",
+   "at": 0,
+   "seconds": 2.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-miami-united-open-cup-01",
+   "at": 6,
+   "seconds": 5.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-miami-united-open-cup-01",
+   "at": 12,
+   "seconds": 4.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-miami-united-open-cup-01",
+   "at": 18,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-miami-united-open-cup-01",
+   "at": 24,
+   "seconds": 4.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-miami-united-open-cup-01",
+   "at": 30,
+   "seconds": 3.0,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.8,
+   "end": 7.8,
+   "text": "Lost the final 3-1",
+   "cue": "In the UPSL"
+  },
+  {
+   "start": 7.8,
+   "end": 12.0,
+   "text": "Still in the Open Cup",
+   "cue": "But reaching"
+  },
+  {
+   "start": 12.0,
+   "end": 15.0,
+   "text": "5 of the last 6",
+   "cue": "It's their fifth"
+  },
+  {
+   "start": 15.0,
+   "end": 19.0,
+   "text": "32 amateur clubs",
+   "cue": "Only thirty-two"
+  },
+  {
+   "start": 19.0,
+   "end": 22.0,
+   "text": "Comment below",
+   "cue": "Which South Florida"
+  }
+ ],
+ "script": "A Miami club is going to the U.S. Open Cup. In the UPSL national final, Miami United lost three to one to Deportivo Rose City at UCLA. But reaching the final earned them an automatic spot in the twenty twenty-seven U.S. Open Cup. It's their fifth main draw in their last six tries. Only thirty-two amateur clubs make it in, and half qualified automatically. Which South Florida club should join them? Tell us in the comments.",
+ "caption": "Miami United FC is going to the 2027 U.S. Open Cup. 🏆\n\nThe Miami club lost the 2026 UPSL Spring National Championship final 3-1 to Deportivo Rose City at UCLA, but reaching the final earned an automatic bid as runner-up.\n\nIt's their fifth Tournament Proper in their last six tries; their best run came in 2024, falling to Memphis 901 FC in the Third Round. 32 amateur Open Division clubs make the Tournament Proper, and 16 of them qualified automatically.\n\nWhich South Florida club should join them? Tell us in the comments 👇\n\nSource: U.S. Soccer, \"Meet the 16 Open Division Clubs That Automatically Qualified for the 2027 Lamar Hunt U.S. Open Cup\" (Aug 2026). Crest shown with the club's OK. Cancha is independent and not affiliated with U.S. Soccer or the UPSL.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiUnited #USOpenCup #UPSL #MiamiSoccer #SouthFloridaSoccer",
+ "altText": "Cancha motion-graphics Reel: the Miami United FC crest, a scoreboard of the UPSL Spring 2026 final (Deportivo Rose City 3, Miami United 1, at UCLA), a lime ticket reading 2027 U.S. Open Cup automatic bid, 5 of the last 6 main draws, 32 dots for the amateur clubs with 16 lit, and Who else from SoFla.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "MIAMI SOCCER, EXPLAINED",
+  "title": "Who else\nfrom SoFla?",
+  "line": "Follow @wearecancha"
+ }
+}
