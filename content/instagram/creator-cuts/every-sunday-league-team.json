@@ -1,0 +1,88 @@
+{
+ "id": "creator-cut-every-sunday-league-team",
+ "narrationApprovedOn": "2026-11-16",
+ "hookSeconds": 2.6,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.5,
+ "chip": "SUNDAY LEAGUE",
+ "hook": "Every team\nhas these 4.",
+ "shots": [
+  {
+   "id": "cancha-sunday-league-team-01",
+   "at": 0,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sunday-league-team-01",
+   "at": 5,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sunday-league-team-01",
+   "at": 10,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sunday-league-team-01",
+   "at": 15,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sunday-league-team-01",
+   "at": 20,
+   "seconds": 2.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-sunday-league-team-01",
+   "at": 25,
+   "seconds": 3.6,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.6,
+   "end": 5.2,
+   "text": "Always late",
+   "cue": "Number one"
+  },
+  {
+   "start": 5.2,
+   "end": 7.8,
+   "text": "The keeper who shoots",
+   "cue": "Number two"
+  },
+  {
+   "start": 7.8,
+   "end": 10.2,
+   "text": "The speaker",
+   "cue": "Number three"
+  },
+  {
+   "start": 10.2,
+   "end": 13.0,
+   "text": "The captain",
+   "cue": "Number four"
+  },
+  {
+   "start": 13.0,
+   "end": 16.6,
+   "text": "Tag your teammate",
+   "cue": "Tag your"
+  }
+ ],
+ "script": "Every Sunday league team has these four people. Number one: the one who's always late. Number two: the keeper who wants to score. Number three: the one with the speaker. Number four: the captain who does everything. Tag your teammate. And if your team is short a player, find one on Cancha.",
+ "caption": "Every Sunday league team has these 4. Which one are you? 😅⚽️\n\n1. The one who's always late\n2. The keeper who wants to score\n3. The one with the speaker\n4. The captain who does everything\n\nTag your teammate 👇 And if your team is short a player, find one on Cancha. Link in bio.\n\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#SundayLeague #MiamiSoccer #BrowardSoccer #AdultSoccer #SoccerMemes",
+ "altText": "Cancha motion-graphics Reel: Every Sunday league team has, then four cards: the one who's always late, the keeper who wants to score, the one with the speaker, the captain who does everything, and Tag your teammate.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "SHORT A PLAYER?",
+  "title": "Find one\non Cancha.",
+  "line": "Tag your teammate"
+ }
+}
