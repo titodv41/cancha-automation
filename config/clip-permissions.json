@@ -441,6 +441,19 @@
     "recordedOn": "2026-11-15",
     "how": "Made by Cancha: type-led cards with facts from U.S. Soccer (Aug 2026 story on the 16 automatic qualifiers) and the Miami United FC crest (club OK for its crest confirmed by the owner, Nov 13). No third-party video or opponent crest."
    }
+  },
+  {
+   "id": "cancha-join-team-3-steps-01",
+   "title": "Cancha motion graphics: join a team in Miami in 3 steps (Nov 16 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-join-team-3-steps-01.mp4",
+   "sha256": "f1dbf7966cb458a045e360e4627444bb67f64cd93a630d0dfea7e036f1e14696",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-16",
+    "how": "Made by Cancha: type-led steps with real Cancha app screens (home with example openings labeled EXAMPLE, a club page) and a week grid. No third-party video."
+   }
   }
  ]
 }
