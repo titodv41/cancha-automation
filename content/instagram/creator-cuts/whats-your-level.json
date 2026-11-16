@@ -1,0 +1,76 @@
+{
+ "id": "creator-cut-whats-your-level",
+ "narrationApprovedOn": "2026-11-16",
+ "hookSeconds": 2.2,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.5,
+ "chip": "FIND YOUR TEAM",
+ "hook": "What's your\nlevel?",
+ "shots": [
+  {
+   "id": "cancha-whats-your-level-01",
+   "at": 0,
+   "seconds": 2.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-whats-your-level-01",
+   "at": 6,
+   "seconds": 4.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-whats-your-level-01",
+   "at": 12,
+   "seconds": 3.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-whats-your-level-01",
+   "at": 18,
+   "seconds": 3.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-whats-your-level-01",
+   "at": 24,
+   "seconds": 3.0,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.2,
+   "end": 6.2,
+   "text": "Casual",
+   "cue": "One, casual"
+  },
+  {
+   "start": 6.2,
+   "end": 9.8,
+   "text": "Intermediate",
+   "cue": "Two, intermediate"
+  },
+  {
+   "start": 9.8,
+   "end": 13.6,
+   "text": "Competitive",
+   "cue": "Three, competitive"
+  },
+  {
+   "start": 13.6,
+   "end": 16.6,
+   "text": "Comment your level",
+   "cue": "Comment one"
+  }
+ ],
+ "script": "What's your level? Pick one. One, casual: fun first, any fitness, pickup and social games. Two, intermediate: you played before, and you want a weekly game. Three, competitive: training, tryouts, and leagues like the UPSL. Comment one, two or three, and find teams at your level on Cancha.",
+ "caption": "What's your level? ⚽️\n\n1️⃣ Casual: fun first, any fitness, pickup and social games\n2️⃣ Intermediate: you played before and want a weekly game\n3️⃣ Competitive: training, tryouts and leagues like the UPSL\n\nComment 1, 2 or 3 👇 and find teams at your level in Miami-Dade and Broward on Cancha. Link in bio.\n\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #AdultSoccer #SundayLeague #FindYourTeam",
+ "altText": "Cancha motion-graphics Reel: What's your level, then three cards: Level 1 Casual (fun first, any fitness, pickup and social games), Level 2 Intermediate (you played before, weekly games, rec leagues), Level 3 Competitive (training and tryouts, leagues like the UPSL, every weekend), and Comment 1, 2 or 3.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FIND YOUR TEAM",
+  "title": "Comment\n1, 2 or 3.",
+  "line": "Link in bio"
+ }
+}

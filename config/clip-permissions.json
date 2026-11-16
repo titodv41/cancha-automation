@@ -454,6 +454,19 @@
     "recordedOn": "2026-11-16",
     "how": "Made by Cancha: type-led steps with real Cancha app screens (home with example openings labeled EXAMPLE, a club page) and a week grid. No third-party video."
    }
+  },
+  {
+   "id": "cancha-whats-your-level-01",
+   "title": "Cancha motion graphics: what's your level (Nov 16 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-whats-your-level-01.mp4",
+   "sha256": "26318987a04813ca7fb6b81f479d3e213e7a03a99792a1e3cec74a3257a032be",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-16",
+    "how": "Made by Cancha: type-led level cards (casual, intermediate, competitive). No photos, crests or third-party video."
+   }
   }
  ]
 }
