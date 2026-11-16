@@ -1,0 +1,76 @@
+{
+ "id": "creator-cut-join-a-team-3-steps",
+ "narrationApprovedOn": "2026-11-16",
+ "hookSeconds": 3.4,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.5,
+ "chip": "NEW IN TOWN",
+ "hook": "Join a team\nin 3 steps.",
+ "shots": [
+  {
+   "id": "cancha-join-team-3-steps-01",
+   "at": 0,
+   "seconds": 3.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-join-team-3-steps-01",
+   "at": 6,
+   "seconds": 3.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-join-team-3-steps-01",
+   "at": 12,
+   "seconds": 3.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-join-team-3-steps-01",
+   "at": 18,
+   "seconds": 4.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-join-team-3-steps-01",
+   "at": 24,
+   "seconds": 2.4,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 3.4,
+   "end": 7.0,
+   "text": "Find clubs near you",
+   "cue": "One, find"
+  },
+  {
+   "start": 7.0,
+   "end": 10.0,
+   "text": "Ask for a training",
+   "cue": "Two, ask"
+  },
+  {
+   "start": 10.0,
+   "end": 14.2,
+   "text": "Show up again",
+   "cue": "Three, show up"
+  },
+  {
+   "start": 14.2,
+   "end": 16.6,
+   "text": "Send this to a friend",
+   "cue": "Send this"
+  }
+ ],
+ "script": "Just moved to Miami and want to play? Join a team in three steps. One, find clubs near you on Cancha, by league and city. Two, ask the club about a training session. Three, show up, and then show up again. Teams remember who comes back. Send this to someone new in town.",
+ "caption": "Just moved to Miami and want to play? Join a team in 3 steps. ⚽️\n\n1. Find adult clubs near you on Cancha, by league and city.\n2. Ask the club about a training session or tryout night.\n3. Show up, then show up again. Teams remember who comes back.\n\nSend this to someone new in town 👇 Link in bio.\n\nApp screens show example openings, labeled as examples.\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#NewInMiami #MiamiSoccer #BrowardSoccer #AdultSoccer #FindYourTeam",
+ "altText": "Cancha motion-graphics Reel: Join a team in Miami in 3 steps. Step 1 shows the Cancha app home with example openings and clubs near Miami; step 2 a club page with a tap on Club page; step 3 a week grid with three training days lit; and Send this to someone new in town.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "NEW IN TOWN",
+  "title": "Find your\nteam.",
+  "line": "Send this to a friend"
+ }
+}
