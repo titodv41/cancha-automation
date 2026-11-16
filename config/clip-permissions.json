@@ -467,6 +467,19 @@
     "recordedOn": "2026-11-16",
     "how": "Made by Cancha: type-led level cards (casual, intermediate, competitive). No photos, crests or third-party video."
    }
+  },
+  {
+   "id": "cancha-sunday-league-team-01",
+   "title": "Cancha motion graphics: every Sunday league team has (Nov 16 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-sunday-league-team-01.mp4",
+   "sha256": "5fb4b9b973a7bb31305ec90f02a850d96b0dd56b1f314fcfded464a44a451074",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-16",
+    "how": "Made by Cancha: type-led cards, no photos, crests or third-party video."
+   }
   }
  ]
 }
