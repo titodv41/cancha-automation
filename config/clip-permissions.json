@@ -493,6 +493,32 @@
     "recordedOn": "2026-11-17",
     "how": "Made by Cancha: type-led cards, no photos, crests or third-party video."
    }
+  },
+  {
+   "id": "cancha-pickup-or-league-01",
+   "title": "Cancha motion graphics: pickup or league (Nov 17 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-pickup-or-league-01.mp4",
+   "sha256": "83b2e8471fa0da2c7dcb057adcade564461d2e4215f999f3137578cafdab6be2",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-17",
+    "how": "Made by Cancha: type-led cards, no photos, crests or third-party video."
+   }
+  },
+  {
+   "id": "cancha-new-team-signs-01",
+   "title": "Cancha motion graphics: signs you need a new team (Nov 17 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-new-team-signs-01.mp4",
+   "sha256": "018b6124900699bb928d189bd79b81b67ed9f8078fd7eab72782e7cac9b96d76",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-17",
+    "how": "Made by Cancha: type-led cards, no photos, crests or third-party video."
+   }
   }
  ]
 }

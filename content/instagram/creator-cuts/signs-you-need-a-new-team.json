@@ -1,0 +1,88 @@
+{
+ "id": "creator-cut-signs-you-need-a-new-team",
+ "narrationApprovedOn": "2026-11-17",
+ "hookSeconds": 2.0,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "FIND YOUR TEAM",
+ "hook": "Need a new\nteam?",
+ "shots": [
+  {
+   "id": "cancha-new-team-signs-01",
+   "at": 0,
+   "seconds": 2.0,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-new-team-signs-01",
+   "at": 5,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-new-team-signs-01",
+   "at": 10,
+   "seconds": 2.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-new-team-signs-01",
+   "at": 15,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-new-team-signs-01",
+   "at": 20,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-new-team-signs-01",
+   "at": 25,
+   "seconds": 4.0,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.0,
+   "end": 4.4,
+   "text": "Dead group chat",
+   "cue": "Number one"
+  },
+  {
+   "start": 4.4,
+   "end": 6.6,
+   "text": "Nobody passes",
+   "cue": "Number two"
+  },
+  {
+   "start": 6.6,
+   "end": 9.0,
+   "text": "No game in 3 weeks",
+   "cue": "Number three"
+  },
+  {
+   "start": 9.0,
+   "end": 11.6,
+   "text": "Just moved here",
+   "cue": "Number four"
+  },
+  {
+   "start": 11.6,
+   "end": 15.6,
+   "text": "Send this to a friend",
+   "cue": "Find a new"
+  }
+ ],
+ "script": "Signs you need a new team. Number one: the group chat is dead. Number two: nobody passes to you. Number three: no game in three weeks. Number four: you just moved to Miami. Find a new team on Cancha. Link in bio, and send this to a friend who needs it.",
+ "caption": "Signs you need a new team 😅\n\n1. The group chat is dead\n2. Nobody passes to you\n3. No game in three weeks\n4. You just moved to Miami\n\nFind a new team in Miami-Dade and Broward on Cancha (link in bio), and send this to a friend who needs it 👇\n\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #SundayLeague #AdultSoccer #FindYourTeam",
+ "altText": "Cancha motion-graphics Reel: Signs you need a new team, then four cards: the group chat is dead, nobody passes to you, no game in three weeks, you just moved to Miami, and Find a new team.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FIND YOUR TEAM",
+  "title": "Find a new\nteam.",
+  "line": "Send this to a friend"
+ }
+}

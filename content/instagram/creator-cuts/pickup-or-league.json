@@ -1,0 +1,76 @@
+{
+ "id": "creator-cut-pickup-or-league",
+ "narrationApprovedOn": "2026-11-17",
+ "hookSeconds": 1.8,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.0,
+ "chip": "FIND YOUR GAME",
+ "hook": "Pickup or\nleague?",
+ "shots": [
+  {
+   "id": "cancha-pickup-or-league-01",
+   "at": 0,
+   "seconds": 1.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-pickup-or-league-01",
+   "at": 5,
+   "seconds": 4.2,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-pickup-or-league-01",
+   "at": 10,
+   "seconds": 4.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-pickup-or-league-01",
+   "at": 15,
+   "seconds": 1.8,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-pickup-or-league-01",
+   "at": 20,
+   "seconds": 2.6,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 1.8,
+   "end": 6.0,
+   "text": "Pickup",
+   "cue": "Pickup: drop"
+  },
+  {
+   "start": 6.0,
+   "end": 10.6,
+   "text": "League",
+   "cue": "League: the same"
+  },
+  {
+   "start": 10.6,
+   "end": 12.4,
+   "text": "Which one are you?",
+   "cue": "Which one"
+  },
+  {
+   "start": 12.4,
+   "end": 15.0,
+   "text": "Comment below",
+   "cue": "Comment pickup"
+  }
+ ],
+ "script": "Pickup or league? Pickup: drop in any week, new faces every game, and you pay per game. League: the same team all season, a table, a title, tryouts and training. Which one are you? Comment pickup or league.",
+ "caption": "Pickup or league? ⚽️\n\nPickup: drop in any week, new faces every game, pay per game.\nLeague: the same team all season, a table, a title, tryouts and training.\n\nWhich one are you? Comment pickup or league 👇\n\nFind both in Miami-Dade and Broward on Cancha. Link in bio.\n\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#MiamiSoccer #BrowardSoccer #PickupSoccer #SundayLeague #AdultSoccer",
+ "altText": "Cancha motion-graphics Reel: Pickup or league, a Pickup card (drop in any week, new faces every game, pay per game), a League card (same team all season, a table and a title, tryouts and training), both side by side, and Comment pickup or league.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FIND YOUR GAME",
+  "title": "Pickup or\nleague?",
+  "line": "Comment below"
+ }
+}
