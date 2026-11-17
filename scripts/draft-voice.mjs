@@ -17,7 +17,8 @@ try{
  const dispatcher=process.env.HTTPS_PROXY?new ProxyAgent({uri:process.env.HTTPS_PROXY}):undefined,api=elevenClient({key:process.env.ELEVENLABS_API_KEY,fetchImpl:(u,o)=>fetch(u,{...o,dispatcher})});
  const account=await inspectVoiceAccount(api,{...policy,candidates});ledger=await sharedVoiceLedger({directory:out+'/ledger',session});await ledger.cache();
  const voice=await generateVoice({api,text:draft.script,candidate:candidates[0],policy,ledgerDir:out+'/ledger',offset:.25,mode:'starter',account,onLedgerSave:ledger.save});
- await ledger.register(voice.audioSha256,{});await ledger.close();ledger=null;
+ // Not registered as hosted: draft audio lives only in this run's artifact, never in the shared hosted-asset cache.
+ await ledger.close();ledger=null;
  await copyFile(voice.file,`${out}/${draft.id}.mp3`);await copyFile(voice.timingFile,`${out}/${draft.id}-timing.json`);
  await writeFile(`${out}/${draft.id}.json`,JSON.stringify({id:draft.id,characters:draft.script.length,cached:!!voice.cached},null,1));
  console.log(JSON.stringify({draft:draft.id,narration:voice.cached?'cached':'generated',characters:draft.script.length}));
