@@ -1,0 +1,76 @@
+{
+ "id": "creator-cut-captains-fill-your-roster",
+ "narrationApprovedOn": "2026-11-17",
+ "hookSeconds": 2.4,
+ "outroSeconds": 4.8,
+ "posterSeconds": 1.5,
+ "chip": "FOR CAPTAINS",
+ "hook": "Fill your\nroster.",
+ "shots": [
+  {
+   "id": "cancha-captains-roster-01",
+   "at": 0,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-roster-01",
+   "at": 5,
+   "seconds": 4.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-roster-01",
+   "at": 10,
+   "seconds": 2.6,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-roster-01",
+   "at": 15,
+   "seconds": 2.4,
+   "x": 0.5
+  },
+  {
+   "id": "cancha-captains-roster-01",
+   "at": 20,
+   "seconds": 3.6,
+   "x": 0.5
+  }
+ ],
+ "beats": [
+  {
+   "start": 2.4,
+   "end": 6.8,
+   "text": "Say who you need",
+   "cue": "Number one"
+  },
+  {
+   "start": 6.8,
+   "end": 9.4,
+   "text": "Everyone brings one",
+   "cue": "Number two"
+  },
+  {
+   "start": 9.4,
+   "end": 11.8,
+   "text": "Keep 5 subs",
+   "cue": "Number three"
+  },
+  {
+   "start": 11.8,
+   "end": 15.4,
+   "text": "Send this to your captain",
+   "cue": "Send this"
+  }
+ ],
+ "script": "Captains, here's how to fill your roster. Number one: say exactly who you need, the position, the level and the day. Number two: every player brings one friend. Number three: keep a list of five subs. Send this to your captain, and post your opening on Cancha.",
+ "caption": "Captains: 3 ways to fill your roster 📋⚽️\n\n1. Say exactly who you need: position, level, day and area. \"Need players\" gets ignored; \"Need a keeper, competitive, Sundays in Doral\" gets replies.\n2. Every player brings one friend.\n3. Keep a list of 5 subs you can text before kickoff.\n\nSend this to your captain 👇 and post your opening on Cancha (link in bio).\n\n🎵 Music: \"Rising Tide\" by Kevin MacLeod (incompetech.com), CC BY 4.0.\n\n#SundayLeague #SoccerCaptain #MiamiSoccer #BrowardSoccer #AdultSoccer",
+ "altText": "Cancha motion-graphics Reel: Captains, fill your roster, then three cards: say exactly who you need, every player brings one, keep a list of 5 subs, and Send this to your captain.",
+ "music": "rising-tide",
+ "outro": {
+  "kicker": "FOR CAPTAINS",
+  "title": "Post an\nopening.",
+  "line": "Send this to your captain"
+ }
+}

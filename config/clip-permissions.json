@@ -480,6 +480,19 @@
     "recordedOn": "2026-11-16",
     "how": "Made by Cancha: type-led cards, no photos, crests or third-party video."
    }
+  },
+  {
+   "id": "cancha-captains-roster-01",
+   "title": "Cancha motion graphics: captains, fill your roster (Nov 17 2026)",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-captains-roster-01.mp4",
+   "sha256": "89a0eb45bb575e465c2da2872fd71a559ae5a602b6ab09606df441478eae75e7",
+   "license": "cancha-own",
+   "credit": "Graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-17",
+    "how": "Made by Cancha: type-led cards, no photos, crests or third-party video."
+   }
   }
  ]
 }
