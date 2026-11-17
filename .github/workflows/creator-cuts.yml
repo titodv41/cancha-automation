@@ -78,6 +78,8 @@ jobs:
         run: |
           mkdir -p private-data/clips
           export IDS="$(node -p "const c=require('./'+process.env.CUT_FILE);[...new Set([...c.shots,...(c.sfx||[])].map(s=>s.id))].join(',')")"
+          # A finished Reel (owner-reviewed edit) has no shots to download; never fall through to "download everything".
+          if [ -z "$IDS" ]; then echo "No clips to download"; exit 0; fi
           node scripts/clip-download.mjs private-data/clips/urls.txt
           # Cancha's own app recordings are committed in the repo; copy them (checksum-checked) instead of downloading.
           node scripts/own-footage.mjs private-data/clips "$IDS"
