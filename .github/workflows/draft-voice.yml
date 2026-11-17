@@ -1,0 +1,49 @@
+name: Cancha draft voice
+# Owner, Nov 17: narration for a draft Reel the owner reviews before anything is cleared or posted. Uses the capped
+# Starter plan and the shared encrypted voice ledger; uploads only the audio and word timing (3-day artifact).
+on:
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: 'File name in content/instagram/drafts (without .json)'
+        type: string
+        required: true
+permissions:
+  contents: write
+# Shares the voice ledger with the other private jobs.
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check the draft name
+        env:
+          DRAFT: ${{ inputs.draft }}
+        run: |
+          [[ "$DRAFT" =~ ^[a-z0-9-]+$ ]] && test -f "content/instagram/drafts/$DRAFT.json"
+          echo "DRAFT_FILE=content/instagram/drafts/$DRAFT.json" >> "$GITHUB_ENV"
+      - name: Narrate
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+          CANCHA_AUTOMATION_BACKEND: github
+        run: node scripts/draft-voice.mjs "$DRAFT_FILE"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: draft-voice-${{ github.run_id }}
+          path: |
+            private-data/draft-voice/*.mp3
+            private-data/draft-voice/*-timing.json
+          retention-days: 3
