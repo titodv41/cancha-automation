@@ -11,6 +11,11 @@ The house rules for every Reel. Read before writing a script or a spec. When the
 - **No sources or credits on the video.** They go in the caption only (owner, Nov 13).
 - **A reason to follow.** Every Reel belongs to a named series and ends with what the series gives you, e.g. "New breakdowns every week".
 
+## Owner, Nov 17: stop text-card Reels
+- Reels made only of type cards (lists, levels, tips) got no likes or traction. Don't make more.
+- Don't stack titles: no hook overlay plus line captions on top of footage that already has text. At most one short line on screen at a time, or none.
+- Lead with real footage and real people: game clips, club videos (with permission), creator clips cleared for use.
+
 ## Formats that work (references the owner sent)
 1. **Interview split (ESPN "SC Shorts" style).**
    - Top half: a person talking, with big two-line subtitles in their own words.
