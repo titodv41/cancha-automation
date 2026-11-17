@@ -6,6 +6,22 @@ import{chromium}from'playwright';import{clearedVideos}from'../scripts/clip-downl
 const root=resolve(import.meta.dirname,'..'),[cutFile,clipDir]=process.argv.slice(2),arg=n=>{const i=process.argv.indexOf(n);return i>0?process.argv[i+1]:null};
 const spec=JSON.parse(await readFile(cutFile,'utf8')),sha=b=>createHash('sha256').update(b).digest('hex');
 const{brand}=JSON.parse(await readFile(join(root,'content/instagram/photo-editorial.json'))),cleared=clearedVideos(JSON.parse(await readFile(join(root,'config/clip-permissions.json'))));
+// Finished Reel (owner, Nov 17): Claude edits the video (footage, voice, graphics, end card) for owner review; once the owner
+// says post, the reviewed file is delivered as is. It still needs every source video in clip-permissions.json and passes
+// the same delivery audit; nothing here re-renders, narrates or adds text.
+if(spec.finished){
+ if(!/^content\/instagram\/finished-reels\/[a-z0-9-]+\.mp4$/.test(spec.finished))throw Error('Finished Reels live in content/instagram/finished-reels');
+ const credited=[...new Set(spec.credits||[])],notCleared=credited.filter(id=>!cleared.some(v=>v.id===id));if(!credited.length||notCleared.length)throw Error('Finished Reel needs cleared source videos: '+notCleared.join(', '));
+ const out=resolve(arg('--out')||join(root,'previews/creator-cut'));await mkdir(out,{recursive:true});
+ const output=join(out,spec.id+'.mp4'),poster=join(out,spec.id+'.jpg');await copyFile(join(root,spec.finished),output);
+ const durationSeconds=Number(execFileSync('ffprobe',['-v','error','-show_entries','format=duration','-of','csv=p=0',output]).toString().trim());
+ execFileSync('ffmpeg',['-v','error','-y','-ss',String(spec.posterSeconds??1),'-i',output,'-frames:v','1','-q:v','3',poster]);
+ const checks=await auditVideo(output,durationSeconds);
+ await writeFile(join(out,spec.id+'.json'),JSON.stringify({id:spec.id,file:output,poster,seconds:durationSeconds,rendered:checks.passed,checks,creators:[...new Set(credited.map(id=>cleared.find(v=>v.id===id).creator.replace(/ - .*/,'')))],narration:spec.narration||null,
+  footage:credited.map(id=>{const v=cleared.find(x=>x.id===id);return{source:'youtube-cleared',id,creator:v.creator,license:v.license==='cc-by'?'CC BY 3.0 (YouTube Creative Commons)':'creator permission',page:'https://www.youtube.com/watch?v='+id}}),
+  videoSha256:sha(await readFile(output)),renderedAt:new Date().toISOString()},null,2));
+ console.log(JSON.stringify({output,durationSeconds,checks,finished:true}));process.exit(0);
+}
 const used=[...new Set([...spec.shots,...(spec.sfx||[])].map(s=>s.id))],missing=used.filter(id=>!cleared.some(v=>v.id===id));if(missing.length)throw Error('Not cleared: '+missing.join(', '));
 const creators=[...new Set(spec.shots.map(s=>cleared.find(v=>v.id===s.id).creator.replace(/ - .*/,'')))];
 const assets=join(root,'video/public/generated/creator-cut'),gen=join(root,'video/public/generated/automatic-news'),out=resolve(arg('--out')||join(root,'previews/creator-cut'));

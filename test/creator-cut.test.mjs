@@ -34,3 +34,10 @@ test('narrated creator cuts use licensed library music, credit it, and end on a 
   assert.match(c.outro.title+' '+c.outro.line+' '+c.caption,/\b(follow|save|send|share|tag|comment)\b/i,f+': one call to action');}
 });
 test('narration modules load (syntax guard)',async()=>{for(const m of ['../scripts/shared-voice-ledger.mjs','../scripts/creator-cut.mjs'])await import(m)});
+test('finished Reels point at a committed file and only at cleared source videos',async()=>{
+ const {readdirSync,readFileSync,existsSync}=await import('node:fs');const {clearedVideos}=await import('../scripts/clip-download.mjs');
+ const cleared=clearedVideos(JSON.parse(readFileSync('config/clip-permissions.json','utf8'))),dir=new URL('../content/instagram/creator-cuts/',import.meta.url);
+ for(const f of readdirSync(dir).filter(f=>f.endsWith('.json'))){const c=JSON.parse(readFileSync(new URL(f,dir)));if(!c.finished)continue;
+  assert.match(c.finished,/^content\/instagram\/finished-reels\/[a-z0-9-]+\.mp4$/,f);assert.ok(existsSync(c.finished),f+': file missing');
+  assert.ok(c.credits?.length&&c.credits.every(id=>cleared.some(v=>v.id===id)),f+': every source video must be cleared');assert.deepEqual(c.shots,[],f+': finished Reels download nothing');assert.ok(c.caption&&c.hook,f);}
+});
