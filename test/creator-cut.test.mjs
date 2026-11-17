@@ -33,3 +33,4 @@ test('narrated creator cuts use licensed library music, credit it, and end on a 
   // The CTA is on the end card and in the caption; say it in the narration whenever a new take is recorded.
   assert.match(c.outro.title+' '+c.outro.line+' '+c.caption,/\b(follow|save|send|share|tag|comment)\b/i,f+': one call to action');}
 });
+test('narration modules load (syntax guard)',async()=>{for(const m of ['../scripts/shared-voice-ledger.mjs','../scripts/creator-cut.mjs'])await import(m)});
