@@ -38,11 +38,11 @@ export function Lines({f, from, to, lines, top = 210, size = 150}: {f: number; f
     })}
   </div>;
 }
-export function Caption({f, fps, cues, dark}: {f: number; fps: number; cues: {captions: {at: number; to: number; text: string}[]}; dark: boolean}) {
+export function Caption({f, fps, cues, dark, bottom = 300}: {f: number; fps: number; cues: {captions: {at: number; to: number; text: string}[]}; dark: boolean; bottom?: number}) {
   const c = cues.captions.find(c => f >= c.at * fps && f < c.to * fps);
   if (!c) return null;
   const p = ease(f, c.at * fps, c.at * fps + 6);
-  return <div style={{position: 'absolute', left: 90, right: 90, bottom: 300, textAlign: 'center', opacity: p, transform: `translateY(${(1 - p) * 10}px)`}}>
+  return <div style={{position: 'absolute', left: 90, right: 90, bottom, textAlign: 'center', opacity: p, transform: `translateY(${(1 - p) * 10}px)`}}>
     <span style={{fontFamily: U, fontWeight: 700, fontSize: 46, lineHeight: 1.35, color: C.cream, background: dark ? '#07130fd9' : '#07130fb3', padding: '10px 22px', borderRadius: 16, boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone'}}>{c.text}</span>
   </div>;
 }
