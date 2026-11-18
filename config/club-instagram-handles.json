@@ -64,6 +64,11 @@
     {
       "club": "Miami FC USL Academy",
       "handle": "miamifcusla"
+    },
+    {
+      "club": "Orlando Rovers FC",
+      "handle": "orlandoroversfc",
+      "region": "Central Florida"
     }
   ],
   "leagues": [
