@@ -16,13 +16,15 @@ export const DEFAULT_CUES: Cues = {open: 3.6, map: 4.7, recruit: 7.3, ask: 9.6, 
 const CRESTS = ['117-fc-academy', 'boca-jrs-miami-fc', 'river-miami-fc', 'miami-united-fc', 'fc-miami-city', 'cyclones-fc', 'florida-soccer-soldiers',
   'athletum-miami-fc', 'futsoc', 'milan-de-miami-fc', 'dade-county-fc', 'united-stars', 'weston-fc-ii', 'florida-futbol-club', 'miami-sporting-fc', 'empire-sc'];
 
-// Kinetic word: slams in from big + blur, then settles.
-function Slam({f, at, children, size, color = C.cream, top, rot = -4, outline = false}: {f: number; at: number; children: React.ReactNode; size: number; color?: string; top: number; rot?: number; outline?: boolean}) {
-  const p = ease(f, at, at + 7, Easing.out(Easing.cubic));
+// Title line: masked reveal (owner, Nov 18: the slam-in looked odd). The line rises from behind a hidden edge with an
+// expo ease, no blur or scale.
+function Slam({f, at, children, size, color = C.cream, top, rot = 0, outline = false}: {f: number; at: number; children: React.ReactNode; size: number; color?: string; top: number; rot?: number; outline?: boolean}) {
   if (f < at) return null;
-  return <div style={{position: 'absolute', left: -40, right: -40, top, textAlign: 'center', fontFamily: D, fontStyle: 'italic', fontWeight: 700, fontSize: size, lineHeight: 0.82,
-    color: outline ? 'transparent' : color, WebkitTextStroke: outline ? `5px ${color}` : undefined, textTransform: 'uppercase', letterSpacing: -4, whiteSpace: 'nowrap',
-    transform: `scale(${2.2 - p * 1.2}) rotate(${rot}deg)`, opacity: Math.min(1, p * 3), filter: p < 1 ? `blur(${(1 - p) * 16}px)` : undefined}}>{children}</div>;
+  const p = ease(f, at, at + 14, Easing.out(Easing.exp));
+  return <div style={{position: 'absolute', left: 0, right: 0, top, height: size * 0.92, overflow: 'hidden', transform: `rotate(${rot}deg)`}}>
+    <div style={{textAlign: 'center', fontFamily: D, fontStyle: 'italic', fontWeight: 700, fontSize: size, lineHeight: 0.92, color: outline ? 'transparent' : color,
+      WebkitTextStroke: outline ? `4px ${color}` : undefined, textTransform: 'uppercase', letterSpacing: -2, whiteSpace: 'nowrap', transform: `translateY(${(1 - p) * 105}%)`}}>{children}</div>
+  </div>;
 }
 
 // The phone: real screen captures (1170x2532) in a minimal frame.
@@ -51,8 +53,6 @@ export function AppAd30({cues = DEFAULT_CUES}: {cues?: Cues}) {
   const s = (k: keyof Cues) => Math.round(cues[k] * fps);
   const t = {open: s('open'), map: s('map'), recruit: s('recruit'), ask: s('ask'), yes: s('yes'), done: s('done'), brand: s('brand'), end: s('end')};
 
-  // Hook timer: 0:30 counting down while the hook line plays.
-  const secs = Math.max(0, 30 - Math.floor(f / fps * 4));
   // Phone entrance on "Open Cancha".
   const enter = spring({frame: f - t.open + 6, fps, config: {damping: 15, stiffness: 90}});
   const phoneY = (1 - enter) * 1500, phoneRot = (1 - enter) * 28;
@@ -70,17 +70,16 @@ export function AppAd30({cues = DEFAULT_CUES}: {cues?: Cues}) {
 
     {/* 1 · Hook */}
     {f < t.open + 8 && <AbsoluteFill style={{opacity: 1 - ease(f, t.open - 4, t.open + 8)}}>
-      <Slam f={f} at={0} size={250} top={560}>Find a team</Slam>
-      <Slam f={f} at={9} size={330} top={800} color={C.lime}>in Miami</Slam>
-      <Slam f={f} at={30} size={150} top={1150} outline>in 30 seconds</Slam>
-      <div style={{position: 'absolute', top: 150, left: 0, right: 0, textAlign: 'center', fontFamily: U, fontSize: 64, color: C.lime, letterSpacing: 6, opacity: ease(f, 30, 40)}}>0:{String(secs).padStart(2, '0')}</div>
+      <Slam f={f} at={0} size={205} top={600}>Find a team</Slam>
+      <Slam f={f} at={9} size={270} top={800} color={C.lime}>in Miami</Slam>
+      <Slam f={f} at={30} size={130} top={1080} outline>in 30 seconds</Slam>
     </AbsoluteFill>}
 
     {/* Background words behind the phone */}
-    {f >= t.map && f < t.recruit && <Slam f={f} at={t.map} size={225} top={140} color={C.lime} rot={-3}>Every club</Slam>}
-    {f >= t.recruit && f < t.ask && <Slam f={f} at={t.recruit} size={250} top={130} color={C.orange} rot={-3}>Recruiting</Slam>}
-    {f >= t.ask && f < t.yes && <Slam f={f} at={t.ask} size={250} top={130} color={C.lime} rot={-3}>Ask to join</Slam>}
-    {f >= t.yes && f < t.done && <Slam f={f} at={t.yes} size={300} top={110} color={C.lime} rot={-3}>You're in</Slam>}
+    {f >= t.map && f < t.recruit && <Slam f={f} at={t.map} size={225} top={140} color={C.lime} rot={0}>Every club</Slam>}
+    {f >= t.recruit && f < t.ask && <Slam f={f} at={t.recruit} size={250} top={130} color={C.orange} rot={0}>Recruiting</Slam>}
+    {f >= t.ask && f < t.yes && <Slam f={f} at={t.ask} size={250} top={130} color={C.lime} rot={0}>Ask to join</Slam>}
+    {f >= t.yes && f < t.done && <Slam f={f} at={t.yes} size={250} top={130} color={C.lime} rot={0}>You're in</Slam>}
 
     {/* Crests orbit the phone while "every club ... on one map" */}
     {f >= t.map && f < t.recruit + 6 && CRESTS.map((c, i) => {
@@ -105,7 +104,7 @@ export function AppAd30({cues = DEFAULT_CUES}: {cues?: Cues}) {
       <Slam f={f} at={t.brand + 22} size={128} top={900} color={C.forest}>Find your team.</Slam>
       <Slam f={f} at={t.brand + 30} size={128} top={1030} color={C.orange}>Find your people.</Slam>
       <div style={{position: 'absolute', left: 0, right: 0, top: 1330, textAlign: 'center', opacity: ease(f, t.brand + 44, t.brand + 54)}}>
-        <span style={{fontFamily: U, fontSize: 52, color: C.lime, background: C.forest, padding: '18px 40px', borderRadius: 999, letterSpacing: 2}}>LINK IN BIO · cancha.expo.app</span>
+        <span style={{fontFamily: U, fontSize: 52, color: C.lime, background: C.forest, padding: '18px 40px', borderRadius: 999, letterSpacing: 2}}>JOIN THE WAITLIST · LINK IN BIO</span>
       </div>
     </AbsoluteFill>}
     <Grain/>
