@@ -1,0 +1,10 @@
+{
+ "id": "draft-app-ad-30-seconds",
+ "narrationApprovedOn": "2026-11-18",
+ "approvalNote": "Owner, Nov 18: of the three app-ad scripts, B and C are good; build modern motion ads. This is C, tightened.",
+ "script": "Here's how you find a soccer team in Miami in thirty seconds. Open Cancha. Every club near you, on one map. This one is recruiting right now. Tap ask to join. The club says yes, and you're in the chat. That's it. Cancha. Find your team. Link in bio.",
+ "sources": [
+  "https://cancha.expo.app (the live app: club map, openings, ask to join, chat)",
+  "Recruiting example: Miami United FC Open Talent ID, instagram.com/p/DfnT040By1V (Nov 11)"
+ ]
+}
