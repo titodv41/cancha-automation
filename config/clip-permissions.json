@@ -574,6 +574,58 @@
     "recordedOn": "2026-11-17",
     "how": "Owner, Nov 17 2026: approved posting this Cancha edit ('post those reels') and handles the footage OK with the rights holder (owner, Nov 17: 'just create the content, I'll get the okay'). Short excerpts in a narrated news/analysis edit, credited in the caption."
    }
+  },
+  {
+   "id": "cancha-launch-01-motion",
+   "title": "Launch ad 01 Find your team (motion graphics), Nov 18 2026",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-launch-01-motion.mp4",
+   "sha256": "c561c19b2252c61e4f6399e21327862dfd53b056058f5b288ab31193a97d5b77",
+   "license": "cancha-own",
+   "credit": "Motion graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-18",
+    "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI, a vector map from US Census county shapes, and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage."
+   }
+  },
+  {
+   "id": "cancha-launch-02-motion",
+   "title": "Launch ad 02 Your player card (motion graphics), Nov 18 2026",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-launch-02-motion.mp4",
+   "sha256": "b5cbb2fc7f15fe7a470f4bf11af20b4eed781440d2fc9e09a3638723f0ff8263",
+   "license": "cancha-own",
+   "credit": "Motion graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-18",
+    "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI, a vector map from US Census county shapes, and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage."
+   }
+  },
+  {
+   "id": "cancha-launch-03-motion",
+   "title": "Launch ad 03 Notifications (motion graphics), Nov 18 2026",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-launch-03-motion.mp4",
+   "sha256": "c574a67745a7708c9303490810a9aa6f9fb15f593b7f67c40b9f576e80a7aac9",
+   "license": "cancha-own",
+   "credit": "Motion graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-18",
+    "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI, a vector map from US Census county shapes, and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage."
+   }
+  },
+  {
+   "id": "cancha-launch-04-motion",
+   "title": "Launch ad 04 Falta uno (motion graphics), Nov 18 2026",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-launch-04-motion.mp4",
+   "sha256": "c89548b1edebae721eb4fcf973cf4c843a40f54e960c89b447758ce78e6e84ef",
+   "license": "cancha-own",
+   "credit": "Motion graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-18",
+    "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI, a vector map from US Census county shapes, and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage."
+   }
   }
  ]
 }

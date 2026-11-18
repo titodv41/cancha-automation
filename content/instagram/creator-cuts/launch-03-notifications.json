@@ -1,0 +1,18 @@
+{
+ "id": "creator-cut-launch-03-notifications",
+ "finished": "content/instagram/finished-reels/launch-03-notifications.mp4",
+ "credits": [
+  "cancha-launch-03-motion"
+ ],
+ "shots": [],
+ "beats": [],
+ "chip": "APP PREVIEW",
+ "hook": "Your phone\nthis week.",
+ "posterSeconds": 1.0,
+ "caption": "This could be your phone this week: a club posts an opening, they accept your request, the coach says see you Sunday, and your new team is already in the chat. 🔔\n\nThe Cancha app is coming to the App Store. Join the waitlist: link in bio. 📲\n\nApp preview: the screens are illustrations of the upcoming app. Club crests shown with each club's okay.\n\n#MiamiSoccer #BrowardSoccer #SouthFloridaSoccer #FindYourTeam #Cancha",
+ "altText": "Cancha app preview: a lock screen fills with notifications: Miami United FC is recruiting, River Miami FC accepted you, the coach says see you Sunday, and the team chat has new messages.",
+ "narration": {
+  "voice": "Chris",
+  "script": "content/instagram/drafts/launch-03-notifications.json"
+ }
+}
