@@ -1,6 +1,6 @@
 // Launch ad 02 "Your player card" (owner, Nov 18: use a phone to show how easy and cool it is to sign up and find teams
 // wanting you; animate filling the profile: age, experience, etc.). A drawn phone running illustrated Cancha UI:
-// create account (email types, 18+ switch flips), the player card form fills tap by tap (area, position, level, age,
+// create account (email and password type in; owner, Nov 18: no 18+ switch in the ad), the player card form fills tap by tap (area, position, level, age,
 // experience) with a progress bar, Save turns it into a finished player card that lifts out of the phone, then the
 // clubs looking for players like you slide in. Same motion language and brand type as ad 01.
 import React, {useEffect, useState} from 'react';
@@ -67,9 +67,6 @@ export function PlayerCard02({cues = CUES_02}: {cues?: Cue02}) {
           <div style={{fontFamily: D, fontStyle: 'italic', fontWeight: 700, fontSize: 64, lineHeight: 1, color: C.cream, textTransform: 'uppercase', marginTop: 10}}>Create your account</div>
           <Field label="Email" active={f < 34}><Typed f={f} at={12} text="you@email.com"/></Field>
           <Field label="Password" active={f >= 34 && f < 56}>{'•'.repeat(Math.max(0, Math.min(10, Math.floor((f - 36) / 2))))}</Field>
-          <div style={{display: 'flex', alignItems: 'center', gap: 16, marginTop: 4}}>
-            {(() => { const on = f >= 62; const k = ease(f, 60, 66); return <div style={{width: 84, height: 48, borderRadius: 24, background: on ? C.lime : '#ffffff26', position: 'relative'}}><div style={{position: 'absolute', top: 5, left: 5 + k * 36, width: 38, height: 38, borderRadius: 19, background: C.cream}}/></div>; })()}
-            <Label color={C.cream} size={28}>I'm 18 or older</Label></div>
           <div style={{marginTop: 'auto', height: 92, borderRadius: 24, background: C.lime, display: 'grid', placeItems: 'center'}}><Label color={C.forest} size={32}>Create account</Label></div>
         </div>
         {/* Screen 2: player card form */}
