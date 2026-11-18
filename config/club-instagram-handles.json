@@ -1,13 +1,71 @@
 {
-  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed.",
+  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed. Leagues (type league) are read too; the @accounts their posts mention are checked in the same run so new clubs surface on their own.",
   "clubs": [
-    { "club": "River Miami FC", "handle": "rivermiamifc" },
-    { "club": "Miami United FC", "handle": "miamiunitedfc" },
-    { "club": "Boca Jrs Miami FC", "handle": "bocajrs_miami_f.c_" },
-    { "club": "Milan De Miami FC", "handle": "milandemiamifcupsl_elite" },
-    { "club": "Athletum Miami FC", "handle": "athletumfc" },
-    { "club": "FC Miami City", "handle": "fcmiamicity" },
-    { "club": "Weston FC", "handle": "westonfc_fl" },
-    { "club": "Strikers Miami", "handle": "strikers.miami.f.c" }
+    {
+      "club": "River Miami FC",
+      "handle": "rivermiamifc"
+    },
+    {
+      "club": "Miami United FC",
+      "handle": "miamiunitedfc"
+    },
+    {
+      "club": "Boca Jrs Miami FC",
+      "handle": "bocajrs_miami_f.c_"
+    },
+    {
+      "club": "Milan De Miami FC",
+      "handle": "milandemiamifcupsl_elite"
+    },
+    {
+      "club": "Athletum Miami FC",
+      "handle": "athletumfc"
+    },
+    {
+      "club": "FC Miami City",
+      "handle": "fcmiamicity"
+    },
+    {
+      "club": "Weston FC",
+      "handle": "westonfc_fl"
+    },
+    {
+      "club": "Strikers Miami",
+      "handle": "strikers.miami.f.c"
+    },
+    {
+      "club": "Homestead FC",
+      "handle": "homestead.fc"
+    },
+    {
+      "club": "Cyclones FC",
+      "handle": "cyclones.footballclub"
+    },
+    {
+      "club": "Florida Soccer Soldiers",
+      "handle": "floridasoccersoldiers"
+    },
+    {
+      "club": "FUTSOC",
+      "handle": "futsoc"
+    },
+    {
+      "club": "Florida Futbol Club",
+      "handle": "florida.futbolclub"
+    },
+    {
+      "club": "Palm Beach Lightning FC",
+      "handle": "palmbeachlightningfc"
+    }
+  ],
+  "leagues": [
+    {
+      "league": "UPSL Florida",
+      "handle": "upslflorida"
+    },
+    {
+      "league": "UPSL Southeast",
+      "handle": "upslsoutheast"
+    }
   ]
 }
