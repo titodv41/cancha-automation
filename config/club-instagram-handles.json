@@ -1,0 +1,13 @@
+{
+  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed.",
+  "clubs": [
+    { "club": "River Miami FC", "handle": "rivermiamifc" },
+    { "club": "Miami United FC", "handle": "miamiunitedfc" },
+    { "club": "Boca Jrs Miami FC", "handle": "bocajrs_miami_f.c_" },
+    { "club": "Milan De Miami FC", "handle": "milandemiamifcupsl_elite" },
+    { "club": "Athletum Miami FC", "handle": "athletumfc" },
+    { "club": "FC Miami City", "handle": "fcmiamicity" },
+    { "club": "Weston FC", "handle": "westonfc_fl" },
+    { "club": "Strikers Miami", "handle": "strikers.miami.f.c" }
+  ]
+}

@@ -1,0 +1,34 @@
+name: Cancha Instagram opening radar
+on:
+  workflow_dispatch:
+  schedule:
+    # 07:23 New York (EST), next to the website opening radar.
+    - cron: '23 12 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: instagram-opening-radar
+  cancel-in-progress: false
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/instagram-opening-radar.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: instagram-opening-radar
+          path: private-data/instagram-opening-radar/
+          retention-days: 7
+          if-no-files-found: error
+    # Report only: public posts of public business accounts, read with the connected @wearecancha account.
+    # The encrypted state is read, never written. Candidates are confirmed with the club before anything is listed.
