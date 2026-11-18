@@ -7,7 +7,7 @@ const{brand}=JSON.parse(await readFile(join(root,'content/instagram/photo-editor
 await mkdir(gen,{recursive:true});await mkdir(out,{recursive:true});
 for(const[name,path]of[['display.woff2',brand.displayFont],['ui.woff2',brand.bodyFont],['cancha.png',brand.logo],['cancha-trim.png','content/instagram/local-stories/assets/cancha-trim.png']])await copyFile(join(root,path),join(gen,name));
 // App ad screens and the app's crest files (AppAd30).
-if(spec.composition==='AppAd30'||spec.composition==='PlayerCard02'||spec.composition.startsWith('FindTeam01')){const{readdir}=await import('node:fs/promises');const app=join(gen,'appad');await mkdir(join(app,'crests'),{recursive:true});for(const f of await readdir(join(root,'content/instagram/promos/app-ad')))await copyFile(join(root,'content/instagram/promos/app-ad',f),join(app,f));const crests=process.env.CANCHA_APP_CRESTS;if(crests)for(const f of await readdir(crests))await copyFile(join(crests,f),join(app,'crests',f));}
+if(['AppAd30','PlayerCard02','Notify03','FaltaUno04'].includes(spec.composition)||spec.composition.startsWith('FindTeam01')){const{readdir}=await import('node:fs/promises');const app=join(gen,'appad');await mkdir(join(app,'crests'),{recursive:true});for(const f of await readdir(join(root,'content/instagram/promos/app-ad')))await copyFile(join(root,'content/instagram/promos/app-ad',f),join(app,f));const crests=process.env.CANCHA_APP_CRESTS;if(crests)for(const f of await readdir(crests))await copyFile(join(crests,f),join(app,'crests',f));}
 const temp=await mkdtemp(join(tmpdir(),'cancha-promo-'));
 try{
  const serveUrl=await bundle({entryPoint:join(root,'video/src/index.tsx'),publicDir:join(root,'video/public'),outDir:join(temp,'bundle'),enableCaching:false});
