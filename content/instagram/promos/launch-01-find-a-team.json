@@ -1,0 +1,11 @@
+{
+ "id": "launch-01-find-a-team",
+ "composition": "FindTeam01",
+ "status": "draft for owner review (Nov 18); not queued",
+ "brief": "Cancha launch content brief, concept 01 (owner, Nov 18)",
+ "narration": "content/instagram/drafts/launch-01-find-a-team.json",
+ "screens": "content/instagram/promos/app-ad/crop-club-river.png, crop-looking.png (cancha.expo.app, Nov 18); clubs.json from the app's directory and city coordinates",
+ "music": "Mixkit library track 51 (free licence)",
+ "text": {},
+ "stills": [0.5, 1.6, 3.0, 5.2, 6.3, 8.0, 11.8, 14.5]
+}
