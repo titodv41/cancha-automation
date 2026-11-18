@@ -56,6 +56,14 @@
     {
       "club": "Palm Beach Lightning FC",
       "handle": "palmbeachlightningfc"
+    },
+    {
+      "club": "Miami Beach CF",
+      "handle": "miamibeachcf"
+    },
+    {
+      "club": "Miami FC USL Academy",
+      "handle": "miamifcusla"
     }
   ],
   "leagues": [
