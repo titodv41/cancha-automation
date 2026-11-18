@@ -8,14 +8,14 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Img, continueRender, delayRender, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, Easing} from 'remotion';
 
-const C = {forest: '#103f32', land: '#17503f', card: '#0b2a21', night: '#07130f', cream: '#f5f3e9', lime: '#d7ef86', orange: '#f55b32', mint: '#a9bdb3'};
-const D = 'CanchaDisplay, sans-serif', U = 'CanchaUI, sans-serif';
-const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
-const out = Easing.out(Easing.exp), inC = Easing.in(Easing.cubic);
-const ease = (f: number, a: number, b: number, e = out) => interpolate(f, [a, b], [0, 1], {...cl, easing: e});
-const A = (p: string) => staticFile('generated/promo/appad/' + p);
-type Club = {slug: string; name: string; city: string; lat: number; lng: number};
-type MapData = {W: number; H: number; box: {minLat: number; maxLat: number; minLng: number; maxLng: number}; dade: string; broward: string};
+export const C = {forest: '#103f32', land: '#17503f', card: '#0b2a21', night: '#07130f', cream: '#f5f3e9', lime: '#d7ef86', orange: '#f55b32', mint: '#a9bdb3'};
+export const D = 'CanchaDisplay, sans-serif', U = 'CanchaUI, sans-serif';
+export const cl = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
+export const out = Easing.out(Easing.exp), inC = Easing.in(Easing.cubic);
+export const ease = (f: number, a: number, b: number, e = out) => interpolate(f, [a, b], [0, 1], {...cl, easing: e});
+export const A = (p: string) => staticFile('generated/promo/appad/' + p);
+export type Club = {slug: string; name: string; city: string; lat: number; lng: number};
+export type MapData = {W: number; H: number; box: {minLat: number; maxLat: number; minLng: number; maxLng: number}; dade: string; broward: string};
 export type Cue01 = {pan: number; tap: number; looking: number; end: number; total: number; captions: {at: number; to: number; text: string}[]};
 export const CUES_01: Cue01 = {pan: 2, tap: 6, looking: 11, end: 13, total: 16, captions: [
   {at: 0.2, to: 1.3, text: 'Need a team?'},
@@ -26,7 +26,7 @@ export const CUES_01: Cue01 = {pan: 2, tap: 6, looking: 11, end: 13, total: 16, 
 const FIRST = ['miami-united-fc', 'florida-island-united', 'miami-sporting-fc'], TAP = 'river-miami-fc';
 
 // Headline: each line rises through its own padded mask (room for the italic lean and descenders), 3-frame stagger.
-function Lines({f, from, to, lines, top = 210, size = 150}: {f: number; from: number; to: number; lines: [string, string][]; top?: number; size?: number}) {
+export function Lines({f, from, to, lines, top = 210, size = 150}: {f: number; from: number; to: number; lines: [string, string][]; top?: number; size?: number}) {
   if (f < from || f > to) return null;
   return <div style={{position: 'absolute', left: 64, right: 40, top}}>
     {lines.map(([txt, color], i) => {
@@ -38,7 +38,7 @@ function Lines({f, from, to, lines, top = 210, size = 150}: {f: number; from: nu
     })}
   </div>;
 }
-function Caption({f, fps, cues, dark}: {f: number; fps: number; cues: Cue01; dark: boolean}) {
+export function Caption({f, fps, cues, dark}: {f: number; fps: number; cues: {captions: {at: number; to: number; text: string}[]}; dark: boolean}) {
   const c = cues.captions.find(c => f >= c.at * fps && f < c.to * fps);
   if (!c) return null;
   const p = ease(f, c.at * fps, c.at * fps + 6);
@@ -46,17 +46,17 @@ function Caption({f, fps, cues, dark}: {f: number; fps: number; cues: Cue01; dar
     <span style={{fontFamily: U, fontWeight: 700, fontSize: 46, lineHeight: 1.35, color: C.cream, background: dark ? '#07130fd9' : '#07130fb3', padding: '10px 22px', borderRadius: 16, boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone'}}>{c.text}</span>
   </div>;
 }
-function Badge({slug, size, ring}: {slug: string; size: number; ring?: boolean}) {
+export function Badge({slug, size, ring}: {slug: string; size: number; ring?: boolean}) {
   return <div style={{width: size, height: size, borderRadius: size / 2, background: '#fff', display: 'grid', placeItems: 'center', boxShadow: ring ? `0 0 0 6px ${C.lime}, 0 14px 30px rgba(0,0,0,0.45)` : '0 10px 24px rgba(0,0,0,0.45)'}}>
     <Img src={A('crests/' + slug + '.png')} style={{width: size * 0.78, height: size * 0.78, objectFit: 'contain'}}/>
   </div>;
 }
-const Label = ({children, color = C.mint, size = 40}: {children: React.ReactNode; color?: string; size?: number}) =>
+export const Label = ({children, color = C.mint, size = 40}: {children: React.ReactNode; color?: string; size?: number}) =>
   <span style={{fontFamily: U, fontWeight: 700, fontSize: size, letterSpacing: 2, textTransform: 'uppercase', color}}>{children}</span>;
 function Row({k, v}: {k: string; v: string}) {
   return <div style={{display: 'flex', justifyContent: 'space-between', borderTop: '2px solid #ffffff17', padding: '18px 0 0'}}><Label>{k}</Label><Label color={C.lime}>{v}</Label></div>;
 }
-function Btn({children, solid}: {children: React.ReactNode; solid?: boolean}) {
+export function Btn({children, solid}: {children: React.ReactNode; solid?: boolean}) {
   return <div style={{flex: 1, height: 108, borderRadius: 28, display: 'grid', placeItems: 'center', background: solid ? C.lime : 'transparent', border: solid ? 'none' : `3px solid ${C.lime}`}}>
     <Label color={solid ? C.forest : C.lime} size={40}>{children}</Label></div>;
 }
