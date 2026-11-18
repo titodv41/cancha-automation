@@ -15,8 +15,11 @@ test('the waitlist sends only the allowed fields, minimal return, with consent',
   assert.match(home, /key:'sb_publishable_[A-Za-z0-9_-]+'/);
   assert.match(home, /Prefer:'return=minimal'/);
   assert.match(home, /return\{email,area,role,lang:lang==='es'\?'es':'en',source:.{1,60}\?source:'site',consent:true\}/);
-  assert.match(home, /`\}\/>\s*<FindYourClubStart profiles=\{profiles\}\/><ForClubs count=\{profiles\.length\}\/><AppWaitlist\/>/, "owner, Nov 13: find your club / claim your club first, then Cancha for Clubs, then the app waitlist");
-  assert.match(home, /href="\/clubs">Find your club/);
+  // Owner, Nov 18: minimal homepage; the app ships on the App Store, so the first action is the waitlist.
+  assert.match(home, /className="h15-btn main" href="#waitlist">Join the waitlist/);
+  assert.match(home, /id="waitlist"><AppWaitlist\/>/);
+  assert.match(home, /href="\/clubs">See all/);
+  assert.doesNotMatch(home.slice(home.indexOf('<home15>')), /expo\.app/, 'no Expo link on the site');
   assert.match(home, /href="\/organizations#submission"/, "club claims go to the existing private form");
 });
 
