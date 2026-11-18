@@ -1,0 +1,10 @@
+{
+ "id": "app-ad-30-seconds",
+ "composition": "AppAd30",
+ "status": "draft for owner review (Nov 18); not queued",
+ "narration": "content/instagram/drafts/app-ad-30-seconds.json",
+ "screens": "content/instagram/promos/app-ad/ (captured from cancha.expo.app on Nov 18; card-* are crops of the same screens)",
+ "music": "Mixkit library track 51 (free licence), as in the Falta uno promo",
+ "text": {},
+ "stills": [0.6, 2.0, 4.0, 5.8, 8.2, 10.4, 12.2, 15.6]
+}
