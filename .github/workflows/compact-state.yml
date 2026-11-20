@@ -1,0 +1,32 @@
+name: Cancha compact state
+# Nov 20: the encrypted state is near its 950 KB limit. Reports sizes only; with apply, archives old queue rows into an
+# encrypted backup on automation-state and saves. Shares the private concurrency group so it never races the publisher.
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Archive and save'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: cancha-private-automation
+  cancel-in-progress: false
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/compact-state.mjs ${{ inputs.apply && '--apply' || '' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CANCHA_GITHUB_STATE_KEY: ${{ secrets.CANCHA_GITHUB_STATE_KEY }}
