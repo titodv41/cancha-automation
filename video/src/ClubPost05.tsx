@@ -7,7 +7,7 @@ import {AbsoluteFill, Img, continueRender, delayRender, spring, staticFile, useC
 import {C, Caption, D, Label, Lines, U, ease} from './FindTeam01';
 
 export type Cue05 = {post: number; requests: number; accept: number; chat: number; end: number; total: number; captions: {at: number; to: number; text: string}[]};
-export const CUES_05: Cue05 = {post: 4.9, requests: 5.6, accept: 8.0, chat: 9.4, end: 12.2, total: 16.0, captions: []};
+export const CUES_05: Cue05 = {post: 4.9, requests: 5.6, accept: 7.4, chat: 8.8, end: 11.4, total: 15.0, captions: [{"at": 0.3, "to": 1.45, "text": "Running a team?"}, {"at": 1.45, "to": 2.8, "text": "Post the spot you need."}, {"at": 2.8, "to": 4.73, "text": "A keeper, Sundays, in Doral."}, {"at": 5.9, "to": 8.42, "text": "Players who fit ask to join. You pick who's in."}, {"at": 11.9, "to": 14.33, "text": "Cancha for Clubs is free. Join the waitlist."}]};
 const PW = 640, PH = 1300, PX = 540 - PW / 2, PY = 470;
 
 function Tap({f, at}: {f: number; at: number}) {
@@ -94,9 +94,9 @@ export function ClubPost05({cues = CUES_05}: {cues?: Cue05}) {
       </div>
     </div>
     <Lines f={f} from={4} to={t.post + 2} top={170} size={128} lines={[['Need a player?', C.cream], ['Post the spot.', C.lime]]}/>
-    <Lines f={f} from={t.requests + 2} to={t.chat - 2} top={170} size={128} lines={[['They ask', C.cream], ['to join.', C.lime]]}/>
-    <Lines f={f} from={t.chat + 2} to={t.end} top={170} size={128} lines={[["You pick", C.cream], ["who's in.", C.lime]]}/>
-    {f < t.end && <Caption f={f} fps={fps} cues={cues} dark bottom={130}/>}
+    <Lines f={f} from={t.requests + 2} to={t.accept - 2} top={170} size={128} lines={[['They ask', C.cream], ['to join.', C.lime]]}/>
+    <Lines f={f} from={t.accept + 2} to={t.end} top={170} size={128} lines={[["You pick", C.cream], ["who's in.", C.lime]]}/>
+    {f < t.end && <Caption f={f} fps={fps} cues={cues} dark bottom={182}/>}
     {f >= t.end - 2 && <AbsoluteFill style={{background: C.lime, clipPath: `circle(${wipe * 2300}px at 540px 1500px)`}}>
       <Img src={staticFile('generated/promo/cancha-trim.png')} style={{position: 'absolute', width: 520, left: 70, top: 600, opacity: ease(f, t.end + 6, t.end + 14)}}/>
       <Lines f={f} from={t.end + 10} to={99999} top={820} size={140} lines={[['Cancha for Clubs.', C.forest], ['Free.', C.orange]]}/>
