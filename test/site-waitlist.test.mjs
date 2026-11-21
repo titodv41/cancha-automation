@@ -14,9 +14,10 @@ test('the waitlist sends only the allowed fields, minimal return, with consent',
   assert.match(home, /rest\/v1\/waitlist/);
   assert.match(home, /key:'sb_publishable_[A-Za-z0-9_-]+'/);
   assert.match(home, /Prefer:'return=minimal'/);
-  assert.match(home, /return\{email,area,role,lang:lang==='es'\?'es':'en',source:.{1,60}\?source:'site',consent:true\}/);
-  // Owner, Nov 18: minimal homepage; the app ships on the App Store, so the first action is the waitlist.
-  assert.match(home, /className="h15-btn main" href="#waitlist">Join the waitlist/);
+  // Owner, Nov 21: "Find me a team" demand test. Only the columns the app grants (0004 + 0008); role is always player.
+  assert.match(home, /return\{email,area,role:'player',lang:lang==='es'\?'es':'en',source:.{1,60}\?source:'site',consent:true,intent:'team',position,level\}/);
+  assert.match(home, /className="h15-btn main" href="#waitlist">Find me a team/);
+  assert.match(home, /disabled=\{state==='sending'\|\|!form\.consent\|\|!form\.adult\}/, 'the 18+ box is required');
   assert.match(home, /id="waitlist"><AppWaitlist\/>/);
   assert.match(home, /href="\/clubs">See all/);
   assert.doesNotMatch(home.slice(home.indexOf('<home15>')), /expo\.app/, 'no Expo link on the site');
