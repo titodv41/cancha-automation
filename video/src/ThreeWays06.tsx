@@ -9,7 +9,8 @@ import {AbsoluteFill, Img, continueRender, delayRender, spring, staticFile, useC
 import {Badge, C, Caption, D, Label, Lines, U, ease, type Club, type MapData} from './FindTeam01';
 
 export type Cue06 = {ways: number; one: number; two: number; three: number; send: number; end: number; total: number; captions: {at: number; to: number; text: string}[]};
-export const CUES_06: Cue06 = {ways: 2.8, one: 4.0, two: 8.0, three: 12.0, send: 15.4, end: 17.4, total: 21.0, captions: []};
+// Timed to Chris's narration (video/audio/narration/teach-06.json). No burned captions: the phone's bottom cards carry the beats.
+export const CUES_06: Cue06 = {ways: 2.0, one: 3.3, two: 7.0, three: 11.25, send: 14.0, end: 15.3, total: 18.6, captions: []};
 const PW = 640, PH = 1300, PX = 540 - PW / 2, PY = 560, SW = PW - 36;
 
 function Tap({f, at}: {f: number; at: number}) {
@@ -55,8 +56,8 @@ export function ThreeWays06({cues = CUES_06, clubs = [], map}: {cues?: Cue06; cl
   const phoneIn = spring({frame: f - t.one + 8, fps, config: {damping: 16, stiffness: 90}});
   const to2 = ease(f, t.two - 6, t.two + 10, Easing.inOut(Easing.cubic)), to3 = ease(f, t.three - 6, t.three + 10, Easing.inOut(Easing.cubic));
   const wipe = ease(f, t.end - 2, t.end + 16, Easing.inOut(Easing.cubic));
-  const placed = spring({frame: f - t.one - 52, fps, config: {damping: 14, stiffness: 140}});
-  const notif = spring({frame: f - t.two - 70, fps, config: {damping: 15, stiffness: 150}});
+  const placed = spring({frame: f - t.one - 70, fps, config: {damping: 14, stiffness: 140}});
+  const notif = spring({frame: f - t.two - 96, fps, config: {damping: 15, stiffness: 150}});
   const sent = spring({frame: f - t.send - 6, fps, config: {damping: 15, stiffness: 140}});
   const step = f < t.two ? 1 : f < t.three ? 2 : 3;
 
@@ -71,7 +72,7 @@ export function ThreeWays06({cues = CUES_06, clubs = [], map}: {cues?: Cue06; cl
           <path d={map.broward} fill={C.land} stroke="#d7ef8640" strokeWidth={2 / scale} strokeLinejoin="round"/>
         </g>
       </svg>
-      {pins.map(({c, i, x, y}) => { const a = 2 + i * 2; if (f < a) return null; const p = spring({frame: f - a, fps, config: {damping: 12, stiffness: 170}}), q = screen(x, y); if (q.y < 470) return null;
+      {pins.map(({c, i, x, y}) => { const a = 2 + i * 2; if (f < a) return null; const p = spring({frame: f - a, fps, config: {damping: 12, stiffness: 170}}), q = screen(x, y); if (q.y < 560) return null;
         return <div key={c.slug} style={{position: 'absolute', left: q.x - 40, top: q.y - 40, transform: `scale(${p})`, opacity: 0.85}}><Badge slug={c.slug} size={80}/></div>; })}
       <div style={{position: 'absolute', left: you.x - 60, top: you.y - 150, transform: `translateY(${(1 - youIn) * -200}px)`, opacity: Math.min(1, youIn * 2)}}>
         <div style={{width: 120, height: 120, borderRadius: 60, background: C.lime, display: 'grid', placeItems: 'center', boxShadow: '0 0 0 14px #d7ef8633'}}><Label color={C.forest} size={34}>You</Label></div>
@@ -88,12 +89,12 @@ export function ThreeWays06({cues = CUES_06, clubs = [], map}: {cues?: Cue06; cl
           <Label size={26}>Rec league · Sign up</Label>
           <H>Join a league</H>
           <Label size={26}>I'm signing up as</Label>
-          <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}><Chip f={f} label="A full team"/><Chip f={f} label="Solo player" at={t.one + 24}/></div>
-          <div style={{marginTop: 8}}><Btn f={f} at={t.one + 44} label="Sign up" done="Signed up"/></div>
+          <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}><Chip f={f} label="A full team"/><Chip f={f} label="Solo player" at={t.one + 36}/></div>
+          <div style={{marginTop: 8}}><Btn f={f} at={t.one + 56} label="Sign up" done="Signed up"/></div>
           <div style={{marginTop: 'auto', background: '#0f2a22', borderRadius: 28, padding: 24, transform: `translateY(${(1 - placed) * 380}px)`, border: `2px solid ${C.lime}`}}>
             <Label size={26} color={C.lime}>✓ Placed on a team</Label>
             <div style={{display: 'flex', gap: 10, marginTop: 16}}>{[C.lime, C.orange, C.cream, '#2a6b55', C.lime, C.orange, C.cream].map((c, k) =>
-              <div key={k} style={{width: 58, height: 58, borderRadius: 29, background: c, transform: `scale(${spring({frame: f - t.one - 60 - k * 3, fps, config: {damping: 12, stiffness: 180}})})`, border: k === 3 ? `3px solid ${C.lime}` : 'none'}}/>)}</div>
+              <div key={k} style={{width: 58, height: 58, borderRadius: 29, background: c, transform: `scale(${spring({frame: f - t.one - 78 - k * 3, fps, config: {damping: 12, stiffness: 180}})})`, border: k === 3 ? `3px solid ${C.lime}` : 'none'}}/>)}</div>
           </div>
         </div>
         {/* 2 · Clubs post tryouts on Instagram */}
@@ -103,7 +104,7 @@ export function ThreeWays06({cues = CUES_06, clubs = [], map}: {cues?: Cue06; cl
             <span style={{alignSelf: 'flex-start', background: C.orange, borderRadius: 999, padding: '6px 16px'}}><Label color={C.cream} size={24}>New post</Label></span>
             <H size={64}>Open Talent ID</H><Label size={26}>Details on their post</Label>
           </div>
-          <Btn f={f} at={t.two + 40} label="Follow" done="Following" ghost/>
+          <Btn f={f} at={t.two + 80} label="Follow" done="Following" ghost/>
           <div style={{marginTop: 'auto', background: C.cream, borderRadius: 26, padding: '18px 22px', display: 'flex', gap: 14, alignItems: 'center', transform: `translateY(${(1 - notif) * 300}px)`, opacity: Math.min(1, notif * 2)}}>
             <Badge slug="miami-united-fc" size={56}/><div style={{flex: 1}}><Label color={C.forest} size={24}>Miami United FC</Label><div style={{fontFamily: U, fontWeight: 700, fontSize: 26, color: C.forest}}>posted a new tryout</div></div>
           </div>
