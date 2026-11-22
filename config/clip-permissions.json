@@ -626,6 +626,32 @@
     "recordedOn": "2026-11-18",
     "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI, a vector map from US Census county shapes, and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage. Nov 19: re-timed to the narration after the audio fix."
    }
+  },
+  {
+   "id": "cancha-launch-05-motion",
+   "title": "Launch ad 05 Clubs: post your opening (motion graphics), Nov 21 2026",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-launch-05-motion.mp4",
+   "sha256": "3509ed19436f1867efa0ee0d0011863e8207818aa3c39911f3c165501296fe1a",
+   "license": "cancha-own",
+   "credit": "Motion graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-21",
+    "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage. Owner okayed the final cut on Nov 22."
+   }
+  },
+  {
+   "id": "cancha-teach-06-motion",
+   "title": "Teaching video 06 New in Miami, 3 ways in (motion graphics), Nov 21 2026",
+   "creator": "Cancha",
+   "file": "content/instagram/own-footage/cancha-teach-06-motion.mp4",
+   "sha256": "14589cb161cc92403d0e4a44d74cc23fd3ef564b03247fc97d41ac4786fdbc83",
+   "license": "cancha-own",
+   "credit": "Motion graphics: Cancha",
+   "permission": {
+    "recordedOn": "2026-11-21",
+    "how": "Made by Cancha in code (video/src, Remotion): illustrated Cancha app UI, a vector map from US Census county shapes and club crests from the Cancha directory (owner, Nov 18: the clubs gave their okay; illustrations are fine). No third-party footage. Owner okayed the final cut on Nov 22."
+   }
   }
  ]
 }

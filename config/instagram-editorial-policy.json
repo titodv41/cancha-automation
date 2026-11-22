@@ -69,10 +69,8 @@
     "story-find-your-club-adults-v2-en",
     "creator-cut-cancha-for-clubs",
     "creator-cut-inter-miami-25m-to-145b",
-    "creator-cut-launch-01-find-your-team-v2",
-    "creator-cut-launch-02-player-card-v2",
-    "creator-cut-launch-03-notifications-v2",
-    "creator-cut-launch-04-falta-uno-v2"
+    "creator-cut-teach-06-three-ways-in",
+    "creator-cut-launch-05-club-post"
   ],
   "shortReelsNote": "Oct 26 (later): owner rejected Reels built on stock footage (Pixabay/Mixkit/Commons) as generic. Only Reels made from real footage (official club media) may post; stock-footage recipes stay rendered but unapproved.",
   "comparisonCarouselsEnabled": true,
@@ -107,10 +105,8 @@
   ],
   "briefCarouselsNote": "Oct 30: owner asked for posts like news-with-a-take and money/opportunity alerts ('cool posts that offer information, value, drive people'). Claude approves each brief after checking every fact against its cited source the same day.",
   "priorityDraftIds": [
-    "short-creator-cut-launch-01-find-your-team-v2",
-    "short-creator-cut-launch-02-player-card-v2",
-    "short-creator-cut-launch-03-notifications-v2",
-    "short-creator-cut-launch-04-falta-uno-v2",
+    "short-creator-cut-teach-06-three-ways-in",
+    "short-creator-cut-launch-05-club-post",
     "short-creator-cut-inter-miami-25m-to-145b",
     "short-creator-cut-knuckleball-no-spin",
     "brief-kendall-thanksgiving-winter-soccer-camps-2026",
