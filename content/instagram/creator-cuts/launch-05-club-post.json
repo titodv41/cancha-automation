@@ -1,0 +1,18 @@
+{
+ "id": "creator-cut-launch-05-club-post",
+ "finished": "content/instagram/finished-reels/launch-05-club-post.mp4",
+ "credits": [
+  "cancha-launch-05-motion"
+ ],
+ "shots": [],
+ "beats": [],
+ "chip": "FOR CLUBS",
+ "hook": "Need a player?\nPost the spot.",
+ "posterSeconds": 7.6,
+ "caption": "Sound on 🔊\n\nRunning a team and one player short? 🧤 Post the spot you need: a keeper, Sundays, in Doral. Players who fit ask to join, and you pick who's in. Then chat in the app. 💬\n\nCancha for Clubs is free. Run a club or a team? Link in bio. 📲\n\nThe app screens are illustrations.\n\n#MiamiSoccer #BrowardSoccer #SouthFloridaSoccer #CanchaForClubs #Cancha",
+ "altText": "Motion graphic of a phone: a captain posts an opening by tapping keeper, competitive, Sundays and Doral, three player requests slide in, the captain taps Accept, and a chat opens with 'Welcome! Sunday 8 AM, field 3.'",
+ "narration": {
+  "voice": "Chris",
+  "script": "content/instagram/drafts/launch-05-club-post.json"
+ }
+}
