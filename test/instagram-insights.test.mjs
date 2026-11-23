@@ -7,3 +7,18 @@ test('expired token is distinct from unavailable metrics',async()=>{const r=awai
 test('topic adjustments need independent posts at comparable ages, never repeated or old lifetime snapshots',()=>{const at='2026-10-19T12:00:00Z',posts=Array.from({length:10},(_,i)=>({id:'post-'+i,topic:i<5?'guide':'demo',publishedAt:'2026-10-17T10:00:00Z',metrics:{reach:100,saved:i<5?8:1,shares:2}}));assert.equal(instagramLearning([{collectedAt:at,posts}]).topicComparison.length,2);assert.equal(instagramLearning([{collectedAt:at,posts:posts.slice(0,5)},{collectedAt:at,posts:posts.slice(0,5)}]).topicComparison.length,0);assert.equal(instagramLearning([{collectedAt:at,posts:posts.map(p=>({...p,publishedAt:'2026-10-01T00:00:00Z'}))}]).topicComparison.length,0)});
 test('daily learning history keeps only comparable age cohorts while leaving the full report intact',async()=>{const{learningSnapshot}=await import('../server/instagram-insights.mjs');const report={collectedAt:'2026-10-19T17:37:00Z',posts:[{id:'young',publishedAt:'2026-10-18T17:37:00Z',metrics:{}},{id:'comparable',publishedAt:'2026-10-16T17:37:00Z',metrics:{reach:40}},{id:'old',publishedAt:'2026-10-01T17:37:00Z',metrics:{reach:500}}],unavailableMetrics:[{metric:'shares'}],recommendations:['Retained in full artifact']};assert.deepEqual(learningSnapshot(report).posts.map(p=>p.id),['comparable']);assert.equal(report.posts.length,3);assert.equal(learningSnapshot(report).unavailableMetrics.length,0)});
 test('format learning needs independent comparable posts and never promotes a single high count',async()=>{const{techniqueLearning}=await import('../server/instagram-insights.mjs'),at='2026-10-24T16:00:00Z',posts=Array.from({length:10},(_,i)=>({id:'tech-'+i,technique:i<5?'newsroom':'match-board',publishedAt:'2026-10-22T12:00:00Z',metrics:{reach:100,saved:i<5?7:1,shares:2}}));assert.equal(techniqueLearning([{collectedAt:at,posts}]).comparisons.length,2);assert.equal(techniqueLearning([{collectedAt:at,posts:posts.slice(0,5)},{collectedAt:at,posts:posts.slice(0,5)}]).comparisons.length,0);assert.equal(techniqueLearning([{collectedAt:at,posts:posts.map(p=>({...p,publishedAt:'2026-10-01T12:00:00Z'}))}]).comparisons.length,0)});
+
+import {insightConclusions} from '../server/instagram-insights.mjs';
+test('conclusions name the top and weakest posts and the leading format, with no numbers', () => {
+  const now = new Date('2026-11-23T12:00:00Z'), at = h => new Date(now - h * 3600000).toISOString();
+  const post = (id, format, h, reach, saved, shares, comments = 0) => ({id, format, topic: 'teams', publishedAt: at(h), metrics: {reach, saved, shares, comments}});
+  const report = {collectedAt: now.toISOString(), posts: [post('reel-a', 'reel', 60, 1000, 30, 20), post('reel-b', 'reel', 80, 800, 10, 6), post('car-a', 'carousel', 70, 500, 2, 1), post('car-b', 'carousel', 90, 600, 3, 0), post('fresh', 'reel', 10, 900, 90, 90), post('tiny', 'reel', 70, 5, 5, 5)]};
+  const c = insightConclusions(report, {now});
+  assert.equal(c.ready, true); assert.equal(c.top, 'reel-a'); assert.equal(c.weakest, 'car-b');
+  assert.deepEqual(c.formats, ['reel', 'carousel']);
+  assert.doesNotMatch(c.lines.join(' '), /\d/, 'no numbers in the public text');
+});
+test('conclusions wait for enough comparable posts', () => {
+  const c = insightConclusions({collectedAt: '2026-11-23T12:00:00Z', posts: []});
+  assert.equal(c.ready, false);
+});

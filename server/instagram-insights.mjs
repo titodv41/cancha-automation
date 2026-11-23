@@ -45,3 +45,21 @@ export function techniqueLearning(reports){
  const comparisons=Object.entries(groups).filter(([,posts])=>posts.length>=5).map(([technique,values])=>({technique,posts:values.length,savesAndSharesPer100Reached:values.reduce((a,b)=>a+b,0)/values.length})).sort((a,b)=>b.savesAndSharesPer100Reached-a.savesAndSharesPer100Reached);
  return{comparisons:comparisons.length>=2?comparisons:[],metric:'saves + shares per 100 reached',ageWindowHours:[48,96],minimumIndependentPostsPerTechnique:5,status:comparisons.length>=2?'comparable-samples':'insufficient-evidence'};
 }
+
+// Conclusions only (Nov 23): which recent post did best and worst, and which format leads, by saves + shares + comments
+// per person reached, for posts at least 48 hours old with real reach. The text carries names, never numbers, so it can
+// go in the public Actions log and step summary (the automation repo is public; raw Insights stay encrypted).
+export function insightConclusions(report,{now=new Date(report?.collectedAt||Date.now()),days=14,minReach=20}={}){
+ const scored=(report?.posts||[]).filter(p=>{const age=(now-Date.parse(p.publishedAt))/3600000;const m=p.metrics||{};return age>=48&&age<=days*24&&m.reach>=minReach&&['saved','shares'].every(k=>Number.isFinite(m[k]))})
+  .map(p=>({id:p.id,format:p.format||'unknown',topic:p.topic||'unknown',score:(p.metrics.saved+p.metrics.shares+(Number.isFinite(p.metrics.comments)?p.metrics.comments:0))/p.metrics.reach}));
+ if(scored.length<3)return{ready:false,lines:['Not enough comparable posts yet (need three posts at least two days old with real reach in the last '+days+' days).']};
+ scored.sort((a,b)=>b.score-a.score);
+ const by={};for(const p of scored)(by[p.format]||=[]).push(p.score);
+ const median=v=>{const s=[...v].sort((a,b)=>a-b),m=Math.floor(s.length/2);return s.length%2?s[m]:(s[m-1]+s[m])/2};
+ const formats=Object.entries(by).filter(([,v])=>v.length>=2).map(([f,v])=>({format:f,m:median(v)})).sort((a,b)=>b.m-a.m).map(x=>x.format);
+ const top=scored[0],weak=scored.at(-1);
+ const lines=['Top post: '+top.id+' ('+top.format+', '+top.topic+').','Weakest post: '+weak.id+' ('+weak.format+', '+weak.topic+').'];
+ if(formats.length>=2)lines.push('Formats, strongest first: '+formats.join(' > ')+'.');else lines.push('Only one format has two or more comparable posts; no format comparison yet.');
+ lines.push('Ranked by saves, shares and comments per person reached. A ranking, not proof of what caused it.');
+ return{ready:true,top:top.id,weakest:weak.id,formats,lines};
+}

@@ -8,7 +8,7 @@ import {satisfiesDailyMediaMix} from '../server/instagram-media-mix.mjs';
 import {refreshPhotoEditorial} from '../server/photo-editorial-refresh.mjs';
 import {verifyCarouselAssets,verifyReelAssets} from '../server/instagram-media.mjs';
 import {expiredPublishingDay} from '../server/github-publish-window.mjs';
-import{collectInstagramInsights,instagramLearning,learningSnapshot,techniqueLearning}from'../server/instagram-insights.mjs';
+import{collectInstagramInsights,insightConclusions,instagramLearning,learningSnapshot,techniqueLearning}from'../server/instagram-insights.mjs';
 import{approvedOriginalCreative,shouldActivateLocalCreative}from'../server/social-creative.mjs';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {runSubprocess} from './subprocess.mjs';
@@ -174,6 +174,7 @@ try{
  if(mode==='insights'){
   const report=await collectInstagramInsights(connection,db.prepare("SELECT * FROM instagram_queue WHERE status='Published' ORDER BY published_at").all(),{fetchImpl:(url,options)=>fetch(url,{...options,dispatcher})});
   state.instagramInsights=[...(state.instagramInsights||[]).slice(-34),learningSnapshot(report)];const learning=instagramLearning(state.instagramInsights);report.topicComparison=learning.topicComparison;report.techniqueLearning=techniqueLearning(state.instagramInsights);report.ageCohortHours=learning.ageCohortHours;report.learningNote=learning.note||'Comparable cohort found; topic preference is an experiment, not proof of causation or guaranteed reach.';await checkpoint();await mkdir('private-data',{recursive:true,mode:0o700});await writeFile('private-data/instagram-insights.json',JSON.stringify(report,null,2),{mode:0o600});console.log(JSON.stringify({readOnlyInsights:true,status:report.status,posts:report.posts.length,requiredPermission:report.requiredPermission,comparableTopics:learning.topicComparison.length}));
+  const conclusions=insightConclusions(report);console.log('Conclusions (no numbers):\n'+conclusions.lines.join('\n'));if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,'## Instagram conclusions\n\n'+conclusions.lines.map(l=>'- '+l).join('\n')+'\n',{flag:'a'});
  }
  if(mode==='reconnect'){
   const token=process.env.META_PAGE_ACCESS_TOKEN;if(!token)throw Error('Configure META_PAGE_ACCESS_TOKEN in GitHub Actions secrets to reconnect');
