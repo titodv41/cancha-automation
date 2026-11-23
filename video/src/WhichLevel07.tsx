@@ -7,7 +7,8 @@ import {AbsoluteFill, Img, continueRender, delayRender, spring, staticFile, useC
 import {Badge, C, D, Label, Lines, ease} from './FindTeam01';
 
 export type Cue07 = {rec: number; comp: number; cancha: number; send: number; end: number; total: number};
-export const CUES_07: Cue07 = {rec: 3.6, comp: 9.0, cancha: 14.4, send: 17.6, end: 19.6, total: 23.0};
+// Timed to Chris's narration (video/audio/narration/teach-07.json).
+export const CUES_07: Cue07 = {rec: 4.1, comp: 9.3, cancha: 15.5, send: 19.3, end: 20.3, total: 23.5};
 const UPSL = ['117-fc-academy', 'asa-itss', 'boca-jrs-miami-fc', 'futsoc', 'florida-island-united', 'miami-united-fc'];
 
 function Tap({f, at}: {f: number; at: number}) {
@@ -72,7 +73,7 @@ export function WhichLevel07({cues = CUES_07}: {cues?: Cue07}) {
     {f >= t.rec - 2 && f < t.comp + 2 && <div style={{position: 'absolute', left: 90, right: 90, top: 760, ...inScene(t.rec, t.comp)}}>
       <Pitch f={f} at={t.rec + 6} n={7} w={900} h={520}/>
       <div style={{display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: 34}}>
-        <Tag f={f} at={t.rec + 30} label="Weeknights"/><Tag f={f} at={t.rec + 48} label="7 v 7"/><Tag f={f} at={t.rec + 66} label="Sign up solo"/><Tag f={f} at={t.rec + 84} label="No tryout" tone={C.cream}/>
+        <Tag f={f} at={t.rec + 45} label="Weeknights"/><Tag f={f} at={t.rec + 60} label="7 v 7"/><Tag f={f} at={t.rec + 85} label="Sign up solo"/><Tag f={f} at={t.rec + 105} label="No tryout" tone={C.cream}/>
       </div>
     </div>}
 
@@ -81,7 +82,7 @@ export function WhichLevel07({cues = CUES_07}: {cues?: Cue07}) {
       <Pitch f={f} at={t.comp + 6} n={11} w={900} h={520}/>
       <div style={{display: 'flex', gap: 14, marginTop: 30}}>{UPSL.map((slug, i) => { const p = spring({frame: f - t.comp - 30 - i * 3, fps, config: {damping: 12, stiffness: 170}}); return <div key={slug} style={{transform: `scale(${p})`}}><Badge slug={slug} size={128}/></div>; })}</div>
       <div style={{display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: 26}}>
-        <Tag f={f} at={t.comp + 60} label="UPSL clubs"/><Tag f={f} at={t.comp + 78} label="Tryouts" tone={C.orange}/><Tag f={f} at={t.comp + 96} label="Full field"/>
+        <Tag f={f} at={t.comp + 80} label="UPSL clubs"/><Tag f={f} at={t.comp + 110} label="Tryouts" tone={C.orange}/><Tag f={f} at={t.comp + 125} label="Full field"/>
       </div>
     </div>}
 
