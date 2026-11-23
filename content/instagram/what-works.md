@@ -7,6 +7,12 @@ The only post with real engagement so far (~40 likes per the owner; others near 
 3. **The club's own photo plus a collab invite** (@tampabayrowdies): the club appears to have accepted or reposted it, which put it in front of their fans.
 4. **An easy reaction:** "Who you got? Drop it in the comments."
 
+## Nov 23, 2026: teach the skill, show Cancha last (first conclusions-only ranking)
+The insights job now prints a ranking without numbers (saves + shares + comments per person reached, posts 2-14 days old).
+- **Top:** the teaching Reel "How to receive like Rodri & Pedri" (a creator's skill clips, a useful lesson).
+- **Weakest:** launch ad 04 "Falta uno" (a pure app ad).
+- **What changes:** lead with useful lessons people send to a teammate (skills, how to get on a team, levels, tryouts), and show Cancha only at the end as the next step. Fewer pure app ads. One ranking is not proof; check the next Monday's ranking before treating it as a rule.
+
 ## The formula to repeat (not copy)
 - A **specific Florida club or community moment** with a clock on it: match preview or result, playoff run, tryout or deadline, drive or event.
 - The **club's own photo** (credited) plus a **collab invite to that club**.
