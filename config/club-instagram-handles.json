@@ -1,5 +1,5 @@
 {
-  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed. Leagues (type league) are read too; the @accounts their posts mention are checked in the same run so new clubs surface on their own. Entries marked unconfirmed (Nov 24) are likely handles we could not confirm by search; the radar uses one only when the account's own username, name or bio contains the club's distinctive name words, and reports a mismatch otherwise.",
+  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed. Leagues (type league) are read too; the @accounts their posts mention are checked in the same run so new clubs surface on their own. Entries marked unconfirmed (Nov 24) are likely handles we could not confirm by search; the radar uses one only when the account's own username, name or bio contains the club's distinctive name words, and reports a mismatch otherwise. Nov 24: the profiles of dadecountyfc, hodlermiamifc, miamisportingfc and solaiyafc were checked and confirmed; unitedstarsfc (a comic book account) and floridaelitefc (a Tampa youth academy) passed the word match but were wrong, so they were removed. The name check is a filter, not proof: confirm each new account by its profile before trusting it.",
   "clubs": [
     {
       "club": "River Miami FC",
@@ -77,7 +77,7 @@
     {
       "club": "Dade County FC",
       "handle": "dadecountyfc",
-      "unconfirmed": true
+      "confirmedOn": "2026-11-24"
     },
     {
       "club": "Hodler FC",
@@ -87,12 +87,12 @@
     {
       "club": "Hodler Miami FC",
       "handle": "hodlermiamifc",
-      "unconfirmed": true
+      "confirmedOn": "2026-11-24"
     },
     {
       "club": "Miami Sporting FC",
       "handle": "miamisportingfc",
-      "unconfirmed": true
+      "confirmedOn": "2026-11-24"
     },
     {
       "club": "117 FC Academy",
@@ -115,19 +115,9 @@
       "unconfirmed": true
     },
     {
-      "club": "United Stars",
-      "handle": "unitedstarsfc",
-      "unconfirmed": true
-    },
-    {
-      "club": "Florida Elite FC",
-      "handle": "floridaelitefc",
-      "unconfirmed": true
-    },
-    {
       "club": "Fort Lauderdale Solaiya FC",
       "handle": "solaiyafc",
-      "unconfirmed": true
+      "confirmedOn": "2026-11-24"
     },
     {
       "club": "Empire SC",
