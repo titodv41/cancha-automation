@@ -31,3 +31,17 @@ test('league posts surface club handles and youth tryouts are flagged', () => {
   assert.ok(youth('Academy tryouts for U12-U17, born 2010-2014'));
   assert.ok(!youth('Open tryouts for our first team, 18 and older'));
 });
+
+import { nameMatches } from '../server/instagram-opening-radar.mjs';
+test('an unconfirmed handle is used only when the account names the club (display name or bio, never the username)', () => {
+  assert.equal(nameMatches('Dade County FC', 'Dade County FC', ''), true);
+  assert.equal(nameMatches('Hodler Miami FC', 'Hodler Miami', ''), true);
+  assert.equal(nameMatches('Hodler Miami FC', 'Hodler FC', 'Doral'), false, 'missing Miami');
+  assert.equal(nameMatches('117 FC Academy', '117 FC', 'Academy in Miami'), true);
+  assert.equal(nameMatches('Plantation FC', 'Plantation Fútbol Club', ''), true);
+  assert.equal(nameMatches('ASA Primera', 'Some bakery', 'Fresh bread daily'), false);
+  assert.equal(nameMatches('United Stars', 'United Stars FC Miami', ''), true);
+  assert.equal(nameMatches('FC', 'FC', ''), false, 'no distinctive words, never matches');
+  assert.equal(nameMatches('Florida Island United', 'FIU Panthers', 'Florida International'), false);
+  assert.equal(nameMatches('Empire SC', '', ''), false, 'an empty profile never matches');
+});

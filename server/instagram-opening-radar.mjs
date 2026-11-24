@@ -24,3 +24,12 @@ export function candidates(club, media = [], now = new Date(), maxAgeDays = 60) 
 // Business discovery field list: profile name/bio (to confirm it is a soccer club), captions, dates and links.
 // No follower counts or other account metrics.
 export const discoveryFields = handle => `business_discovery.username(${handle}){username,name,biography,media.limit(30){caption,timestamp,permalink}}`;
+// Unconfirmed handles (Nov 24): a handle we could not confirm by search is only used when the account's own display
+// name or bio (never the username, which is the guess itself) contains every distinctive word of the club's name.
+const GENERIC = new Set(['fc', 'sc', 'cf', 'club', 'futbol', 'football', 'soccer', 'the', 'de', 'del', 'team', 'first', 'esp', 'ii']);
+export function nameMatches(club = '', ...texts) {
+  const words = String(club).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').split(/[^a-z0-9]+/).filter(w => w && !GENERIC.has(w));
+  if (!words.length) return false;
+  const hay = texts.join(' ').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '');
+  return words.every(w => hay.includes(w));
+}

@@ -1,5 +1,5 @@
 {
-  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed. Leagues (type league) are read too; the @accounts their posts mention are checked in the same run so new clubs surface on their own.",
+  "note": "Public Instagram accounts of South Florida adult clubs, read through Instagram's business discovery API by scripts/instagram-opening-radar.mjs to spot tryout and player-call posts. Handles found by web search on 2026-11-18; a handle that is wrong, private or not a business account is simply reported as unavailable. Add handles here as clubs are confirmed. Leagues (type league) are read too; the @accounts their posts mention are checked in the same run so new clubs surface on their own. Entries marked unconfirmed (Nov 24) are likely handles we could not confirm by search; the radar uses one only when the account's own username, name or bio contains the club's distinctive name words, and reports a mismatch otherwise.",
   "clubs": [
     {
       "club": "River Miami FC",
@@ -69,6 +69,80 @@
       "club": "Orlando Rovers FC",
       "handle": "orlandoroversfc",
       "region": "Central Florida"
+    },
+    {
+      "club": "Fort Training Academy",
+      "handle": "fort_training_academy"
+    },
+    {
+      "club": "Dade County FC",
+      "handle": "dadecountyfc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Hodler FC",
+      "handle": "hodlerfc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Hodler Miami FC",
+      "handle": "hodlermiamifc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Miami Sporting FC",
+      "handle": "miamisportingfc",
+      "unconfirmed": true
+    },
+    {
+      "club": "117 FC Academy",
+      "handle": "117fcacademy",
+      "unconfirmed": true
+    },
+    {
+      "club": "ASA ITSS",
+      "handle": "asaitss",
+      "unconfirmed": true
+    },
+    {
+      "club": "Florida Island United",
+      "handle": "floridaislandunited",
+      "unconfirmed": true
+    },
+    {
+      "club": "Miramar Supreme FC",
+      "handle": "miramarsupremefc",
+      "unconfirmed": true
+    },
+    {
+      "club": "United Stars",
+      "handle": "unitedstarsfc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Florida Elite FC",
+      "handle": "floridaelitefc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Fort Lauderdale Solaiya FC",
+      "handle": "solaiyafc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Empire SC",
+      "handle": "empiresc",
+      "unconfirmed": true
+    },
+    {
+      "club": "Plantation FC",
+      "handle": "plantationfc",
+      "unconfirmed": true
+    },
+    {
+      "club": "ASA Primera",
+      "handle": "asaprimera",
+      "unconfirmed": true
     }
   ],
   "leagues": [
