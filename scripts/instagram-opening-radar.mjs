@@ -4,7 +4,7 @@
 // The encrypted state is only read, never saved. Nothing is published, liked, commented or sent.
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { githubStateClient } from './github-state-client.mjs';
-import { candidates, discoveryFields, mentions, validHandle } from '../server/instagram-opening-radar.mjs';
+import { candidates, discoveryFields, mentions, nameMatches, validHandle } from '../server/instagram-opening-radar.mjs';
 const OUT = 'private-data/instagram-opening-radar';
 const { clubs, leagues = [] } = JSON.parse(await readFile('config/club-instagram-handles.json', 'utf8'));
 const expected = JSON.parse(await readFile('config/meta-account.json', 'utf8'));
@@ -25,6 +25,7 @@ async function read(entry, kind) {
     // Never echo the response error text or URL: only a short status, so no token can reach the public log.
     if (!res.ok || body.error) { accounts.push({ handle: entry.handle, kind, status: 'unavailable', code: Number.isInteger(body.error?.code) ? body.error.code : res.status }); return; }
     const bd = body.business_discovery || {}, media = bd.media?.data || [];
+    if (entry.unconfirmed && !nameMatches(entry.club, bd.name, bd.biography)) { accounts.push({ handle: entry.handle, kind, status: 'name mismatch', name: bd.name || '' }); return; }
     const hits = kind === 'league' ? [] : candidates({ club: entry.club || bd.name || entry.handle, handle: entry.handle }, media);
     if (kind !== 'club') for (const m of media) for (const h of mentions(m.caption)) if (!seen.has(h)) mentioned.set(h, (mentioned.get(h) || 0) + 1);
     found.push(...hits);
@@ -39,4 +40,4 @@ for (const [handle] of [...mentioned].sort((a, b) => b[1] - a[1]).slice(0, 60)) 
 await mkdir(OUT, { recursive: true });
 const report = { checkedAt: new Date().toISOString(), accounts, candidates: found.sort((a, b) => b.postedAt.localeCompare(a.postedAt)) };
 await writeFile(`${OUT}/report.json`, JSON.stringify(report, null, 2));
-console.log(JSON.stringify({ read: accounts.filter(a => a.status === 'read').length, unavailable: accounts.filter(a => a.status !== 'read').length, candidates: found.length, adultCandidates: found.filter(c => !c.youth).length }));
+console.log(JSON.stringify({ read: accounts.filter(a => a.status === 'read').length, unavailable: accounts.filter(a => a.status !== 'read' && a.status !== 'name mismatch').length, nameMismatch: accounts.filter(a => a.status === 'name mismatch').map(a => a.handle), unconfirmedVerified: accounts.filter(a => a.status === 'read' && clubs.some(c => c.unconfirmed && c.handle === a.handle)).map(a => a.handle), candidates: found.length, adultCandidates: found.filter(c => !c.youth).length }));
