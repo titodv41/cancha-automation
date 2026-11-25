@@ -220,6 +220,18 @@ export function homeClubs(profiles:any[]){
  return out
 }
 const homeFont=`@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap');`
+// <open-now> Real, sourced sign-ups (Nov 25). Same entries as the app's src/openings.ts (checked Nov 18): each links to the
+// organizer's own page or post and hides itself after `until`. Keep the two lists in sync; never add an unsourced opening.
+const OPEN_NOW=[
+ {org:'Miami United FC',need:'Open Talent ID',when:'Open now',area:'Hialeah',note:'UPSL club · details on their post',url:'https://www.instagram.com/p/DfnT040By1V/',until:'2026-12-11'},
+ {org:'South Florida Club Sport',need:"Men's 7v7",when:'Tue · from Jan 5',area:'Coconut Creek',note:'Solo players placed on a team · $80',url:'https://www.southfloridaclubsport.com/sign-up/198165/start/Individual',until:'2027-01-05'},
+ {org:'South Florida Club Sport',need:'Coed 6v6',when:'Fri · from Jan 8',area:'Miami Beach',note:'Solo players placed on a team · $95',url:'https://www.southfloridaclubsport.com/sign-up/196387/start/Individual',until:'2027-01-08'},
+ {org:'South Florida Club Sport',need:'Coed 7v7',when:'Mon · from Jan 25',area:'Lauderhill',note:'Solo players placed on a team · $75',url:'https://www.southfloridaclubsport.com/sign-up/198894/start/Individual',until:'2027-01-25'},
+ {org:'South Florida Club Sport',need:"Men's 7v7",when:'Wed · from Jan 27',area:'Coconut Creek',note:'Solo players placed on a team · $80',url:'https://www.southfloridaclubsport.com/sign-up/199503/start/Individual',until:'2027-01-27'},
+]
+export const openNow=(today:string)=>OPEN_NOW.filter(o=>o.until>=today)
+const openCss=`.h15-open a{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;background:#12261f;border:1px solid #23423a;border-radius:20px;padding:20px;color:var(--c);text-decoration:none}.h15-open small{font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--l)}.h15-open b{font-family:'Cancha Display','Barlow Condensed',sans-serif;font-style:italic;font-size:34px;line-height:1;text-transform:uppercase}.h15-open span{font-size:18px;font-weight:600}.h15-open em{font-style:normal;font-size:15px;color:var(--m)}.h15-open i{margin-top:auto;font-style:normal;font-size:15px;font-weight:700;color:var(--l)}.h15-sub{font-size:18px;color:var(--m);margin:-10px 0 18px}@media(max-width:600px){.h15-open a{flex-basis:260px}}`
+// </open-now>
 const homeCss=`.h15{--f:#103f32;--n:#07130f;--c:#f5f3e9;--l:#d7ef86;--o:#f55b32;--m:#9fb3ab;background:var(--n);color:var(--c);font-family:'Barlow Condensed','Arial Narrow',sans-serif;overflow-x:clip}
 .h15 *{box-sizing:border-box}.h15 a{color:inherit;text-decoration:none}.h15-w{max-width:1120px;margin:0 auto;padding:0 20px}
 .h15 h1,.h15 h2{font-family:'Cancha Display','Barlow Condensed','Arial Narrow',sans-serif;font-style:italic;font-weight:700;text-transform:uppercase;margin:0;letter-spacing:-.01em}
@@ -260,6 +272,11 @@ export default function CanchaHome(){
    <div className="h15-head"><h2 id="h15-clubs">Clubs on Cancha</h2><a className="h15-all" href="/clubs">See all <Icon name="arrow" size={16}/></a></div>
    <div className="h15-row">{clubs.map((p:any)=><a key={p.id} href={p.href} aria-label={p.name}><span className="h15-crest"><img src={p.image} alt="" loading="lazy" decoding="async"/></span><b>{p.name}</b>{p.city&&<small>{p.city}</small>}</a>)}</div>
   </div></section>}
+  {(()=>{const list=openNow(new Date().toISOString().slice(0,10));return list.length>0&&<section className="h15-sec" aria-labelledby="h15-open" style={{paddingTop:0}}><div className="h15-w"><CanchaStyle css={openCss}/>
+   <div className="h15-head"><h2 id="h15-open">Open right now</h2><a className="h15-all" href="#waitlist">Find me a team <Icon name="arrow" size={16}/></a></div>
+   <p className="h15-sub">Real sign-ups and tryouts, checked by Cancha. Tap to go to the source.</p>
+   <div className="h15-row h15-open">{list.map(o=><a key={o.url} href={o.url} target="_blank" rel="noopener"><small>{o.org}</small><b>{o.need}</b><span>{o.when} · {o.area}</span><em>{o.note}</em><i>Go to the source ↗</i></a>)}</div>
+  </div></section>})()}
   <section className="h15-sec" aria-labelledby="h15-how" style={{paddingTop:0}}><div className="h15-w">
    <div className="h15-head"><h2 id="h15-how">How it works</h2></div>
    <ol className="h15-steps">
