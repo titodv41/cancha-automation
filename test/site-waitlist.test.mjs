@@ -29,3 +29,13 @@ test('the waitlist opens in English; Spanish only from the switch', () => {
   assert.doesNotMatch(home, /navigator\.language/);
   assert.doesNotMatch(home, /get\('lang'\)/);
 });
+
+test('the homepage "Open right now" list is sourced and hides itself after its date', async () => {
+  const block = home.slice(home.indexOf('// <open-now>'), home.indexOf('// </open-now>'));
+  const urls = [...block.matchAll(/url:'(https:[^']+)'/g)].map(m => m[1]);
+  assert.ok(urls.length >= 1);
+  for (const u of urls) assert.match(u, /^https:\/\/(www\.instagram\.com|www\.southfloridaclubsport\.com)\//);
+  for (const d of block.matchAll(/until:'([^']+)'/g)) assert.match(d[1], /^\d{4}-\d{2}-\d{2}$/);
+  let app = ''; try { app = readFileSync(new URL('../../cancha-app/src/openings.ts', import.meta.url), 'utf8'); } catch {} // only when the app repo sits next to this one
+  if (app) for (const u of urls) assert.ok(app.includes(u), 'every website opening is also in the app list: ' + u);
+});
