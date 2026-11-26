@@ -220,12 +220,12 @@ export function homeClubs(profiles:any[]){
  return out
 }
 const homeFont=`@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap');`
-// <open-now> Real, sourced sign-ups (Nov 25). Same entries as the app's src/openings.ts (checked Nov 18): each links to the
+// <open-now> Real, sourced sign-ups (Nov 25). Same entries as the app's src/openings.ts (SFCS re-checked Nov 26): each links to the
 // organizer's own page or post and hides itself after `until`. Keep the two lists in sync; never add an unsourced opening.
 const OPEN_NOW=[
  {org:'Miami United FC',need:'Open Talent ID',when:'Open now',area:'Hialeah',note:'UPSL club · details on their post',url:'https://www.instagram.com/p/DfnT040By1V/',until:'2026-12-11'},
  {org:'South Florida Club Sport',need:"Men's 7v7",when:'Tue · from Jan 5',area:'Coconut Creek',note:'Solo players placed on a team · $80',url:'https://www.southfloridaclubsport.com/sign-up/198165/start/Individual',until:'2027-01-05'},
- {org:'South Florida Club Sport',need:'Coed 6v6',when:'Fri · from Jan 8',area:'Miami Beach',note:'Solo players placed on a team · $95',url:'https://www.southfloridaclubsport.com/sign-up/196387/start/Individual',until:'2027-01-08'},
+ {org:'South Florida Club Sport',need:'Coed 6v6',when:'Fri · from Jan 8',area:'Miami Beach',note:'Solo players placed on a team · $105 ($95 early sign-up)',url:'https://www.southfloridaclubsport.com/sign-up/196387/start/Individual',until:'2027-01-08'},
  {org:'South Florida Club Sport',need:'Coed 7v7',when:'Mon · from Jan 25',area:'Lauderhill',note:'Solo players placed on a team · $75',url:'https://www.southfloridaclubsport.com/sign-up/198894/start/Individual',until:'2027-01-25'},
  {org:'South Florida Club Sport',need:"Men's 7v7",when:'Wed · from Jan 27',area:'Coconut Creek',note:'Solo players placed on a team · $80',url:'https://www.southfloridaclubsport.com/sign-up/199503/start/Individual',until:'2027-01-27'},
 ]
